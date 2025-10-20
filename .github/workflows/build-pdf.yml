@@ -29,8 +29,12 @@ jobs:
           run: |
             set -euo pipefail
             cd /workdir
-            # Makefile 同梱のため make でビルド（platex + pbibtex + dvipdfmx）
-            make
+            # make が無い環境向けに手動ビルド（platex + pbibtex + dvipdfmx）
+            platex -kanji=utf8 main
+            pbibtex -kanji=utf8 main || true
+            platex -kanji=utf8 main
+            platex -kanji=utf8 main
+            dvipdfmx -p a4 main
 
       - name: Upload PDF artifact
         uses: actions/upload-artifact@v4
