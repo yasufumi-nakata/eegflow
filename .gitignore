@@ -1,0 +1,14 @@
+thesis/
+*.aux
+*.log
+*.out
+*.toc
+*.bbl
+*.blg
+*.dvi
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+.env
+.env.local
+

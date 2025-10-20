@@ -1,0 +1,41 @@
+name: Build thesis PDF
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Prepare thesis template
+        run: |
+          set -euo pipefail
+          rm -rf thesis
+          git clone --depth 1 https://github.com/ymrl/thesis-template thesis
+          # 上書きする原稿一式をテンプレートに反映
+          rsync -av thesis_content/ thesis/
+
+      - name: Build PDF using texlive-ja container
+        uses: addnab/docker-run-action@v3
+        with:
+          image: paperist/texlive-ja:latest
+          options: -v ${{ github.workspace }}/thesis:/workdir
+          run: |
+            set -euo pipefail
+            cd /workdir
+            # Makefile 同梱のため make でビルド（platex + pbibtex + dvipdfmx）
+            make
+
+      - name: Upload PDF artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: thesis-pdf
+          path: thesis/main.pdf
+
+

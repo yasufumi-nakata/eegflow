@@ -125,7 +125,20 @@
 
   <h3>KPIと手法</h3>
   <ul>
-    <li><strong>KPI</strong>：高密度EEGでソース推定誤差≤10mm、在宅低チャネルEEGでSNR≥6dB・デバイス間較正誤差≤15%、有効セッション率≥85%、BIDS準拠率100%。</li>
+    <li><strong>KPI</strong>：
+      <ul>
+        <li>高密度EEG（128ch + 個人MRI）でのソース推定精度：
+          <ul>
+            <li>浅部皮質源（depth≤20mm）：誤差≤15mm</li>
+            <li>中深度源（20-40mm）：誤差≤25mm</li>
+            <li>深部源（>40mm）：EEG単独では信頼性低、fMRI/MEG融合必須</li>
+          </ul>
+        </li>
+        <li>在宅低チャネルEEG：SNR≥6dB、デバイス間較正誤差≤15%</li>
+        <li>有効セッション率≥85%、BIDS準拠率100%</li>
+      </ul>
+      <em>※ 注：EEGの逆問題は不良設定（ill-posed）であり、10mm精度は皮質表面の限定的条件下でのみ達成可能。深部構造（海馬・扁桃体等）は空間分解能が著しく低下（Michel & Murray 2012）。</em>
+    </li>
     <li><strong>手法</strong>：EEGLAB（Delorme & Makeig 2004）/MNE-Python（Gramfort et al. 2013）で前処理、ICLabel（Pion-Tonachini et al. 2019）で自動ICA、BIDS-EEG（Pernet et al. 2019）で標準化保管。</li>
   </ul>
 
@@ -135,10 +148,12 @@
     <li>Delorme, A., & Makeig, S. (2004). EEGLAB: An open source toolbox for analysis of single-trial EEG dynamics. <em>J. Neurosci. Methods</em>, 134, 9–21. https://doi.org/10.1016/j.jneumeth.2003.10.009</li>
     <li>Goldberger, A. L., et al. (2000). PhysioBank, PhysioToolkit, and PhysioNet. <em>Circulation</em>, 101, e215–e220. https://doi.org/10.1161/01.CIR.101.23.e215</li>
     <li>Gramfort, A., et al. (2013). MEG and EEG data analysis with MNE-Python. <em>Front. Neurosci.</em>, 7, 267. https://doi.org/10.3389/fnins.2013.00267</li>
+    <li>Michel, C. M., & Murray, M. M. (2012). Towards the utilization of EEG as a brain imaging tool. <em>NeuroImage</em>, 61(2), 371–385. https://doi.org/10.1016/j.neuroimage.2011.12.039</li>
     <li>Pernet, C. R., et al. (2019). EEG-BIDS. <em>Sci. Data</em>, 6, 103. https://doi.org/10.1038/s41597-019-0104-8</li>
     <li>Pion-Tonachini, L., et al. (2019). ICLabel. <em>NeuroImage</em>, 198, 181–197. https://doi.org/10.1016/j.neuroimage.2019.05.026</li>
     <li>Scheffer, L. K., et al. (2020). A connectome of the adult <em>Drosophila</em> central brain. <em>eLife</em>, 9, e57443. https://doi.org/10.7554/eLife.57443</li>
     <li>Tangermann, M., et al. (2012). Review of the BCI Competition IV. <em>Front. Neurosci.</em>, 6, 55. https://doi.org/10.3389/fnins.2012.00055</li>
+    <li>van de Velden, D., et al. (2023). Effects of inverse methods and spike phases on interictal high-density EEG source reconstruction. <em>Clinical Neurophysiology</em>, 173, 1–12. https://doi.org/10.1016/j.clinph.2023.08.020</li>
     <li>Van Essen, D. C., et al. (2013). The WU-Minn Human Connectome Project. <em>NeuroImage</em>, 80, 62–79. https://doi.org/10.1016/j.neuroimage.2013.05.041</li>
   </ul>
 
@@ -355,6 +370,120 @@
     <li>肉体死後も機械脳で意識・記憶・人格が連続的に存続→「シームレスな不老不死」。</li>
   </ul>
 
+  <h3>⚠️ 技術的実現可能性の評価（Critical Assessment）</h3>
+  <p style="background-color: #fff3cd; padding: 15px; border-left: 5px solid #ff9800;">
+    <strong>注意：</strong>上記の渡辺方式は理論的枠組みとして提示されていますが、現行技術との間に以下の重大なギャップが存在します。
+  </p>
+
+  <h4>🔴 脳梁BMIの技術的制約</h4>
+  <table border="1" cellpadding="5" cellspacing="0">
+    <tr><th>項目</th><th>必要仕様</th><th>現行最高技術（2024）</th><th>ギャップ</th></tr>
+    <tr>
+      <td><strong>電極密度</strong></td>
+      <td>20,000電極<br/>（2億軸索の0.01%サンプリング）</td>
+      <td>Neuralink N1: 1,024電極<br/>Utah Array: 96-128電極</td>
+      <td>20-200倍不足</td>
+    </tr>
+    <tr>
+      <td><strong>双方向通信</strong></td>
+      <td>記録＋刺激の同時実行</td>
+      <td>DBS: 刺激のみ<br/>Utah: 記録のみ</td>
+      <td>双方向統合未実証</td>
+    </tr>
+    <tr>
+      <td><strong>軸索再生</strong></td>
+      <td>2億本の選択的再接続</td>
+      <td>末梢神経: 数千本レベル<br/>CNS大規模再生: 未実証</td>
+      <td>10万倍不足</td>
+    </tr>
+    <tr>
+      <td><strong>長期安定性</strong></td>
+      <td>10年以上</td>
+      <td>Utah Array: ~2年<br/>DBS: ~10年（刺激のみ）</td>
+      <td>記録系では5倍不足</td>
+    </tr>
+  </table>
+
+  <h4>🟡 段階的実現アプローチ（5-20年）</h4>
+  <ul>
+    <li><strong>Year 5-10</strong>：皮質表面BMI（ECoG, 256-1,024電極）での半球間通信実証</li>
+    <li><strong>Year 10-15</strong>：小規模脳梁BMI（1,000電極）での初期統合実験（医療適応患者）</li>
+    <li><strong>Year 15-20</strong>：電極密度向上（5,000-10,000電極）、軸索再生技術の動物モデル実証</li>
+    <li><strong>Year 20+</strong>：健常者への応用倫理審査、初期臨床試験</li>
+  </ul>
+
+  <h4>参考文献（技術制約）</h4>
+  <ul>
+    <li>Aboitiz, F., et al. (1992). Fiber composition of the human corpus callosum. <em>Brain Research</em>, 598(1-2), 143–153. https://doi.org/10.1016/0006-8993(92)90178-C</li>
+    <li>Hochberg, L. R., et al. (2012). Reach and grasp by people with tetraplegia using a neurally controlled robotic arm. <em>Nature</em>, 485, 372–375. https://doi.org/10.1038/nature11076 (Utah Array長期使用)</li>
+    <li>Nurmikko, A. (2020). Challenges for Large-Scale Cortical Interfaces. <em>Neuron</em>, 108(2), 259–269. https://doi.org/10.1016/j.neuron.2020.10.015</li>
+    <li>Rapeaux, A. B., & Constandinou, T. G. (2021). Implantable brain machine interfaces: first-in-human studies, technology challenges and trends. <em>Current Opinion in Biotechnology</em>, 72, 102–111. https://doi.org/10.1016/j.copbio.2021.10.001</li>
+  </ul>
+
+  <h4>🔴 記憶転送の神経科学的制約</h4>
+  <p style="background-color: #ffe6e6; padding: 15px; border-left: 5px solid #d32f2f;">
+    <strong>Critical Gap：</strong>「記憶転送」は、現在の神経科学では以下の根本的課題があります。
+  </p>
+
+  <table border="1" cellpadding="5" cellspacing="0">
+    <tr><th>技術</th><th>実証済み</th><th>未実証（必要技術）</th></tr>
+    <tr>
+      <td><strong>記憶の読み出し</strong></td>
+      <td>カテゴリレベルのデコーディング<br/>（例：「顔」「場所」「物体」）</td>
+      <td>エピソード記憶の全詳細<br/>（いつ・どこで・誰と・何を）</td>
+    </tr>
+    <tr>
+      <td><strong>記憶の書き込み</strong></td>
+      <td>単純な文脈記憶の作成<br/>（例：場所Aで電気ショック）</td>
+      <td>複雑なエピソード記憶の埋め込み<br/>（具体的シーン・感情・意味）</td>
+    </tr>
+    <tr>
+      <td><strong>記憶の転送</strong></td>
+      <td>❌ 未実証</td>
+      <td>生体脳→機械脳へのコピー<br/>ニューロン集団間の情報移動</td>
+    </tr>
+    <tr>
+      <td><strong>分散記憶の統合</strong></td>
+      <td>単一脳領域の活動記録</td>
+      <td>海馬・扁桃体・前頭皮質等<br/>複数領域からの同時抽出・統合</td>
+    </tr>
+  </table>
+
+  <h4>🟡 「記憶≒人格」仮定の問題点</h4>
+  <p>
+    人格は記憶のみならず、以下の要素の統合で構成されます（現代神経科学の多要素モデル）：
+  </p>
+  <ul>
+    <li><strong>エピソード記憶</strong>：海馬・側頭葉（個人的経験）</li>
+    <li><strong>意味記憶</strong>：側頭葉・前頭皮質（知識・概念）</li>
+    <li><strong>手続き記憶</strong>：基底核・小脳（運動・スキル）</li>
+    <li><strong>情動反応パターン</strong>：扁桃体・前帯状皮質（感情処理）</li>
+    <li><strong>価値判断システム</strong>：前頭前皮質（意思決定）</li>
+    <li><strong>社会的認知</strong>：内側PFC・TPJ（Theory of Mind）</li>
+  </ul>
+  <p>
+    <strong>結論</strong>：記憶を転送しても、情動・価値観・社会的認知等が欠落すれば、「元の人格」は保存されない可能性が高い。
+  </p>
+
+  <h4>段階的実現マイルストーン（記憶技術）</h4>
+  <ol>
+    <li><strong>Year 1-5</strong>：単一脳領域（海馬）からのエピソード記憶デコーディング精度向上<br/>（現状：カテゴリレベル → 目標：シーン詳細レベル）</li>
+    <li><strong>Year 6-10</strong>：複数脳領域の同時記録と記憶表現の統合（ECoG/深部電極アレイ）</li>
+    <li><strong>Year 11-15</strong>：デコードした記憶の外部保存と再生（読み出し＋符号化検証）</li>
+    <li><strong>Year 16-20</strong>：外部記憶の脳への書き込み実証（動物モデル、限定的記憶内容）</li>
+    <li><strong>Year 20-30</strong>：ヒトでの倫理承認、初期臨床試験（医療適応：認知症・PTSD等）</li>
+    <li><strong>Year 30+</strong>：健常者への大規模記憶転送（全人格要素の統合転送）</li>
+  </ol>
+
+  <h4>追加参考文献（記憶科学）</h4>
+  <ul>
+    <li>Josselyn, S. A., & Tonegawa, S. (2020). Memory engrams: Recalling the past and imagining the future. <em>Science</em>, 367(6473), eaaw4325. https://doi.org/10.1126/science.aaw4325</li>
+    <li>Liu, X., et al. (2012). Optogenetic stimulation of a hippocampal engram activates fear memory recall. <em>Nature</em>, 484, 381–385. https://doi.org/10.1038/nature11028</li>
+    <li>Ortega-De San Luis, C., & Ryan, T. J. (2022). Understanding the physical basis of memory: Molecular mechanisms of the engram. <em>Journal of Biological Chemistry</em>, 298(5), 101866. https://doi.org/10.1016/j.jbc.2022.101866</li>
+    <li>Oudiette, D., & Paller, K. A. (2013). Upgrading the sleeping brain with targeted memory reactivation. <em>Trends in Cognitive Sciences</em>, 17(3), 142–149. https://doi.org/10.1016/j.tics.2013.01.006</li>
+    <li>Zaki, Y., et al. (2022). Hippocampus and amygdala fear memory engrams re-emerge after contextual fear relapse. <em>Neuropsychopharmacology</em>, 47(11), 1992–2001. https://doi.org/10.1038/s41386-022-01407-0</li>
+  </ul>
+
   <h2>MinD in a Device（株式会社）</h2>
   <ul>
     <li><strong>設立</strong>：2018年12月、東京大学発ベンチャー。</li>
@@ -496,12 +625,114 @@
     <li>マインドアップロード最終工程との断絶→対策：Phase 4以降の要件定義書策定、国際コネクトミクス共同研究への参加。</li>
   </ul>
 
-  <h3>Phase 4以降（構想）：全脳エミュレーションへの展開</h3>
+  <h3>⚠️ Phase 3とPhase 4の間の技術的ギャップ</h3>
+  <p style="background-color: #fff3cd; padding: 15px; border-left: 5px solid #ff9800;">
+    <strong>注意：</strong>Phase 1-3（5年）の成果と、最終目標である全脳エミュレーション（Phase 4以降）の間には、<strong>3桁以上の技術的飛躍</strong>が必要です。
+  </p>
+
+  <h3>Phase 3.5（Year 6–10）：【新設】中規模侵襲実験</h3>
+  <h4>目標</h4>
   <ul>
-    <li>高解像度構造取得：ナノスケールEMや自動切片化（Knife-Edge Scanning Microscope等）による大規模コネクトーム構築。</li>
-    <li>シナプスダイナミクスモデリング：スパイン可塑性・神経伝達物質動態を反映したマルチスケールモデルへの拡張。</li>
-    <li>人格・記憶表現の写像：長期的行動・主観報告データとの統合、倫理フレームワーク（ID管理、同意再確認）の整備。</li>
-    <li>シミュレーション検証：仮想脳上での行動再現性評価、デジタルツインの安全性・透明性評価指標策定。</li>
+    <li>ECoG（皮質表面電極、64-256ch）での高精度BMI実証（医療適応患者：てんかん・麻痺等）</li>
+    <li>10^6ニューロンスケールのスパイキングNNシミュレーション（皮質コラム数個分）</li>
+    <li>記憶デコーディングの詳細度向上（カテゴリ→シーンレベル）</li>
+    <li>小規模（100-1,000電極）BMIプロトタイプ開発</li>
+  </ul>
+  <h4>計算資源の見積もり</h4>
+  <table border="1" cellpadding="5" cellspacing="0">
+    <tr><th>モデル精度</th><th>ニューロン数</th><th>必要計算能力</th><th>現行技術</th><th>消費電力</th></tr>
+    <tr>
+      <td>簡略モデル<br/>（発火率のみ）</td>
+      <td>10^6</td>
+      <td>100 TeraFLOPS</td>
+      <td>GPU 10-100台</td>
+      <td>10-100 kW</td>
+    </tr>
+    <tr>
+      <td>中精度<br/>（スパイキングNN）</td>
+      <td>10^6</td>
+      <td>1-10 PetaFLOPS</td>
+      <td>小規模スパコン</td>
+      <td>100 kW-1 MW</td>
+    </tr>
+    <tr style="background-color: #ffe6e6;">
+      <td><strong>全脳スケール<br/>（高精度H-H）</strong></td>
+      <td><strong>86×10^9</strong></td>
+      <td><strong>~1 ExaFLOPS</strong></td>
+      <td><strong>次世代スパコン</strong></td>
+      <td><strong>10-20 MW</strong></td>
+    </tr>
+  </table>
+  <p>
+    <em>※ 参考：Blue Brain Project（31,000 neurons, 2015）は10,000コア使用で実時間の1/100速度。<br/>
+    ヒト全脳（86億neurons）は約277万倍のスケール → 計算資源も概ね同比率必要。</em>
+  </p>
+  <h4>リソース配分</h4>
+  <ul>
+    <li>人員：Phase 3＋神経外科医1名、倫理委員会連携担当1名、HPC専門家1名</li>
+    <li>設備：ECoGシステム（医療機関連携）、GPU 10台（NVIDIA A100クラス）、スパコンアクセス（共同利用）</li>
+    <li>予算：約5,000万円/年（ECoG実験費2,000万、計算資源1,000万、人件費2,000万）</li>
+  </ul>
+
+  <h3>Phase 4（Year 11–20）：技術統合と初期実証</h3>
+  <h4>目標</h4>
+  <ul>
+    <li>小規模（1,000-5,000電極）脳梁BMI統合実験（医療適応患者）</li>
+    <li>10^7ニューロンスケール（皮質数十コラム）のリアルタイムシミュレーション</li>
+    <li>記憶読み出し・符号化の動物モデル実証（マウス・サル）</li>
+    <li>倫理フレームワーク確立（ニューロライツ、インフォームドコンセント）</li>
+    <li>国際標準化（IEEE, ISO）への提案</li>
+  </ul>
+  <h4>リソース配分</h4>
+  <ul>
+    <li>予算：約1億円/年（BMI開発3,000万、動物実験2,000万、計算資源2,000万、人件費3,000万）</li>
+  </ul>
+
+  <h3>Phase 5（Year 21–30）：スケールアップと臨床応用</h3>
+  <h4>目標</h4>
+  <ul>
+    <li>高密度（10,000-20,000電極）脳梁BMI技術成熟</li>
+    <li>軸索再生技術の動物モデル実証（CNS大規模再生）</li>
+    <li>10^8ニューロンスケール（全皮質の1%）シミュレーション</li>
+    <li>ヒト初期臨床試験（医療適応：重度障害、終末期医療等）</li>
+    <li>長期追跡（5-10年）での安全性・有効性評価</li>
+  </ul>
+  <h4>計算資源</h4>
+  <ul>
+    <li>100 PetaFLOPS級スパコン（2030年代に一般化想定）</li>
+    <li>消費電力：1-5 MW</li>
+  </ul>
+
+  <h3>Phase 6（Year 31–50）：全脳エミュレーション実現</h3>
+  <h4>目標</h4>
+  <ul>
+    <li>高解像度構造取得：ナノスケールEMや自動切片化（Knife-Edge Scanning Microscope等）による大規模コネクトーム構築</li>
+    <li>シナプスダイナミクスモデリング：スパイン可塑性・神経伝達物質動態を反映したマルチスケールモデル</li>
+    <li>人格・記憶表現の写像：全脳領域（海馬・扁桃体・前頭皮質・基底核等）からの統合的記憶抽出</li>
+    <li>健常者への応用倫理審査</li>
+    <li>社会実装（コスト削減：目標「中古車1台分」～200万円）</li>
+    <li>シミュレーション検証：仮想脳上での行動再現性評価、デジタルツインの安全性・透明性評価指標策定</li>
+  </ul>
+  <h4>計算資源</h4>
+  <ul>
+    <li>1 ExaFLOPS級（全脳スケール、高精度H-Hモデル）</li>
+    <li>消費電力：10-20 MW（実脳の20Wの100万倍 → 効率化必須）</li>
+  </ul>
+  <h4>参考文献（計算資源）</h4>
+  <ul>
+    <li>Markram, H. (2006). The Blue Brain Project. <em>Nature Reviews Neuroscience</em>, 7(2), 153–160. https://doi.org/10.1038/nrn1848</li>
+    <li>Amunts, K., et al. (2019). The Human Brain Project—Synergy between neuroscience, computing, informatics, and brain-inspired technologies. <em>PLoS Biology</em>, 17(7), e3000344. https://doi.org/10.1371/journal.pbio.3000344</li>
+  </ul>
+
+  <h4>⚠️ タイムライン修正の根拠</h4>
+  <p>
+    現行ロードマップの「20年で実現」は、Sandberg & Bostrom (2008) WBE Roadmapの「数十年～世紀単位」と比較して極めて楽観的です。
+    本修正案（30-50年）は、以下の根拠に基づきます：
+  </p>
+  <ul>
+    <li>技術進展の加速（AI・計算資源・BMI技術の指数的成長）</li>
+    <li>倫理的ハードルの増大（健常者への高侵襲手術の承認は慎重審査必須）</li>
+    <li>中間マイルストーン（Phase 3.5, 4, 5）の明示による実現可能性向上</li>
   </ul>
 
   <h2>技術スタック</h2>
