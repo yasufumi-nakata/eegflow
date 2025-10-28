@@ -2,21 +2,95 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>マインドアップロードに向けたVR×EEG研究</title>
+  <title>マインドアップロードに向けたVR×EEG研究：技術的ロードマップ</title>
   <style>
     body {
-      font-family: 'Helvetica', sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, sans-serif;
       line-height: 1.8;
       padding: 2em;
-      background-color: #f9f9f9;
+      background-color: #fdfdfd;
       color: #333;
+      max-width: 900px;
+      margin: 0 auto;
     }
-    h1, h2 {
+    h1, h2, h3, h4 {
       color: #222;
+      margin-top: 2em;
     }
     h1 {
-      border-bottom: 2px solid #ccc;
+      border-bottom: 2px solid #005a9c;
       padding-bottom: 0.3em;
+      font-size: 2.5em;
+    }
+    h2 {
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 0.2em;
+      font-size: 2em;
+    }
+    h3 {
+      font-size: 1.5em;
+      border-left: 5px solid #005a9c;
+      padding-left: 0.5em;
+    }
+    h4 {
+      font-size: 1.2em;
+    }
+    strong {
+      color: #005a9c;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1em 0;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 12px;
+      text-align: left;
+    }
+    th {
+      background-color: #f2f2f2;
+      font-weight: bold;
+    }
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+    ul, ol {
+      padding-left: 20px;
+    }
+    li {
+      margin-bottom: 0.5em;
+    }
+    #toc {
+      background: #f9f9f9;
+      border: 1px solid #e0e0e0;
+      padding: 1em 2em;
+      margin-bottom: 2em;
+      border-radius: 5px;
+    }
+    #toc h2 {
+      border-bottom: none;
+      margin-top: 0;
+    }
+    #toc ul {
+      padding-left: 1em;
+    }
+    #toc ul ul {
+      padding-left: 2em;
+    }
+    .warning, .critical {
+      padding: 15px;
+      margin: 1em 0;
+      border-radius: 5px;
+    }
+    .warning {
+      background-color: #fff3cd;
+      border-left: 5px solid #ff9800;
+    }
+    .critical {
+      background-color: #ffe6e6;
+      border-left: 5px solid #d32f2f;
     }
   </style>
 </head>
@@ -36,8 +110,29 @@
     ここでの成果は将来的な全脳エミュレーションに必要なデータ基盤・解読技術を整える中間マイルストーンとして位置づけます。
   </p>
 
-  <h2>全体構造：MECE軸での完全分解</h2>
-  <table border="1" cellpadding="5" cellspacing="0">
+  <nav id="toc">
+    <h2>目次</h2>
+    <ul>
+      <li><a href="#s0">全体構造：MECE軸での完全分解</a></li>
+      <li><a href="#s1">1. 脳を測る（Measure）</a></li>
+      <li><a href="#s2">2. 脳を理解する（Understand）</a></li>
+      <li><a href="#s3">3. 脳を動かす（Control）</a></li>
+      <li><a href="#s4">主要アプローチの比較：WBE vs WBA vs 渡辺方式</a></li>
+      <li><a href="#s5">渡辺正峰方式の詳細：3段階シームレス移行</a></li>
+      <li><a href="#s6">MinD in a Device（株式会社）</a></li>
+      <li><a href="#s7">哲学的・倫理的課題（ELSI）</a></li>
+      <li><a href="#s8">EEG研究の貢献マップ</a></li>
+      <li><a href="#s9">社会実装とデータ獲得 / KPI</a></li>
+      <li><a href="#s10">体系的研究ロードマップ（5年計画）</a></li>
+      <li><a href="#s11">技術スタック</a></li>
+      <li><a href="#s12">マイルストーン依存グラフ</a></li>
+      <li><a href="#s13">リスク管理マトリクス</a></li>
+      <li><a href="#s14">参考文献</a></li>
+    </ul>
+  </nav>
+
+  <h2 id="s0">全体構造：MECE軸での完全分解</h2>
+  <table>
     <tr><th>軸</th><th>計測（Measure）</th><th>理解（Understand）</th><th>制御（Control）</th></tr>
     <tr>
       <td><strong>構造</strong></td>
@@ -65,12 +160,12 @@
     </tr>
   </table>
 
-  <h2>1. 脳を測る（Measure）</h2>
+  <h2 id="s1">1. 脳を測る（Measure）</h2>
   <p>
     目的は、脳構造と脳活動の高解像度マッピングです。侵襲・非侵襲の計測を統合し、空間×時間分解能のトレードオフを補完します。
   </p>
 
-  <h3>1.1 構造計測（Structural Mapping）</h3>
+  <h3 id="s1-1">1.1 構造計測（Structural Mapping）</h3>
   <ul>
     <li><strong>マクロ解剖</strong>：MRI（T1/T2）、DTI拡散トラクトグラフィで白質束を同定。</li>
     <li><strong>ミクロ接続</strong>：電子顕微鏡（EM）全脳コネクトーム（C. elegans 302neurons、Drosophila 25k/140k neurons）。</li>
@@ -80,7 +175,7 @@
     構造情報の主軸はEMやDTIといった形態計測に依存し、EEGは機能指標として構造モデルの妥当性検討や動的結合の推定を支援する補助的役割であることを明示します。
   </p>
 
-  <h3>1.2 機能計測（Functional Mapping）</h3>
+  <h3 id="s1-2">1.2 機能計測（Functional Mapping）</h3>
   <h4>時間分解能優先（ms～秒）</h4>
   <ul>
     <li><strong>EEG</strong>（≤1ms, 頭皮）：安静時・課題時の周波数・位相・マイクロステート。</li>
@@ -99,14 +194,14 @@
     <li>VR-EEG同期（≤2ms LSL）：生態学的妥当性と実験制御の両立。</li>
   </ul>
 
-  <h3>1.3 行動・生理同時記録</h3>
+  <h3 id="s1-3">1.3 行動・生理同時記録</h3>
   <ul>
     <li>眼球運動（250Hz～）：注視・サッカード・瞳孔径で注意・覚醒推定。</li>
     <li>心拍・皮膚電位：自律神経系の状態推定、情動指標。</li>
     <li>筋電（EMG）：運動準備電位と実行の分離、アーチファクト源同定。</li>
   </ul>
 
-  <h3>1.4 大規模公開データセット</h3>
+  <h3 id="s1-4">1.4 大規模公開データセット</h3>
   <ul>
     <li><strong>TUH EEG Corpus</strong>（Obeid & Picone 2016）：臨床EEG 30,000h超、自動診断ベンチ。</li>
     <li><strong>CHB-MIT Scalp EEG</strong>（PhysioNet）：小児てんかん、発作検出ベンチ。</li>
@@ -114,7 +209,7 @@
     <li><strong>BCI Competition</strong>（Tangermann et al. 2012）：運動想像・P300・SSVEP標準ベンチ。</li>
   </ul>
 
-  <h3>60→100点に必要な改善（EEG中心）</h3>
+  <h3 id="s1-5">60→100点に必要な改善（EEG中心）</h3>
   <ul>
     <li>高密度EEG（≥128ch）＋個人頭部MRIによるソース推定精度の定量化（LORETA/beamformerの比較検証）と、低チャネルデータへのドメイン適応手順の定義。</li>
     <li>視覚・言語・運動の標準化VR課題バッテリーを作成し、刺激同期精度≤2 msを保証（LSL＋ハードウェアタイムスタンプ）。</li>
@@ -123,7 +218,7 @@
     <li>データ品質自動検証：インピーダンス<10kΩ、SNR>3dB、アーチファクト率<20%を自動判定。</li>
   </ul>
 
-  <h3>KPIと手法</h3>
+  <h3 id="s1-6">KPIと手法</h3>
   <ul>
     <li><strong>KPI</strong>：
       <ul>
@@ -142,7 +237,7 @@
     <li><strong>手法</strong>：EEGLAB（Delorme & Makeig 2004）/MNE-Python（Gramfort et al. 2013）で前処理、ICLabel（Pion-Tonachini et al. 2019）で自動ICA、BIDS-EEG（Pernet et al. 2019）で標準化保管。</li>
   </ul>
 
-  <h3>代表的査読研究（APA）</h3>
+  <h3 id="s1-7">代表的査読研究（APA）</h3>
   <ul>
     <li>Cook, S. J., et al. (2019). Whole-animal connectomes of <em>C. elegans</em>. <em>Nature</em>, 571, 63–71. https://doi.org/10.1038/s41586-019-1352-7</li>
     <li>Delorme, A., & Makeig, S. (2004). EEGLAB: An open source toolbox for analysis of single-trial EEG dynamics. <em>J. Neurosci. Methods</em>, 134, 9–21. https://doi.org/10.1016/j.jneumeth.2003.10.009</li>
@@ -157,12 +252,12 @@
     <li>Van Essen, D. C., et al. (2013). The WU-Minn Human Connectome Project. <em>NeuroImage</em>, 80, 62–79. https://doi.org/10.1016/j.neuroimage.2013.05.041</li>
   </ul>
 
-  <h2>2. 脳を理解する（Understand）</h2>
+  <h2 id="s2">2. 脳を理解する（Understand）</h2>
   <p>
     目的は、表現（表象）と計算原理の同定です。刺激→脳活動→行動の対応付け、および生成モデルによる逆写像を重視します。
   </p>
 
-  <h3>2.1 デコーディング（Decoding）</h3>
+  <h3 id="s2-1">2.1 デコーディング（Decoding）</h3>
   <h4>視覚デコーディング</h4>
   <ul>
     <li><strong>カテゴリ分類</strong>：fMRI V1-V4で物体カテゴリを識別（Haxby 2001, Science）。</li>
@@ -170,7 +265,7 @@
       <ul>
         <li>線形再構成（Nishimoto et al. 2011, Curr Biol）：V1-V3のvoxel weighted sum。</li>
         <li>深層生成（Shen et al. 2019, Nat Commun）：DNN特徴＋逆写像で自然画像復元。</li>
-        <li>Diffusionモデル（Takagi et al. 2023系）：潜在拡散で高解像度再構成（要確認）。</li>
+        <li>Diffusionモデル：Takagi, Y., & Nishimoto, S. (2023). High-resolution image reconstruction with latent diffusion models from human brain activity. In <em>Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)</em>.</li>
       </ul>
     </li>
     <li><strong>EEG貢献</strong>：ERPで意味カテゴリ（N170顔, N400言語）、SSVEP周波数タグで注意対象を同定。</li>
@@ -190,14 +285,14 @@
     <li>運動準備電位（MRCP）：実行前～500ms, Cz negative shift。</li>
   </ul>
 
-  <h3>2.2 シミュレーション（Simulation）</h3>
+  <h3 id="s2-2">2.2 シミュレーション（Simulation）</h3>
   <ul>
     <li><strong>微小回路</strong>：Blue Brain Project（Markram et al. 2015, Cell）：31,000 neurons, 37M synapse, NEURON/CoreNEURON。</li>
     <li><strong>全脳スケール</strong>：Allen Brain（マウス全脳）、Virtual Brain（ヒトコネクトーム駆動）。</li>
     <li><strong>EEG貢献</strong>：計測EEGをシミュレーションEEGと比較し、パラメータ（シナプス重み、伝導遅延）を推定（逆問題）。</li>
   </ul>
 
-  <h3>2.3 因果推論（Causal Inference）</h3>
+  <h3 id="s2-3">2.3 因果推論（Causal Inference）</h3>
   <ul>
     <li>Granger因果：時系列予測で情報流を推定。</li>
     <li>Transfer Entropy：非線形情報伝達量。</li>
@@ -205,7 +300,7 @@
     <li><strong>EEG貢献</strong>：高時間分解能でms単位の因果ラグを検出、個人脳ネットワーク指紋作成。</li>
   </ul>
 
-  <h3>60→100点に必要な改善（EEG中心）</h3>
+  <h3 id="s2-4">60→100点に必要な改善（EEG中心）</h3>
   <ul>
     <li>自己教師あり学習（BERT/SimCLR型）でEEG潜在表現を学習し、fMRI表現や言語モデル埋め込みと整合。</li>
     <li>タスク間一般化の評価（クロスタスク・被験者外検証）を標準化し、データリークを回避。</li>
@@ -214,13 +309,13 @@
     <li>説明可能AI（SHAP/TCAV/Attention可視化）で解読根拠を提示、再現性確保。</li>
   </ul>
 
-  <h3>KPIと手法</h3>
+  <h3 id="s2-5">KPIと手法</h3>
   <ul>
     <li><strong>KPI</strong>：被験者外AUC≥0.75、Top-5再構成精度≥60%、クロスデータセット再現率≥70%、因果ラグ推定誤差≤20ms。</li>
     <li><strong>手法</strong>：EEGNet/EEG-TCNet（Lawhern et al. 2018, Ingolfsson et al. 2020）＋自己教師あり、MOABB（Jayaram & Barachant 2018）で標準検証、Braindecode（Schirrmeister et al. 2017）でdeep learning実装。</li>
   </ul>
 
-  <h3>代表的査読研究（APA）</h3>
+  <h3 id="s2-6">代表的査読研究（APA）</h3>
   <ul>
     <li>Lawhern, V. J., et al. (2018). EEGNet: A compact CNN for EEG-based BCI. <em>J. Neural Eng.</em>, 15, 056013. https://doi.org/10.1088/1741-2552/aace8c</li>
     <li>Jayaram, V., & Barachant, A. (2018). MOABB: Trustworthy algorithm benchmarking for BCIs. <em>J. Neural Eng.</em>, 15, 066011. https://doi.org/10.1088/1741-2552/aadea0</li>
@@ -231,12 +326,12 @@
     <li>Willett, F. R., et al. (2021). High-performance brain-to-text communication by decoding imagined handwriting. <em>Nature</em>, 593, 249–254. https://doi.org/10.1038/s41586-021-03506-2</li>
   </ul>
 
-  <h2>3. 脳を動かす（Control）</h2>
+  <h2 id="s3">3. 脳を動かす（Control）</h2>
   <p>
     目的は、標的回路の因果操作と機能回復／拡張です。閉ループ刺激・BMI・適応型神経調節を含みます。
   </p>
 
-  <h3>3.1 非侵襲刺激（Non-invasive Stimulation）</h3>
+  <h3 id="s3-1">3.1 非侵襲刺激（Non-invasive Stimulation）</h3>
   <h4>電気刺激</h4>
   <ul>
     <li><strong>tDCS</strong>（直流）：運動野・前頭葉の興奮性調節、作業記憶・運動学習の促進。</li>
@@ -254,7 +349,7 @@
     <li><strong>光遺伝</strong>（Optogenetics）：動物モデルで特定神経集団のms精度操作、記憶エングラム書換え（Ramirez et al. 2013, Science）。</li>
   </ul>
 
-  <h3>3.2 ブレイン・コンピュータ・インターフェース（BCI）</h3>
+  <h3 id="s3-2">3.2 ブレイン・コンピュータ・インターフェース（BCI）</h3>
   <h4>BCI分類（入力モダリティ×用途）</h4>
   <ul>
     <li><strong>SSVEP-BCI</strong>：視覚刺激周波数同期、高速綴り（Chen et al. 2015, PNAS：最大60 char/min）。</li>
@@ -268,7 +363,7 @@
     <li>低SNR：ディープラーニング（EEGNet）で特徴自動抽出、end-to-end学習。</li>
   </ul>
 
-  <h3>3.3 ニューロフィードバック（Neurofeedback）</h3>
+  <h3 id="s3-3">3.3 ニューロフィードバック（Neurofeedback）</h3>
   <ul>
     <li>α訓練：後頭α波増強でリラクゼーション。</li>
     <li>SMR訓練：感覚運動リズム（12-15Hz）で注意・てんかん抑制。</li>
@@ -276,14 +371,14 @@
     <li><strong>EEG貢献</strong>：リアルタイムフィードバック（遅延<100ms）、在宅訓練で大規模効果検証。</li>
   </ul>
 
-  <h3>3.4 記憶操作（参考：動物モデル）</h3>
+  <h3 id="s3-4">3.4 記憶操作（参考：動物モデル）</h3>
   <ul>
     <li>記憶エングラム標識＋光遺伝操作（Tonegawa系）：海馬DG細胞で偽記憶作成（Ramirez et al. 2013, Science）。</li>
     <li>記憶固定化促進：睡眠時リプレイ検出→標的刺激（TMR: Targeted Memory Reactivation）。</li>
     <li><strong>EEG貢献</strong>：ヒト睡眠時EEGでリプレイ推定、徐波-spindle同期タイミングで音刺激→記憶固定化促進。</li>
   </ul>
 
-  <h3>60→100点に必要な改善（EEG中心）</h3>
+  <h3 id="s3-5">60→100点に必要な改善（EEG中心）</h3>
   <ul>
     <li>EEGでオンライン状態推定（µ/α/θ/γ帯域パワー・位相）→tACS/tDCSの位相同期・周波数追従を閉ループ最適化。</li>
     <li>運動想像・連続言語BCIのリアルタイム精度KPI（ITR, CER, WPM, AUC）を公開ベンチ（MOABB）で比較。</li>
@@ -292,13 +387,13 @@
     <li>長期追跡（3ヶ月～1年）で訓練効果の持続性・転移を評価、プラセボ対照二重盲検を標準化。</li>
   </ul>
 
-  <h3>KPIと手法</h3>
+  <h3 id="s3-6">KPIと手法</h3>
   <ul>
     <li><strong>KPI</strong>：SSVEP綴り速度≥40 char/min、誤り率≤5%、閉ループ遅延≤50ms、被験者外汎化AUC≥0.70、安全性有害事象0件/100h。</li>
     <li><strong>手法</strong>：高速SSVEP（Chen et al. 2015, PNAS）、位相ロックtACS（Zrenner et al. 2018, Brain Stim）、EEGNet（Lawhern et al. 2018）でリアルタイム分類、OpenViBE/BCI2000で統合実装。</li>
   </ul>
 
-  <h3>代表的査読研究（APA）</h3>
+  <h3 id="s3-7">代表的査読研究（APA）</h3>
   <ul>
     <li>Grossman, N., et al. (2017). Noninvasive deep brain stimulation via temporally interfering electric fields. <em>Cell</em>, 169, 1029–1041. https://doi.org/10.1016/j.cell.2017.05.024</li>
     <li>Little, S., et al. (2013). Adaptive deep brain stimulation in advanced Parkinson disease. <em>Brain</em>, 136, 2058–2065. https://doi.org/10.1093/brain/awt023</li>
@@ -306,8 +401,8 @@
     <li>Zrenner, C., et al. (2018). Real-time EEG-defined excitability states determine efficacy of TMS-induced plasticity. <em>Brain Stim.</em>, 11, 374–389. https://doi.org/10.1016/j.brs.2017.11.016</li>
   </ul>
 
-  <h2>主要アプローチの比較：WBE vs WBA vs 渡辺方式</h2>
-  <table border="1" cellpadding="5" cellspacing="0">
+  <h2 id="s4">主要アプローチの比較：WBE vs WBA vs 渡辺方式</h2>
+  <table>
     <tr><th>特徴</th><th>渡辺正峰方式（シームレス移行）</th><th>全脳エミュレーション（WBE）</th><th>全脳アーキテクチャ（WBA）</th></tr>
     <tr>
       <td><strong>基本原理</strong></td>
@@ -347,15 +442,15 @@
     </tr>
   </table>
 
-  <h2>渡辺正峰方式の詳細：3段階シームレス移行</h2>
-  <h3>第1段階：機械意識の器（ニュートラルな意識）</h3>
+  <h2 id="s5">渡辺正峰方式の詳細：3段階シームレス移行</h2>
+  <h3 id="s5-1">第1段階：機械意識の器（ニュートラルな意識）</h3>
   <ul>
     <li>生成モデル仮説：意識は脳内の予測・誤差最小化アルゴリズム（生成モデル）に宿る。</li>
     <li>スパイキングNN実装：生体ニューロンと信号形式互換のため、スパイク時刻符号化。</li>
     <li>初期状態：記憶・人格を持たない「空の器」としての機械意識を構築。</li>
   </ul>
 
-  <h3>第2段階：脳梁BMI統合（意識の融合）</h3>
+  <h3 id="s5-2">第2段階：脳梁BMI統合（意識の融合）</h3>
   <ul>
     <li><strong>脳梁埋込</strong>：左右半球を結ぶ脳梁（2億本の軸索）に高密度BMIを外科的に設置。</li>
     <li><strong>軸索再生</strong>：切断軸索の再接続のため、BMI表面にiPS細胞を付着→シナプス形成誘導。</li>
@@ -364,19 +459,19 @@
     <li>理論的裏付け：脳梁切断患者（分離脳）でも単一意識が維持される臨床例（Gazzaniga系）。</li>
   </ul>
 
-  <h3>第3段階：記憶転送（人格の涵養）</h3>
+  <h3 id="s5-3">第3段階：記憶転送（人格の涵養）</h3>
   <ul>
     <li>人格≒記憶の集合と仮定、統合意識下で生体記憶を段階的に機械へ転写。</li>
     <li>肉体死後も機械脳で意識・記憶・人格が連続的に存続→「シームレスな不老不死」。</li>
   </ul>
 
-  <h3>⚠️ 技術的実現可能性の評価（Critical Assessment）</h3>
-  <p style="background-color: #fff3cd; padding: 15px; border-left: 5px solid #ff9800;">
+  <h3 id="s5-4">⚠️ 技術的実現可能性の評価（Critical Assessment）</h3>
+  <p class="warning">
     <strong>注意：</strong>上記の渡辺方式は理論的枠組みとして提示されていますが、現行技術との間に以下の重大なギャップが存在します。
   </p>
 
   <h4>🔴 脳梁BMIの技術的制約</h4>
-  <table border="1" cellpadding="5" cellspacing="0">
+  <table>
     <tr><th>項目</th><th>必要仕様</th><th>現行最高技術（2024）</th><th>ギャップ</th></tr>
     <tr>
       <td><strong>電極密度</strong></td>
@@ -421,11 +516,11 @@
   </ul>
 
   <h4>🔴 記憶転送の神経科学的制約</h4>
-  <p style="background-color: #ffe6e6; padding: 15px; border-left: 5px solid #d32f2f;">
+  <p class="critical">
     <strong>Critical Gap：</strong>「記憶転送」は、現在の神経科学では以下の根本的課題があります。
   </p>
 
-  <table border="1" cellpadding="5" cellspacing="0">
+  <table>
     <tr><th>技術</th><th>実証済み</th><th>未実証（必要技術）</th></tr>
     <tr>
       <td><strong>記憶の読み出し</strong></td>
@@ -484,7 +579,7 @@
     <li>Zaki, Y., et al. (2022). Hippocampus and amygdala fear memory engrams re-emerge after contextual fear relapse. <em>Neuropsychopharmacology</em>, 47(11), 1992–2001. https://doi.org/10.1038/s41386-022-01407-0</li>
   </ul>
 
-  <h2>MinD in a Device（株式会社）</h2>
+  <h2 id="s6">MinD in a Device（株式会社）</h2>
   <ul>
     <li><strong>設立</strong>：2018年12月、東京大学発ベンチャー。</li>
     <li><strong>ビジョン</strong>：「世界に意識を実装する」、20年で意識アップロード実現。</li>
@@ -498,35 +593,35 @@
     <li><strong>資金</strong>：シードラウンド調達済、ムーンショット＋現実的事業の二正面戦略。</li>
   </ul>
 
-  <h2>哲学的・倫理的課題（ELSI）</h2>
-  <h3>自己同一性（Personal Identity）</h3>
+  <h2 id="s7">哲学的・倫理的課題（ELSI）</h2>
+  <h3 id="s7-1">自己同一性（Personal Identity）</h3>
   <ul>
     <li><strong>テセウスの船</strong>：部品を全交換しても同じ船か？渡辺方式は「港に浮かべたまま板を段階的に張替え」で連続性確保を主張。</li>
     <li><strong>心理的連続性</strong>（Parfit 1984）：記憶・性格の連続がアイデンティティの基盤、完全同一性は不要かも。</li>
     <li><strong>残存問題</strong>：統合意識は本当に「元の私」か、劣化版・別人ではないのか。</li>
   </ul>
 
-  <h3>社会的不平等</h3>
+  <h3 id="s7-2">社会的不平等</h3>
   <ul>
     <li>渡辺氏目標：「中古車1台分（～200万円）」で平等なアクセス。</li>
     <li>現実：主要実験～300億円、高度外科チーム・計算資源→初期は超富裕層限定の可能性。</li>
     <li>「銀河鉄道999」問題：不死の特権階級 vs 死すべき一般大衆の二層社会化リスク。</li>
   </ul>
 
-  <h3>法的地位と権利</h3>
+  <h3 id="s7-3">法的地位と権利</h3>
   <ul>
     <li>アップロード意識は「人」か「財産」か？投票権・資産所有・刑事責任の主体性。</li>
     <li>死なない存在の社会増加→資源配分・世代交代・社会停滞の懸念。</li>
   </ul>
 
-  <h3>ディストピアリスク</h3>
+  <h3 id="s7-4">ディストピアリスク</h3>
   <ul>
     <li>本人意思に反する「悪意あるデジタル空間」への閉じ込め。</li>
     <li>デジタル奴隷労働、無限拷問、意識の複製・改変・削除。</li>
     <li>類似事業（Nectome社の脳保存）への批判：「極めて非倫理的」「誤った希望」「時期尚早な死の助長」。</li>
   </ul>
 
-  <h3>倫理ガイドライン必須項目</h3>
+  <h3 id="s7-5">倫理ガイドライン必須項目</h3>
   <ul>
     <li>インフォームドコンセント（可逆性・リスク・不確実性の完全開示）。</li>
     <li>ニューロライツ（精神的自由、精神プライバシ、認知的自由、精神的完全性）。</li>
@@ -534,7 +629,7 @@
     <li>国際ガバナンス（UNESCO, IEEE, ISO等での標準化）。</li>
   </ul>
 
-  <h2>EEG研究の貢献マップ</h2>
+  <h2 id="s8">EEG研究の貢献マップ</h2>
   <ul>
     <li><strong>測る</strong>：高密度EEG＋ソース推定で皮質ダイナミクスの時空間埋め込みを抽出。HCP等の構造結合と統合し機能結合を推定。</li>
     <li><strong>理解する</strong>：自己教師あり表現学習でEEG潜在表現を獲得し、fMRI表現や言語モデル表現と整合づける。</li>
@@ -542,7 +637,7 @@
     <li><strong>渡辺方式への貢献</strong>：脳梁BMI信号の双方向読み書き、統合意識状態のEEGモニタリング、記憶転送プロセスの検証。</li>
   </ul>
 
-  <h2>社会実装とデータ獲得 / KPI</h2>
+  <h2 id="s9">社会実装とデータ獲得 / KPI</h2>
   <ul>
     <li>プロダクト：在宅EEGヘッドバンド＋スマホアプリ（同意・匿名化・アップロード）。</li>
     <li>ユースケース：睡眠・集中・読書・運動想像VRタスクで日常データを収集。</li>
@@ -551,9 +646,9 @@
     <li>倫理・法：同意、再同意、撤回、二次利用、分散ID連携、研究用データレイク分離。</li>
   </ul>
 
-  <h2>体系的研究ロードマップ（5年計画）</h2>
+  <h2 id="s10">体系的研究ロードマップ（5年計画）</h2>
 
-  <h3>Phase 1（Year 1）：基盤整備とパイロット検証</h3>
+  <h3 id="s10-1">Phase 1（Year 1）：基盤整備とパイロット検証</h3>
   <h4>目標</h4>
   <ul>
     <li>高密度EEG（128ch以上）＋VR刺激同期≤2ms精度の計測プロトコル確立。</li>
@@ -576,7 +671,7 @@
     <li>被験者リクルート遅延→リスク対策：Webプラットフォーム（Prolific/Amazon MTurk）で在宅データ収集を並行。</li>
   </ul>
 
-  <h3>Phase 2（Year 2–3）：大規模データ獲得と深層モデル開発</h3>
+  <h3 id="s10-2">Phase 2（Year 2–3）：大規模データ獲得と深層モデル開発</h3>
   <h4>目標</h4>
   <ul>
     <li>在宅EEGデバイス（Muse S/Emotiv Insight）で1,000名コホート構築（睡眠・集中タスク）し、10%の参加者で高密度EEGリファレンスセッションを取得。</li>
@@ -600,7 +695,7 @@
     <li>倫理承認遅延→対策：Phase 1で倫理申請テンプレート整備、多施設共同IRB活用。</li>
   </ul>
 
-  <h3>Phase 3（Year 4–5）：統合システムと社会実装</h3>
+  <h3 id="s10-3">Phase 3（Year 4–5）：統合システムと社会実装</h3>
   <h4>目標</h4>
   <ul>
     <li>リアルタイムBCI（SSVEP綴り≥40 char/min、運動想像AUC≥0.85）実証。</li>
@@ -625,12 +720,12 @@
     <li>マインドアップロード最終工程との断絶→対策：Phase 4以降の要件定義書策定、国際コネクトミクス共同研究への参加。</li>
   </ul>
 
-  <h3>⚠️ Phase 3とPhase 4の間の技術的ギャップ</h3>
-  <p style="background-color: #fff3cd; padding: 15px; border-left: 5px solid #ff9800;">
+  <h3 id="s10-4">⚠️ Phase 3とPhase 4の間の技術的ギャップ</h3>
+  <p class="warning">
     <strong>注意：</strong>Phase 1-3（5年）の成果と、最終目標である全脳エミュレーション（Phase 4以降）の間には、<strong>3桁以上の技術的飛躍</strong>が必要です。
   </p>
 
-  <h3>Phase 3.5（Year 6–10）：【新設】中規模侵襲実験</h3>
+  <h3 id="s10-5">Phase 3.5（Year 6–10）：【新設】中規模侵襲実験</h3>
   <h4>目標</h4>
   <ul>
     <li>ECoG（皮質表面電極、64-256ch）での高精度BMI実証（医療適応患者：てんかん・麻痺等）</li>
@@ -639,7 +734,7 @@
     <li>小規模（100-1,000電極）BMIプロトタイプ開発</li>
   </ul>
   <h4>計算資源の見積もり</h4>
-  <table border="1" cellpadding="5" cellspacing="0">
+  <table>
     <tr><th>モデル精度</th><th>ニューロン数</th><th>必要計算能力</th><th>現行技術</th><th>消費電力</th></tr>
     <tr>
       <td>簡略モデル<br/>（発火率のみ）</td>
@@ -674,7 +769,7 @@
     <li>予算：約5,000万円/年（ECoG実験費2,000万、計算資源1,000万、人件費2,000万）</li>
   </ul>
 
-  <h3>Phase 4（Year 11–20）：技術統合と初期実証</h3>
+  <h3 id="s10-6">Phase 4（Year 11–20）：技術統合と初期実証</h3>
   <h4>目標</h4>
   <ul>
     <li>小規模（1,000-5,000電極）脳梁BMI統合実験（医療適応患者）</li>
@@ -688,7 +783,7 @@
     <li>予算：約1億円/年（BMI開発3,000万、動物実験2,000万、計算資源2,000万、人件費3,000万）</li>
   </ul>
 
-  <h3>Phase 5（Year 21–30）：スケールアップと臨床応用</h3>
+  <h3 id="s10-7">Phase 5（Year 21–30）：スケールアップと臨床応用</h3>
   <h4>目標</h4>
   <ul>
     <li>高密度（10,000-20,000電極）脳梁BMI技術成熟</li>
@@ -703,7 +798,7 @@
     <li>消費電力：1-5 MW</li>
   </ul>
 
-  <h3>Phase 6（Year 31–50）：全脳エミュレーション実現</h3>
+  <h3 id="s10-8">Phase 6（Year 31–50）：全脳エミュレーション実現</h3>
   <h4>目標</h4>
   <ul>
     <li>高解像度構造取得：ナノスケールEMや自動切片化（Knife-Edge Scanning Microscope等）による大規模コネクトーム構築</li>
@@ -724,7 +819,7 @@
     <li>Amunts, K., et al. (2019). The Human Brain Project—Synergy between neuroscience, computing, informatics, and brain-inspired technologies. <em>PLoS Biology</em>, 17(7), e3000344. https://doi.org/10.1371/journal.pbio.3000344</li>
   </ul>
 
-  <h4>⚠️ タイムライン修正の根拠</h4>
+  <h3 id="s10-9">⚠️ タイムライン修正の根拠</h3>
   <p>
     現行ロードマップの「20年で実現」は、Sandberg & Bostrom (2008) WBE Roadmapの「数十年～世紀単位」と比較して極めて楽観的です。
     本修正案（30-50年）は、以下の根拠に基づきます：
@@ -735,42 +830,42 @@
     <li>中間マイルストーン（Phase 3.5, 4, 5）の明示による実現可能性向上</li>
   </ul>
 
-  <h2>技術スタック</h2>
-  <h3>計測・前処理</h3>
+  <h2 id="s11">技術スタック</h2>
+  <h3 id="s11-1">計測・前処理</h3>
   <ul>
     <li>EEGLAB/MNE-Python：標準前処理（フィルタ、ICA、ICLabel）。</li>
     <li>Lab Streaming Layer（LSL）：VR-EEG同期。</li>
     <li>BIDS-EEG：データ標準化・共有。</li>
   </ul>
-  <h3>解析・モデル</h3>
+  <h3 id="s11-2">解析・モデル</h3>
   <ul>
     <li>Braindecode/PyTorch：EEGNet/EEG-TCNet/SSVEPNet実装。</li>
     <li>MOABB：公開ベンチマーク検証。</li>
     <li>HuggingFace Transformers：自己教師あり事前学習（BERT/GPT型）。</li>
     <li>Nilearn/NiBabel：fMRI統合解析。</li>
   </ul>
-  <h3>制御・BCI</h3>
+  <h3 id="s11-3">制御・BCI</h3>
   <ul>
     <li>PsychoPy/OpenSesame：刺激提示・BCI実験。</li>
     <li>tACS制御：Neuroelectrics Starstim/BrainBox API。</li>
     <li>リアルタイム処理：OpenViBE/BCI2000。</li>
   </ul>
-  <h3>データ管理</h3>
+  <h3 id="s11-4">データ管理</h3>
   <ul>
     <li>クラウドストレージ：AWS S3/Google Cloud Storage（BIDS形式）。</li>
     <li>メタデータDB：PostgreSQL＋BIDS validator。</li>
     <li>可視化：Plotly Dash/Streamlit（KPIダッシュボード）。</li>
   </ul>
 
-  <h2>マイルストーン依存グラフ</h2>
+  <h2 id="s12">マイルストーン依存グラフ</h2>
   <ul>
     <li>Phase 1 → Phase 2：BIDS整備完了、パイロットKPI達成が必須。</li>
     <li>Phase 2 → Phase 3：在宅コホート1,000名達成、基盤モデルAUC≥0.75が必須。</li>
     <li>並行タスク：倫理承認（Phase 1から継続）、論文執筆（各Phase 2本/年）、国際学会発表（年2回）。</li>
   </ul>
 
-  <h2>リスク管理マトリクス</h2>
-  <table border="1" cellpadding="5" cellspacing="0">
+  <h2 id="s13">リスク管理マトリクス</h2>
+  <table>
     <tr><th>リスク</th><th>影響度</th><th>発生確率</th><th>対策</th></tr>
     <tr><td>VR-EEG同期遅延</td><td>高</td><td>中</td><td>LSL＋ハードウェアタイムスタンプ、Phase 1で検証実験</td></tr>
     <tr><td>在宅データ品質低下</td><td>高</td><td>高</td><td>自動QA、再測定インセンティブ、週次フィードバック</td></tr>
@@ -780,7 +875,7 @@
     <tr><td>予算超過</td><td>高</td><td>低</td><td>四半期予算レビュー、予備費10%確保</td></tr>
   </table>
 
-  <h2>参考文献（APA, 著者アルファベット順）</h2>
+  <h2 id="s14">参考文献（APA, 著者アルファベット順）</h2>
   <ul>
     <li>Chen, X., et al. (2015). High-speed spelling with a noninvasive brain–computer interface. <em>PNAS</em>, 112, E6058–E6067. https://doi.org/10.1073/pnas.1508080112</li>
     <li>Cook, S. J., et al. (2019). Whole-animal connectomes of <em>C. elegans</em>. <em>Nature</em>, 571, 63–71. https://doi.org/10.1038/s41586-019-1352-7</li>
@@ -806,23 +901,23 @@
     <li>Zrenner, C., et al. (2018). Real-time EEG-defined excitability states determine efficacy of TMS-induced plasticity. <em>Brain Stim.</em>, 11, 374–389. https://doi.org/10.1016/j.brs.2017.11.016</li>
   </ul>
 
-  <h2>追加参考：日本語文献・著作（一部抜粋）</h2>
-  <h3>渡辺正峰氏の著作</h3>
+  <h3>追加参考：日本語文献・著作（一部抜粋）</h3>
+  <h4>渡辺正峰氏の著作</h4>
   <ul>
-    <li>渡辺正峰（年不明）『脳の意識 機械の意識』中央公論新社.</li>
-    <li>渡辺正峰（年不明）『意識の脳科学：「デジタル不老不死」の扉を開く』（講談社または類似出版社）.</li>
-    <li>渡辺正峰（年不明）『意識はどこからやってくるのか』（出版社不明）.</li>
+    <li>渡辺正峰 (2017).『脳の意識 機械の意識』中央公論新社.</li>
+    <li>渡辺正峰 (2024).『意識の脳科学：「デジタル不老不死」の扉を開く』講談社 (講談社現代新書).</li>
+    <li>信原幸弘 & 渡辺正峰 (2025).『意識はどこからやってくるのか』早川書房 (ハヤカワ新書).</li>
   </ul>
 
-  <h3>関連査読論文・総説</h3>
+  <h4>関連査読論文・総説</h4>
   <ul>
-    <li>宮内哲ら（2007）「fMRI-EEGの同時計測と睡眠研究」『認知神経科学』9(1), 49-55.</li>
-    <li>川人光男（2017）「人工知能とビッグデータ―計算論的神経科学と精神医学―」『精神神経学雑誌』119(5), 313-322.</li>
-    <li>森数馬（2024）「オープンデータと機械学習を用いた脳波研究の実践」『生理心理学と精神生理学』42(2), 130-139. https://doi.org/10.5674/jjppp.2407si</li>
-    <li>成瀬康（2018）「脳波研究の最新動向」日本情報経済社会推進協会.</li>
+    <li>宮内哲ら (2007).「fMRI-EEGの同時計測と睡眠研究」『認知神経科学』9(1), 49-55.</li>
+    <li>川人光男 (2017).「人工知能とビッグデータ―計算論的神経科学と精神医学―」『精神神経学雑誌』119(5), 313-322.</li>
+    <li>森数馬 (2024).「オープンデータと機械学習を用いた脳波研究の実践」『生理心理学と精神生理学』42(2), 130-139. https://doi.org/10.5674/jjppp.2407si</li>
+    <li>成瀬康 (2018).「脳波研究の最新動向」日本情報経済社会推進協会.</li>
   </ul>
 
-  <h3>WBE・WBA・哲学関連</h3>
+  <h4>WBE・WBA・哲学関連</h4>
   <ul>
     <li>Sandberg, A., & Bostrom, N. (2008). <em>Whole Brain Emulation: A Roadmap</em>. Technical Report #2008-3, Future of Humanity Institute, Oxford University.</li>
     <li>Parfit, D. (1984). <em>Reasons and Persons</em>. Oxford University Press. (自己同一性・心理的連続性)</li>
@@ -830,7 +925,7 @@
     <li>全脳アーキテクチャ・イニシアティブ（WBAI）公式サイト・報告書（年不明）.</li>
   </ul>
 
-  <h3>倫理・ELSI文献</h3>
+  <h4>倫理・ELSI文献</h4>
   <ul>
     <li>Génova, G., Moreno, V., & Parra, E. (2024). A free mind cannot be digitally transferred. <em>AI & Society</em>, 39, 389–394. https://doi.org/10.1007/s00146-022-01519-7</li>
     <li>UNESCO (2021). <em>Recommendation on the Ethics of Artificial Intelligence</em>.</li>
