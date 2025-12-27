@@ -251,6 +251,175 @@
             font-size: 0.95rem;
         }
 
+        /* Research Plan */
+        .research-plan-layout {
+            display: grid;
+            grid-template-columns: minmax(260px, 320px) 1fr;
+            gap: 1.5rem;
+            align-items: start;
+        }
+
+        @media (max-width: 960px) {
+            .research-plan-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .research-aside {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0));
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 1.5rem;
+            position: sticky;
+            top: 1.5rem;
+        }
+
+        .paper-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 0.9rem;
+        }
+
+        .paper-meta h4 {
+            font-size: 1rem;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+        }
+
+        .paper-meta p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .meta-row {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: 0.75rem;
+            align-items: baseline;
+        }
+
+        .meta-label {
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+        }
+
+        .meta-value {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .research-card {
+            background: radial-gradient(circle at 20% 20%, rgba(99, 102, 241, 0.08), transparent 55%),
+                var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 18px;
+            padding: 1.5rem;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 0.9rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.02);
+        }
+
+        .research-card:hover {
+            border-color: var(--accent-light);
+            transform: translateY(-4px);
+            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
+        }
+
+        .research-card h4 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            letter-spacing: 0.01em;
+        }
+
+        .research-label {
+            display: inline-block;
+            padding: 0.2rem 0.65rem;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            font-size: 0.78rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+        }
+
+        .research-list {
+            list-style: none;
+            padding-left: 0;
+            color: var(--text-secondary);
+            display: flex;
+            flex-direction: column;
+            gap: 0.55rem;
+            font-size: 0.95rem;
+        }
+
+        .research-list li {
+            position: relative;
+            padding-left: 1.15rem;
+        }
+
+        .research-list li::before {
+            content: "";
+            position: absolute;
+            left: 0.35rem;
+            top: 0.75rem;
+            width: 6px;
+            height: 6px;
+            background: var(--accent-light);
+            border-radius: 50%;
+            box-shadow: 0 0 0 6px rgba(99, 102, 241, 0.15);
+        }
+
+        .roadmap-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1.5rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+        }
+
+        .roadmap-table thead {
+            background: linear-gradient(90deg, rgba(99, 102, 241, 0.2), rgba(99, 102, 241, 0));
+        }
+
+        .roadmap-table th,
+        .roadmap-table td {
+            padding: 1rem 1.2rem;
+            text-align: left;
+            font-size: 0.95rem;
+            vertical-align: top;
+        }
+
+        .roadmap-table th {
+            color: var(--text-primary);
+            letter-spacing: 0.03em;
+        }
+
+        .roadmap-table td {
+            color: var(--text-secondary);
+            border-top: 1px solid var(--border);
+            line-height: 1.6;
+        }
+
+        .roadmap-table tr:nth-child(even) td {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
         /* Stages Section */
         .stages-container {
             display: flex;
@@ -797,6 +966,118 @@
                     両者を補完する新技術の開発が求められています。</p>
             </div>
         </div>
+    </section>
+
+    <!-- Research Plan Section -->
+    <section id="research-plan">
+        <div class="section-header">
+            <p class="section-label">Research Program</p>
+            <h2 class="section-title">論文化に向けた実証プラン</h2>
+            <p class="section-description">査読を意識した紙面構成で、計測・解読・実装の各段階を統合的に示します。</p>
+        </div>
+
+        <div class="research-plan-layout">
+            <aside class="research-aside">
+                <div class="paper-meta">
+                    <h4>Study Overview</h4>
+                    <div class="meta-row">
+                        <span class="meta-label">Objective</span>
+                        <p class="meta-value">マルチモーダル計測と神経解読を統合した「本人性維持」評価系を設計し、論文化する。</p>
+                    </div>
+                    <div class="meta-row">
+                        <span class="meta-label">Design</span>
+                        <p class="meta-value">課題ベース＋安静時の縦断収集、自己報告を含むラティスデザイン、侵襲/非侵襲データの比較。</p>
+                    </div>
+                    <div class="meta-row">
+                        <span class="meta-label">Deliverables</span>
+                        <p class="meta-value">評価指標表、再現性付きデータセット案、本人性ベンチマーク、倫理・データガバナンス指針のセット。</p>
+                    </div>
+                </div>
+            </aside>
+
+            <div class="research-grid">
+                <div class="research-card">
+                    <span class="research-label">Sensing</span>
+                    <h4>計測ベンチマーク</h4>
+                    <ul class="research-list">
+                        <li>指標：SNR、空間/時間分解能、被験者内・被験者間再現性を統一指標で比較。</li>
+                        <li>デザイン：課題ベースと安静時、映画・自然言語・VR刺激を含む EEG-fMRI/MEG 同時計測。</li>
+                        <li>成果物：非侵襲/侵襲手法別の比較表と、再現性メタデータ付きの公開データセット案。</li>
+                    </ul>
+                </div>
+
+                <div class="research-card">
+                    <span class="research-label">Decoding</span>
+                    <h4>解読モデルと評価</h4>
+                    <ul class="research-list">
+                        <li>モデル：線形モデル、RNN/Transformer、拡散モデル、エネルギーベースモデルを課題別に比較。</li>
+                        <li>指標：解読精度、表現の可搬性、ゼロショット性能、因果グラフ/Granger による解釈性。</li>
+                        <li>プロトコル：自己報告スコアと脳信号の表現学習を組み合わせた主観体験推定。</li>
+                    </ul>
+                </div>
+
+                <div class="research-card">
+                    <span class="research-label">Implementation</span>
+                    <h4>実装と本人性検証</h4>
+                    <ul class="research-list">
+                        <li>基盤：ニューロモーフィックチップ、脳オルガノイド、全脳/部分脳シミュレーションを消費電力・可塑性で評価。</li>
+                        <li>本人性：行動同定、記憶再現、価値観・意思決定の一致度を操作的に定義したベンチマーク。</li>
+                        <li>運用：ストリーミング学習や低ランク分解によるペタバイト級データ処理の計算予算試算。</li>
+                    </ul>
+                </div>
+
+                <div class="research-card">
+                    <span class="research-label">Ethics</span>
+                    <h4>倫理・データガバナンス</h4>
+                    <ul class="research-list">
+                        <li>枠組み：Neurorights / BRAIN Initiative に準拠した同意取得とデータ主権の手順。</li>
+                        <li>リスク評価：医療・教育・軍事の各シナリオでリスク—ベネフィット分析を定量化。</li>
+                        <li>公開：プライバシー予算と脱同定手法を明示したデータ共有ポリシーを併記。</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="note-box">
+            <p><strong>注：</strong>計測の設計は解読目標に依存し、実装の評価軸は倫理的制約とセットで定義する必要があります。</p>
+        </div>
+
+        <div class="section-header" style="margin-top: 3rem;">
+            <p class="section-label">Roadmap</p>
+            <h3 class="section-title" style="font-size: 2rem;">年度ロードマップ（案）</h3>
+            <p class="section-description">査読を意識した表形式で、計測→解読→実装を橋渡しする年次目標例</p>
+        </div>
+
+        <table class="roadmap-table">
+            <thead>
+                <tr>
+                    <th style="width: 100px;">Year</th>
+                    <th>計測 / データ</th>
+                    <th>解読 / 解析</th>
+                    <th>実装 / 倫理</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>高密度 EEG / fNIRS / fMRI の同時計測セットアップと再現性計測。映画・自然言語刺激で課題ベース・安静時のデータ収集。</td>
+                    <td>線形・Transformer を基準モデルとして、信号前処理・特徴抽出の再現性評価プロトコルを確立。</td>
+                    <td>計測倫理審査とデータ主権の同意文書を整備。初期シミュレーション基盤を起動し電力・コストを測定。</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>EEG-fMRI/MEG データ融合とメタデータ整備。ストリーミング取得でのノイズ・欠損耐性を検証。</td>
+                    <td>拡散モデル・エネルギーベースモデルと因果グラフを比較し、表現の可搬性とゼロショット性能を報告。</td>
+                    <td>スケール統合モデル（神経質量モデル×可塑性モデル）のシミュレーション検証。本人性ベンチマークの予備計測を開始。</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>少数ニューロンオルガノイド/ニューロモーフィックチップでの機能再現評価データを取得し、公開準備。</td>
+                    <td>本人性ベンチマーク（行動・意思決定の一致度）で解読器を統合評価し、論文化に必要な統計報告を完成。</td>
+                    <td>倫理・データガバナンス指針を完成させ、公開データセットと併せてリリース。論文最終稿を投稿。</td>
+                </tr>
+            </tbody>
+        </table>
     </section>
 
     <!-- Philosophical Questions Section -->
