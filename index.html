@@ -359,18 +359,400 @@
 </head>
 
 <body>
-    <div class="paper-shell">
-        <main class="paper" role="main">
-            <header class="paper-header">
-                <p class="paper-kicker">EEGFlow Technical Report</p>
-                <h1 class="paper-title">Electroencephalographic Assessment of Comfort in Urban Environments Using
-                    Virtual Reality</h1>
-                <p class="paper-authors">EEGFlow Research Group</p>
-                <p class="paper-affiliations">Independent Study</p>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <p class="logo">EEGFlow</p>
+            <h1 class="hero-title">マインドアップロード実現への道</h1>
+            <p class="hero-subtitle">意識と記憶の未来を切り拓く、技術・研究・コミュニティの中心的ハブ</p>
+
+            <div class="hero-definition">
+                <p>マインドアップロードとは<br><strong>意識や記憶の交換・複製を可能とする技術</strong></p>
+            </div>
+
+            <div class="cta-buttons">
+                <a href="#about" class="btn btn-primary">詳しく見る</a>
+                <a href="https://github.com/yasufumi-nakata/eegflow" class="btn btn-secondary" target="_blank">GitHub
+                    →</a>
+            </div>
+        </div>
+
+        <div class="scroll-indicator">
+            <span></span>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="section-header">
+            <p class="section-label">About</p>
+            <h2 class="section-title">マインドアップロードとは何か</h2>
+            <p class="section-description">1980年代から議論されてきた、人間の意識を機械やデジタル媒体に移行する技術的ビジョン<sup><a href="#ref-1">[1]</a></sup></p>
+        </div>
+
+        <div class="about-content">
+            <div class="about-text">
+                <h3>技術と哲学の交差点</h3>
+                <p>
+                    マインドアップロードは、単なる技術的課題ではありません。
+                    「意識とは何か」「自己とは何か」という人類最古の哲学的問いに、
+                    科学的アプローチで挑む試みです。
+                </p>
+                <p>
+                    2000年代以降、非侵襲的な脳計測技術やAI研究の進展により、
+                    かつてはSFの世界だったこの概念が、真剣な研究対象として扱われるようになりました。<sup><a href="#ref-2">[2]</a></sup>
+                </p>
+                <h3>なぜ取り組むのか</h3>
+                <p>
+                    必ずしもデジタル化にこだわる必要はありません。
+                    この技術の探求は、脳と意識の理解を深め、医療・教育・人間拡張など
+                    幅広い分野への応用可能性を開くものです。
+                </p>
+            </div>
+            <div class="about-visual">
+                <div class="icon">🧠</div>
+                <p style="color: var(--text-secondary);">脳活動の計測<br>意識の解読<br>存在の再構築</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stages Section -->
+    <section id="stages">
+        <div class="section-header">
+            <p class="section-label">Three Stages</p>
+            <h2 class="section-title">技術実現の3段階</h2>
+            <p class="section-description">マインドアップロードの実現には、3つの技術的マイルストーンが必要です</p>
+        </div>
+
+        <div class="stages-container">
+            <div class="stage">
+                <div class="stage-number">1</div>
+                <div class="stage-content">
+                    <h3>計測（Sensing）</h3>
+                    <p>
+                        脳活動を正確に読み取る技術。現在最も進展が必要な領域です。
+                        その人自身の意識などの主観についても、外的な測定によって一意に決められることが目標です。
+                    </p>
+                    <div class="stage-examples">
+                        <span class="stage-tag">EEG（脳波）</span>
+                        <span class="stage-tag">fMRI</span>
+                        <span class="stage-tag">fNIRS</span>
+                        <span class="stage-tag">侵襲型BCI</span>
+                        <span class="stage-tag">高密度電極アレイ</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stage">
+                <div class="stage-number">2</div>
+                <div class="stage-content">
+                    <h3>解読（Decoding）</h3>
+                    <p>
+                        計測されたデータから意識・記憶・思考を理解する技術。
+                        ハードウェアの進展に比べ、脳の情報処理の深い部分の理解がまだ不十分です。
+                    </p>
+                    <div class="stage-examples">
+                        <span class="stage-tag">ニューラルデコーディング</span>
+                        <span class="stage-tag">コネクトーム解析</span>
+                        <span class="stage-tag">自由エネルギー原理</span>
+                        <span class="stage-tag">計算論的神経科学</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stage">
+                <div class="stage-number">3</div>
+                <div class="stage-content">
+                    <h3>実装（Implementation）</h3>
+                    <p>
+                        解読された意識を別の基盤（シリコン、オルガノイドなど）で動作させる技術。
+                        その人自身であるという判断がつくような情報を保ったままアップロードすることが目標です。
+                    </p>
+                    <div class="stage-examples">
+                        <span class="stage-tag">ニューロモーフィックチップ</span>
+                        <span class="stage-tag">脳オルガノイド</span>
+                        <span class="stage-tag">全脳シミュレーション</span>
+                        <span class="stage-tag">量子コンピューティング</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="note-box">
+            <p><strong>注：</strong>これらの段階は直線的に進むわけではなく、相互に依存し並行して進む必要があります。
+                特に「計測」と「解読」は密接に関連しており、何を計測すべきかは何を解読したいかに依存します。</p>
+        </div>
+    </section>
+
+    <!-- Current Status Section -->
+    <section id="status">
+        <div class="section-header">
+            <p class="section-label">Current Status</p>
+            <h2 class="section-title">現状と課題</h2>
+            <p class="section-description">コネクトーム研究の進展から見える、スケールの壁と理論的課題</p>
+        </div>
+
+        <div class="progress-section">
+            <h3>コネクトーム（神経接続地図）研究の進展<sup><a href="#ref-3">[3]</a></sup><sup><a href="#ref-4">[4]</a></sup><sup><a href="#ref-5">[5]</a></sup><sup><a href="#ref-6">[6]</a></sup></h3>
+            <div class="progress-timeline">
+                <div class="progress-item">
+                    <div class="progress-dot completed"></div>
+                    <span class="progress-label">線虫<br>302神経</span>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-dot completed"></div>
+                    <span class="progress-label">ショウジョウバエ<br>~2.5万神経</span>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-dot current"></div>
+                    <span class="progress-label">マウス<br>~7500万神経</span>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-dot"></div>
+                    <span class="progress-label">人間<br>~860億神経</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="challenges-grid">
+            <div class="challenge-card">
+                <h4>🔬 スケール統合の問題</h4>
+                <p>分子・シナプス・回路・領域・全脳という異なるスケールの研究を統合する理論が不足しています。
+                    各レベルで知見は蓄積されていますが、それらを繋ぐ「ニュートン力学」に相当する統一理論がありません。</p>
+            </div>
+            <div class="challenge-card">
+                <h4>⚡ ダイナミクスの理解</h4>
+                <p>静的な構造（コネクトーム）だけでなく、時間的な動態の理解が不可欠です。
+                    「あるチャネルが発火することでシナプスがどう変わるか」という動的な問いへの回答はまだ困難です。</p>
+            </div>
+            <div class="challenge-card">
+                <h4>📊 データ量の課題</h4>
+                <p>人間の脳をシミュレートするには、860億個のニューロンと各々約1万の接続が必要です。
+                    しかし問題はストレージではなく、そのシステムをどう動かすかの理論的理解です。</p>
+            </div>
+            <div class="challenge-card">
+                <h4>🧪 非侵襲計測の限界</h4>
+                <p>EEGは時間分解能に優れますが空間分解能が低く、fMRIは空間分解能はあるが時間分解能に限界があります。
+                    両者を補完する新技術の開発が求められています。<sup><a href="#ref-7">[7]</a></sup><sup><a href="#ref-8">[8]</a></sup></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Plan Section -->
+    <section id="research-plan">
+        <div class="section-header">
+            <p class="section-label">Research Program</p>
+            <h2 class="section-title">論文化に向けた実証プラン</h2>
+            <p class="section-description">査読を意識した紙面構成で、計測・解読・実装の各段階を統合的に示します。</p>
+        </div>
+
+        <div class="research-plan-layout">
+            <aside class="research-aside">
                 <div class="paper-meta">
-                    <div><span>Category</span>Research</div>
-                    <div><span>OnlineID</span>0</div>
-                    <div><span>Version</span>Electronic</div>
+                    <h4>Study Overview</h4>
+                    <div class="meta-row">
+                        <span class="meta-label">Objective</span>
+                        <p class="meta-value">マルチモーダル計測と神経解読を統合した「本人性維持」評価系を設計し、論文化する。</p>
+                    </div>
+                    <div class="meta-row">
+                        <span class="meta-label">Design</span>
+                        <p class="meta-value">課題ベース＋安静時の縦断収集、自己報告を含むラティスデザイン、侵襲/非侵襲データの比較。</p>
+                    </div>
+                    <div class="meta-row">
+                        <span class="meta-label">Deliverables</span>
+                        <p class="meta-value">評価指標表、再現性付きデータセット案、本人性ベンチマーク、倫理・データガバナンス指針のセット。</p>
+                    </div>
+                </div>
+            </aside>
+
+            <div class="research-grid">
+                <div class="research-card">
+                    <span class="research-label">Sensing</span>
+                    <h4>計測ベンチマーク</h4>
+                    <ul class="research-list">
+                        <li>指標：SNR、空間/時間分解能、被験者内・被験者間再現性を統一指標で比較。</li>
+                        <li>デザイン：課題ベースと安静時、映画・自然言語・VR刺激を含む EEG-fMRI/MEG 同時計測。</li>
+                        <li>成果物：非侵襲/侵襲手法別の比較表と、再現性メタデータ付きの公開データセット案。</li>
+                    </ul>
+                </div>
+
+                <div class="research-card">
+                    <span class="research-label">Decoding</span>
+                    <h4>解読モデルと評価</h4>
+                    <ul class="research-list">
+                        <li>モデル：線形モデル、RNN/Transformer、拡散モデル、エネルギーベースモデルを課題別に比較。</li>
+                        <li>指標：解読精度、表現の可搬性、ゼロショット性能、因果グラフ/Granger による解釈性。</li>
+                        <li>プロトコル：自己報告スコアと脳信号の表現学習を組み合わせた主観体験推定。</li>
+                    </ul>
+                </div>
+
+                <div class="research-card">
+                    <span class="research-label">Implementation</span>
+                    <h4>実装と本人性検証</h4>
+                    <ul class="research-list">
+                        <li>基盤：ニューロモーフィックチップ、脳オルガノイド、全脳/部分脳シミュレーションを消費電力・可塑性で評価。</li>
+                        <li>本人性：行動同定、記憶再現、価値観・意思決定の一致度を操作的に定義したベンチマーク。</li>
+                        <li>運用：ストリーミング学習や低ランク分解によるペタバイト級データ処理の計算予算試算。</li>
+                    </ul>
+                </div>
+
+                <div class="research-card">
+                    <span class="research-label">Ethics</span>
+                    <h4>倫理・データガバナンス</h4>
+                    <ul class="research-list">
+                        <li>枠組み：Neurorights / BRAIN Initiative に準拠した同意取得とデータ主権の手順。</li>
+                        <li>リスク評価：医療・教育・軍事の各シナリオでリスク—ベネフィット分析を定量化。</li>
+                        <li>公開：プライバシー予算と脱同定手法を明示したデータ共有ポリシーを併記。</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="note-box">
+            <p><strong>注：</strong>計測の設計は解読目標に依存し、実装の評価軸は倫理的制約とセットで定義する必要があります。</p>
+        </div>
+
+        <div class="section-header" style="margin-top: 3rem;">
+            <p class="section-label">Roadmap</p>
+            <h3 class="section-title" style="font-size: 2rem;">年度ロードマップ（案）</h3>
+            <p class="section-description">査読を意識した表形式で、計測→解読→実装を橋渡しする年次目標例</p>
+        </div>
+
+        <table class="roadmap-table">
+            <thead>
+                <tr>
+                    <th style="width: 100px;">Year</th>
+                    <th>計測 / データ</th>
+                    <th>解読 / 解析</th>
+                    <th>実装 / 倫理</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>高密度 EEG / fNIRS / fMRI の同時計測セットアップと再現性計測。映画・自然言語刺激で課題ベース・安静時のデータ収集。</td>
+                    <td>線形・Transformer を基準モデルとして、信号前処理・特徴抽出の再現性評価プロトコルを確立。</td>
+                    <td>計測倫理審査とデータ主権の同意文書を整備。初期シミュレーション基盤を起動し電力・コストを測定。</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>EEG-fMRI/MEG データ融合とメタデータ整備。ストリーミング取得でのノイズ・欠損耐性を検証。</td>
+                    <td>拡散モデル・エネルギーベースモデルと因果グラフを比較し、表現の可搬性とゼロショット性能を報告。</td>
+                    <td>スケール統合モデル（神経質量モデル×可塑性モデル）のシミュレーション検証。本人性ベンチマークの予備計測を開始。</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>少数ニューロンオルガノイド/ニューロモーフィックチップでの機能再現評価データを取得し、公開準備。</td>
+                    <td>本人性ベンチマーク（行動・意思決定の一致度）で解読器を統合評価し、論文化に必要な統計報告を完成。</td>
+                    <td>倫理・データガバナンス指針を完成させ、公開データセットと併せてリリース。論文最終稿を投稿。</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Philosophical Questions Section -->
+    <section id="questions">
+        <div class="section-header">
+            <p class="section-label">Open Questions</p>
+            <h2 class="section-title">未解決の問い</h2>
+            <p class="section-description">技術的実現可能性だけでなく、根本的な問いが残されています</p>
+        </div>
+
+        <div class="questions-list">
+            <div class="question-item">
+                <h4>🪞 コピーは「本人」か？</h4>
+                <p>意識がコピーにより二つに分裂した場合、どちらが「本人」なのか？
+                    あるいは両方が本人なのか？これは哲学的に未解決であり、
+                    技術が実現しても答えが出るとは限りません。</p>
+            </div>
+            <div class="question-item">
+                <h4>❓ 意識の科学的定義</h4>
+                <p>「意識とは何か」について科学的な合意がありません。
+                    主観的体験（クオリア）を客観的に測定・再現できるのか、
+                    そもそも定義可能なのかという根本的な問いがあります。</p>
+            </div>
+            <div class="question-item">
+                <h4>📐 何を保存すべきか</h4>
+                <p>「その人らしさ」を保つために何を計測・保存すべきでしょうか。
+                    神経接続だけで十分か、グリア細胞は必要か、腸内細菌叢の影響は？
+                    条件は理論によって大きく異なります。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Focus Areas -->
+    <section id="focus">
+        <div class="section-header">
+            <p class="section-label">Focus Areas</p>
+            <h2 class="section-title">取り組み領域</h2>
+        </div>
+
+        <div class="cards-grid">
+            <div class="card">
+                <div class="card-icon">📡</div>
+                <h3 class="card-title">脳活動の計測</h3>
+                <p class="card-description">EEG、fMRI、侵襲型BMIなど、脳活動を読み取るための技術とその発展を追跡します。
+                    特に非侵襲的手法の改良と実用化に注目しています。</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🔬</div>
+                <h3 class="card-title">神経科学研究</h3>
+                <p class="card-description">意識や記憶のメカニズムを解明する研究成果を収集・分析します。
+                    コネクトーム解析や計算論的神経科学の進展をフォローします。</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">💻</div>
+                <h3 class="card-title">計算論的アプローチ</h3>
+                <p class="card-description">脳のシミュレーション、ニューラルネットワーク、AI技術の応用を探求します。
+                    自由エネルギー原理などの理論的枠組みにも注目。</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">⚖️</div>
+                <h3 class="card-title">倫理と哲学</h3>
+                <p class="card-description">自己同一性、意識の本質、社会的影響など、重要な問いに向き合います。
+                    技術の進歩と並行して議論を深める必要があります。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contribute Section -->
+    <section id="contribute">
+        <div class="section-header">
+            <p class="section-label">Contribute</p>
+            <h2 class="section-title">プロジェクトに参加する</h2>
+            <p class="section-description">あなたの知識と情熱で、このプロジェクトを一緒に前進させましょう</p>
+        </div>
+
+        <div class="section-header" style="margin-top: 2rem;">
+            <p class="section-label">References</p>
+            <h3 class="section-title" style="font-size: 1.8rem;">参考文献</h3>
+        </div>
+
+        <ol class="reference-list" style="color: var(--text-secondary); line-height: 1.6;">
+            <li id="ref-1">Hans Moravec, <em>Mind Children: The Future of Robot and Human Intelligence</em>, Harvard University Press, 1988, ISBN 978-0-674-57618-6. URL: <a href="https://www.hup.harvard.edu/books/9780674576186" target="_blank" rel="noopener noreferrer">https://www.hup.harvard.edu/books/9780674576186</a></li>
+            <li id="ref-2">Terrence J. Sejnowski, Patricia S. Churchland, and James A. Movshon, "Computational Neuroscience," <em>Science</em>, 1990, vol. 250, no. 4977, pp. 744–747. DOI: <a href="https://doi.org/10.1126/science.250.4977.744" target="_blank" rel="noopener noreferrer">10.1126/science.250.4977.744</a></li>
+            <li id="ref-3">J. G. White et al., "The Structure of the Nervous System of the Nematode <em>Caenorhabditis elegans</em>," <em>Philosophical Transactions of the Royal Society B</em>, 1986. DOI: <a href="https://doi.org/10.1098/rstb.1986.0056" target="_blank" rel="noopener noreferrer">10.1098/rstb.1986.0056</a></li>
+            <li id="ref-4">Louise K. Scheffer et al., "A Connectome and Analysis of the Adult <em>Drosophila</em> Central Brain," <em>eLife</em>, 2020. DOI: <a href="https://doi.org/10.7554/eLife.57443" target="_blank" rel="noopener noreferrer">10.7554/eLife.57443</a></li>
+            <li id="ref-5">Suzana Herculano-Houzel et al., "Cellular Scaling Rules for Rodent Brains," <em>Proceedings of the National Academy of Sciences</em>, 2006. DOI: <a href="https://doi.org/10.1073/pnas.0604911103" target="_blank" rel="noopener noreferrer">10.1073/pnas.0604911103</a></li>
+            <li id="ref-6">Suzana Herculano-Houzel, "The Human Brain in Numbers," <em>Frontiers in Human Neuroscience</em>, 2009, vol. 3, article 31. DOI: <a href="https://doi.org/10.3389/neuro.09.031.2009" target="_blank" rel="noopener noreferrer">10.3389/neuro.09.031.2009</a></li>
+            <li id="ref-7">Christoph M. Michel and Delphine Brunet, "EEG Source Imaging: A Practical Review of the Analysis Steps," <em>Clinical Neurophysiology</em>, 2019. DOI: <a href="https://doi.org/10.1016/j.clinph.2019.02.004" target="_blank" rel="noopener noreferrer">10.1016/j.clinph.2019.02.004</a></li>
+            <li id="ref-8">Nikos K. Logothetis, "What We Can Do and What We Cannot Do with fMRI," <em>Nature</em>, 2008. DOI: <a href="https://doi.org/10.1038/nature06976" target="_blank" rel="noopener noreferrer">10.1038/nature06976</a></li>
+        </ol>
+
+        <div class="contribute-cards">
+            <a href="issue.md" class="contribute-card">
+                <div class="icon">📄</div>
+                <div class="text">
+                    <h4>貢献ガイド</h4>
+                    <p>参加方法の詳細を確認</p>
+                </div>
+            </a>
+            <a href="https://github.com/yasufumi-nakata/eegflow/issues" class="contribute-card" target="_blank">
+                <div class="icon">💬</div>
+                <div class="text">
+                    <h4>Issue を立てる</h4>
+                    <p>提案・質問・バグ報告</p>
                 </div>
                 <section class="abstract">
                     <h2>Abstract</h2>
