@@ -49,6 +49,15 @@
             overflow-x: hidden;
         }
 
+        sup a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        sup a:hover {
+            text-decoration: underline;
+        }
+
         /* Hero Section */
         .hero {
             min-height: 100vh;
@@ -133,6 +142,12 @@
         .hero-definition strong {
             color: var(--text-primary);
             font-weight: 600;
+        }
+
+        .hero-definition .hero-definition-note {
+            font-size: 0.9rem;
+            margin-top: 0.75rem;
+            color: var(--text-muted);
         }
 
         .cta-buttons {
@@ -346,6 +361,17 @@
 
         .note-box strong {
             color: var(--text-primary);
+        }
+
+        .note-box ul {
+            padding-left: 1.2rem;
+            margin-top: 0.75rem;
+            display: grid;
+            gap: 0.35rem;
+        }
+
+        .note-box li {
+            color: var(--text-secondary);
         }
 
         /* Progress Section */
@@ -831,7 +857,9 @@
             <p class="hero-subtitle">意識と記憶の未来を切り拓く、技術・研究・コミュニティの中心的ハブ</p>
 
             <div class="hero-definition">
-                <p>マインドアップロードとは<br><strong>意識や記憶の交換・複製を可能とする技術</strong></p>
+                <p>マインドアップロード（Brain Uploading）とは<br><strong>脳の情報処理を別の基盤で再現し、心的機能を移植・複製するという研究仮説の総称</strong>
+                </p>
+                <p class="hero-definition-note">本サイトは研究ノートとして、出典・前提・不確実性を明示します。</p>
             </div>
 
             <div class="cta-buttons">
@@ -864,8 +892,16 @@
                     科学的アプローチで挑む試みです。
                 </p>
                 <p>
-                    2000年代以降、非侵襲的な脳計測技術やAI研究の進展により、
-                    かつてはSFの世界だったこの概念が、真剣な研究対象として扱われるようになりました。<sup><a href="#ref-2">[2]</a></sup>
+                    2000年代以降、計算論的神経科学の進展<sup><a href="#ref-2">[2]</a></sup>や「コネクトーム」概念の普及<sup><a
+                            href="#ref-9">[9]</a></sup>により、Whole Brain Emulation (WBE) を含む形で議論が具体化し、技術・倫理・哲学の横断課題として研究対象化してきました。<sup><a
+                            href="#ref-10">[10]</a></sup>
+                </p>
+
+                <h3>用語とスコープ</h3>
+                <p>
+                    本サイトでは「マインドアップロード」を、(i) WBE（脳の機能を計算モデルとして再現する試み）<sup><a href="#ref-10">[10]</a></sup>、
+                    (ii) 侵襲/非侵襲の脳計測・刺激に基づく部分的な神経補綴（BCI/ニューロプロステティクス）、
+                    (iii) 本人性（自己同一性）の操作的定義と検証、という複数の研究領域の交差点として扱います。
                 </p>
                 <h3>なぜ取り組むのか</h3>
                 <p>
@@ -878,6 +914,15 @@
                 <div class="icon">🧠</div>
                 <p style="color: var(--text-secondary);">脳活動の計測<br>意識の解読<br>存在の再構築</p>
             </div>
+        </div>
+
+        <div class="note-box" role="note">
+            <p><strong>研究としての約束：</strong>以下を「最低限のガードレール」として運用します。</p>
+            <ul>
+                <li>主要な主張には、一次/総説などの出典を付す。</li>
+                <li>仮説・推測・価値判断を区別し、不確実性（限界）も併記する。</li>
+                <li>評価指標・手順・データ管理を先に定義し、再現可能性を優先する。</li>
+            </ul>
         </div>
     </section>
 
@@ -896,7 +941,7 @@
                     <h3>計測（Sensing）</h3>
                     <p>
                         脳活動を正確に読み取る技術。現在最も進展が必要な領域です。
-                        その人自身の意識などの主観についても、外的な測定によって一意に決められることが目標です。
+                        主観的体験（自己報告）と脳信号の対応づけを通じて、再現可能な推定器（decoder）を構築することが目標です。
                     </p>
                     <div class="stage-examples">
                         <span class="stage-tag">EEG（脳波）</span>
@@ -915,6 +960,8 @@
                     <p>
                         計測されたデータから意識・記憶・思考を理解する技術。
                         ハードウェアの進展に比べ、脳の情報処理の深い部分の理解がまだ不十分です。
+                        理論面では、コネクトーム<sup><a href="#ref-9">[9]</a></sup>や自由エネルギー原理<sup><a
+                                href="#ref-11">[11]</a></sup>などが提案されていますが、検証可能な予測とデータの往復が課題です。
                     </p>
                     <div class="stage-examples">
                         <span class="stage-tag">ニューラルデコーディング</span>
@@ -931,13 +978,13 @@
                     <h3>実装（Implementation）</h3>
                     <p>
                         解読された意識を別の基盤（シリコン、オルガノイドなど）で動作させる技術。
-                        その人自身であるという判断がつくような情報を保ったままアップロードすることが目標です。
+                        「本人性（自己同一性）を何で評価するか」を操作的に定義し、検証可能な形で議論することが目標です。
                     </p>
                     <div class="stage-examples">
                         <span class="stage-tag">ニューロモーフィックチップ</span>
                         <span class="stage-tag">脳オルガノイド</span>
                         <span class="stage-tag">全脳シミュレーション</span>
-                        <span class="stage-tag">量子コンピューティング</span>
+                        <span class="stage-tag">高性能計算（HPC）</span>
                     </div>
                 </div>
             </div>
@@ -958,8 +1005,10 @@
         </div>
 
         <div class="progress-section">
-            <h3>コネクトーム（神経接続地図）研究の進展<sup><a href="#ref-3">[3]</a></sup><sup><a href="#ref-4">[4]</a></sup><sup><a
-                        href="#ref-5">[5]</a></sup><sup><a href="#ref-6">[6]</a></sup></h3>
+            <h3>コネクトーム研究とスケール感（ニューロン数は目安）<sup><a href="#ref-3">[3]</a></sup><sup><a
+                        href="#ref-4">[4]</a></sup><sup><a href="#ref-5">[5]</a></sup><sup><a
+                        href="#ref-6">[6]</a></sup><sup><a href="#ref-9">[9]</a></sup><sup><a
+                        href="#ref-14">[14]</a></sup></h3>
             <div class="progress-timeline">
                 <div class="progress-item">
                     <div class="progress-dot completed"></div>
@@ -971,11 +1020,11 @@
                 </div>
                 <div class="progress-item">
                     <div class="progress-dot current"></div>
-                    <span class="progress-label">マウス<br>~7500万神経</span>
+                    <span class="progress-label">マウス<br>~7500万神経（目安）</span>
                 </div>
                 <div class="progress-item">
                     <div class="progress-dot"></div>
-                    <span class="progress-label">人間<br>~860億神経</span>
+                    <span class="progress-label">人間<br>~860億神経（目安）</span>
                 </div>
             </div>
         </div>
@@ -984,17 +1033,17 @@
             <div class="challenge-card">
                 <h4>🔬 スケール統合の問題</h4>
                 <p>分子・シナプス・回路・領域・全脳という異なるスケールの研究を統合する理論が不足しています。
-                    各レベルで知見は蓄積されていますが、それらを繋ぐ「ニュートン力学」に相当する統一理論がありません。</p>
+                    各レベルで知見は蓄積されていますが、例えば神経質量モデルと可塑性ルールを統合するような、汎用的な計算論的フレームワークはまだ確立途上です。</p>
             </div>
             <div class="challenge-card">
                 <h4>⚡ ダイナミクスの理解</h4>
                 <p>静的な構造（コネクトーム）だけでなく、時間的な動態の理解が不可欠です。
-                    「あるチャネルが発火することでシナプスがどう変わるか」という動的な問いへの回答はまだ困難です。</p>
+                    「ある活動パターンが学習によりどのように変化し、行動へ影響するか」といった動的な問いへの回答はまだ困難です。</p>
             </div>
             <div class="challenge-card">
                 <h4>📊 データ量の課題</h4>
-                <p>人間の脳をシミュレートするには、860億個のニューロンと各々約1万の接続が必要です。
-                    しかし問題はストレージではなく、そのシステムをどう動かすかの理論的理解です。</p>
+                <p>人間の脳には約860億個のニューロンが存在すると推定され<sup><a href="#ref-6">[6]</a></sup>、計測・モデル化の対象は膨大です。
+                    しかし課題はストレージ容量だけではなく、生物学的に妥当なモデルで予測を立て、データで反証できる形に落とし込む理論設計です。</p>
             </div>
             <div class="challenge-card">
                 <h4>🧪 非侵襲計測の限界</h4>
@@ -1066,7 +1115,8 @@
                     <span class="research-label">Ethics</span>
                     <h4>倫理・データガバナンス</h4>
                     <ul class="research-list">
-                        <li>枠組み：Neurorights / BRAIN Initiative に準拠した同意取得とデータ主権の手順。</li>
+                        <li>枠組み：Neurorights 等の議論を参照し、同意取得・データ主権・二次利用条件を明文化。<sup><a
+                                    href="#ref-12">[12]</a></sup><sup><a href="#ref-13">[13]</a></sup></li>
                         <li>リスク評価：医療・教育・軍事の各シナリオでリスク—ベネフィット分析を定量化。</li>
                         <li>公開：プライバシー予算と脱同定手法を明示したデータ共有ポリシーを併記。</li>
                     </ul>
@@ -1170,7 +1220,7 @@
                 <div class="card-icon">💻</div>
                 <h3 class="card-title">計算論的アプローチ</h3>
                 <p class="card-description">脳のシミュレーション、ニューラルネットワーク、AI技術の応用を探求します。
-                    自由エネルギー原理などの理論的枠組みにも注目。</p>
+                    自由エネルギー原理などの理論的枠組みにも注目。<sup><a href="#ref-11">[11]</a></sup></p>
             </div>
             <div class="card">
                 <div class="card-icon">⚖️</div>
@@ -1242,6 +1292,27 @@
             <li id="ref-8">Nikos K. Logothetis, "What We Can Do and What We Cannot Do with fMRI," <em>Nature</em>, 2008.
                 DOI: <a href="https://doi.org/10.1038/nature06976" target="_blank"
                     rel="noopener noreferrer">10.1038/nature06976</a></li>
+            <li id="ref-9">Olaf Sporns, Giulio Tononi, and Rolf Kötter, "The Human Connectome: A Structural Description
+                of the Human Brain," <em>PLoS Computational Biology</em>, 2005, vol. 1, no. 4, e42. DOI: <a
+                    href="https://doi.org/10.1371/journal.pcbi.0010042" target="_blank"
+                    rel="noopener noreferrer">10.1371/journal.pcbi.0010042</a></li>
+            <li id="ref-10">Anders Sandberg, "Feasibility of Whole Brain Emulation," in <em>Singularity Hypotheses: A
+                    Scientific and Philosophical Assessment</em>, Springer, 2013, pp. 251–264. DOI: <a
+                    href="https://doi.org/10.1007/978-3-642-31674-6_19" target="_blank"
+                    rel="noopener noreferrer">10.1007/978-3-642-31674-6_19</a></li>
+            <li id="ref-11">Karl Friston, "The free-energy principle: a unified brain theory?," <em>Nature Reviews
+                    Neuroscience</em>, 2010, vol. 11, no. 2, pp. 127–138. DOI: <a href="https://doi.org/10.1038/nrn2787"
+                    target="_blank" rel="noopener noreferrer">10.1038/nrn2787</a></li>
+            <li id="ref-12">Marcello Ienca and Roberto Andorno, "Towards new human rights in the age of neuroscience and
+                neurotechnology," <em>Life Sciences, Society and Policy</em>, 2017, vol. 13, article 5. DOI: <a
+                    href="https://doi.org/10.1186/s40504-017-0050-1" target="_blank"
+                    rel="noopener noreferrer">10.1186/s40504-017-0050-1</a></li>
+            <li id="ref-13">Rafael Yuste et al., "Four ethical priorities for neurotechnologies and AI," <em>Nature</em>,
+                2017, vol. 551, pp. 159–163. DOI: <a href="https://doi.org/10.1038/551159a" target="_blank"
+                    rel="noopener noreferrer">10.1038/551159a</a></li>
+            <li id="ref-14">David C. Van Essen et al., "The WU-Minn Human Connectome Project: An overview," <em>NeuroImage</em>,
+                2013, vol. 80, pp. 62–79. DOI: <a href="https://doi.org/10.1016/j.neuroimage.2013.05.041" target="_blank"
+                    rel="noopener noreferrer">10.1016/j.neuroimage.2013.05.041</a></li>
         </ol>
     </section>
 
