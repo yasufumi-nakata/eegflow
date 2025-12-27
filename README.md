@@ -13,6 +13,10 @@
 - [issue.md](issue.md) を参照
 - [Issueを立てる](https://github.com/yasufumi-nakata/eegflow/issues)
 
+## LLM向けプロンプトの利用
+
+- LLMに調査や分析を依頼する際の科学者スタイルのプロンプト例は [.agent/agent.md](.agent/agent.md) にまとめています。
+
 ## リンク
 
 - **GitHub**: https://github.com/yasufumi-nakata/eegflow
