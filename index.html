@@ -1,32 +1,28 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EEGFlow - マインドアップロード実現のためのコアサイト</title>
-    <meta name="description" content="意識や記憶の交換・複製を可能とする技術、マインドアップロードの実現に向けた中心的ハブ。">
+    <title>EEGFlow | Electroencephalographic Assessment of Comfort in Urban Environments Using Virtual Reality</title>
+    <meta name="description"
+        content="A research-style presentation of EEG-based assessment of comfort in urban environments using immersive virtual reality.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;500;600;700&family=Source+Sans+3:wght@400;600;700&family=Source+Code+Pro:wght@400;600&display=swap"
         rel="stylesheet">
     <style>
         :root {
-            --bg-dark: #0a0a0f;
-            --bg-card: #12121a;
-            --bg-card-hover: #1a1a25;
-            --text-primary: #ffffff;
-            --text-secondary: #a0a0b0;
-            --text-muted: #6a6a7a;
-            --accent: #6366f1;
-            --accent-light: #818cf8;
-            --accent-glow: rgba(99, 102, 241, 0.3);
-            --border: #2a2a3a;
-            --gradient-1: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #d946ef 100%);
-            --gradient-2: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);
-            --warning: #f59e0b;
-            --success: #10b981;
+            --paper: #f8f4ed;
+            --paper-edge: #e3dcd2;
+            --ink: #1c1b17;
+            --ink-muted: #4f4a43;
+            --ink-light: #6c645c;
+            --accent: #1f4e79;
+            --accent-soft: rgba(31, 78, 121, 0.15);
+            --rule: #c9c0b4;
+            --shadow: rgba(24, 22, 18, 0.2);
         }
 
         * {
@@ -35,1162 +31,498 @@
             box-sizing: border-box;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
         body {
-            font-family: 'Inter', 'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif;
-            background-color: var(--bg-dark);
-            color: var(--text-primary);
-            line-height: 1.7;
-            font-size: 16px;
+            font-family: 'Crimson Pro', 'Times New Roman', serif;
+            color: var(--ink);
+            background-image:
+                radial-gradient(circle at 10% 15%, rgba(31, 78, 121, 0.08), transparent 50%),
+                radial-gradient(circle at 90% 85%, rgba(143, 94, 54, 0.08), transparent 55%),
+                repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.035), rgba(0, 0, 0, 0.035) 1px, transparent 1px, transparent 24px),
+                linear-gradient(180deg, #f0ebe2 0%, #e7dfd2 100%);
+            min-height: 100vh;
+            line-height: 1.6;
+            font-size: 17px;
         }
 
-        /* Hero Section */
-        .hero {
+        .paper-shell {
             min-height: 100vh;
             display: flex;
-            flex-direction: column;
             justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 2rem;
-            position: relative;
-            overflow: hidden;
+            padding: 3.5rem 1.5rem 5rem;
         }
 
-        .hero::before {
+        .paper {
+            width: min(100%, 1040px);
+            background: var(--paper);
+            border: 1px solid var(--paper-edge);
+            box-shadow: 0 24px 55px var(--shadow);
+            padding: 3.5rem 3.5rem 3rem;
+            position: relative;
+            animation: paper-in 0.9s ease both;
+        }
+
+        .paper::before {
             content: '';
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at 30% 40%, var(--accent-glow) 0%, transparent 50%),
-                radial-gradient(circle at 70% 60%, rgba(139, 92, 246, 0.2) 0%, transparent 40%);
-            animation: pulse 8s ease-in-out infinite;
+            top: 1.6rem;
+            left: 3.5rem;
+            right: 3.5rem;
+            height: 1px;
+            background: var(--rule);
         }
 
-        @keyframes pulse {
-
-            0%,
-            100% {
-                opacity: 0.5;
-                transform: scale(1);
-            }
-
-            50% {
-                opacity: 0.8;
-                transform: scale(1.05);
-            }
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            max-width: 900px;
-        }
-
-        .logo {
-            font-size: 1rem;
-            font-weight: 600;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--accent-light);
-            margin-bottom: 2rem;
-        }
-
-        .hero-title {
-            font-size: clamp(2.5rem, 8vw, 5rem);
-            font-weight: 700;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            background: var(--gradient-1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero-subtitle {
-            font-size: clamp(1.1rem, 3vw, 1.5rem);
-            color: var(--text-secondary);
-            margin-bottom: 3rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .hero-definition {
-            display: inline-block;
-            padding: 1rem 2rem;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            margin-bottom: 3rem;
-        }
-
-        .hero-definition p {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-        }
-
-        .hero-definition strong {
-            color: var(--accent-light);
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 1rem 2rem;
-            font-size: 1rem;
-            font-weight: 600;
-            text-decoration: none;
-            border-radius: 12px;
-            transition: all 0.3s ease;
-        }
-
-        .btn-primary {
-            background: var(--gradient-1);
-            color: white;
-            border: none;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 40px var(--accent-glow);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--text-primary);
-            border: 1px solid var(--border);
-        }
-
-        .btn-secondary:hover {
-            background: var(--bg-card);
-            border-color: var(--accent);
-        }
-
-        /* Section Styles */
-        section {
-            padding: 6rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-header {
+        .paper-header {
             text-align: center;
-            margin-bottom: 4rem;
+            margin-bottom: 2.5rem;
+            padding-top: 0.5rem;
         }
 
-        .section-label {
-            font-size: 0.85rem;
-            font-weight: 600;
-            letter-spacing: 0.15em;
+        .paper-kicker {
+            font-family: 'Source Sans 3', sans-serif;
             text-transform: uppercase;
-            color: var(--accent-light);
-            margin-bottom: 1rem;
-        }
-
-        .section-title {
-            font-size: clamp(2rem, 5vw, 3rem);
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        .section-description {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        /* Cards Grid */
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 2rem;
-            transition: all 0.3s ease;
-        }
-
-        .card:hover {
-            background: var(--bg-card-hover);
-            border-color: var(--accent);
-            transform: translateY(-4px);
-        }
-
-        .card-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .card-title {
-            font-size: 1.25rem;
-            font-weight: 600;
+            letter-spacing: 0.3em;
+            font-size: 0.7rem;
+            color: var(--ink-light);
             margin-bottom: 0.75rem;
         }
 
-        .card-description {
-            color: var(--text-secondary);
+        .paper-title {
+            font-size: clamp(2rem, 4vw, 3.1rem);
+            line-height: 1.15;
+            margin-bottom: 0.65rem;
+        }
+
+        .paper-authors {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--ink);
+        }
+
+        .paper-affiliations {
             font-size: 0.95rem;
-        }
-
-        /* Research Plan */
-        .research-plan-layout {
-            display: grid;
-            grid-template-columns: minmax(260px, 320px) 1fr;
-            gap: 1.5rem;
-            align-items: start;
-        }
-
-        @media (max-width: 960px) {
-            .research-plan-layout {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .research-aside {
-            background: linear-gradient(145deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0));
-            border: 1px solid var(--border);
-            border-radius: 18px;
-            padding: 1.5rem;
-            position: sticky;
-            top: 1.5rem;
+            color: var(--ink-muted);
+            margin-top: 0.2rem;
         }
 
         .paper-meta {
             display: flex;
-            flex-direction: column;
-            gap: 0.9rem;
-        }
-
-        .paper-meta h4 {
-            font-size: 1rem;
-            letter-spacing: 0.03em;
-            text-transform: uppercase;
-            color: var(--text-secondary);
-        }
-
-        .paper-meta p {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-        }
-
-        .meta-row {
-            display: grid;
-            grid-template-columns: 120px 1fr;
-            gap: 0.75rem;
-            align-items: baseline;
-        }
-
-        .meta-label {
-            font-weight: 600;
-            color: var(--text-primary);
-            font-size: 0.95rem;
-        }
-
-        .meta-value {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        .research-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.25rem;
-        }
-
-        .research-card {
-            background: radial-gradient(circle at 20% 20%, rgba(99, 102, 241, 0.08), transparent 55%),
-                var(--bg-card);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 18px;
-            padding: 1.5rem;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            gap: 0.9rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.02);
-        }
-
-        .research-card:hover {
-            border-color: var(--accent-light);
-            transform: translateY(-4px);
-            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
-        }
-
-        .research-card h4 {
-            font-size: 1.05rem;
-            font-weight: 700;
-            letter-spacing: 0.01em;
-        }
-
-        .research-label {
-            display: inline-block;
-            padding: 0.2rem 0.65rem;
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid var(--border);
-            border-radius: 999px;
-            font-size: 0.78rem;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            color: var(--text-secondary);
-        }
-
-        .research-list {
-            list-style: none;
-            padding-left: 0;
-            color: var(--text-secondary);
-            display: flex;
-            flex-direction: column;
-            gap: 0.55rem;
-            font-size: 0.95rem;
-        }
-
-        .research-list li {
-            position: relative;
-            padding-left: 1.15rem;
-        }
-
-        .research-list li::before {
-            content: "";
-            position: absolute;
-            left: 0.35rem;
-            top: 0.75rem;
-            width: 6px;
-            height: 6px;
-            background: var(--accent-light);
-            border-radius: 50%;
-            box-shadow: 0 0 0 6px rgba(99, 102, 241, 0.15);
-        }
-
-        .roadmap-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 1.5rem;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            overflow: hidden;
-            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
-        }
-
-        .roadmap-table thead {
-            background: linear-gradient(90deg, rgba(99, 102, 241, 0.2), rgba(99, 102, 241, 0));
-        }
-
-        .roadmap-table th,
-        .roadmap-table td {
-            padding: 1rem 1.2rem;
-            text-align: left;
-            font-size: 0.95rem;
-            vertical-align: top;
-        }
-
-        .roadmap-table th {
-            color: var(--text-primary);
-            letter-spacing: 0.03em;
-        }
-
-        .roadmap-table td {
-            color: var(--text-secondary);
-            border-top: 1px solid var(--border);
-            line-height: 1.6;
-        }
-
-        .roadmap-table tr:nth-child(even) td {
-            background: rgba(255, 255, 255, 0.02);
-        }
-
-        /* Stages Section */
-        .stages-container {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
-
-        .stage {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 2rem;
-            display: grid;
-            grid-template-columns: auto 1fr;
-            gap: 2rem;
-            align-items: start;
-        }
-
-        @media (max-width: 600px) {
-            .stage {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-        }
-
-        .stage-number {
-            width: 60px;
-            height: 60px;
-            background: var(--gradient-1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
-            font-weight: 700;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-top: 0.9rem;
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 0.75rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--ink-light);
         }
 
-        .stage-content h3 {
-            font-size: 1.25rem;
+        .paper-meta span {
             font-weight: 600;
+            color: var(--ink);
+            margin-right: 0.35rem;
+        }
+
+        .abstract {
+            text-align: left;
+            margin: 2rem auto 1.2rem;
+            border: 1px solid var(--rule);
+            background: #f1ebe2;
+            padding: 1.2rem 1.4rem;
+        }
+
+        .abstract h2 {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--ink-light);
             margin-bottom: 0.5rem;
         }
 
-        .stage-content p {
-            color: var(--text-secondary);
-            margin-bottom: 1rem;
-        }
-
-        .stage-examples {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .stage-tag {
-            background: var(--bg-card-hover);
-            border: 1px solid var(--border);
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-        }
-
-        /* Challenges Section */
-        .challenges-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .challenge-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 1.5rem;
-        }
-
-        .challenge-card h4 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 0.75rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .challenge-card p {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
-
-        /* Questions Section */
-        .questions-list {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .question-item {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 2rem;
-        }
-
-        .question-item h4 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 0.75rem;
-            color: var(--accent-light);
-        }
-
-        .question-item p {
-            color: var(--text-secondary);
+        .index-terms {
+            text-align: left;
             font-size: 0.95rem;
         }
 
-        /* About Section */
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
+        .index-terms span {
+            font-family: 'Source Sans 3', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-size: 0.7rem;
+            color: var(--ink-light);
+            margin-right: 0.5rem;
         }
 
-        @media (max-width: 768px) {
-            .about-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
+        .paper-body {
+            column-gap: 2.6rem;
+            column-rule: 1px solid var(--rule);
         }
 
-        .about-text h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
+        .paper-section {
+            margin-bottom: 1.4rem;
+            opacity: 0;
+            transform: translateY(12px);
+            animation: section-in 0.8s ease forwards;
+            animation-delay: var(--delay, 0s);
         }
 
-        .about-text p {
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
+        .paper-section h2 {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 0.9rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--ink);
+            margin-bottom: 0.6rem;
+            border-bottom: 1px solid var(--rule);
+            padding-bottom: 0.25rem;
         }
 
-        .about-visual {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 3rem;
-            text-align: center;
-        }
-
-        .about-visual .icon {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-        }
-
-        /* Contribute Section */
-        .contribute-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .contribute-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 1.5rem;
-            text-decoration: none;
-            color: inherit;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .contribute-card:hover {
-            background: var(--bg-card-hover);
-            border-color: var(--accent);
-        }
-
-        .contribute-card .icon {
-            font-size: 2rem;
-        }
-
-        .contribute-card .text h4 {
-            font-size: 1rem;
+        .paper-section h2 .section-number {
             font-weight: 600;
-            margin-bottom: 0.25rem;
+            color: var(--accent);
+            margin-right: 0.5rem;
         }
 
-        .contribute-card .text p {
+        p {
+            margin-bottom: 0.9rem;
+            text-align: justify;
+            hyphens: auto;
+        }
+
+        .citation {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 0.05em;
+            color: var(--ink-light);
+        }
+
+        .paper-figure {
+            margin: 1rem 0 1.2rem;
+            break-inside: avoid;
+        }
+
+        .figure-placeholder {
+            border: 1px solid var(--rule);
+            background:
+                linear-gradient(135deg, rgba(31, 78, 121, 0.08), rgba(255, 255, 255, 0.2)),
+                repeating-linear-gradient(45deg, #f3eee6, #f3eee6 6px, #ebe4da 6px, #ebe4da 12px);
+            padding: 2rem 1.5rem;
+            text-align: center;
+            font-family: 'Source Sans 3', sans-serif;
+            color: var(--ink-light);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-size: 0.7rem;
+        }
+
+        figcaption {
+            margin-top: 0.4rem;
             font-size: 0.85rem;
-            color: var(--text-secondary);
+            color: var(--ink-muted);
+            font-style: italic;
         }
 
-        /* Progress Indicator */
-        .progress-section {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .progress-section h3 {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            text-align: center;
-        }
-
-        .progress-timeline {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: relative;
-            padding: 0 1rem;
-        }
-
-        .progress-timeline::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: var(--border);
-            transform: translateY(-50%);
-        }
-
-        .progress-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.5rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .progress-dot {
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            background: var(--bg-dark);
-            border: 2px solid var(--border);
-        }
-
-        .progress-dot.completed {
-            background: var(--success);
-            border-color: var(--success);
-        }
-
-        .progress-dot.current {
-            background: var(--accent);
-            border-color: var(--accent);
-            box-shadow: 0 0 20px var(--accent-glow);
-        }
-
-        .progress-label {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            text-align: center;
-            max-width: 80px;
-        }
-
-        /* Footer */
-        footer {
-            border-top: 1px solid var(--border);
-            padding: 3rem 2rem;
-            text-align: center;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .footer-logo {
-            font-size: 1.25rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            background: var(--gradient-1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .footer-text {
-            color: var(--text-muted);
+        .paper-table {
+            width: 100%;
+            border-collapse: collapse;
             font-size: 0.9rem;
+            margin: 1rem 0 1.4rem;
+            break-inside: avoid;
         }
 
-        .footer-links {
-            margin-top: 1.5rem;
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
+        .paper-table caption {
+            caption-side: top;
+            text-align: left;
+            font-family: 'Source Sans 3', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            font-size: 0.7rem;
+            color: var(--ink-light);
+            margin-bottom: 0.5rem;
         }
 
-        .footer-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
+        .paper-table thead th {
+            text-align: left;
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            padding: 0.4rem 0.3rem;
+            border-bottom: 2px solid var(--rule);
+        }
+
+        .paper-table td {
+            padding: 0.4rem 0.3rem;
+            border-bottom: 1px solid var(--paper-edge);
+            vertical-align: top;
+        }
+
+        .references {
+            margin-top: 2rem;
+            border-top: 1px solid var(--rule);
+            padding-top: 1.5rem;
+        }
+
+        .references h2 {
+            font-family: 'Source Sans 3', sans-serif;
             font-size: 0.9rem;
-            transition: color 0.2s;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 0.8rem;
         }
 
-        .footer-links a:hover {
-            color: var(--accent-light);
+        .references-list {
+            padding-left: 1.2rem;
+            font-size: 0.95rem;
         }
 
-        /* Scroll Indicator */
-        .scroll-indicator {
-            position: absolute;
-            bottom: 2rem;
-            left: 50%;
-            transform: translateX(-50%);
-            animation: bounce 2s infinite;
+        .references-list li {
+            margin-bottom: 0.6rem;
         }
 
-        @keyframes bounce {
-
-            0%,
-            20%,
-            50%,
-            80%,
-            100% {
-                transform: translateX(-50%) translateY(0);
-            }
-
-            40% {
-                transform: translateX(-50%) translateY(-10px);
-            }
-
-            60% {
-                transform: translateX(-50%) translateY(-5px);
-            }
-        }
-
-        .scroll-indicator span {
-            display: block;
-            width: 24px;
-            height: 24px;
-            border-right: 2px solid var(--text-muted);
-            border-bottom: 2px solid var(--text-muted);
-            transform: rotate(45deg);
-        }
-
-        /* Note Box */
-        .note-box {
-            background: rgba(245, 158, 11, 0.1);
-            border: 1px solid var(--warning);
-            border-radius: 12px;
-            padding: 1.5rem;
+        .paper-footer {
+            text-align: center;
+            font-family: 'Source Sans 3', sans-serif;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            font-size: 0.7rem;
+            color: var(--ink-light);
+            border-top: 1px solid var(--rule);
+            padding-top: 1.5rem;
             margin-top: 2rem;
         }
 
-        .note-box p {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
+        @keyframes paper-in {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        .note-box strong {
-            color: var(--warning);
+        @keyframes section-in {
+            from {
+                opacity: 0;
+                transform: translateY(16px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (min-width: 980px) {
+            .paper-body {
+                column-count: 2;
+            }
+        }
+
+        @media (max-width: 980px) {
+            .paper-body {
+                column-count: 1;
+                column-rule: none;
+            }
+        }
+
+        @media (max-width: 720px) {
+            .paper-shell {
+                padding: 2.5rem 1rem 4rem;
+            }
+
+            .paper {
+                padding: 2.5rem 1.5rem 2.5rem;
+            }
+
+            .paper::before {
+                left: 1.5rem;
+                right: 1.5rem;
+            }
+
+            p {
+                text-align: left;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: none !important;
+                transition: none !important;
+            }
         }
     </style>
 </head>
 
 <body>
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <p class="logo">EEGFlow</p>
-            <h1 class="hero-title">マインドアップロード実現への道</h1>
-            <p class="hero-subtitle">意識と記憶の未来を切り拓く、技術・研究・コミュニティの中心的ハブ</p>
-
-            <div class="hero-definition">
-                <p>マインドアップロードとは<br><strong>意識や記憶の交換・複製を可能とする技術</strong></p>
-            </div>
-
-            <div class="cta-buttons">
-                <a href="#about" class="btn btn-primary">詳しく見る</a>
-                <a href="https://github.com/yasufumi-nakata/eegflow" class="btn btn-secondary" target="_blank">GitHub
-                    →</a>
-            </div>
-        </div>
-
-        <div class="scroll-indicator">
-            <span></span>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about">
-        <div class="section-header">
-            <p class="section-label">About</p>
-            <h2 class="section-title">マインドアップロードとは何か</h2>
-            <p class="section-description">1980年代から議論されてきた、人間の意識を機械やデジタル媒体に移行する技術的ビジョン</p>
-        </div>
-
-        <div class="about-content">
-            <div class="about-text">
-                <h3>技術と哲学の交差点</h3>
-                <p>
-                    マインドアップロードは、単なる技術的課題ではありません。
-                    「意識とは何か」「自己とは何か」という人類最古の哲学的問いに、
-                    科学的アプローチで挑む試みです。
-                </p>
-                <p>
-                    2000年代以降、非侵襲的な脳計測技術やAI研究の進展により、
-                    かつてはSFの世界だったこの概念が、真剣な研究対象として扱われるようになりました。
-                </p>
-                <h3>なぜ取り組むのか</h3>
-                <p>
-                    必ずしもデジタル化にこだわる必要はありません。
-                    この技術の探求は、脳と意識の理解を深め、医療・教育・人間拡張など
-                    幅広い分野への応用可能性を開くものです。
-                </p>
-            </div>
-            <div class="about-visual">
-                <div class="icon">🧠</div>
-                <p style="color: var(--text-secondary);">脳活動の計測<br>意識の解読<br>存在の再構築</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Stages Section -->
-    <section id="stages">
-        <div class="section-header">
-            <p class="section-label">Three Stages</p>
-            <h2 class="section-title">技術実現の3段階</h2>
-            <p class="section-description">マインドアップロードの実現には、3つの技術的マイルストーンが必要です</p>
-        </div>
-
-        <div class="stages-container">
-            <div class="stage">
-                <div class="stage-number">1</div>
-                <div class="stage-content">
-                    <h3>計測（Sensing）</h3>
-                    <p>
-                        脳活動を正確に読み取る技術。現在最も進展が必要な領域です。
-                        その人自身の意識などの主観についても、外的な測定によって一意に決められることが目標です。
-                    </p>
-                    <div class="stage-examples">
-                        <span class="stage-tag">EEG（脳波）</span>
-                        <span class="stage-tag">fMRI</span>
-                        <span class="stage-tag">fNIRS</span>
-                        <span class="stage-tag">侵襲型BCI</span>
-                        <span class="stage-tag">高密度電極アレイ</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="stage">
-                <div class="stage-number">2</div>
-                <div class="stage-content">
-                    <h3>解読（Decoding）</h3>
-                    <p>
-                        計測されたデータから意識・記憶・思考を理解する技術。
-                        ハードウェアの進展に比べ、脳の情報処理の深い部分の理解がまだ不十分です。
-                    </p>
-                    <div class="stage-examples">
-                        <span class="stage-tag">ニューラルデコーディング</span>
-                        <span class="stage-tag">コネクトーム解析</span>
-                        <span class="stage-tag">自由エネルギー原理</span>
-                        <span class="stage-tag">計算論的神経科学</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="stage">
-                <div class="stage-number">3</div>
-                <div class="stage-content">
-                    <h3>実装（Implementation）</h3>
-                    <p>
-                        解読された意識を別の基盤（シリコン、オルガノイドなど）で動作させる技術。
-                        その人自身であるという判断がつくような情報を保ったままアップロードすることが目標です。
-                    </p>
-                    <div class="stage-examples">
-                        <span class="stage-tag">ニューロモーフィックチップ</span>
-                        <span class="stage-tag">脳オルガノイド</span>
-                        <span class="stage-tag">全脳シミュレーション</span>
-                        <span class="stage-tag">量子コンピューティング</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="note-box">
-            <p><strong>注：</strong>これらの段階は直線的に進むわけではなく、相互に依存し並行して進む必要があります。
-                特に「計測」と「解読」は密接に関連しており、何を計測すべきかは何を解読したいかに依存します。</p>
-        </div>
-    </section>
-
-    <!-- Current Status Section -->
-    <section id="status">
-        <div class="section-header">
-            <p class="section-label">Current Status</p>
-            <h2 class="section-title">現状と課題</h2>
-            <p class="section-description">コネクトーム研究の進展から見える、スケールの壁と理論的課題</p>
-        </div>
-
-        <div class="progress-section">
-            <h3>コネクトーム（神経接続地図）研究の進展</h3>
-            <div class="progress-timeline">
-                <div class="progress-item">
-                    <div class="progress-dot completed"></div>
-                    <span class="progress-label">線虫<br>302神経</span>
-                </div>
-                <div class="progress-item">
-                    <div class="progress-dot completed"></div>
-                    <span class="progress-label">ショウジョウバエ<br>~13.5万神経</span>
-                </div>
-                <div class="progress-item">
-                    <div class="progress-dot current"></div>
-                    <span class="progress-label">マウス<br>~7500万神経</span>
-                </div>
-                <div class="progress-item">
-                    <div class="progress-dot"></div>
-                    <span class="progress-label">人間<br>~860億神経</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="challenges-grid">
-            <div class="challenge-card">
-                <h4>🔬 スケール統合の問題</h4>
-                <p>分子・シナプス・回路・領域・全脳という異なるスケールの研究を統合する理論が不足しています。
-                    各レベルで知見は蓄積されていますが、それらを繋ぐ「ニュートン力学」に相当する統一理論がありません。</p>
-            </div>
-            <div class="challenge-card">
-                <h4>⚡ ダイナミクスの理解</h4>
-                <p>静的な構造（コネクトーム）だけでなく、時間的な動態の理解が不可欠です。
-                    「あるチャネルが発火することでシナプスがどう変わるか」という動的な問いへの回答はまだ困難です。</p>
-            </div>
-            <div class="challenge-card">
-                <h4>📊 データ量の課題</h4>
-                <p>人間の脳をシミュレートするには、860億個のニューロンと各々約1万の接続が必要です。
-                    しかし問題はストレージではなく、そのシステムをどう動かすかの理論的理解です。</p>
-            </div>
-            <div class="challenge-card">
-                <h4>🧪 非侵襲計測の限界</h4>
-                <p>EEGは時間分解能に優れますが空間分解能が低く、fMRIは空間分解能はあるが時間分解能に限界があります。
-                    両者を補完する新技術の開発が求められています。</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Research Plan Section -->
-    <section id="research-plan">
-        <div class="section-header">
-            <p class="section-label">Research Program</p>
-            <h2 class="section-title">論文化に向けた実証プラン</h2>
-            <p class="section-description">査読を意識した紙面構成で、計測・解読・実装の各段階を統合的に示します。</p>
-        </div>
-
-        <div class="research-plan-layout">
-            <aside class="research-aside">
+    <div class="paper-shell">
+        <main class="paper" role="main">
+            <header class="paper-header">
+                <p class="paper-kicker">EEGFlow Technical Report</p>
+                <h1 class="paper-title">Electroencephalographic Assessment of Comfort in Urban Environments Using
+                    Virtual Reality</h1>
+                <p class="paper-authors">EEGFlow Research Group</p>
+                <p class="paper-affiliations">Independent Study</p>
                 <div class="paper-meta">
-                    <h4>Study Overview</h4>
-                    <div class="meta-row">
-                        <span class="meta-label">Objective</span>
-                        <p class="meta-value">マルチモーダル計測と神経解読を統合した「本人性維持」評価系を設計し、論文化する。</p>
-                    </div>
-                    <div class="meta-row">
-                        <span class="meta-label">Design</span>
-                        <p class="meta-value">課題ベース＋安静時の縦断収集、自己報告を含むラティスデザイン、侵襲/非侵襲データの比較。</p>
-                    </div>
-                    <div class="meta-row">
-                        <span class="meta-label">Deliverables</span>
-                        <p class="meta-value">評価指標表、再現性付きデータセット案、本人性ベンチマーク、倫理・データガバナンス指針のセット。</p>
-                    </div>
+                    <div><span>Category</span>Research</div>
+                    <div><span>OnlineID</span>0</div>
+                    <div><span>Version</span>Electronic</div>
                 </div>
-            </aside>
+                <section class="abstract">
+                    <h2>Abstract</h2>
+                    <p>The impact of urban environments on human well-being has become an urgent issue in this rapidly
+                        urbanizing society. Epidemiological studies consistently suggest an increased risk of mental
+                        disorders among urban residents. In response, neurourbanism has been proposed as a fusion of
+                        neuroscience and urban planning. However, existing research often remains limited to passive
+                        viewing experiments using static images or videos, failing to fully elucidate the dynamic
+                        effects of various urban environmental factors on comfort. This study employed a novel
+                        experimental system combining immersive virtual reality (VR) technology with high-coverage
+                        electroencephalography (64-channel EEG) to quantify comfort in Japan's dense urban
+                        environments. Results suggest that green visibility ratio is associated with "physical
+                        calmness," primarily manifested as reduced heart rate, while the overall building height may be
+                        linked to "attention/arousal (cognitive engagement)," indicated by an increase in beta band
+                        power. Meanwhile, building coverage showed the most consistent influence on the subjective
+                        recovery rating (PRS). Therefore, these results suggest that the comfort of urban landscapes can
+                        manifest different aspects through distinct indicators such as "relaxation (physical response),"
+                        "engagement (neural activity)," and "recovery (subjective feeling)." Consequently, the design
+                        of green visibility ratio and high-rise development may need to be adjusted according to the
+                        objective - whether prioritizing rest or emphasizing vitality and stimulation.</p>
+                </section>
+                <p class="index-terms"><span>Index Terms</span>Neurourbanism; virtual reality; EEG; urban environment;
+                    comfort.</p>
+            </header>
 
-            <div class="research-grid">
-                <div class="research-card">
-                    <span class="research-label">Sensing</span>
-                    <h4>計測ベンチマーク</h4>
-                    <ul class="research-list">
-                        <li>指標：SNR、空間/時間分解能、被験者内・被験者間再現性を統一指標で比較。</li>
-                        <li>デザイン：課題ベースと安静時、映画・自然言語・VR刺激を含む EEG-fMRI/MEG 同時計測。</li>
-                        <li>成果物：非侵襲/侵襲手法別の比較表と、再現性メタデータ付きの公開データセット案。</li>
-                    </ul>
-                </div>
+            <div class="paper-body">
+                <section class="paper-section" style="--delay: 0.05s;">
+                    <h2><span class="section-number">1</span>Introduction</h2>
+                    <p>Urban environments significantly influence mental health, but physiological research is limited.
+                        The "neurourbanism" framework <span class="citation">[1,3,5]</span> evaluates environmental effects
+                        using EEG and autonomic indicators. Previous studies used static images or videos <span
+                            class="citation">[4,6]</span>, limiting realistic experiences. This study combines immersive
+                        VR with 64-channel EEG to systematically control four urban factors (Coverage, Height, Green
+                        Visibility, Noise) and quantify their effects on comfort using physiological and subjective
+                        measures.</p>
+                </section>
 
-                <div class="research-card">
-                    <span class="research-label">Decoding</span>
-                    <h4>解読モデルと評価</h4>
-                    <ul class="research-list">
-                        <li>モデル：線形モデル、RNN/Transformer、拡散モデル、エネルギーベースモデルを課題別に比較。</li>
-                        <li>指標：解読精度、表現の可搬性、ゼロショット性能、因果グラフ/Granger による解釈性。</li>
-                        <li>プロトコル：自己報告スコアと脳信号の表現学習を組み合わせた主観体験推定。</li>
-                    </ul>
-                </div>
+                <section class="paper-section" style="--delay: 0.1s;">
+                    <h2><span class="section-number">2</span>Methods</h2>
+                    <p>Sixteen participants (9 females, 7 males; age: 20.6 +/- 1.4 years) experienced VR urban
+                        environments using Meta Quest 3 while EEG (64-ch actiCHamp, Brain Products) and ECG were
+                        recorded. Stimuli were created in Unreal Engine 5, with four parameters varying at high and
+                        low levels (2^4 = 16 conditions). Each trial: Baseline (30 s) -&gt; VR stimulus (3 min) -&gt; Rest (30
+                        s). Subjective restoration was assessed using the Perceived Restorativeness Scale (PRS). EEG
+                        power (Delta, Theta, Alpha, Beta, Gamma) was calculated from O1, O2, F3, F4 electrodes. Heart
+                        rate (HR) and HRV (RMSSD) were computed from ECG. Statistical analyses used paired t-tests and
+                        linear mixed models with FDR correction.</p>
 
-                <div class="research-card">
-                    <span class="research-label">Implementation</span>
-                    <h4>実装と本人性検証</h4>
-                    <ul class="research-list">
-                        <li>基盤：ニューロモーフィックチップ、脳オルガノイド、全脳/部分脳シミュレーションを消費電力・可塑性で評価。</li>
-                        <li>本人性：行動同定、記憶再現、価値観・意思決定の一致度を操作的に定義したベンチマーク。</li>
-                        <li>運用：ストリーミング学習や低ランク分解によるペタバイト級データ処理の計算予算試算。</li>
-                    </ul>
-                </div>
+                    <figure class="paper-figure">
+                        <div class="figure-placeholder">Figure 1 Placeholder</div>
+                        <figcaption>Figure 1. Overview of experimental protocol.</figcaption>
+                    </figure>
 
-                <div class="research-card">
-                    <span class="research-label">Ethics</span>
-                    <h4>倫理・データガバナンス</h4>
-                    <ul class="research-list">
-                        <li>枠組み：Neurorights / BRAIN Initiative に準拠した同意取得とデータ主権の手順。</li>
-                        <li>リスク評価：医療・教育・軍事の各シナリオでリスク—ベネフィット分析を定量化。</li>
-                        <li>公開：プライバシー予算と脱同定手法を明示したデータ共有ポリシーを併記。</li>
-                    </ul>
-                </div>
+                    <figure class="paper-figure">
+                        <div class="figure-placeholder">Figure 2 Placeholder</div>
+                        <figcaption>Figure 2. VR stimuli samples with four urban parameters.</figcaption>
+                    </figure>
+                </section>
+
+                <section class="paper-section" style="--delay: 0.15s;">
+                    <h2><span class="section-number">3</span>Results</h2>
+                    <p>Heart rate significantly decreased during Rest (t = -2.086, p = 0.037). For environmental
+                        factors: (1) Height showed a trend toward increased Beta power (p = 0.056, d = 0.24),
+                        suggesting cognitive arousal; (2) Green Visibility significantly reduced HR (p = 0.037; Delta
+                        HR: -2.83 bpm, p = 0.019), indicating relaxation; (3) Coverage showed the strongest effect on
+                        subjective PRS (F = 4.57, p = 0.051), with significant effects on Fascination, Scope,
+                        Compatibility, and Preference subscales. Coverage and Noise showed no significant
+                        physiological effects.</p>
+
+                    <table class="paper-table">
+                        <caption>Table 1. Summary of key findings.</caption>
+                        <thead>
+                            <tr>
+                                <th>Measure</th>
+                                <th>Factor</th>
+                                <th>Finding</th>
+                                <th>Statistics</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Beta Power</td>
+                                <td>Height</td>
+                                <td>Increase in arousal</td>
+                                <td>p = 0.056, d = 0.24</td>
+                            </tr>
+                            <tr>
+                                <td>Heart Rate</td>
+                                <td>Green Visibility</td>
+                                <td>Decrease in HR (relaxation)</td>
+                                <td>p = 0.019</td>
+                            </tr>
+                            <tr>
+                                <td>PRS Total</td>
+                                <td>Coverage</td>
+                                <td>Increase in restoration</td>
+                                <td>p = 0.051</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <section class="paper-section" style="--delay: 0.2s;">
+                    <h2><span class="section-number">4</span>Discussion</h2>
+                    <p>Results suggest "Functional Divergence" of urban elements: Green Visibility promotes physical
+                        relaxation (HR reduction), supporting Stress Reduction Theory; Height induces cognitive arousal
+                        (Beta increase) without stress, reflecting "Fascination" in Attention Restoration Theory <span
+                            class="citation">[2]</span>; Coverage most consistently affects subjective restoration. These
+                        findings enable evidence-based urban design - prioritizing greenery for rest areas and building
+                        height for stimulating environments. Limitations include marginal significance levels requiring
+                        larger samples and short-term VR exposure.</p>
+                </section>
+
+                <section class="paper-section" style="--delay: 0.25s;">
+                    <h2><span class="section-number">5</span>Conclusion</h2>
+                    <p>This neurourbanism study demonstrates that urban environmental factors differentially affect
+                        physiological and subjective responses: Green Visibility promotes autonomic relaxation, Height
+                        induces cognitive engagement, and Coverage influences perceived restoration. These findings
+                        support designing urban spaces with targeted effects on body and brain.</p>
+                </section>
             </div>
-        </div>
 
-        <div class="note-box">
-            <p><strong>注：</strong>計測の設計は解読目標に依存し、実装の評価軸は倫理的制約とセットで定義する必要があります。</p>
-        </div>
+            <section class="references paper-section" style="--delay: 0.3s;">
+                <h2>References</h2>
+                <ol class="references-list">
+                    <li>M. Adli, M. Berger, E.-L. Brakemeier, L. Engel, J. Fingerhut, A. Gomez-Carrillo, R. Hehl, A.
+                        Heinz, J. H., N. Mehran, S. Tolaas, H. Walter, U. Weiland, and J. Stollmann. Neurourbanism:
+                        towards a new discipline. <em>The Lancet Psychiatry</em>, 4:183-185, 2017.</li>
+                    <li>S. Kaplan. The restorative benefits of nature: Toward an integrative framework. <em>Journal of
+                            Environmental Psychology</em>, 15(3):169-182, 1995.</li>
+                    <li>A. Olszewska-Guizzo, A. Sia, A. Fogel, and R. Ho. Can exposure to certain urban green spaces
+                        trigger frontal alpha asymmetry in the brain? preliminary findings from a passive task EEG
+                        study. <em>Int J Environ Res Public Health</em>, 17(2):394, 2020.</li>
+                    <li>R. Reece, A. Bornioli, I. Bray, N. Newbutt, D. Satenstein, and C. Alford. Exposure to green,
+                        blue and historic environments and mental well-being: A comparison between virtual reality
+                        head-mounted display and flat screen exposure. <em>International Journal of Environmental
+                            Research and Public Health</em>, 19(15):9457, 2022.</li>
+                    <li>A. Seiz, B.-S. Kweon, C. D. Ellis, H. Oh, and K. Pietro. Exploring the psychophysiological
+                        effects of viewing urban nature through virtual reality using electroencephalography and
+                        perceived restorativeness scale measures. <em>Sustainability</em>, 15(17):13090, 2023.</li>
+                    <li>J.-H. Chen, C.-H. Hsieh, S.-H. Hung, W. C. Sullivan, H.-F. Tang, and C.-Y. Chang. Using
+                        functional magnetic resonance imaging (fMRI) to analyze brain region activity when viewing
+                        landscapes. <em>Landscape and Urban Planning</em>, 162:137-144, 2017.</li>
+                    <li>S. S. Yeo, J. W. Kwon, and S. Y. Park. EEG-based analysis of various sensory stimulation
+                        effects to reduce visually induced motion sickness in virtual reality. <em>Scientific
+                            Reports</em>, 12:18043, 2022.</li>
+                </ol>
+            </section>
 
-        <div class="section-header" style="margin-top: 3rem;">
-            <p class="section-label">Roadmap</p>
-            <h3 class="section-title" style="font-size: 2rem;">年度ロードマップ（案）</h3>
-            <p class="section-description">査読を意識した表形式で、計測→解読→実装を橋渡しする年次目標例</p>
-        </div>
-
-        <table class="roadmap-table">
-            <thead>
-                <tr>
-                    <th style="width: 100px;">Year</th>
-                    <th>計測 / データ</th>
-                    <th>解読 / 解析</th>
-                    <th>実装 / 倫理</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>高密度 EEG / fNIRS / fMRI の同時計測セットアップと再現性計測。映画・自然言語刺激で課題ベース・安静時のデータ収集。</td>
-                    <td>線形・Transformer を基準モデルとして、信号前処理・特徴抽出の再現性評価プロトコルを確立。</td>
-                    <td>計測倫理審査とデータ主権の同意文書を整備。初期シミュレーション基盤を起動し電力・コストを測定。</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>EEG-fMRI/MEG データ融合とメタデータ整備。ストリーミング取得でのノイズ・欠損耐性を検証。</td>
-                    <td>拡散モデル・エネルギーベースモデルと因果グラフを比較し、表現の可搬性とゼロショット性能を報告。</td>
-                    <td>スケール統合モデル（神経質量モデル×可塑性モデル）のシミュレーション検証。本人性ベンチマークの予備計測を開始。</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>少数ニューロンオルガノイド/ニューロモーフィックチップでの機能再現評価データを取得し、公開準備。</td>
-                    <td>本人性ベンチマーク（行動・意思決定の一致度）で解読器を統合評価し、論文化に必要な統計報告を完成。</td>
-                    <td>倫理・データガバナンス指針を完成させ、公開データセットと併せてリリース。論文最終稿を投稿。</td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
-
-    <!-- Philosophical Questions Section -->
-    <section id="questions">
-        <div class="section-header">
-            <p class="section-label">Open Questions</p>
-            <h2 class="section-title">未解決の問い</h2>
-            <p class="section-description">技術的実現可能性だけでなく、根本的な問いが残されています</p>
-        </div>
-
-        <div class="questions-list">
-            <div class="question-item">
-                <h4>🪞 コピーは「本人」か？</h4>
-                <p>意識がコピーにより二つに分裂した場合、どちらが「本人」なのか？
-                    あるいは両方が本人なのか？これは哲学的に未解決であり、
-                    技術が実現しても答えが出るとは限りません。</p>
-            </div>
-            <div class="question-item">
-                <h4>❓ 意識の科学的定義</h4>
-                <p>「意識とは何か」について科学的な合意がありません。
-                    主観的体験（クオリア）を客観的に測定・再現できるのか、
-                    そもそも定義可能なのかという根本的な問いがあります。</p>
-            </div>
-            <div class="question-item">
-                <h4>📐 何を保存すべきか</h4>
-                <p>「その人らしさ」を保つために何を計測・保存すべきでしょうか。
-                    神経接続だけで十分か、グリア細胞は必要か、腸内細菌叢の影響は？
-                    条件は理論によって大きく異なります。</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Focus Areas -->
-    <section id="focus">
-        <div class="section-header">
-            <p class="section-label">Focus Areas</p>
-            <h2 class="section-title">取り組み領域</h2>
-        </div>
-
-        <div class="cards-grid">
-            <div class="card">
-                <div class="card-icon">📡</div>
-                <h3 class="card-title">脳活動の計測</h3>
-                <p class="card-description">EEG、fMRI、侵襲型BMIなど、脳活動を読み取るための技術とその発展を追跡します。
-                    特に非侵襲的手法の改良と実用化に注目しています。</p>
-            </div>
-            <div class="card">
-                <div class="card-icon">🔬</div>
-                <h3 class="card-title">神経科学研究</h3>
-                <p class="card-description">意識や記憶のメカニズムを解明する研究成果を収集・分析します。
-                    コネクトーム解析や計算論的神経科学の進展をフォローします。</p>
-            </div>
-            <div class="card">
-                <div class="card-icon">💻</div>
-                <h3 class="card-title">計算論的アプローチ</h3>
-                <p class="card-description">脳のシミュレーション、ニューラルネットワーク、AI技術の応用を探求します。
-                    自由エネルギー原理などの理論的枠組みにも注目。</p>
-            </div>
-            <div class="card">
-                <div class="card-icon">⚖️</div>
-                <h3 class="card-title">倫理と哲学</h3>
-                <p class="card-description">自己同一性、意識の本質、社会的影響など、重要な問いに向き合います。
-                    技術の進歩と並行して議論を深める必要があります。</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contribute Section -->
-    <section id="contribute">
-        <div class="section-header">
-            <p class="section-label">Contribute</p>
-            <h2 class="section-title">プロジェクトに参加する</h2>
-            <p class="section-description">あなたの知識と情熱で、このプロジェクトを一緒に前進させましょう</p>
-        </div>
-
-        <div class="contribute-cards">
-            <a href="issue.md" class="contribute-card">
-                <div class="icon">📄</div>
-                <div class="text">
-                    <h4>貢献ガイド</h4>
-                    <p>参加方法の詳細を確認</p>
-                </div>
-            </a>
-            <a href="https://github.com/yasufumi-nakata/eegflow/issues" class="contribute-card" target="_blank">
-                <div class="icon">💬</div>
-                <div class="text">
-                    <h4>Issue を立てる</h4>
-                    <p>提案・質問・バグ報告</p>
-                </div>
-            </a>
-            <a href="https://github.com/yasufumi-nakata/eegflow" class="contribute-card" target="_blank">
-                <div class="icon">🔗</div>
-                <div class="text">
-                    <h4>GitHub リポジトリ</h4>
-                    <p>ソースコードを見る</p>
-                </div>
-            </a>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <p class="footer-logo">EEGFlow</p>
-            <p class="footer-text">マインドアップロード実現のための中核となるコアサイト</p>
-            <div class="footer-links">
-                <a href="https://github.com/yasufumi-nakata/eegflow">GitHub</a>
-                <a href="issue.md">貢献ガイド</a>
-                <a href="https://github.com/yasufumi-nakata/eegflow/issues">Issues</a>
-            </div>
-        </div>
-    </footer>
-
+            <footer class="paper-footer">EEGFlow - eegflow.jp</footer>
+        </main>
+    </div>
 </body>
 
 </html>
