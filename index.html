@@ -8,21 +8,23 @@
     <meta name="description" content="マインドアップロード実現のための中核となるコアサイト。意識や記憶の交換・複製を可能とする技術の研究とコミュニティの中心的ハブ。">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;600;700&display=swap"
+        rel="stylesheet">
     <style>
         :root {
             --font-serif: 'Libre Baskerville', 'Times New Roman', serif;
             --font-sans: 'Source Sans 3', 'Helvetica Neue', sans-serif;
-            --color-bg: #ffffff;
-            --color-paper: #fafafa;
-            --color-text: #1a1a1a;
-            --color-text-secondary: #4a4a4a;
-            --color-text-muted: #777777;
-            --color-accent: #b71c1c;
-            --color-accent-dark: #7f0000;
-            --color-link: #1565c0;
-            --color-border: #e0e0e0;
-            --color-sidebar: #f5f5f5;
+            --color-bg: #0d0d0f;
+            --color-paper: #161618;
+            --color-text: #e8e8ec;
+            --color-text-secondary: #a8a8b0;
+            --color-text-muted: #6a6a75;
+            --color-accent: #ef5350;
+            --color-accent-dark: #c62828;
+            --color-link: #64b5f6;
+            --color-border: #2a2a30;
+            --color-sidebar: #1a1a1e;
             --max-width: 1100px;
             --column-gap: 40px;
         }
@@ -551,7 +553,7 @@
 
         /* Note Box */
         .note-box {
-            background: #fff8e1;
+            background: #2a2518;
             border-left: 3px solid #ffc107;
             padding: 12px 16px;
             margin: 16px 0;
@@ -562,7 +564,7 @@
             font-family: var(--font-sans);
             font-size: 12px;
             text-transform: uppercase;
-            color: #f57f17;
+            color: #ffca28;
         }
 
         /* Question Box */
@@ -663,7 +665,10 @@
             <!-- Abstract -->
             <div class="abstract-box">
                 <h2>Abstract</h2>
-                <p>マインドアップロード（Brain Uploading）は、脳の情報処理を別の基盤で再現し、心的機能を移植・複製するという研究仮説の総称である<sup><a href="#ref-1">[1]</a></sup>。本稿では、Whole Brain Emulation (WBE) を含むこの概念の現状を、計測・解読・実装という3段階の技術的フレームワークで整理し、コネクトーム研究の進展<sup><a href="#ref-9">[9]</a></sup>と未解決の理論的・倫理的課題を概観する。本サイトは研究ノートとして、出典・前提・不確実性を明示する。</p>
+                <p>マインドアップロード（Brain Uploading）は、脳の情報処理を別の基盤で再現し、心的機能を移植・複製するという研究仮説の総称である<sup><a
+                            href="#ref-1">[1]</a></sup>。本稿では、Whole Brain Emulation (WBE)
+                    を含むこの概念の現状を、計測・解読・実装という3段階の技術的フレームワークで整理し、コネクトーム研究の進展<sup><a
+                            href="#ref-9">[9]</a></sup>と未解決の理論的・倫理的課題を概観する。本サイトは研究ノートとして、出典・前提・不確実性を明示する。</p>
             </div>
 
             <!-- Introduction -->
@@ -671,10 +676,16 @@
                 <h2 class="section-title">Introduction</h2>
 
                 <h3>技術と哲学の交差点</h3>
-                <p>マインドアップロードは、単なる技術的課題ではない。「意識とは何か」「自己とは何か」という人類最古の哲学的問いに、科学的アプローチで挑む試みである。1980年代から議論されてきたこのビジョン<sup><a href="#ref-1">[1]</a></sup>は、2000年代以降、計算論的神経科学の進展<sup><a href="#ref-2">[2]</a></sup>や「コネクトーム」概念の普及<sup><a href="#ref-9">[9]</a></sup>により、技術・倫理・哲学の横断課題として研究対象化してきた<sup><a href="#ref-10">[10]</a></sup>。</p>
+                <p>マインドアップロードは、単なる技術的課題ではない。「意識とは何か」「自己とは何か」という人類最古の哲学的問いに、科学的アプローチで挑む試みである。1980年代から議論されてきたこのビジョン<sup><a
+                            href="#ref-1">[1]</a></sup>は、2000年代以降、計算論的神経科学の進展<sup><a
+                            href="#ref-2">[2]</a></sup>や「コネクトーム」概念の普及<sup><a
+                            href="#ref-9">[9]</a></sup>により、技術・倫理・哲学の横断課題として研究対象化してきた<sup><a
+                            href="#ref-10">[10]</a></sup>。</p>
 
                 <h3>用語とスコープ</h3>
-                <p>本サイトでは「マインドアップロード」を以下の3領域の交差点として扱う：(i) WBE（脳の機能を計算モデルとして再現する試み）<sup><a href="#ref-10">[10]</a></sup>、(ii) 侵襲/非侵襲の脳計測・刺激に基づく部分的な神経補綴（BCI/ニューロプロステティクス）、(iii) 本人性（自己同一性）の操作的定義と検証。</p>
+                <p>本サイトでは「マインドアップロード」を以下の3領域の交差点として扱う：(i) WBE（脳の機能を計算モデルとして再現する試み）<sup><a
+                            href="#ref-10">[10]</a></sup>、(ii) 侵襲/非侵襲の脳計測・刺激に基づく部分的な神経補綴（BCI/ニューロプロステティクス）、(iii)
+                    本人性（自己同一性）の操作的定義と検証。</p>
 
                 <div class="note-box">
                     <strong>研究としての約束</strong>
@@ -706,7 +717,8 @@
                         <div class="stage-number"></div>
                         <div class="stage-body">
                             <h4>解読（Decoding）</h4>
-                            <p>計測データから意識・記憶・思考を理解する技術。コネクトーム<sup><a href="#ref-9">[9]</a></sup>や自由エネルギー原理<sup><a href="#ref-11">[11]</a></sup>などの理論が提案されているが、検証可能な予測とデータの往復が課題である。</p>
+                            <p>計測データから意識・記憶・思考を理解する技術。コネクトーム<sup><a href="#ref-9">[9]</a></sup>や自由エネルギー原理<sup><a
+                                        href="#ref-11">[11]</a></sup>などの理論が提案されているが、検証可能な予測とデータの往復が課題である。</p>
                             <div class="tag-list">
                                 <span class="tag">ニューラルデコーディング</span>
                                 <span class="tag">コネクトーム解析</span>
@@ -756,15 +768,23 @@
                         </div>
                     </div>
                     <p class="figure-label">Figure 1</p>
-                    <p class="figure-caption">コネクトーム研究の進展とスケール。線虫（<em>C. elegans</em>）<sup><a href="#ref-3">[3]</a></sup>およびショウジョウバエ<sup><a href="#ref-4">[4]</a></sup>では完全なコネクトームが解明されている。マウス<sup><a href="#ref-5">[5]</a></sup>は現在進行中、ヒト脳<sup><a href="#ref-6">[6]</a></sup>は約860億ニューロンを有する。</p>
+                    <p class="figure-caption">コネクトーム研究の進展とスケール。線虫（<em>C. elegans</em>）<sup><a
+                                href="#ref-3">[3]</a></sup>およびショウジョウバエ<sup><a
+                                href="#ref-4">[4]</a></sup>では完全なコネクトームが解明されている。マウス<sup><a
+                                href="#ref-5">[5]</a></sup>は現在進行中、ヒト脳<sup><a href="#ref-6">[6]</a></sup>は約860億ニューロンを有する。
+                    </p>
                 </div>
 
                 <h3>主要な技術的課題</h3>
-                <p><strong>スケール統合の問題</strong>：分子・シナプス・回路・領域・全脳という異なるスケールの研究を統合する理論が不足している。各レベルで知見は蓄積されているが、汎用的な計算論的フレームワークは確立途上である。</p>
+                <p><strong>スケール統合の問題</strong>：分子・シナプス・回路・領域・全脳という異なるスケールの研究を統合する理論が不足している。各レベルで知見は蓄積されているが、汎用的な計算論的フレームワークは確立途上である。
+                </p>
 
-                <p><strong>ダイナミクスの理解</strong>：静的な構造（コネクトーム）だけでなく、時間的な動態の理解が不可欠である。活動パターンが学習によりどのように変化し行動へ影響するかという動的な問いへの回答は困難である。</p>
+                <p><strong>ダイナミクスの理解</strong>：静的な構造（コネクトーム）だけでなく、時間的な動態の理解が不可欠である。活動パターンが学習によりどのように変化し行動へ影響するかという動的な問いへの回答は困難である。
+                </p>
 
-                <p><strong>非侵襲計測の限界</strong>：EEGは時間分解能に優れるが空間分解能が低く<sup><a href="#ref-7">[7]</a></sup>、fMRIは空間分解能はあるが時間分解能に限界がある<sup><a href="#ref-8">[8]</a></sup>。両者を補完する新技術の開発が求められている。</p>
+                <p><strong>非侵襲計測の限界</strong>：EEGは時間分解能に優れるが空間分解能が低く<sup><a
+                            href="#ref-7">[7]</a></sup>、fMRIは空間分解能はあるが時間分解能に限界がある<sup><a
+                            href="#ref-8">[8]</a></sup>。両者を補完する新技術の開発が求められている。</p>
             </section>
 
             <!-- Research Program -->
@@ -830,20 +850,54 @@
             <section class="section references">
                 <h2 class="section-title">References</h2>
                 <ol>
-                    <li id="ref-1">Moravec, H. <em>Mind Children: The Future of Robot and Human Intelligence</em>. Harvard University Press (1988).</li>
-                    <li id="ref-2">Sejnowski, T.J., Churchland, P.S. & Movshon, J.A. Computational Neuroscience. <em>Science</em> <strong>250</strong>, 744–747 (1990). <a href="https://doi.org/10.1126/science.250.4977.744">doi:10.1126/science.250.4977.744</a></li>
-                    <li id="ref-3">White, J.G. <em>et al.</em> The Structure of the Nervous System of <em>C. elegans</em>. <em>Phil. Trans. R. Soc. B</em> (1986). <a href="https://doi.org/10.1098/rstb.1986.0056">doi:10.1098/rstb.1986.0056</a></li>
-                    <li id="ref-4">Scheffer, L.K. <em>et al.</em> A Connectome of the Adult <em>Drosophila</em> Central Brain. <em>eLife</em> (2020). <a href="https://doi.org/10.7554/eLife.57443">doi:10.7554/eLife.57443</a></li>
-                    <li id="ref-5">Herculano-Houzel, S. <em>et al.</em> Cellular Scaling Rules for Rodent Brains. <em>PNAS</em> (2006). <a href="https://doi.org/10.1073/pnas.0604911103">doi:10.1073/pnas.0604911103</a></li>
-                    <li id="ref-6">Herculano-Houzel, S. The Human Brain in Numbers. <em>Front. Hum. Neurosci.</em> <strong>3</strong>, 31 (2009). <a href="https://doi.org/10.3389/neuro.09.031.2009">doi:10.3389/neuro.09.031.2009</a></li>
-                    <li id="ref-7">Michel, C.M. & Brunet, D. EEG Source Imaging: A Practical Review. <em>Clin. Neurophysiol.</em> (2019). <a href="https://doi.org/10.1016/j.clinph.2019.02.004">doi:10.1016/j.clinph.2019.02.004</a></li>
-                    <li id="ref-8">Logothetis, N.K. What We Can Do and What We Cannot Do with fMRI. <em>Nature</em> (2008). <a href="https://doi.org/10.1038/nature06976">doi:10.1038/nature06976</a></li>
-                    <li id="ref-9">Sporns, O., Tononi, G. & Kötter, R. The Human Connectome. <em>PLoS Comput. Biol.</em> <strong>1</strong>, e42 (2005). <a href="https://doi.org/10.1371/journal.pcbi.0010042">doi:10.1371/journal.pcbi.0010042</a></li>
-                    <li id="ref-10">Sandberg, A. Feasibility of Whole Brain Emulation. In <em>Singularity Hypotheses</em> (Springer, 2013). <a href="https://doi.org/10.1007/978-3-642-31674-6_19">doi:10.1007/978-3-642-31674-6_19</a></li>
-                    <li id="ref-11">Friston, K. The free-energy principle: a unified brain theory? <em>Nat. Rev. Neurosci.</em> <strong>11</strong>, 127–138 (2010). <a href="https://doi.org/10.1038/nrn2787">doi:10.1038/nrn2787</a></li>
-                    <li id="ref-12">Ienca, M. & Andorno, R. Towards new human rights in neuroscience. <em>Life Sci. Soc. Policy</em> <strong>13</strong>, 5 (2017). <a href="https://doi.org/10.1186/s40504-017-0050-1">doi:10.1186/s40504-017-0050-1</a></li>
-                    <li id="ref-13">Yuste, R. <em>et al.</em> Four ethical priorities for neurotechnologies and AI. <em>Nature</em> <strong>551</strong>, 159–163 (2017). <a href="https://doi.org/10.1038/551159a">doi:10.1038/551159a</a></li>
-                    <li id="ref-14">Van Essen, D.C. <em>et al.</em> The WU-Minn Human Connectome Project. <em>NeuroImage</em> <strong>80</strong>, 62–79 (2013). <a href="https://doi.org/10.1016/j.neuroimage.2013.05.041">doi:10.1016/j.neuroimage.2013.05.041</a></li>
+                    <li id="ref-1">Moravec, H. <em>Mind Children: The Future of Robot and Human Intelligence</em>.
+                        Harvard University Press (1988).</li>
+                    <li id="ref-2">Sejnowski, T.J., Churchland, P.S. & Movshon, J.A. Computational Neuroscience.
+                        <em>Science</em> <strong>250</strong>, 744–747 (1990). <a
+                            href="https://doi.org/10.1126/science.250.4977.744">doi:10.1126/science.250.4977.744</a>
+                    </li>
+                    <li id="ref-3">White, J.G. <em>et al.</em> The Structure of the Nervous System of <em>C.
+                            elegans</em>. <em>Phil. Trans. R. Soc. B</em> (1986). <a
+                            href="https://doi.org/10.1098/rstb.1986.0056">doi:10.1098/rstb.1986.0056</a></li>
+                    <li id="ref-4">Scheffer, L.K. <em>et al.</em> A Connectome of the Adult <em>Drosophila</em> Central
+                        Brain. <em>eLife</em> (2020). <a
+                            href="https://doi.org/10.7554/eLife.57443">doi:10.7554/eLife.57443</a></li>
+                    <li id="ref-5">Herculano-Houzel, S. <em>et al.</em> Cellular Scaling Rules for Rodent Brains.
+                        <em>PNAS</em> (2006). <a
+                            href="https://doi.org/10.1073/pnas.0604911103">doi:10.1073/pnas.0604911103</a>
+                    </li>
+                    <li id="ref-6">Herculano-Houzel, S. The Human Brain in Numbers. <em>Front. Hum. Neurosci.</em>
+                        <strong>3</strong>, 31 (2009). <a
+                            href="https://doi.org/10.3389/neuro.09.031.2009">doi:10.3389/neuro.09.031.2009</a>
+                    </li>
+                    <li id="ref-7">Michel, C.M. & Brunet, D. EEG Source Imaging: A Practical Review. <em>Clin.
+                            Neurophysiol.</em> (2019). <a
+                            href="https://doi.org/10.1016/j.clinph.2019.02.004">doi:10.1016/j.clinph.2019.02.004</a>
+                    </li>
+                    <li id="ref-8">Logothetis, N.K. What We Can Do and What We Cannot Do with fMRI. <em>Nature</em>
+                        (2008). <a href="https://doi.org/10.1038/nature06976">doi:10.1038/nature06976</a></li>
+                    <li id="ref-9">Sporns, O., Tononi, G. & Kötter, R. The Human Connectome. <em>PLoS Comput. Biol.</em>
+                        <strong>1</strong>, e42 (2005). <a
+                            href="https://doi.org/10.1371/journal.pcbi.0010042">doi:10.1371/journal.pcbi.0010042</a>
+                    </li>
+                    <li id="ref-10">Sandberg, A. Feasibility of Whole Brain Emulation. In <em>Singularity
+                            Hypotheses</em> (Springer, 2013). <a
+                            href="https://doi.org/10.1007/978-3-642-31674-6_19">doi:10.1007/978-3-642-31674-6_19</a>
+                    </li>
+                    <li id="ref-11">Friston, K. The free-energy principle: a unified brain theory? <em>Nat. Rev.
+                            Neurosci.</em> <strong>11</strong>, 127–138 (2010). <a
+                            href="https://doi.org/10.1038/nrn2787">doi:10.1038/nrn2787</a></li>
+                    <li id="ref-12">Ienca, M. & Andorno, R. Towards new human rights in neuroscience. <em>Life Sci. Soc.
+                            Policy</em> <strong>13</strong>, 5 (2017). <a
+                            href="https://doi.org/10.1186/s40504-017-0050-1">doi:10.1186/s40504-017-0050-1</a></li>
+                    <li id="ref-13">Yuste, R. <em>et al.</em> Four ethical priorities for neurotechnologies and AI.
+                        <em>Nature</em> <strong>551</strong>, 159–163 (2017). <a
+                            href="https://doi.org/10.1038/551159a">doi:10.1038/551159a</a>
+                    </li>
+                    <li id="ref-14">Van Essen, D.C. <em>et al.</em> The WU-Minn Human Connectome Project.
+                        <em>NeuroImage</em> <strong>80</strong>, 62–79 (2013). <a
+                            href="https://doi.org/10.1016/j.neuroimage.2013.05.041">doi:10.1016/j.neuroimage.2013.05.041</a>
+                    </li>
                 </ol>
             </section>
 
