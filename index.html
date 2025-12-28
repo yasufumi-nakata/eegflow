@@ -663,12 +663,14 @@
         <article class="content-column">
 
             <!-- Abstract -->
+            <!-- Abstract -->
             <div class="abstract-box">
                 <h2>Abstract</h2>
-                <p>マインドアップロード（Brain Uploading）は、脳の情報処理を別の基盤で再現し、心的機能を移植・複製するという研究仮説の総称である<sup><a
+                <p>マインドアップロード（Brain
+                    Uploading）は、広義には脳の情報処理を別の基盤で再現し、心的機能を移植・複製するという概念であるが、本稿ではWBE、神経補綴、本人性検証の3領域が交差する統合的研究課題として定義する<sup><a
                             href="#ref-1">[1]</a></sup>。本稿では、Whole Brain Emulation (WBE)
-                    を含むこの概念の現状を、計測・解読・実装という3段階の技術的フレームワークで整理し、コネクトーム研究の進展<sup><a
-                            href="#ref-9">[9]</a></sup>と未解決の理論的・倫理的課題を概観する。本サイトは研究ノートとして、出典・前提・不確実性を明示する。</p>
+                    を含むこの概念の現状を、計測・解読・実装という3段階の技術的フレームワークで整理し、コネクトーム研究の進展<sup><a href="#ref-9">[9]</a></sup><sup><a
+                            href="#ref-14">[14]</a></sup>と未解決の理論的・倫理的課題を概観する。本サイトは研究ノートとして、出典・前提・不確実性を明示する。</p>
             </div>
 
             <!-- Introduction -->
@@ -684,8 +686,9 @@
 
                 <h3>用語とスコープ</h3>
                 <p>本サイトでは「マインドアップロード」を以下の3領域の交差点として扱う：(i) WBE（脳の機能を計算モデルとして再現する試み）<sup><a
-                            href="#ref-10">[10]</a></sup>、(ii) 侵襲/非侵襲の脳計測・刺激に基づく部分的な神経補綴（BCI/ニューロプロステティクス）、(iii)
-                    本人性（自己同一性）の操作的定義と検証。</p>
+                            href="#ref-10">[10]</a></sup>、(ii) 侵襲/非侵襲の脳計測・刺激に基づく部分的な神経補綴（BCI/ニューロプロステティクス）<sup><a
+                            href="#ref-15">[15]</a></sup>、(iii)
+                    本人性（自己同一性）の操作的定義と検証<sup><a href="#ref-10">[10]</a></sup>。</p>
 
                 <div class="note-box">
                     <strong>研究としての約束</strong>
@@ -697,7 +700,7 @@
             <section class="section">
                 <h2 class="section-title">Technical Framework</h2>
 
-                <p>マインドアップロードの実現には、3つの技術的マイルストーンが必要である（Figure 1）。</p>
+                <p>マインドアップロードの実現には、3つの技術的マイルストーンが必要である。</p>
 
                 <div class="stage-list">
                     <div class="stage-item">
@@ -759,7 +762,7 @@
                             </div>
                             <div class="timeline-item">
                                 <div class="timeline-dot current"></div>
-                                <div class="timeline-label">マウス<br><strong>~75M</strong> neurons</div>
+                                <div class="timeline-label">マウス<br><strong>~71M</strong> neurons</div>
                             </div>
                             <div class="timeline-item">
                                 <div class="timeline-dot"></div>
@@ -770,13 +773,18 @@
                     <p class="figure-label">Figure 1</p>
                     <p class="figure-caption">コネクトーム研究の進展とスケール。線虫（<em>C. elegans</em>）<sup><a
                                 href="#ref-3">[3]</a></sup>およびショウジョウバエ<sup><a
-                                href="#ref-4">[4]</a></sup>では完全なコネクトームが解明されている。マウス<sup><a
-                                href="#ref-5">[5]</a></sup>は現在進行中、ヒト脳<sup><a href="#ref-6">[6]</a></sup>は約860億ニューロンを有する。
+                                href="#ref-4">[4]</a></sup>では完全なコネクトームが解明されている。マウスのニューロン数は約7100万<sup><a
+                                href="#ref-5">[5]</a></sup>であり、コネクトーム解析<sup><a
+                                href="#ref-16">[16]</a></sup>は現在進行中である。ヒト脳<sup><a
+                                href="#ref-6">[6]</a></sup>は約860億ニューロンを有する。
                     </p>
                 </div>
 
                 <h3>主要な技術的課題</h3>
-                <p><strong>スケール統合の問題</strong>：分子・シナプス・回路・領域・全脳という異なるスケールの研究を統合する理論が不足している。各レベルで知見は蓄積されているが、汎用的な計算論的フレームワークは確立途上である。
+                <p><strong>スケール統合の問題</strong>：分子・シナプス・回路・領域・全脳という異なるスケールの研究を統合する理論が不足している。それらを繋ぐ、例えば神経質量モデルとシナプス可塑性ルールを統合するような、普遍的な計算論的フレームワークがまだ確立されていない。
+                </p>
+
+                <p><strong>データ量の課題</strong>：しかし、ストレージ容量以上に、その膨大なパラメータを持つシステムを生物学的に妥当な形で動作させるための、神経ダイナミクスの根本原理の理解が本質的な課題です。
                 </p>
 
                 <p><strong>ダイナミクスの理解</strong>：静的な構造（コネクトーム）だけでなく、時間的な動態の理解が不可欠である。活動パターンが学習によりどのように変化し行動へ影響するかという動的な問いへの回答は困難である。
@@ -797,7 +805,7 @@
                 <table class="data-table">
                     <thead>
                         <tr>
-                            <th>Year</th>
+                            <th>Phase</th>
                             <th>計測/データ</th>
                             <th>解読/解析</th>
                             <th>実装/倫理</th>
@@ -897,6 +905,15 @@
                     <li id="ref-14">Van Essen, D.C. <em>et al.</em> The WU-Minn Human Connectome Project.
                         <em>NeuroImage</em> <strong>80</strong>, 62–79 (2013). <a
                             href="https://doi.org/10.1016/j.neuroimage.2013.05.041">doi:10.1016/j.neuroimage.2013.05.041</a>
+                    </li>
+                    <li id="ref-15">Schwartz, A.B. <em>et al.</em> Brain-Controlled Interfaces: Movement Restoration
+                        with Neural Prosthetics.
+                        <em>Neuron</em> <strong>52</strong>, 205–220 (2006). <a
+                            href="https://doi.org/10.1016/j.neuron.2006.09.019">doi:10.1016/j.neuron.2006.09.019</a>
+                    </li>
+                    <li id="ref-16">Oh, S.W. <em>et al.</em> A mesoscale connectome of the mouse brain.
+                        <em>Nature</em> <strong>508</strong>, 207–214 (2014). <a
+                            href="https://doi.org/10.1038/nature13186">doi:10.1038/nature13186</a>
                     </li>
                 </ol>
             </section>
