@@ -696,6 +696,22 @@
                 </div>
             </section>
 
+            <!-- Science of Flow -->
+            <section class="section">
+                <h2 class="section-title">Science of Flow</h2>
+                <h3>フロー状態の定義とメカニズム</h3>
+                <p><strong>心理学的定義</strong>：ミハイ・チクセントミハイによれば、フローとは「スキルレベルと挑戦レベルが高い次元で均衡した時に生じる、没入と集中、そして至福の感覚」である。単なる集中を超えた「行為と意識の融合」であり、時間の感覚が変容するほどの没入状態を指す。
+                </p>
+
+                <p><strong>神経科学的指標（EEG Markers）</strong>：
+                    本プロジェクトでは、前頭葉における特定の脳波パターン（8-13Hzのアルファ波と4-8Hzのテータ波のパワーバランス）をリアルタイム解析し、没入度を「Flow
+                    Index」として定量化する。また、フロー状態においては「自己批判」や「雑念」を司る前頭前皮質の活動低下（Transient Hypofrontality）が生じると仮説立てられている。</p>
+
+                <p><strong>VR × EEGのシナジー</strong>：
+                    VRによる視覚・聴覚の完全遮断はフローへの導入（インダクション）を容易にし、脳波に応じたリアルタイムのニューロフィードバック（環境の色彩や音の変化）により、ユーザーは自身の脳状態を直感的にコントロールする学習が可能となる。
+                </p>
+            </section>
+
             <!-- Technical Framework -->
             <section class="section">
                 <h2 class="section-title">Technical Framework</h2>
@@ -793,6 +809,14 @@
                 <p><strong>非侵襲計測の限界</strong>：EEGは時間分解能に優れるが空間分解能が低く<sup><a
                             href="#ref-7">[7]</a></sup>、fMRIは空間分解能はあるが時間分解能に限界がある<sup><a
                             href="#ref-8">[8]</a></sup>。両者を補完する新技術の開発が求められている。</p>
+
+                <h3>最新の技術進展（2024-2025）</h3>
+                <p><strong>高解像度イメージング</strong>：MITの「Megatome」等の技術により、単一脳サンプルでのマルチスケール統合観測（シナプスから全脳）が可能になりつつある。
+                </p>
+                <p><strong>4Dコネクトーム</strong>：UCSDの研究等は、静的な配線図だけでなく、学習に伴う動的な回路変化を捉える「4Dコネクトーム」へのアプローチを開始している。
+                </p>
+                <p><strong>fMRIデコーディング</strong>：テキサス大学オースティン校やNTTの研究により、非侵襲fMRIからの言語・思考の再構成精度が飛躍的に向上し、実装フェーズへの道が開かれつつある。
+                </p>
             </section>
 
             <!-- Research Program -->
@@ -834,6 +858,42 @@
                 </table>
             </section>
 
+            <!-- Social Implementation (Service) -->
+            <section class="section">
+                <h2 class="section-title">Social Implementation</h2>
+                <h3>サービスフロー（β版）</h3>
+                <p>現在、研究開発フェーズにつき限定的なトライアルを提供しています。</p>
+                <ol style="font-size:14px; line-height:1.8; margin-left:20px; color:var(--color-text-secondary);">
+                    <li><strong>予約・スクリーニング</strong>：Webフォームより申込。てんかん既往歴等の安全チェックを実施。</li>
+                    <li><strong>セットアップ</strong>：専用機材の装着ガイダンス（オンサイト/リモート）。</li>
+                    <li><strong>ベースライン測定</strong>：安静時脳波による個人の基準値キャリブレーション。</li>
+                    <li><strong>Flow Session</strong>：VRタスク（20分）によるニューロフィードバック・トレーニング。</li>
+                    <li><strong>フィードバック</strong>：脳活動ヒートマップとFlowスコアによるレポート提供。</li>
+                </ol>
+
+                <h3 style="margin-top:24px;">ターゲットユーザー</h3>
+                <div class="tag-list" style="margin-top:12px;">
+                    <span class="tag">エンジニア・クリエイター</span>
+                    <span class="tag">eスポーツプレイヤー</span>
+                    <span class="tag">研究者・学生</span>
+                </div>
+            </section>
+
+            <!-- About Us -->
+            <section class="section">
+                <h2 class="section-title">About Us</h2>
+                <h3>Team & Background</h3>
+                <p><strong>中田 康史 (Yasufumi Nakata)</strong><br>
+                    慶應義塾大学 総合政策学部 / 青山敦研究室（Neuroscience & Biological Signal Processing）所属。<br>
+                    脳波（EEG）を用いたVR酔いの解析およびニューロフィードバックシステムの開発に従事。財務省、ブレインパッド、モルガン・スタンレー・ジャパンでの実務経験を有し、データサイエンスとビジネスの両面から社会実装を推進する。
+                </p>
+                <ul style="font-size:13px; color:var(--color-text-secondary); margin-top:8px; margin-left:20px;">
+                    <li>2020 Global PyTorch Summer Hackathon 1位</li>
+                    <li>VR研究における最優秀賞・新人賞受賞</li>
+                    <li>慶應義塾大学 山岸学生プロジェクト採択</li>
+                </ul>
+            </section>
+
             <!-- Open Questions -->
             <section class="section">
                 <h2 class="section-title">Open Questions</h2>
@@ -851,6 +911,24 @@
                 <div class="question-box">
                     <h4>何を保存すべきか</h4>
                     <p>「その人らしさ」を保つために何を計測・保存すべきか。神経接続だけで十分か、グリア細胞は必要か、腸内細菌叢の影響は？条件は理論によって大きく異なる。</p>
+                </div>
+            </section>
+
+            <!-- Legal & Compliance -->
+            <section class="section">
+                <h2 class="section-title">Legal & Compliance</h2>
+
+                <div class="note-box" style="border-left-color: #64b5f6;">
+                    <strong>Medical Disclaimer</strong>
+                    <p>本サービスおよび提供されるデバイスは医療機器ではありません。疾病の診断、治療、予防を目的としたものではなく、健康な成人のリラクゼーション、パフォーマンス向上、ウェルネスを目的としています。身体的・精神的な不調を感じている方は利用前に医師にご相談ください。
+                    </p>
+                </div>
+
+                <div style="margin-top:20px; font-size:12px; color:var(--color-text-secondary);">
+                    <p><strong>運営者情報</strong><br>
+                        EEGFlow Project (Rep: Yasufumi Nakata)<br>
+                        Contact: contact@eegflow.jp<br>
+                        ※特定商取引法に基づく詳細な表記は、有料サービス開始時に別途掲示します。</p>
                 </div>
             </section>
 
@@ -952,9 +1030,20 @@
             <div class="sidebar-box">
                 <h4>Ethics & Governance</h4>
                 <ul>
-                    <li>Neurorights議論を参照<sup><a href="#ref-12">[12]</a></sup><sup><a href="#ref-13">[13]</a></sup></li>
-                    <li>データ主権・二次利用条件の明文化</li>
+                    <li>Neurorights議論を参照（精神的プライバシー権、認知的自由権）<sup><a href="#ref-12">[12]</a></sup><sup><a
+                                href="#ref-13">[13]</a></sup></li>
+                    <li>完全ロックイン患者の同意プロセスの確立</li>
+                    <li>GDPR/APPI準拠のデータ管理</li>
                     <li>プライバシー予算の明示</li>
+                </ul>
+            </div>
+
+            <div class="sidebar-box">
+                <h4>Data Standards</h4>
+                <ul>
+                    <li>BIDS-EEG標準への完全準拠</li>
+                    <li>メタデータ自動QAパイプライン</li>
+                    <li>多施設間相互運用性の確保</li>
                 </ul>
             </div>
 
