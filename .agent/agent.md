@@ -21,6 +21,19 @@
     └── agent.md       # この仕様書
 ```
 
+## コンテンツセクション（index.html）
+
+- Abstract / Introduction（用語とスコープ）
+- Science of Flow（フロー状態の科学）
+- Technical Framework（計測・解読・実装）
+- Current Status（コネクトーム研究進展、最新技術2024-2025）
+- Research Program（Phase 1-3）
+- Social Implementation（サービスフロー、ターゲットユーザー）
+- About Us（Team & Background）
+- Open Questions
+- Legal & Compliance（Medical Disclaimer）
+- References（16件の学術参考文献）
+
 ## 技術スタック
 
 - 静的HTML/CSS/JavaScript
