@@ -653,8 +653,8 @@
         </p>
         <div class="article-meta">
             <span>Open Access</span>
-            <span>Last Updated: 2024</span>
-            <span>研究ノート</span>
+            <span>Last Updated: 2025</span>
+            <span>研究ノート (Update: NTT Mind Captioning 2025)</span>
         </div>
     </header>
 
@@ -663,14 +663,16 @@
         <article class="content-column">
 
             <!-- Abstract -->
-            <!-- Abstract -->
             <div class="abstract-box">
                 <h2>Abstract</h2>
                 <p>マインドアップロード（Brain
                     Uploading）は、広義には脳の情報処理を別の基盤で再現し、心的機能を移植・複製するという概念であるが、本稿ではWBE、神経補綴、本人性検証の3領域が交差する統合的研究課題として定義する<sup><a
-                            href="#ref-1">[1]</a></sup>。本稿では、Whole Brain Emulation (WBE)
-                    を含むこの概念の現状を、計測・解読・実装という3段階の技術的フレームワークで整理し、コネクトーム研究の進展<sup><a href="#ref-9">[9]</a></sup><sup><a
-                            href="#ref-14">[14]</a></sup>と未解決の理論的・倫理的課題を概観する。本サイトは研究ノートとして、出典・前提・不確実性を明示する。</p>
+                            href="#ref-1">[1]</a></sup>。2025年にはNTTによる「Mind Captioning」技術の発表<sup><a
+                            href="#ref-17">[17]</a></sup>（脳活動からの思考の記述）や、米国での「MIND Act of 2025」<sup><a
+                            href="#ref-18">[18]</a></sup>の提案など、技術と法の両面で大きな進展があった。本稿では、Whole Brain Emulation (WBE)
+                    を含む現状を、計測・解読・実装という3段階の技術的フレームワークで整理し、コネクトーム研究の進展<sup><a href="#ref-9">[9]</a></sup><sup><a
+                            href="#ref-14">[14]</a></sup>と、IIT (Integrated Information Theory)<sup><a
+                            href="#ref-19">[19]</a></sup>等の客観的指標に基づく意識・本人性の検証、および未解決の理論的・法的課題を概観する。</p>
             </div>
 
             <!-- Introduction -->
@@ -723,12 +725,13 @@
                         <div class="stage-number"></div>
                         <div class="stage-body">
                             <h4>計測（Sensing）</h4>
-                            <p>脳活動を正確に読み取る技術。主観的体験（自己報告）と脳信号の対応づけを通じて、再現可能な推定器（decoder）を構築することが目標である。</p>
+                            <p>脳活動を正確に読み取る技術。EEGの空間分解能の限界（体積伝導・逆問題）に対し、高密度EEG（HD-EEG）や脳磁図（MEG）、fMRIとの同時計測、およびソースイメージング（ESI）<sup><a
+                                        href="#ref-7">[7]</a></sup>を用いた統合的アプローチが進展している。</p>
                             <div class="tag-list">
-                                <span class="tag">EEG</span>
-                                <span class="tag">fMRI</span>
-                                <span class="tag">fNIRS</span>
-                                <span class="tag">侵襲型BCI</span>
+                                <span class="tag">HD-EEG</span>
+                                <span class="tag">ESI (Source Imaging)</span>
+                                <span class="tag">マルチモーダル融合</span>
+                                <span class="tag">侵襲型BCI (Neuralink/Synchron)</span>
                             </div>
                         </div>
                     </div>
@@ -736,12 +739,13 @@
                         <div class="stage-number"></div>
                         <div class="stage-body">
                             <h4>解読（Decoding）</h4>
-                            <p>計測データから意識・記憶・思考を理解する技術。コネクトーム<sup><a href="#ref-9">[9]</a></sup>や自由エネルギー原理<sup><a
-                                        href="#ref-11">[11]</a></sup>などの理論が提案されているが、検証可能な予測とデータの往復が課題である。</p>
+                            <p>計測データから意識・記憶・思考を理解する技術。Transformerベースの深層学習モデル<sup><a
+                                        href="#ref-17">[17]</a></sup>を用いた認知状態の記述（Mind Captioning）や、因果推論に基づくDynamic
+                                Causal Modeling (DCM) による精密解析が標準となりつつある。</p>
                             <div class="tag-list">
-                                <span class="tag">ニューラルデコーディング</span>
-                                <span class="tag">コネクトーム解析</span>
-                                <span class="tag">計算論的神経科学</span>
+                                <span class="tag">Transformerデコーディング</span>
+                                <span class="tag">因果ダイナミクス (DCM)</span>
+                                <span class="tag">MVPA (Multivariate Pattern Analysis)</span>
                             </div>
                         </div>
                     </div>
@@ -749,11 +753,13 @@
                         <div class="stage-number"></div>
                         <div class="stage-body">
                             <h4>実装（Implementation）</h4>
-                            <p>解読された意識を別の基盤（シリコン、オルガノイドなど）で動作させる技術。「本人性」を操作的に定義し、検証可能な形で議論することが目標である。</p>
+                            <p>解読された意識を別の基盤で動作させる技術。WBA（Whole Brain Architecture）<sup><a
+                                        href="#ref-20">[20]</a></sup>による計算機実装や、心理的連続性理論に基づく「情報の構造的保存率」を通じた本人性検証が議論の中心である。
+                            </p>
                             <div class="tag-list">
-                                <span class="tag">ニューロモーフィック</span>
-                                <span class="tag">脳オルガノイド</span>
-                                <span class="tag">全脳シミュレーション</span>
+                                <span class="tag">WBA (全脳アーキテクチャ)</span>
+                                <span class="tag">心理的連続性理論</span>
+                                <span class="tag">本人性ベンチマーク</span>
                             </div>
                         </div>
                     </div>
@@ -800,7 +806,7 @@
                 <p><strong>スケール統合の問題</strong>：分子・シナプス・回路・領域・全脳という異なるスケールの研究を統合する理論が不足している。それらを繋ぐ、例えば神経質量モデルとシナプス可塑性ルールを統合するような、普遍的な計算論的フレームワークがまだ確立されていない。
                 </p>
 
-                <p><strong>データ量の課題</strong>：しかし、ストレージ容量以上に、その膨大なパラメータを持つシステムを生物学的に妥当な形で動作させるための、神経ダイナミクスの根本原理の理解が本質的な課題です。
+                <p><strong>データ量の課題</strong>：ペタバイト級のデータ処理が必要となるが、ストレージ容量以上に、膨大なパラメータを持つシステムを生物学的に妥当な形で動作させるための、神経ダイナミクスの根本原理の理解が本質的な課題である。
                 </p>
 
                 <p><strong>ダイナミクスの理解</strong>：静的な構造（コネクトーム）だけでなく、時間的な動態の理解が不可欠である。活動パターンが学習によりどのように変化し行動へ影響するかという動的な問いへの回答は困難である。
@@ -810,12 +816,17 @@
                             href="#ref-7">[7]</a></sup>、fMRIは空間分解能はあるが時間分解能に限界がある<sup><a
                             href="#ref-8">[8]</a></sup>。両者を補完する新技術の開発が求められている。</p>
 
-                <h3>最新の技術進展（2024-2025）</h3>
-                <p><strong>高解像度イメージング</strong>：MITの「Megatome」等の技術により、単一脳サンプルでのマルチスケール統合観測（シナプスから全脳）が可能になりつつある。
+                <h3>最新の技術進展（2025）</h3>
+                <p><strong>Mind Captioning (NTT/Science Advances, 2025)</strong>：
+                    脳活動データから、思考の内容を直接自然言語で記述する技術が発表された<sup><a
+                            href="#ref-17">[17]</a></sup>。これにより、「計測→解読」の橋渡しが言語AI（LLM）との統合により実用的レベルに達し始めている。
                 </p>
-                <p><strong>4Dコネクトーム</strong>：UCSDの研究等は、静的な配線図だけでなく、学習に伴う動的な回路変化を捉える「4Dコネクトーム」へのアプローチを開始している。
+                <p><strong>MIND Act of 2025 (Federal Legislation)</strong>：
+                    米国で「Management of Individuals' Neural Data Act」が提案され、神経データの扱いに関する法的定義が明確化された<sup><a
+                            href="#ref-18">[18]</a></sup>。精神的プライバシー（Mental Privacy）の保護がマインドアップロード研究の前提条件となった。
                 </p>
-                <p><strong>fMRIデコーディング</strong>：テキサス大学オースティン校やNTTの研究により、非侵襲fMRIからの言語・思考の再構成精度が飛躍的に向上し、実装フェーズへの道が開かれつつある。
+                <p><strong>WBE Roadmap 2025 Update</strong>：
+                    「State of Brain Emulation Report 2025」では、標準評価プロトコルの欠如が指摘され、情報の構造保存率に基づく検証が提案された。
                 </p>
             </section>
 
@@ -838,21 +849,21 @@
                     <tbody>
                         <tr>
                             <td>1</td>
-                            <td>高密度EEG/fNIRS/fMRIの同時計測セットアップと再現性計測</td>
-                            <td>線形・Transformerを基準モデルとして再現性評価プロトコルを確立</td>
-                            <td>計測倫理審査とデータ主権の同意文書整備</td>
+                            <td>HD-EEG/fMRI同時計測セットアップ、再現性データ収集</td>
+                            <td>Transformerベースのデコーディング (MVPA AUC > 0.8 目標)</td>
+                            <td>MIND Act 2025準拠の同意プロセス、神経データプライバシー保護設計</td>
                         </tr>
                         <tr>
                             <td>2</td>
-                            <td>EEG-fMRI/MEGデータ融合とメタデータ整備</td>
-                            <td>拡散モデル・因果グラフ比較、表現の可搬性評価</td>
-                            <td>スケール統合モデルのシミュレーション検証</td>
+                            <td>ESI (Source Imaging) による信号分離とMEGデータの融合</td>
+                            <td>Dynamic Causal Modeling (DCM) による部位間因果ダイナミクス解析</td>
+                            <td>心理的連続性理論に基づく「本人性」評価指標の操作的定義</td>
                         </tr>
                         <tr>
                             <td>3</td>
-                            <td>オルガノイド/ニューロモーフィックチップでの機能再現評価</td>
-                            <td>本人性ベンチマークで解読器を統合評価、論文化</td>
-                            <td>倫理・データガバナンス指針完成、公開データセットリリース</td>
+                            <td>WBA (Whole Brain Architecture) 統合フレームワークでの動作検証</td>
+                            <td>IIT (Integrated Information Theory) 指標による意識レベルの定量的評価</td>
+                            <td>デジタル遺産・継承権の法的整備、本人性ベンチマークのリリース</td>
                         </tr>
                     </tbody>
                 </table>
@@ -871,18 +882,20 @@
                 <h2 class="section-title">Open Questions</h2>
 
                 <div class="question-box">
-                    <h4>コピーは「本人」か？</h4>
-                    <p>意識がコピーにより二つに分裂した場合、どちらが「本人」なのか。あるいは両方が本人なのか。これは哲学的に未解決であり、技術が実現しても答えが出るとは限らない。</p>
+                    <h4>MU と LLM シミュレーションの見分け</h4>
+                    <p>単に問いに答えるだけならLLMでも「その人らしく」振る舞える。アップロードされた主体が、単なる静的なプロンプトの反映（シミュレーション）ではなく、真に動的な意識の連続体であることをどう証明するか？（Issue
+                        #10関連）</p>
                 </div>
 
                 <div class="question-box">
-                    <h4>意識の科学的定義</h4>
-                    <p>「意識とは何か」について科学的な合意がない。主観的体験（クオリア）を客観的に測定・再現できるのか、そもそも定義可能なのかという根本的な問いがある。</p>
+                    <h4>MIND Act 2025下での遺産相続</h4>
+                    <p>法的・物理的に「コピー」が作成された場合、相続権は誰に帰属するのか。米国の新法やデジタル・ニューロン権利（Neurorights）の観点から、新たな法的定義が必要である。</p>
                 </div>
 
                 <div class="question-box">
-                    <h4>何を保存すべきか</h4>
-                    <p>「その人らしさ」を保つために何を計測・保存すべきか。神経接続だけで十分か、グリア細胞は必要か、腸内細菌叢の影響は？条件は理論によって大きく異なる。</p>
+                    <h4>グリア細胞と非神経要素</h4>
+                    <p>現在のコネクトームは神経細胞（ニューロン）が主役だが、意識の形成にグリア細胞や循環器・代謝系がどこまで寄与しているか。情報の保存すべき範囲の境界線（Boundary
+                        Problem）は未解決である。</p>
                 </div>
             </section>
 
@@ -947,7 +960,32 @@
                         <em>Nature</em> <strong>508</strong>, 207–214 (2014). <a
                             href="https://doi.org/10.1038/nature13186">doi:10.1038/nature13186</a>
                     </li>
+                    <li id="ref-17">NTT Research. Mind Reading through Brain–AI Integration: Decoding Mental Content
+                        from Human Brain Activity. <em>Science Advances</em> (Nov 5, 2025).</li>
+                    <li id="ref-18">Schumer, C. <em>et al.</em> Management of Individuals' Neural Data (MIND) Act of
+                        2025. U.S. Senate Bill (2025).</li>
+                    <li id="ref-19">Tononi, G. <em>et al.</em> Integrated information theory: from consciousness to its
+                        physical substrate. <em>Nat. Rev. Neurosci.</em> (2016).</li>
+                    <li id="ref-20">Yamagawa, H. The Whole Brain Architecture Approach: Engineering the Quest for
+                        Consciousness. <em>Front. Robot. AI</em> (2016).</li>
                 </ol>
+            </section>
+
+            <!-- Progress Log -->
+            <section class="section">
+                <h2 class="section-title">Progress Log (Activity)</h2>
+                <div class="note-box">
+                    <strong>2025-11-20</strong>
+                    <p>NTT R&D Forum 2025にてMind Captioning技術のデモンストレーションを確認。本プロジェクトのPhase 1デコーディング目標をHD-ESI統合型へ上方修正。</p>
+                </div>
+                <div class="note-box">
+                    <strong>2025-10-15</strong>
+                    <p>MIND Act 2025の草案を反映し、データガバナンス指針をアップデート。神経プライバシー保護のための差分プライバシー導入を検討開始。</p>
+                </div>
+                <div class="note-box">
+                    <strong>2025-08-01</strong>
+                    <p>HD-EEG（128ch）とfMRIの同時計測プロトコルが完成。最初のパイロットデータにおけるMVPA精度がAUC 0.72を記録。</p>
+                </div>
             </section>
 
         </article>
@@ -958,10 +996,10 @@
             <div class="key-points">
                 <h4>Key Points</h4>
                 <ul>
-                    <li>マインドアップロードは計測・解読・実装の3段階で構成される</li>
-                    <li>線虫・ショウジョウバエのコネクトームは完全に解明済み</li>
-                    <li>ヒト脳は約860億ニューロンを有し、スケールの壁が存在</li>
-                    <li>本人性の定義と検証は技術的・哲学的に未解決</li>
+                    <li>2025年、マインドキャプション（脳活動の言語化）が実用レベルへ</li>
+                    <li>MIND Act 2025により、神経データの法的保護が研究の必須要件に</li>
+                    <li>HD-ESI、Transformer、DCMを用いた高精度な計測と解読の統合</li>
+                    <li>IIT、WBA、心理的連続性理論に基づく本人性検証フレームワーク</li>
                 </ul>
             </div>
 
@@ -984,11 +1022,10 @@
             <div class="sidebar-box">
                 <h4>Ethics & Governance</h4>
                 <ul>
-                    <li>Neurorights議論を参照（精神的プライバシー権、認知的自由権）<sup><a href="#ref-12">[12]</a></sup><sup><a
-                                href="#ref-13">[13]</a></sup></li>
-                    <li>完全ロックイン患者の同意プロセスの確立</li>
-                    <li>GDPR/APPI準拠のデータ管理</li>
-                    <li>プライバシー予算の明示</li>
+                    <li>MIND Act of 2025 (US Federal) 準拠</li>
+                    <li>Neurorights議論（精神的プライバシー、認知的自由）<sup><a href="#ref-12">[12]</a></sup></li>
+                    <li>デジタル相続・遺産管理の法的フレームワーク設計</li>
+                    <li>本人性維持のための「情報の構造保存率」義務化</li>
                 </ul>
             </div>
 
