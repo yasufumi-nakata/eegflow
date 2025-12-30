@@ -901,6 +901,32 @@
                 </div>
             </section>
 
+            <!-- Column: LLM and Identity -->
+            <section class="section">
+                <h2 class="section-title">Column: LLMと本人性</h2>
+
+                <h3>LLMの内部挙動とマインドアップロードの共通点</h3>
+                <p>大規模言語モデル（LLM）は、膨大なテキストデータから学習した「パターン」に基づいて応答を生成する。興味深いことに、この挙動はマインドアップロード（MU）における「本人性識別」の問題と深い共通点を持つ。
+                </p>
+
+                <h3>情報の圧縮と再構成</h3>
+                <p>LLMは学習データを「重み（Weights）」として圧縮し、推論時にそれを再構成して出力する。これは、MUにおいて脳の情報を「スキャンデータ」として圧縮し、別の基盤で再構成するプロセスと構造的に類似している。両者において問いかけられるのは、<strong>「再構成されたものは元のものと同一か？」</strong>という根本的な問題である。
+                </p>
+
+                <h3>静的なプロンプト vs 動的な意識</h3>
+                <p>LLMに対して「ある人物の発言履歴」をプロンプトとして与えれば、その人物「らしい」応答を生成できる。しかし、これは「静的なシミュレーション」に過ぎず、その人物の意識が連続しているわけではない。MUの文脈では、アップロードされた主体が真に「その人」であるためには、単なる情報の静的な複製ではなく、<strong>動的な意識の連続性</strong>が保証される必要がある。
+                </p>
+
+                <h3>識別のための潜在的アプローチ</h3>
+                <p>LLMとMUの類似性は、本人性識別のための新たなアプローチを示唆する。例えば、</p>
+                <ul style="margin-left:20px;">
+                    <li><strong>予測不可能性</strong>: 静的なプロンプトでは生成できない、文脈に応じた「予測不可能な」応答の生成能力。</li>
+                    <li><strong>自己参照的更新</strong>: 新しい経験に基づいて自己モデルを更新する能力（LLMの推論時ファインチューニングに相当）。</li>
+                    <li><strong>因果的介入への反応</strong>: 外部からの介入に対して、一貫性のある因果的な反応を示すこと。</li>
+                </ul>
+                <p>これらの観点から、MUにおける本人性検証のベンチマークを設計することが、今後の研究課題となる。</p>
+            </section>
+
             <!-- References -->
             <section class="section references">
                 <h2 class="section-title">References</h2>
@@ -971,7 +997,8 @@
                     <li id="ref-20">Yamakawa, H. <em>et al.</em> Technology roadmap toward the completion of whole-brain
                         architecture with BRA-driven development. <em>Cognitive Systems Research</em>
                         <strong>88</strong>, 101300
-                        (2024).</li>
+                        (2024).
+                    </li>
                     <li id="ref-21">Katahira, K., Yamazaki, Y. & Nagata, N. EEG Correlates of the Flow State.
                         <em>Front. Psychol.</em> <strong>9</strong>, 300 (2018).
                     </li>

@@ -25,6 +25,26 @@
 
 - **GitHub**: https://github.com/yasufumi-nakata/eegflow
 
+## システム構成 (System Architecture)
+
+本プロジェクトでは、AIエージェントを活用した半自動的なコンテンツ更新ワークフローを採用しています。
+
+```mermaid
+graph LR
+    A[ユーザー] -->|Issue作成| B(Manus AI)
+    B -->|Issue登録| C[GitHub Issues]
+    C -->|Issue取得| D(Antigravity)
+    D -->|コード修正・コミット| E[GitHub Repository]
+    E -->|自動デプロイ| F[GitHub Pages]
+    F -->|閲覧| A
+```
+
+### ワークフロー
+
+1.  **Issue作成 (Manus)**: ユーザーがManus AIに対して改善提案や新機能のリクエストを伝えると、ManusがGitHub Issueを自動作成します。
+2.  **Issue処理 (Antigravity)**: Antigravity（本エージェント）がオープンなIssueを取得し、コードベースを分析・修正し、コミット＆プッシュを行います。コミットメッセージに `Fixes #N` を含めることで、Issueは自動的にクローズされます。
+3.  **デプロイ (GitHub Pages)**: `main` ブランチへのプッシュをトリガーに、GitHub Pagesが自動的にサイトを更新します。
+
 ## ホスティング
 
 - GitHub Pages
