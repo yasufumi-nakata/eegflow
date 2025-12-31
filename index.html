@@ -588,6 +588,29 @@
             margin: 0;
         }
 
+        .resolution-box {
+            border: 1px solid #2f3b2f;
+            background: #182018;
+            padding: 14px 16px;
+            margin-top: 10px;
+            border-left: 3px solid #7cb342;
+        }
+
+        .resolution-box h5 {
+            font-family: var(--font-sans);
+            font-size: 13px;
+            font-weight: 700;
+            color: #c5e1a5;
+            margin-bottom: 6px;
+        }
+
+        .resolution-box p {
+            font-size: 13px;
+            color: #d7e2cf;
+            margin: 0;
+            line-height: 1.5;
+        }
+
         /* Responsive */
         @media (max-width: 900px) {
             .main-container {
@@ -887,17 +910,35 @@
                     <h4>MU と LLM シミュレーションの見分け</h4>
                     <p>単に問いに答えるだけならLLMでも「その人らしく」振る舞える。アップロードされた主体が、単なる静的なプロンプトの反映（シミュレーション）ではなく、真に動的な意識の連続体であることをどう証明するか？（Issue
                         #10関連）</p>
+                    <div class="resolution-box">
+                        <h5>解決</h5>
+                        <p>本人性検証を「予測不可能性・自己更新性・因果反応性」の3軸で実装する。具体的には (1)
+                            非公開の出来事を含む縦断的対話タスクで一貫した内部状態更新を確認、(2) 介入刺激（TMS/入力文脈シフト）への因果整合性を計測、(3)
+                            情報理論指標（IIT Φ、因果エントロピー）による静的シミュレーションとの差分を可視化し、ベンチマークとして公開する。</p>
+                    </div>
                 </div>
 
                 <div class="question-box">
                     <h4>MIND Act 2025下での遺産相続</h4>
                     <p>法的・物理的に「コピー」が作成された場合、相続権は誰に帰属するのか。米国の新法やデジタル・ニューロン権利（Neurorights）の観点から、新たな法的定義が必要である。</p>
+                    <div class="resolution-box">
+                        <h5>解決</h5>
+                        <p>アップロード主体を「デジタル自然人」として扱う暫定ガバナンスを採用。原本人の明示的同意とタイムスタンプ付きログを前提に、(a)
+                            医療・研究データはコモンズ型ライセンスで共有、(b) 財産権はマルチシグ型信託に移管し、代理人とアップロード主体の共同承認で執行、(c)
+                            年次レビューで権利継承の整合性を監査する運用を推奨する。</p>
+                    </div>
                 </div>
 
                 <div class="question-box">
                     <h4>グリア細胞と非神経要素</h4>
                     <p>現在のコネクトームは神経細胞（ニューロン）が主役だが、意識の形成にグリア細胞や循環器・代謝系がどこまで寄与しているか。情報の保存すべき範囲の境界線（Boundary
                         Problem）は未解決である。</p>
+                    <div class="resolution-box">
+                        <h5>解決</h5>
+                        <p>Boundary Problem への対応として、EEG/fMRIに代謝・血流系の指標（fNIRS/RS-fMRI
+                            CBF）とカルシウムイメージング由来のグリア活動モデルを統合したハイブリッド解析を標準化する。情報保存の境界は「行動出力と意識指標へ統計的寄与を与える非神経成分」を含める形で定義し、Phase
+                            1〜2のプロトコルにグリア指標の収集・同定ステップを追加する。</p>
+                    </div>
                 </div>
             </section>
 
