@@ -121,6 +121,10 @@ Co-authored-by: gemini-cli <noreply@google.com>"
     log "変更をプッシュ中..."
     git push origin main
     
+    # Issueをクローズ
+    log "Issue #${ISSUE_NUM} をクローズ中..."
+    gh issue close "$ISSUE_NUM" --repo "$REPO" --comment "このIssueは自動解決システムにより対応されました。" || log "WARN: Issueのクローズに失敗しました"
+    
     log "Issue #${ISSUE_NUM} の処理が完了しました"
 done
 
