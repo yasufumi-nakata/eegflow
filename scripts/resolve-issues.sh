@@ -14,7 +14,8 @@ set -e
 # 設定
 REPO="yasufumi-nakata/eegflow"
 REPO_DIR="/Users/yasushi/Documents/GitHub/eegflow"
-LOG_DIR="/Users/yasushi/Library/Logs/eegflow"
+AUTOMATION_DIR="/Users/yasushi/eegflow-automation"
+LOG_DIR="${AUTOMATION_DIR}/logs"
 LOG_FILE="${LOG_DIR}/resolve-issues-$(date +%Y%m%d-%H%M%S).log"
 DRY_RUN=false
 
@@ -89,16 +90,22 @@ ${ISSUE_BODY}
     # gemini CLIで解決を試みる
     log "gemini CLIで Issue #${ISSUE_NUM} を解決中..."
     
-    # geminiをyoloモードで実行（自動承認）
-    GEMINI_RESULT=$(echo "$PROMPT" | timeout 300 gemini --yolo -o text 2>&1) || {
+    # プロンプトを一時ファイルに保存
+    PROMPT_FILE="${LOG_DIR}/prompt_${ISSUE_NUM}.txt"
+    echo "$PROMPT" > "$PROMPT_FILE"
+    
+    # geminiをyoloモードで実行（自動承認、positional promptで非対話）
+    if gtimeout 300 gemini --yolo -o text "$PROMPT" 2>&1 | tee -a "$LOG_FILE"; then
+        log "gemini処理完了"
+    else
         log "WARN: gemini での解決に失敗しました。codex を試みます..."
         
         # codexで再試行
-        GEMINI_RESULT=$(timeout 300 codex exec --approval-mode full-auto "$PROMPT" 2>&1) || {
+        if ! gtimeout 300 codex exec --approval-mode full-auto "$PROMPT" 2>&1 | tee -a "$LOG_FILE"; then
             log "ERROR: Issue #${ISSUE_NUM} の解決に失敗しました"
             continue
-        }
-    }
+        fi
+    fi
     
     log "AI処理完了"
     
