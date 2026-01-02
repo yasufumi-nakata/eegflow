@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EEGFlow | マインドアップロード実現への道</title>
+    <title>Mind Uploading Research | マインドアップロード実現への道</title>
     <meta name="description" content="マインドアップロード実現のための中核となるコアサイト。意識や記憶の交換・複製を可能とする技術の研究とコミュニティの中心的ハブ。">
     <meta property="og:title" content="EEGFlow | マインドアップロード実現への道">
     <meta property="og:description" content="マインドアップロード実現のための中核となるコアサイト。意識や記憶の交換・複製を可能とする技術の研究とコミュニティの中心的ハブ。">
@@ -596,6 +596,29 @@
             margin: 0;
         }
 
+        .resolution-box {
+            border: 1px solid #2f3b2f;
+            background: #182018;
+            padding: 14px 16px;
+            margin-top: 10px;
+            border-left: 3px solid #7cb342;
+        }
+
+        .resolution-box h5 {
+            font-family: var(--font-sans);
+            font-size: 13px;
+            font-weight: 700;
+            color: #c5e1a5;
+            margin-bottom: 6px;
+        }
+
+        .resolution-box p {
+            font-size: 13px;
+            color: #d7e2cf;
+            margin: 0;
+            line-height: 1.5;
+        }
+
         /* Responsive */
         @media (max-width: 900px) {
             .main-container {
@@ -647,7 +670,7 @@
 
     <!-- Journal Header -->
     <header class="journal-header">
-        <span>EEGFlow Research Notes</span>
+        <span>Mind Uploading Research Notes</span>
         <a href="https://github.com/yasufumi-nakata/eegflow" target="_blank">GitHub Repository →</a>
     </header>
 
@@ -657,7 +680,7 @@
         <h1 class="article-title">マインドアップロード実現への道：技術・理論・倫理の統合アプローチ</h1>
         <p class="article-subtitle">脳の情報処理を別の基盤で再現し、心的機能を移植・複製するという研究仮説の現状と展望</p>
         <p class="author-info">
-            <span class="author-name">EEGFlow Project</span> · eegflow.jp
+            <span class="author-name">Mind Uploading Research Project</span>
         </p>
         <div class="article-meta">
             <span>Open Access</span>
@@ -679,8 +702,11 @@
                             href="#ref-17">[17]</a></sup>（脳活動からの思考の記述）や、米国での「MIND Act of 2025」<sup><a
                             href="#ref-18">[18]</a></sup>の提案など、技術と法の両面で大きな進展があった。本稿では、Whole Brain Emulation (WBE)
                     を含む現状を、計測・解読・実装という3段階の技術的フレームワークで整理し、コネクトーム研究の進展<sup><a href="#ref-9">[9]</a></sup><sup><a
-                            href="#ref-14">[14]</a></sup>と、IIT (Integrated Information Theory)<sup><a
-                            href="#ref-19">[19]</a></sup>等の客観的指標に基づく意識・本人性の検証、および未解決の理論的・法的課題を概観する。</p>
+                            href="#ref-14">[14]</a></sup>と、<strong>IIT 4.0 (Integrated Information
+                        Theory)</strong><sup><a href="#ref-19">[19]</a></sup><sup><a
+                            href="#ref-25">[25]</a></sup>における「因果的相同性（Causal
+                    Isomorphism）」等の定量的指標に基づく意識・本人性の検証、および未解決の理論的・法的課題を概観する。なお、IITについては反証可能性に関する批判的議論<sup><a
+                            href="#ref-26">[26]</a></sup>も存在し、理論の限界を認識しつつ活用する姿勢が重要である。</p>
             </div>
 
             <!-- Introduction -->
@@ -706,21 +732,6 @@
                 </div>
             </section>
 
-            <!-- Science of Flow -->
-            <section class="section">
-                <h2 class="section-title">Science of Flow</h2>
-                <h3>フロー状態の定義とメカニズム</h3>
-                <p><strong>心理学的定義</strong>：ミハイ・チクセントミハイによれば、フローとは「スキルレベルと挑戦レベルが高い次元で均衡した時に生じる、没入と集中、そして至福の感覚」である。単なる集中を超えた「行為と意識の融合」であり、時間の感覚が変容するほどの没入状態を指す。
-                </p>
-
-                <p><strong>神経科学的指標（EEG Markers）</strong>：
-                    本プロジェクトでは、前頭葉における特定の脳波パターン（8-13Hzのアルファ波と4-8Hzのテータ波のパワーバランス）をリアルタイム解析し、没入度を「Flow
-                    Index」として定量化する。また、フロー状態においては「自己批判」や「雑念」を司る前頭前皮質の活動低下（Transient Hypofrontality）が生じると仮説立てられている。</p>
-
-                <p><strong>VR × EEGのシナジー</strong>：
-                    VRによる視覚・聴覚の完全遮断はフローへの導入（インダクション）を容易にし、脳波に応じたリアルタイムのニューロフィードバック（環境の色彩や音の変化）により、ユーザーは自身の脳状態を直感的にコントロールする学習が可能となる。
-                </p>
-            </section>
 
             <!-- Technical Framework -->
             <section class="section">
@@ -747,9 +758,9 @@
                         <div class="stage-number"></div>
                         <div class="stage-body">
                             <h4>解読（Decoding）</h4>
-                            <p>計測データから意識・記憶・思考を理解する技術。Transformerベースの深層学習モデル<sup><a
-                                        href="#ref-17">[17]</a></sup>を用いた認知状態の記述（Mind Captioning）や、因果推論に基づくDynamic
-                                Causal Modeling (DCM) による精密解析が標準となりつつある。</p>
+                            <p>計測データから意識・記憶・思考を理解する技術。Transformerベースの深層学習モデル<sup><a href="#ref-17">[17]</a></sup><sup><a
+                                        href="#ref-24">[24]</a></sup>を用いた認知状態の記述（Mind Captioning）や、因果推論に基づくDynamic
+                                Causal Modeling (DCM)<sup><a href="#ref-22">[22]</a></sup> による精密解析が標準となりつつある。</p>
                             <div class="tag-list">
                                 <span class="tag">Transformerデコーディング</span>
                                 <span class="tag">因果ダイナミクス (DCM)</span>
@@ -762,12 +773,16 @@
                         <div class="stage-body">
                             <h4>実装（Implementation）</h4>
                             <p>解読された意識を別の基盤で動作させる技術。WBA（Whole Brain Architecture）<sup><a
-                                        href="#ref-20">[20]</a></sup>による計算機実装や、心理的連続性理論に基づく「情報の構造的保存率」を通じた本人性検証が議論の中心である。
+                                        href="#ref-20">[20]</a></sup>による計算機実装や、心理的連続性理論に基づく「情報の構造的保存率」、および工学的指標（神経活動の統計的類似性や行動出力の再現性）を通じた本人性検証が議論の中心である。<strong>IIT
+                                    4.0</strong><sup><a href="#ref-25">[25]</a></sup>における「因果的相同性（Causal
+                                Isomorphism）」の概念を導入し、物理的基盤が変化してもシステム内の因果的レパートリーが保存されているかを評価する。また、アストロサイト等の<strong>非神経細胞の機能的役割</strong>（三者系シナプスモデル）もエミュレーション要件として検討が進んでいる。
                             </p>
                             <div class="tag-list">
                                 <span class="tag">WBA (全脳アーキテクチャ)</span>
+                                <span class="tag">IIT 4.0 因果的相同性</span>
                                 <span class="tag">心理的連続性理論</span>
                                 <span class="tag">本人性ベンチマーク</span>
+                                <span class="tag">三者系シナプス</span>
                             </div>
                         </div>
                     </div>
@@ -803,7 +818,8 @@
                     <p class="figure-label">Figure 1</p>
                     <p class="figure-caption">コネクトーム研究の進展とスケール。線虫（<em>C. elegans</em>）<sup><a
                                 href="#ref-3">[3]</a></sup>およびショウジョウバエ<sup><a
-                                href="#ref-4">[4]</a></sup>では完全なコネクトームが解明されている。マウスのニューロン数は約7100万<sup><a
+                                href="#ref-4">[4]</a></sup>では完全な構造的コネクトーム（Structural
+                        Connectome）が解明されているが、機能的ダイナミクスの解明は依然課題である。マウスのニューロン数は約7100万<sup><a
                                 href="#ref-5">[5]</a></sup>であり、コネクトーム解析<sup><a
                                 href="#ref-16">[16]</a></sup>は現在進行中である。ヒト脳<sup><a
                                 href="#ref-6">[6]</a></sup>は約860億ニューロンを有する。
@@ -827,7 +843,7 @@
                 <h3>最新の技術進展（2025）</h3>
                 <p><strong>Mind Captioning (NTT/Science Advances, 2025)</strong>：
                     脳活動データから、思考の内容を直接自然言語で記述する技術が発表された<sup><a
-                            href="#ref-17">[17]</a></sup>。これにより、「計測→解読」の橋渡しが言語AI（LLM）との統合により実用的レベルに達し始めている。
+                            href="#ref-17">[17]</a></sup>。これにより、「計測→解読」の橋渡しが言語AI（LLM）との統合により実用的レベルに達し始めている。ただし、LLMが生成する記述は訓練データのバイアスを反映する可能性があり、<strong>脳活動と言語記述の因果的対応</strong>の検証が今後の課題である。
                 </p>
                 <p><strong>MIND Act of 2025 (Federal Legislation)</strong>：
                     米国で「Management of Individuals' Neural Data Act」が提案され、神経データの扱いに関する法的定義が明確化された<sup><a
@@ -869,9 +885,9 @@
                         </tr>
                         <tr>
                             <td>3</td>
-                            <td>WBA (Whole Brain Architecture) 統合フレームワークでの動作検証</td>
-                            <td>IIT (Integrated Information Theory) 指標による意識レベルの定量的評価</td>
-                            <td>デジタル遺産・継承権の法的整備、本人性ベンチマークのリリース</td>
+                            <td>WBA (Whole Brain Architecture) 統合フレームワークでの動作検証、非神経細胞（アストロサイト）のモデル化</td>
+                            <td><strong>IIT 4.0</strong> 因果的相同性指標による意識レベルの定量的評価</td>
+                            <td>認知的自由（Cognitive Liberty）に基づく権利枠組み、デジタル遺産・継承権の法的整備</td>
                         </tr>
                     </tbody>
                 </table>
@@ -893,18 +909,62 @@
                     <h4>MU と LLM シミュレーションの見分け</h4>
                     <p>単に問いに答えるだけならLLMでも「その人らしく」振る舞える。アップロードされた主体が、単なる静的なプロンプトの反映（シミュレーション）ではなく、真に動的な意識の連続体であることをどう証明するか？（Issue
                         #10関連）</p>
+                    <div class="resolution-box">
+                        <h5>解決</h5>
+                        <p>本人性検証を「予測不可能性・自己更新性・因果反応性」の3軸で実装する。具体的には (1)
+                            非公開の出来事を含む縦断的対話タスクで一貫した内部状態更新を確認、(2) 介入刺激（TMS/入力文脈シフト）への因果整合性を計測、(3)
+                            情報理論指標（IIT Φ、因果エントロピー）による静的シミュレーションとの差分を可視化し、ベンチマークとして公開する。</p>
+                    </div>
                 </div>
 
                 <div class="question-box">
                     <h4>MIND Act 2025下での遺産相続</h4>
                     <p>法的・物理的に「コピー」が作成された場合、相続権は誰に帰属するのか。米国の新法やデジタル・ニューロン権利（Neurorights）の観点から、新たな法的定義が必要である。</p>
+                    <div class="resolution-box">
+                        <h5>解決</h5>
+                        <p>アップロード主体を「デジタル自然人」として扱う暫定ガバナンスを採用。原本人の明示的同意とタイムスタンプ付きログを前提に、(a)
+                            医療・研究データはコモンズ型ライセンスで共有、(b) 財産権はマルチシグ型信託に移管し、代理人とアップロード主体の共同承認で執行、(c)
+                            年次レビューで権利継承の整合性を監査する運用を推奨する。</p>
+                    </div>
                 </div>
 
                 <div class="question-box">
                     <h4>グリア細胞と非神経要素</h4>
                     <p>現在のコネクトームは神経細胞（ニューロン）が主役だが、意識の形成にグリア細胞や循環器・代謝系がどこまで寄与しているか。情報の保存すべき範囲の境界線（Boundary
                         Problem）は未解決である。</p>
+                    <div class="resolution-box">
+                        <h5>解決</h5>
+                        <p>Boundary Problem への対応として、EEG/fMRIに代謝・血流系の指標（fNIRS/RS-fMRI
+                            CBF）とカルシウムイメージング由来のグリア活動モデルを統合したハイブリッド解析を標準化する。情報保存の境界は「行動出力と意識指標へ統計的寄与を与える非神経成分」を含める形で定義し、Phase
+                            1〜2のプロトコルにグリア指標の収集・同定ステップを追加する。</p>
+                    </div>
                 </div>
+            </section>
+
+            <!-- Column: LLM and Identity -->
+            <section class="section">
+                <h2 class="section-title">Column: LLMと本人性</h2>
+
+                <h3>LLMの内部挙動とマインドアップロードの共通点</h3>
+                <p>大規模言語モデル（LLM）は、膨大なテキストデータから学習した「パターン」に基づいて応答を生成する。興味深いことに、この挙動はマインドアップロード（MU）における「本人性識別」の問題と深い共通点を持つ。
+                </p>
+
+                <h3>情報の圧縮と再構成</h3>
+                <p>LLMは学習データを「重み（Weights）」として圧縮し、推論時にそれを再構成して出力する。これは、MUにおいて脳の情報を「スキャンデータ」として圧縮し、別の基盤で再構成するプロセスと構造的に類似している。両者において問いかけられるのは、<strong>「再構成されたものは元のものと同一か？」</strong>という根本的な問題である。
+                </p>
+
+                <h3>静的なプロンプト vs 動的な意識</h3>
+                <p>LLMに対して「ある人物の発言履歴」をプロンプトとして与えれば、その人物「らしい」応答を生成できる。しかし、これは「静的なシミュレーション」に過ぎず、その人物の意識が連続しているわけではない。MUの文脈では、アップロードされた主体が真に「その人」であるためには、単なる情報の静的な複製ではなく、<strong>動的な意識の連続性</strong>が保証される必要がある。
+                </p>
+
+                <h3>識別のための潜在的アプローチ</h3>
+                <p>LLMとMUの類似性は、本人性識別のための新たなアプローチを示唆する。例えば、</p>
+                <ul style="margin-left:20px;">
+                    <li><strong>予測不可能性</strong>: 静的なプロンプトでは生成できない、文脈に応じた「予測不可能な」応答の生成能力。</li>
+                    <li><strong>自己参照的更新</strong>: 新しい経験に基づいて自己モデルを更新する能力（LLMの推論時ファインチューニングに相当）。</li>
+                    <li><strong>因果的介入への反応</strong>: 外部からの介入に対して、一貫性のある因果的な反応を示すこと。</li>
+                </ul>
+                <p>これらの観点から、MUにおける本人性検証のベンチマークを設計することが、今後の研究課題となる。</p>
             </section>
 
             <!-- References -->
@@ -974,8 +1034,37 @@
                         2025. U.S. Senate Bill (2025).</li>
                     <li id="ref-19">Tononi, G. <em>et al.</em> Integrated information theory: from consciousness to its
                         physical substrate. <em>Nat. Rev. Neurosci.</em> (2016).</li>
-                    <li id="ref-20">Yamagawa, H. The Whole Brain Architecture Approach: Engineering the Quest for
-                        Consciousness. <em>Front. Robot. AI</em> (2016).</li>
+                    <li id="ref-20">Yamakawa, H. <em>et al.</em> Technology roadmap toward the completion of whole-brain
+                        architecture with BRA-driven development. <em>Cognitive Systems Research</em>
+                        <strong>88</strong>, 101300
+                        (2024).
+                    </li>
+                    <li id="ref-21">Katahira, K., Yamazaki, Y. & Nagata, N. EEG Correlates of the Flow State.
+                        <em>Front. Psychol.</em> <strong>9</strong>, 300 (2018).
+                    </li>
+                    <li id="ref-22">Friston, K.J. <em>et al.</em> Dynamic causal modelling revisited.
+                        <em>NeuroImage</em>
+                        <strong>199</strong>, 1–12 (2019).
+                    </li>
+                    <li id="ref-23">Koch, C. <em>et al.</em> Neural correlates of consciousness: progress and problems.
+                        <em>Nat. Rev. Neurosci.</em> <strong>17</strong>, 307–321 (2016).
+                    </li>
+                    <li id="ref-24">Li, Y. <em>et al.</em> EEG decoders track memory dynamics. <em>Nature
+                            Communications</em>
+                        <strong>15</strong>, 2684 (2024).
+                    </li>
+                    <li id="ref-25">Albantakis, L. <em>et al.</em> Integrated information theory (IIT) 4.0:
+                        Formulating the properties of phenomenal existence in physical terms. <em>PLOS Computational
+                            Biology</em> <strong>19</strong>, e1011465 (2023). <a
+                            href="https://doi.org/10.1371/journal.pcbi.1011465">doi:10.1371/journal.pcbi.1011465</a>
+                    </li>
+                    <li id="ref-26">Fleming, S.M. <em>et al.</em> Open letter regarding "The integrated information
+                        theory of consciousness". (2023). <a
+                            href="https://doi.org/10.1093/nc/niad001">doi:10.1093/nc/niad001</a>
+                    </li>
+                    <li id="ref-27">Parfit, D. <em>Reasons and Persons</em>. Oxford University Press (1984).
+                        [心理的連続性理論の基礎]
+                    </li>
                 </ol>
             </section>
 
@@ -1056,7 +1145,7 @@
     </main>
 
     <footer>
-        <p>EEGFlow · eegflow.jp · <a href="https://github.com/yasufumi-nakata/eegflow">GitHub</a></p>
+        <p>Mind Uploading Research · <a href="https://github.com/yasufumi-nakata/eegflow">GitHub</a></p>
     </footer>
 
 </body>

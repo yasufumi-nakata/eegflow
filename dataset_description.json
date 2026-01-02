@@ -1,0 +1,18 @@
+{
+  "Name": "EEGFlow Project",
+  "BIDSVersion": "1.9.0",
+  "DatasetType": "raw",
+  "License": "CC-BY-4.0",
+  "Authors": [
+    "Yasufumi Nakata",
+    "EEGFlow Project Team"
+  ],
+  "Acknowledgements": "Special thanks to all contributors.",
+  "HowToAcknowledge": "Please cite the project website: https://eegflow.jp",
+  "Funding": [],
+  "ReferencesAndLinks": [
+    "https://eegflow.jp",
+    "https://github.com/yasufumi-nakata/eegflow"
+  ],
+  "DatasetDOI": ""
+}
