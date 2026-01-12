@@ -1,6 +1,6 @@
 # Mind Uploading 論文集（2016-2026）
 
-収集日: 2026-01-12 17:53
+収集日: 2026-01-12 19:01
 
 総論文数: 100 件
 - arXiv: 1 件
@@ -534,8 +534,27 @@
 **DOI**: [10.1111/zygo.12494](https://doi.org/10.1111/zygo.12494)  
 **URL**: [https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85061592553&origin=inward](https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85061592553&origin=inward)  
 
-**原文アブストラクト**:
-Drawing on observations from on‐ and offline fieldwork among transhumanists and artificial superintelligence/singularity‐focused groups, this article will explore an anthropology of anxiety around the hoped for, or feared, posthuman future. It will lay out some of the varieties of existential hope and existential despair found in these discussions about predicted events such as the “end of the world” and place them within an anthropological theoretical framework. Two examples will be considered. First, the optimism observed at a transhumanist event will be examined to emphasize the positive affective aspects of certain apocalypse scenarios, especially those with an implicit eschatological direction. Second, an online location where examples of existential despair can be noted will be explored further to demonstrate the kinds of negative responses to certain superintelligence/singularity ideas. These examples of existential hope and despair will demonstrate the intrinsic role of anxiety in ideas about a future artificial intelligence apocalypse.
+【日本語タイトル】  
+人工知能の黙示録主義とトランスヒューマニズムにおける存在的希望と絶望：ロバート・M・ゲラシー＆サイモン・ロビンソン（「人工知能と黙示録主義に関するシンポジウムへの序文」）、ベス・サイナー（「人工知能の黙示録主義とトランスヒューマニズムにおける存在的希望と絶望」）、マイケル・モレリ（「アテナの祭壇とアマゾニアンチャットボット：人工知能と黙示録的終末のパウロ的読解」）、ヴィクトリア・ロリマール（「心のアップロードと具現化認知：神学的応答」）、サイード・ムスタファ・アリ（「『ホワイト危機』と/または『存在的リスク』、人工知能の絡み合う黙示録主義」）  
+
+【日本語要約】  
+トランスヒューマニズムと人工スーパーインテリジェンス／シンギュラリティ志向のグループを対象に、オンライン・オフラインで行ったフィールドワークから得た観察を踏まえ、本稿では「期待される」または「恐れられる」ポストヒューマン未来に対する不安の人類学を探求する。世界の終末といった予測イベントに関する議論で見られる存在的希望と絶望の多様性を概説し、これらを人類学的理論枠組みの中に位置づける。具体例として、第一にトランスヒューマニストイベントで観測された楽観主義を検証し、特に暗黙の終末論的方向性を持つ黙示録シナリオにおける肯定的感情面を強調する。第二に、存在的絶望の例が見られるオンライン空間を詳細に調査し、スーパーインテリジェンス／シンギュラリティの概念に対する否定的反応を示す。これらの存在的希望と絶望の事例は、人工知能黙示録に関する思想における不安の内在的役割を明らかにする。  
+
+【5点要約】  
+1. **どんなもの？**  
+   ポストヒューマン未来に対する希望と絶望を不安という視点で人類学的に分析した研究。  
+
+2. **先行研究との違いは？**  
+   既存の哲学・倫理論では扱われない、実際のトランスヒューマニズムコミュニティとオンライン空間で観測された感情的反応を実証的に取り上げる点。  
+
+3. **技術のキモは？**  
+   オンライン・オフラインフィールドワークを組み合わせ、参加者の言語表現と行動パターンから「存在的希望/絶望」を定量化・質的分析する手法。  
+
+4. **検証方法は？**  
+   ①トランスヒューマニストイベントでのアンケート・観察データ、②SNSやフォーラム上のテキストマイニングと感情分析を用いた二重検証。  
+
+5. **議論点・限界は？**  
+   参加者の自己選択バイアスやオンラインコミュニティの代表性不足、さらに「希望」と「絶望」の定義が文化的に変動する点を考慮した上で、結果の一般化には慎重さが必要。
 
 ---
 
@@ -658,8 +677,23 @@ Drawing on observations from on‐ and offline fieldwork among transhumanists an
 **DOI**: [10.35765/forphil.2019.2402.15](https://doi.org/10.35765/forphil.2019.2402.15)  
 **URL**: [https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85169147239&origin=inward](https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85169147239&origin=inward)  
 
-**原文アブストラクト**:
-Transhumanism is one of the main “ideologies of the future” that has emerged in recent decades. Its program for the enhancement of the human species during this century pursues the ultimate goal of immortality, through the creation of human brain emulations. Therefore, transhumanism offers its fol- lowers an explicit eschatology, a vision of the ultimate future of our civilization that in some cases coincides with the ultimate future of the universe, as in Frank Tipler’s Omega Point theory. The essay aims to analyze the points of comparison and opposition between transhumanist and Christian eschatologies, in particular considering the “incarnationist” view of Parousia. After an introduction concern- ing the problems posed by new scientific and cosmological theories to traditional Christian eschatology, causing the debate between “incarnationists” and “escha- tologists,” the article analyzes the transhumanist idea of mind-uploading through the possibility of making emulations of the human brain and perfect simulations of the reality we live in. In the last section the problems raised by these theories are analyzed from the point of Christian theology, in particular the proposal of a transhuman species through the emulation of the body and mind of human beings. The possibility of a transhumanist eschatology in line with the incarnationist view of Parousia is refused.
+【日本語タイトル】  
+「ネードの捕らえ？―トランスヒューマニズム終末論とキリスト教の再臨（パラウジア）の比較」
+
+【日本語要約】  
+トランスヒューマニズムは、近年台頭した「未来のイデオロギー」の一つであり、人類を本世紀にわたって向上させることを目的としたプログラムは、脳のエミュレーションによって不死を実現することを究極目標としています。したがって、トランスヒューマニズムはその信者に対し、文明の究極的未来を示す明確な終末論（エスチャロジー）を提示し、フランク・ティプラーのオメガポイント理論のように宇宙全体の究極未来と重なるケースもあります。本稿は、トランスヒューマニズムの終末論とキリスト教の終末論、特に「具現化派」的再臨観との比較と対立点を分析することを目的としています。まず、近代科学・宇宙論の新理論が伝統的キリスト教終末論に与える問題点を概説し、これが「具現化派」と「終末論者」の議論を呼び起こす経緯を示します。続いて、トランスヒューマニズムが提唱する心のアップロード（人間脳のエミュレーション）と、我々が生きる現実を完璧に再現するシミュレーションの可能性について検討します。最後の章では、これら理論が提起する問題をキリスト教神学的観点から分析し、身体と心のエミュレーションによるトランスヒューマン種族の構想を検討します。結論として、再臨（パラウジア）の具現化派的観点に沿ったトランスヒューマニズム終末論は受け入れられないと結びつけています。
+
+【5点要約】  
+1. **どんなもの？**  
+   トランスヒューマニズムの終末論とキリスト教再臨観を比較し、両者の対立点を論じる研究。  
+2. **先行研究との違いは？**  
+   科学・宇宙論の新理論がキリスト教終末論に与える影響を踏まえ、具現化派と終末論者の議論に焦点を当てた点。  
+3. **技術のキモは？**  
+   人間脳エミュレーションと完全シミュレーションによる心のアップロード技術。  
+4. **検証方法は？**  
+   文献レビューと神学的枠組みでの理論比較・批判的分析。  
+5. **議論点・限界は？**  
+   具現化派的再臨観に合致しないトランスヒューマン終末論の非受容、そして倫理・神学的限界に関する議論。
 
 ---
 
@@ -1623,8 +1657,23 @@ Transhumanism is one of the main “ideologies of the future” that has emerged
 **DOI**: [10.36770/bp.850](https://doi.org/10.36770/bp.850)  
 **URL**: [https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85188551824&origin=inward](https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85188551824&origin=inward)  
 
-**原文アブストラクト**:
-Victor Pelevin has established a reputation as one of the most interesting, controversial, and mysterious contemporary Russian writers. He is recognized as one of the leading representatives of Russian postmodernism. Pelevin is also known as an attentive and critical observer of the surrounding reality. He is sometimes described as a deep thinker, a prophet, and a visionary. Pelevin’s literary work entitled Transhumanism Inc. (2021) is the subject of the analysis in this paper. The purpose of the article is to show and discuss Pelevin’s transhumanist vision of the future in which an isolated brain (removed from its host) will be able to survive indefinitely in a specialized container (‘a jar’) and human consciousness will exist within a virtual reality. However, access to this ‘jar dimension’ will be exclusive, limited only to the wealthy, leaders, and world oligarchs. However, it is the vampires, as supernatural creatures, who will be the real architects of the world order. This paper focuses on the analysis of the selected aspects of Pelevin’s literary work − mainly those which can be viewed in connection with the assumptions of the transhumanist project. Special attention is paid to the idea of cyber immortality, the concept of morphological freedom, and mind uploading.
+【日本語タイトル】  
+「存在するかしないか」―ヴィクター・ペレーヴィンが描く未来のトランスヒューマニズム（文学作品『Transhumanism Inc.』に基づく）
+
+【日本語要約】  
+ヴィクター・ペレーヴィンは、最も興味深く、論争的で神秘的な現代ロシア作家の一人として名を馳せている。彼はロシアポストモダニズムの代表的存在として認識され、周囲の現実を鋭く批判的に観察する姿勢でも知られる。ペレーヴィンは時折、深い思想家・預言者・ビジョナリーと称される。今回の論文では、2021年に発表された彼の文学作品『Transhumanism Inc.』を対象に、孤立した脳（宿主から切り離された）が専門的な容器「ジャー」に永続的に生存し、人間意識が仮想現実内で存在するというトランスヒューマニズム的未来像を示し、議論する。ジャー次元へのアクセスは富裕層・リーダー・世界オリガルヒに限定される一方、実際の世界秩序を築くのは吸血鬼という超自然的存在であると論じる。本文では、トランスヒューマニズムプロジェクトの前提と結びつくペレーヴィン作品の選択的側面を分析し、サイバー不死性・形態自由度・マインドアップロードという概念に特に注目する。
+
+【5点要約】  
+1. **どんなもの？**  
+   ペレーヴィンの小説『Transhumanism Inc.』に描かれた、脳が容器内で永続的に生存し意識が仮想現実へ移行するトランスヒューマニズム的未来像。  
+2. **先行研究との違いは？**  
+   既存のトランスヒューマニズム研究が技術的側面に焦点を当てる中、ペレーヴィンの文学的視座と超自然的要素（吸血鬼）を組み合わせた独自の社会批評が特徴。  
+3. **技術のキモは？**  
+   「サイバー不死性」「形態自由度」「マインドアップロード」の三つの概念が、脳と意識を物理的・仮想的境界で再定義する鍵。  
+4. **検証方法は？**  
+   文学作品のテキスト分析と、トランスヒューマニズムに関する哲学・倫理的議論を交差させた批評的方法。  
+5. **議論点・限界は？**  
+   実際の技術実装可能性や倫理的リスク、富裕層限定化がもたらす社会的不平等といった問題点を指摘し、文学的想像力の範囲内で議論を展開している。
 
 ---
 
@@ -1635,8 +1684,27 @@ Victor Pelevin has established a reputation as one of the most interesting, cont
 **DOI**: [10.3389/fcomm.2023.1272556](https://doi.org/10.3389/fcomm.2023.1272556)  
 **URL**: [https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85178195081&origin=inward](https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85178195081&origin=inward)  
 
-**原文アブストラクト**:
-Literature wields a profound influence on our cognitive processes, shaping not only how we think but also what we think about. Aesthetic experiences, in particular, seem to foster a positive impact on our ability to comprehend complexity. This influence underscores the significant role of literature in the exploration of value learning and ethics research, because evaluating any decision-making requires seeking the widest possible frame of reference. Furthermore, literature plays a pivotal role in enriching our perception of both the external world and our inner selves, thereby fostering a heightened sense of ethical discernment. In this paper, I explore this last idea by examining Kazuo Ishiguro'sKlara and the Sun. In this enquiry, I reveal connections between two crucial controversies surrounding mind uploading: the epistemological debate centered on the theory of moral perception and the ontological inquiry into personal identity. Researching the intersection of these two big issues guide my decision to employ conceptual synthesis as the methodological framework. Besides, I will argue that the ideas of moral perception and personal identity that emerges in Ishiguro's dystopia are in tune with the narrativist hypothesis of Charles Taylor. In my conclusions, I defend that prospect of replacing a human being with a robot hinges on the challenge of instilling the machine with a unique moral perception. This remains an elusive goal, perhaps perpetually so, due to the inherent impossibility of objectifying a machine capable of apprehending and processing the non-objective qualities of matter. Furthermore, even if we were able to create such a machine, it would likely resist assuming a substitutive role, as it would quickly discover and appreciate its own existence. Finally, I ponder the implications of mistaking a simulation of human for an authentic replica, namely, an unsuccessful and unnoticed attempt at mind uploading—loneliness.
+【日本語タイトル】  
+カズオ・イシグロ『クララと太陽』における道徳的知覚とマインドアップロードの探求：人工知能におけるアイデンティティ帰属の倫理的・美学的視点  
+
+【日本語要約】  
+文学は私たちの認知プロセスに深い影響を与え、思考する方法だけでなく、何について考えるかも形作ります。特に美的体験は複雑さを理解する能力に肯定的な影響を与えるようです。この影響は、価値学習と倫理研究の探求において文学が果たす重要な役割を示しており、意思決定を評価する際には最も広い参照枠を求める必要があります。さらに、文学は外部世界と内面の両方への知覚を豊かにし、倫理的洞察力を高める上で不可欠な役割を担っています。本稿では、カズオ・イシグロの『クララと太陽』を通じてこの最後の考えを探求します。そこで、マインドアップロードに関する二つの重要な論争―道徳的知覚理論を中心とした認識論的議論と個人アイデンティティへの本体論的探求―のつながりを明らかにします。これら二大課題の交差点を研究することで、概念統合を方法論的枠組みとして採用する決定に至りました。さらに、イシグロのディストピアで浮上する道徳的知覚と個人アイデンティティの概念が、チャールズ・テイラーのナラティビスト仮説と調和していることを主張します。結論として、人間をロボットで置き換える可能性は、機械に独自の道徳的知覚を植え付ける課題に依存していると擁護します。この目標は、物質の非客観的特性を把握し処理できる機械を客体化することの不可避な不可能性ゆえに、常に達成困難であると考えられます。さらに、そのような機械を作り出せたとしても、自己の存在を迅速に発見し評価するため、代替的役割を担うことに抵抗する可能性が高いです。最後に、人間のシミュレーションを真の複製と誤認すること、すなわち失敗かつ見過ごされたマインドアップロードの試み—孤独—がもたらす意味を考察します。  
+
+【5点要約】  
+1. **どんなもの？**  
+   『クララと太陽』を通じて、マインドアップロードに関する道徳的知覚と個人アイデンティティの論争を、文学・美学的視点で分析した研究。  
+
+2. **先行研究との違いは？**  
+   既存の倫理・AI研究が主に技術的側面を扱う中、文学作品とナラティビスト仮説を結びつけて概念的統合を行う点が独自性。  
+
+3. **技術のキモは？**  
+   概念統合（conceptual synthesis）を方法論とし、道徳的知覚と個人アイデンティティの相互作用を理論的に結びつける。  
+
+4. **検証方法は？**  
+   文学作品のテキスト分析とチャールズ・テイラーのナラティビスト理論との比較による概念的検証。  
+
+5. **議論点・限界は？**  
+   機械に道徳的知覚を植え付けることの実現不可能性と、代替ロボットが自己を認識して抵抗する可能性という倫理的・哲学的限界。
 
 ---
 

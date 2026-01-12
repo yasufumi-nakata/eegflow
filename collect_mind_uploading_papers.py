@@ -370,8 +370,8 @@ def generate_markdown_report(papers, cache):
 
 
 def generate_html_report(papers, cache):
-    """Generate a premium HTML report of all papers sorted chronologically."""
-    print(f"\n[Report] Generating premium HTML report...")
+    """Generate a high-end, responsive HTML report with a sticky sidebar and modern UI."""
+    print(f"\n[Report] Generating overhaul HTML report...")
 
     sorted_papers = sorted(papers, key=lambda x: (x['year'], x['published']), reverse=True)
 
@@ -382,210 +382,293 @@ def generate_html_report(papers, cache):
             papers_by_year[year] = []
         papers_by_year[year].append(paper)
 
-    # CSS for premium look
+    # UI Constants & Icons (Lucide-like SVGs)
+    ICON_SOURCE = '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5z"/><path d="M8 7h6"/><path d="M8 11h8"/><path d="M8 15h6"/></svg>'
+    ICON_DATE = '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></svg>'
+    ICON_USER = '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>'
+    ICON_LINK = '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>'
+
     css = """
     :root {
-        --primary-color: #6366f1;
-        --primary-hover: #4f46e5;
-        --bg-color: #0f172a;
+        --primary: #818cf8;
+        --primary-dark: #6366f1;
+        --bg: #0f172a;
+        --sidebar-bg: #1e293b;
         --card-bg: #1e293b;
-        --text-primary: #f8fafc;
-        --text-secondary: #94a3b8;
-        --accent-gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
-        --glass-bg: rgba(30, 41, 59, 0.7);
+        --text: #f1f5f9;
+        --text-muted: #94a3b8;
+        --border: rgba(255, 255, 255, 0.1);
+        --accent-gradient: linear-gradient(135deg, #818cf8 0%, #c084fc 100%);
+        --shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
     }
 
-    * { margin: 0; padding: 0; box-バランス: border-box; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
-        font-family: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        background-color: var(--bg-color);
-        color: var(--text-primary);
+        font-family: 'Outfit', sans-serif;
+        background-color: var(--bg);
+        color: var(--text);
         line-height: 1.6;
-        padding: 2rem 1rem;
+        display: grid;
+        grid-template-columns: 260px 1fr;
     }
 
-    .container {
+    /* Sidebar */
+    .sidebar {
+        height: 100vh;
+        background: var(--sidebar-bg);
+        border-right: 1px solid var(--border);
+        position: sticky;
+        top: 0;
+        padding: 2rem 1.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        z-index: 100;
+    }
+
+    .sidebar-logo {
+        font-size: 1.25rem;
+        font-weight: 800;
+        background: var(--accent-gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 1rem;
+    }
+
+    .sidebar-nav {
+        list-style: none;
+        overflow-y: auto;
+    }
+
+    .sidebar-nav li a {
+        display: block;
+        padding: 0.75rem 1rem;
+        color: var(--text-muted);
+        text-decoration: none;
+        border-radius: 12px;
+        transition: all 0.2s;
+        font-weight: 500;
+    }
+
+    .sidebar-nav li a:hover {
+        background: rgba(255, 255, 255, 0.05);
+        color: var(--text);
+    }
+
+    .sidebar-nav li a.active {
+        background: var(--primary);
+        color: white;
+    }
+
+    /* Main Content */
+    main {
+        padding: 4rem 2rem;
         max-width: 1000px;
         margin: 0 auto;
     }
 
     header {
-        text-align: center;
-        margin-bottom: 4rem;
-        padding: 3rem;
-        background: var(--glass-bg);
-        backdrop-filter: blur(10px);
-        border-radius: 24px;
-        border: 1px solid rgba(255,255,255,0.1);
-        box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+        margin-bottom: 5rem;
+        text-align: left;
     }
 
-    h1 {
-        font-size: 3rem;
-        margin-bottom: 1rem;
-        background: var(--accent-gradient);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+    header h1 {
+        font-size: 3.5rem;
         font-weight: 800;
-    }
-
-    .stats {
-        display: flex;
-        justify-content: center;
-        gap: 2rem;
-        margin-top: 1.5rem;
-        font-size: 0.9rem;
-        color: var(--text-secondary);
-    }
-
-    .year-section {
-        margin-bottom: 4rem;
-    }
-
-    .year-header {
-        font-size: 2rem;
-        margin-bottom: 2rem;
-        padding-bottom: 0.5rem;
-        border-bottom: 2px solid var(--primary-color);
-        display: inline-block;
-        font-weight: 700;
-        position: sticky;
-        top: 1rem;
-        background: var(--bg-color);
-        z-index: 10;
-        padding-right: 2rem;
-    }
-
-    .paper-card {
-        background-color: var(--card-bg);
-        border-radius: 20px;
-        padding: 2rem;
-        margin-bottom: 2rem;
-        border: 1px solid rgba(255,255,255,0.05);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        position: relative;
-        overflow: hidden;
-    }
-
-    .paper-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 20px 25px -5px rgba(0,0,0,0.3);
-        border-color: rgba(99, 102, 241, 0.3);
-    }
-
-    .source-tag {
-        position: absolute;
-        top: 1.5rem;
-        right: 1.5rem;
-        padding: 0.25rem 0.75rem;
-        border-radius: 9999px;
-        font-size: 0.75rem;
-        font-weight: 600;
-        background: var(--accent-gradient);
-    }
-
-    h3.paper-title {
-        font-size: 1.5rem;
+        line-height: 1.1;
         margin-bottom: 1rem;
-        padding-right: 5rem;
-        line-height: 1.3;
-        color: #fff;
+        letter-spacing: -0.02em;
     }
 
-    .meta-info {
-        font-size: 0.85rem;
-        color: var(--text-secondary);
+    header p {
+        color: var(--text-muted);
+        font-size: 1.125rem;
+        max-width: 600px;
+    }
+
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 1.5rem;
+        margin-top: 2.5rem;
+    }
+
+    .stat-card {
+        background: rgba(255,255,255,0.03);
+        padding: 1.25rem;
+        border-radius: 16px;
+        border: 1px solid var(--border);
+    }
+
+    .stat-card span { font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); letter-spacing: 0.05em; }
+    .stat-card div { font-size: 1.5rem; font-weight: 700; color: var(--primary); }
+
+    .year-title {
+        font-size: 2.5rem;
+        margin: 6rem 0 3rem;
+        font-weight: 800;
+        scroll-margin-top: 2rem;
+        position: relative;
+    }
+
+    .year-title::after {
+        content: '';
+        position: absolute;
+        bottom: -0.5rem;
+        left: 0;
+        width: 60px;
+        height: 6px;
+        background: var(--accent-gradient);
+        border-radius: 3px;
+    }
+
+    /* Paper Card */
+    .paper-card {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 24px;
+        padding: 2.5rem;
+        margin-bottom: 3rem;
+        box-shadow: var(--shadow);
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .paper-card:hover { transform: translateY(-4px); border-color: rgba(129, 140, 248, 0.4); }
+
+    .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.4rem 0.8rem;
+        background: rgba(129, 140, 248, 0.1);
+        color: var(--primary);
+        border-radius: 8px;
+        font-size: 0.75rem;
+        font-weight: 700;
         margin-bottom: 1.5rem;
+    }
+
+    .paper-card h3 {
+        font-size: 1.75rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        line-height: 1.3;
+    }
+
+    .meta {
         display: flex;
         flex-wrap: wrap;
-        gap: 1rem;
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+        color: var(--text-muted);
+        font-size: 0.875rem;
     }
 
-    .meta-item b { color: var(--text-primary); }
+    .meta-item { display: flex; align-items: center; gap: 0.5rem; }
+    .meta-item .icon { color: var(--primary); opacity: 0.8; }
 
-    .translation-box {
+    /* Japanese Translation Box */
+    .translation-container {
         background: rgba(0,0,0,0.2);
-        border-radius: 12px;
-        padding: 1.5rem;
-        margin-top: 1.5rem;
-        border-left: 4px solid var(--primary-color);
+        border-radius: 20px;
+        padding: 2rem;
+        border-left: 4px solid var(--primary);
     }
 
     .jp-title {
+        font-size: 1.25rem;
         font-weight: 700;
-        font-size: 1.1rem;
-        margin-bottom: 1rem;
-        color: #fff;
+        margin-bottom: 1.25rem;
+        color: white;
     }
 
     .jp-summary {
-        font-size: 0.95rem;
-        margin-bottom: 1.5rem;
-        color: #d1d5db;
+        font-size: 1rem;
+        color: #cbd5e1;
+        margin-bottom: 2rem;
+        white-space: pre-wrap;
     }
 
-    .five-point-title {
-        font-weight: 700;
-        margin-bottom: 0.75rem;
-        font-size: 0.9rem;
-        color: var(--primary-color);
+    .grid-5points {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.25rem;
+    }
+
+    .point-card {
+        background: rgba(255,255,255,0.03);
+        padding: 1.25rem;
+        border-radius: 16px;
+    }
+
+    .point-card label {
+        display: block;
+        font-size: 0.75rem;
+        font-weight: 800;
+        color: var(--primary);
         text-transform: uppercase;
+        margin-bottom: 0.5rem;
         letter-spacing: 0.05em;
     }
 
-    .five-point-list {
-        list-style: none;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 1rem;
-    }
+    .point-card p { font-size: 0.9rem; color: #e2e8f0; }
 
-    @media (max-width: 768px) {
-        .five-point-list { grid-template-columns: 1fr; }
-        h1 { font-size: 2rem; }
-    }
-
-    .point-item {
-        background: rgba(255,255,255,0.03);
-        padding: 0.75rem;
-        border-radius: 8px;
-        font-size: 0.85rem;
-    }
-
-    .point-label {
-        font-weight: 700;
-        color: var(--text-primary);
-        display: block;
-        margin-bottom: 0.25rem;
-    }
-
-    .url-btn {
-        display: inline-block;
-        margin-top: 1.5rem;
-        padding: 0.6rem 1.2rem;
-        background: var(--primary-color);
+    .btn-action {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-top: 2.5rem;
+        padding: 0.875rem 1.75rem;
+        background: var(--accent-gradient);
         color: white;
         text-decoration: none;
-        border-radius: 10px;
-        font-weight: 600;
-        font-size: 0.9rem;
-        transition: background 0.2s;
+        border-radius: 14px;
+        font-weight: 700;
+        transition: opacity 0.2s;
     }
 
-    .url-btn:hover { background: var(--primary-hover); }
+    .btn-action:hover { opacity: 0.9; }
 
-    .abstract-raw {
-        font-size: 0.85rem;
-        color: var(--text-secondary);
+    .raw-abstract {
+        margin-top: 2rem;
+        font-size: 0.875rem;
+        color: var(--text-muted);
+        border-top: 1px solid var(--border);
+        padding-top: 1.5rem;
         font-style: italic;
-        margin-top: 1rem;
-        border-top: 1px solid rgba(255,255,255,0.05);
-        padding-top: 1rem;
+    }
+
+    @media (max-width: 900px) {
+        body { grid-template-columns: 1fr; }
+        .sidebar { display: none; }
+        main { padding: 3rem 1.5rem; }
     }
     """
 
     import html
+
+    def parse_translation_robust(translation):
+        res = {"title": "", "summary": "", "points": []}
+        if not translation: return res
+
+        # Extract title
+        title_m = re.search(r'【日本語タイトル】\s*(.*?)\s*(?=【|$)', translation, re.DOTALL)
+        if title_m: res["title"] = title_m.group(1).strip()
+
+        # Extract summary
+        summary_m = re.search(r'【日本語要約】\s*(.*?)\s*(?=【|$)', translation, re.DOTALL)
+        if summary_m: res["summary"] = summary_m.group(1).strip()
+
+        # Extract 5 points
+        points_m = re.search(r'【5点要約】\s*(.*)', translation, re.DOTALL)
+        if points_m:
+            p_text = points_m.group(1)
+            # Match "1. Description \n Content"
+            p_list = re.findall(r'(\d+\.\s*[^?\n]+)\n(.*?)(?=\n\d+\.|$)', p_text + "\n", re.DOTALL)
+            res["points"] = p_list
+
+        return res
 
     with open(HTML_OUTPUT_FILE, 'w', encoding='utf-8') as f:
         f.write(f"""<!DOCTYPE html>
@@ -594,83 +677,88 @@ def generate_html_report(papers, cache):
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mind Uploading Paper Collection</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>{css}</style>
 </head>
 <body>
-<div class="container">
-    <header>
-        <h1>Mind Uploading Paper Collection</h1>
-        <p>学術論文集（2016-2026）</p>
-        <div class="stats">
-            <span>総論文数: <b>{len(papers)}</b></span>
-            <span>arXiv: <b>{len([p for p in papers if p['source'] == 'arXiv'])}</b></span>
-            <span>Scopus: <b>{len([p for p in papers if p['source'] == 'Scopus'])}</b></span>
-            <span>更新日: <b>{datetime.now().strftime('%Y-%m-%d')}</b></span>
-        </div>
-    </header>
+    <aside class="sidebar">
+        <div class="sidebar-logo">Mind Uploading</div>
+        <ul class="sidebar-nav">
+""")
+        for year in sorted(papers_by_year.keys(), reverse=True):
+            f.write(f'<li><a href="#year-{year}">{year}年</a></li>')
+
+        f.write(f"""
+        </ul>
+    </aside>
+    <main>
+        <header>
+            <h1>Mind Uploading Paper Collection</h1>
+            <p>過去10年間のマインドアップロードに関する主要な論文を収集し、AIによって翻訳・要約した資料です。</p>
+            <div class="stats-grid">
+                <div class="stat-card"><span>Total</span><div>{len(papers)}</div></div>
+                <div class="stat-card"><span>arXiv</span><div>{len([p for p in papers if p['source'] == 'arXiv'])}</div></div>
+                <div class="stat-card"><span>Scopus</span><div>{len([p for p in papers if p['source'] == 'Scopus'])}</div></div>
+            </div>
+        </header>
 """)
 
         for year in sorted(papers_by_year.keys(), reverse=True):
-            f.write(f'<section class="year-section"><h2 class="year-header">{year}年</h2>')
+            f.write(f'<h2 id="year-{year}" class="year-title">{year}年</h2>')
             for paper in papers_by_year[year]:
-                translation = cache.get(paper['id'], "")
+                translation_raw = cache.get(paper['id'])
+                parsed = parse_translation_robust(translation_raw)
 
-                # Parse translation parts
-                parts = {"title": paper['title'], "summary": "", "5point": []}
-                if translation:
-                    t_match = re.search(r'【日本語タイトル】\n(.*?)\n\n【日本語要約】', translation, re.DOTALL)
-                    if t_match: parts["title"] = t_match.group(1).strip()
+                # Use translated title from LLM if available, otherwise original
+                display_title_jp = parsed["title"] if parsed["title"] else "（翻訳中...）"
+                display_summary = parsed["summary"] if parsed["summary"] else "アブストラクトの日本語訳を準備中です。"
+                if not translation_raw and paper['abstract'] == "（アブストラクト取得不可）":
+                    display_summary = "（この論文はアブストラクトの取得ができなかったため、詳細な翻訳・要約が生成できませんでした）"
 
-                    s_match = re.search(r'【日本語要約】\n(.*?)\n\n【5点要約】', translation, re.DOTALL)
-                    if s_match: parts["summary"] = s_match.group(1).strip()
-
-                    p_match = re.search(r'【5点要約】\n(.*)', translation, re.DOTALL)
-                    if p_match:
-                        points = re.findall(r'\d+\.\s+(.*?)\n(.*?)(?=\n\d+\.\s+|$)', p_match.group(1) + "\n", re.DOTALL)
-                        parts["5point"] = points
-
-                doi_link = f'<a href="https://doi.org/{paper["doi"]}" style="color:var(--primary-color)">{paper["doi"]}</a>' if paper['doi'] else 'N/A'
+                doi_link = f'<a href="https://doi.org/{paper["doi"]}" target="_blank" style="color:inherit">{paper["doi"]}</a>' if paper['doi'] else 'N/A'
 
                 f.write(f"""
         <div class="paper-card">
-            <span class="source-tag">{paper['source']}</span>
-            <h3 class="paper-title">{html.escape(paper['title'])}</h3>
-            <div class="meta-info">
-                <span class="meta-item"><b>Date:</b> {paper['published']}</span>
-                <span class="meta-item"><b>Authors:</b> {html.escape(paper['authors'])}</span>
-                <span class="meta-item"><b>DOI:</b> {doi_link}</span>
-                {f'<span class="meta-item"><b>Affil:</b> {html.escape(paper["affiliation"])}</span>' if paper['affiliation'] else ''}
+            <div class="badge">{ICON_SOURCE} {paper['source']}</div>
+            <h3>{html.escape(paper['title'])}</h3>
+
+            <div class="meta">
+                <div class="meta-item">{ICON_DATE} {paper['published']}</div>
+                <div class="meta-item">{ICON_USER} {html.escape(paper['authors'])}</div>
+                <div class="meta-item">{ICON_LINK} DOI: {doi_link}</div>
+            </div>
+
+            <div class="translation-container">
+                <div class="jp-title">{html.escape(display_title_jp)}</div>
+                <div class="jp-summary">{html.escape(display_summary)}</div>
+
+                <div class="grid-5points">
+""")
+                if parsed["points"]:
+                    for label, content in parsed["points"]:
+                        f.write(f"""
+                    <div class="point-card">
+                        <label>{html.escape(label)}</label>
+                        <p>{html.escape(content.strip())}</p>
+                    </div>""")
+                elif translation_raw:
+                    # Fallback if points were not in "number. label\n content" format but text existed
+                    f.write(f'<div class="point-card" style="grid-column: 1/-1"><p>{html.escape(translation_raw.split("【5点要約】")[-1].strip())}</p></div>')
+
+                f.write("""
+                </div>
             </div>
 """)
-                if translation:
-                    escaped_summary = html.escape(parts["summary"]).replace('\n', '<br>')
-                    f.write(f"""
-            <div class="translation-box">
-                <div class="jp-title">{html.escape(parts["title"])}</div>
-                <div class="jp-summary">{escaped_summary}</div>
-                <div class="five-point-title">Quick Review</div>
-                <div class="five-point-list">
-""")
-                    for label, content in parts["5point"]:
-                        f.write(f"""
-                    <div class="point-item">
-                        <span class="point-label">{html.escape(label)}</span>
-                        {html.escape(content.strip())}
-                    </div>""")
-                    f.write("</div></div>")
+                if paper['abstract'] != "（アブストラクト取得不可）":
+                    f.write(f'<div class="raw-abstract"><b>Original Abstract:</b> {html.escape(paper["abstract"])}</div>')
 
                 f.write(f"""
-            <div class="abstract-raw"><b>Original Abstract:</b> {html.escape(paper['abstract'])}</div>
-            <a href="{paper['url']}" target="_blank" class="url-btn">View Full Paper</a>
+            <a href="{paper['url']}" target="_blank" class="btn-action">View Full Access {ICON_LINK}</a>
         </div>""")
-            f.write('</section>')
 
-        f.write("</div></body></html>")
+        f.write("</main></body></html>")
 
-    print(f"[Report] Saved to {HTML_OUTPUT_FILE}")
+    print(f"[Report] Overhaul HTML Saved to {HTML_OUTPUT_FILE}")
 
 
 def main():
