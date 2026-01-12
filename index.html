@@ -699,14 +699,13 @@
                 <p>マインドアップロード（Brain
                     Uploading）は、広義には脳の情報処理を別の基盤で再現し、心的機能を移植・複製するという概念であるが、本稿ではWBE、神経補綴、本人性検証の3領域が交差する統合的研究課題として定義する<sup><a
                             href="#ref-1">[1]</a></sup>。2025年にはNTTによる「Mind Captioning」技術の発表<sup><a
-                            href="#ref-17">[17]</a></sup>（脳活動からの思考の記述）や、米国での「MIND Act of 2025」<sup><a
-                            href="#ref-18">[18]</a></sup>の提案など、技術と法の両面で大きな進展があった。本稿では、Whole Brain Emulation (WBE)
-                    を含む現状を、計測・解読・実装という3段階の技術的フレームワークで整理し、コネクトーム研究の進展<sup><a href="#ref-9">[9]</a></sup><sup><a
-                            href="#ref-14">[14]</a></sup>と、<strong>IIT 4.0 (Integrated Information
-                        Theory)</strong><sup><a href="#ref-19">[19]</a></sup><sup><a
-                            href="#ref-25">[25]</a></sup>における「因果的相同性（Causal
-                    Isomorphism）」等の定量的指標に基づく意識・本人性の検証、および未解決の理論的・法的課題を概観する。なお、IITについては反証可能性に関する批判的議論<sup><a
-                            href="#ref-26">[26]</a></sup>も存在し、理論の限界を認識しつつ活用する姿勢が重要である。</p>
+                            href="#ref-4">[4]</a></sup>（fMRI脳活動からの思考内容の記述）や、米国での「MIND Act of 2025」<sup><a
+                            href="#ref-6">[6]</a></sup>の提案など、技術と法の両面で大きな進展があった。本稿では、Whole Brain Emulation (WBE)
+                    を含む現状を、計測・解読・実装という3段階の技術的フレームワークで整理し、コネクトーム研究の進展<sup><a href="#ref-9">[9]</a></sup>と、<strong>IIT 4.0
+                        (Integrated Information
+                        Theory)</strong><sup><a href="#ref-2">[2]</a></sup>における「因果的相同性（Causal
+                    Isomorphism）」等の定量的指標に基づく意識・本人性の検証を展望する。同時に、IITが内包する経験的検証の困難性や哲学的含意<sup><a
+                            href="#ref-3">[3]</a></sup>といった理論的限界、および未解決の倫理的・法的課題を概観する。</p>
             </div>
 
             <!-- Introduction -->
@@ -714,17 +713,17 @@
                 <h2 class="section-title">Introduction</h2>
 
                 <h3>技術と哲学の交差点</h3>
-                <p>マインドアップロードは、単なる技術的課題ではない。「意識とは何か」「自己とは何か」という人類最古の哲学的問いに、科学的アプローチで挑む試みである。1980年代から議論されてきたこのビジョン<sup><a
-                            href="#ref-1">[1]</a></sup>は、2000年代以降、計算論的神経科学の進展<sup><a
-                            href="#ref-2">[2]</a></sup>や「コネクトーム」概念の普及<sup><a
-                            href="#ref-9">[9]</a></sup>により、技術・倫理・哲学の横断課題として研究対象化してきた<sup><a
-                            href="#ref-10">[10]</a></sup>。</p>
+                <p>マインドアップロードは、単なる技術的課題ではない。「意識とは何か」「自己とは何か」という人類最古の哲学的問いに、科学的アプローチで挑む試みである。その概念は、初期の段階から意識の連続性や同一性問題を巡る哲学的議論と密接に結びついており<sup><a
+                            href="#ref-2">[2]</a>, <a href="#ref-15">[15]</a></sup>、単なる技術的課題に留まらない。主要な哲学的立場（例：意識は脳の物理状態に等しいとする<strong>物理主義</strong>、精神機能が実装されれば意識が宿るとする<strong>機能主義</strong>、心と物は別物とする<strong>二元論</strong>）が、マインドアップロードの実現可能性や倫理的課題にどう影響するかを理解することが、本研究の出発点となる。本サイトでは、計算論的神経科学の進展<sup><a
+                            href="#ref-17">[17]</a></sup>や「コネクトーム」概念の普及<sup><a
+                            href="#ref-18">[18]</a></sup>を踏まえ、この技術・倫理・哲学の横断課題を研究対象とする<sup><a
+                            href="#ref-2">[2]</a></sup>。</p>
 
                 <h3>用語とスコープ</h3>
                 <p>本サイトでは「マインドアップロード」を以下の3領域の交差点として扱う：(i) WBE（脳の機能を計算モデルとして再現する試み）<sup><a
-                            href="#ref-10">[10]</a></sup>、(ii) 侵襲/非侵襲の脳計測・刺激に基づく部分的な神経補綴（BCI/ニューロプロステティクス）<sup><a
-                            href="#ref-15">[15]</a></sup>、(iii)
-                    本人性（自己同一性）の操作的定義と検証<sup><a href="#ref-10">[10]</a></sup>。</p>
+                            href="#ref-2">[2]</a></sup>、(ii) 侵襲/非侵襲の脳計測・刺激に基づく部分的な神経補綴（BCI/ニューロプロステティクス）<sup><a
+                            href="#ref-19">[19]</a></sup>、(iii)
+                    本人性（自己同一性）の操作的定義と検証<sup><a href="#ref-2">[2]</a></sup>。</p>
 
                 <div class="note-box">
                     <strong>研究としての約束</strong>
@@ -745,7 +744,7 @@
                         <div class="stage-body">
                             <h4>計測（Sensing）</h4>
                             <p>脳活動を正確に読み取る技術。EEGの空間分解能の限界（体積伝導・逆問題）に対し、高密度EEG（HD-EEG）や脳磁図（MEG）、fMRIとの同時計測、およびソースイメージング（ESI）<sup><a
-                                        href="#ref-7">[7]</a></sup>を用いた統合的アプローチが進展している。</p>
+                                        href="#ref-25">[25]</a></sup>を用いた統合的アプローチが進展している。</p>
                             <div class="tag-list">
                                 <span class="tag">HD-EEG</span>
                                 <span class="tag">ESI (Source Imaging)</span>
@@ -758,9 +757,9 @@
                         <div class="stage-number"></div>
                         <div class="stage-body">
                             <h4>解読（Decoding）</h4>
-                            <p>計測データから意識・記憶・思考を理解する技術。Transformerベースの深層学習モデル<sup><a href="#ref-17">[17]</a></sup><sup><a
-                                        href="#ref-24">[24]</a></sup>を用いた認知状態の記述（Mind Captioning）や、因果推論に基づくDynamic
-                                Causal Modeling (DCM)<sup><a href="#ref-22">[22]</a></sup> による精密解析が標準となりつつある。</p>
+                            <p>計測データから意識・記憶・思考を理解する技術。Transformerベースの深層学習モデル<sup><a href="#ref-4">[4]</a>, <a
+                                        href="#ref-30">[30]</a></sup>を用いた認知状態の記述（Mind Captioning）や、因果推論に基づくDynamic
+                                Causal Modeling (DCM)<sup><a href="#ref-16">[16]</a></sup> による精密解析が標準となりつつある。</p>
                             <div class="tag-list">
                                 <span class="tag">Transformerデコーディング</span>
                                 <span class="tag">因果ダイナミクス (DCM)</span>
@@ -773,9 +772,12 @@
                         <div class="stage-body">
                             <h4>実装（Implementation）</h4>
                             <p>解読された意識を別の基盤で動作させる技術。WBA（Whole Brain Architecture）<sup><a
-                                        href="#ref-20">[20]</a></sup>による計算機実装や、心理的連続性理論に基づく「情報の構造的保存率」、および工学的指標（神経活動の統計的類似性や行動出力の再現性）を通じた本人性検証が議論の中心である。<strong>IIT
-                                    4.0</strong><sup><a href="#ref-25">[25]</a></sup>における「因果的相同性（Causal
-                                Isomorphism）」の概念を導入し、物理的基盤が変化してもシステム内の因果的レパートリーが保存されているかを評価する。また、アストロサイト等の<strong>非神経細胞の機能的役割</strong>（三者系シナプスモデル）もエミュレーション要件として検討が進んでいる。
+                                        href="#ref-10">[10]</a></sup>による計算機実装や、心理的連続性理論<sup><a
+                                        href="#ref-15">[15]</a></sup>に基づく「情報の構造的保存率」、および工学的指標（神経活動の統計的類似性や行動出力の再現性）を通じた本人性検証が議論の中心である。<strong>IIT
+                                    4.0</strong><sup><a href="#ref-2">[2]</a></sup>における「因果的相同性（Causal
+                                Isomorphism）」の概念を導入し、物理的基盤が変化してもシステム内の因果的レパートリー（Cause-Effect
+                                Repertoire）が保存されているかを評価する枠組みを検討する。しかし、IITは意識の「量（Φ）」と「質（構造）」を定義するが、それが「自己」の連続性を保証するかは自明ではない。また、その計算論的複雑性や経験的検証の困難性、汎心論的な含意から、学術界では活発な批判的議論も存在する<sup><a
+                                        href="#ref-3">[3]</a></sup>。これらの限界を認識しつつ、本人性検証の一指標としてその可能性を探る。さらに、アストロサイト等の<strong>非神経細胞の機能的役割</strong>（三者系シナプスモデル）もエミュレーション要件として検討が進んでいる。
                             </p>
                             <div class="tag-list">
                                 <span class="tag">WBA (全脳アーキテクチャ)</span>
@@ -817,37 +819,43 @@
                     </div>
                     <p class="figure-label">Figure 1</p>
                     <p class="figure-caption">コネクトーム研究の進展とスケール。線虫（<em>C. elegans</em>）<sup><a
-                                href="#ref-3">[3]</a></sup>およびショウジョウバエ<sup><a
-                                href="#ref-4">[4]</a></sup>では完全な構造的コネクトーム（Structural
+                                href="#ref-21">[21]</a></sup>およびショウジョウバエ<sup><a
+                                href="#ref-22">[22]</a></sup>では完全な構造的コネクトーム（Structural
                         Connectome）が解明されているが、機能的ダイナミクスの解明は依然課題である。マウスのニューロン数は約7100万<sup><a
-                                href="#ref-5">[5]</a></sup>であり、コネクトーム解析<sup><a
-                                href="#ref-16">[16]</a></sup>は現在進行中である。ヒト脳<sup><a
-                                href="#ref-6">[6]</a></sup>は約860億ニューロンを有する。
+                                href="#ref-23">[23]</a></sup>であり、コネクトーム解析<sup><a
+                                href="#ref-27">[27]</a></sup>は現在進行中である。ヒト脳<sup><a
+                                href="#ref-24">[24]</a></sup>は約860億ニューロンを有する。
                     </p>
                 </div>
 
                 <h3>主要な技術的課題</h3>
-                <p><strong>スケール統合の問題</strong>：分子・シナプス・回路・領域・全脳という異なるスケールの研究を統合する理論が不足している。それらを繋ぐ、例えば神経質量モデルとシナプス可塑性ルールを統合するような、普遍的な計算論的フレームワークがまだ確立されていない。
+                <p><strong>スケール統合の問題</strong>：分子・シナプス・回路・領域・全脳という異なるスケールの研究を統合する理論が不足している。解決策として、マルチスケールモデリング<sup><a
+                            href="#ref-9">[9]</a></sup>や階層的ベイズモデル<sup><a
+                            href="#ref-11">[11]</a></sup>の適用が探求されている。
                 </p>
 
-                <p><strong>データ量の課題</strong>：ペタバイト級のデータ処理が必要となるが、ストレージ容量以上に、膨大なパラメータを持つシステムを生物学的に妥当な形で動作させるための、神経ダイナミクスの根本原理の理解が本質的な課題である。
+                <p><strong>データ量の課題</strong>：ペタバイト級のデータ処理が必要となるが、本質的な課題は神経ダイナミクスの根本原理の理解にある。効率的なデータ圧縮や、生物学的に妥当な制約を導入した深層学習モデルの開発が求められる。
                 </p>
 
-                <p><strong>ダイナミクスの理解</strong>：静的な構造（コネクトーム）だけでなく、時間的な動態の理解が不可欠である。活動パターンが学習によりどのように変化し行動へ影響するかという動的な問いへの回答は困難である。
+                <p><strong>ダイナミクスの理解</strong>：静的なコネクトームだけでなく、動的な活動パターンの理解が不可欠である。高度な因果推論手法（DCM等）<sup><a
+                            href="#ref-14">[14]</a></sup>や、リカレントニューラルネットワークを用いた脳活動シミュレーション<sup><a
+                            href="#ref-10">[10]</a></sup>がアプローチとして考えられる。
                 </p>
 
                 <p><strong>非侵襲計測の限界</strong>：EEGは時間分解能に優れるが空間分解能が低く<sup><a
-                            href="#ref-7">[7]</a></sup>、fMRIは空間分解能はあるが時間分解能に限界がある<sup><a
-                            href="#ref-8">[8]</a></sup>。両者を補完する新技術の開発が求められている。</p>
+                            href="#ref-25">[25]</a></sup>、fMRIは空間分解能はあるが時間分解能に限界がある<sup><a
+                            href="#ref-26">[26]</a></sup>。光遺伝学等の侵襲的技術の知見を非侵襲技術の改善に繋げる研究も重要である。</p>
 
                 <h3>最新の技術進展（2025）</h3>
                 <p><strong>Mind Captioning (NTT/Science Advances, 2025)</strong>：
-                    脳活動データから、思考の内容を直接自然言語で記述する技術が発表された<sup><a
-                            href="#ref-17">[17]</a></sup>。これにより、「計測→解読」の橋渡しが言語AI（LLM）との統合により実用的レベルに達し始めている。ただし、LLMが生成する記述は訓練データのバイアスを反映する可能性があり、<strong>脳活動と言語記述の因果的対応</strong>の検証が今後の課題である。
+                    fMRIで計測した脳活動から、被験者が見ている画像の内容などを自然言語で記述する技術が発表された<sup><a href="#ref-4">[4]</a>, <a
+                        href="#ref-5">[5]</a></sup>。これは「計測→解読」の橋渡しにおいて大きな進展だが、その対象は主に視覚イメージに関する思考であり、精度も限定的である。また、LLMが生成する記述は訓練データのバイアスを反映する可能性があり、真の「因果的対応」の検証が不可欠である。この課題に対し、eegflowでは因果推論モデル（DCM等）とLLMを統合し、生成記述の妥当性を検証するアプローチを検討する。
                 </p>
                 <p><strong>MIND Act of 2025 (Federal Legislation)</strong>：
-                    米国で「Management of Individuals' Neural Data Act」が提案され、神経データの扱いに関する法的定義が明確化された<sup><a
-                            href="#ref-18">[18]</a></sup>。精神的プライバシー（Mental Privacy）の保護がマインドアップロード研究の前提条件となった。
+                    米国で「Management of Individuals' Neural Data Act」が提案され、神経データの扱いに関する法的議論が加速した<sup><a
+                            href="#ref-6">[6]</a>, <a href="#ref-7">[7]</a></sup>。この法案は、神経データの所有権、利用範囲、同意取得方法など具体的な論点を含み<sup><a
+                            href="#ref-8">[8]</a></sup>、精神的プライバシー（Mental Privacy）保護を社会実装の前提条件とするものである。この動きは、チリの憲法改正などにも見られる「ニューロライツ（Neurorights）」<sup><a
+                            href="#ref-12">[12]</a>, <a href="#ref-13">[13]</a></sup>の国際的な議論と連動しており、マインドアップロード研究における倫理・法的枠組みの構築に大きな影響を与える。
                 </p>
                 <p><strong>WBE Roadmap 2025 Update</strong>：
                     「State of Brain Emulation Report 2025」では、標準評価プロトコルの欠如が指摘され、情報の構造保存率に基づく検証が提案された。
@@ -973,37 +981,42 @@
                 <ol>
                     <li id="ref-1">Moravec, H. <em>Mind Children: The Future of Robot and Human Intelligence</em>.
                         Harvard University Press (1988).</li>
-                    <li id="ref-2">Sejnowski, T.J., Churchland, P.S. & Movshon, J.A. Computational Neuroscience.
-                        <em>Science</em> <strong>250</strong>, 744–747 (1990). <a
-                            href="https://doi.org/10.1126/science.250.4977.744">doi:10.1126/science.250.4977.744</a>
-                    </li>
-                    <li id="ref-3">White, J.G. <em>et al.</em> The Structure of the Nervous System of <em>C.
-                            elegans</em>. <em>Phil. Trans. R. Soc. B</em> (1986). <a
-                            href="https://doi.org/10.1098/rstb.1986.0056">doi:10.1098/rstb.1986.0056</a></li>
-                    <li id="ref-4">Scheffer, L.K. <em>et al.</em> A Connectome of the Adult <em>Drosophila</em> Central
-                        Brain. <em>eLife</em> (2020). <a
-                            href="https://doi.org/10.7554/eLife.57443">doi:10.7554/eLife.57443</a></li>
-                    <li id="ref-5">Herculano-Houzel, S. <em>et al.</em> Cellular Scaling Rules for Rodent Brains.
-                        <em>PNAS</em> (2006). <a
-                            href="https://doi.org/10.1073/pnas.0604911103">doi:10.1073/pnas.0604911103</a>
-                    </li>
-                    <li id="ref-6">Herculano-Houzel, S. The Human Brain in Numbers. <em>Front. Hum. Neurosci.</em>
-                        <strong>3</strong>, 31 (2009). <a
-                            href="https://doi.org/10.3389/neuro.09.031.2009">doi:10.3389/neuro.09.031.2009</a>
-                    </li>
-                    <li id="ref-7">Michel, C.M. & Brunet, D. EEG Source Imaging: A Practical Review. <em>Clin.
-                            Neurophysiol.</em> (2019). <a
-                            href="https://doi.org/10.1016/j.clinph.2019.02.004">doi:10.1016/j.clinph.2019.02.004</a>
-                    </li>
-                    <li id="ref-8">Logothetis, N.K. What We Can Do and What We Cannot Do with fMRI. <em>Nature</em>
-                        (2008). <a href="https://doi.org/10.1038/nature06976">doi:10.1038/nature06976</a></li>
-                    <li id="ref-9">Sporns, O., Tononi, G. & Kötter, R. The Human Connectome. <em>PLoS Comput. Biol.</em>
-                        <strong>1</strong>, e42 (2005). <a
-                            href="https://doi.org/10.1371/journal.pcbi.0010042">doi:10.1371/journal.pcbi.0010042</a>
-                    </li>
-                    <li id="ref-10">Sandberg, A. Feasibility of Whole Brain Emulation. In <em>Singularity
+                    <li id="ref-2">Sandberg, A. Feasibility of Whole Brain Emulation. In <em>Singularity
                             Hypotheses</em> (Springer, 2013). <a
                             href="https://doi.org/10.1007/978-3-642-31674-6_19">doi:10.1007/978-3-642-31674-6_19</a>
+                    </li>
+                    <li id="ref-3">Fleming, S.M. <em>et al.</em> Open letter regarding "The integrated information
+                        theory of consciousness". (2023). <a
+                            href="https://doi.org/10.1093/nc/niad001">doi:10.1093/nc/niad001</a>
+                    </li>
+                    <li id="ref-4">Horikawa, T. <em>et al.</em> Mind captioning: Evolving descriptive text of mental
+                        content from human brain activity. <em>Science Advances</em> (2025). <a
+                            href="https://doi.org/10.1126/sciadv.adw1464">doi:10.1126/sciadv.adw1464</a></li>
+                    <li id="ref-5">Kozlov, M. 'Mind-captioning' AI decodes brain activity to turn thoughts into text.
+                        <em>Nature</em> (2025). <a
+                            href="https://www.nature.com/articles/d41586-025-03624-1">https://www.nature.com/articles/d41586-025-03624-1</a>
+                    </li>
+                    <li id="ref-6">Schumer, C. <em>et al.</em> Management of Individuals' Neural Data (MIND) Act of
+                        2025. U.S. Senate Bill (2025). <a
+                            href="https://www.congress.gov/bill/119th-congress/senate-bill/2925/text">https://www.congress.gov/bill/119th-congress/senate-bill/2925/text</a>
+                    </li>
+                    <li id="ref-7">Cantwell, M. <em>et al.</em> Sens. Cantwell, Schumer, Markey Introduce Legislation
+                        to Shield Americans’ Brain Data from Exploitation. (2025). <a
+                            href="https://www.commerce.senate.gov/2025/9/sens-cantwell-schumer-markey-introduce-legislation-to-shield-americans-brain-data-from-exploitation">https://www.commerce.senate.gov/2025/9/sens-cantwell-schumer-markey-introduce-legislation-to-shield-americans-brain-data-from-exploitation</a>
+                    </li>
+                    <li id="ref-8">CSIS. When Thought Becomes Data: The MIND Act and the Coming Debate Over
+                        Neurotechnology. (2025). <a
+                            href="https://www.csis.org/analysis/when-thought-becomes-data-mind-act-and-coming-debate-over-neurotechnology">https://www.csis.org/analysis/when-thought-becomes-data-mind-act-and-coming-debate-over-neurotechnology</a>
+                    </li>
+                    <li id="ref-9">Van Essen, D.C. <em>et al.</em> The WU-Minn Human Connectome Project.
+                        <em>NeuroImage</em> <strong>80</strong>, 62–79 (2013). <a
+                            href="https://doi.org/10.1016/j.neuroimage.2013.05.041">doi:10.1016/j.neuroimage.2013.05.041</a>
+                    </li>
+                    <li id="ref-10">Yamakawa, H. <em>et al.</em> Technology roadmap toward the completion of whole-brain
+                        architecture with BRA-driven development. <em>Cognitive Systems Research</em>
+                        <strong>88</strong>, 101300
+                        (2024). <a
+                            href="https://doi.org/10.1016/j.cogsys.2024.101300">https://doi.org/10.1016/j.cogsys.2024.101300</a>
                     </li>
                     <li id="ref-11">Friston, K. The free-energy principle: a unified brain theory? <em>Nat. Rev.
                             Neurosci.</em> <strong>11</strong>, 127–138 (2010). <a
@@ -1015,55 +1028,67 @@
                         <em>Nature</em> <strong>551</strong>, 159–163 (2017). <a
                             href="https://doi.org/10.1038/551159a">doi:10.1038/551159a</a>
                     </li>
-                    <li id="ref-14">Van Essen, D.C. <em>et al.</em> The WU-Minn Human Connectome Project.
-                        <em>NeuroImage</em> <strong>80</strong>, 62–79 (2013). <a
-                            href="https://doi.org/10.1016/j.neuroimage.2013.05.041">doi:10.1016/j.neuroimage.2013.05.041</a>
-                    </li>
-                    <li id="ref-15">Schwartz, A.B. <em>et al.</em> Brain-Controlled Interfaces: Movement Restoration
-                        with Neural Prosthetics.
-                        <em>Neuron</em> <strong>52</strong>, 205–220 (2006). <a
-                            href="https://doi.org/10.1016/j.neuron.2006.09.019">doi:10.1016/j.neuron.2006.09.019</a>
-                    </li>
-                    <li id="ref-16">Oh, S.W. <em>et al.</em> A mesoscale connectome of the mouse brain.
-                        <em>Nature</em> <strong>508</strong>, 207–214 (2014). <a
-                            href="https://doi.org/10.1038/nature13186">doi:10.1038/nature13186</a>
-                    </li>
-                    <li id="ref-17">NTT Research. Mind Reading through Brain–AI Integration: Decoding Mental Content
-                        from Human Brain Activity. <em>Science Advances</em> (Nov 5, 2025).</li>
-                    <li id="ref-18">Schumer, C. <em>et al.</em> Management of Individuals' Neural Data (MIND) Act of
-                        2025. U.S. Senate Bill (2025).</li>
-                    <li id="ref-19">Tononi, G. <em>et al.</em> Integrated information theory: from consciousness to its
-                        physical substrate. <em>Nat. Rev. Neurosci.</em> (2016).</li>
-                    <li id="ref-20">Yamakawa, H. <em>et al.</em> Technology roadmap toward the completion of whole-brain
-                        architecture with BRA-driven development. <em>Cognitive Systems Research</em>
-                        <strong>88</strong>, 101300
-                        (2024).
-                    </li>
-                    <li id="ref-21">Katahira, K., Yamazaki, Y. & Nagata, N. EEG Correlates of the Flow State.
-                        <em>Front. Psychol.</em> <strong>9</strong>, 300 (2018).
-                    </li>
-                    <li id="ref-22">Friston, K.J. <em>et al.</em> Dynamic causal modelling revisited.
+                    <li id="ref-14">Friston, K.J. <em>et al.</em> Dynamic causal modelling revisited.
                         <em>NeuroImage</em>
-                        <strong>199</strong>, 1–12 (2019).
+                        <strong>199</strong>, 730-744 (2019). <a
+                            href="https://doi.org/10.1016/j.neuroimage.2019.06.023">https://doi.org/10.1016/j.neuroimage.2019.06.023</a>
                     </li>
-                    <li id="ref-23">Koch, C. <em>et al.</em> Neural correlates of consciousness: progress and problems.
-                        <em>Nat. Rev. Neurosci.</em> <strong>17</strong>, 307–321 (2016).
+                    <li id="ref-15">Parfit, D. <em>Reasons and Persons</em>. Oxford University Press (1984).
                     </li>
-                    <li id="ref-24">Li, Y. <em>et al.</em> EEG decoders track memory dynamics. <em>Nature
-                            Communications</em>
-                        <strong>15</strong>, 2684 (2024).
-                    </li>
-                    <li id="ref-25">Albantakis, L. <em>et al.</em> Integrated information theory (IIT) 4.0:
+                    <li id="ref-16">Albantakis, L. <em>et al.</em> Integrated information theory (IIT) 4.0:
                         Formulating the properties of phenomenal existence in physical terms. <em>PLOS Computational
                             Biology</em> <strong>19</strong>, e1011465 (2023). <a
                             href="https://doi.org/10.1371/journal.pcbi.1011465">doi:10.1371/journal.pcbi.1011465</a>
                     </li>
-                    <li id="ref-26">Fleming, S.M. <em>et al.</em> Open letter regarding "The integrated information
-                        theory of consciousness". (2023). <a
-                            href="https://doi.org/10.1093/nc/niad001">doi:10.1093/nc/niad001</a>
+                    <li id="ref-17">Sejnowski, T.J., Churchland, P.S. & Koch, C. Computational Neuroscience.
+                        <em>Science</em> <strong>241</strong>, 1299-1306 (1988). <a
+                            href="https://doi.org/10.1126/science.3045969">https://doi.org/10.1126/science.3045969</a>
                     </li>
-                    <li id="ref-27">Parfit, D. <em>Reasons and Persons</em>. Oxford University Press (1984).
-                        [心理的連続性理論の基礎]
+                    <li id="ref-18">Sporns, O., Tononi, G. & Kötter, R. The Human Connectome. <em>PLoS Comput.
+                            Biol.</em>
+                        <strong>1</strong>, e42 (2005). <a
+                            href="https://doi.org/10.1371/journal.pcbi.0010042">doi:10.1371/journal.pcbi.0010042</a>
+                    </li>
+                    <li id="ref-19">Schwartz, A.B. <em>et al.</em> Brain-Controlled Interfaces: Movement Restoration
+                        with Neural Prosthetics.
+                        <em>Neuron</em> <strong>52</strong>, 205–220 (2006). <a
+                            href="https://doi.org/10.1016/j.neuron.2006.09.019">doi:10.1016/j.neuron.2006.09.019</a>
+                    </li>
+                    <li id="ref-20">Tononi, G. <em>et al.</em> Integrated information theory: from consciousness to its
+                        physical substrate. <em>Nat. Rev. Neurosci.</em> (2016).</li>
+                    <li id="ref-21">White, J.G. <em>et al.</em> The Structure of the Nervous System of <em>C.
+                            elegans</em>. <em>Phil. Trans. R. Soc. B</em> (1986). <a
+                            href="https://doi.org/10.1098/rstb.1986.0056">doi:10.1098/rstb.1986.0056</a></li>
+                    <li id="ref-22">Scheffer, L.K. <em>et al.</em> A Connectome of the Adult <em>Drosophila</em> Central
+                        Brain. <em>eLife</em> (2020). <a
+                            href="https://doi.org/10.7554/eLife.57443">doi:10.7554/eLife.57443</a></li>
+                    <li id="ref-23">Herculano-Houzel, S. <em>et al.</em> Cellular Scaling Rules for Rodent Brains.
+                        <em>PNAS</em> (2006). <a
+                            href="https://doi.org/10.1073/pnas.0604911103">doi:10.1073/pnas.0604911103</a>
+                    </li>
+                    <li id="ref-24">Herculano-Houzel, S. The Human Brain in Numbers. <em>Front. Hum. Neurosci.</em>
+                        <strong>3</strong>, 31 (2009). <a
+                            href="https://doi.org/10.3389/neuro.09.031.2009">doi:10.3389/neuro.09.031.2009</a>
+                    </li>
+                    <li id="ref-25">Michel, C.M. & Brunet, D. EEG Source Imaging: A Practical Review. <em>Clin.
+                            Neurophysiol.</em> (2019). <a
+                            href="https://doi.org/10.1016/j.clinph.2019.02.004">doi:10.1016/j.clinph.2019.02.004</a>
+                    </li>
+                    <li id="ref-26">Logothetis, N.K. What We Can Do and What We Cannot Do with fMRI. <em>Nature</em>
+                        (2008). <a href="https://doi.org/10.1038/nature06976">doi:10.1038/nature06976</a></li>
+                    <li id="ref-27">Oh, S.W. <em>et al.</em> A mesoscale connectome of the mouse brain.
+                        <em>Nature</em> <strong>508</strong>, 207–214 (2014). <a
+                            href="https://doi.org/10.1038/nature13186">doi:10.1038/nature13186</a>
+                    </li>
+                    <li id="ref-28">Katahira, K., Yamazaki, Y. & Nagata, N. EEG Correlates of the Flow State.
+                        <em>Front. Psychol.</em> <strong>9</strong>, 300 (2018).
+                    </li>
+                    <li id="ref-29">Koch, C. <em>et al.</em> Neural correlates of consciousness: progress and problems.
+                        <em>Nat. Rev. Neurosci.</em> <strong>17</strong>, 307–321 (2016).
+                    </li>
+                    <li id="ref-30">Li, Y. <em>et al.</em> EEG decoders track memory dynamics. <em>Nature
+                            Communications</em>
+                        <strong>15</strong>, 2684 (2024).
                     </li>
                 </ol>
             </section>
