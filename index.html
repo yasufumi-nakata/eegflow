@@ -742,7 +742,7 @@
                         <div class="stage-number"></div>
                         <div class="stage-body">
                             <h4>解読（Decoding）</h4>
-                            <p>計測データから意識・記憶・思考を理解する技術。Transformerベースの深層学習モデル<sup><a href="#ref-11">[11]</a>, <a href="#ref-30">[30]</a></sup>を用いた認知状態の記述（Mind Captioning）は基礎研究で大きな進展を見せているが、自由な思考の完全な記述には至っておらず、実用化に向けた一歩と位置づけられる<sup><a href="#ref-12">[12]</a></sup>。また、因果推論に基づくDynamic Causal Modeling (DCM)<sup><a href="#ref-13">[13]</a></sup> による精密解析も重要だが、そのモデルの前提条件や適用範囲の限界を理解する必要がある<sup><a href="#ref-14">[14]</a></sup>。</p>
+                            <p>計測データから意識・記憶・思考を理解する技術。Transformerベースの深層学習モデル<sup><a href="#ref-11">[11]</a>, <a href="#ref-30">[30]</a></sup>を用いた認知状態の記述（Mind Captioning）は基礎研究で大きな進展を見せているが、その適用範囲は視覚的想起など特定のドメインに限られ、自由な思考の完全な記述には至っていない<sup><a href="#ref-12">[12]</a></sup>。また、因果推論に基づくDynamic Causal Modeling (DCM)<sup><a href="#ref-13">[13]</a></sup> による精密解析も重要だが、そのモデルの前提条件や適用範囲の限界を理解する必要がある<sup><a href="#ref-14">[14]</a></sup>。</p>
                             <div class="tag-list">
                                 <span class="tag">Transformerデコーディング</span>
                                 <span class="tag">因果ダイナミクス (DCM)</span>
@@ -754,7 +754,7 @@
                         <div class="stage-number"></div>
                         <div class="stage-body">
                             <h4>実装（Implementation）</h4>
-                            <p>解読された意識を別の基盤で動作させる技術。WBA（Whole Brain Architecture）<sup><a href="#ref-15">[15]</a></sup>による計算機実装が構想されているが、その実現には膨大な計算資源と脳機能の完全な理解が必要であり、現在の研究はその基礎段階にある<sup><a href="#ref-16">[16]</a></sup>。本人性検証では、心理的連続性理論<sup><a href="#ref-6">[6]</a></sup>に基づく「情報の構造的保存率」や、工学的指標（神経活動の統計的類似性や行動出力の再現性）が議論の中心だが、これらが意識の連続性や主観的経験の同一性といった哲学的問題を完全に解決するものではない点に留意が必要である。さらに、<strong>IIT 4.0</strong><sup><a href="#ref-17">[17]</a></sup>における「因果的相同性（Causal Isomorphism）」の概念を導入し、物理的基盤が変化してもシステム内の因果的レパートリーが保存されているかを評価する枠組みも検討される。しかし、IITの理論自体が発展途上であり、その計算論的複雑性や汎心論的な含意から、学術界では活発な批判的議論も存在する<sup><a href="#ref-18">[18]</a></sup>。本研究ではこれらの限界を認識しつつ、本人性検証の一指標としてその可能性を探る。加えて、アストロサイト等の<strong>非神経細胞の機能的役割</strong>（三者系シナプスモデル）も、WBEの要件としてその重要性が増している。</p>
+                            <p>解読された意識を別の基盤で動作させる技術。WBA（Whole Brain Architecture）<sup><a href="#ref-15">[15]</a></sup>による計算機実装が構想されているが、その実現には膨大な計算資源と脳機能の完全な理解が必要であり、現在の研究はその基礎段階にある<sup><a href="#ref-16">[16]</a></sup>。本人性検証では、心理的連続性理論<sup><a href="#ref-6">[6]</a></sup>に基づく「情報の構造的保存率」や、工学的指標（神経活動の統計的類似性や行動出力の再現性）が議論の中心だが、これらが意識の連続性や主観的経験の同一性といった哲学的問題を完全に解決するものではない点に留意が必要である。さらに、<strong>IIT 4.0</strong><sup><a href="#ref-17">[17]</a></sup>における「因果的相同性（Causal Isomorphism）」の概念を導入し、物理的基盤が変化してもシステム内の因果的レパートリーが保存されているかを評価する枠組みも検討される。しかし、IITには解決すべき重要な課題が残されている。第一に、統合情報量Φの計算はNP困難であり、マウス脳規模のシミュレーションですら現実的な時間で計算することは極めて困難であるという<strong>計算コストの問題</strong>がある<sup><a href="#ref-17">[17]</a></sup>。第二に、因果構造の相同性が、必ずしも主観的体験（クオリア）の同一性を保証しないという<strong>現象的同一性の欠如</strong>は、意識の困難な問題に直結する根源的な批判である<sup><a href="#ref-6">[6]</a>, <a href="#ref-18">[18]</a></sup>。本研究ではこれらの限界を認識しつつ、本人性検証の一指標としてその可能性を探る。加えて、近年の「三者系シナプス」モデル<sup><a href="#ref-31">[31]</a></sup>研究の進展により、アストロサイト等の非神経細胞が単なる補助細胞ではなく、神経回路の同期や論理ゲート機能に積極的に寄与する「計算ユニット」である可能性が示唆されている。そのため、WBEの実現には、これらの細胞活動も含めたエミュレーションが不可欠であるという認識が広まっている。</p>
                             <div class="tag-list">
                                 <span class="tag">WBA (全脳アーキテクチャ)</span>
                                 <span class="tag">IIT 4.0 因果的相同性</span>
@@ -781,10 +781,10 @@
                 
                 <h3>最新の技術進展（2025年時点の動向）</h3>
                 <p><strong>Mind Captioning (NTT/Science Advances, 2025)</strong>：
-                    fMRIで計測した脳活動から、被験者が見ている画像の内容などを自然言語で記述する技術が発表された<sup><a href="#ref-11">[11]</a>, <a href="#ref-12">[12]</a></sup>。これは「計測→解読」の橋渡しにおいて「実用化に向けた重要な一歩」と評価できるが、その対象は主に特定の刺激に対する脳活動であり、自由な思考の完全な記述には至っていない。また、生成された言語が脳内の思考と真の「因果的対応」を持つかどうかの検証は、今後の重要な課題である<sup><a href="#ref-23">[23]</a></sup>。
+                    fMRIで計測した脳活動から、被験者が見ている画像の内容などを自然言語で記述する技術が発表された<sup><a href="#ref-11">[11]</a>, <a href="#ref-12">[12]</a></sup>。これは、視覚的想起の言語化において実証的な成功を収めているが、抽象的思考や論理的推論のデコーディングには依然として大きな技術的隔たりがある。また、生成された言語が脳内の思考と真の「因果的対応」を持つかどうかの検証は、今後の重要な課題である<sup><a href="#ref-23">[23]</a></sup>。
                 </p>
-                <p><strong>MIND Act of 2025 (Federal Legislation)</strong>：
-                    米国で「Management of Individuals' Neural Data Act」が提案され、神経データの扱いに関する法的議論が加速した<sup><a href="#ref-24">[24]</a></sup>。この法案は提案段階にあるものの、神経データの所有権や利用範囲など具体的な論点を含んでおり、精神的プライバシー（Mental Privacy）の保護がマインドアップロード研究の前提条件となることを示唆している。この動きは、チリの憲法改正などにも見られる「ニューロライツ（Neurorights）」<sup><a href="#ref-27">[27]</a></sup>の国際的な議論と連動しており、マインドアップロード研究における倫理・法的枠組みの構築に大きな影響を与える。
+                <p><strong>MIND Act of 2025 and Global Governance</strong>：
+                    米国で、神経データの法的定義の明確化を目指す連邦法案「Management of Individuals' Neural Data Act」が提案されるなど、国レベルでの法整備が進んでいる<sup><a href="#ref-24">[24]</a></sup>。この法案は2026年1月現在、審議中の段階であるが、精神的プライバシー保護の重要性を示唆している。さらに重要な動きとして、2025年11月にはユネスコが「神経技術の倫理に関する勧告」を採択し、国際的なガバナンスの標準を提示した<sup><a href="#ref-34">[34]</a></sup>。この勧告は、精神的プライバシー、個人のアイデンティティ、自由意思といった「ニューロライツ（Neurorights）」<sup><a href="#ref-27">[27]</a></sup>の保護を加盟国に求めており、本研究のようなマインドアップロードに関する取り組みが準拠すべきグローバルな倫理的枠組みとなりつつある。
                 </p>
 
                 <!-- Figure: Connectome Progress -->
@@ -937,6 +937,7 @@
                     <li id="ref-31">De Pittà, M., et al. (2012). Computational glial cell biology: a (re)newed beginning. <i>Frontiers in Computational Neuroscience</i>, 6, 32. <a href="https://doi.org/10.3389/fncom.2012.00032">doi:10.3389/fncom.2012.00032</a></li>
                     <li id="ref-32">American Psychological Association. (2020). <i>Publication Manual of the American Psychological Association (7th ed.)</i>.</li>
                     <li id="ref-33">International Organization for Standardization. (2010). <i>ISO 690:2010</i>.</li>
+                    <li id="ref-34">UNESCO. (2025). <i>Recommendation on the Ethics of Neurotechnology</i>. (Note: Adopted in Nov 2025).</li>
                 </ol>
             </section>
 
