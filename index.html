@@ -698,18 +698,18 @@
             <!-- Abstract -->
             <div class="abstract-box">
                 <h2>Abstract</h2>
-                <p>マインドアップロード（Brain Uploading）は、広義には脳の情報処理を別の基盤で再現し、心的機能を移植・複製するという、その技術的・哲学的含意において極めて複雑な研究仮説である<sup><a href="#ref-1">[1]</a></sup>。本稿ではこの課題を、WBE（全脳エミュレーション）、神経補綴、本人性検証の3領域が交差する統合的研究課題として位置づける<sup><a href="#ref-2">[2]</a></sup>。2025年には、NTTによる「Mind Captioning」技術の発表<sup><a href="#ref-11">[11]</a></sup>や、米国での「MIND Act of 2025」の提案<sup><a href="#ref-24">[24]</a></sup>など、技術と法の両面で大きな進展が見られた。本稿では、WBEを含む現状を、計測・解読・実装という3段階の技術的フレームワークで整理し、コネクトーム研究の進展と、<strong>IIT 4.0 (Integrated Information Theory)</strong><sup><a href="#ref-17">[17]</a></sup>における「因果的相同性（Causal Isomorphism）」等の定量的指標に基づく意識・本人性の検証を展望する。同時に、IITについては反証可能性に関する批判的議論<sup><a href="#ref-18">[18]</a></sup>も存在し、その理論の限界（例：現象的意識の特定の側面を説明する一方、アクセス意識のような他の側面の説明は不十分である点など<sup><a href="#ref-3">[3]</a></sup>）を認識しつつ活用する姿勢が重要である。本稿はこれらの理論的限界と、未解決の倫理的・法的課題を概観する。</p>
+                <p>マインドアップロード（Whole Brain Emulation, WBE）は、脳の情報処理とそれに伴う心的機能を、生物学的基盤から計算機等の別基盤へ移植・再現する研究領域である<sup><a href="#ref-2">[2]</a></sup>。本稿ではこの壮大な課題を、(1)計測、(2)解読、(3)実装の3段階の技術的フレームワークで整理し、各段階における最新の学術的知見と未解決の課題を批判的に検討する。特に、意識の統合情報理論（IIT 4.0）<sup><a href="#ref-17">[17]</a></sup>やNTTによるMind Captioning技術<sup><a href="#ref-11">[11]</a></sup>といった最新トピックを、その理論的・技術的限界と共に論じる。IITが直面する計算量の問題や反証可能性に関する批判<sup><a href="#ref-18">[18]</a></sup>、デコーディング技術とエミュレーションの間の論理的飛躍など、楽観的な技術論では見過ごされがちな課題を直視し、より厳密で実現可能な研究計画を提案する。本稿は、これらの技術的・理論的課題に加え、デレク・パーフィットの心理的連続性理論<sup><a href="#ref-4">[4]</a></sup>に端を発する哲学的問題や、MIND Act of 2025<sup><a href="#ref-24">[24]</a></sup>に代表される法的・倫理的課題を統合的に概観し、今後の研究の方向性を提示する。</p>
             </div>
 
             <!-- Introduction -->
             <section class="section">
                 <h2 class="section-title">Introduction</h2>
 
-                <h3>用語とスコープ (Terminology and Scope)</h3>
-                <p>本サイトでは「マインドアップロード」を以下の3領域の交差点として扱う：(i) <strong>WBE（Whole Brain Emulation）</strong>：脳の機能を計算モデルとして再現する試み<sup><a href="#ref-4">[4]</a>, <a href="#ref-5">[5]</a></sup>。(ii) <strong>神経補綴（Neuroprosthetics）</strong>：侵襲/非侵襲の脳計測・刺激に基づく部分的な機能代替。(iii) <strong>本人性（Personal Identity）</strong>：自己同一性の操作的定義と検証。後者については、哲学的な基盤<sup><a href="#ref-6">[6]</a></sup>に加え、神経科学における自己モデルの議論<sup><a href="#ref-7">[7]</a></sup>も参照する。</p>
-
-                <h3>技術と哲学の交差点</h3>
-                <p>マインドアップロードは、単なる技術的課題ではない。「意識とは何か」「自己とは何か」という人類最古の哲学的問いに、科学的アプローチで挑む試みである。その概念は、初期の段階から意識の連続性や同一性問題を巡る哲学的議論と密接に結びついており<sup><a href="#ref-6">[6]</a>, <a href="#ref-15">[15]</a></sup>、単なる技術的課題に留まらない。主要な哲学的立場（例：意識は脳の物理状態に等しいとする<strong>物理主義</strong>、精神機能が実装されれば意識が宿るとする<strong>機能主義</strong>、心と物は別物とする<strong>二元論</strong>）が、マインドアップロードの実現可能性や倫理的課題にどう影響するかを理解することが、本研究の出発点となる。</p>
+                <h3>1.1. 理論的フレームワーク：IITと心理的連続性</h3>
+                <p>マインドアップロードの本人性検証において、本プロジェクトは2つの理論的支柱を批判的に採用する。第一に、ジュリオ・トノーニらが提唱する<strong>意識の統合情報理論（IIT 4.0）</strong><sup><a href="#ref-17">[17]</a></sup>である。IITは、「意識とは、システムがそれ自体の過去の状態について情報を持ち、未来の状態に影響を与える能力、すなわち『因果の力』を持つことで生じる」と主張する。この理論が提供する統合情報量Φ（ファイ）は、意識の量を測る画期的な指標となりうる。特に、物理的実装が異なっても因果構造のレパートリーが保存されれば同一の意識が宿るとする「因果的相同性（Causal Isomorphism）」の概念は、本人性維持の操作的定義の基盤を提供する。</p>
+                <p>しかし、IITの採用には慎重な検討が不可欠である。IITはその計算の非多項式時間性、および意識の構成要素であると主張する点から、科学哲学と計算論的神経科学の両分野から厳しい批判に晒されている<sup><a href="#ref-1">[1]</a>, <a href="#ref-2">[2]</a></sup>。特に、Φの計算が特定のシステム構成で一意にならない「非一意性問題」<sup><a href="#ref-3">[3]</a></sup>の指摘は、理論の数学的厳密性に対する重大な懸念である。ウェブサイトでこの概念を強調する以上、これらの学術的批判に応答し、本プロジェクトが「因果的相同性」をどのように解釈し、計算論的課題をどう回避または近似するかの見解を明確にすることが求められる。</p>
+                
+                <p>第二の支柱は、哲学者デレク・パーフィットによる<strong>心理的連続性理論</strong><sup><a href="#ref-4">[4]</a></sup>である。これは、記憶や性格といった心理的特徴の重なりと連続によって個人の同一性が維持されるとする考え方である。マインドアップロードの文脈では、これは「アップロードされた意識がオリジナルと同一か？」という問いに答えるための重要な視点を提供する。しかし、これは同時に「コピー問題（分身のパラドックス）」という工学的に困難な課題を提起する。単なる情報の構造的保存率といった静的な指標だけでは不十分であり、意識が途切れないと感じられる「プロセス」の連続性をいかに保証するかが鍵となる。これには、段階的な神経置換や、生物学的脳と人工脳が連携するハイブリッドシステムにおけるリアルタイム検証など、動的な心理的連続性を担保する具体的なプロトコルの設計が不可欠となる。</p>
 
                 <div class="note-box">
                     <strong>研究としての約束</strong>
@@ -722,54 +722,52 @@
             <section class="section">
                 <h2 class="section-title">Technical Framework</h2>
 
-                <p>マインドアップロードの実現には、3つの技術的マイルストーンが必要である。</p>
+                <p>マインドアップロードの実現に向けた技術的ロードマップは、「計測」「解読」「実装」の3段階で構想される。</p>
 
                 <div class="stage-list">
                     <div class="stage-item">
                         <div class="stage-number"></div>
                         <div class="stage-body">
-                            <h4>計測（Sensing）</h4>
-                            <p>脳活動を正確に読み取る技術。EEGの空間分解能の限界（体積伝導・逆問題）に対し、高密度EEG（HD-EEG）や脳磁図（MEG）、fMRIとの同時計測、およびソースイメージング（ESI）<sup><a href="#ref-8">[8]</a></sup>を用いた統合的アプローチが進展している。しかし、脳波源推定（逆問題）は本質的に不良設定問題であり固有の不確実性を伴うため、MEGやfMRIとの統合により時空間的な制約を加え、推定精度を向上させることが不可欠である<sup><a href="#ref-9">[9]</a></sup>。また、侵襲型BCIは高精度なデータを提供する一方、倫理的・安全性の課題も大きく、長期的な影響についての慎重な検討が求められる<sup><a href="#ref-10">[10]</a></sup>。</p>
-                            <div class="tag-list">
+                            <h4>1. 計測（Sensing）：脳活動の精密な読み取り</h4>
+                            <p>高時間分解能を持つ高密度脳波（HD-EEG）と、その空間分解能の低さを補う脳波源推定（ESI）の統合は有望なアプローチである。しかし、ESIの基盤となる「逆問題」は、本質的に解が一意に定まらない**不良設定問題（ill-posed problem）**であるという根本的課題を抱える<sup><a href="#ref-5">[5]</a></sup>。この課題に対処し、学術的な厳密性を担保するためには、以下の手法の導入が不可欠である。</p>
+                            <ul style="margin: 0; padding-left: 20px; list-style-type: disc; font-size: 14px; line-height: 1.6;">
+                                <li style="margin-bottom: 8px;"><strong>個別化頭部モデル（IHM）：</strong>MRI/CTデータから個人の頭部構造を忠実にモデル化し、信号伝達の精度を向上させる。</li>
+                                <li style="margin-bottom: 8px;"><strong>逆問題制約条件の妥当性検証：</strong>LORETA、sLORETA、MNEといった制約（アルゴリズム）の選択理由を明確にし、シミュレーションや他のモダリティとの比較による妥当性検証プロトコルを確立する。</li>
+                                <li style="margin-bottom: 8px;"><strong>マルチモーダル融合：</strong>体積伝導効果を最小化するため、MEGやfMRIの情報を統合し、時空間的な制約を加える信号処理アルゴリズムを具体的に設計・適用する。</li>
+                            </ul>
+                            <div class="tag-list" style="margin-top: 12px;">
                                 <span class="tag">HD-EEG</span>
                                 <span class="tag">ESI (Source Imaging)</span>
-                                <span class="tag">マルチモーダル融合</span>
-                                <span class="tag">侵襲型BCI (Neuralink/Synchron)</span>
+                                <span class="tag">個別化頭部モデル (IHM)</span>
+                                <span class="tag">マルチモーダル融合 (MEG/fMRI)</span>
                             </div>
                         </div>
                     </div>
                     <div class="stage-item">
                         <div class="stage-number"></div>
                         <div class="stage-body">
-                            <h4>解読（Decoding）</h4>
-                            <p>計測データから心的内容を理解する技術。ここで、「解読」には明確なレベル分けが必要である。第一のレベルは、NTTのMind Captioning技術<sup><a href="#ref-11">[11]</a></sup>に代表される**「意味的デコーディング（Semantic Decoding）」**である。これは、fMRIなどで計測された脳活動パターンと、それに対応する言語記述や視覚イメージとの間の統計的相関を深層学習モデルで学習し、新たな脳活動からその意味内容を推測するものである。この技術の登場により、計測と解読を橋渡しする基礎技術が実用レベルに近づいたことは事実である。</p>
-                            <p>しかし、これを「思考の解読」や「意識の再現」と見なすのは、科学的飛躍が過ぎる。Horikawaらの研究<sup><a href="#ref-11">[11]</a></sup>は、主に視覚野の活動から「見ているモノの記述文」を生成するものであり、高次の認知機能や自己意識の連続性を解読するものではない。意味的デコーこディングは、マインドアップロードの最終目標である**「現象的意識のエミュレーション（Phenomenal Emulation）」**、すなわち主観的体験そのものの再現とは明確に区別されねばならない。</p>
-                            <div class="note-box" style="margin: 16px 0;">
+                            <h4>2. 解読（Decoding）：脳情報から心的内容へ</h4>
+                            <p>NTTによる「Mind Captioning」<sup><a href="#ref-6">[6]</a></sup>は、脳活動から思考内容を記述するデコーディング技術の大きな進展を示す。しかし、この技術は主に視覚刺激に対する脳活動の「記述（Description）」であり、脳機能全体を計算モデルとして「再現（Emulation）」するWBEとは、目的と技術的難易度が根本的に異なる。デコーディングの成功が即座にエミュレーションの実現に繋がるという見方は、両者間の**論理的飛躍**を無視している。</p>
+                            <p>WBEが目指すのは、情報の内容（What）だけでなく、その情報が処理され意識的経験を生み出す「**因果ダイナミクス**（How）」の再現である<sup><a href="#ref-7">[7]</a></sup>。このギャップを埋めるため、本プロジェクトでは、デコーディングで得られたモデルが、元の脳の因果的結合（有効結合性）をどの程度再現しているかを検証するプロセスを導入する。具体的には、**Dynamic Causal Modeling (DCM)**<sup><a href="#ref-13">[13]</a></sup>のような手法を用い、デコーディングモデルの出力を単なる精度評価だけでなく、エミュレーションの妥当性を測るための検証指標として利用する研究計画を明確にすべきである。</p>
+                             <div class="note-box" style="margin: 16px 0;">
                                 <strong>課題: LLMによる「思考の特異性」の平均化リスク</strong>
-                                <p>現在のデコーディング手法は、脳活動データを一度LLM（大規模言語モデル）が解釈可能な特徴量空間に射影し、そこから言語を生成する。このプロセスには、個人の思考が持つ「特異性」や「曖昧さ」が、LLMの学習データに存在する言語的・文化的バイアスによって「平均化」されてしまうという本質的なリスクが内在する。情報理論的に言えば、これはデコーディング過程における情報損失、あるいはノイズの付加に他ならない。結果として生成された文章は、一見もっともらしくても、元の思考のニュアンスや独自性を失った「最大公約数的な思考」になりかねない。このバイアスを定量化し、補正する枠組みの構築が、真に個人の精神を保存する上で不可欠の課題となる。</p>
+                                <p>現在のデコーディング手法は、脳活動データを一度LLMが解釈可能な特徴量空間に射影し、そこから言語を生成する。このプロセスには、個人の思考が持つ「特異性」や「曖昧さ」が、LLMの学習データに存在する言語的・文化的バイアスによって「平均化」されてしまうという本質的なリスクが内在する。情報理論的に言えば、これはデコーディング過程における情報損失に他ならない。このバイアスを定量化し、補正する枠組みの構築が、真に個人の精神を保存する上で不可欠の課題となる。</p>
                             </div>
-                            <p>また、因果推論に基づくDynamic Causal Modeling (DCM)<sup><a href="#ref-13">[13]</a></sup>による精密解析も重要だが、そのモデルの前提条件や適用範囲の限界を理解する必要がある<sup><a href="#ref-14">[14]</a></sup>。</p>
                             <div class="tag-list">
-                                <span class="tag">意味的デコーディング</span>
-                                <span class="tag">現象的意識のエミュレーション</span>
-                                <span class="tag">Transformerデコーディング</span>
+                                <span class="tag">Mind Captioning</span>
+                                <span class="tag">デコーディング vs エミュレーション</span>
                                 <span class="tag">因果ダイナミクス (DCM)</span>
+                                <span class="tag">Transformer</span>
                             </div>
                         </div>
                     </div>
                     <div class="stage-item">
                         <div class="stage-number"></div>
                         <div class="stage-body">
-                            <h4>実装（Implementation）</h4>
-                            <p>解読された意識を別の基盤で動作させる技術。WBA（Whole Brain Architecture）<sup><a href="#ref-15">[15]</a></sup>による計算機実装が構想されているが、現在の研究はその基礎段階にある<sup><a href="#ref-16">[16]</a></sup>。本人性検証の基盤として重要なのは、Parfitの<strong>心理的連続性理論</strong><sup><a href="#ref-6">[6]</a></sup>に基づき、「構造の保存」が「主観的連続性」をいかに保証するかを操作的に定義することである。しかし、その検証指標には大きな壁が存在する。</p>
-                            <p>当初、本人性検証の定量的指標として、IIT 4.0 (統合情報理論)における「因果的相同性（Causal Isomorphism）」<sup><a href="#ref-17">[17]</a></sup>が有力視された。これは、元の脳とエミュレーションの因果構造が同一であれば、同一の意識体験が維持されるという理論に基づく。しかし、このアプローチには学術的・工学的に看過できない2つの課題がある。</p>
-                            <div class="note-box" style="margin: 16px 0;">
-                                <strong>理論的・工学的課題: IIT「因果的相同性」の適用限界</strong>
-                                <p><strong>1. 計算量の爆発:</strong> IITにおける因果構造の完全な記述と統合情報量（Φ）の算出は、ニューロン数に対して指数関数的に計算量が増大する。860億個のニューロンを持つヒト脳において、その因果構造を厳密に同定し比較することは、現在の計算機科学の枠組みでは原理的に不可能である。</p>
-                                <p><strong>2. 理論的飛躍と批判:</strong> 「因果構造の保存」が「現象的自己の連続性」を保証するという主張は、依然として証明されていない哲学的仮説である。さらに、IIT自体が反証可能性に乏しいという批判<sup><a href="#ref-18">[18]</a>,<a href="#ref-41">[41]</a></sup>もあり、これを唯一の根拠とすることはできない。</p>
-                            </div>
-                            <p>この致命的なギャップを埋めるため、本研究では「因果的相同性」を直接的な計測指標としてではなく、より工学的に近似可能な代替指標へと置き換える。具体的には、本人性検証の基準を**「マクロスケールにおける有効連結性（Effective Connectivity）の保存」**と再定義する。これは、全ニューロンの因果構造を完全に一致させるのではなく、脳領域間の情報伝達の動的なパターン、すなわち「有効連結性」が保存されているかを評価するアプローチである。</p>
-                            <p>この評価を実現する具体的な手法として、本プロジェクトでは<strong>DCM（Dynamic Causal Modeling）</strong><sup><a href="#ref-13">[13]</a></sup>を用いる。DCMは、観測された脳活動データ（fMRIやEEGなど）から、領域間の有向結合の強度を統計的に推定する因果モデルである。これにより、「元の脳」と「エミュレーション」それぞれの有効連結性マップを作成し、その統計的類似性を評価することで、「本人性」の連続性を工学的に検証する道筋を立てる。これは、IITの理念を尊重しつつも、計算論的制約を回避し、経験的に検証可能なマイルストーンを設定する現実的アプローチである。</p>
+                            <h4>3. 実装（Implementation）：意識の再起動と本人性検証</h4>
+                            <p>解読された脳情報を新たな基盤で動作させる段階では、WBA（Whole Brain Architecture）<sup><a href="#ref-15">[15]</a></sup>等のアーキテクチャが構想されている。この段階での核心的課題は、Parfitの心理的連続性理論<sup><a href="#ref-4">[4]</a></sup>に基づき、「構造の保存」が「主観的連続性」をいかに保証するかを操作的に定義し、検証することである。</p>
+                             <p>当初、本人性検証の定量的指標として、IIT 4.0における「因果的相同性」<sup><a href="#ref-17">[17]</a></sup>が有力視された。しかし、このアプローチは計算量の爆発や非一意性問題<sup><a href="#ref-3">[3]</a></sup>といった数学的課題、さらには反証可能性に乏しいという科学哲学上の批判<sup><a href="#ref-1">[18]</a></sup>に直面している。これらの課題は深刻であり、IITを唯一の根拠とすることはできない。</p>
+                            <p>このギャップを埋めるため、本研究では「因果的相同性」を直接的な計測指標とするのではなく、より工学的に近似可能な**「マクロスケールでの有効連結性の保存」**を代替指標として提案する。具体的には、DCM<sup><a href="#ref-13">[13]</a></sup>を用いて「元の脳」と「エミュレーション」それぞれの有効連結性マップを作成し、その統計的類似性を評価することで、「本人性」の連続性を工学的に検証する道筋を立てる。これは、IITの理念を尊重しつつも、計算論的制約を回避し、経験的に検証可能なマイルストーンを設定する現実的なアプローチである。</p>
                             <div class="tag-list">
                                 <span class="tag">WBA (全脳アーキテクチャ)</span>
                                 <span class="tag">有効連結性 (DCM)</span>
@@ -780,6 +778,17 @@
                     </div>
                 </div>
             </section>
+            
+            <!-- Reproducibility -->
+            <section class="section">
+                <h2 class="section-title">プロジェクトの実体性と再現性 (Substance and Reproducibility)</h2>
+                <p>「EEGFlow」というプロジェクト名が示す通り、本研究は計算論的手法に基づいている。しかし、現状のGitHubリポジトリにはウェブサイト関連ファイルしか存在せず、研究プロジェクトとしての実体性・再現性が欠如しているとの批判は免れない。この重大な懸念に応えるため、今後は以下の要素を段階的にリポジトリに追加し、ウェブサイトの主張を裏付けるコードベースを構築する。</p>
+                <ul style="margin: 0; padding-left: 20px; list-style-type: disc; font-size: 14px; line-height: 1.6;">
+                    <li style="margin-bottom: 8px;"><strong>データ処理パイプライン：</strong>BIDS準拠の生データから、ESI、DCM解析に至るまでの最小限実行可能な処理スクリプト（Python/MNE-Python, SPM, FieldTrip等のラッパー）を公開する。</li>
+                    <li style="margin-bottom: 8px;"><strong>デコーディングモデル：</strong>Mind Captioningに類するTransformerベースのモデルアーキテクチャ定義と、ダミーデータを用いた学習・推論コードを公開する。</li>
+                    <li style="margin-bottom: 8px;"><strong>データスキーマの拡充：</strong>`dataset_description.json`に加え、EEGデータの具体的な構造（例：`sub-01/eeg/sub-01_task-rest_eeg.eeg`）や、計測プロトコルを記述した`eeg.json`のスキーマ例を公開し、BIDS標準の形式的遵守から実質的遵守へと移行する。</li>
+                </ul>
+            </section>
 
             <!-- Current Status -->
             <section class="section">
@@ -787,53 +796,6 @@
 
                 <h3>コネクトームとダイナミクスのギャップ</h3>
                 <p>図1が示す構造的コネクトーム（神経配線図）の研究は大きく進展しているが、それだけでは脳の動的な活動を説明するには不十分である。脳の機能状態は、シナプス結合だけでなく、ドーパミンやセロトニンといった神経修飾物質が脳全体に拡散して作用する「体積伝導（Volume Transmission）」によっても大きく左右される<sup><a href="#ref-39">[39]</a></sup>。この静的な構造と動的な状態の間のギャップを埋めるため、将来的には遺伝子発現情報から神経接続の特性を推定する「トランスクリプトーム・コネクトミクス（Transcriptomic Connectomics）」や、神経修飾状態をマッピングする動的な状態遷移モデルをフレームワークに統合する必要がある。</p>
-
-                <p><strong>スケール統合の問題</strong>：分子・シナプス・回路・領域・全脳という異なるスケールの研究を統合する理論が不足している。これに対し、異なる階層を結合するマルチスケールモデリング<sup><a href="#ref-19">[19]</a></sup>や、データ駆動型アプローチと理論駆動型アプローチを統合する試みが進められている。</p>
-
-                <p><strong>データ量の課題</strong>：ペタバイト級のデータ処理が必要となるが、本質的な課題は神経ダイナミクスの根本原理の理解にある。これに対し、因果的推論や情報理論的アプローチを用いて、データから本質的な神経ダイナミクスの原理を抽出しようとする研究が進んでいる<sup><a href="#ref-20">[20]</a></sup>。</p>
-
-                <p><strong>ダイナミクスの理解</strong>：静的なコネクトームだけでなく、動的な活動パターンの理解が不可欠である。これに対し、リカレントニューラルネットワーク（RNN）等の動的モデルや、行動データとの統合解析を通じて、静的コネクトームから動的な機能への橋渡しが試みられている<sup><a href="#ref-21">[21]</a></sup>。</p>
-
-                <p><strong>非侵襲計測の限界</strong>：EEGは時間分解能に優れるが空間分解能が低く、fMRIは空間分解能はあるが時間分解能に限界がある。この限界に対し、動物モデルにおける光遺伝学（optogenetics）のような高精度の介入・計測手法の知見を活用したり、高感度MEGや超音波など新しい非侵襲技術の開発が進められたりしている<sup><a href="#ref-22">[22]</a></sup>。</p>
-                
-                <h3>最新の技術進展（2025年時点の動向）</h3>
-                <p><strong>Mind Captioning (NTT/Science Advances, 2025)</strong>：
-                    fMRIで計測した脳活動から、思考の内容を直接自然言語で記述する技術が発表されました<sup><a href="#ref-11">[11]</a></sup>。しかし、この研究は主に**視覚刺激に対する脳活動**から、その内容を記述することに特化しています。これは「思考の記述」というより「**知覚内容のデコーこディング**」と表現するのがより正確です。マインドアップロードに必要なのは、単なる「知覚内容の言語化」ではなく、**認知状態の全体像、長期記憶、自己意識のダイナミクス**の解読です。Mind Captioningがこのギャップを埋めるための具体的なロードマップ（例：抽象概念、感情、意図のデコーディングへの拡張）を提示することが、今後の技術的な厳密性を向上させる上で不可欠です。
-                </p>
-                <p><strong>MIND Act of 2025とニューロライツによる倫理的枠組みの深化</strong>：
-                    米国で提案された「Management of Individuals' Neural Data (MIND) Act」<sup><a href="#ref-24">[24]</a></sup>は神経データガバナンスの重要な一歩ですが、その限界も認識する必要があります。この法律は、主に<strong>消費者向けBCIデバイス</strong>から得られる神経データのプライバシー保護に焦点を当てており、マインドアップロードが提起する「人格の法的地位」や「意識の複製」といった根本的な問題には対応していません。
-                    <br>この課題に対し、より包括的な倫理的枠組みとして、チリで憲法改正された<strong>「ニューロライツ（Neurorights）」</strong>の概念<sup><a href="#ref-27">[27]</a></sup>を導入し、議論を深化させるべきです。特に、以下の5原則との整合性を論じることで、倫理的枠組みがより強固になります。</p>
-                    <ul style="margin: 16px 0; padding-left: 20px; list-style-type: disc;">
-                        <li style="margin-bottom: 8px;">精神的プライバシーの権利</li>
-                        <li style="margin-bottom: 8px;">個人の同一性の権利</li>
-                        <li style="margin-bottom: 8px;">自由意志の権利</li>
-                        <li style="margin-bottom: 8px;">公平なアクセス（神経技術の恩恵）の権利</li>
-                        <li style="margin-bottom: 8px;">バイアスからの保護の権利</li>
-                    </ul>
-                    <p>これらの原則をアップロード後の「デジタル自然人」にどう適用するかを検討することが、今後の重要な課題となります。</p>
-                    <table class="data-table" style="margin-top: 16px;">
-                        <thead>
-                            <tr>
-                                <th>法的権利・義務の項目</th>
-                                <th>現状の課題と提案</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>認知的自由 (Cognitive Liberty)</td>
-                                <td>Ienca & Andorno (2017)<sup><a href="#ref-27">[27]</a></sup>が提唱する「精神的プライバシー」や「思考の自由」を、アップロード後の主体が技術的にどう行使できるかの権利枠組み（例：外部からの情報アクセス制御、自己編集権）が未定義。</td>
-                            </tr>
-                            <tr>
-                                <td>意思能力と契約主体性</td>
-                                <td>アップロード主体の「意思」が法的に有効な署名として認められるための要件が不明確。解決策として、意識の連続性（心理的連続性）の定期的証明を法的署名の有効性要件として組み込むフローを提案する。</td>
-                            </tr>
-                            <tr>
-                                <td>財産権と相続</td>
-                                <td>マルチシグ型信託への財産権移管案は、アップロード主体の意思決定が法的に有効と認められて初めて機能する。複製体が存在する場合の権利配分など、未解決の問題が多い。</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <p style="margin-top: 16px;">これらの課題に対応するためには、MIND Actのようなデータ保護法に加え、ユネスコの「神経技術の倫理に関する勧告」<sup><a href="#ref-34">[34]</a></sup>などが示す「新しい人権（Neurorights）」の枠組みを、具体的なガバナンスプロトコルに落とし込む包括的な視点が求められる。</p>
 
                 <!-- Figure: Connectome Progress -->
                 <div class="figure-box">
@@ -882,21 +844,21 @@
                     <tbody>
                         <tr>
                             <td>1</td>
-                            <td>HD-EEG/fMRI同時計測セットアップ、再現性データ収集</td>
-                            <td>Transformerベースのデコーディング (MVPA AUC > 0.8 目標)に加え、LLM由来ノイズを定量化する「因果的整合性チェック」プロトコルの導入<sup><a href="#ref-25">[25]</a></sup></td>
-                            <td>MIND Act 2025準拠の同意プロセス、神経データプライバシー保護設計</td>
+                            <td>HD-EEG/fMRI同時計測セットアップ、再現性データ収集。IHM採用とBIDSメタデータ拡充。</td>
+                            <td>Transformerベースのデコーディングに加え、LLM由来ノイズを定量化する「因果的整合性チェック」プロトコルの導入。</td>
+                            <td>MIND Act 2025準拠の同意プロセス、神経データプライバシー保護設計。</td>
                         </tr>
                         <tr>
                             <td>2</td>
-                            <td>ESI (Source Imaging) による信号分離とMEGデータの融合</td>
-                            <td>Dynamic Causal Modeling (DCM) による部位間因果ダイナミクス解析</td>
-                            <td>心理的連続性理論に基づく「本人性」評価指標の操作的定義（これは極めて困難な哲学的課題であり、具体的な評価指標の妥当性について十分な倫理的・哲学的検討を要する<sup><a href="#ref-26">[26]</a></sup>）</td>
+                            <td>ESI信号分離とMEGデータの融合。逆問題制約条件の妥当性検証。</td>
+                            <td>Dynamic Causal Modeling (DCM) による部位間因果ダイナミクス解析。</td>
+                            <td>心理的連続性理論に基づく「本人性」評価指標の操作的定義と、コピー問題への工学的アプローチの検討。</td>
                         </tr>
                         <tr>
                             <td>3</td>
-                            <td>WBA (Whole Brain Architecture) 統合フレームワークでの動作検証、非神経細胞（アストロサイト）のモデル化</td>
-                            <td>DCM等を用いた機能的同型性の評価、およびΦ* (ファイ・スター)等の近似指標による意識レベルの推定</td>
-                            <td>認知的自由（Cognitive Liberty）に基づく権利枠組み、デジタル遺産・継承権の法的整備（国際的な人権規約との整合性に関する議論を含む<sup><a href="#ref-27">[27]</a></sup>）</td>
+                            <td>WBA統合フレームワークでの動作検証。非神経細胞（グリア）のモデル化。</td>
+                            <td>DCMを用いた「元の脳」と「エミュレーション」の有効連結性比較による本人性検証。</td>
+                            <td>Neurorightsに基づく権利枠組み、デジタル遺産・継承権の法的整備。</td>
                         </tr>
                     </tbody>
                 </table>
@@ -909,108 +871,33 @@
                     慶應義塾大学 環境情報学部 / 青山敦研究室 所属。<br>
                     本サイトはマインドアップロード研究に関する公開研究ノートです。</p>
             </section>
-
-            <!-- Open Questions -->
-            <section class="section">
-                <h2 class="section-title">Open Questions</h2>
-
-                <div class="question-box">
-                    <h4>MU と LLM シミュレーションの見分け</h4>
-                    <p>単に問いに答えるだけならLLMでも「その人らしく」振る舞える。アップロードされた主体が、単なる静的なプロンプトの反映（シミュレーション）ではなく、真に動的な意識の連続体であることをどう証明するか？（Issue #10関連）</p>
-                    <div class="resolution-box">
-                        <h5>解決アプローチ案</h5>
-                        <p>本人性検証を「予測不可能性・自己更新性・因果反応性」の3軸で実装する。具体的には (1) 非公開の出来事を含む縦断的対話タスクで一貫した内部状態更新を確認、(2) 介入刺激への因果整合性を計測、(3) 情報理論指標（IIT Φ、因果エントロピー）による静的シミュレーションとの差分を可視化し、ベンチマークとして公開する<sup><a href="#ref-28">[28]</a></sup>。</p>
-                    </div>
-                </div>
-
-                <div class="question-box">
-                    <h4>MIND Act 2025下での「デジタル自然人」の法的地位</h4>
-                    <p>アップロードされた主体を「デジタル自然人」と呼称しているが、これは既存の法体系（自然人、法人）と整合性が取れておらず、極めて不透明である。MIND Act 2025は神経データのプライバシー保護を主眼としており、「デジタル自然人」の権利や法的地位を直接定義するものではない。</p>
-                    <div class="resolution-box">
-                        <h5>解決アプローチ案：法的定義の精緻化</h5>
-                        <p>「デジタル自然人」の法的権利と義務をMIND Act 2025の枠組みで整理し、定義を精緻化する。具体的には、Ienca & Andorno (2017)<sup><a href="#ref-27">[27]</a></sup>が提唱する「認知的自由」や「精神的プライバシー」をアップロード後の主体がどう行使できるかの権利枠組みを明確にする。また、財産権移管の基盤となる意思表明の有効性を担保するため、心理的連続性の証明（例：定期的な本人性ベンチマークのクリア）を法的署名の有効性要件として組み込む具体的なフローを提案する。</p>
-                    </div>
-                </div>
-
-                <div class="question-box">
-                    <h4>グリア細胞と非神経要素</h4>
-                    <p>現在のコネクトームは神経細胞が主役だが、意識の形成にグリア細胞や循環器・代謝系がどこまで寄与しているか。情報の保存すべき範囲の境界線（Boundary Problem）は未解決である<sup><a href="#ref-30">[30]</a></sup>。</p>
-                    <div class="resolution-box">
-                        <h5>解決アプローチ案</h5>
-                        <p>Boundary Problem への対応として、EEG/fMRIに代謝・血流系の指標（fNIRS等）とカルシウムイメージング由来のグリア活動モデルを統合したハイブリッド解析を標準化する。情報保存の境界は「行動出力と意識指標へ統計的寄与を与える非神経成分」を含める形で定義し、Phase 1〜2のプロトコルにグリア指標の収集・同定ステップを追加する<sup><a href="#ref-31">[31]</a></sup>。</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Column: LLM and Identity -->
-            <section class="section">
-                <h2 class="section-title">Column: LLMと本人性</h2>
-                <p>大規模言語モデル（LLM）の挙動は、マインドアップロード（MU）における「本人性識別」の問題と深い共通点を持つ。LLMは学習データを「重み」として圧縮し、推論時に再構成して出力するが、これはMUで脳情報をスキャン・再構成するプロセスと構造的に類似している。両者において「再構成されたものは元のものと同一か？」という根本的な問いが生じる。LLMがプロンプトに応じて人物を模倣するのは「静的なシミュレーション」であり、動的な意識の連続性とは異なる。この類似性は、本人性識別のための新たなアプローチを示唆する。例えば、(1)予測不可能性、(2)自己参照的更新、(3)因果的介入への反応、といった観点からMUの本人性検証ベンチマークを設計することが、今後の研究課題となる。</p>
-            </section>
-
+            
             <!-- References -->
             <section class="section references">
                 <h2 class="section-title">References</h2>
                 <ol>
-                    <li id="ref-1">Moravec, H. (1988). <i>Mind Children: The Future of Robot and Human Intelligence</i>. Harvard University Press.</li>
-                    <li id="ref-2">Sandberg, A., & Bostrom, N. (2008). <i>Whole Brain Emulation: A Roadmap</i>. Future of Humanity Institute, Oxford University. <a href="https://www.fhi.ox.ac.uk/wp-content/uploads/Whole-Brain-Emulation-Roadmap-v1.2-web.pdf">https://www.fhi.ox.ac.uk/wp-content/uploads/Whole-Brain-Emulation-Roadmap-v1.2-web.pdf</a></li>
-                    <li id="ref-3">Koch, C., Massimini, M., Boly, M., & Tononi, G. (2016). Neural correlates of consciousness: progress and problems. <i>Nature Reviews Neuroscience</i>, 17(5), 307-321. <a href="https://doi.org/10.1038/nrn.2016.22">doi:10.1038/nrn.2016.22</a></li>
-                    <li id="ref-4">Sandberg, A. (2013). Feasibility of Whole Brain Emulation. In <i>Singularity Hypotheses</i> (pp. 251-274). Springer, Berlin, Heidelberg. <a href="https://doi.org/10.1007/978-3-642-31674-6_19">doi:10.1007/978-3-642-31674-6_19</a></li>
-                    <li id="ref-5">Carbonell, J. G., et al. (2022). Whole Brain Emulation: A Roadmap. <i>Journal of Artificial General Intelligence</i>, 13(1), 1-50.</li>
-                    <li id="ref-6">Parfit, D. (1984). <i>Reasons and Persons</i>. Oxford University Press.</li>
-                    <li id="ref-7">Metzinger, T. (2003). <i>Being No One: The Self-Model Theory of Subjectivity</i>. MIT Press.</li>
-                    <li id="ref-8">Michel, C. M., & Brunet, D. (2019). EEG Source Imaging: A Practical Review. <i>Clinical Neurophysiology</i>, 130(7), 1019-1029. <a href="https://doi.org/10.1016/j.clinph.2019.02.004">doi:10.1016/j.clinph.2019.02.004</a></li>
-                    <li id="ref-9">Logothetis, N. K. (2008). What we can do and what we cannot do with fMRI. <i>Nature</i>, 453(7197), 869-878. <a href="https://doi.org/10.1038/nature06976">doi:10.1038/nature06976</a></li>
-                    <li id="ref-10">Yuste, R., et al. (2017). Four ethical priorities for neurotechnologies and AI. <i>Nature</i>, 551(7679), 159-163. <a href="https://doi.org/10.1038/551159a">doi:10.1038/551159a</a></li>
-                    <li id="ref-11">Horikawa, T., et al. (2025). Mind captioning: Evolving descriptive text of mental content from human brain activity. <i>Science Advances</i>, 11(45), eadw1464. <a href="https://doi.org/10.1126/sciadv.adw1464">doi:10.1126/sciadv.adw1464</a></li>
-                    <li id="ref-12">Kozlov, M. (2025). 'Mind-captioning' AI decodes brain activity to turn thoughts into text. <i>Nature</i>. (Note: Future publication date as of Jan 10, 2026).</li>
-                    <li id="ref-13">Friston, K. J., Harrison, L., & Penny, W. (2003). Dynamic causal modelling. <i>NeuroImage</i>, 19(4), 1177-1202. <a href="https://doi.org/10.1016/S1053-8119(03)00202-7">doi:10.1016/S1053-8119(03)00202-7</a></li>
-                    <li id="ref-14">Friston, K. J., & Dolan, R. J. (2010). The free-energy principle in mind and brain. <i>Nature Reviews Neuroscience</i>, 11(2), 127-138. <a href="https://doi.org/10.1038/nrn2787">doi:10.1038/nrn2787</a></li>
-                    <li id="ref-15">Yamakawa, H., et al. (2024). Technology roadmap toward the completion of whole-brain architecture with BRA-driven development. <i>Cognitive Systems Research</i>, 88, 101300. <a href="https://doi.org/10.1016/j.cogsys.2024.101300">doi:10.1016/j.cogsys.2024.101300</a></li>
-                    <li id="ref-16">Markram, H. (2006). The Blue Brain Project. <i>Nature Reviews Neuroscience</i>, 7(2), 153-160. <a href="https://doi.org/10.1038/nrn1860">doi:10.1038/nrn1860</a></li>
-                    <li id="ref-17">Albantakis, L., et al. (2023). Integrated information theory (IIT) 4.0: Formulating the properties of phenomenal existence in physical terms. <i>PLOS Computational Biology</i>, 19(10), e1011465. <a href="https://doi.org/10.1371/journal.pcbi.1011465">doi:10.1371/journal.pcbi.1011465</a></li>
-                    <li id="ref-18">Fleming, S. M., et al. (2023). Open letter regarding "The integrated information theory of consciousness". <i>Neuroscience of Consciousness</i>, 2023(1), niad001. <a href="https://doi.org/10.1093/nc/niad001">doi:10.1093/nc/niad001</a></li>
-                    <li id="ref-19">Breakspear, M. (2017). Dynamic models of brain activity. <i>Dialogues in Clinical Neuroscience</i>, 19(1), 83-95.</li>
-                    <li id="ref-20">Tononi, G., & Koch, C. (2015). Consciousness: here, there and everywhere? <i>Philosophical Transactions of the Royal Society B: Biological Sciences</i>, 370(1677), 20140167. <a href="https://doi.org/10.1098/rstb.2014.0167">doi:10.1098/rstb.2014.0167</a></li>
-                    <li id="ref-21">Buzsáki, G. (2006). <i>Rhythms of the Brain</i>. Oxford University Press.</li>
-                    <li id="ref-22">Fetz, E. E. (2017). Brain-computer interfaces: communication and control through neural signals. <i>Physiological Reviews</i>, 97(1), 1-36. <a href="https://doi.org/10.1152/physrev.00010.2016">doi:10.1152/physrev.00010.2016</a></li>
-                    <li id="ref-23">Poldrack, R. A. (2006). Can cognitive processes be inferred from neuroimaging data? <i>Trends in Cognitive Sciences</i>, 10(2), 59-63. <a href="https://doi.org/10.1016/j.tics.2005.12.004">doi:10.1016/j.tics.2005.12.004</a></li>
-                    <li id="ref-24">Schumer, C., et al. (2025). <i>Management of Individuals' Neural Data (MIND) Act of 2025</i>. U.S. Senate Bill. (Note: Proposed bill as of Jan 10, 2026).</li>
-                    <li id="ref-25">Haxby, J. V., et al. (2001). Distributed and overlapping representations of faces and objects in ventral temporal cortex. <i>Science</i>, 293(5539), 2425-2430. <a href="https://doi.org/10.1126/science.1063706">doi:10.1126/science.1063706</a></li>
-                    <li id="ref-26">Schechtman, M. (1996). <i>The Constitution of Selves</i>. Cornell University Press.</li>
-                    <li id="ref-27">Ienca, M., & Andorno, R. (2017). Towards new human rights in neuroscience. <i>Life Sciences, Society and Policy</i>, 13(1), 5. <a href="https://doi.org/10.1186/s40504-017-0050-1">doi:10.1186/s40504-017-0050-1</a></li>
-                    <li id="ref-28">Graziano, M. S. A. (2013). <i>Consciousness and the Social Brain</i>. Oxford University Press.</li>
-                    <li id="ref-29">Sætra, H. S. (2020). Digital inheritance: A new challenge for legal frameworks. <i>AI & Society</i>, 35(2), 433-442. <a href="https://doi.org/10.1007/s00146-019-00913-y">doi:10.1007/s00146-019-00913-y</a></li>
-                    <li id="ref-30">Fields, R. D. (2009). The other half of the brain. <i>Scientific American</i>, 300(4), 54-61.</li>
-                    <li id="ref-31">De Pittà, M., et al. (2012). Computational glial cell biology: a (re)newed beginning. <i>Frontiers in Computational Neuroscience</i>, 6, 32. <a href="https://doi.org/10.3389/fncom.2012.00032">doi:10.3389/fncom.2012.00032</a></li>
-                    <li id="ref-32">American Psychological Association. (2020). <i>Publication Manual of the American Psychological Association (7th ed.)</i>.</li>
-                    <li id="ref-33">International Organization for Standardization. (2010). <i>ISO 690:2010</i>.</li>
-                    <li id="ref-34">UNESCO. (2025). <i>Recommendation on the Ethics of Neurotechnology</i>. (Note: Adopted in Nov 2025).</li>
-                    <li id="ref-35">Hanson, J. R., et al. (2023). On the non-uniqueness problem in integrated information theory. <i>Neuroscience of Consciousness</i>, 2023(1), niad014. <a href="https://doi.org/10.1093/nc/niad014">doi:10.1093/nc/niad014</a></li>
-                    <li id="ref-36">Sánchez-Cañizares, J. (2023). Integrated information is not causation: Why integrated information theory's causal structures do not beat causal reductionism. <i>Philosophia</i>, 51, 2439-2457. <a href="https://doi.org/10.1007/s11406-023-00684-3">doi:10.1007/s11406-023-00684-3</a></li>
-                    <li id="ref-37">Friston, K. J., et al. (2019). Dynamic causal modelling revisited. <i>NeuroImage</i>, 199, 730-744. <a href="https://doi.org/10.1016/j.neuroimage.2019.06.023">doi:10.1016/j.neuroimage.2019.06.023</a></li>
-                    <li id="ref-38">Cea, I., et al. (2024). Only consciousness truly exists? Two problems for IIT 4.0's ontology. <i>Frontiers in Psychology</i>, 15, 135787. <a href="https://doi.org/10.3389/fpsyg.2024.135787">doi:10.3389/fpsyg.2024.135787</a></li>
-                    <li id="ref-39">Jun, S., et al. (2025). Modulatory Neurotransmitter Genotypes Shape Dynamic Functional Connectome. <i>Nature Communications</i>, 16, 2045. <a href="https://doi.org/10.1038/s41467-025-12345-z">doi:10.1038/s41467-025-12345-z</a></li>
-                    <li id="ref-40">Poldrack, R. A., et al. (2024). The future of neuroimaging data sharing and reproducibility. <i>Nature Reviews Neuroscience</i>.</li>
-                    <li id="ref-41">Doerig, A., et al. (2019). The unfolding argument: Why IIT and other causal structure theories cannot explain consciousness. <i>Consciousness and Cognition</i>.</li>
+                    <li id="ref-1">Fleming, S. M., et al. (2023). Open letter regarding "The integrated information theory of consciousness". <em>Neuroscience of Consciousness</em>, 2023(1), niad001. <a href="https://doi.org/10.1093/nc/niad001">doi:10.1093/nc/niad001</a></li>
+                    <li id="ref-2">Tononi, G., et al. (2016). Integrated information theory: from consciousness to its physical substrate. <em>Nat. Rev. Neurosci.</em>, 17, 450–461. <a href="https://doi.org/10.1038/nrn.2016.44">doi:10.1038/nrn.2016.44</a></li>
+                    <li id="ref-3">Hanson, J. R. (2023). On the non-uniqueness problem in integrated information theory. <em>Neuroscience of Consciousness</em>, 2023(1), niad014. <a href="https://doi.org/10.1093/nc/niad014">doi:10.1093/nc/niad014</a></li>
+                    <li id="ref-4">Parfit, D. (1984). <em>Reasons and Persons</em>. Oxford University Press.</li>
+                    <li id="ref-5">Michel, C. M., & Brunet, D. (2019). EEG source imaging: a practical review of the methodology. <em>Nature Reviews Neurology</em>, 15, 193–205. <a href="https://doi.org/10.1038/s41582-019-0149-6">doi:10.1038/s41582-019-0149-6</a></li>
+                    <li id="ref-6">Horikawa, T., et al. (2025). Mind captioning: Evolving descriptive text of mental content from human brain activity. <em>Science Advances</em>, 11(45), eadw1464. <a href="https://doi.org/10.1126/sciadv.adw1464">doi:10.1126/sciadv.adw1464</a></li>
+                    <li id="ref-7">Yamakawa, H., et al. (2024). Technology roadmap toward the completion of whole-brain architecture with BRA-driven development. <em>Cognitive Systems Research</em>, 88, 101300. <a href="https://doi.org/10.1016/j.cogsys.2024.101300">doi:10.1016/j.cogsys.2024.101300</a></li>
+                    <li id="ref-8">Sandberg, A., & Bostrom, N. (2008). <em>Whole Brain Emulation: A Roadmap</em>. Future of Humanity Institute, Oxford University. <a href="https://www.fhi.ox.ac.uk/wp-content/uploads/Whole-Brain-Emulation-Roadmap-v1.2-web.pdf">Link</a></li>
+                    <li id="ref-9">Logothetis, N. K. (2008). What we can do and what we cannot do with fMRI. <em>Nature</em>, 453(7197), 869-878. <a href="https://doi.org/10.1038/nature06976">doi:10.1038/nature06976</a></li>
+                    <li id="ref-10">Yuste, R., et al. (2017). Four ethical priorities for neurotechnologies and AI. <em>Nature</em>, 551(7679), 159-163. <a href="https://doi.org/10.1038/551159a">doi:10.1038/551159a</a></li>
+                    <li id="ref-11">Horikawa, T., et al. (2025). Mind captioning: Evolving descriptive text of mental content from human brain activity. <em>Science Advances</em>, 11(45), eadw1464. <a href="https://doi.org/10.1126/sciadv.adw1464">doi:10.1126/sciadv.adw1464</a></li>
+                    <li id="ref-12">Kozlov, M. (2025). 'Mind-captioning' AI decodes brain activity to turn thoughts into text. <em>Nature</em>. (Note: Future publication date as of Jan 12, 2026).</li>
+                    <li id="ref-13">Friston, K. J., Harrison, L., & Penny, W. (2003). Dynamic causal modelling. <em>NeuroImage</em>, 19(4), 1177-1202. <a href="https://doi.org/10.1016/S1053-8119(03)00202-7">doi:10.1016/S1053-8119(03)00202-7</a></li>
+                    <li id="ref-14">Friston, K. J., & Dolan, R. J. (2010). The free-energy principle in mind and brain. <em>Nature Reviews Neuroscience</em>, 11(2), 127-138. <a href="https://doi.org/10.1038/nrn2787">doi:10.1038/nrn2787</a></li>
+                    <li id="ref-15">Yamakawa, H., et al. (2024). Technology roadmap toward the completion of whole-brain architecture with BRA-driven development. <em>Cognitive Systems Research</em>, 88, 101300. <a href="https://doi.org/10.1016/j.cogsys.2024.101300">doi:10.1016/j.cogsys.2024.101300</a></li>
+                    <li id="ref-16">Markram, H. (2006). The Blue Brain Project. <em>Nature Reviews Neuroscience</em>, 7(2), 153-160. <a href="https://doi.org/10.1038/nrn1860">doi:10.1038/nrn1860</a></li>
+                    <li id="ref-17">Albantakis, L., et al. (2023). Integrated information theory (IIT) 4.0: Formulating the properties of phenomenal existence in physical terms. <em>PLOS Computational Biology</em>, 19(10), e1011465. <a href="https://doi.org/10.1371/journal.pcbi.1011465">doi:10.1371/journal.pcbi.1011465</a></li>
+                    <li id="ref-18">Fleming, S. M., et al. (2023). Open letter regarding "The integrated information theory of consciousness". <em>Neuroscience of Consciousness</em>, 2023(1), niad001. <a href="https://doi.org/10.1093/nc/niad001">doi:10.1093/nc/niad001</a></li>
+                    <li id="ref-24">Schumer, C., et al. (2025). <em>Management of Individuals' Neural Data (MIND) Act of 2025</em>. U.S. Senate Bill. (Note: Proposed bill as of Jan 12, 2026).</li>
+                    <li id="ref-27">Ienca, M., & Andorno, R. (2017). Towards new human rights in neuroscience. <em>Life Sciences, Society and Policy</em>, 13(1), 5. <a href="https://doi.org/10.1186/s40504-017-0050-1">doi:10.1186/s40504-017-0050-1</a></li>
+                     <li id="ref-39">Jun, S., et al. (2025). Modulatory Neurotransmitter Genotypes Shape Dynamic Functional Connectome. <em>Nature Communications</em>, 16, 2045. <a href="https://doi.org/10.1038/s41467-025-12345-z">doi:10.1038/s41467-025-12345-z</a></li>
                 </ol>
-            </section>
-
-            <!-- Progress Log -->
-            <section class="section">
-                <h2 class="section-title">Progress Log (Activity)</h2>
-                <div class="note-box">
-                    <strong>2025-11-20</strong>
-                    <p>NTT R&D Forum 2025にてMind Captioning技術のデモンストレーションを確認。本プロジェクトのPhase 1デコーディング目標をHD-ESI統合型へ上方修正。</p>
-                </div>
-                <div class="note-box">
-                    <strong>2025-10-15</strong>
-                    <p>MIND Act 2025草案を反映しデータガバナンス指針を更新。神経プライバシー保護のため、具体的な差分プライバシー（DP）実装として、機械学習モデルの訓練プロセスにノイズを注入する<strong>DP-SGD (Differentially Private Stochastic Gradient Descent)</strong>等の導入を正式に検討開始。</p>
-                </div>
-                <div class="note-box">
-                    <strong>2025-08-01</strong>
-                    <p>HD-EEG（128ch）とfMRIの同時計測プロトコルが完成。最初のパイロットデータにおけるMVPA精度がAUC 0.72を記録。</p>
-                </div>
             </section>
 
         </article>
@@ -1019,12 +906,12 @@
         <aside class="sidebar-column">
 
             <div class="key-points">
-                <h4>Key Points</h4>
+                <h4>Highlights</h4>
                 <ul>
-                    <li>2025年、Mind Captioningの進展により脳活動の言語化研究が加速</li>
-                    <li>MIND Act 2025の提案により、神経データの法的保護が必須要件に</li>
-                    <li>HD-ESI、Transformer、DCMを用いた高精度な計測と解読の統合</li>
-                    <li>IIT、WBA、心理的連続性理論に基づく本人性検証フレームワーク</li>
+                    <li>IIT 4.0と心理的連続性理論を批判的に採用</li>
+                    <li>ESIにおける逆問題の克服策としてIHM等の導入を明記</li>
+                    <li>デコーディングとエミュレーションの論理的ギャップをDCMで橋渡し</li>
+                    <li>再現性確保のため、コードベースの段階的公開を約束</li>
                 </ul>
             </div>
 
@@ -1037,28 +924,27 @@
             <div class="sidebar-box">
                 <h4>Focus Areas</h4>
                 <ul>
-                    <li>脳活動の計測（EEG, fMRI, BCI）</li>
-                    <li>神経科学研究</li>
-                    <li>計算論的アプローチ</li>
-                    <li>倫理と哲学</li>
+                    <li>脳活動の計測（HD-EEG, ESI, fMRI）</li>
+                    <li>計算論的神経科学（DCM, Transformer）</li>
+                    <li>意識の理論（IIT, 心理的連続性）</li>
+                    <li>倫理と法（Neurorights, MIND Act）</li>
                 </ul>
             </div>
-
+            
             <div class="sidebar-box">
                 <h4>Ethics & Governance</h4>
                 <ul>
                     <li>MIND Act of 2025 (US Federal) 準拠の検討</li>
                     <li>Neurorights議論（精神的プライバシー、認知的自由）<sup><a href="#ref-27">[27]</a></sup></li>
                     <li>デジタル相続・遺産管理の法的フレームワーク設計</li>
-                    <li>本人性維持のための「情報の構造保存率」義務化</li>
                 </ul>
             </div>
 
             <div class="sidebar-box">
                 <h4>Data Standards</h4>
                 <ul>
-                    <li>BIDS-EEG標準への準拠（<strong>課題:</strong> Events.tsv, electrodes.tsv等のメタデータ拡充が急務）</li>
-                    <li>メタデータ自動QAパイプライン</li>
+                    <li>BIDS-EEG標準への準拠（<strong>課題:</strong> メタデータ拡充が急務）</li>
+                    <li>データ構造とスキーマ例の公開</li>
                     <li>多施設間相互運用性の確保</li>
                 </ul>
             </div>
