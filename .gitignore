@@ -12,3 +12,8 @@ thesis/
 .env
 .env.local
 
+
+# Mind Uploading Collection Files
+papers_metadata.json
+translations_cache.json
+
