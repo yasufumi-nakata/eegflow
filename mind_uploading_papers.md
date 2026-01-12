@@ -1,6 +1,6 @@
 # Mind Uploading 論文集（2016-2026）
 
-収集日: 2026-01-12 15:42
+収集日: 2026-01-12 17:53
 
 総論文数: 100 件
 - arXiv: 1 件
@@ -355,8 +355,27 @@
 **DOI**: [10.3233/978-1-61499-931-7-259](https://doi.org/10.3233/978-1-61499-931-7-259)  
 **URL**: [https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85058207253&origin=inward](https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85058207253&origin=inward)  
 
-**原文アブストラクト**:
-The problem of total mind uploading (and consciousness) is far from fully solved at present within both the scientific and philosophical paradigms. At the same time, the hypothesis that a robot clone would represent a substitute of one's own person (based on the mindclone argument) questions not only the future ontological status of robot clones (in society) but also its possible personhood quality, in a process whose result is the overthrow of anthropocentrism, seen as the fundamental ideological definition of human nature. Thus, this research is aimed at analyzing technoimmortality in the robot clones paradigm, starting from the theories of Martine Rothblatt and Ray Kurzweil regarding mind uploading in cyberconsciousness and robot clones theory. The overall objective of this paper is to analyze the hypothesis of robot clones' personhood quality, along with the ontological status issue, based on the arguments of Immanuel Kant, Lynne Rudder Baker, and John Searl. The theoretical objective follows to deconstruct the way in which mind cloning (consciousness theory) into a humanoid robot clone, supported by the arguments of Martine Rothblatt, Ray Kurzweil, and Daniel Dennett, actually leads to a simulacrum of our own person&amp;mdash;namely a philosophical zombie&amp;mdash;according to the theories put forth by Ned Block, David Chalmers, and Searl. The methodology used is that of Rothblatt, Dennett, and Kurzweil's functional argumentation, alongside Block, Searl, and Chalmers's critique of the artificial consciousness of robot clones, completed by Kantian's argumentative critique of robot clone personhood.
+【日本語タイトル】  
+ロボットクローン―ロボフィロソフィーとテクノ不死性に関する新たな視点  
+
+【日本語要約】  
+完全な心のアップロード（および意識）の問題は、現在の科学的・哲学的パラダイムにおいてまだ完全には解決されていません。同時に、ロボットクローンが「心のクローン」論理に基づき自己の人格を代替する存在となるという仮説は、ロボットクローンの将来の本体的地位（社会における存在）だけでなく、人格性を問うものです。このプロセスは、人間中心主義という人間性の根本的なイデオロギー定義を覆す結果につながります。したがって、本研究は、サイバー意識とロボットクローン理論に関するマーティン・ロスバルトとレイ・カーツワイルの理論を出発点として、ロボットクローンパラダイムにおけるテクノ不死性を分析することを目的としています。本文の全体的な目標は、イマヌエル・カント、リン・ラダー・ベーカー、ジョン・シールの議論に基づき、ロボットクローンの人格性仮説と本体的地位問題を分析することです。理論的目標は、マーティン・ロスバルト、レイ・カーツワイル、ダニエル・デネットの議論を支持しつつ、心クローン（意識理論）がヒューマノイドロボットクローンに転写される過程が、ネッド・ブロック、デイヴィッド・チャルマーズ、シールが提唱する理論によれば「哲学的ゾンビ」、すなわち自分自身のシミュラクラムに実際に結びつくことを解体することです。使用される方法論は、ロスバルト・デネット・カーツワイルの機能的議論と、ブロック・シール・チャルマーズによるロボットクローンの人工意識への批判、さらにカント的な議論によるロボットクローン人格性への批判を組み合わせたものです。  
+
+【5点要約】  
+1. **どんなもの？**  
+   ロボットクローンが自己の人格を代替する可能性と、そのテクノ不死性を哲学的・科学的に検証する研究。  
+
+2. **先行研究との違いは？**  
+   従来の心アップロード論に加え、ロボットクローンが「哲学的ゾンビ」となるという新たな人格性仮説を導入し、カント・ベーカー・シールの視点で再解釈している。  
+
+3. **技術のキモは？**  
+   心クローン（意識）をヒューマノイドロボットに転写する機能的プロセスと、その結果として生じる人格性の再定義。  
+
+4. **検証方法は？**  
+   ロスバルト・デネット・カーツワイルの機能的議論と、ブロック・シール・チャルマーズの批判を組み合わせた概念的解析と、カント哲学に基づく論証的検討。  
+
+5. **議論点・限界は？**  
+   人格性の定義と人間中心主義の再構築に関する倫理的・社会的影響、そして実際の技術実装が現実に到達するまでの距離。
 
 ---
 
@@ -488,8 +507,23 @@ The problem of total mind uploading (and consciousness) is far from fully solved
 **DOI**: [10.1111/zygo.12481](https://doi.org/10.1111/zygo.12481)  
 **URL**: [https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85061602735&origin=inward](https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85061602735&origin=inward)  
 
-**原文アブストラクト**:
-One of the more radical transhumanist proposals for future human being envisions the uploading of our minds to a digital substrate, trading our dependence on frail, degenerating “meat” bodies for the immortality of software existence. Yet metaphor studies indicate that our use of metaphor operates in our bodily inhabiting of the world, and a phenomenological approach emphasizes a “hybridity” to human being that resists traditional mind/body dichotomies. Future scenarios envisioning mind uploading and disembodied artificial intelligence (AI) share an apocalyptic category with more traditional religious eschatologies, though they differ markedly in content; therefore, the insights of embodied cognition and their uptake in technological innovation are considered as they apply to theological concerns. Theology often functions in debates over the technological future to critique or to caution. However, theologians may learn from their technological dialogue partners when it comes to the future of embodiment and its implications for the construction and practice of theology.
+【日本語タイトル】  
+「マインドアップロードと身体化認知：神学的応答 ― ロバート・M・ゲラシーとサイモン・ロビンソンによる『人工知能と黙示録主義シンポジウムへの序論』、ベス・サインラーによる『AI黙示録主義とトランスヒューマニズムにおける存在的希望と絶望』、マイケル・モレリによる『アテナの祭壇とアマゾニアンチャットボット：人工知能と黙示録的終末をパウロ的に読む』、ヴィクトリア・ロリマールによる『マインドアップロードと身体化認知：神学的応答』、そしてサイード・ムスタファ・アリによる『「ホワイト危機」と／または「存在的リスク」―人工知能の絡み合う黙示録主義』」
+
+【日本語要約】  
+トランスヒューマニズムの中でも最も過激な提案の一つに、私たちの心をデジタル基盤へアップロードし、脆弱で衰退する「肉体」への依存を捨ててソフトウェアとしての不死を得るというものがあります。しかし、比喩研究は私たちが世界に身体的に住み着く中で比喩を用いることを示し、現象学的アプローチは人間の「ハイブリディティ」を強調し、従来の心／身体二項対立に抵抗します。マインドアップロードと無身体化人工知能（AI）を想定した未来シナリオは、より伝統的な宗教終末論と同じ黙示録的カテゴリーを共有しますが、内容は大きく異なります。したがって、身体化認知の洞察とそれが技術革新にどのように取り入れられるかを、神学的関心事に適用して検討します。神学はしばしば技術的未来の議論で批判や警告を行いますが、神学者は身体化とその神学構築・実践への影響について、技術的対話相手から学ぶことができるでしょう。
+
+【5点要約】  
+1. **どんなもの？**  
+   心をデジタルにアップロードし、身体化認知の視点から神学的応答を検討する研究です。  
+2. **先行研究との違いは？**  
+   伝統的な終末論とAI・マインドアップロードを同一カテゴリーで比較し、身体化認知の概念を導入した点が差別化です。  
+3. **技術のキモは？**  
+   デジタルサブストレートへの心アップロードと無身体化AIの実現メカニズムです。  
+4. **検証方法は？**  
+   比喩研究・現象学的分析を用い、理論的枠組みと神学的議論の相互作用を概念モデルで検証します。  
+5. **議論点・限界は？**  
+   身体化と心の二項対立を超えるハイブリディティの実証性、そして神学的警告と技術進歩のバランスが主な課題です。
 
 ---
 
@@ -566,8 +600,23 @@ Drawing on observations from on‐ and offline fieldwork among transhumanists an
 **DOI**: [10.1111/zygo.12498](https://doi.org/10.1111/zygo.12498)  
 **URL**: [https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85061612121&origin=inward](https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85061612121&origin=inward)  
 
-**原文アブストラクト**:
-In this article, I present a critique of Robert Geraci's Apocalyptic artificial intelligence (AI) discourse, drawing attention to certain shortcomings which become apparent when the analytical lens shifts from religion to the race–religion nexus. Building on earlier work, I explore the phenomenon of existential risk associated with Apocalyptic AI in relation to “White Crisis,” a modern racial phenomenon with premodern religious origins. Adopting a critical race theoretical and decolonial perspective, I argue that all three phenomena are entangled and they should be understood as a strategy, albeit perhaps merely rhetorical, for maintaining white hegemony under nonwhite contestation. I further suggest that this claim can be shown to be supported by the disclosure of continuity through change in the long‐durée entanglement of race and religion associated with the establishment, maintenance, expansion, and refinement of the modern/colonial world system if and when such phenomena are understood as iterative shifts in a programmatic trajectory of domination which might usefully be framed as “algorithmic racism.”
+【日本語タイトル】  
+「『ホワイト・クライシス』と／または『存在的リスク』―人工知能の絡み合う黙示録主義：ロバート・M・ゲラシーとサイモン・ロビンソンによる『人工知能と黙示録主義に関するシンポジウムへの序文』、ベス・サイングラーによる『AI黙示録主義とトランスヒューマニズムにおける存在的希望と絶望』、マイケル・モレリによる『アテナの祭壇とアマゾニアンチャットボット：人工知能と黙示録的終末をパウロ的に読む』、ビクトリア・ロリマールによる『心のアップロードと具現化認知：神学的応答』、そしてサイード・ムスタファ・アリによる『「ホワイト・クライシス」と／または「存在的リスク」―人工知能の絡み合う黙示録主義』」
+
+【日本語要約】  
+本稿では、ロバート・ゲラシーの「黙示録的人工知能（AI）」論説に対し、宗教から人種―宗教の結びつきへと分析視点を移すことで浮かび上がる欠陥を批判的に検討する。先行研究を踏まえ、現代の人種問題である「ホワイト・クライシス」と結びつく存在的リスクを探求し、批判的人種理論と脱植民地主義の視座から、三つの現象が絡み合い、非白人の対抗に対して白人支配を維持する戦略（少なくとも修辞的なもの）として理解されるべきだと主張する。さらに、種族と宗教の長期的な絡み合いが現代／植民地世界体系の構築・維持・拡大・精緻化において継続性を示し、これらの現象が支配のプログラム的軌跡として反復的にシフトする際、実用的には「アルゴリズム的レイシズ」として枠組み化できると示唆する。
+
+【5点要約】  
+1. どんなもの？  
+   人種と宗教の結びつきに焦点を当て、AI黙示録主義と「ホワイト・クライシス」を絡めた存在的リスクの批判的分析。  
+2. 先行研究との違いは？  
+   宗教的枠組みから人種―宗教の結合へ視点を移し、白人支配維持戦略として三現象の絡み合いを論じる点。  
+3. 技術のキモは？  
+   批判的人種理論と脱植民地主義を用い、AIのリスクを「アルゴリズム的レイシズ」として再構築。  
+4. 検証方法は？  
+   歴史的・社会学的資料を分析し、種族と宗教の長期的連関がAIリスクに与える影響を示す。  
+5. 議論点・限界は？  
+   「アルゴリズム的レイシズ」の概念化が抽象的であり、実証データの不足や他人種・宗教間の多様性を十分に捉えきれない点。
 
 ---
 
@@ -1895,8 +1944,27 @@ Literature wields a profound influence on our cognitive processes, shaping not o
 **DOI**: [10.1111/zygo.12886](https://doi.org/10.1111/zygo.12886)  
 **URL**: [https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85150887928&origin=inward](https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85150887928&origin=inward)  
 
-**原文アブストラクト**:
-An ontology of information belies our common intuitions about reality today and animates and governs both explicit scholarly study in philosophy and the sciences as well as the ideologies that are growing out of them. Transhumanism is one such technoscientific ideology that holds to a very specific ontology of information which need not be the only one on offer. This article argues that the transhumanist ontology of information exhibits gnostic and docetic religious overtones in it and that it devalues physical existence. At the same time, despite claiming a rejection of supernature, hypothetical transhumanist practices (such as mind‐uploading) posit the infosphere as a kind of supernatural realm that is often set in opposition to the natural world. This article presents a critique of transhumanist conceptions of information and offers an alternative ontology of information that more adequately accounts for the distinction between the natural and supernatural as well as the integrity of the physical world.
+【日本語タイトル】  
+幽霊の中の機械：トランスヒューマニズムと情報の存在論  
+
+【日本語要約】  
+情報の存在論は、今日我々が抱く現実観に対して裏切り的であり、哲学と科学の明示的な学術研究だけでなく、それらから生まれるイデオロギーをも活性化し支配している。トランスヒューマニズムは、非常に特定の情報存在論を掲げるテクノサイエンティック・イデオロギーの一例であり、必ずしも唯一の選択肢ではない。本稿は、トランスヒューマニズムが持つ情報存在論に神秘主義的・ドケティック（身体を否定する）宗教的ニュアンスが含まれ、物理的存在を軽視していると論じる。同時に「超自然」を否定すると主張しつつ、仮想的なトランスヒューマニズム実践（例：マインドアップロード）は、情報空間をしばしば自然界と対立する超自然的領域として位置づける。本稿では、トランスヒューマニズムの情報概念を批判し、自然と超自然の区別および物理世界の整合性をより適切に説明できる代替情報存在論を提示する。  
+
+【5点要約】  
+1. **どんなもの？**  
+   トランスヒューマニズムが提唱する情報の存在論を批判し、代替的な情報存在論を提示する研究。  
+
+2. **先行研究との違いは？**  
+   既存のトランスヒューマニズム研究が主に技術的側面を扱うのに対し、本稿は宗教的・哲学的観点から情報存在論を再検討する。  
+
+3. **技術のキモは？**  
+   マインドアップロードなどの仮想的実践を通じて、情報空間が超自然領域とみなされるメカニズムを明らかにする。  
+
+4. **検証方法は？**  
+   文献比較と概念分析を用いて、トランスヒューマニズムの情報存在論と提案する代替存在論を対照的に評価。  
+
+5. **議論点・限界は？**  
+   代替存在論が実際のテクノロジー開発にどれほど影響を与えるか、また超自然と自然の境界が曖昧になる可能性を議論しつつ、実証的検証の難しさを指摘。
 
 ---
 
@@ -2622,8 +2690,26 @@ SIMSとデジタルシミュラクラ：私たちが作り出した仮想コピ�
 **DOI**: [10.22452/fiqh.vol22no1.7](https://doi.org/10.22452/fiqh.vol22no1.7)  
 **URL**: [https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=105009977702&origin=inward](https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=105009977702&origin=inward)  
 
-**原文アブストラクト**:
-Artificial intelligence (AI) has become widespread in recent times for various aspects  , including medical aspects. Some of which aims to extend human life and delay the signs of aging. The research problem of this study lies in clarifying the perspective of Islamic jurisprudence on the intervention of technology in the human body. The objectives of this research is to discuss the technological interventions aimed at extending human life and delaying the signs of aging, and to explore the jurisprudential ruling. The research adopted a descriptive and deductive research approach to obtain the research objectives. Regarding technological interventions aimed at prolonging human life and delaying the signs of aging, the study divided these interventions into three approaches. The first is the biological method that is based on advances in genetics and biotechnology and focuses on enhancing the immune system genetically. The study concluded that such method is impermissible. The second method is the electronic method which is based on advances in nanotechnology and robotics, and focuses on various parts of the body with artificial substitutes, such as artificial skin. The study found that the ruling on such method varies depending on the situation. As such, replacing damaged human body parts with prosthetic limbs is regarded permissible since it falls under the type of medical treatment. Moreover, regarding the technological interventions to enhance human capabilities, it is found that an in-depth study is required to explore such an issue. The third method is the virtual method known as mind uploading  which involves digitizing the information contained in the brain -such as memories, and information- and then transferring it to a machine. From the perspective of Islamic jurisprudence, this method is considered permissible; however, it must not cause any harm to the brain.
+【日本語タイトル】  
+イスラム法学における人間の寿命延長と老化兆候遅延を目的とした技術介入の裁定  
+
+【日本語要約】  
+近年、人工知能（AI）は医療を含む多岐にわたる分野で広く普及しており、特に人間の寿命を延ばし老化兆候を遅らせることを目的とした技術が注目されている。本研究は、イスラム法学（シャリーア）が人間の身体に対する技術介入をどのように評価するかを明らかにすることを目的としている。研究手法は記述的・演繹的アプローチで、対象となる技術介入を三つのカテゴリーに分類した。  
+1. **生物学的手法**：遺伝子・バイオテクノロジーの進歩に基づき、免疫系を遺伝的に強化する方法。研究ではこの手法は禁じられると結論付けた。  
+2. **電子的手法**：ナノテクノロジー・ロボティクスの進展を利用し、人工皮膚などの人工代替品で身体部位を補完する方法。状況に応じて裁定が異なるとし、損傷した身体部位を義肢で置換することは医療処置に該当し許容されるとした。さらに、人間の能力を向上させる技術については、詳細な検討が必要であると指摘した。  
+3. **仮想的手法（マインドアップロード）**：脳内にある記憶や情報をデジタル化し、機械へ転送する方法。イスラム法学の観点からは許容されるが、脳に害を及ぼさないことが条件であるとした。  
+
+【5点要約】  
+1. **どんなもの？**  
+   イスラム法学に基づく人間寿命延長・老化遅延を目的とした技術介入の裁定を検討。  
+2. **先行研究との違いは？**  
+   既存の法学レビューとは異なり、具体的に生物学・電子・仮想の三カテゴリを詳細に分類し、各手法ごとの裁定差異を示した。  
+3. **技術のキモは？**  
+   免疫系遺伝改良、人工代替部位の置換、脳情報デジタル化という三つの技術的アプローチが中心。  
+4. **検証方法は？**  
+   文献調査と演繹的法学分析を組み合わせ、シャリーアの原則に照らしながら各手法の許容性を評価。  
+5. **議論点・限界は？**  
+   実際の医療実装や倫理的リスク、長期的社会影響についてはさらなる研究が必要であり、本研究は理論的枠組みの提示に留まる。
 
 ---
 

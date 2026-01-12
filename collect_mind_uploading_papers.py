@@ -31,6 +31,7 @@ LM_STUDIO_MODEL = os.getenv("LM_STUDIO_MODEL", "local-model")
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 CACHE_FILE = os.path.join(BASE_DIR, "translations_cache.json")
 OUTPUT_FILE = os.path.join(BASE_DIR, "mind_uploading_papers.md")
+HTML_OUTPUT_FILE = os.path.join(BASE_DIR, "mind_uploading_papers.html")
 DATA_FILE = os.path.join(BASE_DIR, "papers_metadata.json")
 
 # Search parameters
@@ -368,6 +369,310 @@ def generate_markdown_report(papers, cache):
     print(f"[Report] Saved to {OUTPUT_FILE}")
 
 
+def generate_html_report(papers, cache):
+    """Generate a premium HTML report of all papers sorted chronologically."""
+    print(f"\n[Report] Generating premium HTML report...")
+
+    sorted_papers = sorted(papers, key=lambda x: (x['year'], x['published']), reverse=True)
+
+    papers_by_year = {}
+    for paper in sorted_papers:
+        year = paper['year']
+        if year not in papers_by_year:
+            papers_by_year[year] = []
+        papers_by_year[year].append(paper)
+
+    # CSS for premium look
+    css = """
+    :root {
+        --primary-color: #6366f1;
+        --primary-hover: #4f46e5;
+        --bg-color: #0f172a;
+        --card-bg: #1e293b;
+        --text-primary: #f8fafc;
+        --text-secondary: #94a3b8;
+        --accent-gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+        --glass-bg: rgba(30, 41, 59, 0.7);
+    }
+
+    * { margin: 0; padding: 0; box-バランス: border-box; }
+
+    body {
+        font-family: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        background-color: var(--bg-color);
+        color: var(--text-primary);
+        line-height: 1.6;
+        padding: 2rem 1rem;
+    }
+
+    .container {
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    header {
+        text-align: center;
+        margin-bottom: 4rem;
+        padding: 3rem;
+        background: var(--glass-bg);
+        backdrop-filter: blur(10px);
+        border-radius: 24px;
+        border: 1px solid rgba(255,255,255,0.1);
+        box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+    }
+
+    h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        background: var(--accent-gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-weight: 800;
+    }
+
+    .stats {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        margin-top: 1.5rem;
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+    }
+
+    .year-section {
+        margin-bottom: 4rem;
+    }
+
+    .year-header {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid var(--primary-color);
+        display: inline-block;
+        font-weight: 700;
+        position: sticky;
+        top: 1rem;
+        background: var(--bg-color);
+        z-index: 10;
+        padding-right: 2rem;
+    }
+
+    .paper-card {
+        background-color: var(--card-bg);
+        border-radius: 20px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        border: 1px solid rgba(255,255,255,0.05);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .paper-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 25px -5px rgba(0,0,0,0.3);
+        border-color: rgba(99, 102, 241, 0.3);
+    }
+
+    .source-tag {
+        position: absolute;
+        top: 1.5rem;
+        right: 1.5rem;
+        padding: 0.25rem 0.75rem;
+        border-radius: 9999px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        background: var(--accent-gradient);
+    }
+
+    h3.paper-title {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        padding-right: 5rem;
+        line-height: 1.3;
+        color: #fff;
+    }
+
+    .meta-info {
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+        margin-bottom: 1.5rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .meta-item b { color: var(--text-primary); }
+
+    .translation-box {
+        background: rgba(0,0,0,0.2);
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin-top: 1.5rem;
+        border-left: 4px solid var(--primary-color);
+    }
+
+    .jp-title {
+        font-weight: 700;
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+        color: #fff;
+    }
+
+    .jp-summary {
+        font-size: 0.95rem;
+        margin-bottom: 1.5rem;
+        color: #d1d5db;
+    }
+
+    .five-point-title {
+        font-weight: 700;
+        margin-bottom: 0.75rem;
+        font-size: 0.9rem;
+        color: var(--primary-color);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    .five-point-list {
+        list-style: none;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+    }
+
+    @media (max-width: 768px) {
+        .five-point-list { grid-template-columns: 1fr; }
+        h1 { font-size: 2rem; }
+    }
+
+    .point-item {
+        background: rgba(255,255,255,0.03);
+        padding: 0.75rem;
+        border-radius: 8px;
+        font-size: 0.85rem;
+    }
+
+    .point-label {
+        font-weight: 700;
+        color: var(--text-primary);
+        display: block;
+        margin-bottom: 0.25rem;
+    }
+
+    .url-btn {
+        display: inline-block;
+        margin-top: 1.5rem;
+        padding: 0.6rem 1.2rem;
+        background: var(--primary-color);
+        color: white;
+        text-decoration: none;
+        border-radius: 10px;
+        font-weight: 600;
+        font-size: 0.9rem;
+        transition: background 0.2s;
+    }
+
+    .url-btn:hover { background: var(--primary-hover); }
+
+    .abstract-raw {
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+        font-style: italic;
+        margin-top: 1rem;
+        border-top: 1px solid rgba(255,255,255,0.05);
+        padding-top: 1rem;
+    }
+    """
+
+    import html
+
+    with open(HTML_OUTPUT_FILE, 'w', encoding='utf-8') as f:
+        f.write(f"""<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mind Uploading Paper Collection</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>{css}</style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>Mind Uploading Paper Collection</h1>
+        <p>学術論文集（2016-2026）</p>
+        <div class="stats">
+            <span>総論文数: <b>{len(papers)}</b></span>
+            <span>arXiv: <b>{len([p for p in papers if p['source'] == 'arXiv'])}</b></span>
+            <span>Scopus: <b>{len([p for p in papers if p['source'] == 'Scopus'])}</b></span>
+            <span>更新日: <b>{datetime.now().strftime('%Y-%m-%d')}</b></span>
+        </div>
+    </header>
+""")
+
+        for year in sorted(papers_by_year.keys(), reverse=True):
+            f.write(f'<section class="year-section"><h2 class="year-header">{year}年</h2>')
+            for paper in papers_by_year[year]:
+                translation = cache.get(paper['id'], "")
+
+                # Parse translation parts
+                parts = {"title": paper['title'], "summary": "", "5point": []}
+                if translation:
+                    t_match = re.search(r'【日本語タイトル】\n(.*?)\n\n【日本語要約】', translation, re.DOTALL)
+                    if t_match: parts["title"] = t_match.group(1).strip()
+
+                    s_match = re.search(r'【日本語要約】\n(.*?)\n\n【5点要約】', translation, re.DOTALL)
+                    if s_match: parts["summary"] = s_match.group(1).strip()
+
+                    p_match = re.search(r'【5点要約】\n(.*)', translation, re.DOTALL)
+                    if p_match:
+                        points = re.findall(r'\d+\.\s+(.*?)\n(.*?)(?=\n\d+\.\s+|$)', p_match.group(1) + "\n", re.DOTALL)
+                        parts["5point"] = points
+
+                doi_link = f'<a href="https://doi.org/{paper["doi"]}" style="color:var(--primary-color)">{paper["doi"]}</a>' if paper['doi'] else 'N/A'
+
+                f.write(f"""
+        <div class="paper-card">
+            <span class="source-tag">{paper['source']}</span>
+            <h3 class="paper-title">{html.escape(paper['title'])}</h3>
+            <div class="meta-info">
+                <span class="meta-item"><b>Date:</b> {paper['published']}</span>
+                <span class="meta-item"><b>Authors:</b> {html.escape(paper['authors'])}</span>
+                <span class="meta-item"><b>DOI:</b> {doi_link}</span>
+                {f'<span class="meta-item"><b>Affil:</b> {html.escape(paper["affiliation"])}</span>' if paper['affiliation'] else ''}
+            </div>
+""")
+                if translation:
+                    escaped_summary = html.escape(parts["summary"]).replace('\n', '<br>')
+                    f.write(f"""
+            <div class="translation-box">
+                <div class="jp-title">{html.escape(parts["title"])}</div>
+                <div class="jp-summary">{escaped_summary}</div>
+                <div class="five-point-title">Quick Review</div>
+                <div class="five-point-list">
+""")
+                    for label, content in parts["5point"]:
+                        f.write(f"""
+                    <div class="point-item">
+                        <span class="point-label">{html.escape(label)}</span>
+                        {html.escape(content.strip())}
+                    </div>""")
+                    f.write("</div></div>")
+
+                f.write(f"""
+            <div class="abstract-raw"><b>Original Abstract:</b> {html.escape(paper['abstract'])}</div>
+            <a href="{paper['url']}" target="_blank" class="url-btn">View Full Paper</a>
+        </div>""")
+            f.write('</section>')
+
+        f.write("</div></body></html>")
+
+    print(f"[Report] Saved to {HTML_OUTPUT_FILE}")
+
+
 def main():
     print("=" * 60)
     print("Mind Uploading Paper Collection Script (Resumable)")
@@ -409,14 +714,16 @@ def main():
             cache[paper['id']] = translation
             save_cache(cache)
 
-        # Periodically update the report
+        # Periodically update the reports
         if i % 5 == 0:
             generate_markdown_report(unique_papers, cache)
+            generate_html_report(unique_papers, cache)
 
         time.sleep(0.5)
 
-    # 3. Final report
+    # 3. Final reports
     generate_markdown_report(unique_papers, cache)
+    generate_html_report(unique_papers, cache)
     print("\n" + "=" * 60)
     print("Done!")
     print("=" * 60)
