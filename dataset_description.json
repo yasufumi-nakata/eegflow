@@ -12,7 +12,8 @@
   "Funding": [],
   "ReferencesAndLinks": [
     "https://eegflow.jp",
-    "https://github.com/yasufumi-nakata/eegflow"
+    "https://github.com/yasufumi-nakata/eegflow",
+    "Sample data can be found on OpenNeuro: https://openneuro.org/datasets?modality=eeg"
   ],
   "DatasetDOI": ""
 }
