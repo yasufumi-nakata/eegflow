@@ -523,6 +523,15 @@ def generate_html_report(papers, cache):
         border-radius: 3px;
     }
 
+    .subsection-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--text-muted);
+        margin: 4rem 0 2rem;
+        border-bottom: 2px solid var(--border);
+        padding-bottom: 0.5rem;
+    }
+
     /* Paper Card */
     .paper-card {
         background: var(--card-bg);
@@ -670,6 +679,56 @@ def generate_html_report(papers, cache):
 
         return res
 
+    def render_paper_card(paper, cache):
+        translation_raw = cache.get(paper['id'])
+        parsed = parse_translation_robust(translation_raw)
+
+        display_title_jp = parsed["title"] if parsed["title"] else "（翻訳中...）"
+        display_summary = parsed["summary"] if parsed["summary"] else "アブストラクトの日本語訳を準備中です。"
+        if not translation_raw and paper.get('abstract') == "（アブストラクト取得不可）":
+            display_summary = "（この論文はアブストラクトの取得ができなかったため、詳細な翻訳・要約が生成できませんでした）"
+
+        doi_link = f'<a href="https://doi.org/{paper["doi"]}" target="_blank" style="color:inherit">{paper["doi"]}</a>' if paper['doi'] else 'N/A'
+
+        card_html = f"""
+        <div class="paper-card">
+            <div class="badge">{ICON_SOURCE} {paper['source']}</div>
+            <h3>{html.escape(paper['title'])}</h3>
+
+            <div class="meta">
+                <div class="meta-item">{ICON_DATE} {paper['published']}</div>
+                <div class="meta-item">{ICON_USER} {html.escape(paper['authors'])}</div>
+                <div class="meta-item">{ICON_LINK} DOI: {doi_link}</div>
+            </div>
+
+            <div class="translation-container">
+                <div class="jp-title">{html.escape(display_title_jp)}</div>
+                <div class="jp-summary">{html.escape(display_summary)}</div>
+
+                <div class="grid-5points">
+        """
+        if parsed["points"]:
+            for label, content in parsed["points"]:
+                card_html += f"""
+                    <div class="point-card">
+                        <label>{html.escape(label)}</label>
+                        <p>{html.escape(content.strip())}</p>
+                    </div>"""
+        elif translation_raw:
+            card_html += f'<div class="point-card" style="grid-column: 1/-1"><p>{html.escape(translation_raw.split("【5点要約】")[-1].strip())}</p></div>'
+
+        card_html += """
+                </div>
+            </div>
+        """
+        if paper.get('abstract') and paper['abstract'] != "（アブストラクト取得不可）":
+            card_html += f'<div class="raw-abstract"><b>Original Abstract:</b> {html.escape(paper["abstract"])}</div>'
+
+        card_html += f"""
+            <a href="{paper['url']}" target="_blank" class="btn-action">View Full Access {ICON_LINK}</a>
+        </div>"""
+        return card_html
+
     with open(HTML_OUTPUT_FILE, 'w', encoding='utf-8') as f:
         f.write(f"""<!DOCTYPE html>
 <html lang="ja">
@@ -705,56 +764,18 @@ def generate_html_report(papers, cache):
 
         for year in sorted(papers_by_year.keys(), reverse=True):
             f.write(f'<h2 id="year-{year}" class="year-title">{year}年</h2>')
-            for paper in papers_by_year[year]:
-                translation_raw = cache.get(paper['id'])
-                parsed = parse_translation_robust(translation_raw)
 
-                # Use translated title from LLM if available, otherwise original
-                display_title_jp = parsed["title"] if parsed["title"] else "（翻訳中...）"
-                display_summary = parsed["summary"] if parsed["summary"] else "アブストラクトの日本語訳を準備中です。"
-                if not translation_raw and paper['abstract'] == "（アブストラクト取得不可）":
-                    display_summary = "（この論文はアブストラクトの取得ができなかったため、詳細な翻訳・要約が生成できませんでした）"
+            papers_with_abstract = [p for p in papers_by_year[year] if p.get('abstract') and p['abstract'] != "（アブストラクト取得不可）"]
+            papers_without_abstract = [p for p in papers_by_year[year] if not p.get('abstract') or p['abstract'] == "（アブストラクト取得不可）"]
 
-                doi_link = f'<a href="https://doi.org/{paper["doi"]}" target="_blank" style="color:inherit">{paper["doi"]}</a>' if paper['doi'] else 'N/A'
+            for paper in papers_with_abstract:
+                f.write(render_paper_card(paper, cache))
 
-                f.write(f"""
-        <div class="paper-card">
-            <div class="badge">{ICON_SOURCE} {paper['source']}</div>
-            <h3>{html.escape(paper['title'])}</h3>
+            if papers_without_abstract:
+                f.write('<h3 class="subsection-title">アブストラクトが取得できなかった論文</h3>')
+                for paper in papers_without_abstract:
+                    f.write(render_paper_card(paper, cache))
 
-            <div class="meta">
-                <div class="meta-item">{ICON_DATE} {paper['published']}</div>
-                <div class="meta-item">{ICON_USER} {html.escape(paper['authors'])}</div>
-                <div class="meta-item">{ICON_LINK} DOI: {doi_link}</div>
-            </div>
-
-            <div class="translation-container">
-                <div class="jp-title">{html.escape(display_title_jp)}</div>
-                <div class="jp-summary">{html.escape(display_summary)}</div>
-
-                <div class="grid-5points">
-""")
-                if parsed["points"]:
-                    for label, content in parsed["points"]:
-                        f.write(f"""
-                    <div class="point-card">
-                        <label>{html.escape(label)}</label>
-                        <p>{html.escape(content.strip())}</p>
-                    </div>""")
-                elif translation_raw:
-                    # Fallback if points were not in "number. label\n content" format but text existed
-                    f.write(f'<div class="point-card" style="grid-column: 1/-1"><p>{html.escape(translation_raw.split("【5点要約】")[-1].strip())}</p></div>')
-
-                f.write("""
-                </div>
-            </div>
-""")
-                if paper['abstract'] != "（アブストラクト取得不可）":
-                    f.write(f'<div class="raw-abstract"><b>Original Abstract:</b> {html.escape(paper["abstract"])}</div>')
-
-                f.write(f"""
-            <a href="{paper['url']}" target="_blank" class="btn-action">View Full Access {ICON_LINK}</a>
-        </div>""")
 
         f.write("</main></body></html>")
 
