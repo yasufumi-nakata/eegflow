@@ -546,7 +546,7 @@ def generate_html_report(papers, cache):
         if papers_without_abstract:
             f.write('<li><a href="#without-abstracts">2. アブストラクトなし</a></li>')
 
-        f.write("""</ul></aside><main><header><h1>Mind Uploading Paper Collection</h1>
+        f.write(f"""</ul></aside><main><header><h1>Mind Uploading Paper Collection</h1>
             <p>過去10年間の主要な「Mind Uploading」関連論文を、アブストラクトの有無で整理したアーカイブです。</p>
             <div class="stats-grid">
                 <div class="stat-card"><span>Total</span><div>{len(papers)}</div></div>
