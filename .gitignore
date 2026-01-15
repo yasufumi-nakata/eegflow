@@ -26,3 +26,5 @@ __pycache__/
 
 # Mind Uploading Collection Cache
 translations_cache.json
+papers_metadata.json
+papers_metadata.json
