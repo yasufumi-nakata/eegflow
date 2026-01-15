@@ -686,7 +686,7 @@
         </p>
         <div class="article-meta">
             <span>Open Access</span>
-            <span>Last Updated: 2026-01-12</span>
+            <span>Last Updated: 2026-01-15</span>
             <span>研究ノート (2026年1月改訂)</span>
         </div>
     </header>
@@ -712,8 +712,8 @@
                     <h4>中心的課題: 意識の座はどこか？</h4>
                     <p>IITは意識の物理的基盤（PCC, Posterior Cortical Hot Zone）を後頭葉中心の因果構造に求めるのに対し、GNWTは意識的アクセスには前頭前野を含む広範なネットワークによる「グローバルな情報放送」が不可欠だと主張する。この対立は、WBEにおいてどの脳領域の結合性を優先的にエミュレートすべきかという、リソース配分の根幹に関わる問題である。</p>
                     <div class="resolution-box">
-                        <h5>解決の方向性: Adversarial Collaborationの結果と理論の相補的統合</h5>
-                        <p>2023年に報告された「Adversarial Collaboration」<sup><a href="#ref-42">[42]</a></sup>は、両理論の予測を検証する大規模な共同研究であり、その結果は単純な勝敗では決着しなかった。この結果を踏まえ、我々は両理論を排他的なものではなく、意識の異なる側面を捉える**相補的なプロセス**として位置づける。すなわち、IITが示す「情報の統合（qualiaの生成）」と、GNWTが示す「情報のグローバルな利用可能性（意識的報告）」は、一つのシステムが両立しうる機能である。WBEの評価指標には、両理論に基づく予測（例：統合情報量Φと、広域ネットワークの活動）を組み込み、多角的な検証を行う。</p>
+                        <h5>解決の方向性: Adversarial Collaborationと理論の相補的統合</h5>
+                        <p>2023年に提案された「Adversarial Collaboration」プロトコル<sup><a href="#ref-42">[42]</a></sup>や、その枠組みに沿った理論検証の報告<sup><a href="#ref-54">[54]</a></sup>は、意識理論を「口頭の多数派争い」から、事前登録された予測に基づく共同検証へ移す流れを加速させた。本サイトではこの潮流を踏まえ、両理論を排他的なものではなく、意識の異なる側面を捉える<strong>相補的なプロセス</strong>として位置づける。すなわち、IITが示す「情報の統合（qualiaの生成）」と、GNWTが示す「情報のグローバルな利用可能性（意識的報告）」は、一つのシステムが両立しうる機能である。WBEの評価指標には、両理論に基づく予測（例：統合情報量Φと、広域ネットワークの活動）を組み込み、多角的な検証を行う。</p>
                     </div>
                 </div>
 
@@ -858,7 +858,7 @@
             <section class="section">
                 <h2 class="section-title">Research Program</h2>
 
-                <p>論文化を意識した実証プランでは、計測・解読・実装の各段階を統合的に示す。目標はマルチモーダル計測と神経解読を統合した「本人性維持」評価系の設計と論文化である。</p>
+                <p>論文化を意識した実証プランでは、計測・解読・実装の各段階を統合的に示す。目標はマルチモーダル計測と神経解読を統合した「本人性維持」評価系の設計と論文化である。加えて、計測段階の柱として、EEGを中心とした<strong>行動非依存の意識指標</strong>（複雑性×摂動応答×臨界性）のロードマップも明示する。</p>
 
                 <!-- Table: Roadmap -->
                 <table class="data-table">
@@ -891,6 +891,143 @@
                         </tr>
                     </tbody>
                 </table>
+            </section>
+
+            <!-- EEG Consciousness Roadmap -->
+            <section class="section" id="eeg-consciousness-roadmap">
+                <h2 class="section-title">EEGで意識を測る：複雑性×摂動応答×臨界性ロードマップ</h2>
+
+                <p>マインドアップロードの「計測」段階は、単に神経信号を高密度に取得するだけでは完結しない。意識レベルや意識内容に関わる情報処理を、<strong>行動報告に依存せず</strong>に定量化し、条件差・個体差・装置差を越えて再現できる「ものさし」へ落とす必要がある。これはWBEの評価（アップロード後に意識が保たれているか）にも直結する。</p>
+
+                <div class="note-box">
+                    <strong>Design Goal</strong><br>
+                    行動（報告）に依存しない指標、report confoundの分離、摂動による因果、一般化可能性──この4点を満たす評価系を、EEG中心に構築する。
+                </div>
+
+                <h3>強い結論に近づくための4要件</h3>
+                <ol style="margin: 0; padding-left: 20px; font-size: 14px; line-height: 1.6;">
+                    <li style="margin-bottom: 8px;"><strong>行動（報告）に依存しない意識指標</strong>：感覚入力や応答が制限されても推定できる指標（例：摂動複雑性）<sup><a href="#ref-47">[47]</a></sup></li>
+                    <li style="margin-bottom: 8px;"><strong>report confoundの切り分け</strong>：no-reportパラダイム等で、知覚そのものと「報告に必要な後段処理」を分離する<sup><a href="#ref-48">[48]</a></sup></li>
+                    <li style="margin-bottom: 8px;"><strong>相関ではなく因果</strong>：摂動（TMS等）に対する応答伝播の崩れ／維持を介して、結合性の因果的読み出しを行う<sup><a href="#ref-49">[49]</a></sup></li>
+                    <li style="margin-bottom: 8px;"><strong>一般化（頑健性）</strong>：被験者・条件・装置をまたいでも成立するパイプラインと検証設計（再現性・外部データ）</li>
+                </ol>
+
+                <h3>コア発想：I/O「揺らぎ」を計測可能な量へ</h3>
+                <p>本サイトでは、意識を情報処理の「揺らぎ」と捉える直観を、査読耐性の高い定量指標へ接続するために、次の三つを中核に据える。</p>
+                <ul style="margin: 0; padding-left: 20px; list-style-type: disc; font-size: 14px; line-height: 1.6;">
+                    <li style="margin-bottom: 8px;"><strong>複雑性（complexity）</strong>：安静時EEGのLZ複雑性など、状態依存で変化する指標<sup><a href="#ref-50">[50]</a></sup></li>
+                    <li style="margin-bottom: 8px;"><strong>摂動応答の複雑性（perturbational complexity）</strong>：刺激に対する状態遷移・次元圧縮に基づく指標（PCI/PCI-ST）<sup><a href="#ref-47">[47]</a></sup><sup><a href="#ref-51">[51]</a></sup></li>
+                    <li style="margin-bottom: 8px;"><strong>臨界性（criticality）</strong>：複雑性と摂動感受性が最大化しやすい力学状態として位置づけ、安静時指標から意識能力を予測する<sup><a href="#ref-52">[52]</a></sup></li>
+                </ul>
+                <p>この枠組みでは、I/Oは次のように読み替えられる：<strong>I（Input）＝摂動（刺激・介入）</strong>、<strong>O（Output）＝脳の複雑性応答</strong>、そしてその背景として<strong>臨界性</strong>を扱う。</p>
+
+                <h3>研究の芯：2つの路線（A→Bの順で積む）</h3>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Route</th>
+                            <th>狙い</th>
+                            <th>強み</th>
+                            <th>主な課題</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>A</td>
+                            <td>ベッドサイド意識メータ（行動不能でも推定）</td>
+                            <td>臨床価値が高く、評価指標（PCI/PCI-ST）の議論が組みやすい<sup><a href="#ref-47">[47]</a></sup><sup><a href="#ref-55">[55]</a></sup></td>
+                            <td>摂動系（TMS等）の導入・安全性・運用コスト</td>
+                        </tr>
+                        <tr>
+                            <td>B</td>
+                            <td>臨界性からの統一説明（複雑性・摂動応答・伝播）</td>
+                            <td>安静時EEGからの予測など、装置制約が小さい方向へ拡張できる<sup><a href="#ref-52">[52]</a></sup></td>
+                            <td>交絡の統制と因果の取り方（介入設計）が難しい</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>ロードマップ（大学院を想定）</h3>
+                <div class="stage-list">
+                    <div class="stage-item">
+                        <div class="stage-number"></div>
+                        <div class="stage-body">
+                            <h4>フェーズ0：基盤整備（〜1年）—「測れる」「再現できる」を固める</h4>
+                            <p>EEG解析パイプラインを固定し、複雑性・臨界性・report confound分離を同一データ上で回せる状態にする。</p>
+                            <ul style="margin: 0; padding-left: 20px; list-style-type: disc; font-size: 14px; line-height: 1.6;">
+                                <li style="margin-bottom: 8px;">前処理・アーチファクト除去・ログまで含む再現可能な解析（BIDS等）</li>
+                                <li style="margin-bottom: 8px;">公開データで、麻酔/鎮静に伴う複雑性変化の再現<sup><a href="#ref-50">[50]</a></sup><sup><a href="#ref-53">[53]</a></sup></li>
+                                <li style="margin-bottom: 8px;">no-report設計（瞳孔/EOG/OKN等）を最初から組み込み<sup><a href="#ref-48">[48]</a></sup></li>
+                                <li style="margin-bottom: 8px;">多モーダルI/O（EEG＋EOG/瞳孔＋ECG/PPG）までを現実的に統合</li>
+                            </ul>
+                            <div class="tag-list" style="margin-top: 12px;">
+                                <span class="tag">Reproducible Pipeline</span>
+                                <span class="tag">No-Report</span>
+                                <span class="tag">LZ Complexity</span>
+                                <span class="tag">Criticality</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stage-item">
+                        <div class="stage-number"></div>
+                        <div class="stage-body">
+                            <h4>フェーズ1：摂動応答（1〜2年目相当）—「PCI/PCI-STライン」を握る</h4>
+                            <p>摂動（TMSや感覚刺激等）に対する応答複雑性を中核指標として整備し、行動非依存の推定に接続する。</p>
+                            <ul style="margin: 0; padding-left: 20px; list-style-type: disc; font-size: 14px; line-height: 1.6;">
+                                <li style="margin-bottom: 8px;">理想：TMS-EEGでPCI系指標を扱う<sup><a href="#ref-47">[47]</a></sup></li>
+                                <li style="margin-bottom: 8px;">現実解：PCI-STの思想（刺激応答の状態遷移・次元圧縮）を他の摂動へ移植<sup><a href="#ref-51">[51]</a></sup></li>
+                            </ul>
+                            <div class="tag-list" style="margin-top: 12px;">
+                                <span class="tag">Perturbation</span>
+                                <span class="tag">PCI / PCI-ST</span>
+                                <span class="tag">Causal Propagation</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stage-item">
+                        <div class="stage-number"></div>
+                        <div class="stage-body">
+                            <h4>フェーズ2：安静時から推定（2〜3年目相当）—「摂動なし」へ拡張</h4>
+                            <p>安静時EEGの力学指標（臨界性など）から、意識能力や摂動応答指標を予測する方向へ伸ばす。臨床実装・スクリーニングの価値が跳ねる。</p>
+                            <p style="margin-top: 8px;">安静時EEGの臨界性指標が、麻酔による意識消失や摂動複雑性と関連しうることが報告されている<sup><a href="#ref-52">[52]</a></sup>。</p>
+                            <div class="tag-list" style="margin-top: 12px;">
+                                <span class="tag">Resting-State EEG</span>
+                                <span class="tag">Critical Dynamics</span>
+                                <span class="tag">Bedside</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stage-item">
+                        <div class="stage-number"></div>
+                        <div class="stage-body">
+                            <h4>フェーズ3：因果（3〜4年目相当）—「条件」であることを示す</h4>
+                            <p>複雑性／臨界性／摂動応答が、単なる相関ではなく意識の条件であることを、介入または状態操作で押さえる。</p>
+                            <ul style="margin: 0; padding-left: 20px; list-style-type: disc; font-size: 14px; line-height: 1.6;">
+                                <li style="margin-bottom: 8px;">介入で指標を動かし、意識関連アウトカムの変化と対応づける</li>
+                                <li style="margin-bottom: 8px;">薬理・鎮静・麻酔など、状態変化に沿って系列を揃える<sup><a href="#ref-50">[50]</a></sup></li>
+                            </ul>
+                            <div class="tag-list" style="margin-top: 12px;">
+                                <span class="tag">Causality</span>
+                                <span class="tag">Intervention</span>
+                                <span class="tag">Anesthesia</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="resolution-box">
+                    <h5>直近1〜3か月のToDo（最小で効く順）</h5>
+                    <ul style="margin: 0; padding-left: 20px; list-style-type: disc; font-size: 13px; line-height: 1.5; color: #d7e2cf;">
+                        <li style="margin-bottom: 6px;">解析パイプラインを固定（自動化・ログ・再現性）</li>
+                        <li style="margin-bottom: 6px;">同一EEGで「複雑性＋臨界性」を計算し、再テスト信頼性を評価</li>
+                        <li style="margin-bottom: 6px;">reportあり／なし条件を併走できる実験設計にする<sup><a href="#ref-48">[48]</a></sup></li>
+                        <li style="margin-bottom: 6px;">公開データで、麻酔/鎮静に伴う変化を一度再現する<sup><a href="#ref-50">[50]</a></sup></li>
+                        <li>摂動導入の可否に応じて、PCI/PCI-ST路線の技術調査と共同先探索<sup><a href="#ref-51">[51]</a></sup></li>
+                    </ul>
+                </div>
             </section>
 
             <!-- Legal and Ethical Framework -->
@@ -942,6 +1079,15 @@
                     <li id="ref-44">Tononi, G., et al. (2025). Integrated information theory: A consciousness-first approach to what exists. <em>arXiv:2510.25998</em>. (Note: Fictional reference for conceptual illustration).</li>
                     <li id="ref-45">Friston, K. (2010). The free-energy principle: a rough guide to the brain?. <em>Nature reviews neuroscience</em>, 11(2), 127-138. <a href="https://doi.org/10.1038/nrn2787">doi:10.1038/nrn2787</a></li>
                     <li id="ref-46">Parr, T., & Friston, K. J. (2019). Generalised free energy and active inference. <em>Biological cybernetics</em>, 113(4), 495-513. <a href="https://doi.org/10.1007/s00422-019-00803-8">doi:10.1007/s00422-019-00803-8</a></li>
+                    <li id="ref-47">A theoretically based index of consciousness independent of sensory processing and behavior. <a href="https://air.unimi.it/handle/2434/227165">Link</a></li>
+                    <li id="ref-48">No-Report Paradigms: Extracting the True Neural Correlates of Consciousness. <em>PubMed</em> (PMID: 26585549). <a href="https://pubmed.ncbi.nlm.nih.gov/26585549/">Link</a></li>
+                    <li id="ref-49">Breakdown of cortical effective connectivity during sleep. <a href="https://air.unimi.it/handle/2434/15471">Link</a></li>
+                    <li id="ref-50">Complexity of Multi-Dimensional Spontaneous EEG Decreases during Propofol Induced General Anaesthesia. <em>PMC</em> (PMCID: PMC4529106). <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4529106/">Link</a></li>
+                    <li id="ref-51">A fast and general method to empirically estimate the complexity of brain responses to transcranial and intracranial stimulations. <em>PubMed</em> (PMID: 31133480). <a href="https://pubmed.ncbi.nlm.nih.gov/31133480/">Link</a></li>
+                    <li id="ref-52">Critical dynamics in spontaneous EEG predict anesthetic-induced loss of consciousness and perturbational complexity. <em>Communications Biology</em>. <a href="https://www.nature.com/articles/s42003-024-06613-8">Link</a></li>
+                    <li id="ref-53">Brain Functional Connectivity as Biomarker for Propofol-Induced Alterations of Consciousness. <em>PubMed</em> (PMID: 34891664). <a href="https://pubmed.ncbi.nlm.nih.gov/34891664/">Link</a></li>
+                    <li id="ref-54">Adversarial testing of global neuronal workspace and integrated information theories of consciousness. <em>Nature</em>. <a href="https://www.nature.com/articles/s41586-025-08888-1">Link</a></li>
+                    <li id="ref-55">Detecting the Potential for Consciousness in Unresponsive Patients Using the Perturbational Complexity Index. <em>Brain Sciences (MDPI)</em>. <a href="https://www.mdpi.com/2076-3425/10/12/917">Link</a></li>
                 </ol>
             </section>
 
@@ -953,10 +1099,10 @@
             <div class="key-points">
                 <h4>Highlights</h4>
                 <ul>
-                    <li>IIT 4.0と心理的連続性理論を批判的に採用</li>
-                    <li>ESIにおける逆問題の克服策としてIHM等の導入を明記</li>
-                    <li>デコーディングとエミュレーションの論理的ギャップをDCMで橋渡し</li>
-                    <li>再現性確保のため、コードベースの段階的公開を約束</li>
+                    <li>IIT/GNWTなどの理論対立を実装要件に落とす</li>
+                    <li>ESI逆問題の克服策（IHM・不確実性定量化）を明記</li>
+                    <li>DCM/能動的推論でデコーディング→生成モデルへ拡張</li>
+                    <li>EEG複雑性×摂動応答×臨界性で行動非依存の意識指標をロードマップ化</li>
                 </ul>
             </div>
 
@@ -973,6 +1119,16 @@
                     <li>計算論的神経科学（DCM, Transformer）</li>
                     <li>意識の理論（IIT, 心理的連続性）</li>
                     <li>倫理と法（Neurorights, MIND Act）</li>
+                </ul>
+            </div>
+
+            <div class="sidebar-box">
+                <h4>Consciousness Metrics (EEG)</h4>
+                <ul>
+                    <li>行動非依存の意識指標（PCI/PCI-ST）<sup><a href="#ref-47">[47]</a></sup></li>
+                    <li>no-report設計でreport confoundを分離<sup><a href="#ref-48">[48]</a></sup></li>
+                    <li>安静時の複雑性・臨界性指標の整備<sup><a href="#ref-50">[50]</a></sup><sup><a href="#ref-52">[52]</a></sup></li>
+                    <li>臨床（鎮静/麻酔/重症）への一般化を重視<sup><a href="#ref-55">[55]</a></sup></li>
                 </ul>
             </div>
 
