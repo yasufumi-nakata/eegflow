@@ -16,7 +16,13 @@ thesis/
 .DS_Store
 **/.DS_Store
 
+# Ignore directory for scripts and cache
+ignore/
 
-# Mind Uploading Collection Files
-papers_metadata.json
+# Python
+*.py
+*.pyc
+__pycache__/
+
+# Mind Uploading Collection Cache
 translations_cache.json
