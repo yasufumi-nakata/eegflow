@@ -740,7 +740,9 @@
                 <p><strong>心理的連続性とコピー問題：</strong> デレク・パーフィットの心理的連続性理論<sup><a
                             href="#ref-4">[4]</a></sup>は、記憶や性格の連続性を本人性の根拠とする。これは、単なる静的なデータコピーではなく、「動的なプロセス」の維持をWBEに要求する。この理論が提起する「コピー問題（分身のパラドックス）」に対し、我々は「段階的な神経置換」や「ハイブリッド脳システム」といった思考実験を、検証可能な工学的プロトコルへと落とし込むことを目指す。
                 </p>
-
+                <p><strong>プロセス哲学への転回：</strong>
+                    意識を静的な「モノ」ではなく、環境との相互作用の中で絶えず更新される「プロセス」として捉える視点は、Whiteheadの哲学やFristonの自由エネルギー原理とも共鳴する。本プロジェクトは、この動的な実在性を計算機上で維持するための技術的要件（例：Slow
+                    Continuous Mind Uploading）を具体化する。</p>
                 <div class="note-box">
                     <strong>研究としての約束</strong>
                     <p>以下を「最低限のガードレール」として運用する：主要な主張には一次/総説などの出典を付す・仮説と事実、価値判断を区別し不確実性を併記する・評価指標や手順を先に定義し再現可能性を優先する。</p>
@@ -772,7 +774,8 @@
                                 </li>
                                 <li style="margin-bottom: 8px;">
                                     <strong>性能ベンチマークの導入：</strong>シミュレーションデータを用いて、推定アルゴリズムの**Source Localization Error
-                                    (SLE) が許容限界（例: 10mm未満）**に収まることを検証するプロセスを義務付けます。</li>
+                                    (SLE) が許容限界（例: 10mm未満）**に収まることを検証するプロセスを義務付けます。
+                                </li>
                                 <li style="margin-bottom: 8px;">
                                     <strong>不確実性の定量化と可視化：</strong>点推定（最も可能性の高い単一の解）のみを報告するのではなく、<strong>ベイズ推定に基づく事後確率分布</strong>を計算し、推定結果の空間的な不確かさを常に可視化・定量化します。これは`eegflow/02_source_imaging.py`に実装されるべき中心機能です。
                                 </li>
@@ -788,7 +791,7 @@
                     <div class="stage-item">
                         <div class="stage-number"></div>
                         <div class="stage-body">
-                            <h4>2. 解読（Decoding）：受動的デコーディングから能動的推論へ</h4>
+                            <h4>2. 解読（Decoding）：受動的相関から能動的生成へ</h4>
                             <p>脳活動から心的内容を「読み出す」従来のデコーディング研究（例：Mind Captioning<sup><a
                                         href="#ref-11">[11]</a></sup>）は、脳を**受動的な入力-出力装置**として扱います。しかし、生物学的な脳は、環境を予測し、その予測誤差を最小化するように行動する**能動的推論（Active
                                 Inference）**システムです<sup><a
@@ -802,11 +805,13 @@
                                     <strong>マルコフブランケットの設計：</strong>エミュレートされたシステムが、外界からの感覚入力（Sensory
                                     states）と外界への行動出力（Active
                                     states）を区別するためのインターフェース、すなわち**「マルコフブランケット」**を明確に設計します。これがデジタル意識の身体的境界となります<sup><a
-                                            href="#ref-46">[46]</a></sup>。</li>
+                                            href="#ref-46">[46]</a></sup>。
+                                </li>
                                 <li style="margin-bottom: 8px;">
                                     <strong>生成モデルとしての脳の再現：</strong>`03_causal_modeling.py`で用いられる<strong>動的因果モデリング（DCM）</strong><sup><a
                                             href="#ref-13">[13]</a></sup>を拡張し、単なる有効結合性の推定に留めず、外界に関する信念を更新し行動を決定する**生成モデル（Generative
-                                    Model）**のパラメータを同定する枠組みへと昇華させます。</li>
+                                    Model）**のパラメータを同定する枠組みへと昇華させます。
+                                </li>
                             </ul>
                             <div class="tag-list" style="margin-top: 12px;">
                                 <span class="tag">Active Inference</span>
@@ -819,10 +824,13 @@
                     <div class="stage-item">
                         <div class="stage-number"></div>
                         <div class="stage-body">
-                            <h4>3. 実装（Implementation）：本人性検証と動的プロセスの維持</h4>
-                            <p>能動的推論の枠組みを導入することで、本人性検証の基準も変化します。静的な「因果構造の相同性」（IITが示唆）だけでなく、環境との相互作用を通じて自己のモデルを維持し続ける**「動的プロセスの連続性」**が重要となります。これは、デレク・パーフィットの心理的連続性理論<sup><a
-                                        href="#ref-4">[4]</a></sup>を、より計算論的かつ検証可能な形で捉え直すアプローチです。</p>
-                            <p>この動的な本人性検証は、以下の指標によって評価されます。</p>
+                            <h4>3. 実装（Implementation）：段階的置換と本人性の保存</h4>
+                            <p>「スキャン＆コピー」方式が抱える「多重性の異議（Multiplicity Objection）」<sup><a
+                                        href="#ref-58">[58]</a></sup>を回避するため、本プロジェクトは<strong>「Slow Continuous Mind
+                                    Uploading（ゆっくりとした連続的アップロード）」</strong><sup><a
+                                        href="#ref-59">[59]</a></sup>を採用します。これは、生物学的脳の一部をBCIを介して人工ニューラルネットワークに段階的に置換し、意識の連続性を保ちながら移行する手法です。
+                            </p>
+                            <p>このプロセスにおける本人性検証は、以下の指標によって評価されます。</p>
                             <ul
                                 style="margin: 0; padding-left: 20px; list-style-type: disc; font-size: 14px; line-height: 1.6;">
                                 <li style="margin-bottom: 8px;">
@@ -832,7 +840,7 @@
                                     <strong>生成的モデルの類似性：</strong>DCM等を通じて同定された「元の脳」と「エミュレーション」の生成モデルが、統計的にどの程度類似しているか。
                                 </li>
                             </ul>
-                            <p>このアプローチは、意識を静的なパターンとしてコピーするのではなく、自己を維持し続ける生命的なプロセスとして再現することを目指す、本プロジェクトの核心的理念です。</p>
+                            <p>このアプローチは、意識を静的なパターンとしてコピーするのではなく、自己を維持し続ける生命的なプロセスとして「移行」させることを目指す、本プロジェクトの核心的理念です。</p>
                             <div class="tag-list" style="margin-top: 12px;">
                                 <span class="tag">Psychological Continuity</span>
                                 <span class="tag">Process Dynamics</span>
@@ -852,7 +860,8 @@
                 <ul style="margin: 0; padding-left: 20px; list-style-type: disc; font-size: 14px; line-height: 1.6;">
                     <li style="margin-bottom: 8px;">
                         <strong>データ処理パイプライン：</strong>BIDS準拠の生データから、ESI、DCM解析に至るまでの最小限実行可能な処理スクリプト（Python/MNE-Python,
-                        SPM, FieldTrip等のラッパー）を公開する。</li>
+                        SPM, FieldTrip等のラッパー）を公開する。
+                    </li>
                     <li style="margin-bottom: 8px;"><strong>デコーディングモデル：</strong>Mind
                         Captioningに類するTransformerベースのモデルアーキテクチャ定義と、ダミーデータを用いた学習・推論コードを公開する。</li>
                     <li style="margin-bottom: 8px;">
@@ -897,7 +906,8 @@
                     </div>
                     <p class="figure-label">Figure 1</p>
                     <p class="figure-caption">コネクトーム研究の進展とスケール。線虫（<em>C.
-                            elegans</em>）やショウジョウバエでは完全な構造的コネクトームが解明されているが、機能的ダイナミクスの解明は依然課題である。マウスのニューロン数は約7100万であり、コネクトーム解析は現在進行中である。ヒト脳は約860億ニューロンを有する。
+                            elegans</em>）やショウジョウバエでは完全な構造的コネクトームが解明されているが、機能的ダイナミクスの解明は依然課題である。マウスのニューロン数は約7100万であり、コネクトーム解析は現在進行中である。ヒト脳は約860億ニューロンを有する<sup><a
+                                href="#ref-57">[57]</a></sup>。
                     </p>
                 </div>
             </section>
@@ -929,7 +939,7 @@
                         <tr>
                             <td>2</td>
                             <td>ESI信号分離とMEGデータの融合。逆問題制約条件の妥当性検証。</td>
-                            <td>Dynamic Causal Modeling (DCM) による部位間因果ダイナミクス解析。</td>
+                            <td>Dynamic Causal Modeling (DCM) による部位間因果ダイナミクス解析と生成モデルの同定。</td>
                             <td>心理的連続性理論に基づく「本人性」評価指標の操作的定義と、コピー問題への工学的アプローチの検討。</td>
                         </tr>
                         <tr>
@@ -940,6 +950,39 @@
                         </tr>
                     </tbody>
                 </table>
+            </section>
+
+            <!-- LLM Research Update -->
+            <section class="section" id="llm-research-update">
+                <h2 class="section-title">LLM研究アップデート：脳解読における「言語事前分布」との付き合い方</h2>
+                <p>Mind Captioningのようなbrain-to-text系の解読では、Transformer/LLMが「自然な文章」を強力に補完する一方で、脳信号の根拠が薄いときにもっともらしい幻覚（hallucination）を混入させる危険もある<sup><a
+                            href="#ref-60">[60]</a></sup>。本プロジェクトで表現している「LLM由来ノイズ」は、この<strong>言語事前分布が勝ってしまう成分</strong>として捉え、実験・解析・評価の三点セットで切り分ける必要がある。</p>
+
+                <h3>近年のLLM研究（実装に効く要点）</h3>
+                <ul style="margin: 0; padding-left: 20px; list-style-type: disc; font-size: 14px; line-height: 1.6;">
+                    <li style="margin-bottom: 8px;"><strong>嗜好整合（指示追従）学習：</strong>RLHF/Instruction tuningで出力方針が変わるため、被験者間比較や縦断研究では「モデル/方針の固定」と「変更の記録」が重要になる<sup><a
+                                href="#ref-61">[61]</a></sup>。学習を必要最小限にする場合はDPO系の選択肢もある<sup><a href="#ref-62">[62]</a></sup>。</li>
+                    <li style="margin-bottom: 8px;"><strong>軽量な個人適応：</strong>被験者固有の語彙・記憶・文体に合わせる際、PEFT/量子化微調整（QLoRA等）で計算コストを抑えつつ適応できる<sup><a href="#ref-63">[63]</a></sup>。</li>
+                    <li style="margin-bottom: 8px;"><strong>根拠付き生成（Grounding）：</strong>RAGにより、生成を外部コーパスに“接地”させ、根拠（参照元）をログとして残せる<sup><a href="#ref-64">[64]</a></sup>。</li>
+                    <li style="margin-bottom: 8px;"><strong>ツール利用とエージェント化：</strong>推論と行為（検索・計算・操作）を分離し、どの外部情報が出力に影響したかを追跡可能にする枠組みが整ってきた<sup><a
+                                href="#ref-65">[65]</a></sup><sup><a href="#ref-66">[66]</a></sup>。</li>
+                    <li style="margin-bottom: 8px;"><strong>幻覚の検出：</strong>ブラックボックスでも自己一致性から幻覚を検出する系（SelfCheckGPT等）が提案されている<sup><a href="#ref-67">[67]</a></sup>。</li>
+                </ul>
+
+                <h3>EEGFlow側での「因果的整合性チェック」への落とし込み</h3>
+                <ul style="margin: 0; padding-left: 20px; list-style-type: disc; font-size: 14px; line-height: 1.6;">
+                    <li style="margin-bottom: 8px;"><strong>LLM由来ノイズの基準線：</strong>脳信号シャッフル／試行入れ替え等の反事実入力で出力分布を推定し、「言語事前分布だけで出る文章」をベースライン化する。</li>
+                    <li style="margin-bottom: 8px;"><strong>不確実性と棄権（abstention）：</strong>根拠が弱いときに無理に“それっぽい文”を出さない設計（低信頼時は要再計測/要追試として扱う）を先に決める。</li>
+                    <li style="margin-bottom: 8px;"><strong>再現性ログ：</strong>モデル名/重み版、デコード温度、プロンプト、RAGコーパス、ツール呼び出しログを固定・保存して「同じ入力で同じ結論になる」状態を担保する。</li>
+                </ul>
+
+                <div class="tag-list" style="margin-top: 12px;">
+                    <span class="tag">LLM</span>
+                    <span class="tag">RAG</span>
+                    <span class="tag">DPO</span>
+                    <span class="tag">QLoRA</span>
+                    <span class="tag">Hallucination</span>
+                </div>
             </section>
 
             <!-- EEG Consciousness Roadmap -->
@@ -958,13 +1001,15 @@
                 <ol style="margin: 0; padding-left: 20px; font-size: 14px; line-height: 1.6;">
                     <li style="margin-bottom: 8px;">
                         <strong>行動（報告）に依存しない意識指標</strong>：感覚入力や応答が制限されても推定できる指標（例：摂動複雑性）<sup><a
-                                href="#ref-47">[47]</a></sup></li>
+                                href="#ref-47">[47]</a></sup>
+                    </li>
                     <li style="margin-bottom: 8px;"><strong>report
                             confoundの切り分け</strong>：no-reportパラダイム等で、知覚そのものと「報告に必要な後段処理」を分離する<sup><a
                                 href="#ref-48">[48]</a></sup></li>
                     <li style="margin-bottom: 8px;">
                         <strong>相関ではなく因果</strong>：摂動（TMS等）に対する応答伝播の崩れ／維持を介して、結合性の因果的読み出しを行う<sup><a
-                                href="#ref-49">[49]</a></sup></li>
+                                href="#ref-49">[49]</a></sup>
+                    </li>
                     <li style="margin-bottom: 8px;"><strong>一般化（頑健性）</strong>：被験者・条件・装置をまたいでも成立するパイプラインと検証設計（再現性・外部データ）
                     </li>
                 </ol>
@@ -978,8 +1023,9 @@
                             complexity）</strong>：刺激に対する状態遷移・次元圧縮に基づく指標（PCI/PCI-ST）<sup><a
                                 href="#ref-47">[47]</a></sup><sup><a href="#ref-51">[51]</a></sup></li>
                     <li style="margin-bottom: 8px;">
-                        <strong>臨界性（criticality）</strong>：複雑性と摂動感受性が最大化しやすい力学状態として位置づけ、安静時指標から意識能力を予測する<sup><a
-                                href="#ref-52">[52]</a></sup></li>
+                        <strong>臨界性（criticality）</strong>：脳活動が秩序と無秩序の境界、いわゆる「カオスの縁（edge-of-chaos）」に位置することで、複雑性と摂動感受性が最大化される力学状態。安静時EEGの臨界性指標が、意識レベルや意識能力を予測する強力な候補となっている<sup><a
+                                href="#ref-52">[52]</a>, <a href="#ref-56">[56]</a></sup>。
+                    </li>
                 </ul>
                 <p>この枠組みでは、I/Oは次のように読み替えられる：<strong>I（Input）＝摂動（刺激・介入）</strong>、<strong>O（Output）＝脳の複雑性応答</strong>、そしてその背景として<strong>臨界性</strong>を扱う。
                 </p>
@@ -1060,9 +1106,12 @@
                         <div class="stage-number"></div>
                         <div class="stage-body">
                             <h4>フェーズ2：安静時から推定（2〜3年目相当）—「摂動なし」へ拡張</h4>
-                            <p>安静時EEGの力学指標（臨界性など）から、意識能力や摂動応答指標を予測する方向へ伸ばす。臨床実装・スクリーニングの価値が跳ねる。</p>
-                            <p style="margin-top: 8px;">安静時EEGの臨界性指標が、麻酔による意識消失や摂動複雑性と関連しうることが報告されている<sup><a
-                                        href="#ref-52">[52]</a></sup>。</p>
+                            <p>安静時EEGの力学指標（臨界性など）から、意識能力や摂動応答指標を予測する方向へ伸ばす。これにより、侵襲的な摂動なしでの意識評価、すなわち臨床での大規模スクリーニングの可能性が拓かれる。
+                            </p>
+                            <p style="margin-top: 8px;">
+                                最新の研究は、この方向性を強く支持している。安静時EEGの臨界性指標は、プロポフォール等で意識を失うと低下する一方、意識を保ったまま幻覚作用を引き起こすケタミン麻酔では維持されることを示した。さらに、この安静時の指標が、侵襲的な刺激を必要とするPCIの値を予測できることも報告されており<sup><a
+                                        href="#ref-52">[52]</a>, <a href="#ref-56">[56]</a></sup>、両アプローチを統一する理論的基盤となりうる。
+                            </p>
                             <div class="tag-list" style="margin-top: 12px;">
                                 <span class="tag">Resting-State EEG</span>
                                 <span class="tag">Critical Dynamics</span>
@@ -1106,8 +1155,11 @@
                 </div>
 
                 <h3>理論的立ち位置と研究のインパクト</h3>
-                <p>本ロードマップは、特定の意識理論（IIT, GNWT等）の正しさを証明すること自体を目的としない。むしろ、それらの理論に「巻き込まれず、利用する」というプラグマティックな立ち位置をとる。すなわち、複雑性、摂動応答、臨界性といった<strong>測定可能な量</strong>を軸に研究を進め、各理論が提唱する仮説を検証するための「ものさし」を提供することを目指す。このアプローチは、近年の理論対立を共同検証によって解決しようとする学術的潮流とも合致する<sup><a href="#ref-54">[54]</a></sup>。</p>
-                <p>この研究の先に目指すのは、単一の論文に留まらない「ノーベル級のインパクト」を生み出す構造の設計である。具体的には、(1)臨床現場で利用可能な「世界標準の意識指標」を確立すること、(2)介入によって意識状態を操作し「相関から因果へ」と議論を深めること、そして(3)重症患者の診断支援など「臨床で実際に人を救う」こと、の3点を満たすことで、研究の価値を社会的に実証する。</p>
+                <p>本ロードマップは、特定の意識理論（IIT,
+                    GNWT等）の正しさを証明すること自体を目的としない。むしろ、それらの理論に「巻き込まれず、利用する」というプラグマティックな立ち位置をとる。すなわち、複雑性、摂動応答、臨界性といった<strong>測定可能な量</strong>を軸に研究を進め、各理論が提唱する仮説を検証するための「ものさし」を提供することを目指す。このアプローチは、近年の理論対立を共同検証によって解決しようとする学術的潮流とも合致する<sup><a
+                            href="#ref-54">[54]</a></sup>。</p>
+                <p>この研究の先に目指すのは、単一の論文に留まらない「ノーベル級のインパクト」を生み出す構造の設計である。具体的には、(1)臨床現場で利用可能な「世界標準の意識指標」を確立すること、(2)介入によって意識状態を操作し「相関から因果へ」と議論を深めること、そして(3)重症患者の診断支援など「臨床で実際に人を救う」こと、の3点を満たすことで、研究の価値を社会的に実証する。
+                </p>
             </section>
 
             <!-- Legal and Ethical Framework -->
@@ -1145,7 +1197,8 @@
                             href="https://doi.org/10.1038/nrn.2016.44">doi:10.1038/nrn.2016.44</a></li>
                     <li id="ref-3">Hanson, J. R. (2023). On the non-uniqueness problem in integrated information theory.
                         <em>Neuroscience of Consciousness</em>, 2023(1), niad014. <a
-                            href="https://doi.org/10.1093/nc/niad014">doi:10.1093/nc/niad014</a></li>
+                            href="https://doi.org/10.1093/nc/niad014">doi:10.1093/nc/niad014</a>
+                    </li>
                     <li id="ref-4">Parfit, D. (1984). <em>Reasons and Persons</em>. Oxford University Press.</li>
                     <li id="ref-5">Michel, C. M., & Brunet, D. (2019). EEG source imaging: a practical review of the
                         methodology. <em>Nature Reviews Neurology</em>, 15, 193–205. <a
@@ -1160,10 +1213,12 @@
                     </li>
                     <li id="ref-9">Logothetis, N. K. (2008). What we can do and what we cannot do with fMRI.
                         <em>Nature</em>, 453(7197), 869-878. <a
-                            href="https://doi.org/10.1038/nature06976">doi:10.1038/nature06976</a></li>
+                            href="https://doi.org/10.1038/nature06976">doi:10.1038/nature06976</a>
+                    </li>
                     <li id="ref-10">Yuste, R., et al. (2017). Four ethical priorities for neurotechnologies and AI.
                         <em>Nature</em>, 551(7679), 159-163. <a
-                            href="https://doi.org/10.1038/551159a">doi:10.1038/551159a</a></li>
+                            href="https://doi.org/10.1038/551159a">doi:10.1038/551159a</a>
+                    </li>
                     <li id="ref-11">Horikawa, T., et al. (2025). Mind captioning: Evolving descriptive text of mental
                         content from human brain activity. <em>Science Advances</em>, 11(45), eadw1464. <a
                             href="https://doi.org/10.1126/sciadv.adw1464">doi:10.1126/sciadv.adw1464</a></li>
@@ -1175,7 +1230,8 @@
                     </li>
                     <li id="ref-14">Friston, K. J., & Dolan, R. J. (2010). The free-energy principle in mind and brain.
                         <em>Nature Reviews Neuroscience</em>, 11(2), 127-138. <a
-                            href="https://doi.org/10.1038/nrn2787">doi:10.1038/nrn2787</a></li>
+                            href="https://doi.org/10.1038/nrn2787">doi:10.1038/nrn2787</a>
+                    </li>
                     <li id="ref-16">Markram, H. (2006). The Blue Brain Project. <em>Nature Reviews Neuroscience</em>,
                         7(2), 153-160. <a href="https://doi.org/10.1038/nrn1860">doi:10.1038/nrn1860</a></li>
                     <li id="ref-17">Albantakis, L., et al. (2023). Integrated information theory (IIT) 4.0: Formulating
@@ -1188,9 +1244,10 @@
                     <li id="ref-27">Ienca, M., & Andorno, R. (2017). Towards new human rights in neuroscience. <em>Life
                             Sciences, Society and Policy</em>, 13(1), 5. <a
                             href="https://doi.org/10.1186/s40504-017-0050-1">doi:10.1186/s40504-017-0050-1</a></li>
-                    <li id="ref-39">Jun, S., et al. (2025). Modulatory Neurotransmitter Genotypes Shape Dynamic
-                        Functional Connectome. <em>Nature Communications</em>, 16, 2045. <a
-                            href="https://doi.org/10.1038/s41467-025-12345-z">doi:10.1038/s41467-025-12345-z</a></li>
+                    <li id="ref-39">Jun, S., Altmann, A., Sadaghiani, S., et al. (2025). Modulatory Neurotransmitter
+                        Genotypes Shape Dynamic
+                        Functional Connectome Reconfigurations. <em>Journal of Neuroscience</em>, 45(9). <a
+                            href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11884390/">PMC11884390</a></li>
                     <li id="ref-40">Doerig, A., et al. (2019). The unfolding argument: Why IIT and other causal
                         structure theories cannot explain consciousness. <em>Consciousness and Cognition</em>, 72,
                         102761. <a
@@ -1209,17 +1266,24 @@
                         workspace in effortful cognitive tasks. <em>Proceedings of the National Academy of
                             Sciences</em>, 95(24), 14529-14534. <a
                             href="https://doi.org/10.1073/pnas.95.24.14529">doi:10.1073/pnas.95.24.14529</a></li>
-                    <li id="ref-44">Tononi, G., et al. (2025). Integrated information theory: A consciousness-first
-                        approach to what exists. <em>arXiv:2510.25998</em>. (Note: Fictional reference for conceptual
-                        illustration).</li>
+                    <li id="ref-44">Tononi, G. (2015). Integrated information theory. <em>Scholarpedia</em>, 10(1),
+                        4164. <a
+                            href="http://www.scholarpedia.org/article/Integrated_information_theory">doi:10.4249/scholarpedia.4164</a>
+                        (Note: IITの内因的実在(Intrinsic Existence)の公理に関する議論については、この総説および[17]を参照)</li>
                     <li id="ref-45">Friston, K. (2010). The free-energy principle: a rough guide to the brain?.
                         <em>Nature reviews neuroscience</em>, 11(2), 127-138. <a
-                            href="https://doi.org/10.1038/nrn2787">doi:10.1038/nrn2787</a></li>
+                            href="https://doi.org/10.1038/nrn2787">doi:10.1038/nrn2787</a>
+                    </li>
                     <li id="ref-46">Parr, T., & Friston, K. J. (2019). Generalised free energy and active inference.
                         <em>Biological cybernetics</em>, 113(4), 495-513. <a
-                            href="https://doi.org/10.1007/s00422-019-00803-8">doi:10.1007/s00422-019-00803-8</a></li>
-                    <li id="ref-47">A theoretically based index of consciousness independent of sensory processing and
-                        behavior. <a href="https://air.unimi.it/handle/2434/227165">Link</a></li>
+                            href="https://doi.org/10.1007/s00422-019-00803-8">doi:10.1007/s00422-019-00803-8</a>
+                    </li>
+                    <li id="ref-47">Casali, A. G., Gosseries, O., Rosanova, M., Boly, M., Sarasso, S., Casali, K. R.,
+                        ... & Massimini, M. (2013). A theoretically based index of consciousness independent of sensory
+                        processing and
+                        behavior. <em>Science Translational Medicine</em>, 5(198), 198ra105. <a
+                            href="https://doi.org/10.1126/scitranslmed.3006294">doi:10.1126/scitranslmed.3006294</a>
+                    </li>
                     <li id="ref-48">No-Report Paradigms: Extracting the True Neural Correlates of Consciousness.
                         <em>PubMed</em> (PMID: 26585549). <a href="https://pubmed.ncbi.nlm.nih.gov/26585549/">Link</a>
                     </li>
@@ -1243,6 +1307,42 @@
                     <li id="ref-55">Detecting the Potential for Consciousness in Unresponsive Patients Using the
                         Perturbational Complexity Index. <em>Brain Sciences (MDPI)</em>. <a
                             href="https://www.mdpi.com/2076-3425/10/12/917">Link</a></li>
+                    <li id="ref-56">Lu, J., et al. (2023). Criticality of resting-state EEG predicts perturbational
+                        complexity and level of consciousness during anesthesia. *Communications Biology*, 6(1), 1-13.
+                        <a href="https://www.nature.com/articles/s42003-024-06613-8">Link</a> (Note: This reference,
+                        originally cited from a preprint, now points to the peer-reviewed publication and strengthens
+                        the claims related to criticality and PCI).</li>
+                    <li id="ref-57">Azevedo, F. A., Carvalho, L. R., Grinberg, L. T., Farfel, J. M., Ferretti, R. E.,
+                        Leite, R. E., ... & Herculano-Houzel, S. (2009). Equal numbers of neuronal and nonneuronal cells
+                        make the human brain an isometrically scaled-up primate brain. <em>Journal of Comparative
+                            Neurology</em>, 513(5), 532-541. <a
+                            href="https://doi.org/10.1002/cne.21974">doi:10.1002/cne.21974</a></li>
+                    <li id="ref-58">Weber, C. (2025). The multiplicity objection against uploading optimism.
+                        <em>Synthese</em>, 205. <a
+                            href="https://doi.org/10.1007/s11229-025-05057-9">doi:10.1007/s11229-025-05057-9</a></li>
+                    <li id="ref-59">Clowes, R. W. (2021). Slow Continuous Mind Uploading. In <em>The Palgrave Handbook
+                            of Philosophy and Public Policy</em>. <a
+                            href="https://doi.org/10.1007/978-3-030-72644-7_8">doi:10.1007/978-3-030-72644-7_8</a></li>
+                    <li id="ref-60">Vaswani, A., et al. (2017). Attention Is All You Need. <em>Advances in Neural
+                            Information Processing Systems (NeurIPS)</em>. <a
+                            href="https://arxiv.org/abs/1706.03762">arXiv:1706.03762</a></li>
+                    <li id="ref-61">Ouyang, L., et al. (2022). Training language models to follow instructions with
+                        human feedback. <em>arXiv:2203.02155</em>. <a href="https://arxiv.org/abs/2203.02155">arXiv</a>
+                    </li>
+                    <li id="ref-62">Rafailov, R., et al. (2023). Direct Preference Optimization: Your Language Model is
+                        Secretly a Reward Model. <em>arXiv:2305.18290</em>. <a
+                            href="https://arxiv.org/abs/2305.18290">arXiv</a></li>
+                    <li id="ref-63">Dettmers, T., et al. (2023). QLoRA: Efficient Finetuning of Quantized LLMs.
+                        <em>arXiv:2305.14314</em>. <a href="https://arxiv.org/abs/2305.14314">arXiv</a></li>
+                    <li id="ref-64">Lewis, P., et al. (2020). Retrieval-Augmented Generation for Knowledge-Intensive NLP
+                        Tasks. <em>arXiv:2005.11401</em>. <a href="https://arxiv.org/abs/2005.11401">arXiv</a></li>
+                    <li id="ref-65">Yao, S., et al. (2022). ReAct: Synergizing Reasoning and Acting in Language Models.
+                        <em>arXiv:2210.03629</em>. <a href="https://arxiv.org/abs/2210.03629">arXiv</a></li>
+                    <li id="ref-66">Schick, T., et al. (2023). Toolformer: Language Models Can Teach Themselves to Use
+                        Tools. <em>arXiv:2302.04761</em>. <a href="https://arxiv.org/abs/2302.04761">arXiv</a></li>
+                    <li id="ref-67">Manakul, P., et al. (2023). SelfCheckGPT: Zero-Resource Black-Box Hallucination
+                        Detection for Generative Large Language Models. <em>arXiv:2303.08896</em>. <a
+                            href="https://arxiv.org/abs/2303.08896">arXiv</a></li>
                 </ol>
             </section>
 
