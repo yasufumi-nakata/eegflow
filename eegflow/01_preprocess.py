@@ -1,124 +1,122 @@
-# EEGFlow: 01_preprocess.py
+# eegflow/01_preprocess.py
 #
-# このスクリプトは、BIDS (Brain Imaging Data Structure) 形式のEEGデータを
-# MNE-Python を用いて前処理するための最小限のパイプラインを示します。
+# BIDS準拠のEEGデータに対して、標準的な前処理パイプラインを適用します。
+# Issue #34の指摘に基づき、再現可能な解析パイプラインの雛形として作成。
 #
-# This script demonstrates a minimal preprocessing pipeline for BIDS-formatted
-# EEG data using MNE-Python.
+# このスクリプトの目的:
+# 1. BIDSパス構造を利用して、対象の被験者データを発見する。
+# 2. MNE-Pythonを用いて、フィルタリング、リファレンス設定、ICAによるアーチファクト除去を行う。
+# 3. 前処理済みのデータをBIDS派生データ(derivatives)として保存する。
+# 4. 品質の悪いデータを特定・除外するためのレポートを生成する。
 #
-# GitHub Issue #21で指摘された「コードベースの欠如」という批判に応え、
-# プロジェクトの実体性と再現性を示すために作成されました。
-#
-# Created to address the "lack of codebase" critique in GitHub Issue #21
-# and to demonstrate the project's substance and commitment to reproducibility.
+# 使用ライブラリ:
+# - mne-python
+# - mne-bids
 
 import mne
-from mne_bids import BIDSPath, read_raw_bids
+import mne_bids
+import os.path as op
 
-# --- 1. BIDSデータセットのパスを設定 ---
-# --- 1. Set up BIDS dataset paths ---
-# BIDSのルートディレクトリ、被験者ID、タスク名などを指定します。
-# Specify the BIDS root directory, subject ID, task name, etc.
-bids_root = 'path/to/your/bids_dataset'
-subject = '01'
-session = '01'
-task = 'rest'
-run = '01'
+# --- Configuration ---
+BIDS_ROOT = 'bids_dataset'
+DERIVATIVES_ROOT = op.join(BIDS_ROOT, 'derivatives', 'eegflow')
 
-# BIDSPathオブジェクトを作成
-# Create a BIDSPath object
-bids_path = BIDSPath(subject=subject, session=session, task=task, run=run,
-                     root=bids_root, suffix='eeg', extension='.vhdr')
+# 解析対象の指定
+SUBJECT_ID = '01'
+SESSION_ID = '01'
+TASK_ID = 'rest'
+# ---
 
+def preprocess_subject(subject, session, task):
+    """
+    指定された被験者・セッション・タスクのEEGデータを前処理する。
+    """
+    # 1. BIDSデータの読み込み
+    bids_path = mne_bids.BIDSPath(
+        subject=subject,
+        session=session,
+        task=task,
+        suffix='eeg',
+        extension='.bdf', # データセットに合わせた拡張子
+        root=BIDS_ROOT
+    )
 
-# --- 2. 生データの読み込み ---
-# --- 2. Load raw data ---
-# BIDSパスから生データを読み込みます。
-# Load raw data from the BIDS path.
-# try-exceptブロックは、実際のデータがない場合にエラーを防ぐためのものです。
-# The try-except block is to prevent errors when no actual data is present.
-try:
-    raw = read_raw_bids(bids_path=bids_path, verbose=False)
-    raw.load_data()
-except Exception as e:
-    print(f"ダミーデータを作成します。Could not load real data: {e}")
-    print("Creating dummy data instead.")
-    # ダミーデータを作成
-    # Create dummy data
-    sfreq = 250
-    ch_names = ['Fp1', 'Fp2', 'Fz', 'Cz', 'Pz', 'O1', 'O2', 'M1']
-    info = mne.create_info(ch_names=ch_names, sfreq=sfreq, ch_types='eeg')
-    data = mne.filter.create_filter(None, sfreq, l_freq=1, h_freq=40)
-    n_times = sfreq * 10 # 10 seconds
-    dummy_data = data[:, :n_times] * 1e-6
-    raw = mne.io.RawArray(dummy_data, info)
+    print(f"BIDS Path: {bids_path}")
+    try:
+        raw = mne_bids.read_raw_bids(bids_path, verbose=False)
+    except FileNotFoundError:
+        print(f"エラー: データファイルが見つかりません。{bids_path.fpath}", file=sys.stderr)
+        print("00_fetch_data.py を実行して、データをダウンロードしましたか？")
+        return
 
+    # 2. 基本的な前処理
+    # チャンネル位置情報の設定
+    raw.set_montage('standard_1005', on_missing='warn')
 
-# --- 3. 前処理 ---
-# --- 3. Preprocessing ---
+    # フィルタリング (1.0 Hz High-pass, 40.0 Hz Low-pass)
+    raw.filter(l_freq=1.0, h_freq=40.0, fir_design='firwin', verbose=False)
 
-# 3.1. チャンネルの種類の再設定 (必要に応じて)
-# 3.1. Re-setting channel types (if necessary)
-# EOGやECGチャンネルを正しく設定します。
-# Set EOG or ECG channels correctly.
-# raw.set_channel_types({'HEOG': 'eog', 'VEOG': 'eog', 'ECG': 'ecg'})
+    # ノッチフィルタ (50Hzまたは60Hzの電源ラインノイズを除去)
+    raw.notch_filter(freqs=60.0, fir_design='firwin', verbose=False)
 
-# 3.2. バンドパスフィルタ
-# 3.2. Band-pass filtering
-# 一般的な周波数帯域 (例: 1-40 Hz) でフィルタリングします。
-# Filter the data in a common frequency band (e.g., 1-40 Hz).
-raw.filter(l_freq=1., h_freq=40., fir_design='firwin')
+    # リファレンス再設定 (Average reference)
+    raw.set_eeg_reference('average', projection=True, verbose=False)
 
-# 3.3. ノッチフィルタ
-# 3.3. Notch filtering
-# 電源ラインのノイズ (50Hz or 60Hz) を除去します。
-# Remove power line noise (50Hz or 60Hz).
-raw.notch_filter(freqs=60.0)
+    # 3. ICAによるアーチファクト除去
+    ica = mne.preprocessing.ICA(n_components=20, random_state=42)
+    ica.fit(raw, tstep=1.0, reject_by_annotation=True)
 
-# 3.4. リファレンスの再設定
-# 3.4. Re-referencing
-# 例えば、平均リファレンスに設定します。
-# For example, set to average reference.
-raw.set_eeg_reference('average', projection=True)
-print("Applied average reference.")
+    # EOG/ECGアーチファクトを自動検出
+    # データにEOG/ECGチャンネルがない場合は、手動で成分を選択する必要がある
+    try:
+        eog_indices, eog_scores = ica.find_bads_eog(raw)
+        ica.exclude.extend(eog_indices)
+        print(f"ICA: EOG成分を{len(eog_indices)}個検出しました。")
+    except Exception as e:
+        print(f"警告: EOG成分の自動検出に失敗しました。 {e}")
+        # ここで `ica.plot_sources(raw)` を呼び出して手動選択を促すことができる
 
-# 3.5. ICA (独立成分分析) によるアーティファクト除去
-# 3.5. Artifact removal with ICA (Independent Component Analysis)
-# 瞬き (EOG) や心拍 (ECG) などのアーティファクトを特定し、除去します。
-# Identify and remove artifacts like blinks (EOG) and heartbeats (ECG).
-ica = mne.preprocessing.ICA(n_components=8, random_state=97, max_iter=800)
-ica.fit(raw)
+    # ICAを適用
+    ica.apply(raw)
 
-# アーティファクト成分を特定 (この例では自動検出)
-# Identify artifact components (here using automated detection)
-# eog_indices, eog_scores = ica.find_bads_eog(raw)
-# ica.exclude = eog_indices
-# print(f"ICA: Found {len(eog_indices)} EOG components to exclude.")
+    # 4. 前処理済みデータの保存
+    # BIDS派生データとしての保存パスを構築
+    output_path = bids_path.copy().update(
+        root=DERIVATIVES_ROOT,
+        check=False,
+        suffix='proc-clean_eeg' # BIDS-Appの規約に準拠
+    )
+    if not op.exists(output_path.directory):
+        output_path.directory.mkdir(parents=True)
 
-# ICAを適用
-# Apply ICA
-# ica.apply(raw)
+    raw.save(output_path.fpath, overwrite=True)
+    print(f"前処理済みデータを保存しました: {output_path.fpath}")
 
+    # 5. 品質管理レポートの生成
+    report = mne.Report(title=f"Preprocessing Report for sub-{subject}")
+    report.add_raw(raw, title="Raw Data", psd=True)
+    report.add_ica(ica, title="ICA Components", inst=raw)
+    report_path = output_path.copy().update(suffix='report', extension='.html')
+    report.save(report_path.fpath, overwrite=True)
+    print(f"品質管理レポートを生成しました: {report_path.fpath}")
 
-# --- 4. エポック化 ---
-# --- 4. Epoching ---
-# 連続データを特定のイベントに関連するエポックに分割します。
-# Segment the continuous data into epochs related to specific events.
-# events = mne.find_events(raw, stim_channel='Stim')
-# event_id = {'stimulus': 1}
-# tmin, tmax = -0.2, 0.5  # seconds
-# epochs = mne.Epochs(raw, events, event_id, tmin, tmax, preload=True)
+if __name__ == '__main__':
+    # 実際には、ループで複数の被験者を処理することが多い
+    # for subject in ['01', '02', ...]:
+    #     preprocess_subject(subject, ...)
+    import sys
 
-print("Preprocessing steps outlined.")
+    print("="*80)
+    print("EEG 前処理パイプライン (雛形)")
+    print("="*80)
+    print(f"対象被験者: sub-{SUBJECT_ID}")
+    print(f"BIDS Root: {BIDS_ROOT}")
+    print(f"Derivatives: {DERIVATIVES_ROOT}")
+    print("-" * 80)
 
+    if not op.exists(BIDS_ROOT):
+         print(f"エラー: BIDSルートディレクトリ '{BIDS_ROOT}' が見つかりません。", file=sys.stderr)
+         print("スクリプト '00_fetch_data.py' を実行してデータをダウンロードしてください。", file=sys.stderr)
+         sys.exit(1)
 
-# --- 5. 前処理済みデータの保存 ---
-# --- 5. Save preprocessed data ---
-# 結果を -epo.fif 形式で保存するのが一般的です。
-# It is common practice to save the result in -epo.fif format.
-# output_path = bids_path.copy().update(suffix='epo', extension='.fif', check=False)
-# epochs.save(output_path, overwrite=True)
-# print(f"Preprocessed data saved to: {output_path}")
-
-print("\nEEGFlow - 01_preprocess.py script finished.")
-print("This script provides a conceptual pipeline. It should be adapted for a specific dataset and research question.")
+    preprocess_subject(subject=SUBJECT_ID, session=SESSION_ID, task=TASK_ID)

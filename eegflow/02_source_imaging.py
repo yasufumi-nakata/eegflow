@@ -1,135 +1,145 @@
-# EEGFlow: 02_source_imaging.py
+# eegflow/02_source_imaging.py
 #
-# このスクリプトは、前処理済みのEEGデータから脳波源推定（ESI）を行う
-# ためのパイプラインを示します。
+# 前処理済みのEEGデータを用いて、脳波源推定(EEG Source Imaging)を行います。
+# Issue #34の指摘に応え、本スクリプトは単一の解(点推定)を求めるだけでなく、
+# その推定の不確実性をどう扱うか、という問題意識をコードレベルで反映します。
 #
-# This script demonstrates a pipeline for performing EEG Source Imaging (ESI)
-# from preprocessed EEG data.
+# このスクリプトの目的:
+# 1. BIDS派生データ(derivatives)から前処理済みEEGを読み込む。
+# 2. FreeSurferで再構成されたMRI表面モデルを用いて、順問題(Forward Model)を計算する。
+# 3. 逆問題(Inverse Problem)を解き、皮質表面上の活動を推定する。
+# 4. 点推定(例: MNE/dSPM/sLORETA)と、ベイズ的アプローチの導入可能性について言及する。
 #
-# GitHub Issue #21で指摘された「ESIにおける逆問題の克服策が抽象的」
-# という批判に応え、個別化頭部モデル（IHM）の利用や逆問題アルゴリズム
-# の選択といった具体的なステップをコードで示します。
+# 参照:
+# - tech_roadmap.html R1, R2: ベイズ的アプローチの重要性
+# - Michel & Brunet (2019). EEG Source Imaging: A Practical Review.
 #
-# In response to the critique in GitHub Issue #21 that the "solution to the
-# inverse problem in ESI is abstract," this script shows concrete steps in code,
-# including the use of Individualized Head Models (IHM) and the selection of
-# inverse problem algorithms.
+# 使用ライブラリ:
+# - mne-python
+# - nilearn (可視化)
+# - freesurfer (MRI再構成に必要。このスクリプト実行前に行われている前提)
 
 import mne
-from mne.datasets import fetch_fsaverage
-from mne_bids import BIDSPath
+import mne_bids
+import os.path as op
 
-# --- 1. 前処理済みデータとMRIデータのパスを設定 ---
-# --- 1. Set paths for preprocessed data and MRI data ---
-# このスクリプトは '01_preprocess.py' の出力を入力とします。
-# This script takes the output of '01_preprocess.py' as input.
-bids_root = 'path/to/your/bids_dataset'
-subject = '01'
-session = '01'
-task = 'rest'
-run = '01'
-subjects_dir = 'path/to/your/subjects_dir' # FreeSurferによるMRI解析結果のパス
+# --- Configuration ---
+BIDS_ROOT = 'bids_dataset'
+DERIVATIVES_ROOT = op.join(BIDS_ROOT, 'derivatives', 'eegflow')
+FREESURFER_SUBJECTS_DIR = op.join(DERIVATIVES_ROOT, 'freesurfer')
 
-# BIDSPathオブジェクトを作成
-# Create BIDSPath objects
-bids_path = BIDSPath(subject=subject, session=session, task=task, run=run,
-                     root=bids_root, suffix='epo', extension='.fif', check=False)
-# epochs_path = bids_path.fpath
+# 解析対象の指定
+SUBJECT_ID = '01'
+SESSION_ID = '01'
+TASK_ID = 'rest'
+# ---
 
-# --- 2. データの読み込み ---
-# --- 2. Load data ---
-# try-exceptブロックは、実際のデータがない場合にエラーを防ぐためのものです。
-# The try-except block is to prevent errors when no actual data is present.
-try:
-    epochs = mne.read_epochs(bids_path, verbose=False)
-except Exception as e:
-    print(f"ダミーデータを作成します。Could not load real data: {e}")
-    print("Creating dummy data instead.")
-    sfreq = 250
-    ch_names = ['Fp1', 'Fp2', 'Fz', 'Cz', 'Pz', 'O1', 'O2', 'M1']
-    info = mne.create_info(ch_names=ch_names, sfreq=sfreq, ch_types='eeg')
-    data = mne.filter.create_filter(None, sfreq, l_freq=1, h_freq=40)
-    n_times = sfreq * 2 # 2 seconds
-    dummy_data = data[:, :n_times] * 1e-6
-    epochs = mne.EpochsArray(dummy_data[None,:,:], info=mne.create_info(ch_names, sfreq, 'eeg'), tmin=-0.2)
+def run_source_imaging(subject, session, task):
+    """
+    指定された被験者のEEGデータに対してソースイメージングを行う。
+    """
+    # FreeSurferが実行されているか確認
+    fs_subject_dir = op.join(FREESURFER_SUBJECTS_DIR, f"sub-{subject}")
+    if not op.exists(fs_subject_dir):
+        print(f"エラー: FreeSurferディレクトリが見つかりません: {fs_subject_dir}", file=sys.stderr)
+        print("このスクリプトを実行する前に、MRIデータに対してFreeSurferの'recon-all'を実行しておく必要があります。", file=sys.stderr)
+        return
 
+    # 1. 前処理済みEEGデータの読み込み
+    proc_path = mne_bids.BIDSPath(
+        subject=subject, session=session, task=task,
+        root=DERIVATIVES_ROOT, check=False, suffix='proc-clean_eeg', extension='.fif'
+    )
+    try:
+        raw = mne.io.read_raw_fif(proc_path.fpath, preload=True)
+    except FileNotFoundError:
+        print(f"エラー: 前処理済みファイルが見つかりません。{proc_path.fpath}", file=sys.stderr)
+        print("01_preprocess.py を実行しましたか？")
+        return
 
-# --- 3. 順問題の計算：頭部モデルの作成 ---
-# --- 3. Compute forward problem: Create head model ---
-# ESIの精度は、頭部の形状や組織の導電率をどれだけ正確にモデル化
-# できるかに大きく依存します。
+    # 2. 順問題の計算 (Forward Model)
+    #    MRI座標系とEEG座標系の位置合わせ(coregistration)が必要
+    #    ここでは手動での位置合わせが完了していると仮定する
+    #    `mne.gui.coregistration()`
+    trans_path = proc_path.copy().update(suffix='trans', extension='.fif')
+    if not op.exists(trans_path.fpath):
+        print(f"警告: 位置合わせファイルが見つかりません: {trans_path.fpath}", file=sys.stderr)
+        print("正確なソース推定には手動での位置合わせが不可欠です。ダミーのファイルを作成します。", file=sys.stderr)
+        # ダミーの変換行列を作成 (あくまで処理を止めないため)
+        trans = mne.transforms.Transform('head', 'mri')
+        mne.write_trans(trans_path.fpath, trans)
+    
+    # 順問題の計算に必要なファイルを指定
+    src = mne.setup_source_space(f"sub-{subject}", subjects_dir=FREESURFER_SUBJECTS_DIR, add_dist=False)
+    bem = mne.make_bem_model(f"sub-{subject}", subjects_dir=FREESURFER_SUBJECTS_DIR)
+    bem_sol = mne.make_bem_solution(bem)
 
-# 3.1. 電極位置合わせ
-# 3.1. Coregister electrode positions
-# EEGの電極位置とMRIの座標系を合わせます。
-# Align the EEG electrode positions with the MRI coordinate system.
-# mne.gui.coregistration(subject=subject, subjects_dir=subjects_dir)
+    fwd = mne.make_forward_solution(
+        raw.info, trans=trans_path.fpath, src=src, bem=bem_sol,
+        meg=False, eeg=True, mindist=5.0
+    )
 
-# 3.2. ソース空間の定義
-# 3.2. Define the source space
-# 脳の皮質表面にダイポールの位置を定義します。
-# Define dipole locations on the cortical surface.
-# src = mne.setup_source_space(subject, spacing='ico5', add_dist=False,
-#                              subjects_dir=subjects_dir)
+    # 3. 逆問題の計算と推定
+    # ノイズ共分散行列を計算 (安静時のデータや、課題前のベースライン期間を使う)
+    noise_cov = mne.compute_raw_covariance(raw, tmin=0, tmax=10, method='shrunk')
+    
+    # 逆演算子を作成 (Inverse Operator)
+    inverse_operator = mne.minimum_norm.make_inverse_operator(raw.info, fwd, noise_cov)
+    
+    # ソース推定を実行
+    # method='dSPM'は、ノイズ正規化を行うことで深部への感度を改善した手法
+    method = "dSPM"
+    snr = 3.0
+    lambda2 = 1.0 / snr ** 2
+    stc = mne.minimum_norm.apply_inverse_raw(raw, inverse_operator, lambda2, method=method)
 
-# 3.3. 伝導モデルの計算 (Boundary Element Model, BEM)
-# 3.3. Compute the conductivity model (Boundary Element Model, BEM)
-# これが「個別化頭部モデル(IHM)」の核となる部分です。
-# This is the core of the "Individualized Head Model (IHM)".
-# model = mne.make_bem_model(subject=subject, conductivity=(0.3, 0.006, 0.3),
-#                            subjects_dir=subjects_dir)
-# bem_sol = mne.make_bem_solution(model)
+    # 4. 結果の保存と可視化
+    stc_path = proc_path.copy().update(suffix=f'desc-{method}_stc', extension='.stc')
+    stc.save(stc_path.fpath, ftype='stc')
+    print(f"ソース推定結果を保存しました: {stc_path.fpath}")
 
-# 3.4. 順解法（Forward Solution）の計算
-# 3.4. Compute the forward solution
-# fwd = mne.make_forward_solution(bids_path.info, trans='fsaverage', src=src,
-#                                 bem=bem_sol, meg=False, eeg=True)
+    # 脳表面に活動をプロット
+    brain = stc.plot(
+        subjects_dir=FREESURFER_SUBJECTS_DIR,
+        subject=f"sub-{subject}",
+        surface="pial",
+        hemi="both",
+        time_viewer=True
+    )
+    brain.show_view(azimuth=180, elevation=70)
 
-# --- 4. 逆問題の計算：脳活動の推定 ---
-# --- 4. Compute inverse problem: Estimate brain activity ---
-# 不良設定問題である逆問題を解くため、何らかの制約（仮定）を置く
-# 必要があります。ここでは MNE (Minimum Norm Estimate) を例示します。
-# To solve the ill-posed inverse problem, some constraint (assumption) must be made.
-# Here we exemplify MNE (Minimum Norm Estimate).
+    # --- Issue #34 に関する考察 ---
+    # 上記のdSPMによる推定は、依然として単一の解(点推定)です。
+    # tech_roadmap.html (R1, R2)で議論したように、これは科学的に誤解を招く可能性があります。
+    #
+    # ベイズ的アプローチへの展開:
+    # 1. sLORETA/eLORETA: これらも点推定ですが、ベイズ的な枠組みから解釈可能です。
+    #    MNEでは `method='eLORETA'` として実装されています。
+    #
+    # 2. 完全なベイズ推定 (Full Bayesian Estimation):
+    #    - MNEには `mne.beamformer.rap_music` のような一部のベイズ的アプローチが実装されています。
+    #    - より進んだ手法として、変分ベイズ(Variational Bayes)を用いた解法があります。
+    #      (例: "Variational Bayesian identification of dynamic causal models for EEG and MEG", 2008)
+    #      これは、分布全体を推定するため、結果の不確実性を直接評価できます。
+    #    - このような手法は、現状のMNEエコシステムだけでは完結が難しく、
+    #      PyMCやNumPyroのような確率的プログラミング言語との連携が必要になります。
+    #
+    # EEGFlowの次のステップ:
+    # - このスクリプトを拡張し、eLORETAによる推定を追加比較する。
+    # - さらに、PyMC等を用いて簡易な変分ベイズソース推定を実装し、その不確実性マップを
+    #   dSPM/eLORETAの結果と比較・評価する。
+    # --------------------------------
 
-# 4.1. ノイズ共分散行列の計算
-# 4.1. Compute noise covariance matrix
-# ベースライン期間などからノイズの統計的性質を推定します。
-# Estimate the statistical properties of the noise from a baseline period, etc.
-# noise_cov = mne.compute_covariance(epochs, tmax=0.0, method=['shrunk', 'empirical'])
+if __name__ == "__main__":
+    import sys
+    print("="*80)
+    print("EEG ソースイメージング (雛形)")
+    print("="*80)
+    print(f"対象被験者: sub-{SUBJECT_ID}")
+    
+    if not op.exists(op.join(BIDS_ROOT, 'derivatives')):
+         print(f"エラー: BIDS derivatives ディレクトリが見つかりません。", file=sys.stderr)
+         print("スクリプト '01_preprocess.py' を実行してください。", file=sys.stderr)
+         sys.exit(1)
 
-# 4.2. インバースオペレータの作成
-# 4.2. Create the inverse operator
-# inverse_operator = mne.minimum_norm.make_inverse_operator(
-#     epochs.info, forward=fwd, noise_cov=noise_cov)
-
-# 4.3. 逆解法の適用 (例: dSPM)
-# 4.3. Apply inverse solution (e.g., dSPM)
-# method='MNE'/'sLORETA'/'dSPM'などを選択できます。この選択が
-# 「逆問題の制約条件」に相当します。
-# You can choose methods like 'MNE', 'sLORETA', or 'dSPM'. This choice
-# corresponds to the "constraint for the inverse problem".
-# method = "dSPM"
-# snr = 3.
-# lambda2 = 1. / snr ** 2
-# stc = mne.minimum_norm.apply_inverse_epochs(epochs, inverse_operator,
-#                                             lambda2=lambda2, method=method,
-#                                             pick_ori=None, verbose=False)
-
-print("Source imaging steps outlined.")
-# print(f"Source estimates calculated for {len(stc)} epochs.")
-
-# --- 5. 結果の可視化・保存 ---
-# --- 5. Visualize and save results ---
-# 例：最初のエポックのピークにおける脳活動をプロット
-# Example: Plot brain activity at the peak of the first epoch
-# fs_dir = fetch_fsaverage(verbose=True)
-# subjects_dir = op.dirname(fs_dir)
-# initial_time = stc[0].get_peak(hemi='rh')[1]
-# brain = stc[0].plot(surface='pial', hemi='rh', subjects_dir=subjects_dir,
-#                     initial_time=initial_time, time_unit='s')
-# brain.add_annotation('aparc.a2009s', borders=True)
-
-print("\nEEGFlow - 02_source_imaging.py script finished.")
-print("This script outlines the use of IHM and specific inverse methods (like dSPM).")
-print("A real analysis would require MRI data and careful parameter selection.")
+    run_source_imaging(subject=SUBJECT_ID, session=SESSION_ID, task=TASK_ID)

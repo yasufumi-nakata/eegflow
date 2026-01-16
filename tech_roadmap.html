@@ -745,11 +745,12 @@
                         <summary>
                             <span class="qa-id">R1</span>
                             <span class="qa-title">逆問題：観測（M1）から何が一意に推定できる？</span>
-                            <span class="qa-tags"><span class="tag">INVERSE</span></span>
+                            <span class="qa-tags"><span class="tag">INVERSE</span><span class="tag">BAYES</span></span>
                         </summary>
                         <div class="qa-body">
-                            <p><strong>問い：</strong>推定が“不良設定（ill-posed）”な領域を明確化し、仮定（正則化）を透明にする。</p>
-                            <p><strong>次に必要：</strong>推定結果の不確実性（R7）と、仮定を変えた時の感度分析（監査）</p>
+                            <p><strong>問い：</strong>EEGソース推定のような逆問題は、解が一意に定まらない“不良設定問題（ill-posed problem）”である。点推定（ひとつの解を求めること）は科学的に誤解を招く可能性があるため、本プロジェクトでは<strong>ベイズ的アプローチを原則とする</strong>。</p>
+                            <p><strong>方針：</strong>解を事後確率分布として捉え、その不確実性自体を後段の解析（因果モデリング等）に引き継ぐ。これにより、推定の曖昧さを考慮した、より頑健な結論を目指す。</p>
+                            <p><strong>次に必要：</strong>推定結果の不確実性（R7）と、仮定（事前分布）を変えた時の感度分析（監査ログ）</p>
                         </div>
                     </details>
 
@@ -757,11 +758,13 @@
                         <summary>
                             <span class="qa-id">R2</span>
                             <span class="qa-title">ソース推定：EEGから“どの表現”の脳活動が欲しい？</span>
-                            <span class="qa-tags"><span class="tag">EEG</span><span class="tag">ESI</span></span>
+                            <span class="qa-tags"><span class="tag">EEG</span><span class="tag">ESI</span><span class="tag">BAYES</span></span>
                         </summary>
                         <div class="qa-body">
                             <p><strong>問い：</strong>EEGソース推定は「領域×時間」の表現を得やすいが、ニューロン/シナプスは直接は見えない。復元対象（R0）に合わせて表現を選ぶ。</p>
-                            <p><strong>次に必要：</strong>`eegflow/02_source_imaging.py` を、評価指標（V1）と接続して“推定が役立つか”で判断する</p>
+                            <p><strong>課題：</strong>たとえ高密度EEG(128ch)と個別化頭部モデル(IHM)を用いても、推定結果は空間的なぼやけ（spatial blurring）を避けられない(Michel & Brunet, 2019)。これを無視して点推定値を「真の活動」と見なすことはできない。</p>
+                            <p><strong>方針：</strong>`eegflow/02_source_imaging.py`では、MNE-Pythonなどの標準的なツールを用いつつ、<strong>ベイズ的な不確実性（Uncertainty Quantification）</strong>を定量化する手法を実装・検証する。例えば、解の分布をサンプリングするアプローチや、変分ベイズ法に基づく手法を検討する。</p>
+                            <p><strong>次に必要：</strong>`eegflow/02_source_imaging.py` を、評価指標（V1）と接続して“推定の不確実性を考慮しても、なお有用か”で判断する</p>
                         </div>
                     </details>
 
@@ -1063,7 +1066,11 @@
                         </summary>
                         <div class="qa-body">
                             <p><strong>問い：</strong>意識は直接観測できない。理論（IIT/GNWT等）が出す“予測の差”を、計測（M）と介入（M6/V2）で検証できるか？</p>
-                            <p><strong>注意：</strong>このページでは結論を出さず、<strong>理論が何を予測するか</strong>と<strong>どう反証するか</strong>の設計に寄せる</p>
+                            <ul>
+                                <li><strong>IIT 4.0の課題 (アンフォールディング問題):</strong> このプロジェクトが参考にするIIT 4.0は、因果構造の統合（Φ）を意識の尺度とするが、Doerig et al. (2019) が指摘する「アンフォールディング問題」に対して脆弱である。これは、高いΦを持つリカレントな系が、Φ=0のフィードフォワード系で機能的に模倣可能（Zombification）であることを示唆し、静的な因果構造のみで意識を規定することの限界を提示する。</li>
+                                <li><strong>EEGFlowの暫定方針:</strong> この批判に応答するため、本プロジェクトでは静的な因果構造だけでなく、動的な側面を重視する。具体的には、Usher (2025) が提案するような**可塑性誘起による複雑性（plasticity-induced complexity）**や、自己組織化に関わるActive Inferenceの枠組みを組み合わせ、単なる機能模倣（Zombie）と区別可能な動的指標の確立を目指す。</li>
+                            </ul>
+                            <p><strong>注意：</strong>このページでは結論を出さず、<strong>理論が何を予測し、どう反証できるか</strong>の設計に寄せる。IITは有用な出発点だが、その限界と代替案を常に検証する。</p>
                         </div>
                     </details>
 
