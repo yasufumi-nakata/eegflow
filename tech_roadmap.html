@@ -788,8 +788,9 @@
                             <span class="qa-tags"><span class="tag">CAUSAL</span></span>
                         </summary>
                         <div class="qa-body">
-                            <p><strong>問い：</strong>相関の当てはめではなく、刺激/操作に対して“どう変わるはずか”を言えるか？</p>
-                            <p><strong>次に必要：</strong>`eegflow/03_causal_modeling.py` に、介入前提の評価タスク（V2）を用意する</p>
+                            <p><strong>問い：</strong>相関の当てはめではなく、刺激/操作に対して“どう変わるはずか”を言えるか？ デコーディング（相関）からエミュレーション（因果）への飛躍をどう埋めるか？</p>
+                            <p><strong>方針：</strong>脳を能動的推論（Active Inference）を行う<strong>生成モデル（Generative Model）</strong>として定式化する。`eegflow/03_causal_modeling.py` では、動的因果モデリング（DCM）を用いて、観測データからシナプス結合や神経修飾パラメータ（潜在原因）を推定し、介入に対する予測応答を検証する。</p>
+                            <p><strong>次に必要：</strong>介入前提の評価タスク（V2）と、生成モデルのパラメータ同定プロセスを結合する</p>
                         </div>
                     </details>
 
@@ -1068,6 +1069,7 @@
                             <p><strong>問い：</strong>意識は直接観測できない。理論（IIT/GNWT等）が出す“予測の差”を、計測（M）と介入（M6/V2）で検証できるか？</p>
                             <ul>
                                 <li><strong>Cogitate Consortium (2025) の衝撃:</strong> IITとGNWTの直接対決検証（Adversarial Collaboration）の結果、両理論の予測は主要な点（IITの持続的ガンマ同期、GNWTのPFCイグニッション）で棄却された。これは、既存の「意識の理論」がどちらも不完全であることを示唆している。</li>
+                                <li><strong>Unfolding Argument (Doerig et al., 2019) のリスク:</strong> フィードフォワードなネットワークは、再帰的なネットワークと機能的に等価であっても、IITの定義では意識（Φ）を持たないとされる。この「Unfolding Argument」は、WBEが単なる機能模倣では意識を再現できない可能性（哲学的ゾンビ化）を警告しており、因果構造の保存が必須要件となる。</li>
                                 <li><strong>EEGFlowの方針転換:</strong> 本プロジェクトは、IIT/GNWTのどちらか（あるいは補完的統合）に依拠する姿勢を改め、<strong>第3世代の意識理論 (Third-Generation Theory)</strong> の構築と検証に軸足を移す。理論上の構成概念（ΦやGlobal Broadcast）ではなく、後頭部と前頭部のデコーディング性能差など、<strong>経験的に検証された神経相関 (Empirically Validated NCC)</strong> を工学的ターゲットとする。</li>
                             </ul>
                             <p><strong>注意：</strong>理論はあくまで仮説生成のツールとして扱い、実装（WBE）の成否は「特定の理論に適合するか」ではなく、V2（因果）やV5（本人性）といった実証的指標で判断する。</p>
@@ -1123,7 +1125,8 @@
                             <span class="qa-tags"><span class="tag">DEPLOYMENT</span></span>
                         </summary>
                         <div class="qa-body">
-                            <p><strong>問い：</strong>研究段階でも、同意・撤回・削除・複製の扱いを決めないと運用できない。</p>
+                            <p><strong>問い：</strong>研究段階でも、同意・撤回・削除・複製の扱いを決めないと運用できない。デジタル化された意識の権利をどう定義するか？</p>
+                            <p><strong>方針：</strong>Neurorights（Ienca & Andorno, 2017）の提唱する<strong>「精神的完全性（Mental Integrity）」</strong>の権利を基盤とし、本人の同意なしに因果構造（人格の基盤）を編集されない権利を保障する。MIND Act (2025) のプライバシー保護に加え、この「編集権の制限」を運用ルールに組み込む。</p>
                             <p><strong>次に必要：</strong>本人性評価（V5）と、同意ログ（P2）を結びつけた運用ルール</p>
                         </div>
                     </details>
@@ -1209,6 +1212,7 @@
                     <li>Sandberg, A., &amp; Bostrom, N. (2008). <em>Whole Brain Emulation: A Roadmap</em>. <a href="https://www.fhi.ox.ac.uk/wp-content/uploads/Whole-Brain-Emulation-Roadmap-v1.2-web.pdf" target="_blank">PDF</a></li>
                     <li>Yamakawa, H., et al. (2024). Technology roadmap toward the completion of whole-brain architecture with BRA-driven development. <em>Cognitive Systems Research</em>, 88, 101300. <a href="https://doi.org/10.1016/j.cogsys.2024.101300" target="_blank">doi:10.1016/j.cogsys.2024.101300</a></li>
                     <li>Michel, C. M., &amp; Brunet, D. (2019). EEG Source Imaging: A Practical Review of the Analysis Steps. <em>Frontiers in Neurology</em>, 10, 325. <a href="https://doi.org/10.3389/fneur.2019.00325" target="_blank">doi:10.3389/fneur.2019.00325</a></li>
+                    <li>Zanichelli, N., et al. (2025). State of Brain Emulation Report 2025. <em>arXiv:2510.15745</em>. <a href="https://arxiv.org/abs/2510.15745" target="_blank">Link</a></li>
                     <li>BIDS Specification (EEG). <a href="https://bids-specification.readthedocs.io/en/stable/04-modality-specific-files/03-electroencephalography.html" target="_blank">Link</a></li>
                 </ol>
             </section>
