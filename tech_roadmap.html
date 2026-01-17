@@ -762,9 +762,9 @@
                         </summary>
                         <div class="qa-body">
                             <p><strong>問い：</strong>EEGソース推定は「領域×時間」の表現を得やすいが、ニューロン/シナプスは直接は見えない。復元対象（R0）に合わせて表現を選ぶ。</p>
-                            <p><strong>課題：</strong>たとえ高密度EEG(128ch)と個別化頭部モデル(IHM)を用いても、推定結果は空間的なぼやけ（spatial blurring）を避けられない(Michel & Brunet, 2019)。これを無視して点推定値を「真の活動」と見なすことはできない。</p>
-                            <p><strong>方針：</strong>`eegflow/02_source_imaging.py`では、MNE-Pythonなどの標準的なツールを用いつつ、<strong>ベイズ的な不確実性（Uncertainty Quantification）</strong>を定量化する手法を実装・検証する。例えば、解の分布をサンプリングするアプローチや、変分ベイズ法に基づく手法を検討する。</p>
-                            <p><strong>次に必要：</strong>`eegflow/02_source_imaging.py` を、評価指標（V1）と接続して“推定の不確実性を考慮しても、なお有用か”で判断する</p>
+                            <p><strong>課題：</strong>従来は「高密度EEG(128ch)化」が推奨されてきたが、近年の研究はチャンネル数だけでは不良設定性（ill-posedness）を解決できないことを示している。特に、dSPMのような点推定法は不確実性を無視してしまう。</p>
+                            <p><strong>方針：</strong>チャンネル増強に加え、<strong>構造化事前分布 (Structured Priors)</strong> (Aud'hui et al., 2025) や <strong>Deep Learningベースのハイブリッド手法 (3D-PIUNet)</strong> (Morik, 2025) を導入する。これらは解剖学的・機能的結合情報を事前分布として組み込むことで、従来の点推定よりも遥かに高い精度と、<strong>完全な事後分布（Full Posterior Distribution）</strong>による不確実性の定量化を実現する。</p>
+                            <p><strong>次に必要：</strong>`eegflow/02_source_imaging.py` に変分ベイズ（Variational Bayesian）アプローチを実装し、不確実性を考慮したソース再構成を行う</p>
                         </div>
                     </details>
 
@@ -1067,10 +1067,10 @@
                         <div class="qa-body">
                             <p><strong>問い：</strong>意識は直接観測できない。理論（IIT/GNWT等）が出す“予測の差”を、計測（M）と介入（M6/V2）で検証できるか？</p>
                             <ul>
-                                <li><strong>IIT 4.0の課題 (アンフォールディング問題):</strong> このプロジェクトが参考にするIIT 4.0は、因果構造の統合（Φ）を意識の尺度とするが、Doerig et al. (2019) が指摘する「アンフォールディング問題」に対して脆弱である。これは、高いΦを持つリカレントな系が、Φ=0のフィードフォワード系で機能的に模倣可能（Zombification）であることを示唆し、静的な因果構造のみで意識を規定することの限界を提示する。</li>
-                                <li><strong>EEGFlowの暫定方針:</strong> この批判に応答するため、本プロジェクトでは静的な因果構造だけでなく、動的な側面を重視する。具体的には、Usher (2025) が提案するような**可塑性誘起による複雑性（plasticity-induced complexity）**や、自己組織化に関わるActive Inferenceの枠組みを組み合わせ、単なる機能模倣（Zombie）と区別可能な動的指標の確立を目指す。</li>
+                                <li><strong>Cogitate Consortium (2025) の衝撃:</strong> IITとGNWTの直接対決検証（Adversarial Collaboration）の結果、両理論の予測は主要な点（IITの持続的ガンマ同期、GNWTのPFCイグニッション）で棄却された。これは、既存の「意識の理論」がどちらも不完全であることを示唆している。</li>
+                                <li><strong>EEGFlowの方針転換:</strong> 本プロジェクトは、IIT/GNWTのどちらか（あるいは補完的統合）に依拠する姿勢を改め、<strong>第3世代の意識理論 (Third-Generation Theory)</strong> の構築と検証に軸足を移す。理論上の構成概念（ΦやGlobal Broadcast）ではなく、後頭部と前頭部のデコーディング性能差など、<strong>経験的に検証された神経相関 (Empirically Validated NCC)</strong> を工学的ターゲットとする。</li>
                             </ul>
-                            <p><strong>注意：</strong>このページでは結論を出さず、<strong>理論が何を予測し、どう反証できるか</strong>の設計に寄せる。IITは有用な出発点だが、その限界と代替案を常に検証する。</p>
+                            <p><strong>注意：</strong>理論はあくまで仮説生成のツールとして扱い、実装（WBE）の成否は「特定の理論に適合するか」ではなく、V2（因果）やV5（本人性）といった実証的指標で判断する。</p>
                         </div>
                     </details>
 
