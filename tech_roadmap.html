@@ -1111,6 +1111,19 @@
                             <p><strong>次に必要：</strong>P2（成果物）を満たす範囲で、データ/コード/評価を公開可能に整える</p>
                         </div>
                     </details>
+
+                    <details class="qa" data-tags="verification">
+                        <summary>
+                            <span class="qa-id">V10</span>
+                            <span class="qa-title">モデル距離：生体脳とエミュレーションの“近さ”をどう測る？</span>
+                            <span class="qa-tags"><span class="tag">METRIC</span><span class="tag">MATH</span></span>
+                        </summary>
+                        <div class="qa-body">
+                            <p><strong>問い：</strong>パラメータ空間での単純なユークリッド距離は、モデルの機能的な振る舞いの違いを反映しないことが多い。より本質的な「振る舞いの近さ」をどう定量化するか？</p>
+                            <p><strong>方針：</strong>情報幾何学的指標 (Information Geometric Metrics) を採用する。特に<strong>フィッシャー情報量 (Fisher Information)</strong> は、パラメータの変化が確率分布（モデルの出力）に与える影響の大きさを表すため、これを計量（Metric）として用いることで、生物学的脳とエミュレートされた生成モデルの間の機能的な距離を厳密に定義できる。</p>
+                            <p><strong>次に必要：</strong>Fisher Information Metric (FIM) を用いたモデル間距離の計算モジュールを実装し、V2（因果テスト）の定量評価に組み込む</p>
+                        </div>
+                    </details>
                 </div>
 
                 <div class="node" id="deployment" data-qa-group>
