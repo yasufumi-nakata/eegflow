@@ -763,7 +763,7 @@
                         <div class="qa-body">
                             <p><strong>問い：</strong>EEGソース推定は「領域×時間」の表現を得やすいが、ニューロン/シナプスは直接は見えない。復元対象（R0）に合わせて表現を選ぶ。</p>
                             <p><strong>課題：</strong>従来は「高密度EEG(128ch)化」が推奨されてきたが、近年の研究はチャンネル数だけでは不良設定性（ill-posedness）を解決できないことを示している。特に、dSPMのような点推定法は不確実性を無視してしまう。</p>
-                            <p><strong>方針：</strong>チャンネル増強に加え、<strong>構造化事前分布 (Structured Priors)</strong> (Aud'hui et al., 2025) や <strong>Deep Learningベースのハイブリッド手法 (3D-PIUNet)</strong> (Morik, 2025) を導入する。これらは解剖学的・機能的結合情報を事前分布として組み込むことで、従来の点推定よりも遥かに高い精度と、<strong>完全な事後分布（Full Posterior Distribution）</strong>による不確実性の定量化を実現する。</p>
+                            <p><strong>方針：</strong>チャンネル増強に加え、Feng et al. (2025) や Ghosh et al. (2025) が提唱する<strong>Empirical Bayes (経験ベイズ)</strong> の枠組みを導入する。これにより、ハイパーパラメータ（事前分布の重み）をデータから直接推定し、バイアスを最小化する。さらに、推定された脳活動マップには必ず<strong>信頼区間（Credible Intervals）</strong>または不確実性マップを付随させるプロトコルを必須化し、点推定の危うさを回避する。</p>
                             <p><strong>次に必要：</strong>`eegflow/02_source_imaging.py` に変分ベイズ（Variational Bayesian）アプローチを実装し、不確実性を考慮したソース再構成を行う</p>
                         </div>
                     </details>
@@ -789,7 +789,7 @@
                         </summary>
                         <div class="qa-body">
                             <p><strong>問い：</strong>相関の当てはめではなく、刺激/操作に対して“どう変わるはずか”を言えるか？ デコーディング（相関）からエミュレーション（因果）への飛躍をどう埋めるか？</p>
-                            <p><strong>方針：</strong>脳を能動的推論（Active Inference）を行う<strong>生成モデル（Generative Model）</strong>として定式化する。`eegflow/03_causal_modeling.py` では、動的因果モデリング（DCM）を用いて、観測データからシナプス結合や神経修飾パラメータ（潜在原因）を推定し、介入に対する予測応答を検証する。</p>
+                            <p><strong>方針：</strong>脳を能動的推論（Active Inference）を行う生成モデルとして定式化するが、単なる予測誤差最小化だけでは哲学的ゾンビのリスクを排除できない。Laukkonen et al. (2025) が提唱する<strong>「反実仮想的等価性（Counterfactual Equivalence）」</strong>を指標として採用し、内部モデルが生成する「もし〜だったら？」という分岐構造が生体脳と一致するかを検証する。また、「Slow Continuous Mind Uploading」を、<strong>Markov Blanket</strong> を介した生体脳とデジタル基盤の動的な同期プロセスとして再定義する。</p>
                             <p><strong>次に必要：</strong>介入前提の評価タスク（V2）と、生成モデルのパラメータ同定プロセスを結合する</p>
                         </div>
                     </details>
@@ -1068,9 +1068,9 @@
                         <div class="qa-body">
                             <p><strong>問い：</strong>意識は直接観測できない。理論（IIT/GNWT等）が出す“予測の差”を、計測（M）と介入（M6/V2）で検証できるか？</p>
                             <ul>
-                                <li><strong>Cogitate Consortium (2025) の衝撃:</strong> IITとGNWTの直接対決検証（Adversarial Collaboration）の結果、両理論の予測は主要な点（IITの持続的ガンマ同期、GNWTのPFCイグニッション）で棄却された。これは、既存の「意識の理論」がどちらも不完全であることを示唆している。</li>
-                                <li><strong>Unfolding Argument (Doerig et al., 2019) のリスク:</strong> フィードフォワードなネットワークは、再帰的なネットワークと機能的に等価であっても、IITの定義では意識（Φ）を持たないとされる。この「Unfolding Argument」は、WBEが単なる機能模倣では意識を再現できない可能性（哲学的ゾンビ化）を警告しており、因果構造の保存が必須要件となる。</li>
-                                <li><strong>EEGFlowの方針転換:</strong> 本プロジェクトは、IIT/GNWTのどちらか（あるいは補完的統合）に依拠する姿勢を改め、<strong>第3世代の意識理論 (Third-Generation Theory)</strong> の構築と検証に軸足を移す。理論上の構成概念（ΦやGlobal Broadcast）ではなく、後頭部と前頭部のデコーディング性能差など、<strong>経験的に検証された神経相関 (Empirically Validated NCC)</strong> を工学的ターゲットとする。</li>
+                                <li><strong>Cogitate Consortium (2025) の衝撃:</strong> IITとGNWTの直接対決検証（Adversarial Collaboration）の結果、両理論の予測は主要な点（IITの持続的ガンマ同期は完全に支持されず、GNWTの前頭葉イグニッションは課題依存性が高い）で棄却または限定的であることが示された (Nature 2025)。これは、現行の主要理論がいずれも意識の神経相関（NCC）を完全には説明しきれていないことを意味する。</li>
+                                <li><strong>方針転換: 理論から経験的指標へ:</strong> 特定の理論を教条的に支持するのではなく、<strong>PCI/PCI-ST（摂動複雑性指標）</strong>のような、理論に依存せず実験的に検証された指標 (Empirically Validated NCC) を工学的目標として採用する。</li>
+                                <li><strong>Unfolding Argumentへの応答:</strong> IIT批判である「Unfolding Argument」（フィードフォワード網でも機能的に等価なら意識がないとされる問題）に対し、単なる機能的等価性を超えた条件を定義する。具体的には、<strong>プラスチックな重みを持つRNN</strong>による再帰性の担保 (O'Reilly-Shah et al., 2025) など、因果構造の保存 (Causal Structure Preservation) を明示的な要件とする。</li>
                             </ul>
                             <p><strong>注意：</strong>理論はあくまで仮説生成のツールとして扱い、実装（WBE）の成否は「特定の理論に適合するか」ではなく、V2（因果）やV5（本人性）といった実証的指標で判断する。</p>
                         </div>
