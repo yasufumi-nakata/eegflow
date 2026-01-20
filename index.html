@@ -719,7 +719,8 @@
                     <p>この歴史的な検証実験において、IITが予測した「後方皮質における持続的な同期活動」は完全には支持されず、一方でGNWTが予測した「前頭前野のイグニッション」も課題依存性が高い（意識経験そのものよりは報告動作に関連する）ことが示された<sup><a href="#ref-54">[54]</a></sup>。これは、現行の主要理論がいずれも意識の神経相関（NCC）を完全には説明しきれていないことを意味する。</p>
                     <div class="resolution-box">
                         <h5>解決の方向性: Empirically Validated NCCと「Unfolding Argument」への応答</h5>
-                        <p>この結果を受け、本サイトでは特定の理論を教条的に支持する立場を取り下げる。代わりに、摂動複雑性指標（PCI/PCI-ST）<sup><a href="#ref-47">[47]</a></sup>のような<strong>経験的に検証された指標（Empirically Validated NCC）</strong>を工学的目標として採用する。また、IITに関しては「Unfolding Argument」（Doerig et al., 2019<sup><a href="#ref-40">[40]</a></sup>）—機能的に等価なフィードフォワード網がΦ=0となり意識を持たないとされる問題—を深刻な実装上のリスクとして認識し、WBEが単なる「機能の模倣（Functional Equivalence）」に留まらず、「因果構造の保存（Causal Structure Preservation）」をどこまで達成すべきか、その境界条件を厳密に定義する。</p>
+                        <p>この結果を受け、本サイトでは特定の理論を教条的に支持する立場を取り下げる。代わりに、<strong>予測符号化（Predictive Coding）</strong>や<strong>自由エネルギー原理（Friston, 2010）</strong><sup><a href="#ref-14">[14]</a></sup>、あるいは高次理論（HOT）の視点を実装要件に組み込み、摂動複雑性指標（PCI/PCI-ST）<sup><a href="#ref-47">[47]</a></sup>のような<strong>経験的に検証された指標（Empirically Validated NCC）</strong>を工学的目標として採用する。</p>
+                <p>また、IIT批判である「Unfolding Argument」（Doerig et al., 2019<sup><a href="#ref-40">[40]</a></sup>）—機能的に等価なフィードフォワード網がΦ=0となり意識を持たないとされる問題—に対し、本プロジェクトは単なる「機能の模倣」を超えた要件を課す。具体的には、「因果構造の保存（Causal Structure Preservation）」を、マクロなネットワークレベルではなく、<strong>微小な神経回路網（micro-circuitry）レベルでの再帰的結合の維持</strong>として定義し、その計算論的閾値を検証プロセスに組み込む。</p>
                     </div>
                 </div>
 
@@ -770,7 +771,10 @@
                                             href="#ref-5">[5]</a></sup>。
                                 </li>
                                 <li style="margin-bottom: 8px;">
-                                    <strong>ベイズ推定による不確実性の定量化：</strong>点推定（L2ノルム最小化等）のみに依存せず、<strong>経験的ベイズ（Empirical Bayes）</strong>等の枠組みを用いて、推定結果を確率分布として扱います。信号源の「スパース性」や「滑らかさ」といった事前分布（Priors）の選択が結果にバイアスを与えることを明記し<sup><a href="#ref-5">[5]</a></sup>、その影響を感度分析で評価します。
+                                    <strong>階層的ベイズモデル（Hierarchical Bayesian Modeling）の導入：</strong>信号源のスパース性と滑らかさを同時に扱う階層的ベイズモデルを採用し、超パラメータの推定プロセスを透明化します<sup><a href="#ref-73">[73]</a></sup>。
+                                </li>
+                                <li style="margin-bottom: 8px;">
+                                    <strong>モンテカルロ法による感度分析：</strong>入力データのノイズや頭部モデルの誤差が推定結果に与える影響を、モンテカルロシミュレーションを用いて定量化し、結果のロバスト性を評価するプロトコルを実装します<sup><a href="#ref-74">[74]</a></sup>。
                                 </li>
                                 <li style="margin-bottom: 8px;">
                                     <strong>個別化頭部モデル（IHM）の必須化：</strong>各個人のMRIスキャンから生成された忠実な頭部モデル（頭部ボリュームコンダクタモデル）を用い、信号伝達の物理シミュレーション精度を保証します<sup><a
@@ -992,8 +996,8 @@
                         <tr>
                             <td>3</td>
                             <td>WBA統合フレームワークでの動作検証。非神経細胞（グリア）のモデル化。</td>
-                            <td>DCMを用いた「元の脳」と「エミュレーション」の有効連結性比較による本人性検証。</td>
-                            <td>Neurorightsに基づく権利枠組み、デジタル遺産・継承権の法的整備。</td>
+                            <td><strong>神経学的チューリングテスト（Neural Turing Test）</strong>：オリジナルの脳とエミュレーションの「摂動応答（PCI）」の統計的同一性を検証。</td>
+                            <td>Neurorightsに基づく権利枠組み。デジタル遺産・継承権の法的整備と、段階的置換（Moravec's Argument）の実証的プロトコル策定。</td>
                         </tr>
                     </tbody>
                 </table>
@@ -1219,9 +1223,12 @@
                 <p>本研究は技術開発と並行し、法的・倫理的課題の具体的な検討を不可分の一部と見なす。特に、「MIND Act of 2025」<sup><a href="#ref-24">[24]</a></sup>やNeurorights<sup><a href="#ref-27">[27]</a></sup>といった既存の枠組みを、WBE特有の課題に適用するために拡張する。</p>
 
                 <h3>「精神的完全性（Mental Integrity）」とデータの編集限界</h3>
-                <p>MIND Actは神経データのプライバシー保護に主眼を置いているが、WBEにおいてはデータそのものが「人格」となる。ここで重要になるのが、Neurorightsで提唱される<strong>「精神的完全性（Mental Integrity）」</strong>の権利である。
-                <br>
-                脳データをデジタル化する過程で、ノイズ除去や「最適化」を行うことは許されるのか？ 例えば、うつ病の神経回路を「修正」してアップロードすることは、治療なのか、それとも本人の同一性の侵害（改竄）なのか？ 本プロジェクトでは、精神的完全性の権利を<strong>「本人の明示的な同意なしに、神経データの因果構造（性格や記憶の基盤）を変更されない権利」</strong>と再定義し、技術的な「編集」の境界線を法的に設定することを提言する。</p>
+                <p>MIND Actは神経データのプライバシー保護に主眼を置いているが、WBEにおいてはデータそのものが「人格」となる。ここで重要になるのが、Neurorightsで提唱される<strong>「精神的完全性（Mental Integrity）」</strong>の権利である。</p>
+                <p>本プロジェクトでは、以下の具体的施策を提言する：</p>
+                <ul style="margin: 0; padding-left: 20px; list-style-type: disc; font-size: 14px; line-height: 1.6;">
+                     <li style="margin-bottom: 8px;"><strong>Identity Metricsの具体化：</strong>心理的連続性を検証するため、単なる記憶テストに加え、能動的推論における「価値関数」や「嗜好分布」の保存度を定量化する手法を導入する。</li>
+                     <li style="margin-bottom: 8px;"><strong>デジタル遺言と信託の枠組み：</strong>アップロードされた主体を「権利主体」として扱うため、スマートコントラクトを用いたデジタル信託（Digital Trust）の概念を導入し、既存の法体系（信託法・相続法）との接続を図る<sup><a href="#ref-75">[75]</a></sup>。</li>
+                </ul>
 
                 <h3>検証基準の欠如と「Neural Turing Test」</h3>
                 <p>2025年のState of Brain Emulation Report<sup><a href="#ref-71">[71]</a></sup>でも指摘されている通り、現在の最大の問題は「アップロードが成功したか」を判定する客観的な基準の欠如である。
@@ -1437,6 +1444,9 @@
                     <li id="ref-70" value="70">Friston, K. J., et al. (2017). Active inference, mathematical constitution, and pure consciousness. <em>Frontiers in Psychology</em>, 8, 1322.</li>
                     <li id="ref-71" value="71">Zanichelli, N., et al. (2025). State of Brain Emulation Report 2025. <em>arXiv:2510.15745</em>.</li>
                     <li id="ref-72" value="72">Ienca, M., & Andorno, R. (2017). Towards new human rights in the age of neuroscience and neurotechnology. <em>Life Sciences, Society and Policy</em>, 13(1), 5.</li>
+                    <li id="ref-73" value="73">Koulouri, A. (2025). Bayesian model parameter learning in linear inverse problems. <em>Machine Learning: Science and Technology</em>.</li>
+                    <li id="ref-74" value="74">Nzakuna, P. S., et al. (2025). Monte Carlo-based Strategy for Assessing the Impact of EEG Data Uncertainty. <em>IEEE Transactions on Instrumentation and Measurement</em>.</li>
+                    <li id="ref-75" value="75">Zanichelli, N., et al. (2025). State of Brain Emulation Report 2025. <em>arXiv:2510.15745</em>.</li>
                 </ol>
             </section>
 
