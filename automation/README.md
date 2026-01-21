@@ -1,0 +1,27 @@
+# Automation
+
+This folder contains an automated flow that fetches open GitHub issues, asks an AI CLI to resolve them, commits changes, and closes the issues.
+
+## Files
+- `resolve-issues.sh`: main automation script
+- `server.js`: HTTP trigger for running the script
+- `.env.example`: configuration template (copy to `.env`)
+- `logs/`: runtime logs (ignored by git)
+- `EegflowResolver.app/`: optional app bundle (ignored by git)
+
+## Setup
+1. Copy `.env.example` to `.env`.
+2. Set `AI_CMD` to the command that reads the prompt from STDIN.
+3. Optionally set `AI_WORKDIR` if the AI tool must run outside the repo root.
+4. Ensure `gh` and `jq` are installed and authenticated.
+
+The script sets `AI_PROMPT_FILE` to the prompt file path if your command prefers reading from a file.
+
+## Run
+- Dry run:
+  - `bash resolve-issues.sh --dry-run`
+- Normal run:
+  - `bash resolve-issues.sh`
+- Start the server:
+  - `node server.js`
+  - Call `http://localhost:3000/resolve`
