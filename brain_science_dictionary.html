@@ -254,6 +254,72 @@
             color: var(--color-text-secondary);
         }
 
+        /* Live Index */
+        .bsd-controls {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin: 16px 0 8px;
+        }
+
+        .filter-input {
+            width: 100%;
+            padding: 10px 12px;
+            background: var(--color-paper);
+            border: 1px solid var(--color-border);
+            color: var(--color-text);
+            font-family: var(--font-sans);
+            font-size: 13px;
+        }
+
+        .filter-input:focus {
+            outline: none;
+            border-color: rgba(239, 83, 80, 0.55);
+        }
+
+        .bsd-count {
+            font-family: var(--font-sans);
+            font-size: 12px;
+            color: var(--color-text-muted);
+        }
+
+        .bsd-status {
+            font-family: var(--font-sans);
+            font-size: 12px;
+            color: var(--color-text-secondary);
+            margin-bottom: 12px;
+        }
+
+        .bsd-index {
+            list-style: none;
+            column-count: 3;
+            column-gap: 24px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .bsd-index li {
+            break-inside: avoid;
+            margin: 4px 0;
+            font-size: 13px;
+        }
+
+        .bsd-index a {
+            color: var(--color-text);
+        }
+
+        .bsd-index a:hover {
+            color: var(--color-link);
+        }
+
+        .bsd-note {
+            font-family: var(--font-sans);
+            font-size: 11px;
+            color: var(--color-text-muted);
+            margin-top: 12px;
+        }
+
         /* Sidebar Styles */
         .sidebar-box {
             background: var(--color-sidebar);
@@ -278,6 +344,10 @@
             font-size: 12px;
             line-height: 1.6;
             color: var(--color-text-secondary);
+        }
+
+        .sidebar-box p + p {
+            margin-top: 8px;
         }
 
         .sidebar-box ul {
@@ -319,10 +389,20 @@
         }
 
         /* Mobile */
+        @media (max-width: 1100px) {
+            .bsd-index {
+                column-count: 2;
+            }
+        }
+
         @media (max-width: 900px) {
             .main-container {
                 grid-template-columns: 1fr;
                 gap: 24px;
+            }
+
+            .bsd-index {
+                column-count: 1;
             }
         }
     </style>
@@ -342,7 +422,7 @@
         <p class="article-subtitle">日本神経科学学会が運営する、脳科学に関する用語の解説辞典</p>
         <div class="article-meta">
             <span>Source: <a href="https://bsd.neuroinf.jp/" target="_blank">bsd.neuroinf.jp</a></span>
-            <span>Last Updated: 2026-01-22</span>
+            <span>Sync: Live via MediaWiki API</span>
         </div>
     </header>
 
@@ -395,9 +475,9 @@
                 </div>
             </section>
 
-            <section class="section">
+            <section class="section" id="full-index">
                 <h2 class="section-title">Full Index</h2>
-                <p>脳科学辞典の全項目索引へは、以下のカテゴリからアクセスできます。</p>
+                <p>脳科学辞典の全項目索引を、MediaWiki API から取得して一覧に反映しています。まずはカテゴリ別のショートカットから参照できます。</p>
 
                 <div class="dict-grid">
                     <div class="dict-card">
@@ -417,6 +497,14 @@
                         <a href="https://bsd.neuroinf.jp/wiki/Category:分野別" target="_blank">Category List</a>
                     </div>
                 </div>
+
+                <div class="bsd-controls">
+                    <input id="bsd-search" class="filter-input" type="search" placeholder="辞典内検索（例: 意識, シナプス, EEG）">
+                    <span id="bsd-count" class="bsd-count">読み込み中...</span>
+                </div>
+                <p id="bsd-status" class="bsd-status">索引を読み込み中...</p>
+                <ul id="bsd-index" class="bsd-index" hidden></ul>
+                <p class="bsd-note">出典: <a href="https://bsd.neuroinf.jp/wiki/脳科学辞典:索引" target="_blank">脳科学辞典</a> (CC BY-NC-SA 4.0)</p>
             </section>
 
         </article>
@@ -424,7 +512,8 @@
         <aside class="sidebar-column">
             <div class="sidebar-box">
                 <h4>About BSD</h4>
-                <p>脳科学辞典は、日本神経科学学会によって運営されています。著作権は原則として日本神経科学学会および執筆者に帰属します。</p>
+                <p>脳科学辞典は、日本神経科学学会によって運営されています。本ページは MediaWiki API から索引を取得して表示しています。</p>
+                <p>ライセンス: <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja" target="_blank">CC BY-NC-SA 4.0</a></p>
             </div>
 
             <div class="sidebar-box">
@@ -449,6 +538,121 @@
     <footer>
         <p>EEGFlow Project · <a href="https://github.com/yasufumi-nakata/eegflow">GitHub</a></p>
     </footer>
+
+    <script>
+        (function () {
+            var indexEl = document.getElementById('bsd-index');
+            var statusEl = document.getElementById('bsd-status');
+            var countEl = document.getElementById('bsd-count');
+            var searchInput = document.getElementById('bsd-search');
+            var titles = [];
+
+            if (!indexEl || !statusEl || !countEl || !searchInput) return;
+
+            function setStatus(message) {
+                statusEl.textContent = message;
+                statusEl.style.display = message ? 'block' : 'none';
+            }
+
+            function updateCount(visible) {
+                if (typeof visible === 'number') {
+                    countEl.textContent = '表示: ' + visible + ' / ' + titles.length;
+                    return;
+                }
+                countEl.textContent = '全' + titles.length + '件';
+            }
+
+            function buildList(items) {
+                var fragment = document.createDocumentFragment();
+                for (var i = 0; i < items.length; i++) {
+                    var title = items[i];
+                    var li = document.createElement('li');
+                    li.dataset.title = title.toLowerCase();
+
+                    var link = document.createElement('a');
+                    link.href = 'https://bsd.neuroinf.jp/wiki/' + encodeURIComponent(title.replace(/ /g, '_'));
+                    link.target = '_blank';
+                    link.rel = 'noopener noreferrer';
+                    link.textContent = title;
+
+                    li.appendChild(link);
+                    fragment.appendChild(li);
+                }
+                indexEl.appendChild(fragment);
+            }
+
+            function applyFilter() {
+                var query = searchInput.value.trim().toLowerCase();
+                var items = indexEl.querySelectorAll('li');
+                var visible = 0;
+
+                for (var i = 0; i < items.length; i++) {
+                    var item = items[i];
+                    var title = item.dataset.title || '';
+                    var match = !query || title.indexOf(query) !== -1;
+                    item.style.display = match ? '' : 'none';
+                    if (match) visible++;
+                }
+
+                updateCount(query ? visible : null);
+                setStatus(query && visible === 0 ? '該当する項目がありません。' : '');
+            }
+
+            function fetchAllPages() {
+                var apiBase = 'https://bsd.neuroinf.jp/w/api.php';
+                var params = 'action=query&list=allpages&aplimit=500&format=json&origin=*';
+                var pages = [];
+
+                function fetchNext(continueToken) {
+                    var url = apiBase + '?' + params;
+                    if (continueToken) {
+                        url += '&apcontinue=' + encodeURIComponent(continueToken);
+                    }
+
+                    return fetch(url).then(function (response) {
+                        if (!response.ok) {
+                            throw new Error('HTTP ' + response.status);
+                        }
+                        return response.json();
+                    }).then(function (data) {
+                        var list = data.query && data.query.allpages ? data.query.allpages : [];
+                        for (var i = 0; i < list.length; i++) {
+                            pages.push(list[i].title);
+                        }
+
+                        var nextToken = data.continue && data.continue.apcontinue;
+                        if (nextToken) {
+                            return fetchNext(nextToken);
+                        }
+                        return pages;
+                    });
+                }
+
+                return fetchNext(null);
+            }
+
+            setStatus('索引を読み込み中...');
+            fetchAllPages().then(function (items) {
+                titles = items.slice(0);
+                titles.sort(function (a, b) {
+                    return a.localeCompare(b, 'ja');
+                });
+                buildList(titles);
+                indexEl.hidden = false;
+                setStatus('');
+                updateCount();
+            }).catch(function (error) {
+                console.error('BSD index fetch failed:', error);
+                setStatus('索引の取得に失敗しました。直接アクセスしてください。');
+                countEl.textContent = '取得失敗';
+            });
+
+            searchInput.addEventListener('input', function () {
+                if (!titles.length) return;
+                applyFilter();
+            });
+        })();
+    </script>
 
 </body>
 
