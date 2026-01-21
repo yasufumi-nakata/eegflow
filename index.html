@@ -720,7 +720,7 @@
                     <div class="resolution-box">
                         <h5>解決の方向性: Empirically Validated NCCと「Unfolding Argument」への応答</h5>
                         <p>この結果を受け、本サイトでは特定の理論を教条的に支持する立場を取り下げる。代わりに、<strong>予測符号化（Predictive Coding）</strong>や<strong>自由エネルギー原理（Friston, 2010）</strong><sup><a href="#ref-14">[14]</a></sup>、あるいは高次理論（HOT）の視点を実装要件に組み込み、摂動複雑性指標（PCI/PCI-ST）<sup><a href="#ref-47">[47]</a></sup>のような<strong>経験的に検証された指標（Empirically Validated NCC）</strong>を工学的目標として採用する。</p>
-                <p>また、IIT批判である「Unfolding Argument」（Doerig et al., 2019<sup><a href="#ref-40">[40]</a></sup>）—機能的に等価なフィードフォワード網がΦ=0となり意識を持たないとされる問題—に対し、本プロジェクトは単なる「機能の模倣」を超えた要件を課す。具体的には、「因果構造の保存（Causal Structure Preservation）」を、マクロなネットワークレベルではなく、<strong>微小な神経回路網（micro-circuitry）レベルでの再帰的結合の維持</strong>として定義し、その計算論的閾値を検証プロセスに組み込む。</p>
+                <p>また、IIT批判である「Unfolding Argument」（Doerig et al., 2019<sup><a href="#ref-40">[40]</a></sup>）—機能的に等価なフィードフォワード網がΦ=0となり意識を持たないとされる問題—に対し、本プロジェクトは単なる「機能の模倣」を超えた要件を課す。具体的には、「因果構造の保存（Causal Structure Preservation）」を、<strong>マルコフブランケット（Markov Blanket）</strong><sup><a href="#ref-77">[77]</a></sup>の境界条件（デジタルエミュレーションと生物学的基盤の間の情報交換における帯域幅と遅延）の保存として厳密に定義する。さらに、Laukkonen et al. (2025)<sup><a href="#ref-76">[76]</a></sup>が提唱する<strong>「生成モデルの反実仮想的等価性（Counterfactual Equivalence）」</strong>—システムが「もし〜だったら」という分岐構造を正しく再現できるか—を、WBEの本人性（Identity）の必要条件として検証プロセスに組み込む。</p>
                     </div>
                 </div>
 
@@ -728,8 +728,7 @@
                 <p><strong>IITのデジタル基盤への移植課題：</strong> IIT 4.0<sup><a
                             href="#ref-17">[17]</a></sup>をWBEに応用するには、その公理系をデジタル基盤上でいかに満たすかという問題が残る。特に、物理的な実在を問う「内因的実在（Intrinsic
                     Existence）」の公理<sup><a
-                            href="#ref-44">[44]</a></sup>は、離散的な計算システムにおいて自明ではない。本プロジェクトでは、デジタルエミュレーションにおける状態遷移が、元の脳の因果構造（Φ）を数学的に保存するための条件（例：時間的・空間的サンプリングレートの制約）を明記し、その近似の度合いを定量化することを技術目標とする。同時に、IITが直面する「Unfolding
-                    Argument」<sup><a href="#ref-40">[40]</a></sup>や計算量の爆発といった根源的な課題も依然として重要であり、IITを絶対的な指標と見なすことはできない。
+                            href="#ref-44">[44]</a></sup>は、離散的な計算システムにおいて自明ではない。本プロジェクトでは、デジタルエミュレーションにおける「内因的実在」の近似を、<strong>計算の連続性（Computational Continuity）</strong>と<strong>不可逆性（Irreversibility）</strong>の観点から定義する。具体的には、エミュレーションシステムが量子的な不可逆性や熱力学的な散逸をシミュレートする必要性、あるいは一方向性関数による計算論的不可逆性での代替可能性を議論し、その近似の度合いを定量化することを技術目標とする。
                 </p>
 
                 <p><strong>心理的連続性とコピー問題：</strong> デレク・パーフィットの心理的連続性理論<sup><a
@@ -774,7 +773,7 @@
                                     <strong>階層的ベイズモデル（Hierarchical Bayesian Modeling）の導入：</strong>信号源のスパース性と滑らかさを同時に扱う階層的ベイズモデルを採用し、超パラメータの推定プロセスを透明化します<sup><a href="#ref-73">[73]</a></sup>。
                                 </li>
                                 <li style="margin-bottom: 8px;">
-                                    <strong>モンテカルロ法による感度分析：</strong>入力データのノイズや頭部モデルの誤差が推定結果に与える影響を、モンテカルロシミュレーションを用いて定量化し、結果のロバスト性を評価するプロトコルを実装します<sup><a href="#ref-74">[74]</a></sup>。
+                                    <strong>順問題の不確実性と誤差伝播：</strong>頭部組織（特に頭蓋骨）の導電率や形状の誤差を確率変数として扱う<strong>順問題の不確実性モデリング</strong>を導入します。これを経験ベイズESIの枠組み<sup><a href="#ref-78">[78]</a></sup>に組み込み、最終的なソース活動の事後分布の分散（Variance）に誤差を伝播させることで、結果のロバスト性を真に評価可能にします。
                                 </li>
                                 <li style="margin-bottom: 8px;">
                                     <strong>個別化頭部モデル（IHM）の必須化：</strong>各個人のMRIスキャンから生成された忠実な頭部モデル（頭部ボリュームコンダクタモデル）を用い、信号伝達の物理シミュレーション精度を保証します<sup><a
@@ -797,7 +796,7 @@
                         <div class="stage-number"></div>
                         <div class="stage-body">
                             <h4>2. 解読（Decoding）：相関から因果的エミュレーションへ</h4>
-                            <p>脳活動から心的内容を「読み出す」デコーディング（Decoding）は、WBEの必要条件ですが十分条件ではありません。現在のデコーディング技術（例：Mind Captioning<sup><a href="#ref-11">[11]</a></sup>）は、脳活動と外部刺激の<strong>「相関（Correlation）」</strong>に基づくマッピングであり、脳がどのようにその状態を生成したかという<strong>「因果（Causality）」</strong>を含んでいないからです。</p>
+                            <p>脳活動から心的内容を「読み出す」デコーディング（Decoding）は、WBEの必要条件ですが十分条件ではありません。現在のデコーディング技術（例：Mind Captioning<sup><a href="#ref-11">[11]</a></sup>）は、脳活動と外部刺激の<strong>「相関（Correlation）」</strong>に基づくマッピングであり、脳がどのようにその状態を生成したかという<strong>「因果（Causality）」</strong>を含んでいません。したがって、<strong>デコーディングの成功は、エミュレーションの成功を意味しません。</strong></p>
                             <p>「解読」から「実装」への論理的飛躍を埋めるため、本プロジェクトは<strong>能動的推論（Active Inference）</strong><sup><a href="#ref-45">[45]</a></sup>の枠組みを採用します。</p>
                             <ul
                                 style="margin: 0; padding-left: 20px; list-style-type: disc; font-size: 14px; line-height: 1.6;">
@@ -825,16 +824,18 @@
                                     Uploading（ゆっくりとした連続的アップロード）」</strong><sup><a
                                         href="#ref-59">[59]</a></sup>を採用します。これは、生物学的脳の一部をBCIを介して人工ニューラルネットワークに段階的に置換し、意識の連続性を保ちながら移行する手法です。
                             </p>
-                            <p>このプロセスにおける本人性検証は、以下の指標によって評価されます。</p>
+                            <p>このプロセスにおける本人性検証は、以下の指標（Identity Metrics）によって評価されます。</p>
                             <ul
                                 style="margin: 0; padding-left: 20px; list-style-type: disc; font-size: 14px; line-height: 1.6;">
                                 <li style="margin-bottom: 8px;">
-                                    <strong>予測誤差最小化の効率性：</strong>エミュレーションが、予期せぬ感覚入力に対して、元の脳と同様の効率で予測誤差を最小化（＝驚きを抑制）できるか。
-                                    <sup><a href="#ref-45">[45]</a></sup>
+                                    <strong>因果的等価性（Causal Equivalence）：</strong>脳の特定の摂動（例：TMSパルス）に対するエミュレーションの応答が、生物学的基盤の応答と、事前定義された許容誤差（ε）内で一致すること。
                                 </li>
                                 <li style="margin-bottom: 8px;">
-                                    <strong>生成的モデルの類似性：</strong>DCM等を通じて同定された「元の脳」と「エミュレーション」の生成モデルが、統計的にどの程度類似しているか。
-                                    <sup><a href="#ref-13">[13]</a></sup>
+                                    <strong>学習則の保存（Conservation of Learning Rules）：</strong>新しい情報（例：新しい言語の単語）を学習した際の、エミュレーション内部のパラメータ更新則が、生物学的基盤のそれと統計的に同等であること。
+                                </li>
+                                <li style="margin-bottom: 8px;">
+                                    <strong>予測誤差最小化の効率性：</strong>エミュレーションが、予期せぬ感覚入力に対して、元の脳と同様の効率で予測誤差を最小化（＝驚きを抑制）できるか。
+                                    <sup><a href="#ref-45">[45]</a></sup>
                                 </li>
                             </ul>
                             <p>このアプローチは、意識を静的なパターンとしてコピーするのではなく、自己を維持し続ける生命的なプロセスとして「移行」させることを目指す、本プロジェクトの核心的理念です。</p>
@@ -1226,6 +1227,7 @@
                 <p>MIND Actは神経データのプライバシー保護に主眼を置いているが、WBEにおいてはデータそのものが「人格」となる。ここで重要になるのが、Neurorightsで提唱される<strong>「精神的完全性（Mental Integrity）」</strong>の権利である。</p>
                 <p>本プロジェクトでは、以下の具体的施策を提言する：</p>
                 <ul style="margin: 0; padding-left: 20px; list-style-type: disc; font-size: 14px; line-height: 1.6;">
+                     <li style="margin-bottom: 8px;"><strong>WBE研究におけるプライバシー許容値の策定：</strong>MIND Actが提起する「プライバシー損失の定量化」に対し、差分プライバシー（Differential Privacy）の<strong>ε（イプシロン）値</strong>について、WBE研究における許容可能な学術的コンセンサスの形成を目指す。</li>
                      <li style="margin-bottom: 8px;"><strong>Identity Metricsの具体化：</strong>心理的連続性を検証するため、単なる記憶テストに加え、能動的推論における「価値関数」や「嗜好分布」の保存度を定量化する手法を導入する。</li>
                      <li style="margin-bottom: 8px;"><strong>デジタル遺言と信託の枠組み：</strong>アップロードされた主体を「権利主体」として扱うため、スマートコントラクトを用いたデジタル信託（Digital Trust）の概念を導入し、既存の法体系（信託法・相続法）との接続を図る<sup><a href="#ref-75">[75]</a></sup>。</li>
                 </ul>
@@ -1447,6 +1449,9 @@
                     <li id="ref-73" value="73">Koulouri, A. (2025). Bayesian model parameter learning in linear inverse problems. <em>Machine Learning: Science and Technology</em>.</li>
                     <li id="ref-74" value="74">Nzakuna, P. S., et al. (2025). Monte Carlo-based Strategy for Assessing the Impact of EEG Data Uncertainty. <em>IEEE Transactions on Instrumentation and Measurement</em>.</li>
                     <li id="ref-75" value="75">Zanichelli, N., et al. (2025). State of Brain Emulation Report 2025. <em>arXiv:2510.15745</em>.</li>
+                    <li id="ref-76" value="76">Laukkonen, R., et al. (2025). A beautiful loop: An active inference theory of consciousness. <em>Physics of Life Reviews</em>, 54, 100-115.</li>
+                    <li id="ref-77" value="77">Clark, A. (2013). The Mark of the Mental: In Search of the Markov Blanket. In: <em>The Mark of the Mental</em>. Oxford University Press.</li>
+                    <li id="ref-78" value="78">Feng, Y., et al. (2025). A novel Bayesian framework for Imaging E/MEG Source activities. <em>NeuroImage</em>.</li>
                 </ol>
             </section>
 
