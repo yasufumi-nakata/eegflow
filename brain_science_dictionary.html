@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>脳科学辞典 | EEGFlow</title>
+    <meta name="description" content="日本神経科学学会が運営する「脳科学辞典」のインデックスと、マインドアップロード研究に関連する重要用語へのリンク集。">
+    <meta property="og:title" content="脳科学辞典 | EEGFlow">
+    <meta property="og:description" content="日本神経科学学会が運営する「脳科学辞典」のインデックスと、マインドアップロード研究に関連する重要用語へのリンク集。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://eegflow.jp/brain_science_dictionary.html">
+    <meta property="og:image" content="https://eegflow.jp/ogp.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧠</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --font-serif: 'Libre Baskerville', 'Times New Roman', serif;
+            --font-sans: 'Source Sans 3', 'Helvetica Neue', sans-serif;
+            --color-bg: #0d0d0f;
+            --color-paper: #161618;
+            --color-text: #e8e8ec;
+            --color-text-secondary: #a8a8b0;
+            --color-text-muted: #6a6a75;
+            --color-accent: #ef5350;
+            --color-accent-dark: #c62828;
+            --color-link: #64b5f6;
+            --color-border: #2a2a30;
+            --color-sidebar: #1a1a1e;
+            --max-width: 1100px;
+            --column-gap: 40px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-serif);
+            font-size: 16px;
+            line-height: 1.75;
+            color: var(--color-text);
+            background: var(--color-bg);
+        }
+
+        /* Header Bar */
+        .journal-header {
+            background: var(--color-accent);
+            color: white;
+            padding: 8px 20px;
+            font-family: var(--font-sans);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .journal-header a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .journal-header a:hover {
+            text-decoration: underline;
+        }
+
+        /* Title Section */
+        .article-header {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 40px 20px 30px;
+            border-bottom: 2px solid var(--color-text);
+        }
+
+        .article-type {
+            font-family: var(--font-sans);
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--color-accent);
+            margin-bottom: 12px;
+        }
+
+        .article-title {
+            font-size: 32px;
+            font-weight: 700;
+            line-height: 1.25;
+            margin-bottom: 16px;
+            color: var(--color-text);
+        }
+
+        .article-subtitle {
+            font-size: 18px;
+            font-style: italic;
+            color: var(--color-text-secondary);
+            margin-bottom: 20px;
+        }
+
+        .article-meta {
+            font-family: var(--font-sans);
+            font-size: 12px;
+            color: var(--color-text-muted);
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 12px;
+        }
+
+        /* Main Layout */
+        .main-container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 280px;
+            gap: var(--column-gap);
+            padding: 30px 20px;
+        }
+
+        .content-column {
+            min-width: 0;
+        }
+
+        .sidebar-column {
+            font-family: var(--font-sans);
+        }
+
+        /* Content Styles */
+        .section {
+            margin-bottom: 30px;
+            scroll-margin-top: 80px;
+        }
+
+        .section-title {
+            font-family: var(--font-sans);
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--color-accent);
+            margin-bottom: 12px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .section h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin: 20px 0 10px;
+            color: var(--color-text);
+        }
+
+        .section p {
+            margin-bottom: 12px;
+            text-align: justify;
+        }
+
+        .section ul,
+        .section ol {
+            margin: 10px 0 14px 22px;
+            color: var(--color-text-secondary);
+        }
+
+        .section li {
+            margin: 6px 0;
+        }
+
+        /* Dictionary Index Grid */
+        .dict-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 16px;
+            margin: 20px 0;
+        }
+
+        .dict-card {
+            background: var(--color-paper);
+            border: 1px solid var(--color-border);
+            padding: 16px;
+            text-align: center;
+            transition: all 0.2s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100px;
+        }
+
+        .dict-card:hover {
+            border-color: var(--color-accent);
+            transform: translateY(-2px);
+        }
+
+        .dict-card h4 {
+            font-family: var(--font-sans);
+            font-size: 14px;
+            margin-bottom: 8px;
+            color: var(--color-text);
+        }
+
+        .dict-card a {
+            font-size: 12px;
+            color: var(--color-link);
+            text-decoration: none;
+        }
+
+        .dict-card a:hover {
+            text-decoration: underline;
+        }
+
+        /* Important Terms List */
+        .term-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .term-item {
+            border-bottom: 1px solid var(--color-border);
+            padding: 12px 0;
+        }
+
+        .term-item:last-child {
+            border-bottom: none;
+        }
+
+        .term-item a {
+            font-weight: 700;
+            font-size: 16px;
+            color: var(--color-text);
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .term-item span {
+            font-size: 13px;
+            color: var(--color-text-secondary);
+        }
+
+        /* Sidebar Styles */
+        .sidebar-box {
+            background: var(--color-sidebar);
+            padding: 16px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+
+        .sidebar-box h4 {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--color-accent);
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .sidebar-box li,
+        .sidebar-box p {
+            font-size: 12px;
+            line-height: 1.6;
+            color: var(--color-text-secondary);
+        }
+
+        .sidebar-box ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar-box li {
+            padding: 4px 0;
+            padding-left: 12px;
+            position: relative;
+        }
+
+        .sidebar-box li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--color-accent);
+        }
+
+        /* Links */
+        a {
+            color: var(--color-link);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--color-border);
+            padding: 20px;
+            text-align: center;
+            font-family: var(--font-sans);
+            font-size: 12px;
+            color: var(--color-text-muted);
+        }
+
+        /* Mobile */
+        @media (max-width: 900px) {
+            .main-container {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="journal-header">
+        <a href="index.html">EEGFlow</a>
+        <span>Mind Uploading Research Notes</span>
+        <a href="mind_uploading_papers.html">Paper Collection →</a>
+    </header>
+
+    <header class="article-header">
+        <p class="article-type">External Resource</p>
+        <h1 class="article-title">脳科学辞典 (Brain Science Dictionary)</h1>
+        <p class="article-subtitle">日本神経科学学会が運営する、脳科学に関する用語の解説辞典</p>
+        <div class="article-meta">
+            <span>Source: <a href="https://bsd.neuroinf.jp/" target="_blank">bsd.neuroinf.jp</a></span>
+            <span>Last Updated: 2026-01-22</span>
+        </div>
+    </header>
+
+    <main class="main-container">
+        <article class="content-column">
+
+            <section class="section">
+                <h2 class="section-title">Overview</h2>
+                <p><strong>脳科学辞典</strong>は、脳科学の広範な分野に関する用語を、専門家が執筆・査読した信頼性の高いオンライン辞典です。本プロジェクト（EEGFlow）では、マインドアップロード（WBE）に関連する神経科学的基盤の理解を深めるための一次リソースとして、この辞典を参照しています。</p>
+                <p>以下に、WBE研究において特に重要となる用語へのリンクと、辞典全体の索引へのアクセスを提供します。</p>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">Selected Keywords for Mind Uploading</h2>
+                <p>マインドアップロード（WBE）の「計測」「再構成」「実装」「検証」の各フェーズに関連する主要な用語です。</p>
+
+                <div class="term-list">
+                    <div class="term-item">
+                        <a href="https://bsd.neuroinf.jp/wiki/コネクトーム" target="_blank">コネクトーム (Connectome)</a>
+                        <span>脳内の神経回路網の全体的な地図。WBEにおける「構造的再構成」の基盤となる概念。</span>
+                    </div>
+                    <div class="term-item">
+                        <a href="https://bsd.neuroinf.jp/wiki/シナプス可塑性" target="_blank">シナプス可塑性 (Synaptic plasticity)</a>
+                        <span>神経活動依存的なシナプス伝達効率の変化。学習と記憶の細胞基盤であり、WBEにおける「学習則」の推定に不可欠。</span>
+                    </div>
+                    <div class="term-item">
+                        <a href="https://bsd.neuroinf.jp/wiki/意識" target="_blank">意識 (Consciousness)</a>
+                        <span>主観的な体験。統合情報理論（IIT）やグローバルワークスペース理論（GNWT）などの理論的枠組みが含まれる。</span>
+                    </div>
+                    <div class="term-item">
+                        <a href="https://bsd.neuroinf.jp/wiki/脳波" target="_blank">脳波 (Electroencephalogram, EEG)</a>
+                        <span>頭皮上から記録される脳の電気活動。本プロジェクトの主要な計測モダリティ。</span>
+                    </div>
+                    <div class="term-item">
+                        <a href="https://bsd.neuroinf.jp/wiki/ブレイン・マシン・インターフェース" target="_blank">ブレイン・マシン・インターフェース (BMI)</a>
+                        <span>脳と外部機器を接続する技術。WBEの過渡期における「サイボーグ化」や「段階的置換」に関連。</span>
+                    </div>
+                    <div class="term-item">
+                        <a href="https://bsd.neuroinf.jp/wiki/グリア細胞" target="_blank">グリア細胞 (Glial cell)</a>
+                        <span>ニューロン以外の脳細胞。近年、情報処理への関与が指摘されており、WBEにおけるモデル化の必要性が議論されている。</span>
+                    </div>
+                    <div class="term-item">
+                        <a href="https://bsd.neuroinf.jp/wiki/大脳皮質" target="_blank">大脳皮質 (Cerebral cortex)</a>
+                        <span>知覚、運動、思考などの高次脳機能を司る領域。WBEの主要なエミュレーション対象。</span>
+                    </div>
+                    <div class="term-item">
+                        <a href="https://bsd.neuroinf.jp/wiki/ニューラルネットワーク" target="_blank">ニューラルネットワーク (Neural network)</a>
+                        <span>脳の神経回路網を模した数理モデル。WBEの「実装」基盤として重要。</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">Full Index</h2>
+                <p>脳科学辞典の全項目索引へは、以下のカテゴリからアクセスできます。</p>
+
+                <div class="dict-grid">
+                    <div class="dict-card">
+                        <h4>五十音順索引</h4>
+                        <a href="https://bsd.neuroinf.jp/wiki/脳科学辞典:索引" target="_blank">あ - ん</a>
+                    </div>
+                    <div class="dict-card">
+                        <h4>アルファベット索引</h4>
+                        <a href="https://bsd.neuroinf.jp/wiki/脳科学辞典:索引" target="_blank">A - Z</a>
+                    </div>
+                    <div class="dict-card">
+                        <h4>数字索引</h4>
+                        <a href="https://bsd.neuroinf.jp/wiki/脳科学辞典:索引" target="_blank">0 - 9</a>
+                    </div>
+                    <div class="dict-card">
+                        <h4>分野別一覧</h4>
+                        <a href="https://bsd.neuroinf.jp/wiki/Category:分野別" target="_blank">Category List</a>
+                    </div>
+                </div>
+            </section>
+
+        </article>
+
+        <aside class="sidebar-column">
+            <div class="sidebar-box">
+                <h4>About BSD</h4>
+                <p>脳科学辞典は、日本神経科学学会によって運営されています。著作権は原則として日本神経科学学会および執筆者に帰属します。</p>
+            </div>
+
+            <div class="sidebar-box">
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="tech_roadmap.html">Technical Roadmap</a></li>
+                    <li><a href="mind_uploading_papers.html">Paper Collection</a></li>
+                </ul>
+            </div>
+
+            <div class="sidebar-box">
+                <h4>External Links</h4>
+                <ul>
+                    <li><a href="https://bsd.neuroinf.jp/" target="_blank">脳科学辞典 Top</a></li>
+                    <li><a href="https://www.jnss.org/" target="_blank">日本神経科学学会</a></li>
+                </ul>
+            </div>
+        </aside>
+    </main>
+
+    <footer>
+        <p>EEGFlow Project · <a href="https://github.com/yasufumi-nakata/eegflow">GitHub</a></p>
+    </footer>
+
+</body>
+
+</html>
