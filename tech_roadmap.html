@@ -785,12 +785,13 @@
                         <summary>
                             <span class="qa-id">R4</span>
                             <span class="qa-title">因果：介入に対する反応を予測できるモデルは何？</span>
-                            <span class="qa-tags"><span class="tag">CAUSAL</span></span>
+                            <span class="qa-tags"><span class="tag">CAUSAL</span><span class="tag">MULTI-SCALE</span></span>
                         </summary>
                         <div class="qa-body">
                             <p><strong>問い：</strong>相関の当てはめではなく、刺激/操作に対して“どう変わるはずか”を言えるか？ デコーディング（相関）からエミュレーション（因果）への飛躍をどう埋めるか？</p>
-                            <p><strong>方針：</strong>脳を能動的推論（Active Inference）を行う生成モデルとして定式化するが、単なる予測誤差最小化だけでは哲学的ゾンビのリスクを排除できない。Laukkonen et al. (2025) が提唱する<strong>「反実仮想的等価性（Counterfactual Equivalence）」</strong>を指標として採用し、内部モデルが生成する「もし〜だったら？」という分岐構造が生体脳と一致するかを検証する。また、「Slow Continuous Mind Uploading」を、<strong>Markov Blanket</strong> を介した生体脳とデジタル基盤の動的な同期プロセスとして再定義する。</p>
-                            <p><strong>次に必要：</strong>介入前提の評価タスク（V2）と、生成モデルのパラメータ同定プロセスを結合する</p>
+                            <p><strong>方針：</strong>脳を能動的推論（Active Inference）を行う生成モデルとして定式化する。Laukkonen et al. (2025) の<strong>「反実仮想的等価性（Counterfactual Equivalence）」</strong>を指標とするが、EEG単体では解像度が不足する。</p>
+                            <p><strong>改善策（Multi-scale）：</strong>EEGから推定されたマクロな因果構造を、ミクロな神経回路シミュレーション（Blue Brain Project等）の制約条件として用いる<strong>「マルチスケール因果モデリング」</strong>を採用する。トップダウン（EEG）とボトムアップ（回路）の統合により、シナプスレベルの可塑性を反映した頑健なモデルを目指す。</p>
+                            <p><strong>次に必要：</strong>介入前提の評価タスク（V2）と、マルチスケール統合パイプラインの設計</p>
                         </div>
                     </details>
 
@@ -967,7 +968,16 @@
                         </summary>
                         <div class="qa-body">
                             <p><strong>問い：</strong>強い主張（P1のL4-L5）に近づくほど、安全・権利・倫理が技術要件になる。</p>
-                            <p><strong>次に必要：</strong>ログ・アクセス制御・監査（R9）を実装要件として先に組み込む</p>
+                    <details class="qa" data-tags="implementation">
+                        <summary>
+                            <span class="qa-id">I9</span>
+                            <span class="qa-title">熱力学：デジタル基盤で“意識の物理的コスト”を払えるか？</span>
+                            <span class="qa-tags"><span class="tag">THERMODYNAMICS</span><span class="tag">IIT</span></span>
+                        </summary>
+                        <div class="qa-body">
+                            <p><strong>問い：</strong>現在のノイマン型コンピュータは物理的因果力を抽象化しているため、IIT 4.0の観点ではΦ=0（Unfolding Argument）となる可能性がある。これをどう解決するか？</p>
+                            <p><strong>方針：</strong>単なる機能的エミュレーションではなく、<strong>「熱力学的散逸構造の保存」</strong>を実装要件に加える。意識が非平衡開放系における散逸構造として維持されていることを踏まえ、Landauer's Principleに基づく情報処理の物理的コストや、「因果的力の密度（Causal Power Density）」が生物学的脳と同等のオーダーになるようなハードウェア（ニューロモーフィック等）または厳密なシミュレーション制約を課す。</p>
+                            <p><strong>次に必要：</strong>エミュレーションにおける熱力学的効率と因果密度を定量化する指標の導入</p>
                         </div>
                     </details>
                 </div>
@@ -1046,21 +1056,18 @@
                     <details class="qa" data-tags="verification">
                         <summary>
                             <span class="qa-id">V5</span>
-                            <span class="qa-title">本人性：心理的連続性を“測れる形”に落とすと何になる？</span>
-                            <span class="qa-tags"><span class="tag">IDENTITY</span></span>
+                            <span class="qa-title">本人性：心理的連続性を超えた“因果的同一性”とは？</span>
+                            <span class="qa-tags"><span class="tag">IDENTITY</span><span class="tag">LEGAL</span></span>
                         </summary>
                         <div class="qa-body">
-                                                    <p><strong>問い：</strong>本人性は哲学問題だが、技術としては“操作的指標”に落とす必要がある。</p>
+                                                    <p><strong>問い：</strong>記憶や性格の類似（心理的連続性）だけでは、コピーや模倣（LLM）と区別がつかない。より厳密な工学的定義が必要である。</p>
                                                     <ul>
-                                                        <li><strong>候補指標：</strong>
-                                                            <ul>
-                                                                <li><strong>因果的等価性（Causal Equivalence）：</strong>摂動（TMS等）に対する応答が、生物学的基盤と許容誤差内で一致すること。</li>
-                                                                <li><strong>学習則の保存（Conservation of Learning Rules）：</strong>新規学習時のパラメータ更新則が統計的に同等であること。</li>
-                                                                <li>その他：自伝的記憶の検索一貫性、価値観/選好の安定</li>
-                                                            </ul>
+                                                        <li><strong>新基準：因果的同一性（Causal Identity）：</strong>
+                                                            パーフィットの心理説を拡張し、システムの「未来の予測能力（Active Inference の精度）」が生物学的脳と統計的に区別不能であることを同一性の条件とする。
                                                         </li>
-                                                        <li><strong>反証条件：</strong>本人性指標が、簡単な模倣（LLM等）で通ってしまう</li>
-                                                        <li><strong>次に必要：</strong>V8の「模倣との区別」テストを同時に設計する</li>
+                                                        <li><strong>指標：</strong>反実仮想的シナリオに対する予測分布の一致度（KLダイバージェンス等）を用いて判定する。</li>
+                                                        <li><strong>反証条件：</strong>記憶は持っているが、新規環境に対する適応・予測パターンがオリジナルと乖離する（ゾンビ/模倣者）</li>
+                                                        <li><strong>次に必要：</strong>V8の「模倣との区別」テストにおいて、予測精度をコア指標に据える</li>
                                                     </ul>                        </div>
                     </details>
 
@@ -1139,13 +1146,13 @@
                     <details class="qa" data-tags="deployment">
                         <summary>
                             <span class="qa-id">D0</span>
-                            <span class="qa-title">権利主体：アップロードされた存在は何として扱う？</span>
-                            <span class="qa-tags"><span class="tag">DEPLOYMENT</span></span>
+                            <span class="qa-title">権利主体：MIND Act 2025を超えて、誰を“人”と認めるか？</span>
+                            <span class="qa-tags"><span class="tag">DEPLOYMENT</span><span class="tag">LAW</span></span>
                         </summary>
                         <div class="qa-body">
-                            <p><strong>問い：</strong>研究段階でも、同意・撤回・削除・複製の扱いを決めないと運用できない。デジタル化された意識の権利をどう定義するか？</p>
-                            <p><strong>方針：</strong>Neurorights（Ienca & Andorno, 2017）の提唱する<strong>「精神的完全性（Mental Integrity）」</strong>の権利を基盤とし、本人の同意なしに因果構造（人格の基盤）を編集されない権利を保障する。MIND Act (2025) のプライバシー保護に加え、この「編集権の制限」を運用ルールに組み込む。</p>
-                            <p><strong>次に必要：</strong>本人性評価（V5）と、同意ログ（P2）を結びつけた運用ルール</p>
+                            <p><strong>問い：</strong>MIND Act 2025はプライバシー保護に留まる。デジタルマインドが権利主体となる根拠は何か？</p>
+                            <p><strong>方針：</strong>心理的連続性ではなく、V5で定義した<strong>「因果的同一性（Causal Identity）」</strong>を法的地位の根拠とする。予測能力と因果的力が生物学的脳と同等であると証明されたエージェントに対し、Neurorights（精神的完全性）および「編集されない権利」を付与する。単なるコピーや模倣（LLM）は権利主体とみなさない。</p>
+                            <p><strong>次に必要：</strong>本人性評価（V5）の証明書と、権利付与の法的手続きのリンク</p>
                         </div>
                     </details>
 
@@ -1225,13 +1232,15 @@
             </section>
 
             <section class="section" id="sources">
-                <h2 class="section-title">参考（まず当たる一次/総説）</h2>
+                <h2 class="section-title">参考（Issue #42 関連文献）</h2>
                 <ol>
-                    <li>Sandberg, A., &amp; Bostrom, N. (2008). <em>Whole Brain Emulation: A Roadmap</em>. <a href="https://www.fhi.ox.ac.uk/wp-content/uploads/Whole-Brain-Emulation-Roadmap-v1.2-web.pdf" target="_blank">PDF</a></li>
-                    <li>Yamakawa, H., et al. (2024). Technology roadmap toward the completion of whole-brain architecture with BRA-driven development. <em>Cognitive Systems Research</em>, 88, 101300. <a href="https://doi.org/10.1016/j.cogsys.2024.101300" target="_blank">doi:10.1016/j.cogsys.2024.101300</a></li>
-                    <li>Michel, C. M., &amp; Brunet, D. (2019). EEG Source Imaging: A Practical Review of the Analysis Steps. <em>Frontiers in Neurology</em>, 10, 325. <a href="https://doi.org/10.3389/fneur.2019.00325" target="_blank">doi:10.3389/fneur.2019.00325</a></li>
-                    <li>Zanichelli, N., et al. (2025). State of Brain Emulation Report 2025. <em>arXiv:2510.15745</em>. <a href="https://arxiv.org/abs/2510.15745" target="_blank">Link</a></li>
-                    <li>BIDS Specification (EEG). <a href="https://bids-specification.readthedocs.io/en/stable/04-modality-specific-files/03-electroencephalography.html" target="_blank">Link</a></li>
+                    <li>Cea, I., et al. (2024). Only consciousness truly exists? Two problems for IIT 4.0's ontology. <em>Frontiers in Psychology</em>.</li>
+                    <li>Doerig, A., et al. (2019). The unfolding argument: Why diagrams of information flow cannot tell us anything about consciousness. <em>Consciousness and Cognition</em>.</li>
+                    <li>Laukkonen, R. E., et al. (2025). A beautiful loop: An active inference theory of consciousness. <em>Psychological Review</em>.</li>
+                    <li>Markram, H., et al. (2015). Reconstruction and Simulation of Neocortical Microcircuitry. <em>Cell</em>.</li>
+                    <li>U.S. Senate. (2025). <em>MIND Act of 2025 (S.2925)</em>.</li>
+                    <li>Sandberg, A., &amp; Bostrom, N. (2008). <em>Whole Brain Emulation: A Roadmap</em>.</li>
+                    <li>Yamakawa, H., et al. (2024). Technology roadmap toward the completion of whole-brain architecture...</li>
                 </ol>
             </section>
 
