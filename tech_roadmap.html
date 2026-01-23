@@ -763,7 +763,7 @@
                         <div class="qa-body">
                             <p><strong>問い：</strong>EEGソース推定は「領域×時間」の表現を得やすいが、ニューロン/シナプスは直接は見えない。復元対象（R0）に合わせて表現を選ぶ。</p>
                             <p><strong>課題：</strong>従来は「高密度EEG(128ch)化」が推奨されてきたが、近年の研究はチャンネル数だけでは不良設定性（ill-posedness）を解決できないことを示している。特に、dSPMのような点推定法は不確実性を無視してしまう。</p>
-                            <p><strong>方針：</strong>チャンネル増強に加え、<strong>階層的ベイズモデル（Hierarchical Bayesian Modeling）</strong>を採用し、信号源のスパース性と滑らかさを同時に扱うことで、超パラメータの推定プロセスを透明化する。さらに、モンテカルロ法による感度分析を行い、入力データのノイズや頭部モデルの誤差が推定結果に与える影響を定量化する。推定された脳活動マップには必ず<strong>信頼区間（Credible Intervals）</strong>または不確実性マップを付随させるプロトコルを必須化する。</p>
+                            <p><strong>階層的ベイズモデル（Hierarchical Bayesian Modeling）の導入：</strong>Feng et al. (2025)<sup><a href="#ref-78">[78]</a></sup>のフレームワークに基づき、信号源のスパース性と滑らかさを同時に扱う階層的ベイズモデルを採用し、経験ベイズによる超パラメータの推定プロセスを透明化します。さらに、モンテカルロ法による感度分析を行い、入力データのノイズや頭部モデルの誤差が推定結果に与える影響を定量化する。推定された脳活動マップには必ず<strong>信頼区間（Credible Intervals）</strong>または不確実性マップを付随させるプロトコルを必須化する。</p>
                             <p><strong>次に必要：</strong>`eegflow/02_source_imaging.py` に変分ベイズ（Variational Bayesian）アプローチを実装し、不確実性を考慮したソース再構成を行う</p>
                         </div>
                     </details>
@@ -1065,7 +1065,7 @@
                                                         <li><strong>新基準：因果的同一性（Causal Identity）：</strong>
                                                             パーフィットの心理説を拡張し、システムの「未来の予測能力（Active Inference の精度）」が生物学的脳と統計的に区別不能であることを同一性の条件とする。
                                                         </li>
-                                                        <li><strong>指標：</strong>反実仮想的シナリオに対する予測分布の一致度（KLダイバージェンス等）を用いて判定する。</li>
+                                                        <li><strong>指標：</strong>反実仮想シミュレーション（Counterfactual Simulation）を実行し、生体脳とエミュレーションの間の<strong>「分岐構造の一致（Branching Structure Correspondence）」</strong>を確認する。具体的には、予測分布のKLダイバージェンス等が閾値以下であることを判定する。</li>
                                                         <li><strong>反証条件：</strong>記憶は持っているが、新規環境に対する適応・予測パターンがオリジナルと乖離する（ゾンビ/模倣者）</li>
                                                         <li><strong>次に必要：</strong>V8の「模倣との区別」テストにおいて、予測精度をコア指標に据える</li>
                                                     </ul>                        </div>
