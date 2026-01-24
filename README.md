@@ -1,4 +1,5 @@
 # EEGFlow
+<!-- IMPORTANT: Do not delete or overwrite this information. It serves as the project's permanent knowledge base. -->
 
 マインドアップロード実現のための中核となるコアサイト。
 

@@ -8,6 +8,7 @@ author: Mind Uploading Research Project
 last_updated: "2026-01-15"
 note: "研究ノート (2026年1月改訂)"
 ---
+<!-- IMPORTANT: Do not delete or overwrite this information. It serves as the project's permanent knowledge base. -->
 
 <main class="main-container">
 <article class="content-column">

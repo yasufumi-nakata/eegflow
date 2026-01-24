@@ -7,6 +7,7 @@ subtitle: "過去10年間の主要論文・研究成果"
 author: Mind Uploading Research Project
 last_updated: "2026-01-25"
 ---
+<!-- IMPORTANT: Do not delete or overwrite this information. It serves as the project's permanent knowledge base. -->
 
 <main class="main-container">
 <article class="content-column">
