@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title | default: site.title }}</title>
+    <meta name="description" content="{{ page.description | default: site.description }}">
+    <meta property="og:title" content="{{ page.title | default: site.title }}">
+    <meta property="og:description" content="{{ page.description | default: site.description }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ page.url | absolute_url }}">
+    <meta property="og:image" content="{{ site.url }}/ogp.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>&#x1F9E0;</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+</head>
+
+<body>
+
+    <!-- Journal Header -->
+    <header class="journal-header">
+        <span>Mind Uploading Research Notes</span>
+        <nav>
+            <a href="{{ '/' | relative_url }}">Home</a>
+            <a href="{{ '/tech_roadmap' | relative_url }}">Roadmap</a>
+            <a href="{{ '/brain_science_dictionary' | relative_url }}">Dictionary</a>
+            <a href="{{ '/mind_uploading_papers' | relative_url }}">Papers</a>
+            <a href="https://github.com/yasufumi-nakata/eegflow" target="_blank">GitHub</a>
+        </nav>
+    </header>
+
+    {% if page.article_type %}
+    <!-- Article Header -->
+    <header class="article-header">
+        <p class="article-type">{{ page.article_type }}</p>
+        <h1 class="article-title">{{ page.title }}</h1>
+        {% if page.subtitle %}
+        <p class="article-subtitle">{{ page.subtitle }}</p>
+        {% endif %}
+        {% if page.author %}
+        <p class="author-info">
+            <span class="author-name">{{ page.author }}</span>
+        </p>
+        {% endif %}
+        <div class="article-meta">
+            <span>Open Access</span>
+            {% if page.last_updated %}
+            <span>Last Updated: {{ page.last_updated }}</span>
+            {% endif %}
+            {% if page.note %}
+            <span>{{ page.note }}</span>
+            {% endif %}
+        </div>
+    </header>
+    {% endif %}
+
+    <!-- Main Content -->
+    {{ content }}
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024-2026 Mind Uploading Research Project. <a href="https://github.com/yasufumi-nakata/eegflow">GitHub</a></p>
+    </footer>
+
+</body>
+
+</html>

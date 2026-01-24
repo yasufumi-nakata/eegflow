@@ -11,11 +11,12 @@ This folder contains an automated flow that fetches open GitHub issues, asks an 
 
 ## Setup
 1. Copy `.env.example` to `.env`.
-2. Set `AI_CMD` to the command that reads the prompt from STDIN.
+2. Set `AI_CMD` to the command that reads the prompt from STDIN (e.g. `gemini --yolo`). If `AI_CMD` is empty and `gemini` is available, the script defaults to `automation/run-gemini.sh`.
 3. Optionally set `AI_WORKDIR` if the AI tool must run outside the repo root.
 4. Ensure `gh` and `jq` are installed and authenticated.
 
-The script sets `AI_PROMPT_FILE` to the prompt file path if your command prefers reading from a file.
+The script sets `AI_PROMPT_FILE` to the prompt file path if your command prefers reading from a file. `run-gemini.sh` also accepts `GEMINI_FLAGS` to pass extra flags.
+By default the script stops if there are tracked, uncommitted changes. Set `ALLOW_DIRTY=true` to bypass that check. Pre-existing untracked files are excluded from auto-commits.
 
 ## Run
 - Dry run:

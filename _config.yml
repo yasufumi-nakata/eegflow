@@ -1,0 +1,30 @@
+title: EEGFlow
+description: マインドアップロード実現のための中核となるコアサイト
+url: https://eegflow.jp
+baseurl: ""
+
+# Build settings
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+  syntax_highlighter: rouge
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "default"
+
+# Exclude from processing
+exclude:
+  - automation
+  - ignore
+  - node_modules
+  - Gemfile
+  - Gemfile.lock
+  - .gitignore
+  - README.md
+  - "*.json"

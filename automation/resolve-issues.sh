@@ -36,6 +36,7 @@ AI_CMD="${AI_CMD:-}"
 AI_TIMEOUT_SECONDS="${AI_TIMEOUT_SECONDS:-300}"
 AI_WORKDIR="${AI_WORKDIR:-$REPO_DIR}"
 CO_AUTHOR="${CO_AUTHOR:-}"
+ALLOW_DIRTY="${ALLOW_DIRTY:-false}"
 DRY_RUN=false
 
 # 引数処理
@@ -87,6 +88,40 @@ run_ai() {
     (cd "$AI_WORKDIR" && run_with_timeout "$AI_TIMEOUT_SECONDS" sh -c "$AI_CMD")
 }
 
+ensure_clean_tracked() {
+    if [[ "$ALLOW_DIRTY" == "true" ]]; then
+        return
+    fi
+    if ! git -C "$REPO_DIR" diff --quiet || ! git -C "$REPO_DIR" diff --staged --quiet; then
+        error_exit "作業ツリーに未コミットの変更があります。ALLOW_DIRTY=true で続行できます。"
+    fi
+}
+
+checkout_target_branch() {
+    local current_branch
+    current_branch=$(git -C "$REPO_DIR" rev-parse --abbrev-ref HEAD)
+    if [[ "$current_branch" == "$TARGET_BRANCH" ]]; then
+        return
+    fi
+    log "対象ブランチへ切り替えます: ${TARGET_BRANCH}"
+    if git -C "$REPO_DIR" show-ref --verify --quiet "refs/heads/${TARGET_BRANCH}"; then
+        git -C "$REPO_DIR" checkout "$TARGET_BRANCH"
+        return
+    fi
+    if git -C "$REPO_DIR" show-ref --verify --quiet "refs/remotes/origin/${TARGET_BRANCH}"; then
+        git -C "$REPO_DIR" checkout -b "$TARGET_BRANCH" "origin/${TARGET_BRANCH}"
+        return
+    fi
+    error_exit "対象ブランチが見つかりません: ${TARGET_BRANCH}"
+}
+
+cleanup_prompt() {
+    if [[ -n "${PROMPT_FILE:-}" && -f "$PROMPT_FILE" ]]; then
+        rm -f "$PROMPT_FILE"
+    fi
+    PROMPT_FILE=""
+}
+
 # 初期化
 mkdir -p "$LOG_DIR"
 log "=== Issue自動解決スクリプト開始 ==="
@@ -99,15 +134,30 @@ if [[ ! -d "$REPO_DIR/.git" ]]; then
     error_exit "REPO_DIR が Git リポジトリではありません: $REPO_DIR"
 fi
 
+if [[ "$DRY_RUN" == false && -z "$AI_CMD" ]]; then
+    if command -v gemini >/dev/null 2>&1; then
+        if [[ -f "${AUTOMATION_DIR}/run-gemini.sh" ]]; then
+            AI_CMD="bash \"${AUTOMATION_DIR}/run-gemini.sh\""
+        else
+            AI_CMD="gemini --yolo"
+        fi
+        log "AI_CMD が未設定のためデフォルトを使用します"
+    else
+        error_exit "AI_CMD が未設定で gemini コマンドも見つかりません。"
+    fi
+fi
+
 # 最新のコードを取得
 log "リポジトリを更新中..."
 if [[ "$DRY_RUN" == false ]]; then
+    ensure_clean_tracked
+    checkout_target_branch
     git -C "$REPO_DIR" pull origin "$TARGET_BRANCH" 2>&1 | tee -a "$LOG_FILE" || log "WARN: git pull に失敗しました（続行）"
 fi
 
 # オープンIssueを取得
 log "オープンIssueを取得中..."
-ISSUES=$(gh issue list --repo "$REPO" --state open --json number,title,body --limit "$ISSUE_LIMIT" 2>&1) || error_exit "Issueの取得に失敗しました"
+ISSUES=$(gh issue list --repo "$REPO" --state open --json number,title,body --limit "$ISSUE_LIMIT" 2>>"$LOG_FILE") || error_exit "Issueの取得に失敗しました"
 
 ISSUE_COUNT=$(echo "$ISSUES" | jq 'length')
 log "オープンIssue数: $ISSUE_COUNT"
@@ -121,9 +171,18 @@ fi
 echo "$ISSUES" | jq -c '.[]' | while read -r issue; do
     ISSUE_NUM=$(echo "$issue" | jq -r '.number')
     ISSUE_TITLE=$(echo "$issue" | jq -r '.title')
-    ISSUE_BODY=$(echo "$issue" | jq -r '.body')
+    ISSUE_BODY=$(echo "$issue" | jq -r '.body // ""')
     
     log "--- Issue #${ISSUE_NUM} を処理中: ${ISSUE_TITLE} ---"
+
+    if [[ "$DRY_RUN" == false ]]; then
+        ensure_clean_tracked
+    fi
+
+    UNTRACKED_BEFORE=""
+    if [[ "$DRY_RUN" == false ]]; then
+        UNTRACKED_BEFORE=$(git -C "$REPO_DIR" ls-files --others --exclude-standard)
+    fi
     
     # AIに渡すプロンプトを構築
     PROMPT="あなたはeegflowプロジェクトの開発者です。以下のGitHub Issueを解決してください。
@@ -143,15 +202,20 @@ ${ISSUE_BODY}
         continue
     fi
     
-    # プロンプトを一時ファイルに保存
-    PROMPT_FILE="${LOG_DIR}/prompt_${ISSUE_NUM}.txt"
-    echo "$PROMPT" > "$PROMPT_FILE"
+    # プロンプトを一時ファイルに保存（実行後に削除）
+    PROMPT_FILE=$(mktemp "${TMPDIR:-/tmp}/eegflow_prompt_${ISSUE_NUM}_XXXXXX.txt")
+    printf '%s' "$PROMPT" > "$PROMPT_FILE"
+    trap cleanup_prompt EXIT INT TERM
     
-    log "AI_CMD で Issue #${ISSUE_NUM} を解決中..."
-    if ! printf '%s' "$PROMPT" | run_ai 2>&1 | tee -a "$LOG_FILE"; then
+    log "Issue #${ISSUE_NUM} を解決中..."
+    if ! run_ai < "$PROMPT_FILE" >/dev/null 2>&1; then
         log "ERROR: Issue #${ISSUE_NUM} の解決に失敗しました"
+        rm -f "$PROMPT_FILE"
+        PROMPT_FILE=""
         continue
     fi
+    rm -f "$PROMPT_FILE"
+    PROMPT_FILE=""
     
     log "AI処理完了"
     
@@ -164,6 +228,12 @@ ${ISSUE_BODY}
     # 変更をコミット
     log "変更をコミット中..."
     git -C "$REPO_DIR" add -A
+    if [[ -n "$UNTRACKED_BEFORE" ]]; then
+        while IFS= read -r path; do
+            [[ -z "$path" ]] && continue
+            git -C "$REPO_DIR" reset -q -- "$path"
+        done <<< "$UNTRACKED_BEFORE"
+    fi
     COMMIT_MSG="Fixes #${ISSUE_NUM}: ${ISSUE_TITLE}
 
 自動生成による修正
