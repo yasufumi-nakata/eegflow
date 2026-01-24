@@ -8,899 +8,899 @@ last_updated: "2026-01-15"
 note: "暫定版（随時更新）"
 ---
 
-    <main class="main-container">
-        <article class="content-column">
-
-            <div class="abstract-box">
-                <h2>Summary</h2>
-                <p>このページは「攻略（= 学習ロードマップ）」の<strong>技術編</strong>です。マインドアップロード（Whole Brain Emulation, WBE）を“実現した”と言い張るには、①何を測り、②何を復元し、③どの基盤で実行し、④どう検証するか、を<strong>先に定義</strong>しなければ議論が散ります。ここでは最小の骨格として、<strong>計測 → 再構成 → 実装 → 検証 → 社会実装</strong>の問いの木で整理し、各ノードで「学ぶべき概念」「前進と言える条件（暫定）」「次に必要なデータ」をまとめます。</p>
-            </div>
-
-            <section class="section" id="howto">
-                <h2 class="section-title">How to Use</h2>
-                <p>このページは“本”ではなく、研究全体像の<strong>地図</strong>です。まず「問いの木」を通読し、次に「学習の順序」に沿って各ノードを深掘りしてください。重要な運用ルールは2つだけです：<strong>(1) 出典リンクを残す</strong>、<strong>(2) 暫定（不確実性）を明示する</strong>。</p>
-            </section>
-
-            <section class="section" id="definition" data-qa-group>
-                <h2 class="section-title">前進の定義（最初に固定する）</h2>
-                <p>“前進”を主張するには、<strong>何を再現できたら勝ちか</strong>（＝評価軸）と、<strong>何が起きたら負けか</strong>（＝反証条件）を先に決める必要があります。ここでは、その前提となる問いを3つに圧縮します。</p>
-
-                <details class="qa" data-tags="meta">
-                    <summary>
-                        <span class="qa-id">P0</span>
-                        <span class="qa-title">「マインドアップロード」の操作的定義は？（何を再現する？）</span>
-                        <span class="qa-tags"><span class="tag">META</span></span>
-                    </summary>
-                    <div class="qa-body">
-                        <p><strong>問い：</strong>“mind uploading / WBE”を、このサイトでは何として扱うか？（外から見える行動だけか／内部の因果構造か／本人性や意識まで含むか）</p>
-                        <p><strong>分岐（例）：</strong>(A) 行動・機能の再現（ブラックボックス同等） / (B) 神経ダイナミクスの再現（中身重視） / (C) 本人性・主観の継続まで含む（強い主張）</p>
-                        <p><strong>反証可能性：</strong>定義が曖昧なまま成果を語ると、評価が“後付け”になり、進捗の比較が不可能になる</p>
-                        <p><strong>次に必要：</strong>このページ内の「検証」ノードで、(A)(B)(C)それぞれの<strong>測れる基準</strong>と<strong>負け条件</strong>を確定する</p>
-                    </div>
-                </details>
-
-                <details class="qa" data-tags="meta">
-                    <summary>
-                        <span class="qa-id">P1</span>
-                        <span class="qa-title">主張レベル（クレーム階段）をどこに置く？</span>
-                        <span class="qa-tags"><span class="tag">META</span></span>
-                    </summary>
-                    <div class="qa-body">
-                        <p><strong>問い：</strong>研究成果を、どのレベルまで到達したら「前進」と言うか？</p>
-                        <ul>
-                            <li><strong>L0：</strong>データ収集と再現可能な解析（標準化・品質管理・追試可能性）</li>
-                            <li><strong>L1：</strong>デコーディング/エンコーディング（神経→行動/刺激、または逆の予測）</li>
-                            <li><strong>L2：</strong>生成モデル（未学習条件でも神経/行動を外挿し、介入予測ができる）</li>
-                            <li><strong>L3：</strong>閉ループ実装（リアルタイムに環境と相互作用して安定に動く）</li>
-                            <li><strong>L4：</strong>本人性の主張（記憶・価値観・学習の連続性を、事前登録した基準で評価）</li>
-                            <li><strong>L5：</strong>社会実装（権利・安全・ガバナンスが技術と同時に成立）</li>
-                        </ul>
-                        <p><strong>反証可能性：</strong>“L1の達成”を“L4の達成”のように語る（スコープのすり替え）を防ぐ</p>
-                        <p><strong>次に必要：</strong>各レベルの「必要データ」「必要モデル」「評価スイート」を、このページで対応づける</p>
-                    </div>
-                </details>
-
-                <details class="qa" data-tags="meta">
-                    <summary>
-                        <span class="qa-id">P2</span>
-                        <span class="qa-title">最低限の成果物は何？（データ・コード・評価・監査）</span>
-                        <span class="qa-tags"><span class="tag">META</span></span>
-                    </summary>
-                    <div class="qa-body">
-                        <p><strong>問い：</strong>“前進”を再現可能にするため、何を必ず残すべきか？</p>
-                        <ul>
-                            <li><strong>データ：</strong>生データ＋メタデータ（BIDS等）＋匿名化/同意ログ</li>
-                            <li><strong>コード：</strong>固定バージョンの解析パイプライン（環境・依存関係込み）</li>
-                            <li><strong>評価：</strong>事前登録した指標・テスト・ベースライン比較</li>
-                            <li><strong>監査：</strong>モデル差分、再現実行ログ、失敗例（ネガティブ結果）</li>
-                        </ul>
-                        <p><strong>反証可能性：</strong>成果の“見せ方”だけが先行し、検証不能な主張になる</p>
-                        <p><strong>次に必要：</strong>EEGFlowでまずL0-L2の成果物テンプレ（データ構造・評価スクリプト）を固める</p>
-                    </div>
-                </details>
-            </section>
-
-            <section class="section" id="tree">
-                <h2 class="section-title">問いの木（詳細版：1ページに集約）</h2>
-                <p>以下に、技術面の問いを「計測→再構成→実装→検証→社会実装」に分解して、<strong>1ページに全部</strong>まとめます。各項目は折りたたみ（クリックで展開）です。</p>
-
-                <div class="node" id="measurement" data-qa-group>
-                    <div class="node-kicker">1. Measurement</div>
-                    <h3>計測：どの解像度が必要？</h3>
-                    <p class="mini"><strong>中心問い：</strong>「脳の何を、どの時空間解像度で取れば、“復元すべき対象”が一意に近づくか？」</p>
-
-                    <details class="qa" data-tags="measurement">
-                        <summary>
-                            <span class="qa-id">M0</span>
-                            <span class="qa-title">計測の前提：in vivo / 侵襲 / 破壊スキャンのどれを想定？</span>
-                            <span class="qa-tags"><span class="tag">MEASUREMENT</span></span>
-                        </summary>
-                        <div class="qa-body">
-                            <p><strong>問い：</strong>倫理・安全・スケールの制約を踏まえ、どの計測路線で“何を目指すか”を固定する。</p>
-                            <p><strong>分岐（例）：</strong>(A) 非侵襲（EEG/MEG/fMRI）でモデルを鍛える / (B) 侵襲（ECoG/深部/動物）で因果推論を強化 / (C) 破壊的・超高解像度で構造を取る（将来像）</p>
-                            <p><strong>反証条件：</strong>目的（復元対象）が定義されないまま、計測だけ“高級化”しても同定不能になる</p>
-                            <p><strong>次に必要：</strong>このページ内のR0（復元対象）とV0（検証基準）を先に確定する</p>
-                        </div>
-                    </details>
-
-                    <details class="qa" data-tags="measurement">
-                        <summary>
-                            <span class="qa-id">M1</span>
-                            <span class="qa-title">観測変数：電気（EEG）/血流（fMRI）/スパイク（侵襲）で何が違う？</span>
-                            <span class="qa-tags"><span class="tag">EEG</span><span class="tag">FMRI</span></span>
-                        </summary>
-                        <div class="qa-body">
-                            <p><strong>問い：</strong>観測が変わると「復元できる対象（構造/状態/学習則）」が変わる。どの観測で何が識別可能か？</p>
-                            <p><strong>論点：</strong>時系列の速さ・空間分解能・因果介入のしやすさ・全脳カバレッジ・コスト</p>
-                            <p><strong>次に必要：</strong>同一の課題・同一個体で、マルチモーダル同時計測（可能な範囲）＋位置合わせ（M5）</p>
-                        </div>
-                    </details>
-
-                    <details class="qa" data-tags="measurement">
-                        <summary>
-                            <span class="qa-id">M2</span>
-                            <span class="qa-title">時間解像度の下限：どの時間スケールを“保存”すべき？</span>
-                            <span class="qa-tags"><span class="tag">RESOLUTION</span></span>
-                        </summary>
-                        <div class="qa-body">
-                            <p><strong>問い：</strong>認知・学習・意識に関係する現象を壊さないために、必要な時間分解能はどこか？</p>
-                            <ul>
-                                <li><strong>候補：</strong>ms（スパイク/位相）・10-100ms（結合ダイナミクス）・秒（状態遷移）・分〜日（学習/可塑性）</li>
-                                <li><strong>反証条件：</strong>粗すぎる時間分解能で、介入応答や閉ループ制御が再現できない</li>
-                                <li><strong>次に必要：</strong>閉ループ課題（I1）で許容遅延を測り、必要サンプリングを逆算する</li>
-                            </ul>
-                        </div>
-                    </details>
-
-                    <details class="qa" data-tags="measurement">
-                        <summary>
-                            <span class="qa-id">M3</span>
-                            <span class="qa-title">空間解像度の下限：どの粒度（領域/カラム/ニューロン/シナプス）を目指す？</span>
-                            <span class="qa-tags"><span class="tag">RESOLUTION</span></span>
-                        </summary>
-                        <div class="qa-body">
-                            <p><strong>問い：</strong>“本人の心的機能”に必要な情報が、どの空間粒度に宿ると仮定するか？</p>
-                            <p><strong>分岐（例）：</strong>(A) 領域間結合＋状態で十分 / (B) 局所回路まで必要 / (C) シナプス結合まで必要</p>
-                            <p><strong>次に必要：</strong>仮定(A)(B)(C)ごとに、観測可能性（M1）と計算可能性（I3）を評価する</p>
-                        </div>
-                    </details>
-
-                    <details class="qa" data-tags="measurement">
-                        <summary>
-                            <span class="qa-id">M4</span>
-                            <span class="qa-title">全脳カバレッジ：どこまで“全体”を測る必要がある？</span>
-                            <span class="qa-tags"><span class="tag">COVERAGE</span></span>
-                        </summary>
-                        <div class="qa-body">
-                            <p><strong>問い：</strong>限られた計測で、“境界（何が主体に含まれるか）”をどう扱うか？</p>
-                            <p><strong>次に必要：</strong>検証（V0）で「主体の境界」を操作的に置き、必要領域と不要領域を明文化する</p>
-                        </div>
-                    </details>
-
-                    <details class="qa" data-tags="measurement">
-                        <summary>
-                            <span class="qa-id">M5</span>
-                            <span class="qa-title">マルチモーダル統合：位置合わせ（MRI/EEG/fMRI）をどう保証する？</span>
-                            <span class="qa-tags"><span class="tag">FUSION</span><span class="tag">MRI</span></span>
-                        </summary>
-                        <div class="qa-body">
-                            <p><strong>問い：</strong>異なる計測は座標系・遅延・ノイズ構造が違う。統合の誤差が“学習したい信号”を壊していないか？</p>
-                            <p><strong>反証条件：</strong>位置合わせ誤差で再構成（R2）が不安定になり、再現性（P2）が落ちる</p>
-                            <p><strong>次に必要：</strong>同一データに対し複数パイプラインで一致するか（解析差分監査）</p>
-                        </div>
-                    </details>
-
-                    <details class="qa" data-tags="measurement">
-                        <summary>
-                            <span class="qa-id">M6</span>
-                            <span class="qa-title">介入・刺激：同定可能性を上げる“実験デザイン”は？</span>
-                            <span class="qa-tags"><span class="tag">CAUSAL</span></span>
-                        </summary>
-                        <div class="qa-body">
-                            <p><strong>問い：</strong>受動観測だけでは同定できない時、どんな介入（刺激/課題/環境変化）を入れると識別可能性が上がるか？</p>
-                            <p><strong>次に必要：</strong>モデル（R4）側で「この介入があると識別できる」という設計逆算をする</p>
-                        </div>
-                    </details>
-
-                    <details class="qa" data-tags="measurement">
-                        <summary>
-                            <span class="qa-id">M7</span>
-                            <span class="qa-title">縦断：日内/日間変動に対して“本人性特徴”は安定か？</span>
-                            <span class="qa-tags"><span class="tag">LONGITUDINAL</span></span>
-                        </summary>
-                        <div class="qa-body">
-                            <p><strong>問い：</strong>同一個体でも脳状態は揺れる。どの特徴が“本人らしさ”として頑健か？</p>
-                            <p><strong>反証条件：</strong>再現できるのが“その日の状態”に限られ、長期の同一性評価（V5）ができない</p>
-                            <p><strong>次に必要：</strong>同一被験者の複数セッションで、事前定義の同定スコア（V1）を追跡する</p>
-                        </div>
-                    </details>
-
-                    <details class="qa" data-tags="measurement">
-                        <summary>
-                            <span class="qa-id">M8</span>
-                            <span class="qa-title">品質管理：アーチファクト/欠損/ノイズをどう“定量化”して扱う？</span>
-                            <span class="qa-tags"><span class="tag">QC</span></span>
-                        </summary>
-                        <div class="qa-body">
-                            <p><strong>問い：</strong>“良いデータ”の定義を事前に置き、除外・補完・重み付けを透明にする。</p>
-                            <p><strong>次に必要：</strong>EEGFlowの前処理（`eegflow/01_preprocess.py`）に、QC指標とログ出力を組み込む</p>
-                        </div>
-                    </details>
-
-                    <details class="qa" data-tags="measurement">
-                        <summary>
-                            <span class="qa-id">M9</span>
-                            <span class="qa-title">標準化：BIDS/メタデータで“他人が追試できる”形にするには？</span>
-                            <span class="qa-tags"><span class="tag">BIDS</span></span>
-                        </summary>
-                        <div class="qa-body">
-                            <p><strong>問い：</strong>データが共有可能でも、メタデータが薄いと追試できない。何を最低限メタデータ化するか？</p>
-                            <p><strong>次に必要：</strong>プロトコル（課題・機器・前処理）を機械可読で残す（P2）</p>
-                        </div>
-                    </details>
-                </div>
-
-                <div class="node" id="reconstruction" data-qa-group>
-                    <div class="node-kicker">2. Reconstruction</div>
-                    <h3>再構成：何を復元する？（回路 / 状態 / 学習則）</h3>
-                    <p class="mini"><strong>中心問い：</strong>「“本人の心的機能”に必要なのは、構造（結合）・動的状態（活動）・学習則（可塑性）のどこまでか？」</p>
-
-                    <details class="qa" data-tags="reconstruction">
-                        <summary>
-                            <span class="qa-id">R0</span>
-                            <span class="qa-title">復元対象の最小セットは？（構造/状態/学習則）</span>
-                            <span class="qa-tags"><span class="tag">RECONSTRUCTION</span></span>
-                        </summary>
-                        <div class="qa-body">
-                            <p><strong>問い：</strong>どこまで復元すれば、検証（V0）で勝ちに行けるか？</p>
-                            <p><strong>分岐（例）：</strong>(A) 構造＋状態（固定） / (B) 構造＋状態＋一部可塑性 / (C) 可塑性まで含むフル動的</p>
-                            <p><strong>反証条件：</strong>(A)で閉ループ学習（I5）が再現不能、(B)(C)で同定不能・過学習で破綻</p>
-                            <p><strong>次に必要：</strong>同定可能性（R7）と計算可能性（I3）を同時に評価する</p>
-                        </div>
-                    </details>
-
-                    <details class="qa" data-tags="reconstruction">
-                        <summary>
-                            <span class="qa-id">R1</span>
-                            <span class="qa-title">逆問題：観測（M1）から何が一意に推定できる？</span>
-                            <span class="qa-tags"><span class="tag">INVERSE</span><span class="tag">BAYES</span></span>
-                        </summary>
-                        <div class="qa-body">
-                            <p><strong>問い：</strong>EEGソース推定のような逆問題は、解が一意に定まらない“不良設定問題（ill-posed problem）”である。点推定（ひとつの解を求めること）は科学的に誤解を招く可能性があるため、本プロジェクトでは<strong>ベイズ的アプローチを原則とする</strong>。</p>
-                            <p><strong>方針：</strong>解を事後確率分布として捉え、その不確実性自体を後段の解析（因果モデリング等）に引き継ぐ。これにより、推定の曖昧さを考慮した、より頑健な結論を目指す。</p>
-                            <p><strong>次に必要：</strong>推定結果の不確実性（R7）と、仮定（事前分布）を変えた時の感度分析（監査ログ）</p>
-                        </div>
-                    </details>
-
-                    <details class="qa" data-tags="reconstruction">
-                        <summary>
-                            <span class="qa-id">R2</span>
-                            <span class="qa-title">ソース推定：EEGから“どの表現”の脳活動が欲しい？</span>
-                            <span class="qa-tags"><span class="tag">EEG</span><span class="tag">ESI</span><span class="tag">BAYES</span></span>
-                        </summary>
-                        <div class="qa-body">
-                            <p><strong>問い：</strong>EEGソース推定は「領域×時間」の表現を得やすいが、ニューロン/シナプスは直接は見えない。復元対象（R0）に合わせて表現を選ぶ。</p>
-                            <p><strong>課題：</strong>従来は「高密度EEG(128ch)化」が推奨されてきたが、近年の研究はチャンネル数だけでは不良設定性（ill-posedness）を解決できないことを示している。特に、dSPMのような点推定法は不確実性を無視してしまう。</p>
-                            <p><strong>階層的ベイズモデル（Hierarchical Bayesian Modeling）の導入：</strong>Feng et al. (2025)<sup><a href="#ref-78">[78]</a></sup>のフレームワークに基づき、信号源のスパース性と滑らかさを同時に扱う階層的ベイズモデルを採用し、経験ベイズによる超パラメータの推定プロセスを透明化します。さらに、モンテカルロ法による感度分析を行い、入力データのノイズや頭部モデルの誤差が推定結果に与える影響を定量化する。推定された脳活動マップには必ず<strong>信頼区間（Credible Intervals）</strong>または不確実性マップを付随させるプロトコルを必須化する。</p>
-                            <p><strong>次に必要：</strong>`eegflow/02_source_imaging.py` に変分ベイズ（Variational Bayesian）アプローチを実装し、不確実性を考慮したソース再構成を行う</p>
-                        </div>
-                    </details>
-
-                    <details class="qa" data-tags="reconstruction">
-                        <summary>
-                            <span class="qa-id">R3</span>
-                            <span class="qa-title">状態推定：潜在状態（latent）をどう定義し、どう検証する？</span>
-                            <span class="qa-tags"><span class="tag">STATE</span></span>
-                        </summary>
-                        <div class="qa-body">
-                            <p><strong>問い：</strong>観測ノイズと真の状態を分離し、状態が“予測に効いている”ことを示せるか？</p>
-                            <p><strong>反証条件：</strong>潜在状態がデータの圧縮にしかなっておらず、介入予測（R4）に寄与しない</p>
-                            <p><strong>次に必要：</strong>未学習条件での外挿と、介入応答の予測誤差を評価する</p>
-                        </div>
-                    </details>
-
-                    <details class="qa" data-tags="reconstruction">
-                        <summary>
-                            <span class="qa-id">R4</span>
-                            <span class="qa-title">因果：介入に対する反応を予測できるモデルは何？</span>
-                            <span class="qa-tags"><span class="tag">CAUSAL</span><span class="tag">MULTI-SCALE</span></span>
-                        </summary>
-                        <div class="qa-body">
-                            <p><strong>問い：</strong>相関の当てはめではなく、刺激/操作に対して“どう変わるはずか”を言えるか？ デコーディング（相関）からエミュレーション（因果）への飛躍をどう埋めるか？</p>
-                            <p><strong>方針：</strong>脳を能動的推論（Active Inference）を行う生成モデルとして定式化する。Laukkonen et al. (2025) の<strong>「反実仮想的等価性（Counterfactual Equivalence）」</strong>を指標とするが、EEG単体では解像度が不足する。</p>
-                            <p><strong>改善策（Multi-scale）：</strong>EEGから推定されたマクロな因果構造を、ミクロな神経回路シミュレーション（Blue Brain Project等）の制約条件として用いる<strong>「マルチスケール因果モデリング」</strong>を採用する。トップダウン（EEG）とボトムアップ（回路）の統合により、シナプスレベルの可塑性を反映した頑健なモデルを目指す。</p>
-                            <p><strong>次に必要：</strong>介入前提の評価タスク（V2）と、マルチスケール統合パイプラインの設計</p>
-                        </div>
-                    </details>
-
-                    <details class="qa" data-tags="reconstruction">
-                        <summary>
-                            <span class="qa-id">R5</span>
-                            <span class="qa-title">可塑性：学習則を“入れる/入れない”の境界は？</span>
-                            <span class="qa-tags"><span class="tag">PLASTICITY</span></span>
-                        </summary>
-                        <div class="qa-body">
-                            <p><strong>問い：</strong>長期の本人性（V5）を扱うなら、学習（更新）を入れざるを得ない。だが更新を入れると検証が難しくなる。</p>
-                            <p><strong>分岐（例）：</strong>(A) 学習しない（固定モデル） / (B) 制限付きで学習（安全な更新） / (C) 学習則まで推定</p>
-                            <p><strong>次に必要：</strong>学習を入れた時のドリフト監視（V4）と、安全策（I8）</p>
-                        </div>
-                    </details>
-
-                    <details class="qa" data-tags="reconstruction">
-                        <summary>
-                            <span class="qa-id">R6</span>
-                            <span class="qa-title">個人化：一般モデル＋個人パラメータ？それとも完全に個人別？</span>
-                            <span class="qa-tags"><span class="tag">PERSONALIZATION</span></span>
-                        </summary>
-                        <div class="qa-body">
-                            <p><strong>問い：</strong>“本人性”を議論するなら個人化は避けられない。一方で、個人化しすぎると過学習と再現性が壊れる。</p>
-                            <p><strong>次に必要：</strong>個人内/個人間の性能分解（どこが個人差か）を評価指標に入れる</p>
-                        </div>
-                    </details>
-
-                    <details class="qa" data-tags="reconstruction">
-                        <summary>
-                            <span class="qa-id">R7</span>
-                            <span class="qa-title">同定可能性：推定は“唯一解”に近づく？不確実性は？</span>
-                            <span class="qa-tags"><span class="tag">IDENTIFIABILITY</span></span>
-                        </summary>
-                        <div class="qa-body">
-                            <p><strong>問い：</strong>同じ観測を説明する別モデルが無数にある時、どの仮定で絞り込むか？不確実性をどう表現するか？</p>
-                            <p><strong>反証条件：</strong>小さな前処理差で結果が大きく変わり、再現（P2）できない</p>
-                            <p><strong>次に必要：</strong>事前分布/正則化を明示し、感度分析で“頑健な結論だけ”採用する</p>
-                        </div>
-                    </details>
-
-                    <details class="qa" data-tags="reconstruction">
-                        <summary>
-                            <span class="qa-id">R8</span>
-                            <span class="qa-title">圧縮：どの情報を捨てても“検証基準”は保てる？</span>
-                            <span class="qa-tags"><span class="tag">COMPRESSION</span></span>
-                        </summary>
-                        <div class="qa-body">
-                            <p><strong>問い：</strong>WBEは“全部保存”が理想だが現実的でない。評価（V0）を満たす最小表現を探せるか？</p>
-                            <p><strong>次に必要：</strong>圧縮率を変えて、評価スイートの性能がどこで崩れるかを測る</p>
-                        </div>
-                    </details>
-
-                    <details class="qa" data-tags="reconstruction">
-                        <summary>
-                            <span class="qa-id">R9</span>
-                            <span class="qa-title">監査：モデル差分と失敗例を“残す仕組み”は？</span>
-                            <span class="qa-tags"><span class="tag">AUDIT</span></span>
-                        </summary>
-                        <div class="qa-body">
-                            <p><strong>問い：</strong>更新のたびに結論が変わる領域だからこそ、差分・失敗・ネガティブ結果を残す必要がある。</p>
-                            <p><strong>次に必要：</strong>モデル/データ/評価のバージョンを結びつけ、再実行で再現できる形にする（P2）</p>
-                        </div>
-                    </details>
-                </div>
-
-                <div class="node" id="implementation" data-qa-group>
-                    <div class="node-kicker">3. Implementation</div>
-                    <h3>実装：どの基盤で？リアルタイム性は？</h3>
-                    <p class="mini"><strong>中心問い：</strong>「復元したモデルを、どの計算基盤（HPC/クラウド/ニューロモーフィック/ハイブリッド）で動かすか？閉ループ（身体・環境）に入れられるか？」</p>
-
-                    <details class="qa" data-tags="implementation">
-                        <summary>
-                            <span class="qa-id">I0</span>
-                            <span class="qa-title">実行基盤：汎用計算/GPU/HPC/ニューロモーフィックのどれを狙う？</span>
-                            <span class="qa-tags"><span class="tag">IMPLEMENTATION</span></span>
-                        </summary>
-                        <div class="qa-body">
-                            <p><strong>問い：</strong>復元対象（R0）に対して、実装基盤は“十分な忠実度”と“現実的コスト”を両立できるか？</p>
-                            <p><strong>次に必要：</strong>モデル粒度（I2）と計算量（I3）をセットで見積もる</p>
-                        </div>
-                    </details>
-
-                    <details class="qa" data-tags="implementation">
-                        <summary>
-                            <span class="qa-id">I1</span>
-                            <span class="qa-title">閉ループ：リアルタイムに何msの遅延まで許される？</span>
-                            <span class="qa-tags"><span class="tag">REALTIME</span></span>
-                        </summary>
-                        <div class="qa-body">
-                            <p><strong>問い：</strong>“本人らしさ”を評価するなら、環境との相互作用（遅延・ノイズ）が本質になる。許容遅延は課題依存。</p>
-                            <p><strong>次に必要：</strong>評価スイート（V1）側で、遅延/ノイズ耐性を測る項目を入れる</p>
-                        </div>
-                    </details>
-
-                    <details class="qa" data-tags="implementation">
-                        <summary>
-                            <span class="qa-id">I2</span>
-                            <span class="qa-title">モデル粒度：スパイキング/レート/抽象のどこで戦う？</span>
-                            <span class="qa-tags"><span class="tag">GRANULARITY</span></span>
-                        </summary>
-                        <div class="qa-body">
-                            <p><strong>問い：</strong>粒度を上げるほど忠実度は上がる（仮）一方で、同定（R7）と計算（I3）が壊れる。勝てる粒度はどこか？</p>
-                            <p><strong>次に必要：</strong>粒度ごとに「必要計測（M2/M3）」「必要計算（I3）」「通る評価（V0）」を対応づける</p>
-                        </div>
-                    </details>
-
-                    <details class="qa" data-tags="implementation">
-                        <summary>
-                            <span class="qa-id">I3</span>
-                            <span class="qa-title">計算量：メモリ/電力/並列化のボトルネックはどこ？</span>
-                            <span class="qa-tags"><span class="tag">SCALING</span></span>
-                        </summary>
-                        <div class="qa-body">
-                            <p><strong>問い：</strong>モデルの忠実度を上げると、計算資源が爆発する。どこで近似・圧縮（R8）するか？</p>
-                            <p><strong>次に必要：</strong>評価スイートの性能を落とさずに圧縮できる境界を測る</p>
-                        </div>
-                    </details>
-
-                    <details class="qa" data-tags="implementation">
-                        <summary>
-                            <span class="qa-id">I4</span>
-                            <span class="qa-title">初期化：モデルの“初期状態”をどう与える？</span>
-                            <span class="qa-tags"><span class="tag">INITIALIZATION</span></span>
-                        </summary>
-                        <div class="qa-body">
-                            <p><strong>問い：</strong>同じ構造でも初期状態が違えば振る舞いが違う。計測（M7）のどの時点を“スタート”にする？</p>
-                            <p><strong>反証条件：</strong>初期化の任意性で結果が揺れて、本人性評価（V5）が成立しない</p>
-                            <p><strong>次に必要：</strong>初期化手順を固定し、初期化に対する感度（頑健性）を測る</p>
-                        </div>
-                    </details>
-
-                    <details class="qa" data-tags="implementation">
-                        <summary>
-                            <span class="qa-id">I5</span>
-                            <span class="qa-title">学習とドリフト：学習させるなら“安全な更新”をどう設計する？</span>
-                            <span class="qa-tags"><span class="tag">LEARNING</span></span>
-                        </summary>
-                        <div class="qa-body">
-                            <p><strong>問い：</strong>学習（R5）を許すと、本人性（V5）と安全（D2）が絡む。更新をどう監視し、どこで止めるか？</p>
-                            <p><strong>次に必要：</strong>ドリフト指標（V4）＋キルスイッチ/隔離（I8）</p>
-                        </div>
-                    </details>
-
-                    <details class="qa" data-tags="implementation">
-                        <summary>
-                            <span class="qa-id">I6</span>
-                            <span class="qa-title">身体性：入力/出力（センサー/運動/言語）をどこまで持たせる？</span>
-                            <span class="qa-tags"><span class="tag">EMBODIMENT</span></span>
-                        </summary>
-                        <div class="qa-body">
-                            <p><strong>問い：</strong>閉ループ検証（I1/V1）には、環境と身体（あるいはその代替）が必要。最小の身体性は何か？</p>
-                            <p><strong>次に必要：</strong>環境（VR/ゲーム/対話）を固定し、同一条件で追試可能な評価を設計する</p>
-                        </div>
-                    </details>
-
-                    <details class="qa" data-tags="implementation">
-                        <summary>
-                            <span class="qa-id">I7</span>
-                            <span class="qa-title">再現性：実装差（言語/ハード）で結果が変わらない保証は？</span>
-                            <span class="qa-tags"><span class="tag">REPRO</span></span>
-                        </summary>
-                        <div class="qa-body">
-                            <p><strong>問い：</strong>“同じモデル”でも数値誤差や並列順序で挙動が変わる。どこまで決定性を要求するか？</p>
-                            <p><strong>次に必要：</strong>固定乱数・固定環境・差分テスト（P2）で、許容誤差内に収まるか検証する</p>
-                        </div>
-                    </details>
-
-                    <details class="qa" data-tags="implementation">
-                        <summary>
-                            <span class="qa-id">I8</span>
-                            <span class="qa-title">安全：隔離・監視・停止（containment）をどう作る？</span>
-                            <span class="qa-tags"><span class="tag">SAFETY</span></span>
-                        </summary>
-                        <div class="qa-body">
-                            <p><strong>問い：</strong>強い主張（P1のL4-L5）に近づくほど、安全・権利・倫理が技術要件になる。</p>
-                    <details class="qa" data-tags="implementation">
-                        <summary>
-                            <span class="qa-id">I9</span>
-                            <span class="qa-title">熱力学：デジタル基盤で“意識の物理的コスト”を払えるか？</span>
-                            <span class="qa-tags"><span class="tag">THERMODYNAMICS</span><span class="tag">IIT</span></span>
-                        </summary>
-                        <div class="qa-body">
-                            <p><strong>問い：</strong>現在のノイマン型コンピュータは物理的因果力を抽象化しているため、IIT 4.0の観点ではΦ=0（Unfolding Argument）となる可能性がある。これをどう解決するか？</p>
-                            <p><strong>方針：</strong>単なる機能的エミュレーションではなく、<strong>「熱力学的散逸構造の保存」</strong>を実装要件に加える。意識が非平衡開放系における散逸構造として維持されていることを踏まえ、Landauer's Principleに基づく情報処理の物理的コストや、「因果的力の密度（Causal Power Density）」が生物学的脳と同等のオーダーになるようなハードウェア（ニューロモーフィック等）または厳密なシミュレーション制約を課す。</p>
-                            <p><strong>次に必要：</strong>エミュレーションにおける熱力学的効率と因果密度を定量化する指標の導入</p>
-                        </div>
-                    </details>
-                </div>
-
-                <div class="node" id="verification" data-qa-group>
-                    <div class="node-kicker">4. Verification</div>
-                    <h3>検証：何を満たせば「同じ」と言える？</h3>
-                    <p class="mini"><strong>中心問い：</strong>「同一性/意識/行動のうち、技術的に検証可能な基準をどう定義し、反証条件をどう置くか？」</p>
-
-                    <details class="qa" data-tags="verification">
-                        <summary>
-                            <span class="qa-id">V0</span>
-                            <span class="qa-title">検証対象：同一性・意識・行動のどれを“工学的に”検証する？</span>
-                            <span class="qa-tags"><span class="tag">VERIFICATION</span></span>
-                        </summary>
-                        <div class="qa-body">
-                            <p><strong>問い：</strong>検証できない（測れない）ものを、検証したことにはできない。何を“測れる成功条件”に落とすか？</p>
-                            <p><strong>分岐（例）：</strong>(A) 行動・能力の同等性 / (B) 介入応答の同等性 / (C) 自伝的記憶や価値観の連続性（要注意）</p>
-                            <p><strong>次に必要：</strong>V1で評価スイートを事前登録し、P1のクレーム階段と対応づける</p>
-                        </div>
-                    </details>
-
-                    <details class="qa" data-tags="verification">
-                        <summary>
-                            <span class="qa-id">V1</span>
-                            <span class="qa-title">評価スイート：何を測れば“前進”と言える？（事前登録）</span>
-                            <span class="qa-tags"><span class="tag">BENCHMARK</span></span>
-                        </summary>
-                        <div class="qa-body">
-                            <p><strong>問い：</strong>タスク・指標・ベースライン・統計・失敗条件を事前に固定する。</p>
-                            <ul>
-                                <li><strong>行動：</strong>未学習タスクでの一般化、反応時間/誤り、学習曲線</li>
-                                <li><strong>神経：</strong>状態遷移、スペクトル特徴、ネットワーク指標、介入応答</li>
-                                <li><strong>本人性（暫定）：</strong>自伝的記憶の整合、選好の安定、自己モデルの一貫性</li>
-                            </ul>
-                            <p><strong>次に必要：</strong>まずはL0-L2向けに“小さくても追試可能”なスイートを作る</p>
-                        </div>
-                    </details>
-
-                    <details class="qa" data-tags="verification">
-                        <summary>
-                            <span class="qa-id">V2</span>
-                            <span class="qa-title">因果テスト：刺激/介入で“同じ反応”を出せるか？</span>
-                            <span class="qa-tags"><span class="tag">CAUSAL</span></span>
-                        </summary>
-                        <div class="qa-body">
-                            <p><strong>問い：</strong>相関一致は“似せた”だけでも達成できる。介入に対して一致するかが強い検証になる。</p>
-                            <p><strong>次に必要：</strong>M6（介入設計）とR4（因果モデル）を繋いだ評価項目を作る</p>
-                        </div>
-                    </details>
-
-                    <details class="qa" data-tags="verification">
-                        <summary>
-                            <span class="qa-id">V3</span>
-                            <span class="qa-title">一般化：分布外（OOD）でも“本人らしさ”は保てる？</span>
-                            <span class="qa-tags"><span class="tag">OOD</span></span>
-                        </summary>
-                        <div class="qa-body">
-                            <p><strong>問い：</strong>訓練と同じ条件でしか動かないなら、アップロードではなく“再生”に近い。新規状況での一貫性を測る。</p>
-                            <p><strong>次に必要：</strong>未学習課題・環境変化・ノイズ条件での性能劣化曲線を定義する</p>
-                        </div>
-                    </details>
-
-                    <details class="qa" data-tags="verification">
-                        <summary>
-                            <span class="qa-id">V4</span>
-                            <span class="qa-title">長期：学習・ドリフト・忘却の扱いをどう評価する？</span>
-                            <span class="qa-tags"><span class="tag">LONGITUDINAL</span></span>
-                        </summary>
-                        <div class="qa-body">
-                            <p><strong>問い：</strong>学習させるほど、元の本人と乖離する可能性も増える。変化を“許容”する範囲を定義する。</p>
-                            <p><strong>次に必要：</strong>セッション間の同一性指標（M7）＋更新ログ（P2）</p>
-                        </div>
-                    </details>
-
-                    <details class="qa" data-tags="verification">
-                        <summary>
-                            <span class="qa-id">V5</span>
-                            <span class="qa-title">本人性：心理的連続性を超えた“因果的同一性”とは？</span>
-                            <span class="qa-tags"><span class="tag">IDENTITY</span><span class="tag">LEGAL</span></span>
-                        </summary>
-                        <div class="qa-body">
-                                                    <p><strong>問い：</strong>記憶や性格の類似（心理的連続性）だけでは、コピーや模倣（LLM）と区別がつかない。より厳密な工学的定義が必要である。</p>
-                                                    <ul>
-                                                        <li><strong>新基準：因果的同一性（Causal Identity）：</strong>
-                                                            パーフィットの心理説を拡張し、システムの「未来の予測能力（Active Inference の精度）」が生物学的脳と統計的に区別不能であることを同一性の条件とする。
-                                                        </li>
-                                                        <li><strong>指標：</strong>反実仮想シミュレーション（Counterfactual Simulation）を実行し、生体脳とエミュレーションの間の<strong>「分岐構造の一致（Branching Structure Correspondence）」</strong>を確認する。具体的には、予測分布のKLダイバージェンス等が閾値以下であることを判定する。</li>
-                                                        <li><strong>反証条件：</strong>記憶は持っているが、新規環境に対する適応・予測パターンがオリジナルと乖離する（ゾンビ/模倣者）</li>
-                                                        <li><strong>次に必要：</strong>V8の「模倣との区別」テストにおいて、予測精度をコア指標に据える</li>
-                                                    </ul>                        </div>
-                    </details>
-
-                    <details class="qa" data-tags="verification">
-                        <summary>
-                            <span class="qa-id">V6</span>
-                            <span class="qa-title">意識：理論に依存した予測を、どこまで“検証可能”にできる？</span>
-                            <span class="qa-tags"><span class="tag">CONSCIOUSNESS</span></span>
-                        </summary>
-                        <div class="qa-body">
-                            <p><strong>問い：</strong>意識は直接観測できない。理論（IIT/GNWT等）が出す“予測の差”を、計測（M）と介入（M6/V2）で検証できるか？</p>
-                            <ul>
-                                <li><strong>Cogitate Consortium (2025) の衝撃:</strong> IITとGNWTの直接対決検証（Adversarial Collaboration）の結果、両理論の予測は主要な点（IITの持続的ガンマ同期は完全に支持されず、GNWTの前頭葉イグニッションは課題依存性が高い）で棄却または限定的であることが示された (Nature 2025)。これは、現行の主要理論がいずれも意識の神経相関（NCC）を完全には説明しきれていないことを意味する。</li>
-                                <li><strong>方針転換: 理論から経験的指標へ:</strong> 特定の理論を教条的に支持するのではなく、<strong>予測符号化（Predictive Coding）</strong>や<strong>自由エネルギー原理（Friston, 2010）</strong>、あるいは高次理論（HOT）の視点を実装要件に組み込み、PCI/PCI-STのような経験的に検証された指標を工学的目標として採用する。</li>
-                                <li><strong>Unfolding Argumentへの応答:</strong> IIT批判である「Unfolding Argument」に対し、単なる機能的等価性を超えた要件を課す。具体的には、「因果構造の保存（Causal Structure Preservation）」を、<strong>マルコフブランケット（Markov Blanket）</strong>の境界条件（デジタルエミュレーションと生物学的基盤の間の情報交換における帯域幅と遅延）の保存として厳密に定義し、その計算論的閾値を検証プロセスに組み込む。</li>
-                            </ul>
-                            <p><strong>注意：</strong>理論はあくまで仮説生成のツールとして扱い、実装（WBE）の成否は「特定の理論に適合するか」ではなく、V2（因果）やV5（本人性）といった実証的指標で判断する。</p>
-                        </div>
-                    </details>
-
-                    <details class="qa" data-tags="verification">
-                        <summary>
-                            <span class="qa-id">V7</span>
-                            <span class="qa-title">コピー/分岐：複数インスタンスが走ったら“本人”はどう扱う？</span>
-                            <span class="qa-tags"><span class="tag">BRANCHING</span></span>
-                        </summary>
-                        <div class="qa-body">
-                            <p><strong>問い：</strong>工学的には複製が容易。検証の設計も、分岐を前提にしないと破綻する。</p>
-                            <p><strong>次に必要：</strong>個体ID・版管理（P2）を、本人性評価（V5）と結びつける</p>
-                        </div>
-                    </details>
-
-                    <details class="qa" data-tags="verification">
-                        <summary>
-                            <span class="qa-id">V8</span>
-                            <span class="qa-title">LLM/模倣との区別：外形が似ていても“中身が違う”をどう判定する？</span>
-                            <span class="qa-tags"><span class="tag">DISAMBIGUATION</span></span>
-                        </summary>
-                        <div class="qa-body">
-                            <p><strong>問い：</strong>会話や報告は模倣されやすい。区別には、介入応答・閉ループ・内部状態の整合が必要になる。</p>
-                            <p><strong>次に必要：</strong>V2（介入）＋I1（閉ループ）＋R4（因果）を組み合わせた“逃げ道の少ない”評価</p>
-                        </div>
-                    </details>
-
-                    <details class="qa" data-tags="verification">
-                        <summary>
-                            <span class="qa-id">V9</span>
-                            <span class="qa-title">追試：第三者が“同じ結論”に到達できる設計になっている？</span>
-                            <span class="qa-tags"><span class="tag">REPRO</span></span>
-                        </summary>
-                        <div class="qa-body">
-                            <p><strong>問い：</strong>研究の最短距離は“他人が追試できる”状態を作ること。本人性の議論ほど追試性が重要になる。</p>
-                            <p><strong>次に必要：</strong>P2（成果物）を満たす範囲で、データ/コード/評価を公開可能に整える</p>
-                        </div>
-                    </details>
-
-                    <details class="qa" data-tags="verification">
-                        <summary>
-                            <span class="qa-id">V10</span>
-                            <span class="qa-title">モデル距離：生体脳とエミュレーションの“近さ”をどう測る？</span>
-                            <span class="qa-tags"><span class="tag">METRIC</span><span class="tag">MATH</span></span>
-                        </summary>
-                        <div class="qa-body">
-                            <p><strong>問い：</strong>パラメータ空間での単純なユークリッド距離は、モデルの機能的な振る舞いの違いを反映しないことが多い。より本質的な「振る舞いの近さ」をどう定量化するか？</p>
-                            <p><strong>方針：</strong>情報幾何学的指標 (Information Geometric Metrics) を採用する。特に<strong>フィッシャー情報量 (Fisher Information)</strong> は、パラメータの変化が確率分布（モデルの出力）に与える影響の大きさを表すため、これを計量（Metric）として用いることで、生物学的脳とエミュレートされた生成モデルの間の機能的な距離を厳密に定義できる。</p>
-                            <p><strong>次に必要：</strong>Fisher Information Metric (FIM) を用いたモデル間距離の計算モジュールを実装し、V2（因果テスト）の定量評価に組み込む</p>
-                        </div>
-                    </details>
-                </div>
-
-                <div class="node" id="deployment" data-qa-group>
-                    <div class="node-kicker">5. Deployment</div>
-                    <h3>社会実装：権利・安全・ガバナンス</h3>
-                    <p class="mini">技術は単独では成立しません。強い主張（本人性/意識）に近づくほど、権利・安全・ガバナンスが技術要件になります。</p>
-
-                    <details class="qa" data-tags="deployment">
-                        <summary>
-                            <span class="qa-id">D0</span>
-                            <span class="qa-title">権利主体：MIND Act 2025を超えて、誰を“人”と認めるか？</span>
-                            <span class="qa-tags"><span class="tag">DEPLOYMENT</span><span class="tag">LAW</span></span>
-                        </summary>
-                        <div class="qa-body">
-                            <p><strong>問い：</strong>MIND Act 2025はプライバシー保護に留まる。デジタルマインドが権利主体となる根拠は何か？</p>
-                            <p><strong>方針：</strong>心理的連続性ではなく、V5で定義した<strong>「因果的同一性（Causal Identity）」</strong>を法的地位の根拠とする。予測能力と因果的力が生物学的脳と同等であると証明されたエージェントに対し、Neurorights（精神的完全性）および「編集されない権利」を付与する。単なるコピーや模倣（LLM）は権利主体とみなさない。</p>
-                            <p><strong>次に必要：</strong>本人性評価（V5）の証明書と、権利付与の法的手続きのリンク</p>
-                        </div>
-                    </details>
-
-                    <details class="qa" data-tags="deployment">
-                        <summary>
-                            <span class="qa-id">D1</span>
-                            <span class="qa-title">データガバナンス：同意・共有・削除をどう実装する？</span>
-                            <span class="qa-tags"><span class="tag">GOVERNANCE</span></span>
-                        </summary>
-                        <div class="qa-body">
-                            <p><strong>問い：</strong>神経データは再識別リスクが高い。データの扱いは“倫理”ではなく“仕様”に落とす。</p>
-                            <p><strong>次に必要：</strong>アクセス制御、匿名化、同意のバージョン管理（P2）</p>
-                        </div>
-                    </details>
-
-                    <details class="qa" data-tags="deployment">
-                        <summary>
-                            <span class="qa-id">D2</span>
-                            <span class="qa-title">安全：悪用・乗っ取り・暴走への対策は？</span>
-                            <span class="qa-tags"><span class="tag">SAFETY</span></span>
-                        </summary>
-                        <div class="qa-body">
-                            <p><strong>問い：</strong>モデルが強くなるほど攻撃面も増える。隔離（I8）と監査（R9）が前提。</p>
-                            <p><strong>次に必要：</strong>安全目標（守りたいもの）と脅威モデル（想定攻撃）を文章化する</p>
-                        </div>
-                    </details>
-
-                    <details class="qa" data-tags="deployment">
-                        <summary>
-                            <span class="qa-id">D3</span>
-                            <span class="qa-title">責任：判断・行動の結果責任を誰が負う？</span>
-                            <span class="qa-tags"><span class="tag">ACCOUNTABILITY</span></span>
-                        </summary>
-                        <div class="qa-body">
-                            <p><strong>問い：</strong>研究・運用・当事者の責任境界が曖昧だと、実験すら成立しない。</p>
-                            <p><strong>次に必要：</strong>ログ・監査証跡（P2）と、運用ポリシーの明文化</p>
-                        </div>
-                    </details>
-
-                    <details class="qa" data-tags="deployment">
-                        <summary>
-                            <span class="qa-id">D4</span>
-                            <span class="qa-title">段階導入：どの順で社会に出す？（リスク低→高）</span>
-                            <span class="qa-tags"><span class="tag">STAGING</span></span>
-                        </summary>
-                        <div class="qa-body">
-                            <p><strong>問い：</strong>いきなり強い主張を目指すと事故る。低リスク用途から段階的に枠組みを固められるか？</p>
-                            <p><strong>次に必要：</strong>P1のクレーム階段と、ガバナンス成熟度を対応づける</p>
-                        </div>
-                    </details>
-
-                    <p class="mini">概観は <a href="index.html">トップページ</a>の Ethics &amp; Governance も参照。</p>
-                </div>
-            </section>
-
-            <section class="section" id="learning">
-                <h2 class="section-title">学習の順序（最短で全体像）</h2>
-                <p>“順番”は重要です。計測に強くても、検証基準が曖昧だと前進を主張できません。逆に、検証だけが立派でも、復元対象が定義できていなければ実装が迷走します。</p>
-                <ol>
-                    <li><strong>全体像：</strong>WBEロードマップ（大枠の工程・ボトルネック）</li>
-                    <li><strong>計測：</strong>どの解像度で何が失われるか（EEG/fMRI/侵襲/コネクトーム）</li>
-                    <li><strong>再構成：</strong>逆問題→状態推定→生成モデル→介入予測、の順で“反証可能な復元”へ</li>
-                    <li><strong>実装：</strong>モデル粒度を固定し、実行基盤差の影響を監査可能にする</li>
-                    <li><strong>検証：</strong>評価スイートと反証条件を先に書き、更新履歴を残す</li>
-                </ol>
-            </section>
-
-            <section class="section" id="eegflow">
-                <h2 class="section-title">EEGFlow の現在地（このリポジトリでやること）</h2>
-                <p>EEGFlow は現時点では<strong>概念実装</strong>ですが、「計測→再構成→検証」のミニマムな流れを、EEG中心に試せる形を目指しています。</p>
-                <ul>
-                    <li><a href="https://github.com/yasufumi-nakata/eegflow/blob/main/eegflow/01_preprocess.py" target="_blank">01_preprocess.py</a>：前処理（アーチファクト・品質管理の雛形）</li>
-                    <li><a href="https://github.com/yasufumi-nakata/eegflow/blob/main/eegflow/02_source_imaging.py" target="_blank">02_source_imaging.py</a>：ソース推定（逆問題の入口）</li>
-                    <li><a href="https://github.com/yasufumi-nakata/eegflow/blob/main/eegflow/03_causal_modeling.py" target="_blank">03_causal_modeling.py</a>：因果/生成モデル（予測・介入へ）</li>
-                </ul>
-                <p class="mini">※「解析手順の再現性」や「データ標準（BIDS）」は、WBE以前に研究として必須の足場です。</p>
-            </section>
-
-            <section class="section" id="sources">
-                <h2 class="section-title">参考（Issue #42 関連文献）</h2>
-                <ol>
-                    <li>Cea, I., et al. (2024). Only consciousness truly exists? Two problems for IIT 4.0's ontology. <em>Frontiers in Psychology</em>.</li>
-                    <li>Doerig, A., et al. (2019). The unfolding argument: Why diagrams of information flow cannot tell us anything about consciousness. <em>Consciousness and Cognition</em>.</li>
-                    <li>Laukkonen, R. E., et al. (2025). A beautiful loop: An active inference theory of consciousness. <em>Psychological Review</em>.</li>
-                    <li>Markram, H., et al. (2015). Reconstruction and Simulation of Neocortical Microcircuitry. <em>Cell</em>.</li>
-                    <li>U.S. Senate. (2025). <em>MIND Act of 2025 (S.2925)</em>.</li>
-                    <li>Sandberg, A., &amp; Bostrom, N. (2008). <em>Whole Brain Emulation: A Roadmap</em>.</li>
-                    <li>Yamakawa, H., et al. (2024). Technology roadmap toward the completion of whole-brain architecture...</li>
-                </ol>
-            </section>
-
-        </article>
-
-        <aside class="sidebar-column">
-
-            <div class="key-points">
-                <h4>このページで得るもの</h4>
-                <ul>
-                    <li>問いの木（詳細版）を1ページに集約</li>
-                    <li>前進の定義（クレーム階段）の固定</li>
-                    <li>折りたたみ＋絞り込みで探索</li>
-                    <li>学習の順序（迷子にならない）</li>
-                    <li>最初に当たる一次/総説リンク</li>
-                </ul>
-            </div>
-
-            <div class="sidebar-box">
-                <h4>Filter</h4>
-                <input id="qaSearch" class="filter-input" type="text" placeholder="キーワードで絞り込み（例: EEG, 因果, 本人性）">
-                <p class="small" style="margin-top: 10px;">カテゴリ</p>
-                <div class="checkbox-grid" style="margin-top: 8px;">
-                    <label><input type="checkbox" name="qaTag" value="meta">Meta</label>
-                    <label><input type="checkbox" name="qaTag" value="measurement">Measurement</label>
-                    <label><input type="checkbox" name="qaTag" value="reconstruction">Reconstruction</label>
-                    <label><input type="checkbox" name="qaTag" value="implementation">Implementation</label>
-                    <label><input type="checkbox" name="qaTag" value="verification">Verification</label>
-                    <label><input type="checkbox" name="qaTag" value="deployment">Deployment</label>
-                </div>
-                <div class="controls" style="margin-top: 12px;">
-                    <button class="btn" id="qaClear" type="button">Clear</button>
-                    <button class="btn" id="qaExpandAll" type="button">Expand</button>
-                    <button class="btn" id="qaCollapseAll" type="button">Collapse</button>
-                </div>
-                <p class="small" id="qaStatus" style="margin-top: 10px;">表示: -/-</p>
-            </div>
-
-            <div class="sidebar-box">
-                <h4>On this page</h4>
-                <ul>
-                    <li><a href="#howto">How to Use</a></li>
-                    <li><a href="#definition">前進の定義</a></li>
-                    <li><a href="#tree">問いの木</a></li>
-                    <li><a href="#measurement">計測</a></li>
-                    <li><a href="#reconstruction">再構成</a></li>
-                    <li><a href="#implementation">実装</a></li>
-                    <li><a href="#verification">検証</a></li>
-                    <li><a href="#deployment">社会実装</a></li>
-                    <li><a href="#learning">学習の順序</a></li>
-                    <li><a href="#eegflow">EEGFlow の現在地</a></li>
-                    <li><a href="#sources">参考文献</a></li>
-                </ul>
-            </div>
-
-            <div class="sidebar-box">
-                <h4>Links</h4>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="mind_uploading_papers.html">Paper Collection</a></li>
-                    <li><a href="brain_science_dictionary.html">Brain Science Dictionary</a></li>
-                    <li><a href="https://github.com/yasufumi-nakata/eegflow" target="_blank">GitHub Repository</a></li>
-                    <li><a href="issue.md">Contribute Guide</a></li>
-                </ul>
-            </div>
-
-        </aside>
-    </main>
-
-    <footer>
-        <p>EEGFlow · 技術ロードマップ（暫定）</p>
-    </footer>
-
-    <script>
-        (function () {
-            var searchInput = document.getElementById('qaSearch');
-            var clearBtn = document.getElementById('qaClear');
-            var expandBtn = document.getElementById('qaExpandAll');
-            var collapseBtn = document.getElementById('qaCollapseAll');
-            var statusEl = document.getElementById('qaStatus');
-
-            if (!searchInput || !statusEl) return;
-
-            function toArray(nodeList) {
-                return Array.prototype.slice.call(nodeList || []);
-            }
-
-            var checkboxes = toArray(document.querySelectorAll('input[name="qaTag"]'));
-            var qas = toArray(document.querySelectorAll('details.qa'));
-            var groups = toArray(document.querySelectorAll('[data-qa-group]'));
-
-            function selectedTags() {
-                return checkboxes
-                    .filter(function (cb) { return cb.checked; })
-                    .map(function (cb) { return cb.value; });
-            }
-
-            function matchesTags(qaTags, selected) {
-                if (!selected.length) return true;
-                for (var i = 0; i < selected.length; i++) {
-                    if (qaTags.indexOf(selected[i]) !== -1) return true;
-                }
-                return false;
-            }
-
-            function matchesText(text, query) {
-                if (!query) return true;
-                return text.indexOf(query) !== -1;
-            }
-
-            function applyFilters() {
-                var query = (searchInput.value || '').trim().toLowerCase();
-                var selected = selectedTags();
-                var visibleCount = 0;
-
-                qas.forEach(function (qa) {
-                    var qaTags = (qa.getAttribute('data-tags') || '')
-                        .split(/\s+/)
-                        .filter(Boolean);
-                    var text = (qa.textContent || '').toLowerCase();
-                    var show = matchesTags(qaTags, selected) && matchesText(text, query);
-                    qa.style.display = show ? '' : 'none';
-                    if (show) visibleCount += 1;
-                });
-
-                groups.forEach(function (g) {
-                    var groupQas = toArray(g.querySelectorAll('details.qa'));
-                    var anyVisible = groupQas.some(function (qa) { return qa.style.display !== 'none'; });
-                    g.style.display = anyVisible ? '' : 'none';
-                });
-
-                statusEl.textContent = '表示: ' + visibleCount + '/' + qas.length;
-            }
-
-            function visibleQAs() {
-                return qas.filter(function (qa) { return qa.style.display !== 'none'; });
-            }
-
-            searchInput.addEventListener('input', applyFilters);
-            checkboxes.forEach(function (cb) { cb.addEventListener('change', applyFilters); });
-
-            if (clearBtn) {
-                clearBtn.addEventListener('click', function () {
-                    searchInput.value = '';
-                    checkboxes.forEach(function (cb) { cb.checked = false; });
-                    applyFilters();
-                    searchInput.focus();
-                });
-            }
-
-            if (expandBtn) {
-                expandBtn.addEventListener('click', function () {
-                    visibleQAs().forEach(function (d) { d.open = true; });
-                });
-            }
-
-            if (collapseBtn) {
-                collapseBtn.addEventListener('click', function () {
-                    visibleQAs().forEach(function (d) { d.open = false; });
-                });
-            }
-
-            applyFilters();
-        })();
-    </script>
+<main class="main-container">
+<article class="content-column">
+
+<div class="abstract-box">
+<h2>Summary</h2>
+<p>このページは「攻略（= 学習ロードマップ）」の<strong>技術編</strong>です。マインドアップロード（Whole Brain Emulation, WBE）を“実現した”と言い張るには、①何を測り、②何を復元し、③どの基盤で実行し、④どう検証するか、を<strong>先に定義</strong>しなければ議論が散ります。ここでは最小の骨格として、<strong>計測 → 再構成 → 実装 → 検証 → 社会実装</strong>の問いの木で整理し、各ノードで「学ぶべき概念」「前進と言える条件（暫定）」「次に必要なデータ」をまとめます。</p>
+</div>
+
+<section class="section" id="howto">
+<h2 class="section-title">How to Use</h2>
+<p>このページは“本”ではなく、研究全体像の<strong>地図</strong>です。まず「問いの木」を通読し、次に「学習の順序」に沿って各ノードを深掘りしてください。重要な運用ルールは2つだけです：<strong>(1) 出典リンクを残す</strong>、<strong>(2) 暫定（不確実性）を明示する</strong>。</p>
+</section>
+
+<section class="section" id="definition" data-qa-group>
+<h2 class="section-title">前進の定義（最初に固定する）</h2>
+<p>“前進”を主張するには、<strong>何を再現できたら勝ちか</strong>（＝評価軸）と、<strong>何が起きたら負けか</strong>（＝反証条件）を先に決める必要があります。ここでは、その前提となる問いを3つに圧縮します。</p>
+
+<details class="qa" data-tags="meta">
+<summary>
+<span class="qa-id">P0</span>
+<span class="qa-title">「マインドアップロード」の操作的定義は？（何を再現する？）</span>
+<span class="qa-tags"><span class="tag">META</span></span>
+</summary>
+<div class="qa-body">
+<p><strong>問い：</strong>“mind uploading / WBE”を、このサイトでは何として扱うか？（外から見える行動だけか／内部の因果構造か／本人性や意識まで含むか）</p>
+<p><strong>分岐（例）：</strong>(A) 行動・機能の再現（ブラックボックス同等） / (B) 神経ダイナミクスの再現（中身重視） / (C) 本人性・主観の継続まで含む（強い主張）</p>
+<p><strong>反証可能性：</strong>定義が曖昧なまま成果を語ると、評価が“後付け”になり、進捗の比較が不可能になる</p>
+<p><strong>次に必要：</strong>このページ内の「検証」ノードで、(A)(B)(C)それぞれの<strong>測れる基準</strong>と<strong>負け条件</strong>を確定する</p>
+</div>
+</details>
+
+<details class="qa" data-tags="meta">
+<summary>
+<span class="qa-id">P1</span>
+<span class="qa-title">主張レベル（クレーム階段）をどこに置く？</span>
+<span class="qa-tags"><span class="tag">META</span></span>
+</summary>
+<div class="qa-body">
+<p><strong>問い：</strong>研究成果を、どのレベルまで到達したら「前進」と言うか？</p>
+<ul>
+<li><strong>L0：</strong>データ収集と再現可能な解析（標準化・品質管理・追試可能性）</li>
+<li><strong>L1：</strong>デコーディング/エンコーディング（神経→行動/刺激、または逆の予測）</li>
+<li><strong>L2：</strong>生成モデル（未学習条件でも神経/行動を外挿し、介入予測ができる）</li>
+<li><strong>L3：</strong>閉ループ実装（リアルタイムに環境と相互作用して安定に動く）</li>
+<li><strong>L4：</strong>本人性の主張（記憶・価値観・学習の連続性を、事前登録した基準で評価）</li>
+<li><strong>L5：</strong>社会実装（権利・安全・ガバナンスが技術と同時に成立）</li>
+</ul>
+<p><strong>反証可能性：</strong>“L1の達成”を“L4の達成”のように語る（スコープのすり替え）を防ぐ</p>
+<p><strong>次に必要：</strong>各レベルの「必要データ」「必要モデル」「評価スイート」を、このページで対応づける</p>
+</div>
+</details>
+
+<details class="qa" data-tags="meta">
+<summary>
+<span class="qa-id">P2</span>
+<span class="qa-title">最低限の成果物は何？（データ・コード・評価・監査）</span>
+<span class="qa-tags"><span class="tag">META</span></span>
+</summary>
+<div class="qa-body">
+<p><strong>問い：</strong>“前進”を再現可能にするため、何を必ず残すべきか？</p>
+<ul>
+<li><strong>データ：</strong>生データ＋メタデータ（BIDS等）＋匿名化/同意ログ</li>
+<li><strong>コード：</strong>固定バージョンの解析パイプライン（環境・依存関係込み）</li>
+<li><strong>評価：</strong>事前登録した指標・テスト・ベースライン比較</li>
+<li><strong>監査：</strong>モデル差分、再現実行ログ、失敗例（ネガティブ結果）</li>
+</ul>
+<p><strong>反証可能性：</strong>成果の“見せ方”だけが先行し、検証不能な主張になる</p>
+<p><strong>次に必要：</strong>EEGFlowでまずL0-L2の成果物テンプレ（データ構造・評価スクリプト）を固める</p>
+</div>
+</details>
+</section>
+
+<section class="section" id="tree">
+<h2 class="section-title">問いの木（詳細版：1ページに集約）</h2>
+<p>以下に、技術面の問いを「計測→再構成→実装→検証→社会実装」に分解して、<strong>1ページに全部</strong>まとめます。各項目は折りたたみ（クリックで展開）です。</p>
+
+<div class="node" id="measurement" data-qa-group>
+<div class="node-kicker">1. Measurement</div>
+<h3>計測：どの解像度が必要？</h3>
+<p class="mini"><strong>中心問い：</strong>「脳の何を、どの時空間解像度で取れば、“復元すべき対象”が一意に近づくか？」</p>
+
+<details class="qa" data-tags="measurement">
+<summary>
+<span class="qa-id">M0</span>
+<span class="qa-title">計測の前提：in vivo / 侵襲 / 破壊スキャンのどれを想定？</span>
+<span class="qa-tags"><span class="tag">MEASUREMENT</span></span>
+</summary>
+<div class="qa-body">
+<p><strong>問い：</strong>倫理・安全・スケールの制約を踏まえ、どの計測路線で“何を目指すか”を固定する。</p>
+<p><strong>分岐（例）：</strong>(A) 非侵襲（EEG/MEG/fMRI）でモデルを鍛える / (B) 侵襲（ECoG/深部/動物）で因果推論を強化 / (C) 破壊的・超高解像度で構造を取る（将来像）</p>
+<p><strong>反証条件：</strong>目的（復元対象）が定義されないまま、計測だけ“高級化”しても同定不能になる</p>
+<p><strong>次に必要：</strong>このページ内のR0（復元対象）とV0（検証基準）を先に確定する</p>
+</div>
+</details>
+
+<details class="qa" data-tags="measurement">
+<summary>
+<span class="qa-id">M1</span>
+<span class="qa-title">観測変数：電気（EEG）/血流（fMRI）/スパイク（侵襲）で何が違う？</span>
+<span class="qa-tags"><span class="tag">EEG</span><span class="tag">FMRI</span></span>
+</summary>
+<div class="qa-body">
+<p><strong>問い：</strong>観測が変わると「復元できる対象（構造/状態/学習則）」が変わる。どの観測で何が識別可能か？</p>
+<p><strong>論点：</strong>時系列の速さ・空間分解能・因果介入のしやすさ・全脳カバレッジ・コスト</p>
+<p><strong>次に必要：</strong>同一の課題・同一個体で、マルチモーダル同時計測（可能な範囲）＋位置合わせ（M5）</p>
+</div>
+</details>
+
+<details class="qa" data-tags="measurement">
+<summary>
+<span class="qa-id">M2</span>
+<span class="qa-title">時間解像度の下限：どの時間スケールを“保存”すべき？</span>
+<span class="qa-tags"><span class="tag">RESOLUTION</span></span>
+</summary>
+<div class="qa-body">
+<p><strong>問い：</strong>認知・学習・意識に関係する現象を壊さないために、必要な時間分解能はどこか？</p>
+<ul>
+<li><strong>候補：</strong>ms（スパイク/位相）・10-100ms（結合ダイナミクス）・秒（状態遷移）・分〜日（学習/可塑性）</li>
+<li><strong>反証条件：</strong>粗すぎる時間分解能で、介入応答や閉ループ制御が再現できない</li>
+<li><strong>次に必要：</strong>閉ループ課題（I1）で許容遅延を測り、必要サンプリングを逆算する</li>
+</ul>
+</div>
+</details>
+
+<details class="qa" data-tags="measurement">
+<summary>
+<span class="qa-id">M3</span>
+<span class="qa-title">空間解像度の下限：どの粒度（領域/カラム/ニューロン/シナプス）を目指す？</span>
+<span class="qa-tags"><span class="tag">RESOLUTION</span></span>
+</summary>
+<div class="qa-body">
+<p><strong>問い：</strong>“本人の心的機能”に必要な情報が、どの空間粒度に宿ると仮定するか？</p>
+<p><strong>分岐（例）：</strong>(A) 領域間結合＋状態で十分 / (B) 局所回路まで必要 / (C) シナプス結合まで必要</p>
+<p><strong>次に必要：</strong>仮定(A)(B)(C)ごとに、観測可能性（M1）と計算可能性（I3）を評価する</p>
+</div>
+</details>
+
+<details class="qa" data-tags="measurement">
+<summary>
+<span class="qa-id">M4</span>
+<span class="qa-title">全脳カバレッジ：どこまで“全体”を測る必要がある？</span>
+<span class="qa-tags"><span class="tag">COVERAGE</span></span>
+</summary>
+<div class="qa-body">
+<p><strong>問い：</strong>限られた計測で、“境界（何が主体に含まれるか）”をどう扱うか？</p>
+<p><strong>次に必要：</strong>検証（V0）で「主体の境界」を操作的に置き、必要領域と不要領域を明文化する</p>
+</div>
+</details>
+
+<details class="qa" data-tags="measurement">
+<summary>
+<span class="qa-id">M5</span>
+<span class="qa-title">マルチモーダル統合：位置合わせ（MRI/EEG/fMRI）をどう保証する？</span>
+<span class="qa-tags"><span class="tag">FUSION</span><span class="tag">MRI</span></span>
+</summary>
+<div class="qa-body">
+<p><strong>問い：</strong>異なる計測は座標系・遅延・ノイズ構造が違う。統合の誤差が“学習したい信号”を壊していないか？</p>
+<p><strong>反証条件：</strong>位置合わせ誤差で再構成（R2）が不安定になり、再現性（P2）が落ちる</p>
+<p><strong>次に必要：</strong>同一データに対し複数パイプラインで一致するか（解析差分監査）</p>
+</div>
+</details>
+
+<details class="qa" data-tags="measurement">
+<summary>
+<span class="qa-id">M6</span>
+<span class="qa-title">介入・刺激：同定可能性を上げる“実験デザイン”は？</span>
+<span class="qa-tags"><span class="tag">CAUSAL</span></span>
+</summary>
+<div class="qa-body">
+<p><strong>問い：</strong>受動観測だけでは同定できない時、どんな介入（刺激/課題/環境変化）を入れると識別可能性が上がるか？</p>
+<p><strong>次に必要：</strong>モデル（R4）側で「この介入があると識別できる」という設計逆算をする</p>
+</div>
+</details>
+
+<details class="qa" data-tags="measurement">
+<summary>
+<span class="qa-id">M7</span>
+<span class="qa-title">縦断：日内/日間変動に対して“本人性特徴”は安定か？</span>
+<span class="qa-tags"><span class="tag">LONGITUDINAL</span></span>
+</summary>
+<div class="qa-body">
+<p><strong>問い：</strong>同一個体でも脳状態は揺れる。どの特徴が“本人らしさ”として頑健か？</p>
+<p><strong>反証条件：</strong>再現できるのが“その日の状態”に限られ、長期の同一性評価（V5）ができない</p>
+<p><strong>次に必要：</strong>同一被験者の複数セッションで、事前定義の同定スコア（V1）を追跡する</p>
+</div>
+</details>
+
+<details class="qa" data-tags="measurement">
+<summary>
+<span class="qa-id">M8</span>
+<span class="qa-title">品質管理：アーチファクト/欠損/ノイズをどう“定量化”して扱う？</span>
+<span class="qa-tags"><span class="tag">QC</span></span>
+</summary>
+<div class="qa-body">
+<p><strong>問い：</strong>“良いデータ”の定義を事前に置き、除外・補完・重み付けを透明にする。</p>
+<p><strong>次に必要：</strong>EEGFlowの前処理（`eegflow/01_preprocess.py`）に、QC指標とログ出力を組み込む</p>
+</div>
+</details>
+
+<details class="qa" data-tags="measurement">
+<summary>
+<span class="qa-id">M9</span>
+<span class="qa-title">標準化：BIDS/メタデータで“他人が追試できる”形にするには？</span>
+<span class="qa-tags"><span class="tag">BIDS</span></span>
+</summary>
+<div class="qa-body">
+<p><strong>問い：</strong>データが共有可能でも、メタデータが薄いと追試できない。何を最低限メタデータ化するか？</p>
+<p><strong>次に必要：</strong>プロトコル（課題・機器・前処理）を機械可読で残す（P2）</p>
+</div>
+</details>
+</div>
+
+<div class="node" id="reconstruction" data-qa-group>
+<div class="node-kicker">2. Reconstruction</div>
+<h3>再構成：何を復元する？（回路 / 状態 / 学習則）</h3>
+<p class="mini"><strong>中心問い：</strong>「“本人の心的機能”に必要なのは、構造（結合）・動的状態（活動）・学習則（可塑性）のどこまでか？」</p>
+
+<details class="qa" data-tags="reconstruction">
+<summary>
+<span class="qa-id">R0</span>
+<span class="qa-title">復元対象の最小セットは？（構造/状態/学習則）</span>
+<span class="qa-tags"><span class="tag">RECONSTRUCTION</span></span>
+</summary>
+<div class="qa-body">
+<p><strong>問い：</strong>どこまで復元すれば、検証（V0）で勝ちに行けるか？</p>
+<p><strong>分岐（例）：</strong>(A) 構造＋状態（固定） / (B) 構造＋状態＋一部可塑性 / (C) 可塑性まで含むフル動的</p>
+<p><strong>反証条件：</strong>(A)で閉ループ学習（I5）が再現不能、(B)(C)で同定不能・過学習で破綻</p>
+<p><strong>次に必要：</strong>同定可能性（R7）と計算可能性（I3）を同時に評価する</p>
+</div>
+</details>
+
+<details class="qa" data-tags="reconstruction">
+<summary>
+<span class="qa-id">R1</span>
+<span class="qa-title">逆問題：観測（M1）から何が一意に推定できる？</span>
+<span class="qa-tags"><span class="tag">INVERSE</span><span class="tag">BAYES</span></span>
+</summary>
+<div class="qa-body">
+<p><strong>問い：</strong>EEGソース推定のような逆問題は、解が一意に定まらない“不良設定問題（ill-posed problem）”である。点推定（ひとつの解を求めること）は科学的に誤解を招く可能性があるため、本プロジェクトでは<strong>ベイズ的アプローチを原則とする</strong>。</p>
+<p><strong>方針：</strong>解を事後確率分布として捉え、その不確実性自体を後段の解析（因果モデリング等）に引き継ぐ。これにより、推定の曖昧さを考慮した、より頑健な結論を目指す。</p>
+<p><strong>次に必要：</strong>推定結果の不確実性（R7）と、仮定（事前分布）を変えた時の感度分析（監査ログ）</p>
+</div>
+</details>
+
+<details class="qa" data-tags="reconstruction">
+<summary>
+<span class="qa-id">R2</span>
+<span class="qa-title">ソース推定：EEGから“どの表現”の脳活動が欲しい？</span>
+<span class="qa-tags"><span class="tag">EEG</span><span class="tag">ESI</span><span class="tag">BAYES</span></span>
+</summary>
+<div class="qa-body">
+<p><strong>問い：</strong>EEGソース推定は「領域×時間」の表現を得やすいが、ニューロン/シナプスは直接は見えない。復元対象（R0）に合わせて表現を選ぶ。</p>
+<p><strong>課題：</strong>従来は「高密度EEG(128ch)化」が推奨されてきたが、近年の研究はチャンネル数だけでは不良設定性（ill-posedness）を解決できないことを示している。特に、dSPMのような点推定法は不確実性を無視してしまう。</p>
+<p><strong>階層的ベイズモデル（Hierarchical Bayesian Modeling）の導入：</strong>Feng et al. (2025)<sup><a href="#ref-78">[78]</a></sup>のフレームワークに基づき、信号源のスパース性と滑らかさを同時に扱う階層的ベイズモデルを採用し、経験ベイズによる超パラメータの推定プロセスを透明化します。さらに、モンテカルロ法による感度分析を行い、入力データのノイズや頭部モデルの誤差が推定結果に与える影響を定量化する。推定された脳活動マップには必ず<strong>信頼区間（Credible Intervals）</strong>または不確実性マップを付随させるプロトコルを必須化する。</p>
+<p><strong>次に必要：</strong>`eegflow/02_source_imaging.py` に変分ベイズ（Variational Bayesian）アプローチを実装し、不確実性を考慮したソース再構成を行う</p>
+</div>
+</details>
+
+<details class="qa" data-tags="reconstruction">
+<summary>
+<span class="qa-id">R3</span>
+<span class="qa-title">状態推定：潜在状態（latent）をどう定義し、どう検証する？</span>
+<span class="qa-tags"><span class="tag">STATE</span></span>
+</summary>
+<div class="qa-body">
+<p><strong>問い：</strong>観測ノイズと真の状態を分離し、状態が“予測に効いている”ことを示せるか？</p>
+<p><strong>反証条件：</strong>潜在状態がデータの圧縮にしかなっておらず、介入予測（R4）に寄与しない</p>
+<p><strong>次に必要：</strong>未学習条件での外挿と、介入応答の予測誤差を評価する</p>
+</div>
+</details>
+
+<details class="qa" data-tags="reconstruction">
+<summary>
+<span class="qa-id">R4</span>
+<span class="qa-title">因果：介入に対する反応を予測できるモデルは何？</span>
+<span class="qa-tags"><span class="tag">CAUSAL</span><span class="tag">MULTI-SCALE</span></span>
+</summary>
+<div class="qa-body">
+<p><strong>問い：</strong>相関の当てはめではなく、刺激/操作に対して“どう変わるはずか”を言えるか？ デコーディング（相関）からエミュレーション（因果）への飛躍をどう埋めるか？</p>
+<p><strong>方針：</strong>脳を能動的推論（Active Inference）を行う生成モデルとして定式化する。Laukkonen et al. (2025) の<strong>「反実仮想的等価性（Counterfactual Equivalence）」</strong>を指標とするが、EEG単体では解像度が不足する。</p>
+<p><strong>改善策（Multi-scale）：</strong>EEGから推定されたマクロな因果構造を、ミクロな神経回路シミュレーション（Blue Brain Project等）の制約条件として用いる<strong>「マルチスケール因果モデリング」</strong>を採用する。トップダウン（EEG）とボトムアップ（回路）の統合により、シナプスレベルの可塑性を反映した頑健なモデルを目指す。</p>
+<p><strong>次に必要：</strong>介入前提の評価タスク（V2）と、マルチスケール統合パイプラインの設計</p>
+</div>
+</details>
+
+<details class="qa" data-tags="reconstruction">
+<summary>
+<span class="qa-id">R5</span>
+<span class="qa-title">可塑性：学習則を“入れる/入れない”の境界は？</span>
+<span class="qa-tags"><span class="tag">PLASTICITY</span></span>
+</summary>
+<div class="qa-body">
+<p><strong>問い：</strong>長期の本人性（V5）を扱うなら、学習（更新）を入れざるを得ない。だが更新を入れると検証が難しくなる。</p>
+<p><strong>分岐（例）：</strong>(A) 学習しない（固定モデル） / (B) 制限付きで学習（安全な更新） / (C) 学習則まで推定</p>
+<p><strong>次に必要：</strong>学習を入れた時のドリフト監視（V4）と、安全策（I8）</p>
+</div>
+</details>
+
+<details class="qa" data-tags="reconstruction">
+<summary>
+<span class="qa-id">R6</span>
+<span class="qa-title">個人化：一般モデル＋個人パラメータ？それとも完全に個人別？</span>
+<span class="qa-tags"><span class="tag">PERSONALIZATION</span></span>
+</summary>
+<div class="qa-body">
+<p><strong>問い：</strong>“本人性”を議論するなら個人化は避けられない。一方で、個人化しすぎると過学習と再現性が壊れる。</p>
+<p><strong>次に必要：</strong>個人内/個人間の性能分解（どこが個人差か）を評価指標に入れる</p>
+</div>
+</details>
+
+<details class="qa" data-tags="reconstruction">
+<summary>
+<span class="qa-id">R7</span>
+<span class="qa-title">同定可能性：推定は“唯一解”に近づく？不確実性は？</span>
+<span class="qa-tags"><span class="tag">IDENTIFIABILITY</span></span>
+</summary>
+<div class="qa-body">
+<p><strong>問い：</strong>同じ観測を説明する別モデルが無数にある時、どの仮定で絞り込むか？不確実性をどう表現するか？</p>
+<p><strong>反証条件：</strong>小さな前処理差で結果が大きく変わり、再現（P2）できない</p>
+<p><strong>次に必要：</strong>事前分布/正則化を明示し、感度分析で“頑健な結論だけ”採用する</p>
+</div>
+</details>
+
+<details class="qa" data-tags="reconstruction">
+<summary>
+<span class="qa-id">R8</span>
+<span class="qa-title">圧縮：どの情報を捨てても“検証基準”は保てる？</span>
+<span class="qa-tags"><span class="tag">COMPRESSION</span></span>
+</summary>
+<div class="qa-body">
+<p><strong>問い：</strong>WBEは“全部保存”が理想だが現実的でない。評価（V0）を満たす最小表現を探せるか？</p>
+<p><strong>次に必要：</strong>圧縮率を変えて、評価スイートの性能がどこで崩れるかを測る</p>
+</div>
+</details>
+
+<details class="qa" data-tags="reconstruction">
+<summary>
+<span class="qa-id">R9</span>
+<span class="qa-title">監査：モデル差分と失敗例を“残す仕組み”は？</span>
+<span class="qa-tags"><span class="tag">AUDIT</span></span>
+</summary>
+<div class="qa-body">
+<p><strong>問い：</strong>更新のたびに結論が変わる領域だからこそ、差分・失敗・ネガティブ結果を残す必要がある。</p>
+<p><strong>次に必要：</strong>モデル/データ/評価のバージョンを結びつけ、再実行で再現できる形にする（P2）</p>
+</div>
+</details>
+</div>
+
+<div class="node" id="implementation" data-qa-group>
+<div class="node-kicker">3. Implementation</div>
+<h3>実装：どの基盤で？リアルタイム性は？</h3>
+<p class="mini"><strong>中心問い：</strong>「復元したモデルを、どの計算基盤（HPC/クラウド/ニューロモーフィック/ハイブリッド）で動かすか？閉ループ（身体・環境）に入れられるか？」</p>
+
+<details class="qa" data-tags="implementation">
+<summary>
+<span class="qa-id">I0</span>
+<span class="qa-title">実行基盤：汎用計算/GPU/HPC/ニューロモーフィックのどれを狙う？</span>
+<span class="qa-tags"><span class="tag">IMPLEMENTATION</span></span>
+</summary>
+<div class="qa-body">
+<p><strong>問い：</strong>復元対象（R0）に対して、実装基盤は“十分な忠実度”と“現実的コスト”を両立できるか？</p>
+<p><strong>次に必要：</strong>モデル粒度（I2）と計算量（I3）をセットで見積もる</p>
+</div>
+</details>
+
+<details class="qa" data-tags="implementation">
+<summary>
+<span class="qa-id">I1</span>
+<span class="qa-title">閉ループ：リアルタイムに何msの遅延まで許される？</span>
+<span class="qa-tags"><span class="tag">REALTIME</span></span>
+</summary>
+<div class="qa-body">
+<p><strong>問い：</strong>“本人らしさ”を評価するなら、環境との相互作用（遅延・ノイズ）が本質になる。許容遅延は課題依存。</p>
+<p><strong>次に必要：</strong>評価スイート（V1）側で、遅延/ノイズ耐性を測る項目を入れる</p>
+</div>
+</details>
+
+<details class="qa" data-tags="implementation">
+<summary>
+<span class="qa-id">I2</span>
+<span class="qa-title">モデル粒度：スパイキング/レート/抽象のどこで戦う？</span>
+<span class="qa-tags"><span class="tag">GRANULARITY</span></span>
+</summary>
+<div class="qa-body">
+<p><strong>問い：</strong>粒度を上げるほど忠実度は上がる（仮）一方で、同定（R7）と計算（I3）が壊れる。勝てる粒度はどこか？</p>
+<p><strong>次に必要：</strong>粒度ごとに「必要計測（M2/M3）」「必要計算（I3）」「通る評価（V0）」を対応づける</p>
+</div>
+</details>
+
+<details class="qa" data-tags="implementation">
+<summary>
+<span class="qa-id">I3</span>
+<span class="qa-title">計算量：メモリ/電力/並列化のボトルネックはどこ？</span>
+<span class="qa-tags"><span class="tag">SCALING</span></span>
+</summary>
+<div class="qa-body">
+<p><strong>問い：</strong>モデルの忠実度を上げると、計算資源が爆発する。どこで近似・圧縮（R8）するか？</p>
+<p><strong>次に必要：</strong>評価スイートの性能を落とさずに圧縮できる境界を測る</p>
+</div>
+</details>
+
+<details class="qa" data-tags="implementation">
+<summary>
+<span class="qa-id">I4</span>
+<span class="qa-title">初期化：モデルの“初期状態”をどう与える？</span>
+<span class="qa-tags"><span class="tag">INITIALIZATION</span></span>
+</summary>
+<div class="qa-body">
+<p><strong>問い：</strong>同じ構造でも初期状態が違えば振る舞いが違う。計測（M7）のどの時点を“スタート”にする？</p>
+<p><strong>反証条件：</strong>初期化の任意性で結果が揺れて、本人性評価（V5）が成立しない</p>
+<p><strong>次に必要：</strong>初期化手順を固定し、初期化に対する感度（頑健性）を測る</p>
+</div>
+</details>
+
+<details class="qa" data-tags="implementation">
+<summary>
+<span class="qa-id">I5</span>
+<span class="qa-title">学習とドリフト：学習させるなら“安全な更新”をどう設計する？</span>
+<span class="qa-tags"><span class="tag">LEARNING</span></span>
+</summary>
+<div class="qa-body">
+<p><strong>問い：</strong>学習（R5）を許すと、本人性（V5）と安全（D2）が絡む。更新をどう監視し、どこで止めるか？</p>
+<p><strong>次に必要：</strong>ドリフト指標（V4）＋キルスイッチ/隔離（I8）</p>
+</div>
+</details>
+
+<details class="qa" data-tags="implementation">
+<summary>
+<span class="qa-id">I6</span>
+<span class="qa-title">身体性：入力/出力（センサー/運動/言語）をどこまで持たせる？</span>
+<span class="qa-tags"><span class="tag">EMBODIMENT</span></span>
+</summary>
+<div class="qa-body">
+<p><strong>問い：</strong>閉ループ検証（I1/V1）には、環境と身体（あるいはその代替）が必要。最小の身体性は何か？</p>
+<p><strong>次に必要：</strong>環境（VR/ゲーム/対話）を固定し、同一条件で追試可能な評価を設計する</p>
+</div>
+</details>
+
+<details class="qa" data-tags="implementation">
+<summary>
+<span class="qa-id">I7</span>
+<span class="qa-title">再現性：実装差（言語/ハード）で結果が変わらない保証は？</span>
+<span class="qa-tags"><span class="tag">REPRO</span></span>
+</summary>
+<div class="qa-body">
+<p><strong>問い：</strong>“同じモデル”でも数値誤差や並列順序で挙動が変わる。どこまで決定性を要求するか？</p>
+<p><strong>次に必要：</strong>固定乱数・固定環境・差分テスト（P2）で、許容誤差内に収まるか検証する</p>
+</div>
+</details>
+
+<details class="qa" data-tags="implementation">
+<summary>
+<span class="qa-id">I8</span>
+<span class="qa-title">安全：隔離・監視・停止（containment）をどう作る？</span>
+<span class="qa-tags"><span class="tag">SAFETY</span></span>
+</summary>
+<div class="qa-body">
+<p><strong>問い：</strong>強い主張（P1のL4-L5）に近づくほど、安全・権利・倫理が技術要件になる。</p>
+<details class="qa" data-tags="implementation">
+<summary>
+<span class="qa-id">I9</span>
+<span class="qa-title">熱力学：デジタル基盤で“意識の物理的コスト”を払えるか？</span>
+<span class="qa-tags"><span class="tag">THERMODYNAMICS</span><span class="tag">IIT</span></span>
+</summary>
+<div class="qa-body">
+<p><strong>問い：</strong>現在のノイマン型コンピュータは物理的因果力を抽象化しているため、IIT 4.0の観点ではΦ=0（Unfolding Argument）となる可能性がある。これをどう解決するか？</p>
+<p><strong>方針：</strong>単なる機能的エミュレーションではなく、<strong>「熱力学的散逸構造の保存」</strong>を実装要件に加える。意識が非平衡開放系における散逸構造として維持されていることを踏まえ、Landauer's Principleに基づく情報処理の物理的コストや、「因果的力の密度（Causal Power Density）」が生物学的脳と同等のオーダーになるようなハードウェア（ニューロモーフィック等）または厳密なシミュレーション制約を課す。</p>
+<p><strong>次に必要：</strong>エミュレーションにおける熱力学的効率と因果密度を定量化する指標の導入</p>
+</div>
+</details>
+</div>
+
+<div class="node" id="verification" data-qa-group>
+<div class="node-kicker">4. Verification</div>
+<h3>検証：何を満たせば「同じ」と言える？</h3>
+<p class="mini"><strong>中心問い：</strong>「同一性/意識/行動のうち、技術的に検証可能な基準をどう定義し、反証条件をどう置くか？」</p>
+
+<details class="qa" data-tags="verification">
+<summary>
+<span class="qa-id">V0</span>
+<span class="qa-title">検証対象：同一性・意識・行動のどれを“工学的に”検証する？</span>
+<span class="qa-tags"><span class="tag">VERIFICATION</span></span>
+</summary>
+<div class="qa-body">
+<p><strong>問い：</strong>検証できない（測れない）ものを、検証したことにはできない。何を“測れる成功条件”に落とすか？</p>
+<p><strong>分岐（例）：</strong>(A) 行動・能力の同等性 / (B) 介入応答の同等性 / (C) 自伝的記憶や価値観の連続性（要注意）</p>
+<p><strong>次に必要：</strong>V1で評価スイートを事前登録し、P1のクレーム階段と対応づける</p>
+</div>
+</details>
+
+<details class="qa" data-tags="verification">
+<summary>
+<span class="qa-id">V1</span>
+<span class="qa-title">評価スイート：何を測れば“前進”と言える？（事前登録）</span>
+<span class="qa-tags"><span class="tag">BENCHMARK</span></span>
+</summary>
+<div class="qa-body">
+<p><strong>問い：</strong>タスク・指標・ベースライン・統計・失敗条件を事前に固定する。</p>
+<ul>
+<li><strong>行動：</strong>未学習タスクでの一般化、反応時間/誤り、学習曲線</li>
+<li><strong>神経：</strong>状態遷移、スペクトル特徴、ネットワーク指標、介入応答</li>
+<li><strong>本人性（暫定）：</strong>自伝的記憶の整合、選好の安定、自己モデルの一貫性</li>
+</ul>
+<p><strong>次に必要：</strong>まずはL0-L2向けに“小さくても追試可能”なスイートを作る</p>
+</div>
+</details>
+
+<details class="qa" data-tags="verification">
+<summary>
+<span class="qa-id">V2</span>
+<span class="qa-title">因果テスト：刺激/介入で“同じ反応”を出せるか？</span>
+<span class="qa-tags"><span class="tag">CAUSAL</span></span>
+</summary>
+<div class="qa-body">
+<p><strong>問い：</strong>相関一致は“似せた”だけでも達成できる。介入に対して一致するかが強い検証になる。</p>
+<p><strong>次に必要：</strong>M6（介入設計）とR4（因果モデル）を繋いだ評価項目を作る</p>
+</div>
+</details>
+
+<details class="qa" data-tags="verification">
+<summary>
+<span class="qa-id">V3</span>
+<span class="qa-title">一般化：分布外（OOD）でも“本人らしさ”は保てる？</span>
+<span class="qa-tags"><span class="tag">OOD</span></span>
+</summary>
+<div class="qa-body">
+<p><strong>問い：</strong>訓練と同じ条件でしか動かないなら、アップロードではなく“再生”に近い。新規状況での一貫性を測る。</p>
+<p><strong>次に必要：</strong>未学習課題・環境変化・ノイズ条件での性能劣化曲線を定義する</p>
+</div>
+</details>
+
+<details class="qa" data-tags="verification">
+<summary>
+<span class="qa-id">V4</span>
+<span class="qa-title">長期：学習・ドリフト・忘却の扱いをどう評価する？</span>
+<span class="qa-tags"><span class="tag">LONGITUDINAL</span></span>
+</summary>
+<div class="qa-body">
+<p><strong>問い：</strong>学習させるほど、元の本人と乖離する可能性も増える。変化を“許容”する範囲を定義する。</p>
+<p><strong>次に必要：</strong>セッション間の同一性指標（M7）＋更新ログ（P2）</p>
+</div>
+</details>
+
+<details class="qa" data-tags="verification">
+<summary>
+<span class="qa-id">V5</span>
+<span class="qa-title">本人性：心理的連続性を超えた“因果的同一性”とは？</span>
+<span class="qa-tags"><span class="tag">IDENTITY</span><span class="tag">LEGAL</span></span>
+</summary>
+<div class="qa-body">
+<p><strong>問い：</strong>記憶や性格の類似（心理的連続性）だけでは、コピーや模倣（LLM）と区別がつかない。より厳密な工学的定義が必要である。</p>
+<ul>
+<li><strong>新基準：因果的同一性（Causal Identity）：</strong>
+パーフィットの心理説を拡張し、システムの「未来の予測能力（Active Inference の精度）」が生物学的脳と統計的に区別不能であることを同一性の条件とする。
+</li>
+<li><strong>指標：</strong>反実仮想シミュレーション（Counterfactual Simulation）を実行し、生体脳とエミュレーションの間の<strong>「分岐構造の一致（Branching Structure Correspondence）」</strong>を確認する。具体的には、予測分布のKLダイバージェンス等が閾値以下であることを判定する。</li>
+<li><strong>反証条件：</strong>記憶は持っているが、新規環境に対する適応・予測パターンがオリジナルと乖離する（ゾンビ/模倣者）</li>
+<li><strong>次に必要：</strong>V8の「模倣との区別」テストにおいて、予測精度をコア指標に据える</li>
+</ul>                        </div>
+</details>
+
+<details class="qa" data-tags="verification">
+<summary>
+<span class="qa-id">V6</span>
+<span class="qa-title">意識：理論に依存した予測を、どこまで“検証可能”にできる？</span>
+<span class="qa-tags"><span class="tag">CONSCIOUSNESS</span></span>
+</summary>
+<div class="qa-body">
+<p><strong>問い：</strong>意識は直接観測できない。理論（IIT/GNWT等）が出す“予測の差”を、計測（M）と介入（M6/V2）で検証できるか？</p>
+<ul>
+<li><strong>Cogitate Consortium (2025) の衝撃:</strong> IITとGNWTの直接対決検証（Adversarial Collaboration）の結果、両理論の予測は主要な点（IITの持続的ガンマ同期は完全に支持されず、GNWTの前頭葉イグニッションは課題依存性が高い）で棄却または限定的であることが示された (Nature 2025)。これは、現行の主要理論がいずれも意識の神経相関（NCC）を完全には説明しきれていないことを意味する。</li>
+<li><strong>方針転換: 理論から経験的指標へ:</strong> 特定の理論を教条的に支持するのではなく、<strong>予測符号化（Predictive Coding）</strong>や<strong>自由エネルギー原理（Friston, 2010）</strong>、あるいは高次理論（HOT）の視点を実装要件に組み込み、PCI/PCI-STのような経験的に検証された指標を工学的目標として採用する。</li>
+<li><strong>Unfolding Argumentへの応答:</strong> IIT批判である「Unfolding Argument」に対し、単なる機能的等価性を超えた要件を課す。具体的には、「因果構造の保存（Causal Structure Preservation）」を、<strong>マルコフブランケット（Markov Blanket）</strong>の境界条件（デジタルエミュレーションと生物学的基盤の間の情報交換における帯域幅と遅延）の保存として厳密に定義し、その計算論的閾値を検証プロセスに組み込む。</li>
+</ul>
+<p><strong>注意：</strong>理論はあくまで仮説生成のツールとして扱い、実装（WBE）の成否は「特定の理論に適合するか」ではなく、V2（因果）やV5（本人性）といった実証的指標で判断する。</p>
+</div>
+</details>
+
+<details class="qa" data-tags="verification">
+<summary>
+<span class="qa-id">V7</span>
+<span class="qa-title">コピー/分岐：複数インスタンスが走ったら“本人”はどう扱う？</span>
+<span class="qa-tags"><span class="tag">BRANCHING</span></span>
+</summary>
+<div class="qa-body">
+<p><strong>問い：</strong>工学的には複製が容易。検証の設計も、分岐を前提にしないと破綻する。</p>
+<p><strong>次に必要：</strong>個体ID・版管理（P2）を、本人性評価（V5）と結びつける</p>
+</div>
+</details>
+
+<details class="qa" data-tags="verification">
+<summary>
+<span class="qa-id">V8</span>
+<span class="qa-title">LLM/模倣との区別：外形が似ていても“中身が違う”をどう判定する？</span>
+<span class="qa-tags"><span class="tag">DISAMBIGUATION</span></span>
+</summary>
+<div class="qa-body">
+<p><strong>問い：</strong>会話や報告は模倣されやすい。区別には、介入応答・閉ループ・内部状態の整合が必要になる。</p>
+<p><strong>次に必要：</strong>V2（介入）＋I1（閉ループ）＋R4（因果）を組み合わせた“逃げ道の少ない”評価</p>
+</div>
+</details>
+
+<details class="qa" data-tags="verification">
+<summary>
+<span class="qa-id">V9</span>
+<span class="qa-title">追試：第三者が“同じ結論”に到達できる設計になっている？</span>
+<span class="qa-tags"><span class="tag">REPRO</span></span>
+</summary>
+<div class="qa-body">
+<p><strong>問い：</strong>研究の最短距離は“他人が追試できる”状態を作ること。本人性の議論ほど追試性が重要になる。</p>
+<p><strong>次に必要：</strong>P2（成果物）を満たす範囲で、データ/コード/評価を公開可能に整える</p>
+</div>
+</details>
+
+<details class="qa" data-tags="verification">
+<summary>
+<span class="qa-id">V10</span>
+<span class="qa-title">モデル距離：生体脳とエミュレーションの“近さ”をどう測る？</span>
+<span class="qa-tags"><span class="tag">METRIC</span><span class="tag">MATH</span></span>
+</summary>
+<div class="qa-body">
+<p><strong>問い：</strong>パラメータ空間での単純なユークリッド距離は、モデルの機能的な振る舞いの違いを反映しないことが多い。より本質的な「振る舞いの近さ」をどう定量化するか？</p>
+<p><strong>方針：</strong>情報幾何学的指標 (Information Geometric Metrics) を採用する。特に<strong>フィッシャー情報量 (Fisher Information)</strong> は、パラメータの変化が確率分布（モデルの出力）に与える影響の大きさを表すため、これを計量（Metric）として用いることで、生物学的脳とエミュレートされた生成モデルの間の機能的な距離を厳密に定義できる。</p>
+<p><strong>次に必要：</strong>Fisher Information Metric (FIM) を用いたモデル間距離の計算モジュールを実装し、V2（因果テスト）の定量評価に組み込む</p>
+</div>
+</details>
+</div>
+
+<div class="node" id="deployment" data-qa-group>
+<div class="node-kicker">5. Deployment</div>
+<h3>社会実装：権利・安全・ガバナンス</h3>
+<p class="mini">技術は単独では成立しません。強い主張（本人性/意識）に近づくほど、権利・安全・ガバナンスが技術要件になります。</p>
+
+<details class="qa" data-tags="deployment">
+<summary>
+<span class="qa-id">D0</span>
+<span class="qa-title">権利主体：MIND Act 2025を超えて、誰を“人”と認めるか？</span>
+<span class="qa-tags"><span class="tag">DEPLOYMENT</span><span class="tag">LAW</span></span>
+</summary>
+<div class="qa-body">
+<p><strong>問い：</strong>MIND Act 2025はプライバシー保護に留まる。デジタルマインドが権利主体となる根拠は何か？</p>
+<p><strong>方針：</strong>心理的連続性ではなく、V5で定義した<strong>「因果的同一性（Causal Identity）」</strong>を法的地位の根拠とする。予測能力と因果的力が生物学的脳と同等であると証明されたエージェントに対し、Neurorights（精神的完全性）および「編集されない権利」を付与する。単なるコピーや模倣（LLM）は権利主体とみなさない。</p>
+<p><strong>次に必要：</strong>本人性評価（V5）の証明書と、権利付与の法的手続きのリンク</p>
+</div>
+</details>
+
+<details class="qa" data-tags="deployment">
+<summary>
+<span class="qa-id">D1</span>
+<span class="qa-title">データガバナンス：同意・共有・削除をどう実装する？</span>
+<span class="qa-tags"><span class="tag">GOVERNANCE</span></span>
+</summary>
+<div class="qa-body">
+<p><strong>問い：</strong>神経データは再識別リスクが高い。データの扱いは“倫理”ではなく“仕様”に落とす。</p>
+<p><strong>次に必要：</strong>アクセス制御、匿名化、同意のバージョン管理（P2）</p>
+</div>
+</details>
+
+<details class="qa" data-tags="deployment">
+<summary>
+<span class="qa-id">D2</span>
+<span class="qa-title">安全：悪用・乗っ取り・暴走への対策は？</span>
+<span class="qa-tags"><span class="tag">SAFETY</span></span>
+</summary>
+<div class="qa-body">
+<p><strong>問い：</strong>モデルが強くなるほど攻撃面も増える。隔離（I8）と監査（R9）が前提。</p>
+<p><strong>次に必要：</strong>安全目標（守りたいもの）と脅威モデル（想定攻撃）を文章化する</p>
+</div>
+</details>
+
+<details class="qa" data-tags="deployment">
+<summary>
+<span class="qa-id">D3</span>
+<span class="qa-title">責任：判断・行動の結果責任を誰が負う？</span>
+<span class="qa-tags"><span class="tag">ACCOUNTABILITY</span></span>
+</summary>
+<div class="qa-body">
+<p><strong>問い：</strong>研究・運用・当事者の責任境界が曖昧だと、実験すら成立しない。</p>
+<p><strong>次に必要：</strong>ログ・監査証跡（P2）と、運用ポリシーの明文化</p>
+</div>
+</details>
+
+<details class="qa" data-tags="deployment">
+<summary>
+<span class="qa-id">D4</span>
+<span class="qa-title">段階導入：どの順で社会に出す？（リスク低→高）</span>
+<span class="qa-tags"><span class="tag">STAGING</span></span>
+</summary>
+<div class="qa-body">
+<p><strong>問い：</strong>いきなり強い主張を目指すと事故る。低リスク用途から段階的に枠組みを固められるか？</p>
+<p><strong>次に必要：</strong>P1のクレーム階段と、ガバナンス成熟度を対応づける</p>
+</div>
+</details>
+
+<p class="mini">概観は <a href="index.html">トップページ</a>の Ethics &amp; Governance も参照。</p>
+</div>
+</section>
+
+<section class="section" id="learning">
+<h2 class="section-title">学習の順序（最短で全体像）</h2>
+<p>“順番”は重要です。計測に強くても、検証基準が曖昧だと前進を主張できません。逆に、検証だけが立派でも、復元対象が定義できていなければ実装が迷走します。</p>
+<ol>
+<li><strong>全体像：</strong>WBEロードマップ（大枠の工程・ボトルネック）</li>
+<li><strong>計測：</strong>どの解像度で何が失われるか（EEG/fMRI/侵襲/コネクトーム）</li>
+<li><strong>再構成：</strong>逆問題→状態推定→生成モデル→介入予測、の順で“反証可能な復元”へ</li>
+<li><strong>実装：</strong>モデル粒度を固定し、実行基盤差の影響を監査可能にする</li>
+<li><strong>検証：</strong>評価スイートと反証条件を先に書き、更新履歴を残す</li>
+</ol>
+</section>
+
+<section class="section" id="eegflow">
+<h2 class="section-title">EEGFlow の現在地（このリポジトリでやること）</h2>
+<p>EEGFlow は現時点では<strong>概念実装</strong>ですが、「計測→再構成→検証」のミニマムな流れを、EEG中心に試せる形を目指しています。</p>
+<ul>
+<li><a href="https://github.com/yasufumi-nakata/eegflow/blob/main/eegflow/01_preprocess.py" target="_blank">01_preprocess.py</a>：前処理（アーチファクト・品質管理の雛形）</li>
+<li><a href="https://github.com/yasufumi-nakata/eegflow/blob/main/eegflow/02_source_imaging.py" target="_blank">02_source_imaging.py</a>：ソース推定（逆問題の入口）</li>
+<li><a href="https://github.com/yasufumi-nakata/eegflow/blob/main/eegflow/03_causal_modeling.py" target="_blank">03_causal_modeling.py</a>：因果/生成モデル（予測・介入へ）</li>
+</ul>
+<p class="mini">※「解析手順の再現性」や「データ標準（BIDS）」は、WBE以前に研究として必須の足場です。</p>
+</section>
+
+<section class="section" id="sources">
+<h2 class="section-title">参考（Issue #42 関連文献）</h2>
+<ol>
+<li>Cea, I., et al. (2024). Only consciousness truly exists? Two problems for IIT 4.0's ontology. <em>Frontiers in Psychology</em>.</li>
+<li>Doerig, A., et al. (2019). The unfolding argument: Why diagrams of information flow cannot tell us anything about consciousness. <em>Consciousness and Cognition</em>.</li>
+<li>Laukkonen, R. E., et al. (2025). A beautiful loop: An active inference theory of consciousness. <em>Psychological Review</em>.</li>
+<li>Markram, H., et al. (2015). Reconstruction and Simulation of Neocortical Microcircuitry. <em>Cell</em>.</li>
+<li>U.S. Senate. (2025). <em>MIND Act of 2025 (S.2925)</em>.</li>
+<li>Sandberg, A., &amp; Bostrom, N. (2008). <em>Whole Brain Emulation: A Roadmap</em>.</li>
+<li>Yamakawa, H., et al. (2024). Technology roadmap toward the completion of whole-brain architecture...</li>
+</ol>
+</section>
+
+</article>
+
+<aside class="sidebar-column">
+
+<div class="key-points">
+<h4>このページで得るもの</h4>
+<ul>
+<li>問いの木（詳細版）を1ページに集約</li>
+<li>前進の定義（クレーム階段）の固定</li>
+<li>折りたたみ＋絞り込みで探索</li>
+<li>学習の順序（迷子にならない）</li>
+<li>最初に当たる一次/総説リンク</li>
+</ul>
+</div>
+
+<div class="sidebar-box">
+<h4>Filter</h4>
+<input id="qaSearch" class="filter-input" type="text" placeholder="キーワードで絞り込み（例: EEG, 因果, 本人性）">
+<p class="small" style="margin-top: 10px;">カテゴリ</p>
+<div class="checkbox-grid" style="margin-top: 8px;">
+<label><input type="checkbox" name="qaTag" value="meta">Meta</label>
+<label><input type="checkbox" name="qaTag" value="measurement">Measurement</label>
+<label><input type="checkbox" name="qaTag" value="reconstruction">Reconstruction</label>
+<label><input type="checkbox" name="qaTag" value="implementation">Implementation</label>
+<label><input type="checkbox" name="qaTag" value="verification">Verification</label>
+<label><input type="checkbox" name="qaTag" value="deployment">Deployment</label>
+</div>
+<div class="controls" style="margin-top: 12px;">
+<button class="btn" id="qaClear" type="button">Clear</button>
+<button class="btn" id="qaExpandAll" type="button">Expand</button>
+<button class="btn" id="qaCollapseAll" type="button">Collapse</button>
+</div>
+<p class="small" id="qaStatus" style="margin-top: 10px;">表示: -/-</p>
+</div>
+
+<div class="sidebar-box">
+<h4>On this page</h4>
+<ul>
+<li><a href="#howto">How to Use</a></li>
+<li><a href="#definition">前進の定義</a></li>
+<li><a href="#tree">問いの木</a></li>
+<li><a href="#measurement">計測</a></li>
+<li><a href="#reconstruction">再構成</a></li>
+<li><a href="#implementation">実装</a></li>
+<li><a href="#verification">検証</a></li>
+<li><a href="#deployment">社会実装</a></li>
+<li><a href="#learning">学習の順序</a></li>
+<li><a href="#eegflow">EEGFlow の現在地</a></li>
+<li><a href="#sources">参考文献</a></li>
+</ul>
+</div>
+
+<div class="sidebar-box">
+<h4>Links</h4>
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="mind_uploading_papers.html">Paper Collection</a></li>
+<li><a href="brain_science_dictionary.html">Brain Science Dictionary</a></li>
+<li><a href="https://github.com/yasufumi-nakata/eegflow" target="_blank">GitHub Repository</a></li>
+<li><a href="issue.md">Contribute Guide</a></li>
+</ul>
+</div>
+
+</aside>
+</main>
+
+<footer>
+<p>EEGFlow · 技術ロードマップ（暫定）</p>
+</footer>
+
+<script>
+(function () {
+var searchInput = document.getElementById('qaSearch');
+var clearBtn = document.getElementById('qaClear');
+var expandBtn = document.getElementById('qaExpandAll');
+var collapseBtn = document.getElementById('qaCollapseAll');
+var statusEl = document.getElementById('qaStatus');
+
+if (!searchInput || !statusEl) return;
+
+function toArray(nodeList) {
+return Array.prototype.slice.call(nodeList || []);
+}
+
+var checkboxes = toArray(document.querySelectorAll('input[name="qaTag"]'));
+var qas = toArray(document.querySelectorAll('details.qa'));
+var groups = toArray(document.querySelectorAll('[data-qa-group]'));
+
+function selectedTags() {
+return checkboxes
+.filter(function (cb) { return cb.checked; })
+.map(function (cb) { return cb.value; });
+}
+
+function matchesTags(qaTags, selected) {
+if (!selected.length) return true;
+for (var i = 0; i < selected.length; i++) {
+if (qaTags.indexOf(selected[i]) !== -1) return true;
+}
+return false;
+}
+
+function matchesText(text, query) {
+if (!query) return true;
+return text.indexOf(query) !== -1;
+}
+
+function applyFilters() {
+var query = (searchInput.value || '').trim().toLowerCase();
+var selected = selectedTags();
+var visibleCount = 0;
+
+qas.forEach(function (qa) {
+var qaTags = (qa.getAttribute('data-tags') || '')
+.split(/\s+/)
+.filter(Boolean);
+var text = (qa.textContent || '').toLowerCase();
+var show = matchesTags(qaTags, selected) && matchesText(text, query);
+qa.style.display = show ? '' : 'none';
+if (show) visibleCount += 1;
+});
+
+groups.forEach(function (g) {
+var groupQas = toArray(g.querySelectorAll('details.qa'));
+var anyVisible = groupQas.some(function (qa) { return qa.style.display !== 'none'; });
+g.style.display = anyVisible ? '' : 'none';
+});
+
+statusEl.textContent = '表示: ' + visibleCount + '/' + qas.length;
+}
+
+function visibleQAs() {
+return qas.filter(function (qa) { return qa.style.display !== 'none'; });
+}
+
+searchInput.addEventListener('input', applyFilters);
+checkboxes.forEach(function (cb) { cb.addEventListener('change', applyFilters); });
+
+if (clearBtn) {
+clearBtn.addEventListener('click', function () {
+searchInput.value = '';
+checkboxes.forEach(function (cb) { cb.checked = false; });
+applyFilters();
+searchInput.focus();
+});
+}
+
+if (expandBtn) {
+expandBtn.addEventListener('click', function () {
+visibleQAs().forEach(function (d) { d.open = true; });
+});
+}
+
+if (collapseBtn) {
+collapseBtn.addEventListener('click', function () {
+visibleQAs().forEach(function (d) { d.open = false; });
+});
+}
+
+applyFilters();
+})();
+</script>
