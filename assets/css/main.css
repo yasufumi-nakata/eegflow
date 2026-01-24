@@ -752,7 +752,241 @@ footer a {
     color: var(--color-text-secondary);
 }
 
-/* Papers Page Styles */
+/* Roadmap Q&A Styles */
+.qa {
+    background: var(--color-paper);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    margin-bottom: 12px;
+    overflow: hidden;
+}
+
+.qa summary {
+    padding: 14px 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--font-sans);
+    font-size: 14px;
+    list-style: none;
+    transition: background 0.2s;
+}
+
+.qa summary::-webkit-details-marker {
+    display: none;
+}
+
+.qa summary::before {
+    content: '+';
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--color-accent);
+    min-width: 16px;
+}
+
+.qa[open] summary::before {
+    content: '−';
+}
+
+.qa summary:hover {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.qa-id {
+    font-weight: 700;
+    color: var(--color-accent);
+    min-width: 28px;
+}
+
+.qa-title {
+    flex: 1;
+    color: var(--color-text);
+}
+
+.qa-tags {
+    display: flex;
+    gap: 6px;
+}
+
+.qa-tags .tag {
+    font-size: 9px;
+    padding: 2px 6px;
+    background: var(--color-border);
+    border-radius: 4px;
+    color: var(--color-text-muted);
+}
+
+.qa-body {
+    padding: 16px 20px;
+    border-top: 1px solid var(--color-border);
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.qa-body p {
+    margin-bottom: 12px;
+}
+
+.qa-body ul, .qa-body ol {
+    margin: 12px 0;
+    padding-left: 20px;
+}
+
+.qa-body li {
+    margin-bottom: 8px;
+}
+
+/* Node Styles */
+.node {
+    margin: 40px 0;
+    padding: 24px;
+    background: var(--color-paper);
+    border-radius: 12px;
+    border-left: 4px solid var(--color-accent);
+}
+
+.node-kicker {
+    font-family: var(--font-sans);
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-accent);
+    margin-bottom: 8px;
+}
+
+.node h3 {
+    font-size: 22px;
+    margin-bottom: 12px;
+}
+
+.node .mini {
+    font-size: 14px;
+    color: var(--color-text-secondary);
+    margin-bottom: 20px;
+}
+
+/* Filter Styles */
+.filter-input {
+    width: 100%;
+    padding: 10px 12px;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    color: var(--color-text);
+    font-size: 13px;
+}
+
+.filter-input:focus {
+    outline: none;
+    border-color: var(--color-accent);
+}
+
+.checkbox-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.checkbox-grid label {
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.checkbox-grid input[type="checkbox"] {
+    accent-color: var(--color-accent);
+}
+
+.controls {
+    display: flex;
+    gap: 8px;
+}
+
+.btn {
+    flex: 1;
+    padding: 8px 12px;
+    background: var(--color-border);
+    border: none;
+    border-radius: 6px;
+    color: var(--color-text);
+    font-size: 12px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn:hover {
+    background: var(--color-text-muted);
+}
+
+.small {
+    font-size: 11px;
+    color: var(--color-text-muted);
+}
+
+/* Papers List Styles (Simple) */
+.papers-list {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 30px 20px;
+}
+
+.papers-count {
+    font-family: var(--font-sans);
+    font-size: 14px;
+    color: var(--color-text-muted);
+    margin-bottom: 30px;
+}
+
+.year-heading {
+    font-family: var(--font-sans);
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--color-accent);
+    margin: 40px 0 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--color-border);
+}
+
+.paper-entry {
+    padding: 20px 0;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.paper-entry:last-child {
+    border-bottom: none;
+}
+
+.paper-title {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.4;
+    margin-bottom: 8px;
+    color: var(--color-text);
+}
+
+.paper-meta {
+    font-family: var(--font-sans);
+    font-size: 13px;
+    color: var(--color-text-muted);
+    margin-bottom: 8px;
+}
+
+.paper-meta a {
+    color: var(--color-link);
+}
+
+.paper-abstract {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+    margin: 0;
+}
+
+/* Legacy Papers Page Styles (deprecated) */
 .papers-page {
     --papers-primary: #818cf8;
     --papers-primary-dark: #6366f1;
