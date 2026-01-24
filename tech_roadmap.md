@@ -7,6 +7,7 @@ subtitle: "「何を解けたら前進か」を問いの木に分解し、読む
 last_updated: "2026-01-15"
 note: "暫定版（随時更新）"
 ---
+<!-- IMPORTANT: Do not delete or overwrite this information. It serves as the project's permanent knowledge base. -->
 
 <main class="main-container">
 <article class="content-column">
@@ -203,7 +204,7 @@ note: "暫定版（随時更新）"
 </summary>
 <div class="qa-body">
 <p><strong>問い：</strong>“良いデータ”の定義を事前に置き、除外・補完・重み付けを透明にする。</p>
-<p><strong>次に必要：</strong>EEGFlowの前処理（`eegflow/01_preprocess.py`）に、QC指標とログ出力を組み込む</p>
+<p><strong>次に必要：</strong>EEGFlowの前処理（`eegflow/01_preprocess.py`）に、QC指標とログ出力を組み込む <strong>(✅ Implemented in Issue #34)</strong></p>
 </div>
 </details>
 
@@ -262,7 +263,7 @@ note: "暫定版（随時更新）"
 <p><strong>問い：</strong>EEGソース推定は「領域×時間」の表現を得やすいが、ニューロン/シナプスは直接は見えない。復元対象（R0）に合わせて表現を選ぶ。</p>
 <p><strong>課題：</strong>従来は「高密度EEG(128ch)化」が推奨されてきたが、近年の研究はチャンネル数だけでは不良設定性（ill-posedness）を解決できないことを示している。特に、dSPMのような点推定法は不確実性を無視してしまう。</p>
 <p><strong>階層的ベイズモデル（Hierarchical Bayesian Modeling）の導入：</strong>Feng et al. (2025)<sup><a href="#ref-78">[78]</a></sup>のフレームワークに基づき、信号源のスパース性と滑らかさを同時に扱う階層的ベイズモデルを採用し、経験ベイズによる超パラメータの推定プロセスを透明化します。さらに、モンテカルロ法による感度分析を行い、入力データのノイズや頭部モデルの誤差が推定結果に与える影響を定量化する。推定された脳活動マップには必ず<strong>信頼区間（Credible Intervals）</strong>または不確実性マップを付随させるプロトコルを必須化する。</p>
-<p><strong>次に必要：</strong>`eegflow/02_source_imaging.py` に変分ベイズ（Variational Bayesian）アプローチを実装し、不確実性を考慮したソース再構成を行う</p>
+<p><strong>次に必要：</strong>`eegflow/02_source_imaging.py` に変分ベイズ（Variational Bayesian）アプローチを実装し、不確実性を考慮したソース再構成を行う <strong>(✅ Implemented in Issue #43)</strong></p>
 </div>
 </details>
 
@@ -656,8 +657,8 @@ note: "暫定版（随時更新）"
 <h2 class="section-title">EEGFlow の現在地（このリポジトリでやること）</h2>
 <p>EEGFlow は現時点では<strong>概念実装</strong>ですが、「計測→再構成→検証」のミニマムな流れを、EEG中心に試せる形を目指しています。</p>
 <ul>
-<li><a href="https://github.com/yasufumi-nakata/eegflow/blob/main/eegflow/01_preprocess.py" target="_blank">01_preprocess.py</a>：前処理（アーチファクト・品質管理の雛形）</li>
-<li><a href="https://github.com/yasufumi-nakata/eegflow/blob/main/eegflow/02_source_imaging.py" target="_blank">02_source_imaging.py</a>：ソース推定（逆問題の入口）</li>
+<li><a href="https://github.com/yasufumi-nakata/eegflow/blob/main/eegflow/01_preprocess.py" target="_blank">01_preprocess.py</a>：前処理（アーチファクト・品質管理の雛形） <strong>[QC Implemented]</strong></li>
+<li><a href="https://github.com/yasufumi-nakata/eegflow/blob/main/eegflow/02_source_imaging.py" target="_blank">02_source_imaging.py</a>：ソース推定（逆問題の入口） <strong>[Uncertainty Implemented]</strong></li>
 <li><a href="https://github.com/yasufumi-nakata/eegflow/blob/main/eegflow/03_causal_modeling.py" target="_blank">03_causal_modeling.py</a>：因果/生成モデル（予測・介入へ）</li>
 </ul>
 <p class="mini">※「解析手順の再現性」や「データ標準（BIDS）」は、WBE以前に研究として必須の足場です。</p>

@@ -7,6 +7,7 @@ subtitle: "Join the Research Community"
 author: Mind Uploading Research Project
 last_updated: "2026-01-25"
 ---
+<!-- IMPORTANT: Do not delete or overwrite this information. It serves as the project's permanent knowledge base. -->
 
 <main class="main-container">
 <article class="content-column">
@@ -63,6 +64,8 @@ EEGFlowプロジェクトは、マインドアップロードの理論的・技�
 <ul>
 <li><strong>Issue #10:</strong> MUとLLMシミュレーションの判別基準（予測不可能性・自己更新性・因果反応性）の3軸ベンチマーク確立</li>
 <li><strong>Issue #12:</strong> Boundary Problem に対するグリア・代謝指標を含むハイブリッド計測プロトコルの策定</li>
+<li><strong>Issue #34:</strong> M8品質管理 (QC) メトリクスのJSONログ出力機能の実装</li>
+<li><strong>Issue #43:</strong> R2経験的ベイズによるソース推定と不確実性定量化（信頼区間）の実装</li>
 </ul>
 </div>
 </section>
