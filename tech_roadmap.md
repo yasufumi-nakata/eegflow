@@ -96,7 +96,7 @@ note: "暫定版（随時更新）"
 <span class="qa-tags"><span class="tag">MEASUREMENT</span></span>
 </summary>
 <div class="qa-body">
-<p><strong>問い：</strong>倫理・安全・スケールの制約を踏まえ、どの計測路線で“何を目指すか”を固定する。</p>
+<p><strong>問い：</strong>安全・スケールの制約を踏まえ、どの計測路線で"何を目指すか"を固定する。</p>
 <p><strong>分岐（例）：</strong>(A) 非侵襲（EEG/MEG/fMRI）でモデルを鍛える / (B) 侵襲（ECoG/深部/動物）で因果推論を強化 / (C) 破壊的・超高解像度で構造を取る（将来像）</p>
 <p><strong>反証条件：</strong>目的（復元対象）が定義されないまま、計測だけ“高級化”しても同定不能になる</p>
 <p><strong>次に必要：</strong>このページ内のR0（復元対象）とV0（検証基準）を先に確定する</p>
@@ -465,7 +465,7 @@ note: "暫定版（随時更新）"
 <span class="qa-tags"><span class="tag">SAFETY</span></span>
 </summary>
 <div class="qa-body">
-<p><strong>問い：</strong>強い主張（P1のL4-L5）に近づくほど、安全・権利・倫理が技術要件になる。</p>
+<p><strong>問い：</strong>強い主張（P1のL4-L5）に近づくほど、安全が技術要件になる。</p>
 <details class="qa" data-tags="implementation">
 <summary>
 <span class="qa-id">I9</span>
@@ -636,74 +636,6 @@ note: "暫定版（随時更新）"
 </details>
 </div>
 
-<div class="node" id="deployment" data-qa-group>
-<div class="node-kicker">5. Deployment</div>
-<h3>社会実装：権利・安全・ガバナンス</h3>
-<p class="mini">技術は単独では成立しません。強い主張（本人性/意識）に近づくほど、権利・安全・ガバナンスが技術要件になります。</p>
-
-<details class="qa" data-tags="deployment">
-<summary>
-<span class="qa-id">D0</span>
-<span class="qa-title">権利主体：MIND Act 2025を超えて、誰を“人”と認めるか？</span>
-<span class="qa-tags"><span class="tag">DEPLOYMENT</span><span class="tag">LAW</span></span>
-</summary>
-<div class="qa-body">
-<p><strong>問い：</strong>MIND Act 2025はプライバシー保護に留まる。デジタルマインドが権利主体となる根拠は何か？</p>
-<p><strong>方針：</strong>心理的連続性ではなく、V5で定義した<strong>「因果的同一性（Causal Identity）」</strong>を法的地位の根拠とする。予測能力と因果的力が生物学的脳と同等であると証明されたエージェントに対し、Neurorights（精神的完全性）および「編集されない権利」を付与する。単なるコピーや模倣（LLM）は権利主体とみなさない。</p>
-<p><strong>次に必要：</strong>本人性評価（V5）の証明書と、権利付与の法的手続きのリンク</p>
-</div>
-</details>
-
-<details class="qa" data-tags="deployment">
-<summary>
-<span class="qa-id">D1</span>
-<span class="qa-title">データガバナンス：同意・共有・削除をどう実装する？</span>
-<span class="qa-tags"><span class="tag">GOVERNANCE</span></span>
-</summary>
-<div class="qa-body">
-<p><strong>問い：</strong>神経データは再識別リスクが高い。データの扱いは“倫理”ではなく“仕様”に落とす。</p>
-<p><strong>次に必要：</strong>アクセス制御、匿名化、同意のバージョン管理（P2）</p>
-</div>
-</details>
-
-<details class="qa" data-tags="deployment">
-<summary>
-<span class="qa-id">D2</span>
-<span class="qa-title">安全：悪用・乗っ取り・暴走への対策は？</span>
-<span class="qa-tags"><span class="tag">SAFETY</span></span>
-</summary>
-<div class="qa-body">
-<p><strong>問い：</strong>モデルが強くなるほど攻撃面も増える。隔離（I8）と監査（R9）が前提。</p>
-<p><strong>次に必要：</strong>安全目標（守りたいもの）と脅威モデル（想定攻撃）を文章化する</p>
-</div>
-</details>
-
-<details class="qa" data-tags="deployment">
-<summary>
-<span class="qa-id">D3</span>
-<span class="qa-title">責任：判断・行動の結果責任を誰が負う？</span>
-<span class="qa-tags"><span class="tag">ACCOUNTABILITY</span></span>
-</summary>
-<div class="qa-body">
-<p><strong>問い：</strong>研究・運用・当事者の責任境界が曖昧だと、実験すら成立しない。</p>
-<p><strong>次に必要：</strong>ログ・監査証跡（P2）と、運用ポリシーの明文化</p>
-</div>
-</details>
-
-<details class="qa" data-tags="deployment">
-<summary>
-<span class="qa-id">D4</span>
-<span class="qa-title">段階導入：どの順で社会に出す？（リスク低→高）</span>
-<span class="qa-tags"><span class="tag">STAGING</span></span>
-</summary>
-<div class="qa-body">
-<p><strong>問い：</strong>いきなり強い主張を目指すと事故る。低リスク用途から段階的に枠組みを固められるか？</p>
-<p><strong>次に必要：</strong>P1のクレーム階段と、ガバナンス成熟度を対応づける</p>
-</div>
-</details>
-
-<p class="mini">概観は <a href="index.html">トップページ</a>の Ethics &amp; Governance も参照。</p>
-</div>
 </section>
 
 <section class="section" id="learning">

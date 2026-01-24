@@ -18,11 +18,6 @@ subtitle: "過去10年間の主要論文"
 </div>
 
 <div class="paper-entry">
-<h3 class="paper-title">Legal Frameworks Governing Symbolic AI and Cognitive Heuristics in IoMT</h3>
-<p class="paper-meta">Singh H. · Scopus · <a href="https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=105024296853&origin=inward" target="_blank">Link</a></p>
-</div>
-
-<div class="paper-entry">
 <h3 class="paper-title">QUEERING THE TRANSHUMANIST IMAGINARIES OF LIFE AFTER DEATH: A Deconstructionist Approach to Cryonics and Mind-Uploading</h3>
 <p class="paper-meta">Pentaris P. · Scopus · <a href="https://doi.org/10.4324/9781003398486-40" target="_blank">DOI</a></p>
 </div>

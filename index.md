@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "マインドアップロード実現への道：技術・理論・倫理の統合アプローチ"
+title: "マインドアップロード実現への道：技術・理論の統合アプローチ"
 description: "マインドアップロード実現のための中核となるコアサイト。意識や記憶の交換・複製を可能とする技術の研究とコミュニティの中心的ハブ。"
 article_type: Perspective
 subtitle: "脳の情報処理を別の基盤で再現し、心的機能を移植・複製するという研究仮説の現状と展望"
@@ -20,8 +20,7 @@ href="#ref-2">[2]</a></sup><sup><a href="#ref-8">[8]</a></sup>。本稿ではこ
 4.0）<sup><a href="#ref-17">[17]</a></sup>やNTTによるMind Captioning技術<sup><a
 href="#ref-11">[11]</a></sup>といった最新トピックを、その理論的・技術的限界と共に論じる。IITが直面する計算量の問題や反証可能性に関する批判<sup><a
 href="#ref-1">[1]</a></sup>、デコーディング技術とエミュレーションの間の論理的飛躍など、楽観的な技術論では見過ごされがちな課題を直視し、より厳密で実現可能な研究計画を提案する。本稿は、これらの技術的・理論的課題に加え、デレク・パーフィットの心理的連続性理論<sup><a
-href="#ref-4">[4]</a></sup>に端を発する哲学的問題や、MIND Act of 2025<sup><a
-href="#ref-24">[24]</a></sup>に代表される法的・倫理的課題を統合的に概観し、今後の研究の方向性を提示する。</p>
+href="#ref-4">[4]</a></sup>に端を発する哲学的問題を概観し、今後の研究の方向性を提示する。</p>
 </div>
 
 <!-- Introduction -->
@@ -276,7 +275,6 @@ href="#ref-57">[57]</a></sup>。
 <th>Phase</th>
 <th>計測/データ</th>
 <th>解読/解析</th>
-<th>実装/倫理</th>
 </tr>
 </thead>
 <tbody>
@@ -284,19 +282,16 @@ href="#ref-57">[57]</a></sup>。
 <td>1</td>
 <td>HD-EEG/fMRI同時計測セットアップ、再現性データ収集。IHM採用とBIDSメタデータ拡充。</td>
 <td>Transformerベースのデコーディングに加え、LLM由来ノイズを定量化する「因果的整合性チェック」プロトコルの導入。</td>
-<td>MIND Act 2025準拠の同意プロセス、神経データプライバシー保護設計。</td>
 </tr>
 <tr>
 <td>2</td>
 <td>ESI信号分離とMEGデータの融合。逆問題制約条件の妥当性検証。</td>
 <td>Dynamic Causal Modeling (DCM) による部位間因果ダイナミクス解析と生成モデルの同定。</td>
-<td>心理的連続性理論に基づく「本人性」評価指標の操作的定義と、コピー問題への工学的アプローチの検討。</td>
 </tr>
 <tr>
 <td>3</td>
 <td>WBA統合フレームワークでの動作検証。非神経細胞（グリア）のモデル化。</td>
 <td><strong>神経学的チューリングテスト（Neural Turing Test）</strong>：オリジナルの脳とエミュレーションの「摂動応答（PCI）」の統計的同一性を検証。</td>
-<td>Neurorightsに基づく権利枠組み。デジタル遺産・継承権の法的整備と、段階的置換（Moravec's Argument）の実証的プロトコル策定。</td>
 </tr>
 </tbody>
 </table>
@@ -514,26 +509,6 @@ GNWT等）の正しさを証明すること自体を目的としない。むし�
 href="#ref-54">[54]</a></sup>。</p>
 <p>この研究の先に目指すのは、単一の論文に留まらない「ノーベル級のインパクト」を生み出す構造の設計である。具体的には、(1)臨床現場で利用可能な「世界標準の意識指標」を確立すること、(2)介入によって意識状態を操作し「相関から因果へ」と議論を深めること、そして(3)重症患者の診断支援など「臨床で実際に人を救う」こと、の3点を満たすことで、研究の価値を社会的に実証する。
 </p>
-</section>
-
-<!-- Legal and Ethical Framework -->
-<section class="section" id="legal-ethical">
-<h2 class="section-title">法的・倫理的枠組みの具体化：プライバシーから「精神的完全性」へ</h2>
-<p>本研究は技術開発と並行し、法的・倫理的課題の具体的な検討を不可分の一部と見なす。特に、「MIND Act of 2025」<sup><a href="#ref-24">[24]</a></sup>やNeurorights<sup><a href="#ref-27">[27]</a></sup>といった既存の枠組みを、WBE特有の課題に適用するために拡張する。</p>
-
-<h3>「精神的完全性（Mental Integrity）」とデータの編集限界</h3>
-<p>MIND Actは神経データのプライバシー保護に主眼を置いているが、WBEにおいてはデータそのものが「人格」となる。ここで重要になるのが、Neurorightsで提唱される<strong>「精神的完全性（Mental Integrity）」</strong>の権利である。</p>
-<p>本プロジェクトでは、以下の具体的施策を提言する：</p>
-<ul style="margin: 0; padding-left: 20px; list-style-type: disc; font-size: 14px; line-height: 1.6;">
- <li style="margin-bottom: 8px;"><strong>WBE研究におけるプライバシー許容値の策定：</strong>MIND Actが提起する「プライバシー損失の定量化」に対し、差分プライバシー（Differential Privacy）の<strong>ε（イプシロン）値</strong>について、WBE研究における許容可能な学術的コンセンサスの形成を目指す。</li>
- <li style="margin-bottom: 8px;"><strong>Identity Metricsの具体化：</strong>心理的連続性を検証するため、単なる記憶テストに加え、能動的推論における「価値関数」や「嗜好分布」の保存度を定量化する手法を導入する。</li>
- <li style="margin-bottom: 8px;"><strong>デジタル遺言と信託の枠組み：</strong>アップロードされた主体を「権利主体」として扱うため、スマートコントラクトを用いたデジタル信託（Digital Trust）の概念を導入し、既存の法体系（信託法・相続法）との接続を図る<sup><a href="#ref-75">[75]</a></sup>。</li>
-</ul>
-
-<h3>検証基準の欠如と「Neural Turing Test」</h3>
-<p>2025年のState of Brain Emulation Report<sup><a href="#ref-71">[71]</a></sup>でも指摘されている通り、現在の最大の問題は「アップロードが成功したか」を判定する客観的な基準の欠如である。
-<br>
-我々は、単なる対話によるチューリングテストを超えた、<strong>「神経チューリングテスト（Neural Turing Test）」</strong>のプロトコル策定を提案する。これは、(1)入力に対する神経応答の類似性（PCI等）、(2)行動の予測誤差、(3)主観的報告の整合性を多角的に評価するものであり、法的・倫理的な「本人性認定」の技術的基盤となるべきものである。</p>
 </section>
 
 <!-- About -->
@@ -772,7 +747,6 @@ href="https://arxiv.org/abs/2303.08896">arXiv</a></li>
 <li><a href="#research-program">Research Program</a></li>
 <li><a href="#llm-research-update">LLM Research Update</a></li>
 <li><a href="#eeg-consciousness-roadmap">EEG Consciousness Roadmap</a></li>
-<li><a href="#legal-ethical">Legal & Ethical</a></li>
 <li><a href="#about">About</a></li>
 <li><a href="#references">References</a></li>
 </ul>
@@ -800,7 +774,6 @@ href="https://arxiv.org/abs/2303.08896">arXiv</a></li>
 <li>脳活動の計測（HD-EEG, ESI, fMRI）</li>
 <li>計算論的神経科学（DCM, Transformer）</li>
 <li>意識の理論（IIT, 心理的連続性）</li>
-<li>倫理と法（Neurorights, MIND Act）</li>
 </ul>
 </div>
 
@@ -816,22 +789,6 @@ href="https://arxiv.org/abs/2303.08896">arXiv</a></li>
 <li>臨床（鎮静/麻酔/重症）への一般化を重視<sup><a href="#ref-55">[55]</a></sup></li>
 </ul>
 </li>
-</ul>
-</div>
-
-<div class="sidebar-box">
-<h4>Ethics & Governance</h4>
-<ul>
-<li>MIND Act of 2025 (主に神経データプライバシー) 準拠の検討</li>
-<li>Neurorights (Ienca & Andorno, 2017) の4つの権利を考慮<sup><a href="#ref-27">[27]</a></sup>:
-<ul style="padding-left: 15px; margin-top: 4px; list-style-type: '— ';">
-<li>精神的プライバシー権</li>
-<li>認知的自由権</li>
-<li>精神的完全性の権利</li>
-<li>心理的連続性の権利</li>
-</ul>
-</li>
-<li>デジタル人格権と、既存法（信託法、相続法）との整合性</li>
 </ul>
 </div>
 

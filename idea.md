@@ -1,3 +1,17 @@
+---
+layout: default
+title: "計算論的サイバー意識の実現に向けた理論的枠組み"
+description: "マインドアップロードを動的プロセスとして再定義する理論的基盤。プロセス哲学、IIT 4.0、予測符号化の統合アプローチ。"
+article_type: Framework
+subtitle: "静的構造から動的プロセスへ：意識の計算論的再構築"
+author: Mind Uploading Research Project
+last_updated: "2026-01-25"
+note: "理論的枠組み文書"
+---
+
+<main class="main-container">
+<article class="content-column">
+
 # Project EEGFlow: 計算論的サイバー意識の実現に向けた理論的枠組み
 
 ## 1. 認識論的転回：静的構造から動的プロセスへ
@@ -34,15 +48,11 @@
     *   **Slow Continuous Mind Uploading**: 生体脳とデジタル基盤の動的な同期プロセスとして再定義し、**Markov Blanket** を介して徐々に機能を移行する。
     *   **因果構造の保存**: 置換前後で、情報処理の因果的ダイナミクスが保存されることを数学的に保証する。
 
-## 6. 倫理と法：Neurorightsからデジタル人格権へ
-技術的実現は、新たな法的・倫理的枠組みを要求する。
-*   **課題**: 既存のプライバシー法（MIND Act 2025等）では、デジタル化された意識の「精神的完全性」を扱えない。
-*   **昇華されたアプローチ**:
-    *   **精神的完全性（Mental Integrity）**: 本人の同意なしに神経データの因果構造（人格の基盤）を編集・最適化されない権利を定義する。
-    *   **神経チューリングテスト**: アップロードの成否を判定する、客観的かつ多角的な検証プロトコルを策定する。
-
 ## 結論
 Project EEGFlowは、単なる技術的実験ではなく、人間存在の定義を計算論的に再構築する哲学的・科学的挑戦である。我々は、意識を「計算可能なプロセス」として捉え直し、その連続性を工学的に保証することで、マインドアップロードをSF的空想から科学的実証の対象へと昇華させる。
 
 ---
 *Note: This document serves as the theoretical core for the EEGFlow project, synthesizing insights from neuroscience, philosophy of mind, and computer engineering.*
+
+</article>
+</main>
