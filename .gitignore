@@ -24,7 +24,6 @@ automation/logs/
 automation/EegflowResolver.app/
 
 # Python
-*.py
 *.pyc
 __pycache__/
 

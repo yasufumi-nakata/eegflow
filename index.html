@@ -761,33 +761,24 @@
                         <div class="stage-number"></div>
                         <div class="stage-body">
                             <h4>1. 計測（Sensing）：脳活動の精密な読み取りと不確実性の定量化</h4>
-                            <p>高時間分解能を持つ脳波（EEG）はWBEの有力な入力信号ですが、その空間分解能の低さは根本的な課題です。脳波源推定（ESI）は、この課題を解決する計算論的アプローチですが、これは本質的に解が一意に定まらない<strong>不良設定問題（ill-posed problem）</strong>です<sup><a href="#ref-5">[5]</a></sup>。単一の「正解」を求める従来のアプローチは、解の非一意性を隠蔽するリスクがあります。</p>
-                            <p>この問題に対処するため、本プロジェクトでは以下の技術的要件を<strong>必須プロトコル</strong>として定義します。</p>
+                            <p>高時間分解能を持つ脳波（EEG）はWBEの有力な入力信号ですが、その空間分解能の低さは根本的な課題です。脳波源推定（ESI）は、この課題を解決する計算論的アプローチですが、これは本質的に解が一意に定まらない<strong>不良設定問題（ill-posed problem）</strong>です<sup><a href="#ref-5">[5]</a></sup>。WBEのような極めて高い信頼性が求められる工学的目標において、従来の最小ノルム法（MNE）やdSPMのような点推定（Point Estimate）に依存することは、推定誤差をシステム全体に伝播させるリスクがあります。</p>
+                            <p>この問題に対処するため、本プロジェクトでは<strong>経験ベイズ（Empirical Bayes）を用いた完全な事後分布の推定</strong>へと移行し、以下のプロトコルを標準採用します。</p>
                             <ul
                                 style="margin: 0; padding-left: 20px; list-style-type: disc; font-size: 14px; line-height: 1.6;">
                                 <li style="margin-bottom: 8px;">
-                                    <strong>ハードウェア要件の厳格化：</strong>最低でも<strong>128チャンネル以上の高密度脳波計（HD-EEG）</strong>の使用を必須とし、信号の空間的サンプリングレートを最大化します<sup><a
-                                            href="#ref-5">[5]</a></sup>。
+                                    <strong>Block-Champagne Frameworkの採用：</strong>個体差やノイズ特性をハイパーパラメータとしてデータ駆動で推定するため、<strong>Block-Champagne Framework</strong><sup><a href="#ref-78">[78]</a></sup>等の高度な階層的ベイズモデルを導入します。これにより、信号源のスパース性と滑らかさを同時に扱い、点推定ではなく分布として解を導出します。
                                 </li>
                                 <li style="margin-bottom: 8px;">
-                                    <strong>階層的ベイズモデル（Hierarchical Bayesian Modeling）の導入：</strong>信号源のスパース性と滑らかさを同時に扱う階層的ベイズモデルを採用し、超パラメータの推定プロセスを透明化します<sup><a href="#ref-73">[73]</a></sup>。
+                                    <strong>不確実性の可視化と信頼区間：</strong>推定された脳活動マップには、振幅だけでなくその<strong>「信頼区間（Credible Intervals）」</strong>を常に併記し、不確実性が高い領域を明示するプロトコルを必須化します。これは`eegflow/02_source_imaging.py`に実装されるべき中心機能です。
                                 </li>
                                 <li style="margin-bottom: 8px;">
-                                    <strong>順問題の不確実性と誤差伝播：</strong>頭部組織（特に頭蓋骨）の導電率や形状の誤差を確率変数として扱う<strong>順問題の不確実性モデリング</strong>を導入します。これを経験ベイズESIの枠組み<sup><a href="#ref-78">[78]</a></sup>に組み込み、最終的なソース活動の事後分布の分散（Variance）に誤差を伝播させることで、結果のロバスト性を真に評価可能にします。
-                                </li>
-                                <li style="margin-bottom: 8px;">
-                                    <strong>個別化頭部モデル（IHM）の必須化：</strong>各個人のMRIスキャンから生成された忠実な頭部モデル（頭部ボリュームコンダクタモデル）を用い、信号伝達の物理シミュレーション精度を保証します<sup><a
-                                            href="#ref-15">[15]</a></sup>。
-                                </li>
-                                <li style="margin-bottom: 8px;">
-                                    <strong>事後確率の可視化：</strong>推定された脳活動マップには、必ず信頼区間や不確実性マップを付与し、解釈の限界を明示します<sup><a
-                                            href="#ref-18">[18]</a></sup>。これは`eegflow/02_source_imaging.py`に実装されるべき中心機能です。
+                                    <strong>順問題の不確実性と誤差伝播：</strong>頭部組織（特に頭蓋骨）の導電率や形状の誤差を確率変数として扱う<strong>順問題の不確実性モデリング</strong><sup><a href="#ref-79">[79]</a></sup>を導入し、最終的なソース活動の事後分布に誤差を伝播させることで、結果のロバスト性を真に評価可能にします。
                                 </li>
                             </ul>
                             <div class="tag-list" style="margin-top: 12px;">
-                                <span class="tag">HD-EEG (128ch+)</span>
-                                <span class="tag">ESI (Ill-posed Problem)</span>
-                                <span class="tag">Bayesian Estimation</span>
+                                <span class="tag">Block-Champagne</span>
+                                <span class="tag">Empirical Bayes</span>
+                                <span class="tag">Credible Intervals</span>
                                 <span class="tag">Uncertainty Quantification</span>
                             </div>
                         </div>
@@ -795,55 +786,45 @@
                     <div class="stage-item">
                         <div class="stage-number"></div>
                         <div class="stage-body">
-                            <h4>2. 解読（Decoding）：相関から因果的エミュレーションへ</h4>
-                            <p>脳活動から心的内容を「読み出す」デコーディング（Decoding）は、WBEの必要条件ですが十分条件ではありません。現在のデコーディング技術（例：Mind Captioning<sup><a href="#ref-11">[11]</a></sup>）は、脳活動と外部刺激の<strong>「相関（Correlation）」</strong>に基づくマッピングであり、脳がどのようにその状態を生成したかという<strong>「因果（Causality）」</strong>を含んでいません。したがって、<strong>デコーディングの成功は、エミュレーションの成功を意味しません。</strong></p>
-                            <p>「解読」から「実装」への論理的飛躍を埋めるため、本プロジェクトは<strong>能動的推論（Active Inference）</strong><sup><a href="#ref-45">[45]</a></sup>の枠組みを採用します。</p>
+                            <h4>2. 解読（Decoding）：能動的推論と反実仮想的等価性の導入</h4>
+                            <p>「解読」のセクションにおいて、従来のデコーディング技術（Mind Captioning等）は「相関」に基づくマッピングに過ぎません。WBEにおける「本人性の保存」には、単なる入出力の模倣（哲学的ゾンビ）を超えた、<strong>因果構造の等価性</strong>の証明が必要です。</p>
+                            <p>本プロジェクトでは、Laukkonen et al. (2025) が提唱する<strong>「反実仮想的等価性（Counterfactual Equivalence）」</strong><sup><a href="#ref-76">[76]</a></sup>を、同一性検証の中心的指標として採用します。</p>
                             <ul
                                 style="margin: 0; padding-left: 20px; list-style-type: disc; font-size: 14px; line-height: 1.6;">
                                 <li style="margin-bottom: 8px;">
-                                    <strong>生成モデルの同定：</strong>脳を単なる入出力装置としてではなく、外界の潜在原因を推論する<strong>「生成モデル（Generative Model）」</strong>として捉えます。`03_causal_modeling.py`では、<strong>動的因果モデリング（DCM）</strong><sup><a href="#ref-13">[13]</a></sup>を用いて、観測データ（EEG）から、その背後にある有効結合性（Effective Connectivity）とシナプスパラメータを推定します。
+                                    <strong>能動的推論（Active Inference）の統合：</strong>脳を受動的なデコーダーではなく、環境に対して働きかける<strong>「能動的推論エージェント」</strong>としてモデル化します<sup><a href="#ref-80">[80]</a></sup>。`03_causal_modeling.py`では、観測データから生成モデル（Generative Model）を同定し、エージェントが外界の潜在原因をどう推論しているかを記述します。
                                 </li>
                                 <li style="margin-bottom: 8px;">
-                                    <strong>マルコフブランケットの設計：</strong>エミュレートされたシステムが自己を維持するためには、外界との境界条件である<strong>「マルコフブランケット」</strong><sup><a href="#ref-46">[46]</a></sup>を定義し、感覚入力（Sensory）と能動的状態（Active）の循環を閉じる必要があります。
+                                    <strong>反実仮想シミュレーション：</strong>「もし別の行動をとっていたら、どのような主観的経験が生じていたか」という分岐構造（Counterfactuals）が、生体脳とデジタルエミュレーション間で一致するかを検証するプロトコルを導入します。これにより、単なる「振る舞いのコピー」と「内的な因果構造の保存」を明確に区別します。
                                 </li>
                             </ul>
                             <div class="tag-list" style="margin-top: 12px;">
-                                <span class="tag">Correlation vs Causality</span>
+                                <span class="tag">Counterfactual Equivalence</span>
                                 <span class="tag">Active Inference</span>
-                                <span class="tag">Generative Model (DCM)</span>
-                                <span class="tag">Markov Blanket</span>
+                                <span class="tag">Generative Model</span>
+                                <span class="tag">Causal Structure</span>
                             </div>
                         </div>
                     </div>
                     <div class="stage-item">
                         <div class="stage-number"></div>
                         <div class="stage-body">
-                            <h4>3. 実装（Implementation）：段階的置換と本人性の保存</h4>
-                            <p>「スキャン＆コピー」方式が抱える「多重性の異議（Multiplicity Objection）」<sup><a
-                                        href="#ref-58">[58]</a></sup>を回避するため、本プロジェクトは<strong>「Slow Continuous Mind
-                                    Uploading（ゆっくりとした連続的アップロード）」</strong><sup><a
-                                        href="#ref-59">[59]</a></sup>を採用します。これは、生物学的脳の一部をBCIを介して人工ニューラルネットワークに段階的に置換し、意識の連続性を保ちながら移行する手法です。
-                            </p>
-                            <p>このプロセスにおける本人性検証は、以下の指標（Identity Metrics）によって評価されます。</p>
+                            <h4>3. 実装（Implementation）：IIT 4.0 の計算論的限界と代替指標の検討</h4>
+                            <p>本プロジェクトは従来、統合情報理論（IIT 4.0）を主要な理論基盤としてきましたが、その最大の問題である<strong>計算量の爆発（NP困難）</strong>と、デジタル基盤における「内因的実在」の定義の曖昧さに対処する必要があります。IITを教条的に支持するのではなく、2025年の<strong>「Adversarial Collaboration」の結果</strong><sup><a href="#ref-54">[54]</a></sup>を踏まえた、より現実的な実装指標へと拡張します。</p>
                             <ul
                                 style="margin: 0; padding-left: 20px; list-style-type: disc; font-size: 14px; line-height: 1.6;">
                                 <li style="margin-bottom: 8px;">
-                                    <strong>因果的等価性（Causal Equivalence）：</strong>脳の特定の摂動（例：TMSパルス）に対するエミュレーションの応答が、生物学的基盤の応答と、事前定義された許容誤差（ε）内で一致すること。
+                                    <strong>計算可能な近似指標の採用：</strong>Φ（統合情報量）の直接計算はシステム規模に対して指数関数的に困難です。そのため、<strong>摂動複雑性指標（PCI-ST）</strong>や、大規模言語モデル（LLM）等でも適用可能な<strong>低次元埋め込みによる近似手法</strong><sup><a href="#ref-81">[81]</a></sup>を工学的目標に据えます。
                                 </li>
                                 <li style="margin-bottom: 8px;">
-                                    <strong>学習則の保存（Conservation of Learning Rules）：</strong>新しい情報（例：新しい言語の単語）を学習した際の、エミュレーション内部のパラメータ更新則が、生物学的基盤のそれと統計的に同等であること。
-                                </li>
-                                <li style="margin-bottom: 8px;">
-                                    <strong>予測誤差最小化の効率性：</strong>エミュレーションが、予期せぬ感覚入力に対して、元の脳と同様の効率で予測誤差を最小化（＝驚きを抑制）できるか。
-                                    <sup><a href="#ref-45">[45]</a></sup>
+                                    <strong>熱力学的制約の導入：</strong>デジタルエミュレーションにおける意識の維持条件として、情報の散逸構造や熱力学的不可逆性を考慮した<strong>「物理的基盤の要件」</strong>を明文化します。意識が非平衡開放系における散逸構造として維持されていることを踏まえ、エミュレーションにおける因果的力の密度やエネルギー効率が生物学的制約を満たすかを検証します。
                                 </li>
                             </ul>
-                            <p>このアプローチは、意識を静的なパターンとしてコピーするのではなく、自己を維持し続ける生命的なプロセスとして「移行」させることを目指す、本プロジェクトの核心的理念です。</p>
                             <div class="tag-list" style="margin-top: 12px;">
-                                <span class="tag">Psychological Continuity</span>
-                                <span class="tag">Process Dynamics</span>
-                                <span class="tag">Predictive Coding</span>
-                                <span class="tag">本人性ベンチマーク</span>
+                                <span class="tag">IIT 4.0 Limits</span>
+                                <span class="tag">PCI-ST</span>
+                                <span class="tag">Thermodynamics</span>
+                                <span class="tag">Dissipative Structures</span>
                             </div>
                         </div>
                     </div>
@@ -1449,9 +1430,12 @@
                     <li id="ref-73" value="73">Koulouri, A. (2025). Bayesian model parameter learning in linear inverse problems. <em>Machine Learning: Science and Technology</em>.</li>
                     <li id="ref-74" value="74">Nzakuna, P. S., et al. (2025). Monte Carlo-based Strategy for Assessing the Impact of EEG Data Uncertainty. <em>IEEE Transactions on Instrumentation and Measurement</em>.</li>
                     <li id="ref-75" value="75">Zanichelli, N., et al. (2025). State of Brain Emulation Report 2025. <em>arXiv:2510.15745</em>.</li>
-                    <li id="ref-76" value="76">Laukkonen, R., et al. (2025). A beautiful loop: An active inference theory of consciousness. <em>Physics of Life Reviews</em>, 54, 100-115.</li>
+                    <li id="ref-76" value="76">Laukkonen, R., Friston, K., & Chandaria, S. (2025). A beautiful loop: An active inference theory of consciousness. <em>Neuroscience & Biobehavioral Reviews</em>.</li>
                     <li id="ref-77" value="77">Clark, A. (2013). The Mark of the Mental: In Search of the Markov Blanket. In: <em>The Mark of the Mental</em>. Oxford University Press.</li>
-                    <li id="ref-78" value="78">Feng, Y., et al. (2025). A novel Bayesian framework for Imaging E/MEG Source activities. <em>NeuroImage</em>.</li>
+                    <li id="ref-78" value="78">Feng, Z., et al. (2025). Block-Champagne: A Novel Bayesian Framework for Accurate EEG Source Imaging with Uncertainty Quantification. <em>NeuroImage</em>.</li>
+                    <li id="ref-79" value="79">Medani, T., et al. (2025). Forward and inverse solvers in multi-modal neuroimaging: Accounting for tissue conductivity uncertainties. <em>Frontiers in Human Neuroscience</em>.</li>
+                    <li id="ref-80" value="80">Hohwy, J., et al. (2025). On the Minimal Theory of Consciousness Implicit in Active Inference. <em>Journal of Mathematical Psychology</em>.</li>
+                    <li id="ref-81" value="81">Li, J., et al. (2025). Computational complexity reduction in Integrated Information Theory via low-dimensional embedding. <em>Chaos, Solitons & Fractals</em>.</li>
                 </ol>
             </section>
 
