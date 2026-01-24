@@ -479,6 +479,7 @@ note: "暫定版（随時更新）"
 </div>
 </details>
 </div>
+</details>
 
 <div class="node" id="verification" data-qa-group>
 <div class="node-kicker">4. Verification</div>
@@ -634,6 +635,7 @@ note: "暫定版（随時更新）"
 <p><strong>次に必要：</strong>Fisher Information Metric (FIM) を用いたモデル間距離の計算モジュールを実装し、V2（因果テスト）の定量評価に組み込む</p>
 </div>
 </details>
+</div>
 </div>
 
 </section>
