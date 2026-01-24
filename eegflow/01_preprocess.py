@@ -16,6 +16,7 @@
 import mne
 import mne_bids
 import os.path as op
+import json
 
 # --- Configuration ---
 BIDS_ROOT = 'bids_dataset'
@@ -99,6 +100,31 @@ def preprocess_subject(subject, session, task):
     report_path = output_path.copy().update(suffix='report', extension='.html')
     report.save(report_path.fpath, overwrite=True)
     print(f"品質管理レポートを生成しました: {report_path.fpath}")
+
+    # 6. QCメトリクスの保存 (JSON) - Issue #34/M8 Update
+    # tech_roadmap.html M8: Incorporate QC metrics and log output
+    qc_metrics = {
+        "subject": subject,
+        "session": session,
+        "task": task,
+        "processing_stage": "01_preprocess",
+        "n_channels": len(raw.ch_names),
+        "bads": raw.info['bads'],
+        "n_bads": len(raw.info['bads']),
+        "sfreq": raw.info['sfreq'],
+        "duration_sec": raw.times[-1],
+        "ica_excluded_components": [int(x) for x in ica.exclude], # Convert numpy ints to python ints
+        "filter_params": {
+            "l_freq": 1.0,
+            "h_freq": 40.0,
+            "notch": 60.0
+        }
+    }
+    
+    qc_path = output_path.copy().update(suffix='qc', extension='.json')
+    with open(qc_path.fpath, 'w') as f:
+        json.dump(qc_metrics, f, indent=2)
+    print(f"QCメトリクスを保存しました: {qc_path.fpath}")
 
 if __name__ == '__main__':
     # 実際には、ループで複数の被験者を処理することが多い
