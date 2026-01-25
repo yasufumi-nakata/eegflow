@@ -1,12 +1,12 @@
 ---
 layout: default
-title: "技術提案書47：神経工学的・計算論的神経科学的枠組みの拡張"
-description: "OPM-MEG、Team Flow、VR生体信号処理、IIT 4.0、Mind Captioningに関する技術的拡張提案"
+title: "戦略的技術拡張提案書：2025-2026年の神経科学研究における計算論的枠組みと標準化"
+description: "BIDS標準化、次世代信号処理(ASR/ZapLine)、ネットワーク神経科学(wPLI/STE)、LSL同期に関する技術的拡張提案"
 article_type: "Technical Proposal"
-subtitle: "Issue #48: eegflow.jp における技術的拡張に関する提案書"
+subtitle: "Issue #47: eegflow.jp 戦略的技術拡張提案書"
 author: "eegflow Project Contributor"
 last_updated: "2026-01-25"
-note: "Proposal (Accepted for Review)"
+note: "Proposal (Accepted)"
 ---
 
 <main class="main-container">
@@ -14,243 +14,308 @@ note: "Proposal (Accepted for Review)"
 
 <div class="abstract-box">
 <h2>Abstract</h2>
-<p>本報告書は、ウェブサイト eegflow.jp およびその運営者である中田康史氏の研究活動を対象に、その技術的内容を専門的見地から精査したものである。マインドアップロード（WBE）、Team Flow、EEG解析、VR生体信号処理を主要テーマとし、現状の技術スタックにおける「ミッシングリンク」—空間分解能、意識の定量化、意味論的粒度—を指摘する。OPM-MEGの導入、スパースモデリング、脳間因果性解析、ハイパー・ニューロフィードバック、IIT 4.0の近似計算、そして大規模脳波モデル（LEM）によるデコーディングといった具体的な技術提案を行い、WBE実現に向けた統合的ロードマップを提示する。</p>
+<p>
+本報告書は、eegflow.jp における技術的拡張提案を行うものである。
+2025-2026年の神経科学研究におけるパラダイムシフトを踏まえ、BIDSによるデータ構造の標準化、ASRやZapLineを用いた次世代信号前処理、ネットワーク神経科学（wPLI, STE）、およびLab Streaming Layer (LSL) によるマルチモーダル同期の実装を推奨する。
+これにより、eegflow.jp を単なる情報サイトから、世界標準の研究を行うための技術的インフラへと進化させることを目的とする。
+</p>
 </div>
 
 <section class="section" id="introduction">
-<h2 class="section-title">1. 序論：マインドアップロード研究の現状と技術的課題の所在</h2>
-<h3>1.1 背景と目的</h3>
-<p>対象サイトは、「マインドアップロード（Mind Uploading）」、「Team Flow（チームフロー）」、「EEG（脳波）解析」、および「VR（仮想現実）における生体信号処理」を主要な研究テーマとして掲げ、公開研究ノートや技術的な知見を発信しているプラットフォームである。マインドアップロード（Whole Brain Emulation: WBE）は、生物学的な脳の情報処理構造と意識のダイナミクスを、シリコンチップ等の非生物学的基盤上に移植・再現することを目指す壮大な工学的挑戦である。</p>
-<p>対象サイトでは、このプロセスを「計測（Measurement）」、「解読（Decoding）」、「実装（Implementation）」の3段階のフレームワークで整理し、統合情報理論（IIT 4.0）やNTTのMind Captioning技術といった最先端のトピックを取り上げている。これは、現代の神経科学と計算機科学の交差点に位置する野心的な試みであり、学術的にも極めて高い価値を有する。</p>
-<p>しかしながら、WBEの実現やTeam Flowの工学的応用（サービス化）を視野に入れた場合、現状の技術スタックにはいくつかの決定的な「ミッシングリンク」が存在する。特に、非侵襲計測における信号の空間分解能の物理的限界、意識の定量化における計算量的爆発（Computational Intractability）、およびデコーディングにおける意味論的粒度（Semantic Granularity）の不足は、克服すべき喫緊の課題である。</p>
-<p>本報告書では、法的・倫理的な議論を一切排除し、純粋に物理的・数理的・工学的な観点から、対象サイトの研究内容を補完・強化するための具体的な技術提案を行う。</p>
+<h2 class="section-title">1. 序論：神経科学研究のパラダイムシフト</h2>
+<h3>1.1 背景：2025年の脳波研究における技術的転換点</h3>
+<p>
+2025年から2026年にかけての神経科学、とりわけ非侵襲的脳機能計測（EEG/MEG）の分野は、過去数十年に類を見ない技術的変革の只中にある。かつては実験室内の制御された環境下で、事象関連電位（ERP）のピーク振幅や潜時を単変量的に解析することが主流であったが、現在ではその様相は劇的に変化している。研究の焦点は、静的な「活動の強さ」から、脳領域間の動的な「情報の流れ（コネクティビティ）」へと移行し、解析手法は線形信号処理から深層学習（Deep Learning）やリーマン幾何学を用いた非線形・多変量解析へと高度化している。
+</p>
+<p>
+加えて、計測環境自体も実験室を飛び出し、VR（仮想現実）空間や実社会環境（Real-world settings）での計測、いわゆるMobile Brain/Body Imaging（MoBI）が一般化しつつある。このような環境下では、従来のノイズ除去手法は通用せず、また、視線追跡装置やモーションキャプチャシステムといった異種デバイスとの厳密な時間同期が必須となる。
+</p>
 
-<h3>1.2 対象サイトの技術的構成要素の分析</h3>
-<p>対象サイトおよび関連する研究成果（GitHub、researchmap、学会発表予稿等）から抽出される主要な技術スタックは、以下の3つの柱に集約される。</p>
+<h3>1.2 本報告書の目的と提案の範囲</h3>
+<p>
+本報告書は、eegflow.jpという既存の脳波研究情報プラットフォームに対し、現役の研究者の視点から、そのコンテンツ価値を飛躍的に高めるための技術的提案を行うものである。現状のウェブサイトが提供する基礎的な情報に加え、最先端の研究現場で真に求められている「計算論的詳細」「標準化プロトコル」「数理的背景」を補完することを目的とする。
+</p>
+<div class="key-points">
+<h4>提案の5つの柱</h4>
 <ul>
-<li><strong>マインドアップロードの理論的支柱としてのIIT 4.0:</strong> 対象サイトは、意識のハードウェア独立性を前提とし、意識の有無やレベルを定量化する指標として、Giulio Tononiらが提唱する統合情報理論（Integrated Information Theory: IIT 4.0）を採用している。IITは、システムが意識を持つための必要十分条件として、情報の統合（Integration）と分化（Differentiation）を挙げており、これを数学的な量 $\Phi$（Phi）として定義する。</li>
-<li><strong>集団的脳状態としての「Team Flow」:</strong> 個人のフロー体験（Flow State）を超えた、集団特有の心理・生理状態である「Team Flow」に着目している。ここでは、ハイパースキャニング（複数人同時脳波計測）技術を用い、脳間同期（Inter-brain Synchrony）や情報の統合をバイオマーカーとして探索している。特に、左中側頭皮質（L-MTC）の役割や、脳間の情報統合（Global Inter-brain Integrated Information）が重要な鍵として提示されている。</li>
-<li><strong>VR空間における身体性と生体信号処理:</strong> VR酔い（Cybersickness）の客観的評価指標としてEEGを活用し、不快感の発生源を特定する研究を行っている。低周波数帯域（デルタ波、シータ波）のパワースペクトル解析や、空間的な脳波源推定（Source Imaging）を用いて、視覚入力と前庭感覚の不一致（Sensory Conflict）が脳活動に与える影響を定量化しようとしている。</li>
-</ul>
-<p>これらの研究テーマは相互に関連しており、最終的には「人間の意識や主観的体験（Qualia）をいかにして計測・モデル化し、デジタル空間で再現・操作するか」という一点に収束する。以下、各章において、これらのテーマに対する詳細な技術的精査と、追加すべき高度な科学的知見を論じる。</p>
-</section>
-
-<section class="section" id="measurement">
-<h2 class="section-title">2. マインドアップロードに向けた計測技術の高度化：EEGの限界とその突破</h2>
-<p>WBEの第一段階である「計測」において、対象サイトでは主にEEG（脳波）を用いている。EEGはミリ秒単位の高い時間分解能を持つ反面、空間分解能はセンチメートルオーダーに留まり、頭蓋骨による信号減衰と空間的ぼけ（Blurring）の影響を強く受ける物理的制約がある。WBEに求められる情報の粒度（Granularity）は、理想的にはシナプス結合や活動電位レベルであるが、非侵襲計測でこれにどこまで迫れるかが技術的な争点となる。</p>
-
-<h3>2.1 脳磁図（OPM-MEG）による空間分解能の革新</h3>
-<p>既存のEEG研究に加え、<strong>光ポンピング磁力計（Optically Pumped Magnetometers: OPM-MEG）</strong>を用いた計測技術の導入を強く提案する。これは、対象サイトの研究計画における「計測」フェーズの質を根本的に変革する可能性を持つ。</p>
-
-<h4>2.1.1 物理的原理と利点</h4>
-<p>従来のSQUID（超伝導量子干渉素子）を用いたMEGは、液体ヘリウムによる冷却が必要であり、巨大なデュワー（断熱容器）の中に固定されたセンサー群を用いるため、被験者の頭部とセンサーの間に数センチメートルのギャップが生じていた。これに対し、OPM-MEGはアルカリ金属原子（ルビジウムやセシウム等）の量子力学的性質（スピン偏極とラーモア歳差運動）を利用して磁場を計測する。OPMセンサーは常温で動作し、小型化が可能であるため、頭皮に直接密着させることができる。これにより、信号源（ニューロン電流）までの距離が短縮され、逆二乗則に従って信号強度が劇的に向上する。理論的には、従来のSQUID-MEGと比較して信号強度が約4〜5倍、空間分解能がミリメートル単位まで向上するとされている。</p>
-
-<h4>2.1.2 VR × OPM-MEGの統合</h4>
-<p>中田氏の研究テーマであるVRとEEGの融合において、OPM-MEGは決定的な役割を果たす。従来のMEGでは頭部固定が必須であったため、身体の動きを伴うVR体験中の計測は不可能であった。しかし、ウェアラブル型のOPM-MEGを用いれば、被験者がVR空間内で自由に頭を動かしながら、高精度の脳磁場計測を行うことが可能となる。
-これにより、VR酔いに関連する前庭皮質や、Team Flow時の微細な社会的神経回路の活動を、EEGよりも遥かに高い精度で同定できる。特に、EEGが苦手とする脳深部や、接線方向（Tangential）の電流源の特定において、OPM-MEGは強力な補完ツールとなる。</p>
-
-<h3>2.2 逆問題解析の数理的深化：スパースモデリングとベイズ推定</h3>
-<p>EEGやMEGの計測データから脳内の活動源を推定する「逆問題（Inverse Problem）」は、解が一意に定まらない「不良設定問題（Ill-posed problem）」である。対象サイトの研究において、この推定精度を向上させるための最新の数理的手法の導入が不可欠である。</p>
-
-<h4>2.2.1 スパースモデリング（Sparse Modeling）の適用</h4>
-<p>脳活動は空間的に局在しており、全脳が一斉に発火するわけではないという生物学的妥当性に基づき、L1ノルム正則化を用いたスパース推定（Lasso等）や、さらに洗練されたアルゴリズム（MxNE: Mixed-Norm Estimates）を導入すべきである。これにより、信号源の「広がり」を不当に平滑化することなく、ピンポイントでの活動源同定が可能となる。</p>
-
-<h4>2.2.2 階層ベイズモデル（Hierarchical Bayesian Modeling）</h4>
-<p>事前分布として解剖学的情報（fMRIの活動領域やDTIによる繊維連絡）を組み込んだ階層ベイズモデル（例：MSP, Champagne）を採用することで、推定の不確実性を確率的に評価しつつ、より尤度の高い活動源マップを得ることができる。これは、WBEにおける「脳の機能的マッピング」の信頼性を担保する上で重要な数理的基盤となる。</p>
-
-<h3>2.3 侵襲データ転移学習（Invasive-to-Non-invasive Transfer Learning）</h3>
-<p>倫理的な制約から、健常者での侵襲計測（ECoG, LFP）は不可能である。しかし、WBEには侵襲計測並みの情報量が求められる。このギャップを埋めるためのデータサイエンス的アプローチとして、<strong>Deep Transfer Learning（深層転移学習）</strong>の技術的枠組みを提案する。</p>
-
-<table class="data-table">
-<thead>
-<tr>
-<th>計測モダリティ</th>
-<th>空間分解能</th>
-<th>時間分解能</th>
-<th>侵襲性</th>
-<th>特徴</th>
-<th>WBEへの貢献</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>EEG (頭皮上脳波)</td>
-<td>低 (~cm)</td>
-<td>高 (ms)</td>
-<td>なし</td>
-<td>装着容易、安価、ポータブル</td>
-<td>マクロな神経同期、状態遷移の追跡</td>
-</tr>
-<tr>
-<td>iEEG / ECoG</td>
-<td>高 (<mm)</td>
-<td>高 (ms)</td>
-<td>あり</td>
-<td>高S/N比、高周波成分(HGA)取得可</td>
-<td>ミクロな計算原理の解明、教師データ</td>
-</tr>
-<tr>
-<td><strong>Simulated ECoG</strong></td>
-<td><strong>中 (推定)</strong></td>
-<td><strong>高 (ms)</strong></td>
-<td><strong>なし</strong></td>
-<td><strong>AIによるEEGからの超解像</strong></td>
-<td><strong>非侵襲での高精細活動推定</strong></td>
-</tr>
-</tbody>
-</table>
-
-<h4>2.3.1 Simulated ECoGの生成</h4>
-<p>てんかん患者等から得られた実際のiEEG（頭蓋内脳波）と頭皮上EEGの同時計測データセットを用いて、深層学習モデル（U-NetやGANs）を学習させる。このモデルは、低解像度の頭皮上EEG信号を入力とし、高解像度のiEEG信号を「推定・生成」するマッピング関数を獲得する。この技術を導入することで、対象サイトが目指すマインドアップロードの「計測」フェーズにおいて、物理的なセンサーの限界を超えた情報復元が可能となる。特に、意識の相関（NCC）に関与するとされるガンマ帯域（>30Hz）以上の活動は、頭皮上EEGでは減衰が激しく計測困難であるが、Simulated ECoG技術を用いれば、その活動パターンの近似的な再構成が視野に入る。</p>
-</section>
-
-<section class="section" id="teamflow">
-<h2 class="section-title">3. Team Flow研究の深化：同期から因果、そして制御へ</h2>
-<p>対象サイトの独自コンテンツの一つである「Team Flow」について、現状の「相関関係（Correlation）」を中心とした解析から、「因果関係（Causality）」および「制御（Control）」へと研究のフェーズを移行させるべきである。Shehataら（2021）の研究は、左中側頭皮質（L-MTC）の関与や脳間同期（Neural Synchrony）を明らかにした点で画期的であるが、工学的な応用を見据えた場合、さらなる深掘りが必要である。</p>
-
-<h3>3.1 脳間有効結合（Inter-brain Effective Connectivity）の解析</h3>
-<p>従来のハイパースキャニング研究では、主に位相同期（PLV: Phase Locking Value）やコヒーレンスといった「無方向性」の指標が用いられてきた。しかし、チーム内でのリーダーシップの所在や、情報のフロー（誰から誰へ情報が伝達されたか）を解明するには、方向性を持った解析が不可欠である。</p>
-
-<h4>3.1.1 Granger CausalityとTransfer Entropy</h4>
-<p>時系列データの予測可能性に基づく<strong>グレンジャー因果性（Granger Causality）や、情報理論に基づく伝達エントロピー（Transfer Entropy）</strong>をハイパースキャニングデータに適用することを提案する。</p>
-<ul>
-<li><strong>技術的意義:</strong> メンバーAの脳活動が、メンバーBの脳活動の将来の状態をどの程度予測できるか（情報利得があるか）を定量化することで、チーム内の「情報のドライバー」を特定できる。</li>
-<li><strong>Team Flowにおける仮説:</strong> Team Flow状態においては、特定のリーダーによる一方的な情報伝達ではなく、双方向的かつ動的に入れ替わる相互因果性が高まり、システム全体としてのエントロピー生成率が最大化される状態（Criticality）にあるという仮説を検証できる。</li>
-</ul>
-
-<h4>3.1.2 動的因果モデリング（DCM）の拡張</h4>
-<p>さらに高度な手法として、Fristonらが提唱する<strong>動的因果モデリング（DCM: Dynamic Causal Modeling）</strong>のハイパースキャニング版（Hyper-DCM）の導入を推奨する。DCMは、神経生理学的なシナプス結合モデルに基づいて観測データを説明するものであり、単なる統計的な相関ではなく、生物学的なメカニズムに基づいた結合強度を推定できる。これにより、Team Flow時にL-MTCと他の領域（例えば前頭前皮質や聴覚皮質）との間の結合がどのように変調されるかを、興奮性・抑制性結合のバランスの変化として記述できる。</p>
-
-<h3>3.2 脳間統合情報量（Hyper-I-I）の数理的定式化</h3>
-<p>Shehataらの論文にある「Global Inter-brain Integrated Information」は、IITの概念を多脳システムに拡張したものであるが、その数理的な取り扱いについては更なる精緻化が必要である。対象サイトに対し、以下の数理的枠組みの記述を追加することを提案する。</p>
-<p>2つの脳システム $X$ と $Y$ を考えたとき、結合システム $S = \{X, Y\}$ の統合情報量 $\Phi(S)$ を計算する。通常、物理的に分離した個体間では $\Phi(S) \approx 0$ となるはずであるが、Team Flow状態において、視聴覚的な相互作用を通じて機能的な結合が強まり、$\Phi(S) > \Phi(X) + \Phi(Y)$ となる（あるいは、全体としての統合が生じる）条件を探索する。これは、「集団的意識（Collective Consciousness）」あるいは「分散認知（Distributed Cognition）」の物理的な定義を与える試みであり、マインドアップロード技術が個人の脳だけでなく、チームや組織といった「システムとしての知性」を保存・再現する可能性を示唆するものである。</p>
-
-<h3>3.3 ハイパー・ニューロフィードバック（Hyper-NFB）システムの実装</h3>
-<p>解析（読み取り）だけでなく、介入（書き込み・制御）への技術的拡張として、<strong>ハイパー・ニューロフィードバック（Hyper-feedback）</strong>システムの設計論を提案する。これは、対象サイトで触れられている「Team Flowのサービス化」を具体化するコア技術となる。</p>
-
-<h4>3.3.1 システムアーキテクチャ</h4>
-<ul>
-<li><strong>リアルタイム計測:</strong> Lab Streaming Layer (LSL) プロトコルを用い、ネットワーク経由で複数のEEGアンプからのデータストリームを時間同期して集約する。</li>
-<li><strong>同期指標のオンライン計算:</strong> 重み付き位相遅れ指数（wPLI: Weighted Phase Lag Index）等の、ボリューム伝導の影響を受けにくいロバストな同期指標を、50〜100msの時間窓でスライディング計算する。</li>
-<li><strong>フィードバック提示:</strong> 算出された同期レベル（Team Synchrony Score）を、環境パラメータとしてフィードバックする。
-<ul>
-<li><em>視覚的:</em> チーム共有のモニターの枠の色や輝度を変化させる。</li>
-<li><em>聴覚的:</em> BGMの音量や音質、あるいは特定のバイノーラルビートを重畳させて、同期を促進する（Entrainment）。</li>
-<li><em>VR空間内:</em> アバターのエフェクトや空間の天候を変化させる。</li>
-</ul>
-</li>
-</ul>
-<p>このシステムにより、チームメンバーは無意識のうちに互いの脳状態を調整し、Team Flowに入りやすい神経生理学的状態へと自律的に誘導される。これは、スポーツ、eスポーツ、音楽演奏、あるいは企業のブレインストーミングなど、多岐にわたる分野での応用が期待される。</p>
-</section>
-
-<section class="section" id="vr-adaptive">
-<h2 class="section-title">4. VR空間における身体性と生体信号の適応制御</h2>
-<p>中田康史氏の主要な研究テーマであるVRとEEGの融合領域において、現在の「評価（Assessment）」中心のアプローチから、「適応制御（Adaptive Control）」への進化を提案する。VR酔い（Cybersickness）の解決は、マインドアップロードされた意識が仮想空間内で快適に存在するために避けて通れない課題である。</p>
-
-<h3>4.1 サイバーシックネスの神経メカニズムとマルチモーダル指標</h3>
-<p>VR酔いは、視覚系が知覚する自己運動（Visual Flow）と、前庭系・体性感覚系が知覚する静止状態との間の不一致（Sensory Conflict）によって生じるとされる。また、姿勢制御の不安定性（Postural Instability）も主要な要因である。これらを捉えるための詳細な生体指標を提案する。</p>
-
-<h4>4.1.1 脳波（EEG）指標の洗練</h4>
-<ul>
-<li><strong>低周波数帯域のパワー増大:</strong> 酔いに伴う不快感や眠気（Sopite Syndrome）は、前頭葉および正中中心部におけるデルタ波（1-4Hz）およびシータ波（4-8Hz）のパワー増大として現れる。これをリアルタイムでモニタリングする。</li>
-<li><strong>アルファ波の抑制と非対称性:</strong> 注意の配分や情動的ストレスを反映するアルファ波の減衰、および前頭葉における左右非対称性（Frontal Alpha Asymmetry: FAA）を、不快感（Withdrawal motivation）の指標として活用する。</li>
-</ul>
-
-<h4>4.1.2 胃電図（EGG）による脳腸相関（Gut-Brain Axis）のモニタリング</h4>
-<p>VR酔いの生理的反応として最も顕著なのは、胃のリズムの異常である。通常3cpm（cycles per minute）の胃の徐波が、頻脈（Tachygastria: 4-9cpm）や徐脈（Bradygastria: 1-2.5cpm）へとシフトする現象を、腹部表面電極を用いた<strong>胃電図（Electrogastrography: EGG）</strong>で計測することを提案する。
-脳波（中枢神経系）と胃電図（自律神経系）の結合性（Coupling）を解析することで、酔いの主観的な症状が現れる前の「予兆」を高精度に検知できる可能性がある。これは、対象サイトの研究の独自性を高める重要な視点である。</p>
-
-<h3>4.2 クローズド・ループ型生体適応VR（Bio-adaptive VR）</h3>
-<p>生体信号から得られた「不快感レベル」や「酔いの予兆」を、即座にVRコンテンツのレンダリングパラメータに反映させるクローズド・ループ制御システムを提案する。</p>
-
-<h4>4.2.1 動的視野制限（Dynamic Field-of-View Modification）</h4>
-<p>視覚的なオプティカルフローが強いシーンや、回転動作の最中に、EEG/EGGから検知されたストレスレベルに応じて、動的に視野周辺を黒くフェードアウト（トンネリング効果）させる。周辺視野の視覚情報を遮断することで、ベクション（視覚誘導性自己運動感覚）を抑制し、前庭感覚とのコンフリクトを緩和する。</p>
-
-<h4>4.2.2 アバターの運動パラメータ制御</h4>
-<p>ユーザーの脳状態が不安定になった場合、アバターの移動速度、回転加速度、あるいはカメラの揺れ（Head Bobbing）を自動的に減衰させる。また、6DoF（6自由度）の動きを一時的に3DoFに制限するなど、自由度そのものを動的に変更する制御も考えられる。</p>
-
-<h4>4.2.3 ガルバニック前庭刺激（GVS）による能動的感覚補正</h4>
-<p>視覚入力に合わせて、耳の後ろに貼付した電極から微弱な電流を流し、前庭神経を直接刺激することで、擬似的な加速度感や傾き感覚を生成する技術（GVS: Galvanic Vestibular Stimulation）との統合を提案する。EEGで「感覚の不一致」を検知し、その差分を埋めるようにGVSの電流値を制御することで、脳に対して「整合性の取れた感覚入力」を合成・提示する。これは、サイバーシックネスを根本的に解消し得る究極の技術であり、マインドアップロード後の「仮想身体への順応」においても核心的な技術となる。</p>
-</section>
-
-<section class="section" id="iit-implementation">
-<h2 class="section-title">5. 統合情報理論（IIT 4.0）の実装論と意識の「計算」</h2>
-<p>対象サイトではIIT 4.0を意識の理論的支柱としているが、その実装における最大の壁は「計算量の爆発」である。理論を現実の技術に落とし込むための、具体的かつ実用的なアプローチを論じる。</p>
-
-<h3>5.1 計算論的実用化：近似アルゴリズムと代理指標</h3>
-<p>IITにおける統合情報量 $\Phi$ の計算は、システムを構成する要素のすべての部分集合に対して情報分割（Partition）を試行する必要があるため、要素数 $N$ に対して二重指数関数的な計算量（NP困難以上）を要する。生物学的な脳（$N \approx 10^{11}$）に対して厳密な $\Phi$ を計算することは、物理的に不可能である。</p>
-
-<h4>5.1.1 Perturbational Complexity Index (PCI) の導入</h4>
-<p>IITの原理に基づきつつ、臨床的に計測可能な現実的な指標として、Perturbational Complexity Index (PCI) の詳細な解説と導入を提案する。</p>
-<ul>
-<li><strong>方法論:</strong> 経頭蓋磁気刺激（TMS）を用いて脳に直接的な摂動（パルス）を与え、その反応として広がる脳波の時空間パターンを計測する（TMS-EEG）。</li>
-<li><strong>アルゴリズム:</strong> 計測されたEEG信号をバイナリ化し、レンペル＝ジヴ複雑性（Lempel-Ziv Complexity: 圧縮アルゴリズムの一種）を用いて、その情報の「圧縮しにくさ」を計算する。</li>
-<li><strong>IITとの整合性:</strong> 意識があるシステム（高い $\Phi$ を持つシステム）は、摂動に対して「統合された（全体に広がる）」かつ「分化された（多様な）」反応を示すため、PCI値が高くなる。逆に、睡眠中や麻酔下では、反応が局所的で消えやすい（統合の欠如）か、全体に広がるが単調な波形（分化の欠如）となるため、PCI値は低くなる。</li>
-</ul>
-
-<h4>5.1.2 Virtual PCI（デジタル空間での意識テスト）</h4>
-<p>WBEの文脈において、アップロードされたデジタル脳が意識を持っているかを判定するための「チューリング・テストの意識版」として、PCIを仮想空間内で実施するVirtual PCIを提案する。シリコン上のニューラルネットワークモデルに対し、仮想的な刺激（Virtual TMS）を入力し、ネットワーク全体の反応の複雑性を計算することで、そのエミュレーションが単なる「振る舞いの模倣（哲学的ゾンビ）」なのか、実際に「意識の因果構造」を持っているのかを客観的に判定するフレームワークを提供する。</p>
-
-<h3>5.2 幾何学的統合情報理論（Geometric IIT）</h3>
-<p>$\Phi$ の計算を、確率分布の空間における「距離」の計算として幾何学的に定式化し直すGeometric IITや、システムの因果構造（Cause-Effect Structure）を多次元空間内の形状（Q-shape）として表現するアプローチについても言及すべきである。これにより、計算の近似手法（例えば、モンテカルロ法を用いた分割探索や、構造的結合データからの推論）の開発が可能となり、IITを単なる哲学からエンジニアリング可能な数理モデルへと昇華させることができる。</p>
-</section>
-
-<section class="section" id="decoding">
-<h2 class="section-title">6. デコーディング技術の最前線：「Mind Captioning」とその先</h2>
-<p>NTTによる「Mind Captioning」技術は、非言語的な脳内イメージを言語化する画期的な技術であり、対象サイトでも取り上げられている。これをWBEの文脈でさらに発展させるための技術的展望を述べる。</p>
-
-<h3>6.1 EEGベースのセマンティック・デコーディングへの挑戦</h3>
-<p>現状のMind Captioningは主にfMRIを用いており、高い空間分解能を活用しているが、時間分解能が低く、装置が大掛かりである。実用的なWBEやブレイン・マシン・インターフェース（BMI）のためには、EEGを用いたデコーディングが必要である。</p>
-
-<h4>6.1.1 大規模脳波モデル（Large EEG Models: LEM）</h4>
-<p>自然言語処理におけるLLM（Large Language Models）の成功に倣い、大量のEEGデータを事前学習させた<strong>基盤モデル（Foundation Models）</strong>の構築を提案する。</p>
-<ul>
-<li><strong>事前学習:</strong> 数千人規模の被験者から収集した、多様なタスク中（安静、視聴覚刺激、睡眠等）のEEGデータに対し、マスク化オートエンコーダ（Masked Autoencoders）や対照学習（Contrastive Learning）を適用し、脳波信号の潜在的な表現（Latent Representation）を獲得させる。</li>
-<li><strong>マルチモーダル・アライメント:</strong> 学習済みのEEGエンコーダと、画像（CLIP等）やテキスト（BERT/GPT等）のエンコーダを結合し、脳波データと外部刺激（画像・テキスト）を共通の潜在空間にマッピングする。これにより、EEG信号から直接、被験者が見ている画像や考えている内容を復元（Reconstruction）することが可能となる。</li>
-</ul>
-
-<h3>6.2 生成AIによる情報補完と再構成</h3>
-<p>脳波データは情報量が限られている（Sparse）ため、決定論的なデコーディングには限界がある。ここで、<strong>生成AI（Generative AI）</strong>の確率的な補完能力を活用する。</p>
-<ul>
-<li><strong>Stable Diffusion等の活用:</strong> EEGから抽出された意味的特徴ベクトル（Semantic Vector）を条件付け入力（Conditioning）として、画像生成モデルやテキスト生成モデルを駆動する。これにより、脳波に含まれる曖昧な情報を、AIが持つ世界知識（World Knowledge）で補完し、鮮明な画像や自然な文章として出力する「Mind-to-Image / Mind-to-Text」パイプラインを構築する。</li>
-<li><strong>WBEへの意義:</strong> これは、脳の物理的なコピー（構造のエミュレーション）ではなく、脳内の情報のコピー（意味の抽出と保存）という、WBEのもう一つの実現ルート（Semantic Uploading）を示唆するものである。</li>
-</ul>
-</section>
-
-<section class="section" id="conclusion">
-<h2 class="section-title">7. 結論：統合的ロードマップの提言</h2>
-<p>本報告書では、eegflow.jp の研究テーマに対し、神経工学および計算論的神経科学の観点から詳細な技術的精査を行った。提案した主要な技術的拡充事項を以下のロードマップにまとめる。</p>
-
-<h3>Phase 1: 高精度デジタルツインの構築（～2030年代）</h3>
-<ul>
-<li><strong>計測:</strong> OPM-MEGとEEGの同時計測による、VR体験中およびTeam Flow中の脳活動のミリメートル単位での可視化。</li>
-<li><strong>解析:</strong> Deep Transfer Learningを用いた、非侵襲データからの皮質活動（ECoG相当）の再構成。</li>
-<li><strong>応用:</strong> クローズド・ループ型生体適応VRシステムによるサイバーシックネスの完全克服。</li>
-</ul>
-
-<h3>Phase 2: 意識の定量化と因果的介入（～2040年代）</h3>
-<ul>
-<li><strong>理論:</strong> PCIおよび近似IITアルゴリズムを用いた、意識レベルのリアルタイム・モニタリング技術の確立。</li>
-<li><strong>介入:</strong> ハイパー・ニューロフィードバックおよび多脳刺激（Multi-brain Stimulation）による、Team Flow状態の自在な誘導と制御。</li>
-<li><strong>モデル化:</strong> 大規模脳波モデル（LEM）による、個人の思考パターンのデジタル化と、セマンティック・デコーディングの実用化。</li>
-</ul>
-
-<h3>Phase 3: 基盤非依存の意識実装（2050年代～）</h3>
-<ul>
-<li><strong>実装:</strong> ニューロモルフィック・ハードウェア上での全脳エミュレーションと、Virtual PCIによる意識テストのクリア。</li>
-<li><strong>統合:</strong> 生体脳とデジタル脳、あるいはデジタル脳同士が直接接続され、Team Flowを超えた「意識の融合」を実現するインターフェース（Brain-Brain Interface）の構築。</li>
-</ul>
-
-<p>eegflow.jp は、これら最先端の技術領域を横断する稀有なプラットフォームである。本報告書で提案した数理的・工学的詳細を研究ノートに統合し、単なる概念の紹介に留まらず、実装に向けた具体的なエンジニアリングの指針を示すことで、マインドアップロード研究における世界的なハブとしての地位を確立できると確信する。</p>
-
-<div class="note-box">
-<strong>推奨される引用・参照フォーマットの例（対象サイト内での記述案）</strong>
-<ul>
-<li>OPM-MEGに関する記述では、慶應義塾大学の青山研究室の実績や、最新の量子センシング技術の文献を引用する。</li>
-<li>Team Flowの解析手法では、Shehata et al. (2021) のGI-IIに加え、Granger CausalityやDCMの数理的定義を補足する。</li>
-<li>VR酔い対策では、中田氏自身の研究を基盤としつつ、EGG（胃電図）やGVS（前庭刺激）とのマルチモーダル統合の可能性を「Future Works」として明記する。</li>
+<li><strong>データ標準化とBIDSエコシステム：</strong>再現性危機の克服とデータ共有義務化への対応。</li>
+<li><strong>次世代信号前処理技術：</strong>ASR、ZapLine、および深層学習ベースのデノイジング。</li>
+<li><strong>ネットワーク神経科学と接続性解析：</strong>体積伝導問題を克服するwPLIや因果性推定（STE）。</li>
+<li><strong>マルチモーダル同期とLSL：</strong>VR・生体計測統合のための時間管理プロトコル。</li>
+<li><strong>ソフトウェア・ハードウェアの最新動向：</strong>MNE-Python、EEGLAB、および国内機器（ミユキ技研等）の統合。</li>
 </ul>
 </div>
+<p class="small">
+なお、本提案は純粋に科学技術的な観点に基づき、倫理審査（IRB）や個人情報保護法、臨床診断における法的責任といった法的・倫理的側面については議論の対象外とする。
+</p>
+</section>
+
+<section class="section" id="bids">
+<h2 class="section-title">2. データ構造の標準化：Brain Imaging Data Structure (BIDS)</h2>
+<p>
+研究データの管理において、従来の「独自フォーマットと自由なフォルダ構成」は、もはや許容されない時代となりつつある。主要な学術ジャーナル（Nature Neuroscience, Scientific Data等）や公的リポジトリ（OpenNeuro）は、データのFAIR原則（Findable, Accessible, Interoperable, Reusable）への準拠を求めており、その事実上の世界標準が Brain Imaging Data Structure (BIDS) である。
+</p>
+
+<h3>2.1 BIDS階層構造と命名規則の厳格化</h3>
+<p>
+BIDSはファイルフォーマットではなく、データセットを構成するフォルダ階層とファイル命名の規格である。従来の <code>Subject1_Resting.edf</code> といった恣意的な命名は、自動化された解析パイプライン（BIDS Apps）の適用を阻害する。
+</p>
+
+<h4>2.1.1 推奨ディレクトリ構造</h4>
+<div class="code-block">
+<pre><code>dataset_root/
+  dataset_description.json
+  participants.tsv
+  sub-01/
+    ses-01/
+      eeg/
+        sub-01_ses-01_task-rest_eeg.eeg
+        sub-01_ses-01_task-rest_eeg.vhdr
+        sub-01_ses-01_task-rest_eeg.vmrk
+        sub-01_ses-01_task-rest_eeg.json  &lt;-- サイドカーJSON（必須）
+        sub-01_ses-01_task-rest_channels.tsv
+      anat/ (MRIがある場合)</code></pre>
+</div>
+<p>
+この構造において重要なのは、被験者（<code>sub-</code>）、セッション（<code>ses-</code>）、タスク（<code>task-</code>）といったキーバリューペアがファイル名に埋め込まれている点である。これにより、スクリプトはファイル名のみから実験条件を完全に特定可能となる。
+</p>
+
+<h3>2.2 サイドカーJSONによるメタデータ管理</h3>
+<p>
+脳波データ（バイナリ）には含まれないが、解析に不可欠な情報を記述する「サイドカーJSONファイル（*_eeg.json）」の重要性を強調すべきである。特に以下のフィールドは、解析の品質を左右する。
+</p>
+<ul>
+<li><strong>EEGReference:</strong> 参照電極の配置。例えば「Cz」なのか、「Common Mode Sense (CMS) / Driven Right Leg (DRL)」なのかを明記する。特にBiosemiなどのアクティブ電極系ではCMS/DRLが標準であるが、これを明記しないと再解析時に参照変換（re-referencing）を誤る原因となる。</li>
+<li><strong>PowerLineFrequency:</strong> 日本国内では関東（50Hz）と関西（60Hz）が混在するため、このフィールドの記述はフィルタリング処理の自動化において決定的に重要である。</li>
+<li><strong>SoftwareFilters:</strong> 収録時にハードウェアまたは収録ソフト側で適用されたフィルタ情報。これを記述せずにオフライン解析で再度フィルタをかけると、位相歪みやエッジアーチファクトが発生するリスクがある。</li>
+</ul>
+
+<h3>2.3 チャンネル記述ファイル（channels.tsv）の役割</h3>
+<p>
+バイナリデータ内のチャンネルラベルだけでは不十分なケースが多い。<code>*_channels.tsv</code> ファイルでは、各チャンネルの「種類（type）」と「単位（units）」を定義する。
+</p>
+<table class="data-table">
+<thead>
+<tr><th>name</th><th>type</th><th>units</th><th>description</th></tr>
+</thead>
+<tbody>
+<tr><td>Fp1</td><td>EEG</td><td>microV</td><td>Frontal Pole 1</td></tr>
+<tr><td>EOGv</td><td>EOG</td><td>microV</td><td>Vertical Electrooculogram</td></tr>
+<tr><td>TRIG</td><td>TRIG</td><td>n/a</td><td>Stimulus Trigger</td></tr>
+</tbody>
+</table>
+<p>
+この定義ファイルが存在することで、MNE-PythonやEEGLABなどの解析ソフトは、EOGチャンネルを脳波として誤って解析（例：平均参照に含めてしまう等）することを防ぐことができる。
+</p>
+</section>
+
+<section class="section" id="preprocessing">
+<h2 class="section-title">3. 次世代信号前処理技術：アーチファクト除去の数理</h2>
+<p>
+従来の「目視による棄却」や「単純なバンドパスフィルタ」は、高密度記録や長時間記録においては現実的ではない。2025年の標準となりつつある、信号の統計的性質を利用した適応的アルゴリズムの詳細な解説が必要である。
+</p>
+
+<h3>3.1 Artifact Subspace Reconstruction (ASR) の数理的解剖</h3>
+<p>
+Artifact Subspace Reconstruction (ASR) は、BIDS-PipelineやEEGLABのデフォルト前処理として採用が進んでいるが、その内部動作はブラックボックス化されがちである。研究者がパラメータ（特にcutoff parameter）を適切に設定できるよう、そのアルゴリズムの核心を解説する必要がある。
+</p>
+
+<h4>3.1.1 アルゴリズムのメカニズム</h4>
+<p>
+ASRは、主成分分析（PCA）を用いて、データ内の高分散成分（アーチファクト）を特定し、その成分のみを除去して信号を再構成する手法である。
+</p>
+<ol>
+<li><strong>キャリブレーション（Calibration）:</strong> まず、データセットの中から「クリーンな」区間を自動探索し、その区間の共分散行列 $C$ を計算する。ここから信号の空間的な混合行列（Mixing Matrix） $M$ を推定する。</li>
+<li><strong>スライディングウィンドウ処理:</strong> データを短いウィンドウ（例：0.5秒）に分割し、各ウィンドウでPCAを実行する。</li>
+<li><strong>部分空間の再構成:</strong> あるウィンドウの主成分の分散が、キャリブレーションデータの分散と比較して閾値（Cutoff parameter $k$、通常 $k=20$）を超えている場合、その成分はアーチファクトとみなされる。</li>
+<li><strong>射影と復元:</strong> アーチファクト成分を除外し、残ったクリーンな成分（$S_{clean}$）と混合行列 $M$ を用いて、元のセンサー空間に信号を逆射影する。
+<p>ここで $X_{recon} = M 	ilde{S}_{clean}$ はムーア・ペンローズの擬似逆行列を表す。※数式表現は簡略化</p>
+</li>
+</ol>
+
+<h4>3.1.2 運用上の注意点</h4>
+<p>
+eegflow.jpでは、ASRが「補間（Interpolation）」に近い処理を行うため、過度に厳しい閾値（例：$k<10$）を設定すると、脳波自体（特に徐波やてんかん性放電など）を除去してしまうリスクがあることを警告すべきである。また、ASR適用前にハイパスフィルタ（1Hz程度）を適用し、データの定常性を高めておくことがアルゴリズムの前提条件となる。
+</p>
+
+<h3>3.2 スペクトル-空間フィルタリング：ZapLine-plus</h3>
+<p>
+電源ノイズ（ハムノイズ）の除去には、従来ノッチフィルタが用いられてきたが、これは特定の周波数帯域の信号成分を完全に削除してしまうため、ガンマ帯域の研究においては致命的となる場合がある。これに対し、ZapLine およびその改良版である ZapLine-plus は、ノイズの空間分布（トポグラフィ）を利用して、信号成分を温存しつつノイズのみを分離する。
+</p>
+
+<h4>3.2.1 ZapLineの基本原理</h4>
+<p>
+ZapLineは、データを「ノイズ周波数成分」と「それ以外」にフィルタバンクで分離し、ノイズ周波数成分に対してのみ空間フィルタ（DSS: Denoising Source Separation）を適用する。これにより、電源ノイズと空間的に相関のない脳波成分は保持される。
+</p>
+
+<h4>3.2.2 ZapLine-plusによる適応的処理</h4>
+<p>
+2025年の研究トレンドにおいては、モバイル計測の増加に伴い、センサーの位置ズレや環境変化によって電源ノイズの空間分布や正確な周波数が時間的に変動することが課題となっている。ZapLine-plusは以下の機能でこれを解決する。
+</p>
+<ul>
+<li><strong>適応的チャンキング:</strong> ノイズの空間分布が安定している区間（チャンク）ごとにデータを分割処理する。</li>
+<li><strong>周波数追従:</strong> 50Hzぴったりではなく、49.9Hz〜50.1Hzのように変動するノイズピークをチャンクごとに検出する。</li>
+<li><strong>成分数の自動決定:</strong> 除去すべき空間成分の数を、外れ値検出アルゴリズムを用いて自動決定する。</li>
+</ul>
+
+<h3>3.3 深層学習に基づくデノイジング</h3>
+<p>
+最新のトレンドとして、NERV (Neural EEG Reconstruction for Various artifacts) などの深層学習モデルの導入が進んでいる。これらは、大量のEEGデータセット（TUH EEG Corpus等）で事前学習されたモデルを用い、EOGやEMGを分離する。
+特筆すべきは、生成モデルの品質評価指標としての <strong>CAT (Class-Aware Time-domain) score</strong> の導入である。従来のSNR（信号対雑音比）だけでは、生成された信号が「もっともらしいが偽の脳波」であるかを見抜けないため、下流タスク（分類精度など）への影響を評価する新たな指標が必要とされている。
+</p>
+</section>
+
+<section class="section" id="connectivity">
+<h2 class="section-title">4. ネットワーク神経科学：コネクティビティ解析の落とし穴と解決策</h2>
+<p>
+脳波解析の関心は、局所的な活動から脳領域間のネットワークへと移行している。しかし、頭皮上脳波におけるコネクティビティ解析には「体積伝導（Volume Conduction）」という物理的な制約がつきまとう。eegflow.jpでは、この問題を回避するための堅牢な指標を推奨する必要がある。
+</p>
+
+<h3>4.1 位相同期の堅牢性：Weighted Phase Lag Index (wPLI)</h3>
+<p>
+従来のコヒーレンス（Coherence）やPhase Locking Value (PLV)は、体積伝導の影響（ゼロ位相ラグの相関）を強く受けるため、頭皮上EEGでの使用は推奨されない。これに対し、<strong>Weighted Phase Lag Index (wPLI)</strong> が現在のゴールドスタンダードとなっている。
+</p>
+
+<h4>4.1.1 wPLIの定義と優位性</h4>
+<p>
+PLIは位相差の符号のみを利用するが、wPLIはクロススペクトルの虚部の大きさで重み付けを行う。
+</p>
+<ul>
+<li><strong>ゼロ位相ラグの抑制:</strong> 体積伝導由来の信号は、瞬時に複数の電極に伝わるため、位相差が0（または $\pi$）になり、クロススペクトルは実軸上に分布する。wPLIは虚部（$\Im$）で重み付けするため、実軸付近のノイズ成分の寄与を極小化できる。</li>
+<li><strong>ノイズ耐性:</strong> 振幅の小さい成分（ノイズである可能性が高い）の影響を低減できるため、従来のPLIよりも統計的検出力が高い。</li>
+</ul>
+
+<h3>4.2 因果性の推定：Symbolic Transfer Entropy (STE)</h3>
+<p>
+wPLIは無向グラフ（AとBがつながっている）しか評価できないが、情報の「流れ」や「因果性」（AがBを駆動している）を知るためには、Transfer Entropy (TE) が用いられる。特にEEGのような非定常・非線形信号に対しては、<strong>Symbolic Transfer Entropy (STE)</strong> が有効である。
+</p>
+
+<h4>4.2.1 記号化によるロバスト性の確保</h4>
+<p>
+STEでは、連続的な電圧値をそのまま使うのではなく、順列パターン（Permutation patterns）などのシンボル列に変換する。
+</p>
+<ul>
+<li><strong>Embedding Dimension ($m$):</strong> 埋め込み次元。従来の $m=3$ では複雑な脳波ダイナミクスを捉えきれないことが示されており、近年の研究では $m=5 \sim 7$ への最適化が推奨されている。</li>
+<li><strong>Delay Time ($	au$):</strong> 遅れ時間。信号の自己相関が最初に低下する点などを基準に設定する。</li>
+</ul>
+<p>
+STEを用いることで、例えば「前頭葉から後頭葉へのトップダウン信号」と「視覚野からのボトムアップ信号」を区別して定量化することが可能となる。
+</p>
+</section>
+
+<section class="section" id="source-localization">
+<h2 class="section-title">5. ソースローカリゼーション（脳源推定）の最前線</h2>
+<p>
+頭皮上の電位分布から脳内電源を推定する「逆問題」は、数学的に不良設定問題であるが、制約条件の工夫により推定精度は向上している。古典的なLORETA法に加え、以下の最新手法を紹介すべきである。
+</p>
+
+<h3>5.1 スパース性と深層学習の導入</h3>
+<ul>
+<li><strong>スパース制約:</strong> 脳活動は空間的に局在している（focal）ことが多いという仮定に基づき、L1ノルム正則化などを導入して、ボケの少ない解を得る手法。DESIRE study などの最新研究では、ノイズレベルに応じて正則化パラメータを自動調整する手法が提案されており、てんかん焦点の同定などでLORETAを上回る精度を示している。</li>
+<li><strong>Deep Learning Beamformer:</strong> ALCMV (Accelerated Linear Constrained Minimum Variance) や AORI といったアルゴリズムは、共分散行列の計算を再帰的に行い、次元削減を組み合わせることで、計算コストを大幅に削減（約66%減）している。これにより、BCIなどのリアルタイムアプリケーションでも高精度な線源推定が可能になりつつある。</li>
+</ul>
+
+<h3>5.2 比較：LORETA vs BrainLoc</h3>
+<p>
+国内でも利用者の多い BrainLoc について、LORETAとの比較視点を提供することは有益である。
+</p>
+<ul>
+<li><strong>LORETA:</strong> 分布定数モデル。脳全体に滑らかに広がる活動の推定に適する。機能的結合の解析によく用いられる。</li>
+<li><strong>BrainLoc:</strong> 双極子（Dipole）モデルに基づくアプローチも含み、特にMRI/CT画像との統合による解剖学的な位置特定（てんかん原性域や腫瘍位置との関係など）に強みを持つ。移動双極子モデルにより、時間的に移動する信号源を追跡可能。</li>
+</ul>
+</section>
+
+<section class="section" id="multimodal">
+<h2 class="section-title">6. マルチモーダル統合と同期計測：Lab Streaming Layer (LSL)</h2>
+<p>
+VR、アイトラッキング、モーションキャプチャを組み合わせた実験系では、各デバイスが独自のクロックで動作するため、データの同期が最大の課題となる。従来のハードウェアトリガー（パラレルポート）に代わり、ネットワークベースの同期プロトコル <strong>Lab Streaming Layer (LSL)</strong> の理解が必須となる。
+</p>
+
+<h3>6.1 LSLの動作原理とクロックドリフト補正</h3>
+<p>
+LSLは、単にデータをTCP/IPで送るだけでなく、高度なタイムスタンプ管理を行っている。
+</p>
+
+<h4>6.1.1 時間同期プロトコル</h4>
+<p>
+LSLはNetwork Time Protocol (NTP) に似たパケット交換を行い、送信側PCと受信側PCのクロック差（Offset）と往復遅延（RTT）を測定する。
+重要なのは、収録中にこのクロック差が一定ではなく、温度変化やCPU負荷により徐々にズレていく（クロックドリフト）点である。
+</p>
+
+<h4>6.1.2 ジッター補正と線形回帰</h4>
+<p>
+LSLのインポーター（load_xdf 等）は、収録されたクロックオフセットの履歴に対して線形回帰（Linear Regression）やロバスト回帰を適用し、ドリフト成分を除去して全サンプルのタイムスタンプを再計算する。この処理により、1時間の記録でもサブミリ秒の同期精度を維持可能となる。
+</p>
+
+<h3>6.2 国内ハードウェアとの統合事例：Miyuki Giken</h3>
+<p>
+日本の研究環境においてシェアの高いミユキ技研の装置（Polymate Pocket等）におけるLSL対応についても触れるべきである。
+</p>
+<ul>
+<li><strong>ハイブリッド同期:</strong> 視覚刺激の提示タイミング（Onset）など、極めて高い時間精度（&lt;1ms）が求められるイベントについては、依然として光センサやパラレルポート経由でのハードウェアトリガーを推奨する。一方で、アイトラッカーの視線座標やVRヘッドセットの回転情報など、連続的なデータストリームについてはLSLを用いて統合する「ハイブリッド構成」が、信頼性と利便性のバランスにおいて最適解となる場合が多い。</li>
+</ul>
+
+<h3>6.3 ハイパースキャニング（複数人同時計測）</h3>
+<p>
+社会神経科学（Social Neuroscience）の興隆に伴い、2名の被験者の脳波を同時記録するハイパースキャニングの需要が増している。
+</p>
+<ul>
+<li><strong>シングルアンプ構成:</strong> 64chアンプを分割し、32chずつ2名に割り当てる方法。クロックが同一であるため同期ズレが原理的に発生しない最大のメリットがある。</li>
+<li><strong>音声同期の重要性:</strong> 自然な会話を分析する場合、音声データもLSLストリームとして統合し、発話の開始点（Onset）にトリガーを打つことで、発話に関連した脳電位（Speech-related potentials）を解析可能にする手法が提案されている。</li>
+</ul>
+</section>
+
+<section class="section" id="software">
+<h2 class="section-title">7. ソフトウェアエコシステムの最新動向 (2025-2026)</h2>
+
+<h3>7.1 MNE-Python：深層学習との融合</h3>
+<p>Pythonベースの MNE-Python は、現在最も開発が活発である。</p>
+<ul>
+<li><strong>Deep Learning連携:</strong> PyTorchやTensorFlowとの親和性が高く、前述のNERVや各種デコーディングモデルの実装プラットフォームとして事実上の標準となっている。</li>
+<li><strong>最新機能 (v1.11.0):</strong> GEDTransformer（一般化固有値分解のクラス化）による空間フィルタリングの統一、ICAのfit/apply分離、Eyelinkサポート強化など。</li>
+</ul>
+
+<h3>7.2 EEGLAB：GUIとモバイル解析の拠点</h3>
+<p>MATLABベースの EEGLAB は、依然としてGUI操作を好むユーザーや、既存の資産を持つラボにとって重要である。</p>
+<ul>
+<li><strong>BeMoBIL Pipeline:</strong> モバイルEEGに特化したプラグイン群。歩行アーチファクト除去やBIDS対応が含まれる。</li>
+<li><strong>Automagic:</strong> 前処理の完全自動化ツールボックス。大規模データセットに有効。</li>
+</ul>
+
+<h3>7.3 FieldTrip：MEGとOPMへの対応</h3>
+<p>FieldTrip は、特にMEG（脳磁図）解析において強力であるが、2025年のアップデートでは Optically Pumped Magnetometers (OPM) への対応が強化されている。</p>
+
+<h3>7.4 商用ソフトウェア：BrainVision Analyzer 2</h3>
+<p>BrainVision Analyzer 2 は、「History Tree」機能により解析プロセスの追跡可能性が担保されるため、臨床研究や企業の研究開発において強みを持つ。MATLABとの連携も強化されている。</p>
+</section>
+
+<section class="section" id="roadmap">
+<h2 class="section-title">8. 結論：eegflow.jpのロードマップへの提言</h2>
+<p>以上の技術的精査に基づき、eegflow.jpが今後1〜2年で実装すべきコンテンツのロードマップを以下に提案する。</p>
+<ul>
+<li><strong>「BIDS導入ガイド」の作成（優先度：高）:</strong> 日本語の実験環境（ミユキ技研、BrainProducts等）からBIDS形式へ変換するためのスクリプト例を提供。</li>
+<li><strong>「アーチファクト除去の数理」セクションの新設:</strong> ASRやZapLineのパラメータの意味を数理的に解説する教育的コンテンツ。</li>
+<li><strong>「コネクティビティ解析」のベストプラクティス:</strong> 体積伝導の危険性を啓蒙し、wPLIやSTEの使用を推奨。</li>
+<li><strong>「LSLによるマルチモーダル同期」の実践チュートリアル:</strong> Unity（VR）とPython（LSL）の連携サンプル。</li>
+<li><strong>VR・モバイル脳波（MoBI）特集:</strong> 実環境下でのノイズ対策やVRヘッドセットとの物理的干渉対策。</li>
+</ul>
+<p>
+これらの情報を拡充することで、eegflow.jpは単なる情報サイトから、日本の神経科学研究者が世界標準の研究を行うための「技術的インフラ」へと進化することができるだろう。
+</p>
+</section>
+
+<section class="section" id="references">
+<h2 class="section-title">引用文献</h2>
+<ul class="reference-list">
+<li><a href="https://www.fieldtriptoolbox.org/example/other/bids/">BIDS - the brain imaging data structure - FieldTrip toolbox</a></li>
+<li><a href="https://bids.neuroimaging.io/">The Brain Imaging Data Structure: BIDS</a></li>
+<li><a href="https://bids-specification.readthedocs.io/en/stable/derivatives/common-data-types.html">Common data types and metadata - BIDS Specification</a></li>
+<li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10710985/">Artifact subspace reconstruction: a candidate for a dream solution for EEG studies - PMC</a></li>
+<li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9120550/">Zapline‐plus: A Zapline extension for automatic and adaptive removal of frequency‐specific noise artifacts in M/EEG - PMC</a></li>
+<li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3462418/">Weighted Phase Lag Index and Graph Analysis - PMC</a></li>
+<li><a href="https://labstreaminglayer.readthedocs.io/info/time_synchronization.html">Time Synchronization — Labstreaminglayer documentation</a></li>
+<li><a href="https://mne.tools/stable/changes/v1.11.html">Version 1.11.0 (2025-11-21) - MNE-Python</a></li>
+</ul>
 </section>
 
 </article>
@@ -260,12 +325,13 @@ note: "Proposal (Accepted for Review)"
 <h4>On this page</h4>
 <ul>
 <li><a href="#introduction">1. 序論</a></li>
-<li><a href="#measurement">2. 計測技術の高度化</a></li>
-<li><a href="#teamflow">3. Team Flow研究</a></li>
-<li><a href="#vr-adaptive">4. VR適応制御</a></li>
-<li><a href="#iit-implementation">5. IIT 4.0の実装</a></li>
-<li><a href="#decoding">6. デコーディング最前線</a></li>
-<li><a href="#conclusion">7. 結論・ロードマップ</a></li>
+<li><a href="#bids">2. データ標準化(BIDS)</a></li>
+<li><a href="#preprocessing">3. 次世代信号前処理</a></li>
+<li><a href="#connectivity">4. ネットワーク神経科学</a></li>
+<li><a href="#source-localization">5. ソース推定</a></li>
+<li><a href="#multimodal">6. マルチモーダル(LSL)</a></li>
+<li><a href="#software">7. ソフトウェア動向</a></li>
+<li><a href="#roadmap">8. 結論・ロードマップ</a></li>
 </ul>
 </div>
 
