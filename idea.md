@@ -71,9 +71,12 @@ note: "Theoretical Framework"
 <!-- Section 3 -->
 <section class="section">
 <h2 class="section-title">Sensing Strategy</h2>
-<h3>3. 計測：逆問題の確率論的解決</h3>
+<h3>3. 計測：逆問題の確率論的解決とマイクロ-マクロの橋渡し</h3>
 <p>
 脳波（EEG）の逆問題に対し、<strong>Empirical Bayes（経験ベイズ）</strong>を用いたアプローチを採用する。ハイパーパラメータをデータから推定し、恣意的なバイアスを排除するとともに、推定結果には必ず<strong>信頼区間（Credible Intervals）</strong>を付与し、不確実性を可視化する。
+</p>
+<p>
+さらに、マクロな信号からミクロなパラメータを推定する<strong>「Micro-Macro Link」</strong>を確立する。具体的には、<strong>Neural Mass Models (NMM)</strong> を反転させることで、局所回路の<strong>興奮/抑制バランス（E/I Balance）</strong>を推定する。これは「意識のレベル（覚醒度）」だけでなく、サイケデリック体験や精神疾患などの「意識の質（変性意識状態）」を識別し、再現するために不可欠なパラメータである。
 </p>
 </section>
 

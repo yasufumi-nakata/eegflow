@@ -355,6 +355,19 @@ note: "暫定版（随時更新）"
 <p><strong>次に必要：</strong>モデル/データ/評価のバージョンを結びつけ、再実行で再現できる形にする（P2）</p>
 </div>
 </details>
+
+<details class="qa" data-tags="reconstruction">
+<summary>
+<span class="qa-id">R10</span>
+<span class="qa-title">神経修飾：気分や覚醒度（Volume Transmission）をどう組み込む？</span>
+<span class="qa-tags"><span class="tag">NEUROMODULATION</span></span>
+</summary>
+<div class="qa-body">
+<p><strong>問い：</strong>シナプス結合（Wiring Transmission）だけでは、ドーパミンやセロトニンによる全脳的な「ムード」「学習率」の変化を再現できない。</p>
+<p><strong>解決策：</strong>アーキテクチャに<strong>「Neuromodulation-aware Layers（神経修飾層）」</strong>を追加する。これは、入力応答ゲイン（活性化関数の傾き）や可塑性（学習率）を動的に制御するメタパラメータとして機能する。</p>
+<p><strong>次に必要：</strong>瞳孔径や心拍変動などの生理指標を、脳幹アミン系活動のプロキシとしてモデルに入力する（M1/M8）</p>
+</div>
+</details>
 </div>
 
 <div class="node" id="implementation" data-qa-group>
@@ -371,6 +384,19 @@ note: "暫定版（随時更新）"
 <div class="qa-body">
 <p><strong>問い：</strong>復元対象（R0）に対して、実装基盤は“十分な忠実度”と“現実的コスト”を両立できるか？</p>
 <p><strong>次に必要：</strong>モデル粒度（I2）と計算量（I3）をセットで見積もる</p>
+</div>
+</details>
+
+<details class="qa" data-tags="implementation">
+<summary>
+<span class="qa-id">I10</span>
+<span class="qa-title">時間連続性：離散時間(RNN)と連続時間(ODE)のどちらを選ぶ？</span>
+<span class="qa-tags"><span class="tag">NEURAL-ODE</span><span class="tag">DYNAMICS</span></span>
+</summary>
+<div class="qa-body">
+<p><strong>問い：</strong>生物学的脳は連続時間で動作するが、標準的なRNN/Transformerは離散時間である。このギャップがダイナミクスの歪みを生む。</p>
+<p><strong>提案：</strong>実装フレームワークとして<strong>Neural ODEs (Neural Ordinary Differential Equations)</strong> または <strong>CTRNNs</strong> を採用する。$\frac{dh(t)}{dt} = f(h(t), t, \theta)$ としてモデル化することで、任意の時間分解能でのサンプリングと、随伴変数法（Adjoint Method）によるメモリ効率の良い学習が可能になる。</p>
+<p><strong>次に必要：</strong>EEG（ミリ秒）とfMRI（秒）の異なるタイムスケールを、同一の微分方程式系で統合する</p>
 </div>
 </details>
 
@@ -634,6 +660,19 @@ note: "暫定版（随時更新）"
 <p><strong>問い：</strong>パラメータ空間での単純なユークリッド距離は、モデルの機能的な振る舞いの違いを反映しないことが多い。より本質的な「振る舞いの近さ」をどう定量化するか？</p>
 <p><strong>方針：</strong>情報幾何学的指標 (Information Geometric Metrics) を採用する。特に<strong>フィッシャー情報量 (Fisher Information)</strong> は、パラメータの変化が確率分布（モデルの出力）に与える影響の大きさを表すため、これを計量（Metric）として用いることで、生物学的脳とエミュレートされた生成モデルの間の機能的な距離を厳密に定義できる。</p>
 <p><strong>次に必要：</strong>Fisher Information Metric (FIM) を用いたモデル間距離の計算モジュールを実装し、V2（因果テスト）の定量評価に組み込む</p>
+</div>
+</details>
+
+<details class="qa" data-tags="verification">
+<summary>
+<span class="qa-id">V11</span>
+<span class="qa-title">トポロジー：意識の“構造”は保存されているか？</span>
+<span class="qa-tags"><span class="tag">TDA</span><span class="tag">GEOMETRY</span></span>
+</summary>
+<div class="qa-body">
+<p><strong>問い：</strong>PCI（複雑性）などのスカラー値だけでは、意識の「質的な構造（Qualitative Structure）」が同じかどうかわからない。</p>
+<p><strong>提案：</strong>検証指標として<strong>位相的データ解析（TDA）</strong>、特に<strong>パーシステント・ホモロジー（Persistent Homology）</strong>を導入する。神経活動多様体（Neural Manifold）の「穴（サイクル）」や連結成分の数（ベッティ数）を比較することで、動的なアトラクタ構造の同一性を幾何学的に保証する。</p>
+<p><strong>次に必要：</strong>パーシステンス図（Persistence Diagrams）を用いて、生体脳とエミュレーションの間のトポロジー距離（Bottleneck distance等）を計測する</p>
 </div>
 </details>
 </div>

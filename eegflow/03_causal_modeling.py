@@ -10,6 +10,8 @@
 # 2. 事前に定義された関心領域(ROI)に時系列をまとめる(Parcellation)。
 # 3. オンライン能動的推論（Online Active Inference）と
 #    反実仮想的等価性（Counterfactual Equivalence）に基づく検証フローを提示する。
+# 4. (New in Issue #45) Neural Mass Models (NMM) を用いた、
+#    局所回路の興奮/抑制バランス（E/I Balance）の推定を実装目標に含める。
 #
 # 参照:
 # - Laukkonen et al. (2025). A beautiful loop: An active inference theory of consciousness.

@@ -169,6 +169,8 @@ def preprocess_subject(subject, session, task):
     print(f"品質管理レポートを生成しました: {report_path.fpath}")
 
     # 6. QCメトリクスの保存 (JSON) - Issue #34/M8 Update
+    # Issue #45: 神経修飾系（Brainstem amine systems）の活動プロキシ
+    # （瞳孔径、心拍変動など）をメタデータ要件として追加。
     qc_metrics = {
         "subject": subject,
         "session": session,
@@ -181,6 +183,10 @@ def preprocess_subject(subject, session, task):
         "snr_estimates": snr,
         "hmd_interference_detected": has_interference,
         "barycenter_freq": barycenter,
+        "neuromodulation_proxies": {
+            "pupil_diameter": None, # To be implemented (Issue #45)
+            "heart_rate_variability": None # To be implemented (Issue #45)
+        },
         "filter_params": {
             "l_freq": 1.0,
             "h_freq": 40.0,
