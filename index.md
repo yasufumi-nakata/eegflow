@@ -35,9 +35,18 @@ href="#ref-4">[4]</a></sup>に端を発する哲学的問題を概観し、今�
 <h4>中心的課題: 理論の予測と実験結果の乖離</h4>
 <p>この歴史的な検証実験において、IITが予測した「後方皮質における持続的な同期活動」は完全には支持されず、一方でGNWTが予測した「前頭前野のイグニッション」も課題依存性が高い（意識経験そのものよりは報告動作に関連する）ことが示された<sup><a href="#ref-54">[54]</a></sup>。これは、現行の主要理論がいずれも意識の神経相関（NCC）を完全には説明しきれていないことを意味する。</p>
 <div class="resolution-box">
-<h5>解決の方向性: Empirically Validated NCCと「Unfolding Argument」への応答</h5>
-<p>この結果を受け、本サイトでは特定の理論を教条的に支持する立場を取り下げる。代わりに、<strong>予測符号化（Predictive Coding）</strong>や<strong>自由エネルギー原理（Friston, 2010）</strong><sup><a href="#ref-14">[14]</a></sup>、あるいは高次理論（HOT）の視点を実装要件に組み込み、摂動複雑性指標（PCI/PCI-ST）<sup><a href="#ref-47">[47]</a></sup>のような<strong>経験的に検証された指標（Empirically Validated NCC）</strong>を工学的目標として採用する。</p>
-<p>また、IIT批判である「Unfolding Argument」（Doerig et al., 2019<sup><a href="#ref-40">[40]</a></sup>）—機能的に等価なフィードフォワード網がΦ=0となり意識を持たないとされる問題—に対し、本プロジェクトは単なる「機能の模倣」を超えた要件を課す。具体的には、「因果構造の保存（Causal Structure Preservation）」を、<strong>マルコフブランケット（Markov Blanket）</strong><sup><a href="#ref-77">[77]</a></sup>の境界条件（デジタルエミュレーションと生物学的基盤の間の情報交換における帯域幅と遅延）の保存として厳密に定義する。さらに、Laukkonen et al. (2025)<sup><a href="#ref-76">[76]</a></sup>が提唱する<strong>「生成モデルの反実仮想的等価性（Counterfactual Equivalence）」</strong>—システムが「もし〜だったら」という分岐構造を正しく再現できるか—を、WBEの本人性（Identity）の必要条件として検証プロセスに組み込む。</p>
+<h5>解決の方向性: Phenomenal vs Functional Theories の相補的統合</h5>
+<p>この結果を受け、本サイトでは特定の理論を教条的に支持する立場を取り下げる。ここで重要なのは、IITが<strong>「現象的意識（Phenomenal Consciousness）」</strong>の構造を説明しようとするのに対し、FEPや予測符号化はシステムが外界に適応するための<strong>「機能的プロセス（Functional Process）」</strong>を記述する理論であるというカテゴリーの違いを認識することである。</p>
+<p>我々は、両者を対立するものとしてではなく、以下の役割分担で統合する。</p>
+<ul style="margin: 0; padding-left: 20px; list-style-type: disc; font-size: 14px; line-height: 1.6;">
+<li style="margin-bottom: 6px;"><strong>Phenomenal Layer (IIT 4.0):</strong> 意識の「質（Qualia）」や「統合性」を評価するための理論的「ものさし」として参照する（ただし実装上の計算負荷はPCI-ST等で近似する）。</li>
+<li style="margin-bottom: 6px;"><strong>Functional Layer (FEP/Active Inference):</strong> その意識を生み出す基盤システムの「実装原理」として採用する。</li>
+</ul>
+
+<p>また、IIT批判である「Unfolding Argument」（Doerig et al., 2019<sup><a href="#ref-40">[40]</a></sup>）—機能的に等価なフィードフォワード網がΦ=0となり意識を持たないとされる問題—に対し、本プロジェクトは単なる「機能の模倣」を超えた要件を課す。具体的には、「因果構造の保存（Causal Structure Preservation）」を、<strong>マルコフブランケット（Markov Blanket）</strong><sup><a href="#ref-77">[77]</a></sup>の境界条件として厳密に定義する。</p>
+<p>
+ここで重要となるのは、デジタルエミュレーションと生物学的基盤の間の情報交換における<strong>「帯域幅」と「遅延」の閾値</strong>である。我々は、意識の質的変化（Qualitative shift）を引き起こさない条件として、生物学的統合時間窓（Integration Time Window, e.g., 10-100ms）以下の遅延と、神経結合の平均情報伝達容量以上の帯域幅を維持することを、物理的・工学的な制約条件として設定する。さらに、Laukkonen et al. (2025)<sup><a href="#ref-76">[76]</a></sup>が提唱する<strong>「生成モデルの反実仮想的等価性（Counterfactual Equivalence）」</strong>—システムが「もし〜だったら」という分岐構造を正しく再現できるか—を、WBEの本人性（Identity）の必要条件として検証プロセスに組み込む。
+</p>
 </div>
 </div>
 

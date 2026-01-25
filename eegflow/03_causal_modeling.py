@@ -78,17 +78,48 @@ class OnlineActiveInference:
     def __init__(self, n_regions):
         self.n_regions = n_regions
         self.belief_state = None 
-        
+        # Constraints for Causal Structure Preservation (Issue #49)
+        self.min_bandwidth_bps = 1e9  # Example: 1 Gbps per link
+        self.max_latency_ms = 10      # Example: 10ms round-trip
+
     def initialize(self, initial_data):
         print("Initializing Online Generative Model...")
         self.belief_state = np.zeros(self.n_regions)
 
-    def update_belief(self, observation, action):
+    def update_belief(self, observation, action, uncertainty_map=None):
         """
         Variational Message Passing (VMP) を用いたオンライン信念更新。
+        uncertainty_map (Posterior Variance) を重み付けとして利用する。
         """
+        if uncertainty_map is not None:
+            # Precision-weighted prediction error
+            # precision = 1 / uncertainty
+            pass
         # 実際にはここで勾配法またはVMPによるパラメータ更新が走る
         pass
+
+    def verify_markov_blanket_constraints(self):
+        """
+        マルコフブランケットの境界条件（帯域幅と遅延）を検証する (Issue #49)。
+        
+        意識の質的変化（Qualitative shift）を防ぐためには、
+        デジタルエミュレーションと生物学的基盤の間の情報交換が
+        物理的な因果的結合と同等の「帯域幅」と「遅延」を満たす必要がある。
+        """
+        print(f"  [Constraints Check] Verifying Markov Blanket Preservation...")
+        print(f"    - Required Bandwidth: > {self.min_bandwidth_bps/1e9} Gbps")
+        print(f"    - Max Latency: < {self.max_latency_ms} ms")
+        
+        # Mock check
+        current_bandwidth = 10e9 # 10 Gbps
+        current_latency = 2      # 2 ms
+        
+        if current_bandwidth < self.min_bandwidth_bps or current_latency > self.max_latency_ms:
+            print("    [FAIL] Causal structure preservation constraints NOT met.")
+            return False
+        else:
+            print("    [PASS] Causal structure preserved (High-fidelity coupling).")
+            return True
 
     def counterfactual_simulation(self, scenario):
         """
@@ -111,9 +142,9 @@ class OnlineActiveInference:
 
 def conceptual_online_modeling_workflow():
     """
-    オンラインActive Inferenceと同一性検証のワークフロー (Issue #38 Update)。
+    オンラインActive Inferenceと同一性検証のワークフロー (Issue #38 & #49 Update)。
     """
-    print("\n--- Online Active Inference & Identity Verification (Issue #38) ---")
+    print("\n--- Online Active Inference & Identity Verification (Issue #38/49) ---")
     
     # 1. オンライン生成モデルの構築
     print("\n[ステップ1: Online Generative Model via Markov Blanket]")
@@ -123,14 +154,19 @@ def conceptual_online_modeling_workflow():
     agent = OnlineActiveInference(n_regions=10)
     agent.initialize(None)
 
-    # 2. リアルタイム更新ループ
+    # 2. 因果構造保存の検証 (Issue #49)
+    if not agent.verify_markov_blanket_constraints():
+        print("Aborting: Causal structure requirements not met.")
+        return
+
+    # 3. リアルタイム更新ループ
     print("\n[ステップ2: Variational Message Passing (VMP)]")
-    print("観測データが入るたびに信念(Belief)を更新し、因果構造を徐々に移行させます。")
+    print("観測データ(重み付き不確実性を含む)に基づき信念を更新します。")
     
     for t in range(3):
-        agent.update_belief(observation=f"data_{t}", action=f"act_{t}")
+        agent.update_belief(observation=f"data_{t}", action=f"act_{t}", uncertainty_map="sigma_map")
 
-    # 3. 反実仮想による同一性検証
+    # 4. 反実仮想による同一性検証
     print("\n[ステップ3: Counterfactual Equivalence Verification]")
     print("Laukkonen et al. (2025) に基づき、反実仮想シミュレーションを実行します。")
     print("入出力の一致だけでなく、潜在的な分岐構造の一致を確認します。")
