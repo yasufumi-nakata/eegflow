@@ -733,6 +733,7 @@ note: "暫定版（随時更新）"
 <h4>Links</h4>
 <ul>
 <li><a href="index.html">Home</a></li>
+<li><a href="technical_proposal_47.html">Technical Proposal #47</a></li>
 <li><a href="mind_uploading_papers.html">Paper Collection</a></li>
 <li><a href="brain_science_dictionary.html">Brain Science Dictionary</a></li>
 <li><a href="https://github.com/yasufumi-nakata/eegflow" target="_blank">GitHub Repository</a></li>
