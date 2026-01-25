@@ -17,6 +17,16 @@ import mne
 import mne_bids
 import os.path as op
 import json
+import numpy as np
+
+# New modules
+try:
+    from . import quality
+    from . import signal_processing
+except ImportError:
+    # Fallback if running as script
+    import quality
+    import signal_processing
 
 # --- Configuration ---
 BIDS_ROOT = 'bids_dataset'
@@ -50,35 +60,92 @@ def preprocess_subject(subject, session, task):
         print("00_fetch_data.py を実行して、データをダウンロードしましたか？")
         return
 
+    # --- Initial Quality Checks (Proposal Section 2) ---
+    print("\n--- Step 1: Initial Quality Assurance ---")
+    
+    # 2.1 Impedance Check (if data available)
+    # Note: BDF/BrainVision sometimes stores impedance in separate file, 
+    # here we check if it's in raw.info (rare) or skip.
+    # Placeholder for demonstration
+    # impedances = {'Fz': 5000, 'Cz': 12000} # Mock
+    # quality.check_impedance_balance(impedances)
+    
+    # 2.2 SNR Estimation
+    snr = quality.estimate_snr(raw)
+    print(f"Estimated SNR (Delta): {snr.get('Delta', 'N/A')} dB")
+
+    # 2.3 HMD Interference
+    has_interference, hmd_details = quality.detect_hmd_interference(raw, refresh_rate=90.0)
+    if has_interference:
+        print(f"Potential HMD Interference detected. Suggesting Notch at {hmd_details['suggested_notch']} Hz")
+
+
     # 2. 基本的な前処理
     # チャンネル位置情報の設定
     raw.set_montage('standard_1005', on_missing='warn')
 
-    # フィルタリング (1.0 Hz High-pass, 40.0 Hz Low-pass)
-    raw.filter(l_freq=1.0, h_freq=40.0, fir_design='firwin', verbose=False)
+    # フィルタリング (1.0 Hz High-pass)
+    # High-pass is needed for ICA and ASR
+    raw.filter(l_freq=1.0, h_freq=None, fir_design='firwin', verbose=False)
 
-    # ノッチフィルタ (50Hzまたは60Hzの電源ラインノイズを除去)
-    raw.notch_filter(freqs=60.0, fir_design='firwin', verbose=False)
+    # ノッチフィルタ (Line noise + HMD noise)
+    notch_freqs = [60.0]
+    if has_interference:
+        notch_freqs.append(hmd_details['suggested_notch'])
+    
+    raw.notch_filter(freqs=notch_freqs, fir_design='firwin', verbose=False)
 
     # リファレンス再設定 (Average reference)
     raw.set_eeg_reference('average', projection=True, verbose=False)
 
-    # 3. ICAによるアーチファクト除去
-    ica = mne.preprocessing.ICA(n_components=20, random_state=42)
-    ica.fit(raw, tstep=1.0, reject_by_annotation=True)
+    # --- Advanced Artifact Removal (Proposal Section 4) ---
+    print("\n--- Step 2: Advanced Artifact Removal ---")
 
-    # EOG/ECGアーチファクトを自動検出
-    # データにEOG/ECGチャンネルがない場合は、手動で成分を選択する必要がある
-    try:
-        eog_indices, eog_scores = ica.find_bads_eog(raw)
-        ica.exclude.extend(eog_indices)
-        print(f"ICA: EOG成分を{len(eog_indices)}個検出しました。")
-    except Exception as e:
-        print(f"警告: EOG成分の自動検出に失敗しました。 {e}")
-        # ここで `ica.plot_sources(raw)` を呼び出して手動選択を促すことができる
+    # 4.1 Artifact Subspace Reconstruction (ASR)
+    # Low-pass filter is usually done before ASR or handled within
+    raw_asr = signal_processing.apply_asr(raw, sfreq=raw.info['sfreq'], cutoff=20.0)
+    
+    # Low-pass after ASR (optional, but good for clean data)
+    raw_asr.filter(l_freq=None, h_freq=40.0, verbose=False)
+
+
+    # 3. ICAによるアーチファクト除去
+    print("\n--- Step 3: ICA & ICLabel ---")
+    ica = mne.preprocessing.ICA(n_components=20, random_state=42)
+    ica.fit(raw_asr, tstep=1.0, reject_by_annotation=True)
+
+    # 4.3 ICA Automatic Classification (ICLabel)
+    # This replaces manual EOG finding or augments it
+    ic_labels = signal_processing.apply_iclabel_classification(raw_asr, ica)
+    
+    # Exclude components classified as 'eye' or 'muscle' with high probability
+    exclude_idx = []
+    if ic_labels:
+        for i, label in enumerate(ic_labels['labels']):
+            prob = ic_labels['y_pred_proba'][i]
+            if label in ['eye', 'muscle'] and prob > 0.8:
+                exclude_idx.append(i)
+        
+        ica.exclude.extend(exclude_idx)
+        print(f"ICLabel: Automatically excluded {len(exclude_idx)} components.")
+    else:
+        # Fallback to legacy EOG detection
+        try:
+            eog_indices, eog_scores = ica.find_bads_eog(raw_asr)
+            ica.exclude.extend(eog_indices)
+        except Exception:
+            pass
 
     # ICAを適用
-    ica.apply(raw)
+    ica.apply(raw_asr)
+
+    # --- Specialized Analysis (Proposal Section 5) ---
+    print("\n--- Step 4: Specialized VR Analysis ---")
+    
+    # 5.1 Barycenter Frequency (VR Sickness Biomarker)
+    barycenter = signal_processing.calculate_barycenter_frequency(raw_asr)
+    print(f"Spectral Barycenter (4-13Hz): {barycenter:.2f} Hz")
+
 
     # 4. 前処理済みデータの保存
     # BIDS派生データとしての保存パスを構築
@@ -90,34 +157,34 @@ def preprocess_subject(subject, session, task):
     if not op.exists(output_path.directory):
         output_path.directory.mkdir(parents=True)
 
-    raw.save(output_path.fpath, overwrite=True)
+    raw_asr.save(output_path.fpath, overwrite=True)
     print(f"前処理済みデータを保存しました: {output_path.fpath}")
 
     # 5. 品質管理レポートの生成
     report = mne.Report(title=f"Preprocessing Report for sub-{subject}")
-    report.add_raw(raw, title="Raw Data", psd=True)
-    report.add_ica(ica, title="ICA Components", inst=raw)
+    report.add_raw(raw_asr, title="Cleaned Data", psd=True)
+    report.add_ica(ica, title="ICA Components", inst=raw) # Use original raw for ICA viz
     report_path = output_path.copy().update(suffix='report', extension='.html')
     report.save(report_path.fpath, overwrite=True)
     print(f"品質管理レポートを生成しました: {report_path.fpath}")
 
     # 6. QCメトリクスの保存 (JSON) - Issue #34/M8 Update
-    # tech_roadmap.html M8: Incorporate QC metrics and log output
     qc_metrics = {
         "subject": subject,
         "session": session,
         "task": task,
         "processing_stage": "01_preprocess",
-        "n_channels": len(raw.ch_names),
-        "bads": raw.info['bads'],
-        "n_bads": len(raw.info['bads']),
-        "sfreq": raw.info['sfreq'],
-        "duration_sec": raw.times[-1],
-        "ica_excluded_components": [int(x) for x in ica.exclude], # Convert numpy ints to python ints
+        "n_channels": len(raw_asr.ch_names),
+        "sfreq": raw_asr.info['sfreq'],
+        "duration_sec": raw_asr.times[-1],
+        "ica_excluded_components": [int(x) for x in ica.exclude],
+        "snr_estimates": snr,
+        "hmd_interference_detected": has_interference,
+        "barycenter_freq": barycenter,
         "filter_params": {
             "l_freq": 1.0,
             "h_freq": 40.0,
-            "notch": 60.0
+            "notch": notch_freqs
         }
     }
     

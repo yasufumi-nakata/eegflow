@@ -6,3 +6,6 @@ scipy>=1.12.0
 pandas>=2.2.0
 matplotlib>=3.8.0
 scikit-learn>=1.4.0
+pylsl>=1.16.0
+meegkit>=0.1.4
+mne-icalabel>=0.6.0
