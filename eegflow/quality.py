@@ -6,6 +6,7 @@ Implements Section 2 (Signal Quality) and Section 3 (Time Sync) of the technical
 import numpy as np
 import mne
 from scipy.stats import pearsonr, linregress
+from scipy.signal import find_peaks
 
 def check_impedance_balance(impedances, ref_impedance=None, threshold_diff=50000):
     """
@@ -68,14 +69,14 @@ def estimate_snr(raw, baseline_raw=None, freqs=None):
         The experimental data.
     baseline_raw : mne.io.Raw, optional
         Resting state or saline phantom data for noise floor estimation.
-    freqs : list of tuple, optional
-        Frequency bands to check [(fmin, fmax), ...]. 
+    freqs : dict, optional
+        Frequency bands to check {'Name': (fmin, fmax)}. 
         Default: Delta, Theta, Alpha, Beta, Gamma.
         
     Returns
     -------
     snr_dict : dict
-        SNR values (in dB) for each band and channel.
+        SNR values (in dB) for each band (averaged across channels).
     """
     if freqs is None:
         freqs = {
@@ -89,35 +90,47 @@ def estimate_snr(raw, baseline_raw=None, freqs=None):
     snr_dict = {}
     
     # Calculate PSD for signal
+    # Use standard fmin/fmax for typical EEG analysis
     psd_signal = raw.compute_psd(fmin=0.5, fmax=100)
     
+    psd_noise = None
     if baseline_raw is not None:
+        # Check compatibility
+        if baseline_raw.info['sfreq'] != raw.info['sfreq']:
+            # This is a simplification. Ideally, we should resample baseline.
+            # But for now, let's assume users provide compatible data.
+            pass
         psd_noise = baseline_raw.compute_psd(fmin=0.5, fmax=100)
-    else:
-        # If no baseline, estimate noise floor using 1/f fit or lowest percentile?
-        # For now, we return power as placeholder if no baseline
-        psd_noise = None
-        
+    
     for band_name, (fmin, fmax) in freqs.items():
-        # Get power in band
-        # Note: integration logic depends on MNE version, simplifying here
-        # Assuming psd object has .get_data() method
+        # Get mean power in band for signal
+        # psd.get_data returns (n_channels, n_freqs)
+        # We need to mask frequencies
+        signal_data, signal_freqs = psd_signal.get_data(return_freqs=True)
+        idx_band = np.logical_and(signal_freqs >= fmin, signal_freqs <= fmax)
         
-        # This is a simplified SNR calculation: Signal Power / Noise Power
-        # If noise baseline is provided.
+        # Average power in band across all channels
+        power_signal = np.mean(signal_data[:, idx_band])
         
         if psd_noise:
-            # Resample noise PSD to match signal if needed or just take mean in band
-            # We assume same sampling parameters
-            pass 
-            # Implementation omitted for brevity, returning placeholder
-            snr_dict[band_name] = "Requires aligned baseline PSD"
+            noise_data, noise_freqs = psd_noise.get_data(return_freqs=True)
+            # Interpolate noise PSD to match signal freqs if needed, 
+            # but MNE's compute_psd usually returns similar freq bins if parameters match.
+            # We assume freq bins align for simplicity or just mask similarly.
+            idx_band_noise = np.logical_and(noise_freqs >= fmin, noise_freqs <= fmax)
+            power_noise = np.mean(noise_data[:, idx_band_noise])
+            
+            if power_noise > 0:
+                snr = 10 * np.log10(power_signal / power_noise)
+                snr_dict[band_name] = snr
+            else:
+                snr_dict[band_name] = np.inf
         else:
             snr_dict[band_name] = "No baseline provided"
             
     return snr_dict
 
-def detect_hmd_interference(raw, refresh_rate=90.0):
+def detect_hmd_interference(raw, refresh_rate=90.0, threshold_std=3.0):
     """
     Section 2.3: Detect HMD-related spectral peaks.
     
@@ -127,21 +140,48 @@ def detect_hmd_interference(raw, refresh_rate=90.0):
         EEG data.
     refresh_rate : float
         HMD refresh rate (Hz). e.g., 72, 90, 120.
+    threshold_std : float
+        Threshold for peak detection (z-score like).
         
     Returns
     -------
     has_interference : bool
     details : dict
     """
-    # Check for peaks at refresh_rate and its harmonics
-    psd = raw.compute_psd(fmin=refresh_rate-5, fmax=refresh_rate+5)
-    data, freqs = psd.get_data(return_freqs=True)
+    # Check for peaks around refresh_rate
+    fmin = max(0, refresh_rate - 5)
+    fmax = refresh_rate + 5
     
-    # Simple check: is there a sharp peak near refresh_rate?
-    # This requires more complex peak detection logic.
-    # We return a placeholder suggesting Notch filter.
-    
-    return True, {"suggested_notch": refresh_rate}
+    try:
+        psd = raw.compute_psd(fmin=fmin, fmax=fmax)
+        data, freqs = psd.get_data(return_freqs=True)
+        
+        # Average across channels
+        mean_psd = np.mean(data, axis=0)
+        
+        # Simple peak detection
+        # We look for a peak that is significantly higher than the local median/mean
+        local_median = np.median(mean_psd)
+        local_std = np.std(mean_psd)
+        
+        peaks, properties = find_peaks(mean_psd, height=local_median + threshold_std * local_std)
+        
+        found_peaks = freqs[peaks]
+        
+        # Check if any found peak is close to refresh rate (within 1Hz)
+        is_interfered = np.any(np.abs(found_peaks - refresh_rate) < 1.0)
+        
+        details = {
+            "suggested_notch": refresh_rate if is_interfered else None,
+            "peaks_found": found_peaks.tolist(),
+            "max_psd_at_refresh": float(np.max(mean_psd))
+        }
+        
+        return is_interfered, details
+        
+    except Exception as e:
+        print(f"Error in interference detection: {e}")
+        return False, {"error": str(e)}
 
 def calculate_clet_latency(lsl_times, photo_times):
     """

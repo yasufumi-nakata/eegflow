@@ -135,15 +135,25 @@ class SSVEP_CCA:
         
     def _generate_refs(self, freqs, sfreq, harmonics):
         """Generate sin/cos reference signals."""
-        refs = {}
-        # Assume fixed length for prediction, or generate on fly.
-        # Here we generate for 1 second and loop/slice later?
-        # Actually CCA needs X and Y to have same length.
-        return refs # Placeholder logic
+        # Refs are generated dynamically in predict based on data length
+        # This method might store pre-computed templates if length is fixed,
+        # but for flexibility we can keep it empty or return configuration.
+        return {}
         
     def predict(self, eeg_data):
         """
-        eeg_data: (n_channels, n_samples)
+        Predict the target frequency from EEG data using CCA.
+        
+        Parameters
+        ----------
+        eeg_data: np.ndarray
+            (n_channels, n_samples)
+            
+        Returns
+        -------
+        predicted_freq : float
+        scores : list of float
+            Correlation coefficients for each target frequency.
         """
         n_samples = eeg_data.shape[1]
         t = np.arange(n_samples) / self.sfreq
@@ -158,11 +168,18 @@ class SSVEP_CCA:
             Y = np.array(Y).T # (n_samples, 2*n_harmonics)
             X = eeg_data.T    # (n_samples, n_channels)
             
+            # Center the data
+            X = X - np.mean(X, axis=0)
+            Y = Y - np.mean(Y, axis=0)
+            
             self.cca.fit(X, Y)
             # Correlation is the score
             # CCA.score returns coefficient of determination R^2, we want correlation.
             # Using transform to get canonical variates
             Xc, Yc = self.cca.transform(X, Y)
+            
+            # Canonical correlation is the correlation between the first pair of canonical variates
+            # Xc and Yc are (n_samples, n_components). We want correlation of column 0.
             corr = np.corrcoef(Xc[:, 0], Yc[:, 0])[0, 1]
             scores.append(corr)
             
