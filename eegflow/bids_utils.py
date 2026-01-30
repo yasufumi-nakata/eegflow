@@ -98,3 +98,36 @@ def generate_coord_system_json(bids_path, transform_matrix=None):
         
     with open(coord_path.fpath, 'w') as f:
         json.dump(coords, f, indent=4)
+
+def add_impedance_to_electrodes_tsv(bids_path, impedance_dict):
+    """
+    Section 6.3: Add impedance values to electrodes.tsv (Issue #57).
+    
+    Parameters
+    ----------
+    bids_path : mne_bids.BIDSPath
+        The existing BIDS path.
+    impedance_dict : dict
+        Dictionary mapping channel names to impedance values (e.g., {'Fp1': '5 kOhm'}).
+    """
+    electrodes_path = bids_path.copy().update(suffix='electrodes', extension='.tsv')
+    
+    if not os.path.exists(electrodes_path.fpath):
+        print(f"Warning: {electrodes_path.fpath} not found. Cannot add impedance.")
+        return
+        
+    # Read existing TSV
+    df = pd.read_csv(electrodes_path.fpath, sep='\t')
+    
+    # Add 'impedance' column if not exists
+    if 'impedance' not in df.columns:
+        df['impedance'] = 'n/a'
+        
+    # Update values
+    for ch_name, imp_val in impedance_dict.items():
+        if ch_name in df['name'].values:
+            df.loc[df['name'] == ch_name, 'impedance'] = imp_val
+            
+    # Save back
+    df.to_csv(electrodes_path.fpath, sep='\t', index=False)
+    print(f"Impedance data added to {electrodes_path.fpath}")

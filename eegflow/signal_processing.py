@@ -22,7 +22,7 @@ except ImportError:
     HAS_ICALABEL = False
 
 
-def apply_asr(raw, sfreq, cutoff=20.0):
+def apply_asr(raw, sfreq, cutoff=20.0, method='riemann'):
     """
     Section 4.1: Artifact Subspace Reconstruction (ASR).
     Requires 'meegkit'.
@@ -35,6 +35,9 @@ def apply_asr(raw, sfreq, cutoff=20.0):
         Sampling frequency.
     cutoff : float
         Standard deviation cutoff for rejection.
+    method : str
+        Distance metric ('euclid' or 'riemann'). 
+        'riemann' is recommended for better handling of non-stationary noise (Anders et al., 2020).
         
     Returns
     -------
@@ -51,7 +54,7 @@ def apply_asr(raw, sfreq, cutoff=20.0):
     
     # Train on "clean" portion? 
     # Standard ASR uses a calibration period. If not provided, it finds one.
-    asr_model = asr.ASR(method='euclid')
+    asr_model = asr.ASR(method=method)
     
     # Train (using the whole data as calibration for simplicity here, 
     # ideally should use a resting baseline)
@@ -60,7 +63,7 @@ def apply_asr(raw, sfreq, cutoff=20.0):
     
     # Using fit_transform from meegkit (simplified usage)
     try:
-        clean_data, sample_mask = asr_model.fit_transform(data, sfreq)
+        clean_data, sample_mask = asr_model.fit_transform(data, sfreq, cutoff=cutoff)
         
         # Put back into Raw
         raw_clean = raw.copy()

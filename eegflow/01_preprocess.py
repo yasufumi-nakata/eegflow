@@ -103,7 +103,8 @@ def preprocess_subject(subject, session, task):
 
     # 4.1 Artifact Subspace Reconstruction (ASR)
     # Low-pass filter is usually done before ASR or handled within
-    raw_asr = signal_processing.apply_asr(raw, sfreq=raw.info['sfreq'], cutoff=20.0)
+    # Issue #57: Use Riemannian geometry for better artifact rejection and data-driven thresholding
+    raw_asr = signal_processing.apply_asr(raw, sfreq=raw.info['sfreq'], cutoff=20.0, method='riemann')
     
     # Low-pass after ASR (optional, but good for clean data)
     raw_asr.filter(l_freq=None, h_freq=40.0, verbose=False)

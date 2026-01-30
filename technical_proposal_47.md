@@ -35,6 +35,16 @@ note: "Proposal (Accepted)"
 <p>
 本報告書は、eegflow.jpという既存の脳波研究情報プラットフォームに対し、現役の研究者の視点から、そのコンテンツ価値を飛躍的に高めるための技術的提案を行うものである。現状のウェブサイトが提供する基礎的な情報に加え、最先端の研究現場で真に求められている「計算論的詳細」「標準化プロトコル」「数理的背景」を補完することを目的とする。
 </p>
+
+<h3>1.3 理論的枠組み：Active InferenceとIITの統合における課題</h3>
+<p>
+eegflow.jpが提唱する「意識のアップロード」の理論的基盤において、Laukkonen et al. (2025) の「反事実的等価性（Counterfactual Equivalence）」をアイデンティティの証明として用いる点には、IIT 4.0（統合情報理論）の観点から論理的な飛躍が指摘されている。
+</p>
+<ul>
+<li><strong>課題:</strong> 生成モデルの分岐構造が一致するだけでは、現象的意識の必要条件である「因果構造（Causal Structure）」の保存、すなわちIITにおける「内在的存在（Intrinsic Existence）」が保証されない。</li>
+<li><strong>解決策の提案:</strong> アイデンティティの検証指標として、単なる入出力の等価性ではなく、<strong>Effective Information (EI)</strong> などの因果的指標を導入し、物理的なMarkov Blanketにおけるレイテンシ（<10ms）や帯域幅の制約を厳密に定義することを提案する。</li>
+</ul>
+
 <div class="key-points">
 <h4>提案の5つの柱</h4>
 <ul>
@@ -80,32 +90,32 @@ BIDSはファイルフォーマットではなく、データセットを構成�
 この構造において重要なのは、被験者（<code>sub-</code>）、セッション（<code>ses-</code>）、タスク（<code>task-</code>）といったキーバリューペアがファイル名に埋め込まれている点である。これにより、スクリプトはファイル名のみから実験条件を完全に特定可能となる。
 </p>
 
-<h3>2.2 サイドカーJSONによるメタデータ管理</h3>
+<h3>2.2 サイドカーJSONによるメタデータ管理と完全性</h3>
 <p>
-脳波データ（バイナリ）には含まれないが、解析に不可欠な情報を記述する「サイドカーJSONファイル（*_eeg.json）」の重要性を強調すべきである。特に以下のフィールドは、解析の品質を左右する。
+脳波データ（バイナリ）には含まれないが、解析に不可欠な情報を記述する「サイドカーJSONファイル（*_eeg.json）」の重要性を強調すべきである。特に Pernet et al. (2019) の提唱する EEG-BIDS 規格への完全準拠を目指し、以下のフィールドを必須化する。
 </p>
 <ul>
-<li><strong>EEGReference:</strong> 参照電極の配置。例えば「Cz」なのか、「Common Mode Sense (CMS) / Driven Right Leg (DRL)」なのかを明記する。特にBiosemiなどのアクティブ電極系ではCMS/DRLが標準であるが、これを明記しないと再解析時に参照変換（re-referencing）を誤る原因となる。</li>
-<li><strong>PowerLineFrequency:</strong> 日本国内では関東（50Hz）と関西（60Hz）が混在するため、このフィールドの記述はフィルタリング処理の自動化において決定的に重要である。</li>
-<li><strong>SoftwareFilters:</strong> 収録時にハードウェアまたは収録ソフト側で適用されたフィルタ情報。これを記述せずにオフライン解析で再度フィルタをかけると、位相歪みやエッジアーチファクトが発生するリスクがある。</li>
+<li><strong>EEGReference:</strong> 参照電極の配置。例えば「Cz」なのか、「Common Mode Sense (CMS) / Driven Right Leg (DRL)」なのかを明記する。</li>
+<li><strong>PowerLineFrequency:</strong> 50Hz（東日本）か60Hz（西日本）かを明記。</li>
+<li><strong>SoftwareFilters:</strong> 収録時に適用されたフィルタ情報。</li>
+<li><strong>Hardware Specifications:</strong> 再現性の観点から、アンプのビット深度（例：24 bit）や入力インピーダンスの範囲を明記することが望ましい。</li>
 </ul>
 
-<h3>2.3 チャンネル記述ファイル（channels.tsv）の役割</h3>
+<h3>2.3 チャンネル記述ファイル（channels.tsv）とインピーダンス</h3>
 <p>
-バイナリデータ内のチャンネルラベルだけでは不十分なケースが多い。<code>*_channels.tsv</code> ファイルでは、各チャンネルの「種類（type）」と「単位（units）」を定義する。
+バイナリデータ内のチャンネルラベルだけでは不十分なケースが多い。<code>*_channels.tsv</code> ファイルでは、各チャンネルの「種類（type）」と「単位（units）」に加え、<strong>電極インピーダンス（impedance）</strong> の記録を推奨する。
 </p>
 <table class="data-table">
 <thead>
-<tr><th>name</th><th>type</th><th>units</th><th>description</th></tr>
+<tr><th>name</th><th>type</th><th>units</th><th>impedance</th><th>description</th></tr>
 </thead>
 <tbody>
-<tr><td>Fp1</td><td>EEG</td><td>microV</td><td>Frontal Pole 1</td></tr>
-<tr><td>EOGv</td><td>EOG</td><td>microV</td><td>Vertical Electrooculogram</td></tr>
-<tr><td>TRIG</td><td>TRIG</td><td>n/a</td><td>Stimulus Trigger</td></tr>
+<tr><td>Fp1</td><td>EEG</td><td>microV</td><td>5 kOhm</td><td>Frontal Pole 1</td></tr>
+<tr><td>EOGv</td><td>EOG</td><td>microV</td><td>n/a</td><td>Vertical Electrooculogram</td></tr>
 </tbody>
 </table>
 <p>
-この定義ファイルが存在することで、MNE-PythonやEEGLABなどの解析ソフトは、EOGチャンネルを脳波として誤って解析（例：平均参照に含めてしまう等）することを防ぐことができる。
+この定義ファイルが存在することで、解析ソフトは適切な処理が可能となり、またインピーダンスの時系列変化（もし記録されていれば）はデータの品質評価に直結する。
 </p>
 </section>
 
@@ -133,10 +143,17 @@ ASRは、主成分分析（PCA）を用いて、データ内の高分散成分�
 </li>
 </ol>
 
-<h4>3.1.2 運用上の注意点</h4>
+<h4>3.1.2 運用上の注意点とデータ駆動型閾値設定</h4>
 <p>
-eegflow.jpでは、ASRが「補間（Interpolation）」に近い処理を行うため、過度に厳しい閾値（例：$k<10$）を設定すると、脳波自体（特に徐波やてんかん性放電など）を除去してしまうリスクがあることを警告すべきである。また、ASR適用前にハイパスフィルタ（1Hz程度）を適用し、データの定常性を高めておくことがアルゴリズムの前提条件となる。
+従来のASR運用（例：固定カットオフ $k=20$）は、科学的に不十分であるとの指摘がある（Anders et al., 2020）。固定閾値は、個人差や課題によるノイズプロファイルの違いを無視し、特に高周波帯域（ガンマ波）の神経信号を過剰に除去するリスクがある。
 </p>
+<p>
+したがって、eegflow.jpでは以下の改善策を提案する。
+</p>
+<ul>
+<li><strong>データ駆動型閾値設定:</strong> 固定値ではなく、<strong>リーマン幾何学（Riemannian Geometry）</strong> を用いたアプローチ（例：Riemannian Potato）により、個々のデータの統計的分布に基づいて外れ値を検出・補間する手法を採用すべきである。</li>
+<li><strong>キャリブレーションデータの選定:</strong> ASRの性能は参照データの質に依存するため、安静時閉眼データなどの安定した区間を明示的に指定することを推奨する。</li>
+</ul>
 
 <h3>3.2 スペクトル-空間フィルタリング：ZapLine-plus</h3>
 <p>
