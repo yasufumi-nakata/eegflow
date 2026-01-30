@@ -76,6 +76,10 @@ class OnlineActiveInference:
     単なる予測誤差最小化（Prediction Error Minimization）だけでなく、
     Laukkonen et al. (2025) が提唱する「反実仮想的等価性（Counterfactual Equivalence）」
     を検証可能なアーキテクチャを採用する。
+
+    Issue #54 Update:
+    熱力学的制約と物理的不可逆性（Thermodynamic Constraints & Physical Irreversibility）
+    を導入。意識の熱力学的コスト（TCC）を定義し、散逸構造をエミュレートする。
     """
     def __init__(self, n_regions):
         self.n_regions = n_regions
@@ -83,6 +87,11 @@ class OnlineActiveInference:
         # Constraints for Causal Structure Preservation (Issue #49)
         self.min_bandwidth_bps = 1e9  # Example: 1 Gbps per link
         self.max_latency_ms = 10      # Example: 10ms round-trip
+
+        # Thermodynamic State (Issue #54)
+        self.accumulated_entropy = 0.0
+        self.metabolic_reserve = 100.0 # Virtual Joules or normalized units
+        self.temperature_k = 310.0     # 37 degree Celsius
 
     def initialize(self, initial_data):
         print("Initializing Online Generative Model...")
@@ -97,8 +106,44 @@ class OnlineActiveInference:
             # Precision-weighted prediction error
             # precision = 1 / uncertainty
             pass
+        
+        # --- Thermodynamic Cost Calculation (Issue #54) ---
+        # 情報更新に伴う論理的不可逆性に基づくエントロピー生成を計算
+        # Landauer's Principle: dS >= k * ln(2) per bit erased
+        # ここでは信念更新によるKL情報量をコストとして近似
+        kl_divergence_mock = np.random.uniform(0.1, 0.5) # Mock information gain (bits)
+        
+        # TCC (Thermodynamic Cost of Consciousness)
+        kb = 1.38e-23
+        energy_dissipated = kb * self.temperature_k * np.log(2) * kl_divergence_mock * 1e21 # Scale up for visibility
+        
+        self.accumulated_entropy += energy_dissipated
+        self.metabolic_reserve -= energy_dissipated * 0.1 # Metabolic cost
+        
+        print(f"    [Thermodynamics] TCC: {energy_dissipated:.4f} units | Entropy: {self.accumulated_entropy:.4f}")
+
         # 実際にはここで勾配法またはVMPによるパラメータ更新が走る
         pass
+
+    def verify_thermodynamic_constraints(self):
+        """
+        非平衡定常状態（Non-equilibrium Steady State）と散逸構造の維持を確認する (Issue #54)。
+        システムが単なる可逆計算ではなく、エントロピーを生成し続けていることを要求する。
+        """
+        print(f"  [Thermodynamic Check] Verifying Dissipative Structure...")
+        
+        # 1. Check if entropy is increasing (Irreversibility)
+        if self.accumulated_entropy <= 0:
+            print("    [FAIL] No entropy production. System appears logically reversible.")
+            return False
+            
+        # 2. Check Metabolic Consumption (Non-equilibrium)
+        if self.metabolic_reserve >= 100.0: # Assuming it started at 100
+            print("    [FAIL] No metabolic cost paid. System is not metabolically grounded.")
+            return False
+            
+        print(f"    [PASS] System is dissipative (TCC > 0). Entropy: {self.accumulated_entropy:.2f}")
+        return True
 
     def verify_markov_blanket_constraints(self):
         """
@@ -201,6 +246,10 @@ def conceptual_online_modeling_workflow():
     
     for t in range(3):
         agent.update_belief(observation=f"data_{t}", action=f"act_{t}", uncertainty_map="sigma_map")
+
+    # 3.5 熱力学的制約の検証 (Issue #54)
+    if not agent.verify_thermodynamic_constraints():
+        print("Warning: Thermodynamic constraints violated.")
 
     # 4. 識別可能性と介入の検証 (Issue #56)
     print("\n[ステップ3: Perturbational Complexity & Identifiability Check]")
