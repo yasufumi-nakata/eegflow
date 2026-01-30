@@ -123,22 +123,56 @@ class OnlineActiveInference:
             print("    [PASS] Causal structure preserved (High-fidelity coupling).")
             return True
 
+    def apply_do_operator(self, target_region, value):
+        """
+        Pearlのdo-calculusに基づく介入 (Intervention) を適用する (Issue #56)。
+        
+        Args:
+            target_region (int): 介入対象の領域インデックス
+            value (float): 固定する値 (do(X=x))
+        """
+        print(f"    [Causal Intervention] Applying do(Region_{target_region} = {value})")
+        # 構造的因果モデル(SCM)への介入:
+        # 該当ノードへの親からのリンクを切断し、値を強制固定する。
+        self.belief_state[target_region] = value
+        # 実際の実装では、ここで因果グラフのトポロジー変更を伴う処理が入る
+        return self.belief_state
+
+    def calculate_virtual_pci(self, stimulus_strength=10.0):
+        """
+        仮想的な摂動複雑性指数 (Virtual PCI) を計算する (Issue #56)。
+        
+        生物学的脳におけるTMS-EEGと同様に、システムに強い摂動を与え、
+        その応答（Response）の時空間的な複雑さ（Lempel-Ziv Complexity等）を計測する。
+        
+        Returns:
+            float: 推定されたPCI値
+        """
+        print(f"    [Virtual PCI] Injecting virtual pulse (Strength={stimulus_strength})...")
+        
+        # 1. Perturbation: 全領域への影響伝播をシミュレート
+        response_matrix = np.random.rand(self.n_regions, 300) # 300ms time window (mock)
+        
+        # 2. Binarization: 閾値処理でバイナリ行列化
+        binary_response = response_matrix > 0.5
+        
+        # 3. Complexity: 圧縮アルゴリズム等で複雑性を算出 (Mock)
+        # 実際には Lempel-Ziv complexity of the binary matrix
+        pci_value = np.sum(binary_response) / (self.n_regions * 300) * 0.8 # Dummy calculation
+        
+        print(f"    [Virtual PCI] Calculated PCI: {pci_value:.3f} (Reference Biological PCI: ~0.5-0.7)")
+        return pci_value
+
     def counterfactual_simulation(self, scenario):
         """
         反実仮想シミュレーション (Counterfactual Simulation)。
         
-        重要 (Issue #38):
-        内部モデルが「もし〜だったら？」という分岐構造（Counterfactuals）を
-        正しく生成できるかを検証する。この分岐構造が生体脳と一致することが、
-        哲学的ゾンビ（振る舞いは同じだが意識構造が異なる）を排除し、
-        同一性（Identity）を保証するための必要条件となる。
-        
-        Returns
-        -------
-        simulated_outcome : distribution
+        重要 (Issue #38, #56):
+        介入によって同定された構造的因果モデル（SCM）に基づき、
+        「もし〜だったら？」という反実仮想を計算する。
         """
         print(f"  [Identity Check] Running counterfactual simulation: '{scenario}'")
-        print("    -> Verifying Counterfactual Equivalence against biological ground truth...")
+        print("    -> Verifying Counterfactual Equivalence using Identified SCM (via do-calculus)...")
         return "Simulated Outcome Distribution"
 
 
@@ -168,8 +202,20 @@ def conceptual_online_modeling_workflow():
     for t in range(3):
         agent.update_belief(observation=f"data_{t}", action=f"act_{t}", uncertainty_map="sigma_map")
 
-    # 4. 反実仮想による同一性検証
-    print("\n[ステップ3: Counterfactual Equivalence Verification]")
+    # 4. 識別可能性と介入の検証 (Issue #56)
+    print("\n[ステップ3: Perturbational Complexity & Identifiability Check]")
+    print("PCIおよびdo-calculusを用いて、モデルの因果構造が識別可能か検証します。")
+    
+    # 介入テスト
+    agent.apply_do_operator(target_region=2, value=1.0)
+    
+    # PCI計測
+    pci = agent.calculate_virtual_pci()
+    if pci < 0.31: # Casali et al. (2013) threshold for consciousness
+        print("Warning: Virtual PCI is too low (Unconscious state likely).")
+    
+    # 5. 反実仮想による同一性検証
+    print("\n[ステップ4: Counterfactual Equivalence Verification]")
     print("Laukkonen et al. (2025) に基づき、反実仮想シミュレーションを実行します。")
     print("入出力の一致だけでなく、潜在的な分岐構造の一致を確認します。")
     
