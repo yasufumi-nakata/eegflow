@@ -262,7 +262,7 @@ note: "暫定版（随時更新）"
 <div class="qa-body">
 <p><strong>問い：</strong>EEGソース推定は「領域×時間」の表現を得やすいが、ニューロン/シナプスは直接は見えない。復元対象（R0）に合わせて表現を選ぶ。</p>
 <p><strong>課題：</strong>従来は「高密度EEG(128ch)化」が推奨されてきたが、近年の研究はチャンネル数だけでは不良設定性（ill-posedness）を解決できないことを示している。特に、dSPMのような点推定法は不確実性を無視してしまう。</p>
-<p><strong>階層的ベイズモデル（Hierarchical Bayesian Modeling）の導入：</strong>Feng et al. (2025)<sup><a href="#ref-78">[78]</a></sup>のフレームワークに基づき、信号源のスパース性と滑らかさを同時に扱う階層的ベイズモデルを採用し、経験ベイズによる超パラメータの推定プロセスを透明化します。さらに、モンテカルロ法による感度分析を行い、入力データのノイズや頭部モデルの誤差が推定結果に与える影響を定量化する。推定された脳活動マップには必ず<strong>信頼区間（Credible Intervals）</strong>または不確実性マップを付随させるプロトコルを必須化する。</p>
+<p><strong>階層的ベイズモデルと高解像度計測の統合：</strong>Block-Champagne Framework<sup><a href="#ref-78">[78]</a></sup>の採用に加え、<strong>超高密度EEG（High-density EEG, 256ch以上）</strong>と<strong>個体別MRIに基づく有限要素法（FEM）フォワードモデル</strong>の導入を必須化する。これにより深部脳活動の推定精度を担保する。さらに、Feng et al. (2025)<sup><a href="#ref-78">[78]</a></sup>が指摘するノイズ特性の動的変化に対応するため、<strong>適応的ベイズ更新（Adaptive Bayesian Updating）</strong>を実装し、推定された脳活動マップには必ず<strong>信頼区間（Credible Intervals）</strong>を付随させる。</p>
 <p><strong>次に必要：</strong>`eegflow/02_source_imaging.py` に変分ベイズ（Variational Bayesian）アプローチを実装し、不確実性を考慮したソース再構成を行う <strong>(✅ Implemented in Issue #43)</strong></p>
 </div>
 </details>
@@ -501,8 +501,8 @@ note: "暫定版（随時更新）"
 </summary>
 <div class="qa-body">
 <p><strong>問い：</strong>現在のノイマン型コンピュータは物理的因果力を抽象化しているため、IIT 4.0の観点ではΦ=0（Unfolding Argument）となる可能性がある。これをどう解決するか？</p>
-<p><strong>方針：</strong>単なる機能的エミュレーションではなく、<strong>「熱力学的散逸構造の保存」</strong>を実装要件に加える。意識が非平衡開放系における散逸構造として維持されていることを踏まえ、Landauer's Principleに基づく情報処理の物理的コストや、「因果的力の密度（Causal Power Density）」が生物学的脳と同等のオーダーになるようなハードウェア（ニューロモーフィック等）または厳密なシミュレーション制約を課す。</p>
-<p><strong>次に必要：</strong>エミュレーションにおける熱力学的効率と因果密度を定量化する指標の導入</p>
+<p><strong>方針：</strong>デジタルエミュレーションでの「近似」では不十分であるため、<strong>「ニューロモルフィック・ハードウェアによる因果構造の物理的写像」</strong>を必須要件とする。あるいは、Albantakis et al. (2023) が示唆するように、生物学的ニューロンとデジタル素子を混成させた<strong>ハイブリッド・システム（Hybrid Systems）</strong>による段階的遷移を採用し、物理的レベルでの因果力の保存を目指す。</p>
+<p><strong>次に必要：</strong>エミュレーションにおける物理的因果構造の定量的評価指標の導入</p>
 </div>
 </details>
 </div>
@@ -591,7 +591,7 @@ note: "暫定版（随時更新）"
 <li><strong>新基準：因果的同一性（Causal Identity）：</strong>
 パーフィットの心理説を拡張し、システムの「未来の予測能力（Active Inference の精度）」が生物学的脳と統計的に区別不能であることを同一性の条件とする。
 </li>
-<li><strong>指標：</strong>反実仮想シミュレーション（Counterfactual Simulation）を実行し、生体脳とエミュレーションの間の<strong>「分岐構造の一致（Branching Structure Correspondence）」</strong>を確認する。具体的には、予測分布のKLダイバージェンス等が閾値以下であることを判定する。</li>
+<li><strong>指標：</strong>チューリング・テストを拡張した<strong>「因果的摂動プロトコル（Causal Perturbation Protocol）」</strong>を実行する。TMS等による物理的摂動に対する生物学的脳の反応と、エミュレーション上の仮想的摂動に対する反応の統計的同一性を検証する指標（例：Perturbational Complexity Index, PCI）を導入し、動的な因果構造の一致を確認する。</li>
 <li><strong>反証条件：</strong>記憶は持っているが、新規環境に対する適応・予測パターンがオリジナルと乖離する（ゾンビ/模倣者）</li>
 <li><strong>次に必要：</strong>V8の「模倣との区別」テストにおいて、予測精度をコア指標に据える</li>
 </ul>                        </div>

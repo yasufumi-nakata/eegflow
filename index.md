@@ -54,8 +54,7 @@ href="#ref-4">[4]</a></sup>に端を発する哲学的問題を概観し、今�
 <p><strong>IITのデジタル基盤への移植課題：</strong> IIT 4.0<sup><a
 href="#ref-17">[17]</a></sup>をWBEに応用するには、その公理系をデジタル基盤上でいかに満たすかという問題が残る。特に、物理的な実在を問う「内因的実在（Intrinsic
 Existence）」の公理<sup><a
-href="#ref-44">[44]</a></sup>は、離散的な計算システムにおいて自明ではない。本プロジェクトでは、デジタルエミュレーションにおける「内因的実在」の近似を、<strong>計算の連続性（Computational Continuity）</strong>と<strong>不可逆性（Irreversibility）</strong>の観点から定義する。具体的には、エミュレーションシステムが量子的な不可逆性や**熱力学的散逸（Thermodynamic Dissipation）**をシミュレートする必要性、あるいは一方向性関数による計算論的不可逆性での代替可能性を議論し、その近似度を測る**定量的指標（Quantitative Metrics）**を導入することを技術目標とする。
-</p>
+href="#ref-44">[44]</a></sup>は、離散的な計算システム（標準的なノイマン型コンピュータ）では原理的に満たされない可能性が高い（Unfolding Argument）。本プロジェクトでは、デジタルエミュレーションでの「近似」という表現を避け、<strong>ニューロモルフィック・ハードウェアによる因果構造の物理的写像</strong>へのシフトを明記する。あるいは、Albantakis et al. (2023)<sup><a href="#ref-17">[17]</a></sup>が示唆するように、生物学的ニューロンとデジタル素子を組み合わせた<strong>ハイブリッド・システム（Hybrid Systems）</strong>による段階的遷移を主軸に据え、単なる計算上の出力一致ではなく、物理的レベルでの因果力の保存を目指す。</p>
 
 <p><strong>心理的連続性とコピー問題：</strong> デレク・パーフィットの心理的連続性理論<sup><a
 href="#ref-4">[4]</a></sup>は、記憶や性格の連続性を本人性の根拠とする。これは、単なる静的なデータコピーではなく、「動的なプロセス」の維持をWBEに要求する。この理論が提起する「コピー問題（分身のパラドックス）」に対し、我々は「段階的な神経置換」や「ハイブリッド脳システム」といった思考実験を、検証可能な工学的プロトコルへと落とし込むことを目指す。
@@ -92,7 +91,7 @@ href="#ref-16">[16]</a></sup>の知見を踏まえた整理である。</p>
 <ul
 style="margin: 0; padding-left: 20px; list-style-type: disc; font-size: 14px; line-height: 1.6;">
 <li style="margin-bottom: 8px;">
-<strong>Block-Champagne Frameworkの採用：</strong>個体差やノイズ特性をハイパーパラメータとしてデータ駆動で推定するため、<strong>Block-Champagne Framework</strong><sup><a href="#ref-78">[78]</a></sup>等の高度な階層的ベイズモデルを導入します。これにより、信号源のスパース性と滑らかさを同時に扱い、点推定ではなく分布として解を導出します。
+<strong>超高密度EEGとBlock-Champagneの統合：</strong>Block-Champagne Framework<sup><a href="#ref-78">[78]</a></sup>はスパースな活動推定に優れるが、深部脳活動や全脳ダイナミクスの再現には不十分である。したがって、<strong>超高密度EEG（High-density EEG, 256ch以上）</strong>と<strong>個体別MRIに基づく有限要素法（FEM）フォワードモデル</strong>の導入を必須条件とする。さらに、Feng et al. (2025)<sup><a href="#ref-78">[78]</a></sup>が指摘するノイズ特性の動的変化に対応するため、適応的ベイズ更新を実装に組み込む。
 </li>
 <li style="margin-bottom: 8px;">
 <strong>不確実性の可視化と信頼区間：</strong>推定された脳活動マップには、振幅だけでなくその<strong>「信頼区間（Credible Intervals）」</strong>を常に併記し、不確実性が高い領域を明示するプロトコルを必須化します。これは`eegflow/02_source_imaging.py`に実装されるべき中心機能です。
@@ -121,7 +120,7 @@ style="margin: 0; padding-left: 20px; list-style-type: disc; font-size: 14px; li
 <strong>能動的推論（Active Inference）の統合：</strong>脳を受動的なデコーダーではなく、環境に対して働きかける<strong>「能動的推論エージェント」</strong>としてモデル化します<sup><a href="#ref-80">[80]</a></sup>。`03_causal_modeling.py`では、観測データから生成モデル（Generative Model）を同定し、エージェントが外界の潜在原因をどう推論しているかを記述します。
 </li>
 <li style="margin-bottom: 8px;">
-<strong>反実仮想シミュレーション：</strong>「もし別の行動をとっていたら、どのような主観的経験が生じていたか」という分岐構造（Counterfactuals）が、生体脳とデジタルエミュレーション間で一致するかを検証するプロトコルを導入します。これにより、単なる「振る舞いのコピー」と「内的な因果構造の保存」を明確に区別します。
+<strong>チューリング・テストの拡張（因果的摂動プロトコル）：</strong>静的な反実仮想の検証は不可能であるため、**「チューリング・テストを拡張した因果的摂動プロトコル（Causal Perturbation Protocol）」**を具体化する。TMS等による物理的摂動に対する生物学的脳の反応と、エミュレーション上の仮想的摂動に対する反応の統計的同一性を検証する指標（例：Perturbational Complexity Index, PCI）を導入し、動的な因果構造の一致を確認する。
 </li>
 </ul>
 <div class="tag-list" style="margin-top: 12px;">
@@ -738,6 +737,7 @@ href="https://arxiv.org/abs/2303.08896">arXiv</a></li>
 <li id="ref-79" value="79">Medani, T., et al. (2025). Forward and inverse solvers in multi-modal neuroimaging: Accounting for tissue conductivity uncertainties. <em>Frontiers in Human Neuroscience</em>.</li>
 <li id="ref-80" value="80">Hohwy, J., et al. (2025). On the Minimal Theory of Consciousness Implicit in Active Inference. <em>Journal of Mathematical Psychology</em>.</li>
 <li id="ref-81" value="81">Li, J., et al. (2025). Computational complexity reduction in Integrated Information Theory via low-dimensional embedding. <em>Chaos, Solitons & Fractals</em>.</li>
+<li id="ref-82" value="82">Cai, C., et al. (2021). Robust estimation of noise for electromagnetic brain imaging with the Champagne algorithm. <em>NeuroImage</em>.</li>
 </ol>
 </section>
 
