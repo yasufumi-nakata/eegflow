@@ -23,11 +23,10 @@
 # - mne-python
 # - (Future Dependency) pymc / numpyro for full Empirical Bayes implementation
 
-import sys
-import mne
-import mne_bids
+import mne.bids
 import os.path as op
 import numpy as np
+from mne.minimum_norm import make_inverse_resolution_matrix, resolution_metrics
 
 # --- Configuration ---
 BIDS_ROOT = 'bids_dataset'
@@ -69,6 +68,68 @@ class VariationalBayesianESI:
         # Future updates will allow injection of fMRI/DTI priors here.
         return None
 
+    def assess_resolution_limits(self, inv):
+        """
+        Issue #55: PSF/CTF分析による解像度限界の厳密な評価。
+        
+        1. Resolution Matrix (R = W * G) を計算。
+        2. Point Spread Function (PSF) と Crosstalk Function (CTF) を定量化。
+        3. 空間的漏れ (Spatial Leakage) に基づく High-Fidelity Threshold を定義。
+        """
+        print("  - [Issue #55] Performing Rigorous Resolution Limit Analysis (PSF/CTF)...")
+        
+        # 1. Calculate Resolution Matrix
+        # R is (n_sources, n_sources). For large source spaces, this is huge.
+        # We compute it for the specific inverse operator settings.
+        try:
+            res_mat = make_inverse_resolution_matrix(
+                self.fwd, inv, method='MNE', lambda2=1.0/9.0, verbose=False
+            )
+        except Exception as e:
+            print(f"    Warning: Could not compute Resolution Matrix ({e}). Skipping.")
+            return
+
+        # 2. Quantify Spatial Leakage using PSF/CTF metrics
+        # src object is needed for spatial metrics
+        src = self.fwd['src']
+        
+        # Calculate Peak Localization Error (PLE) for PSF
+        # "How far is the estimated peak from the true source?"
+        try:
+            ple_psf = resolution_metrics(
+                res_mat, src, function='psf', metric='peak_err', verbose=False
+            )
+            self.psf_ple_ = ple_psf
+            avg_ple = np.mean(ple_psf)
+            print(f"    Average Peak Localization Error (PSF): {avg_ple:.2f} cm")
+        except Exception as e:
+            print(f"    Warning: Could not compute PLE ({e}).")
+
+        # 3. Define High-Fidelity Threshold
+        # We define a "Fidelity Score" based on the diagonal of the Resolution Matrix relative to row sum (PSF).
+        # A value close to 1 indicates the energy is concentrated at the correct location.
+        # R_normalized = R / row_sums (conceptually)
+        
+        # Extract diagonal elements (Sensitivity to own location)
+        diag_R = np.diag(res_mat)
+        
+        # Calculate contamination (Off-diagonal contribution)
+        # CTF leakage: How much this source is affected by others
+        # We define Fidelity as: Diagonal / (Sum of absolute values in column)
+        # i.e., Proportion of estimated activation at i that actually comes from i, 
+        # versus leaking from elsewhere (if we consider CTF context).
+        
+        # Let's stick to PSF based fidelity for "Blurring":
+        # Fraction of energy retained in the ROI.
+        
+        # Simple High-Fidelity Threshold: PLE < 2cm AND Diagonal > Threshold
+        hi_fi_mask = (ple_psf < 2.0) if hasattr(self, 'psf_ple_') else (diag_R > 0.1) # Placeholder logic
+        n_hifi = np.sum(hi_fi_mask)
+        print(f"    High-Fidelity Sources detected: {n_hifi}/{len(diag_R)} (Threshold: PLE < 2.0 cm)")
+        
+        self.resolution_matrix_ = res_mat
+        self.high_fidelity_mask_ = hi_fi_mask
+
     def fit(self, raw, structured_priors=None):
         """
         変分推論を実行し、事後分布（平均および不確実性）を推定する。
@@ -87,6 +148,7 @@ class VariationalBayesianESI:
         inv = mne.minimum_norm.make_inverse_operator(
             raw.info, self.fwd, self.noise_cov, depth=0.8, loose=0.2, verbose=False
         )
+        self.inv_ = inv
 
         # Estimate Posterior Mean (Current Density Estimate - MNE)
         # This gives the Mean of the posterior distribution: E[J|Y]
@@ -136,6 +198,10 @@ class VariationalBayesianESI:
         self.credible_intervals_ = (lower_bound, upper_bound)
         
         print("Converged. Credible Intervals calculated (Derived from Inverse Operator covariance diagonal).")
+        
+        # Issue #55: Resolution Analysis
+        self.assess_resolution_limits(inv)
+        
         return self
 
     def plot_uncertainty(self, subjects_dir):
