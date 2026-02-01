@@ -36,7 +36,15 @@ if (fs.existsSync(ENV_PATH)) {
     }
 }
 
-const PORT = Number(process.env.PORT) || 3000;
+const toNumberOrDefault = (value, fallback) => {
+    const num = Number(value);
+    return Number.isFinite(num) ? num : fallback;
+};
+
+const PORT = toNumberOrDefault(process.env.PORT, 3000);
+const RUN_TIMEOUT_SECONDS = toNumberOrDefault(process.env.RUN_TIMEOUT_SECONDS, 3600);
+const RUN_TIMEOUT_GRACE_SECONDS = toNumberOrDefault(process.env.RUN_TIMEOUT_GRACE_SECONDS, 30);
+const QUEUE_ON_BUSY = String(process.env.QUEUE_ON_BUSY ?? 'true').toLowerCase() !== 'false';
 const RAW_SCRIPT_PATH = process.env.RESOLVE_SCRIPT;
 const SCRIPT_PATH = RAW_SCRIPT_PATH
     ? (path.isAbsolute(RAW_SCRIPT_PATH)
@@ -45,18 +53,24 @@ const SCRIPT_PATH = RAW_SCRIPT_PATH
     : path.join(__dirname, 'resolve-issues.sh');
 
 let isRunning = false;
+let pendingTriggers = new Set();
 
 // 実行ロジックを関数化
 const runAutomation = (trigger) => {
     if (isRunning) {
+        if (QUEUE_ON_BUSY) {
+            pendingTriggers.add(trigger);
+            console.log(`[${new Date().toISOString()}] Automation already running; queued ${trigger} run.`);
+            return 'queued';
+        }
         console.log(`[${new Date().toISOString()}] Automation already running; skipping ${trigger} run.`);
-        return false;
+        return 'skipped';
     }
     console.log(`[${new Date().toISOString()}] Starting ${trigger} automation task...`);
 
     if (!fs.existsSync(SCRIPT_PATH)) {
         console.error('resolve-issues.sh が見つかりません。');
-        return false;
+        return 'skipped';
     }
 
     isRunning = true;
@@ -65,15 +79,48 @@ const runAutomation = (trigger) => {
         env: process.env,
         stdio: 'inherit',
     });
+    let timeoutId = null;
+    let killTimer = null;
+    if (RUN_TIMEOUT_SECONDS > 0) {
+        timeoutId = setTimeout(() => {
+            console.error(`[${new Date().toISOString()}] Automation timed out after ${RUN_TIMEOUT_SECONDS}s; sending SIGTERM.`);
+            child.kill('SIGTERM');
+            if (RUN_TIMEOUT_GRACE_SECONDS > 0) {
+                killTimer = setTimeout(() => {
+                    console.error(`[${new Date().toISOString()}] Automation still running; sending SIGKILL.`);
+                    child.kill('SIGKILL');
+                }, RUN_TIMEOUT_GRACE_SECONDS * 1000);
+            }
+        }, RUN_TIMEOUT_SECONDS * 1000);
+    }
     child.on('error', (error) => {
         isRunning = false;
+        if (timeoutId) {
+            clearTimeout(timeoutId);
+        }
+        if (killTimer) {
+            clearTimeout(killTimer);
+        }
         console.error(`Exec error: ${error}`);
     });
-    child.on('close', (code) => {
+    child.on('close', (code, signal) => {
         isRunning = false;
-        console.log(`[${new Date().toISOString()}] Automation task finished with code ${code}.`);
+        if (timeoutId) {
+            clearTimeout(timeoutId);
+        }
+        if (killTimer) {
+            clearTimeout(killTimer);
+        }
+        const status = signal ? `signal ${signal}` : `code ${code}`;
+        console.log(`[${new Date().toISOString()}] Automation task finished with ${status}.`);
+        if (QUEUE_ON_BUSY && pendingTriggers.size > 0) {
+            const queued = Array.from(pendingTriggers).join(',');
+            pendingTriggers = new Set();
+            console.log(`[${new Date().toISOString()}] Starting queued automation run (${queued}).`);
+            runAutomation(`queued:${queued}`);
+        }
     });
-    return true;
+    return 'started';
 };
 
 // 毎日11:00と17:00に実行
@@ -85,10 +132,18 @@ const server = http.createServer((req, res) => {
     if (req.url === '/resolve' && req.method === 'GET') {
         console.log(`[${new Date().toISOString()}] Received manual resolve request`);
         
-        const started = runAutomation('manual');
+        const status = runAutomation('manual');
 
-        res.writeHead(started ? 200 : 409, { 'Content-Type': 'text/plain; charset=utf-8' });
-        res.end(started ? '自動実行スクリプトをトリガーしました。\n' : '既に実行中です。\n');
+        if (status === 'started') {
+            res.writeHead(200, { 'Content-Type': 'text/plain; charset=utf-8' });
+            res.end('自動実行スクリプトをトリガーしました。\n');
+        } else if (status === 'queued') {
+            res.writeHead(202, { 'Content-Type': 'text/plain; charset=utf-8' });
+            res.end('実行中のため、次回の実行としてキューに入れました。\n');
+        } else {
+            res.writeHead(409, { 'Content-Type': 'text/plain; charset=utf-8' });
+            res.end('既に実行中です。\n');
+        }
     } else {
         res.writeHead(404);
         res.end();
