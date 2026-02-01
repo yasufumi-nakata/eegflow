@@ -2,7 +2,13 @@ const http = require('http');
 const { spawn } = require('child_process');
 const path = require('path');
 const fs = require('fs');
-const cron = require('node-cron');
+let cron = null;
+try {
+    // Optional dependency; the server can run without scheduled jobs.
+    cron = require('node-cron');
+} catch (error) {
+    console.warn('[automation] node-cron is not installed; scheduled runs are disabled.');
+}
 
 const ENV_PATH = path.join(__dirname, '.env');
 
@@ -42,6 +48,7 @@ const toNumberOrDefault = (value, fallback) => {
 };
 
 const PORT = toNumberOrDefault(process.env.PORT, 3000);
+const HOST = process.env.HOST || '127.0.0.1';
 const RUN_TIMEOUT_SECONDS = toNumberOrDefault(process.env.RUN_TIMEOUT_SECONDS, 3600);
 const RUN_TIMEOUT_GRACE_SECONDS = toNumberOrDefault(process.env.RUN_TIMEOUT_GRACE_SECONDS, 30);
 const QUEUE_ON_BUSY = String(process.env.QUEUE_ON_BUSY ?? 'true').toLowerCase() !== 'false';
@@ -123,10 +130,33 @@ const runAutomation = (trigger) => {
     return 'started';
 };
 
+const scheduleDailyRun = (hour, minute, label) => {
+    const scheduleNext = () => {
+        const now = new Date();
+        const next = new Date(now);
+        next.setHours(hour, minute, 0, 0);
+        if (next <= now) {
+            next.setDate(next.getDate() + 1);
+        }
+        const delayMs = next.getTime() - now.getTime();
+        setTimeout(() => {
+            runAutomation(label);
+            scheduleNext();
+        }, delayMs);
+    };
+    scheduleNext();
+};
+
 // 毎日11:00と17:00に実行
-cron.schedule('0 11 * * *', () => runAutomation('scheduled-11'));
-cron.schedule('0 17 * * *', () => runAutomation('scheduled-17'));
-console.log('Cron jobs scheduled: runs daily at 11:00 and 17:00');
+if (cron) {
+    cron.schedule('0 11 * * *', () => runAutomation('scheduled-11'));
+    cron.schedule('0 17 * * *', () => runAutomation('scheduled-17'));
+    console.log('Cron jobs scheduled: runs daily at 11:00 and 17:00');
+} else {
+    scheduleDailyRun(11, 0, 'scheduled-11');
+    scheduleDailyRun(17, 0, 'scheduled-17');
+    console.log('Fallback scheduler enabled: runs daily at 11:00 and 17:00');
+}
 
 const server = http.createServer((req, res) => {
     if (req.url === '/resolve' && req.method === 'GET') {
@@ -150,9 +180,9 @@ const server = http.createServer((req, res) => {
     }
 });
 
-server.listen(PORT, () => {
-    console.log(`Automation server is running on http://localhost:${PORT}`);
-    console.log(`Endpoint: http://localhost:${PORT}/resolve`);
+server.listen(PORT, HOST, () => {
+    console.log(`Automation server is running on http://${HOST}:${PORT}`);
+    console.log(`Endpoint: http://${HOST}:${PORT}/resolve`);
     console.log('---');
     console.log('このターミナルを開いたままにしておくと、定時実行が正常に動作します。');
 });
