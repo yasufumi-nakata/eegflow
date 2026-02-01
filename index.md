@@ -117,7 +117,7 @@ style="margin: 0; padding-left: 20px; list-style-type: disc; font-size: 14px; li
 <ul
 style="margin: 0; padding-left: 20px; list-style-type: disc; font-size: 14px; line-height: 1.6;">
 <li style="margin-bottom: 8px;">
-<strong>能動的推論（Active Inference）の統合：</strong>脳を受動的なデコーダーではなく、環境に対して働きかける<strong>「能動的推論エージェント」</strong>としてモデル化します<sup><a href="#ref-80">[80]</a></sup>。`03_causal_modeling.py`では、観測データから生成モデル（Generative Model）を同定し、エージェントが外界の潜在原因をどう推論しているかを記述します。
+<strong>能動的推論（Active Inference）の統合：</strong>脳を受動的なデコーダーではなく、環境に対して働きかける<strong>「能動的推論エージェント」</strong>としてモデル化します<sup><a href="#ref-80">[80]</a></sup>。
 </li>
 <li style="margin-bottom: 8px;">
 <strong>チューリング・テストの拡張（因果的摂動プロトコル）：</strong>静的な反実仮想の検証は不可能であるため、**「チューリング・テストを拡張した因果的摂動プロトコル（Causal Perturbation Protocol）」**を具体化する。TMS等による物理的摂動に対する生物学的脳の反応と、エミュレーション上の仮想的摂動に対する反応の統計的同一性を検証する指標（例：Perturbational Complexity Index, PCI）を導入し、動的な因果構造の一致を確認する。
