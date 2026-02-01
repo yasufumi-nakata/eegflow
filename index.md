@@ -170,6 +170,22 @@ href="#ref-13">[13]</a></sup><sup><a href="#ref-45">[45]</a></sup>。</p>
 <h3>ギャップの中身（高校生にもわかる言い換え）</h3>
 <p>たとえば「テストの答案」を読めても、<strong>その人が普段どう考えているか</strong>（新しい問題にどう対応するか）が再現できるとは限らない。同様に、brain-to-textは「今この瞬間の脳活動」を言葉にできても、WBEが必要とする「環境と相互作用しながら状態を更新し続けるプロセス」まで保証しない。</p>
 
+<div class="visual-diagram diagram-decoding-gap">
+  <div class="diagram-side decoding">
+    <div class="diagram-icon">🧠</div>
+    <div class="arrow-box">Decoding<br><span style="font-size:10px; font-weight:400; opacity:0.8;">(Translation)</span></div>
+    <div class="diagram-icon">📝</div>
+    <p class="diagram-caption">Output: Text/Media<br>(Static)</p>
+  </div>
+  <div class="diagram-divider">VS</div>
+  <div class="diagram-side emulation">
+    <div class="diagram-icon">🧠</div>
+    <div class="arrow-box active">Emulation<br><span style="font-size:10px; font-weight:400; opacity:0.8;">(Causal Model)</span></div>
+    <div class="diagram-icon">⚙️</div>
+    <p class="diagram-caption">Output: Dynamics<br>(Process)</p>
+  </div>
+</div>
+
 <h3>学術的に問題になるポイント（何を追加で示すべきか）</h3>
 <ul style="margin: 0; padding-left: 20px; list-style-type: disc; font-size: 14px; line-height: 1.6;">
 <li style="margin-bottom: 8px;">
