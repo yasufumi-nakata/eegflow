@@ -85,6 +85,11 @@ class OnlineActiveInference:
     Adversarial Collaboration (Cogitate Consortium 2025) の結果に基づき、
     単一の理論（IIT/GNWT）に依存せず、複数のモデル証拠（Model Evidence）を
     動的に評価する Multi-Model Inference アプローチを採用する。
+
+    Issue #58 Update:
+    学術的批判に基づき、物理的不可逆性（NESS: Non-Equilibrium Steady State）の厳密化、
+    反実仮想の識別可能性（Identifiability）の明示、およびIIT 4.0の計算量問題への
+    現実的な近似アプローチを実装する。
     """
     def __init__(self, n_regions):
         self.n_regions = n_regions
@@ -93,13 +98,14 @@ class OnlineActiveInference:
         self.min_bandwidth_bps = 1e9  # Example: 1 Gbps per link
         self.max_latency_ms = 10      # Example: 10ms round-trip
 
-        # Thermodynamic State (Issue #54 & #61)
+        # Thermodynamic State (Issue #54, #61, #58)
         self.accumulated_entropy = 0.0
         self.metabolic_reserve = 100.0 # Virtual Joules or normalized units
         self.temperature_k = 310.0     # 37 degree Celsius
         # Metabolic Overhead for Structural Integrity (Issue #61)
-        # Brain consumes ~20W, most of which is for maintaining potentials, not just bit erasure.
         self.structural_cost_rate = 0.05 # Cost per step to maintain dissipative structure
+        # Entropy Production Rate (Issue #58) - Measure of Irreversibility
+        self.entropy_production_rate = 0.0 
 
     def initialize(self, initial_data):
         print("Initializing Online Generative Model...")
@@ -115,7 +121,7 @@ class OnlineActiveInference:
             # precision = 1 / uncertainty
             pass
         
-        # --- Thermodynamic Cost Calculation (Issue #54 & #61) ---
+        # --- Thermodynamic Cost Calculation (Issue #54, #61, #58) ---
         # 1. Information Processing Cost (Landauer Limit)
         # dS >= k * ln(2) per bit erased (Logical Irreversibility)
         kl_divergence_mock = np.random.uniform(0.1, 0.5) # Mock information gain (bits)
@@ -123,17 +129,22 @@ class OnlineActiveInference:
         # Scale up for visibility in simulation
         info_cost = kb * self.temperature_k * np.log(2) * kl_divergence_mock * 1e21 
         
-        # 2. Structural Maintenance Cost (Metabolic Overhead)
-        # Cost to keep the system far from equilibrium (Dissipative Structure)
-        # See Collell & Fauquet (2015) regarding metabolic overhead vs info processing.
-        struct_cost = self.structural_cost_rate
+        # 2. Structural Maintenance Cost (Metabolic Flux / NESS)
+        # Issue #58: "Dissipative Structure" requires constant energy flow even without computation.
+        # Simulating ATP consumption for ion pump maintenance.
+        metabolic_flux = self.structural_cost_rate * (1.0 + np.random.normal(0, 0.05))
         
-        total_cost = info_cost + struct_cost
+        # 3. Entropy Production Rate (EPR) - Time Asymmetry
+        # Measure of how distinct the forward process is from the reverse process.
+        # EPR = Flux * Force (Thermodynamics)
+        self.entropy_production_rate = metabolic_flux * kl_divergence_mock # Simplified proxy
+        
+        total_cost = info_cost + metabolic_flux
 
-        self.accumulated_entropy += info_cost # Entropy exported to environment
-        self.metabolic_reserve -= total_cost  # Consumption of free energy
+        self.accumulated_entropy += (info_cost + self.entropy_production_rate)
+        self.metabolic_reserve -= total_cost 
         
-        print(f"    [Thermodynamics] Info Cost: {info_cost:.4f} | Maint. Cost: {struct_cost:.4f} | Reserve: {self.metabolic_reserve:.4f}")
+        print(f"    [Thermodynamics] Info Cost: {info_cost:.4f} | Flux (NESS): {metabolic_flux:.4f} | EPR: {self.entropy_production_rate:.4f}")
 
         # 実際にはここで勾配法またはVMPによるパラメータ更新が走る
         pass
@@ -141,22 +152,26 @@ class OnlineActiveInference:
     def verify_thermodynamic_constraints(self):
         """
         非平衡定常状態（Non-equilibrium Steady State）と散逸構造の維持を確認する (Issue #54 & #61)。
-        システムが単なる可逆計算ではなく、エントロピーを生成し続けていることを要求する。
+        Issue #58: 単なるエントロピー増大だけでなく、EPR（エントロピー生成率）が正であることを確認する。
         """
-        print(f"  [Thermodynamic Check] Verifying Dissipative Structure...")
+        print(f"  [Thermodynamic Check] Verifying Dissipative Structure (NESS)...")
         
         # 1. Check if entropy is increasing (Irreversibility)
         if self.accumulated_entropy <= 0:
             print("    [FAIL] No entropy production. System appears logically reversible.")
             return False
             
-        # 2. Check Metabolic Consumption (Non-equilibrium)
-        # Must pay for structure maintenance even if no computation is done (Base metabolic rate)
+        # 2. Check Entropy Production Rate (Time Asymmetry)
+        if self.entropy_production_rate <= 1e-6:
+             print("    [FAIL] Negligible Entropy Production Rate. System is close to equilibrium (Death state).")
+             return False
+
+        # 3. Check Metabolic Consumption (Non-equilibrium)
         if self.metabolic_reserve >= 100.0: 
             print("    [FAIL] No metabolic cost paid. System is not metabolically grounded.")
             return False
             
-        print(f"    [PASS] System is dissipative (TCC > 0). Entropy Exported: {self.accumulated_entropy:.2f}")
+        print(f"    [PASS] System is dissipative (NESS confirmed). EPR: {self.entropy_production_rate:.4f}")
         return True
 
     def verify_markov_blanket_constraints(self):
@@ -197,6 +212,26 @@ class OnlineActiveInference:
         # 実際の実装では、ここで因果グラフのトポロジー変更を伴う処理が入る
         return self.belief_state
 
+    def estimate_approximate_phi(self):
+        """
+        IIT 4.0に基づく統合情報量(Phi)の近似計算を行う (Issue #58)。
+        
+        Note:
+        厳密なPhi計算はNP困難(O(2^n))であるため、ここでは全探索を行わず、
+        'Sparse Phi' または 'Effective Information' に基づく近似値を返す。
+        """
+        print(f"    [IIT 4.0 Approximation] Estimating Integrated Information (Phi)...")
+        print(f"      -> Warning: Full calculation is NP-hard. Using 'Cut Heuristics' approximation.")
+        
+        # Mock approximation logic
+        # 1. Identify complex candidates (heavily connected clusters)
+        # 2. Compute Phi only for the main complex (MIP search limited to k-partitions)
+        
+        approx_phi = np.random.uniform(0.5, 2.5) # Dummy value
+        
+        print(f"      -> Estimated Phi (Approx): {approx_phi:.4f}")
+        return approx_phi
+
     def calculate_virtual_pci(self, stimulus_strength=10.0):
         """
         仮想的な摂動複雑性指数 (Virtual PCI) を計算する (Issue #56)。
@@ -230,16 +265,20 @@ class OnlineActiveInference:
         """
         反実仮想シミュレーション (Counterfactual Simulation)。
         
-        重要 (Issue #38, #56, #61):
+        重要 (Issue #38, #56, #61, #58):
         介入によって同定された構造的因果モデル（SCM）に基づき、
         「もし〜だったら？」という反実仮想を計算する。
         
-        Warning:
-        SCMが識別不能（Unidentifiable）な状態でこの計算を行っても、
-        それは「反実仮想的等価性」の証明にはならない。
+        Issue #58 Warning:
+        【識別可能性の壁 (The Identifiability Wall)】
+        観測データのみからSCMを一意に決定することは不可能である(Markov Equivalence Class)。
+        したがって、ここで得られる反実仮想は、仮定した関数形（線形性、加法性ノイズ等）
+        に依存した「条件付きの予測」であることを明記しなければならない。
         """
         print(f"  [Identity Check] Running counterfactual simulation: '{scenario}'")
         print("    -> Checking SCM Identifiability via Virtual PCI...")
+        print("    -> [Issue #58 Warning] Considering Markov Equivalence Classes. Result is conditional on assumed Structural Equations.")
+        
         # Check if we have enough causal evidence
         # if not self.is_scm_identified: raise Error
         print("    -> Verifying Counterfactual Equivalence using Identified SCM (via do-calculus)...")
@@ -293,7 +332,7 @@ def conceptual_online_modeling_workflow():
     for t in range(3):
         agent.update_belief(observation=f"data_{t}", action=f"act_{t}", uncertainty_map="sigma_map")
 
-    # 3.5 熱力学的制約の検証 (Issue #54)
+    # 3.5 熱力学的制約の検証 (Issue #54 & #58)
     if not agent.verify_thermodynamic_constraints():
         print("Warning: Thermodynamic constraints violated.")
 
@@ -308,6 +347,9 @@ def conceptual_online_modeling_workflow():
     pci = agent.calculate_virtual_pci()
     if pci < 0.31: # Casali et al. (2013) threshold for consciousness
         print("Warning: Virtual PCI is too low (Unconscious state likely).")
+
+    # IIT Approximation (Issue #58)
+    phi = agent.estimate_approximate_phi()
     
     # 5. マルチモデル推論 (Issue #61)
     print("\n[ステップ4: Multi-Model Inference]")

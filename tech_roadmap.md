@@ -500,9 +500,12 @@ note: "暫定版（随時更新）"
 <span class="qa-tags"><span class="tag">THERMODYNAMICS</span><span class="tag">IIT</span></span>
 </summary>
 <div class="qa-body">
-<p><strong>問い：</strong>現在のノイマン型コンピュータは物理的因果力を抽象化しているため、IIT 4.0の観点ではΦ=0（Unfolding Argument）となる可能性がある。これをどう解決するか？</p>
-<p><strong>方針：</strong>デジタルエミュレーションでの「近似」では不十分であるため、<strong>「ニューロモルフィック・ハードウェアによる因果構造の物理的写像」</strong>を必須要件とする。あるいは、Albantakis et al. (2023) が示唆するように、生物学的ニューロンとデジタル素子を混成させた<strong>ハイブリッド・システム（Hybrid Systems）</strong>による段階的遷移を採用し、物理的レベルでの因果力の保存を目指す。</p>
-<p><strong>次に必要：</strong>エミュレーションにおける物理的因果構造の定量的評価指標の導入</p>
+<p><strong>問い：</strong>現在のノイマン型コンピュータは物理的因果力を抽象化しているため、IIT 4.0の観点ではΦ=0（Unfolding Argument）となる可能性がある。また、生物学的脳の「非平衡定常状態（NESS）」としての散逸構造をどう模倣するか？</p>
+<p><strong>方針（Issue #58 Update）：</strong>物理的実装（ニューロモルフィック）への完全移行までの過渡期として、<strong>「仮想散逸プロトコル（Virtual Dissipation Protocol）」</strong>を実装する。
+1. <strong>Entropy Production Rate (EPR):</strong> 時間反転対称性の破れを定量化し、不可逆なエントロピー生成をシミュレーション内で強制する。
+2. <strong>Metabolic Flux:</strong> 計算の有無に関わらず、構造維持のために消費される仮想エネルギー流（Metabolic Overhead）を定義する。
+これにより、デジタルエミュレーションであっても「存在し続けるためにコストを払う」散逸構造としての性質を保持させる。</p>
+<p><strong>次に必要：</strong>EPR > 0 を維持しつつ、論理的計算を行うアルゴリズムの定式化</p>
 </div>
 </details>
 </div>
@@ -606,8 +609,8 @@ note: "暫定版（随時更新）"
 <div class="qa-body">
 <p><strong>問い：</strong>意識は直接観測できない。理論（IIT/GNWT等）が出す“予測の差”を、計測（M）と介入（M6/V2）で検証できるか？</p>
 <ul>
-<li><strong>Cogitate Consortium (2025) の衝撃:</strong> IITとGNWTの直接対決検証（Adversarial Collaboration）の結果、両理論の予測は主要な点（IITの持続的ガンマ同期は完全に支持されず、GNWTの前頭葉イグニッションは課題依存性が高い）で棄却または限定的であることが示された (Nature 2025)。これは、現行の主要理論がいずれも意識の神経相関（NCC）を完全には説明しきれていないことを意味する。</li>
-<li><strong>方針転換: 理論から経験的指標へ:</strong> 特定の理論を教条的に支持するのではなく、<strong>予測符号化（Predictive Coding）</strong>や<strong>自由エネルギー原理（Friston, 2010）</strong>、あるいは高次理論（HOT）の視点を実装要件に組み込み、PCI/PCI-STのような経験的に検証された指標を工学的目標として採用する。</li>
+<li><strong>IIT 4.0の計算量問題 (Issue #58):</strong> 厳密なΦ計算はNP困難（$2^n$）であり不可能である。これに対し、<strong>近似計算（Approximate Phi, Effective Information）</strong>を採用し、全脳レベルではなく局所モジュール間の統合性を評価する現実的路線をとる。</li>
+<li><strong>識別可能性の壁 (The Identifiability Wall):</strong> 反実仮想的等価性（Laukkonen et al., 2025）は、観測データだけでは一意に定まらない（Markov Equivalence Class）。したがって、特定の構造方程式（SCM）を仮定した上での「条件付き等価性」であることを常に明示し、PCI等の摂動応答を用いてSCM候補を絞り込むアプローチ（V2, V5）を必須とする。</li>
 <li><strong>Unfolding Argumentへの応答:</strong> IIT批判である「Unfolding Argument」に対し、単なる機能的等価性を超えた要件を課す。具体的には、「因果構造の保存（Causal Structure Preservation）」を、<strong>マルコフブランケット（Markov Blanket）</strong>の境界条件（デジタルエミュレーションと生物学的基盤の間の情報交換における帯域幅と遅延）の保存として厳密に定義し、その計算論的閾値を検証プロセスに組み込む。</li>
 </ul>
 <p><strong>注意：</strong>理論はあくまで仮説生成のツールとして扱い、実装（WBE）の成否は「特定の理論に適合するか」ではなく、V2（因果）やV5（本人性）といった実証的指標で判断する。</p>
