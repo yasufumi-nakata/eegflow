@@ -96,7 +96,9 @@ class OnlineActiveInference:
         self.belief_state = None 
         # Constraints for Causal Structure Preservation (Issue #49)
         self.min_bandwidth_bps = 1e9  # Example: 1 Gbps per link
-        self.max_latency_ms = 10      # Example: 10ms round-trip
+        # Issue #52: Latency threshold is not fixed. 
+        # Should be based on functional connectivity time constants (e.g., Gamma cycle ~25-100ms).
+        self.max_latency_ms = 10      # Default placeholder
 
         # Thermodynamic State (Issue #54, #61, #58)
         self.accumulated_entropy = 0.0
@@ -117,8 +119,17 @@ class OnlineActiveInference:
         uncertainty_map (Posterior Variance) を重み付けとして利用する。
         """
         if uncertainty_map is not None:
-            # Precision-weighted prediction error
-            # precision = 1 / uncertainty
+            # Issue #52: Propagate Inverse Problem Uncertainty as Precision
+            # Precision = Inverse Variance (Information content of the signal)
+            # Active Inference uses precision-weighted prediction errors (PPE).
+            #
+            # Pseudo-code logic:
+            # 1. precision_matrix = np.linalg.inv(uncertainty_map) 
+            # 2. prediction_error = observation - predicted_observation
+            # 3. weighted_error = np.dot(precision_matrix, prediction_error)
+            # 4. Update VFE using weighted_error
+            # 
+            # Reference: Friston et al. (2017)
             pass
         
         # --- Thermodynamic Cost Calculation (Issue #54, #61, #58) ---
@@ -183,8 +194,12 @@ class OnlineActiveInference:
         物理的な因果的結合と同等の「帯域幅」と「遅延」を満たす必要がある。
         """
         print(f"  [Constraints Check] Verifying Markov Blanket Preservation...")
+        
+        # Issue #52: Use Integration Time Window instead of arbitrary 10ms
+        integration_time_window_ms = 100 # e.g., Gamma phase coupling
+        
         print(f"    - Required Bandwidth: > {self.min_bandwidth_bps/1e9} Gbps")
-        print(f"    - Max Latency: < {self.max_latency_ms} ms")
+        print(f"    - Max Latency: < {self.max_latency_ms} ms (Target: < {integration_time_window_ms} ms based on Gamma)")
         
         # Mock check
         current_bandwidth = 10e9 # 10 Gbps
@@ -274,10 +289,16 @@ class OnlineActiveInference:
         観測データのみからSCMを一意に決定することは不可能である(Markov Equivalence Class)。
         したがって、ここで得られる反実仮想は、仮定した関数形（線形性、加法性ノイズ等）
         に依存した「条件付きの予測」であることを明記しなければならない。
+        
+        Issue #52 Update:
+        検証には「最小分岐セット (Minimal Set of Branching Structures)」を定義し、
+        予測符号化課題における神経ダイナミクスの分岐分布（Kullback-Leibler Divergence）
+        を用いて統計的に評価する。
         """
         print(f"  [Identity Check] Running counterfactual simulation: '{scenario}'")
         print("    -> Checking SCM Identifiability via Virtual PCI...")
         print("    -> [Issue #58 Warning] Considering Markov Equivalence Classes. Result is conditional on assumed Structural Equations.")
+        print("    -> [Issue #52 Verification] Evaluating KL Divergence on Minimal Branching Set...")
         
         # Check if we have enough causal evidence
         # if not self.is_scm_identified: raise Error

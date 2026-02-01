@@ -290,6 +290,7 @@ note: "暫定版（随時更新）"
 <p><strong>問い：</strong>相関の当てはめではなく、刺激/操作に対して“どう変わるはずか”を言えるか？ デコーディング（相関）からエミュレーション（因果）への飛躍をどう埋めるか？</p>
 <p><strong>方針：</strong>脳を能動的推論（Active Inference）を行う生成モデルとして定式化する。Laukkonen et al. (2025) の<strong>「反実仮想的等価性（Counterfactual Equivalence）」</strong>を指標とするが、EEG単体では解像度が不足する。</p>
 <p><strong>改善策（Multi-scale）：</strong>EEGから推定されたマクロな因果構造を、ミクロな神経回路シミュレーション（Blue Brain Project等）の制約条件として用いる<strong>「マルチスケール因果モデリング」</strong>を採用する。トップダウン（EEG）とボトムアップ（回路）の統合により、シナプスレベルの可塑性を反映した頑健なモデルを目指す。</p>
+<p><strong>実装の厳密化 (Issue #52):</strong> 逆問題（R1/R2）で得られた事後確率分布の<strong>分散（不確実性）</strong>を、Active Inferenceにおける<strong>精度（Precision, 逆分散）</strong>として明示的に伝播させる。単なる点推定値の入力ではなく、不確実性が予測誤差の重み付け（カルマンゲイン）を制御するメカニズムを実装する。</p>
 <p><strong>次に必要：</strong>介入前提の評価タスク（V2）と、マルチスケール統合パイプラインの設計</p>
 </div>
 </details>
@@ -505,6 +506,7 @@ note: "暫定版（随時更新）"
 1. <strong>Entropy Production Rate (EPR):</strong> 時間反転対称性の破れを定量化し、不可逆なエントロピー生成をシミュレーション内で強制する。
 2. <strong>Metabolic Flux:</strong> 計算の有無に関わらず、構造維持のために消費される仮想エネルギー流（Metabolic Overhead）を定義する。
 これにより、デジタルエミュレーションであっても「存在し続けるためにコストを払う」散逸構造としての性質を保持させる。</p>
+<p><strong>厳密化 (Issue #52):</strong> IITの「内因的実在」の工学的近似として、単なる「計算の連続性」ではなく、<strong>「計算論的不可逆性 (Computational Irreversibility)」</strong>を採用する。非平衡定常状態の統計力学に基づき、単位時間あたりの最小情報処理コストが生物学的基盤の熱力学的効率と一致することを検証条件とする。</p>
 <p><strong>次に必要：</strong>EPR > 0 を維持しつつ、論理的計算を行うアルゴリズムの定式化</p>
 </div>
 </details>
@@ -609,9 +611,9 @@ note: "暫定版（随時更新）"
 <div class="qa-body">
 <p><strong>問い：</strong>意識は直接観測できない。理論（IIT/GNWT等）が出す“予測の差”を、計測（M）と介入（M6/V2）で検証できるか？</p>
 <ul>
-<li><strong>IIT 4.0の計算量問題 (Issue #58):</strong> 厳密なΦ計算はNP困難（$2^n$）であり不可能である。これに対し、<strong>近似計算（Approximate Phi, Effective Information）</strong>を採用し、全脳レベルではなく局所モジュール間の統合性を評価する現実的路線をとる。</li>
-<li><strong>識別可能性の壁 (The Identifiability Wall):</strong> 反実仮想的等価性（Laukkonen et al., 2025）は、観測データだけでは一意に定まらない（Markov Equivalence Class）。したがって、特定の構造方程式（SCM）を仮定した上での「条件付き等価性」であることを常に明示し、PCI等の摂動応答を用いてSCM候補を絞り込むアプローチ（V2, V5）を必須とする。</li>
-<li><strong>Unfolding Argumentへの応答:</strong> IIT批判である「Unfolding Argument」に対し、単なる機能的等価性を超えた要件を課す。具体的には、「因果構造の保存（Causal Structure Preservation）」を、<strong>マルコフブランケット（Markov Blanket）</strong>の境界条件（デジタルエミュレーションと生物学的基盤の間の情報交換における帯域幅と遅延）の保存として厳密に定義し、その計算論的閾値を検証プロセスに組み込む。</li>
+<li><strong>IIT 4.0の計算量問題と構造保存 (Issue #52):</strong> 厳密なΦ計算は不可能だが、PCI-STのような相関指標だけでは不十分である。プロジェクトは<strong>「因果構造の保存 (Causal Structure Preservation)」</strong>をL3/L4レベルの要件とし、特定のサブシステムにおける因果構造の一致を検証する。</li>
+<li><strong>識別可能性の壁 (The Identifiability Wall):</strong> 反実仮想的等価性（Laukkonen et al., 2025）は、観測データだけでは一意に定まらない。検証には<strong>「最小分岐セット (Minimal Set of Branching Structures)」</strong>を定義し、予測符号化課題における神経ダイナミクスの分岐分布（Kullback-Leibler Divergence）を用いて統計的に評価する。</li>
+<li><strong>マルコフブランケット境界条件の厳密化 (Issue #52):</strong> 境界条件（帯域幅・遅延）は固定値（例：10ms）ではなく、<strong>脳領域間の機能的結合の時定数（例：ガンマ帯域位相結合 ~25-100ms）</strong>や認知課題の反応時間Jitterに基づいて、動的かつ文脈依存的に定義する。</li>
 </ul>
 <p><strong>注意：</strong>理論はあくまで仮説生成のツールとして扱い、実装（WBE）の成否は「特定の理論に適合するか」ではなく、V2（因果）やV5（本人性）といった実証的指標で判断する。</p>
 </div>
