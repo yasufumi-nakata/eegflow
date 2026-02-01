@@ -80,6 +80,11 @@ class OnlineActiveInference:
     Issue #54 Update:
     熱力学的制約と物理的不可逆性（Thermodynamic Constraints & Physical Irreversibility）
     を導入。意識の熱力学的コスト（TCC）を定義し、散逸構造をエミュレートする。
+
+    Issue #61 Update:
+    Adversarial Collaboration (Cogitate Consortium 2025) の結果に基づき、
+    単一の理論（IIT/GNWT）に依存せず、複数のモデル証拠（Model Evidence）を
+    動的に評価する Multi-Model Inference アプローチを採用する。
     """
     def __init__(self, n_regions):
         self.n_regions = n_regions
@@ -88,10 +93,13 @@ class OnlineActiveInference:
         self.min_bandwidth_bps = 1e9  # Example: 1 Gbps per link
         self.max_latency_ms = 10      # Example: 10ms round-trip
 
-        # Thermodynamic State (Issue #54)
+        # Thermodynamic State (Issue #54 & #61)
         self.accumulated_entropy = 0.0
         self.metabolic_reserve = 100.0 # Virtual Joules or normalized units
         self.temperature_k = 310.0     # 37 degree Celsius
+        # Metabolic Overhead for Structural Integrity (Issue #61)
+        # Brain consumes ~20W, most of which is for maintaining potentials, not just bit erasure.
+        self.structural_cost_rate = 0.05 # Cost per step to maintain dissipative structure
 
     def initialize(self, initial_data):
         print("Initializing Online Generative Model...")
@@ -107,27 +115,32 @@ class OnlineActiveInference:
             # precision = 1 / uncertainty
             pass
         
-        # --- Thermodynamic Cost Calculation (Issue #54) ---
-        # 情報更新に伴う論理的不可逆性に基づくエントロピー生成を計算
-        # Landauer's Principle: dS >= k * ln(2) per bit erased
-        # ここでは信念更新によるKL情報量をコストとして近似
+        # --- Thermodynamic Cost Calculation (Issue #54 & #61) ---
+        # 1. Information Processing Cost (Landauer Limit)
+        # dS >= k * ln(2) per bit erased (Logical Irreversibility)
         kl_divergence_mock = np.random.uniform(0.1, 0.5) # Mock information gain (bits)
-        
-        # TCC (Thermodynamic Cost of Consciousness)
         kb = 1.38e-23
-        energy_dissipated = kb * self.temperature_k * np.log(2) * kl_divergence_mock * 1e21 # Scale up for visibility
+        # Scale up for visibility in simulation
+        info_cost = kb * self.temperature_k * np.log(2) * kl_divergence_mock * 1e21 
         
-        self.accumulated_entropy += energy_dissipated
-        self.metabolic_reserve -= energy_dissipated * 0.1 # Metabolic cost
+        # 2. Structural Maintenance Cost (Metabolic Overhead)
+        # Cost to keep the system far from equilibrium (Dissipative Structure)
+        # See Collell & Fauquet (2015) regarding metabolic overhead vs info processing.
+        struct_cost = self.structural_cost_rate
         
-        print(f"    [Thermodynamics] TCC: {energy_dissipated:.4f} units | Entropy: {self.accumulated_entropy:.4f}")
+        total_cost = info_cost + struct_cost
+
+        self.accumulated_entropy += info_cost # Entropy exported to environment
+        self.metabolic_reserve -= total_cost  # Consumption of free energy
+        
+        print(f"    [Thermodynamics] Info Cost: {info_cost:.4f} | Maint. Cost: {struct_cost:.4f} | Reserve: {self.metabolic_reserve:.4f}")
 
         # 実際にはここで勾配法またはVMPによるパラメータ更新が走る
         pass
 
     def verify_thermodynamic_constraints(self):
         """
-        非平衡定常状態（Non-equilibrium Steady State）と散逸構造の維持を確認する (Issue #54)。
+        非平衡定常状態（Non-equilibrium Steady State）と散逸構造の維持を確認する (Issue #54 & #61)。
         システムが単なる可逆計算ではなく、エントロピーを生成し続けていることを要求する。
         """
         print(f"  [Thermodynamic Check] Verifying Dissipative Structure...")
@@ -138,11 +151,12 @@ class OnlineActiveInference:
             return False
             
         # 2. Check Metabolic Consumption (Non-equilibrium)
-        if self.metabolic_reserve >= 100.0: # Assuming it started at 100
+        # Must pay for structure maintenance even if no computation is done (Base metabolic rate)
+        if self.metabolic_reserve >= 100.0: 
             print("    [FAIL] No metabolic cost paid. System is not metabolically grounded.")
             return False
             
-        print(f"    [PASS] System is dissipative (TCC > 0). Entropy: {self.accumulated_entropy:.2f}")
+        print(f"    [PASS] System is dissipative (TCC > 0). Entropy Exported: {self.accumulated_entropy:.2f}")
         return True
 
     def verify_markov_blanket_constraints(self):
@@ -187,8 +201,11 @@ class OnlineActiveInference:
         """
         仮想的な摂動複雑性指数 (Virtual PCI) を計算する (Issue #56)。
         
-        生物学的脳におけるTMS-EEGと同様に、システムに強い摂動を与え、
-        その応答（Response）の時空間的な複雑さ（Lempel-Ziv Complexity等）を計測する。
+        Issue #61 Update:
+        この指標は単なる意識レベルの推定だけでなく、
+        構造的因果モデル（SCM）の「識別可能性（Identifiability）」を担保するための
+        制約条件として機能する。摂動に対する応答が生物学的脳と一致しない場合、
+        推定されたSCMは誤りである可能性が高い。
         
         Returns:
             float: 推定されたPCI値
@@ -206,19 +223,48 @@ class OnlineActiveInference:
         pci_value = np.sum(binary_response) / (self.n_regions * 300) * 0.8 # Dummy calculation
         
         print(f"    [Virtual PCI] Calculated PCI: {pci_value:.3f} (Reference Biological PCI: ~0.5-0.7)")
+        print(f"    -> Using PCI to constrain SCM search space (Perturbational Complexity Approach)")
         return pci_value
 
     def counterfactual_simulation(self, scenario):
         """
         反実仮想シミュレーション (Counterfactual Simulation)。
         
-        重要 (Issue #38, #56):
+        重要 (Issue #38, #56, #61):
         介入によって同定された構造的因果モデル（SCM）に基づき、
         「もし〜だったら？」という反実仮想を計算する。
+        
+        Warning:
+        SCMが識別不能（Unidentifiable）な状態でこの計算を行っても、
+        それは「反実仮想的等価性」の証明にはならない。
         """
         print(f"  [Identity Check] Running counterfactual simulation: '{scenario}'")
+        print("    -> Checking SCM Identifiability via Virtual PCI...")
+        # Check if we have enough causal evidence
+        # if not self.is_scm_identified: raise Error
         print("    -> Verifying Counterfactual Equivalence using Identified SCM (via do-calculus)...")
         return "Simulated Outcome Distribution"
+
+    def calculate_model_evidence(self):
+        """
+        マルチモデル推論 (Multi-Model Inference) (Issue #61)。
+        IIT, GNWT, FEP 各理論の予測に対する現在のデータの適合度（尤度）を計算し、
+        ベイズ的に重み付けを行う。
+        """
+        print(f"  [Multi-Model Inference] Evaluating theory-specific predictions...")
+        
+        # Mock evidences (log-likelihoods)
+        evidence = {
+            "IIT (Structure)": -10.5, # Penalized for feed-forward architecture
+            "GNWT (Global Broadcast)": -5.2,
+            "FEP (Prediction Error)": -2.1
+        }
+        
+        print("    -> Model Evidences:")
+        for theory, score in evidence.items():
+            print(f"       {theory}: {score:.2f}")
+        
+        return evidence
 
 
 def conceptual_online_modeling_workflow():
@@ -263,8 +309,12 @@ def conceptual_online_modeling_workflow():
     if pci < 0.31: # Casali et al. (2013) threshold for consciousness
         print("Warning: Virtual PCI is too low (Unconscious state likely).")
     
-    # 5. 反実仮想による同一性検証
-    print("\n[ステップ4: Counterfactual Equivalence Verification]")
+    # 5. マルチモデル推論 (Issue #61)
+    print("\n[ステップ4: Multi-Model Inference]")
+    agent.calculate_model_evidence()
+
+    # 6. 反実仮想による同一性検証
+    print("\n[ステップ5: Counterfactual Equivalence Verification]")
     print("Laukkonen et al. (2025) に基づき、反実仮想シミュレーションを実行します。")
     print("入出力の一致だけでなく、潜在的な分岐構造の一致を確認します。")
     

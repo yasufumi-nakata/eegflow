@@ -792,6 +792,7 @@ href="https://arxiv.org/abs/2303.08896">arXiv</a></li>
 <ul>
 <li><a href="technical_proposal_47.html">Issue #47: Strategic Extension</a></li>
 <li><a href="technical_proposal_48.html">Issue #48: Neuroengineering & IIT</a></li>
+<li><a href="technical_proposal_61.html">Issue #61: Causal & Thermodynamic Critique</a></li>
 </ul>
 </div>
 
