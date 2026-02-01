@@ -284,6 +284,32 @@ href="#ref-22">[22]</a></sup>、全脳規模の再構成は現在進行中であ
 href="#ref-57">[57]</a></sup>。
 </p>
 </div>
+
+<!-- Figure: Verification Stack -->
+<div class="figure-box">
+<div class="figure-content">
+<div class="flow-visual">
+<div class="flow-step">
+<div class="flow-title">計測</div>
+<div class="flow-sub">HD-EEG / fMRI / MEG<br>品質保証・同期</div>
+</div>
+<div class="flow-step">
+<div class="flow-title">逆問題</div>
+<div class="flow-sub">ソース推定 / 不確実性<br>分布として保持</div>
+</div>
+<div class="flow-step">
+<div class="flow-title">因果モデリング</div>
+<div class="flow-sub">SCM / 介入設計<br>反実仮想の検証</div>
+</div>
+<div class="flow-step">
+<div class="flow-title">同一性検証</div>
+<div class="flow-sub">PCI / 構造保存<br>最小分岐セット</div>
+</div>
+</div>
+</div>
+<p class="figure-label">Figure 2</p>
+<p class="figure-caption">WBE検証に必要な「計測→再構成→因果→検証」の連鎖。各段階の不確実性は次段階に引き継ぎ、介入により反実仮想的等価性を評価する。</p>
+</div>
 </section>
 
 <!-- Research Program -->

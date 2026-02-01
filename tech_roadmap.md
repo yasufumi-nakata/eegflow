@@ -203,8 +203,13 @@ note: "暫定版（随時更新）"
 <span class="qa-tags"><span class="tag">QC</span></span>
 </summary>
 <div class="qa-body">
-<p><strong>問い：</strong>“良いデータ”の定義を事前に置き、除外・補完・重み付けを透明にする。</p>
-<p><strong>次に必要：</strong>EEGFlowの前処理（`eegflow/01_preprocess.py`）に、QC指標とログ出力を組み込む <strong>(✅ Implemented in Issue #34)</strong></p>
+<p><strong>問い：</strong>“良いデータ”の定義を事前に置き、除外・補完・重み付けを透明にする。加えて、インピーダンス/CMRR・ノイズフロア・HMD干渉など、<strong>ハードウェア由来の品質劣化</strong>をどう定量化するか？</p>
+<ul>
+<li><strong>インピーダンス/CMRR:</strong> バランス崩壊を検出し、計測前に警告する。</li>
+<li><strong>ノイズフロア/SNR:</strong> 周波数帯ごとの実効SNRを可視化する。</li>
+<li><strong>VR干渉:</strong> HMDの電磁・機械ノイズをプロファイル化する。</li>
+</ul>
+<p><strong>次に必要：</strong>EEGFlowの前処理（`eegflow/01_preprocess.py`）に、QC指標とログ出力を組み込む <strong>(✅ Implemented in Issue #34)</strong>。計測前の「QAチェックリスト」を追加する。</p>
 </div>
 </details>
 
@@ -216,6 +221,7 @@ note: "暫定版（随時更新）"
 </summary>
 <div class="qa-body">
 <p><strong>問い：</strong>データが共有可能でも、メタデータが薄いと追試できない。何を最低限メタデータ化するか？</p>
+<p><strong>補足 (Issue #46):</strong> VR/モーション計測を含む場合は<strong>Motion-BIDS</strong>に合わせ、座標系・時間同期・デバイス仕様を明記する。</p>
 <p><strong>次に必要：</strong>プロトコル（課題・機器・前処理）を機械可読で残す（P2）</p>
 </div>
 </details>
@@ -409,6 +415,7 @@ note: "暫定版（随時更新）"
 </summary>
 <div class="qa-body">
 <p><strong>問い：</strong>“本人らしさ”を評価するなら、環境との相互作用（遅延・ノイズ）が本質になる。許容遅延は課題依存。</p>
+<p><strong>補足 (Issue #46):</strong> CLETなどのフォトダイオード計測で<strong>End-to-End遅延とジッタ</strong>を実測し、LSLのtime_correctionでドリフト補正を標準化する。</p>
 <p><strong>次に必要：</strong>評価スイート（V1）側で、遅延/ノイズ耐性を測る項目を入れる</p>
 </div>
 </details>
@@ -502,7 +509,7 @@ note: "暫定版（随時更新）"
 </summary>
 <div class="qa-body">
 <p><strong>問い：</strong>現在のノイマン型コンピュータは物理的因果力を抽象化しているため、IIT 4.0の観点ではΦ=0（Unfolding Argument）となる可能性がある。また、生物学的脳の「非平衡定常状態（NESS）」としての散逸構造をどう模倣するか？</p>
-<p><strong>方針（Issue #58 Update）：</strong>物理的実装（ニューロモルフィック）への完全移行までの過渡期として、<strong>「仮想散逸プロトコル（Virtual Dissipation Protocol）」</strong>を実装する。
+<p><strong>方針（Issue #58 Update）：</strong>物理的実装（ニューロモルフィック）への完全移行までの過渡期として、<strong>「仮想散逸プロトコル（Virtual Dissipation Protocol）」</strong>を実装する。Landauer限界は論理的不可逆性の下限であり、<strong>物理的不可逆性（NESS）</strong>を別途保証する必要がある。
 1. <strong>Entropy Production Rate (EPR):</strong> 時間反転対称性の破れを定量化し、不可逆なエントロピー生成をシミュレーション内で強制する。
 2. <strong>Metabolic Flux:</strong> 計算の有無に関わらず、構造維持のために消費される仮想エネルギー流（Metabolic Overhead）を定義する。
 これにより、デジタルエミュレーションであっても「存在し続けるためにコストを払う」散逸構造としての性質を保持させる。</p>
@@ -611,7 +618,7 @@ note: "暫定版（随時更新）"
 <div class="qa-body">
 <p><strong>問い：</strong>意識は直接観測できない。理論（IIT/GNWT等）が出す“予測の差”を、計測（M）と介入（M6/V2）で検証できるか？</p>
 <ul>
-<li><strong>IIT 4.0の計算量問題と構造保存 (Issue #52):</strong> 厳密なΦ計算は不可能だが、PCI-STのような相関指標だけでは不十分である。プロジェクトは<strong>「因果構造の保存 (Causal Structure Preservation)」</strong>をL3/L4レベルの要件とし、特定のサブシステムにおける因果構造の一致を検証する。</li>
+<li><strong>IIT 4.0の計算量問題と構造保存 (Issue #52):</strong> 厳密なΦ計算は不可能だが、PCI-STのような相関指標だけでは不十分である。プロジェクトは<strong>「因果構造の保存 (Causal Structure Preservation)」</strong>をL3/L4レベルの要件とし、特定のサブシステムにおける因果構造の一致を検証する。補助指標として<strong>部分系Φ・上下界評価・ΦID</strong>などの近似を採用する。</li>
 <li><strong>識別可能性の壁 (The Identifiability Wall):</strong> 反実仮想的等価性（Laukkonen et al., 2025）は、観測データだけでは一意に定まらない。検証には<strong>「最小分岐セット (Minimal Set of Branching Structures)」</strong>を定義し、予測符号化課題における神経ダイナミクスの分岐分布（Kullback-Leibler Divergence）を用いて統計的に評価する。</li>
 <li><strong>マルコフブランケット境界条件の厳密化 (Issue #52):</strong> 境界条件（帯域幅・遅延）は固定値（例：10ms）ではなく、<strong>脳領域間の機能的結合の時定数（例：ガンマ帯域位相結合 ~25-100ms）</strong>や認知課題の反応時間Jitterに基づいて、動的かつ文脈依存的に定義する。</li>
 </ul>

@@ -430,6 +430,110 @@ h5 {
     font-size: 14px;
 }
 
+/* Flow Visual (Figure 2) */
+.flow-visual {
+    width: 100%;
+    max-width: 900px;
+    display: flex;
+    gap: 20px;
+    align-items: stretch;
+}
+
+.flow-step {
+    flex: 1;
+    background: var(--color-paper);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-md);
+    padding: 18px 16px;
+    position: relative;
+}
+
+.flow-step::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -16px;
+    width: 32px;
+    height: 2px;
+    background: var(--color-border);
+    opacity: 0.8;
+}
+
+.flow-step:last-child::after {
+    display: none;
+}
+
+.flow-title {
+    font-family: var(--font-sans);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--color-accent);
+}
+
+.flow-sub {
+    margin-top: 10px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--color-text-secondary);
+}
+
+@media (max-width: 800px) {
+    .flow-visual {
+        flex-direction: column;
+    }
+
+    .flow-step::after {
+        display: none;
+    }
+}
+
+@media (max-width: 720px) {
+    .figure-content {
+        padding: 28px 20px;
+    }
+
+    .timeline-visual {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 18px;
+        padding-top: 0;
+        padding-left: 20px;
+    }
+
+    .timeline-visual::before {
+        top: 0;
+        bottom: 0;
+        left: 10px;
+        right: auto;
+        width: 2px;
+        height: auto;
+    }
+
+    .timeline-item {
+        width: 100%;
+        flex-direction: row;
+        align-items: flex-start;
+        text-align: left;
+        gap: 12px;
+    }
+
+    .timeline-dot {
+        margin: 2px 0 0;
+    }
+
+    .timeline-label {
+        background: transparent;
+        padding: 0;
+    }
+
+    .timeline-label strong {
+        display: inline;
+        margin-top: 0;
+        margin-left: 6px;
+    }
+}
+
 /* Stage List (Technical Framework Visual) */
 .stage-list {
     margin: 40px 0;
