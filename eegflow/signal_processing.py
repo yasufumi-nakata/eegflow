@@ -7,6 +7,7 @@ import numpy as np
 import mne
 from sklearn.cross_decomposition import CCA
 from scipy.signal import welch
+import scipy.linalg
 
 # Optional imports for advanced features
 try:
@@ -187,3 +188,177 @@ class SSVEP_CCA:
             scores.append(corr)
             
         return self.target_freqs[np.argmax(scores)], scores
+
+def apply_adaptive_filter(eeg_data, ref_data, filter_type='rls', order=5, forgetting_factor=0.99):
+    """
+    Section 4.2: Adaptive filtering using motion reference (Sensor Fusion).
+    
+    Parameters
+    ----------
+    eeg_data : np.ndarray
+        (n_channels, n_samples)
+    ref_data : np.ndarray
+        (n_ref_channels, n_samples) - Reference noise signals (e.g. IMU).
+    filter_type : str
+        'rls' (Recursive Least Squares) or 'lms' (Least Mean Squares).
+    order : int
+        Filter order (number of taps).
+    forgetting_factor : float
+        For RLS, lambda (0 < lambda <= 1). Closer to 1 means longer memory.
+        
+    Returns
+    -------
+    clean_eeg : np.ndarray
+        (n_channels, n_samples)
+    """
+    n_channels, n_samples = eeg_data.shape
+    n_ref, n_ref_samples = ref_data.shape
+    
+    if n_samples != n_ref_samples:
+        raise ValueError("EEG and Reference data must have same length.")
+        
+    clean_eeg = np.zeros_like(eeg_data)
+    
+    # Simple RLS implementation
+    # We treat each EEG channel independently
+    # Input vector x(n) is constructed from current and past values of reference channels
+    # To simplify, if we have multiple ref channels, the input vector size is n_ref * order
+    
+    # Initialize RLS variables
+    M = n_ref * order # Total weights
+    lam = forgetting_factor
+    delta = 1.0 # Initial correlation matrix diagonal
+    
+    # Pre-construct the input matrix X (n_samples, M)
+    # Pad reference for delays
+    ref_padded = np.pad(ref_data, ((0,0), (order-1, 0)), mode='constant')
+    
+    X = np.zeros((n_samples, M))
+    for i in range(n_samples):
+        window = ref_padded[:, i : i+order] # (n_ref, order)
+        # Flatten and reverse time so newest is first
+        X[i, :] = window[:, ::-1].flatten() 
+        
+    # Now run RLS for each channel
+    for ch in range(n_channels):
+        d = eeg_data[ch, :]
+        w = np.zeros(M)
+        P = (1.0/delta) * np.eye(M)
+        
+        for n in range(n_samples):
+            x_n = X[n]
+            
+            # RLS update
+            Px = P @ x_n
+            # Denominator: lam + x^T P x
+            denom = lam + x_n @ Px
+            g = Px / denom
+            
+            # A priori error
+            alpha = d[n] - w @ x_n
+            
+            # Update weights
+            w = w + g * alpha
+            
+            # Update P
+            # P = (1/lam) * (P - g @ x_n.T @ P) 
+            # Note: g is vector, x_n is vector. Outer product.
+            # Using Px which is P @ x_n
+            P = (1/lam) * (P - np.outer(g, Px))
+            
+            # The cleaned signal is the error (e)
+            # We use a priori error as approximation or compute a posteriori
+            clean_eeg[ch, n] = alpha 
+            
+    return clean_eeg
+
+class SSVEP_TRCA:
+    """
+    Section 5.2: Task-Related Component Analysis for SSVEP.
+    Reference: Nakanishi et al. (2018)
+    """
+    def __init__(self, target_freqs, sfreq):
+        self.target_freqs = target_freqs
+        self.sfreq = sfreq
+        self.models = {} # Store TRCA weights for each target
+        
+    def fit(self, eeg_trials, labels):
+        """
+        Train TRCA spatial filters.
+        
+        Parameters
+        ----------
+        eeg_trials : np.ndarray
+            (n_trials, n_channels, n_samples)
+        labels : np.ndarray
+            (n_trials,) - Label (index of target freq) for each trial.
+        """
+        n_trials, n_channels, n_samples = eeg_trials.shape
+        classes = np.unique(labels)
+        
+        for c in classes:
+            # Get trials for this class
+            trials_c = eeg_trials[labels == c] # (n_c, n_ch, n_samples)
+            
+            # S: Inter-trial covariance
+            # Concatenate trials -> (n_ch, n_c * n_samples)
+            X = np.concatenate(trials_c, axis=1) 
+            
+            # Q: Covariance of all data
+            Q = np.cov(X)
+            
+            # S: Covariance of the template repeated
+            # Template = mean across trials
+            template = np.mean(trials_c, axis=0) # (n_ch, n_samples)
+            
+            S = np.zeros((n_channels, n_channels))
+            for i in range(trials_c.shape[0]):
+                for j in range(trials_c.shape[0]):
+                    x_i = trials_c[i] - np.mean(trials_c[i], axis=1, keepdims=True)
+                    x_j = trials_c[j] - np.mean(trials_c[j], axis=1, keepdims=True)
+                    S += x_i @ x_j.T
+            
+            # Solve Generalized Eigenvalue Problem: S w = lambda Q w
+            try:
+                # eigh for symmetric matrices
+                eigvals, eigvecs = scipy.linalg.eigh(S, Q)
+                # Sort descending
+                idx = np.argsort(eigvals)[::-1]
+                w = eigvecs[:, idx[0]] # Best spatial filter
+                self.models[c] = (w, template)
+            except Exception as e:
+                print(f"TRCA fit failed for class {c}: {e}")
+                
+    def predict(self, eeg_trial):
+        """
+        Predict class for a single trial.
+        
+        Parameters
+        ----------
+        eeg_trial : np.ndarray
+            (n_channels, n_samples)
+            
+        Returns
+        -------
+        predicted_label
+        """
+        scores = []
+        possible_labels = list(self.models.keys())
+        possible_labels.sort()
+        
+        for c in possible_labels:
+            w, template = self.models[c]
+            
+            # Apply spatial filter
+            # s(t) = w^T x(t)
+            test_s = w @ eeg_trial
+            temp_s = w @ template
+            
+            # Correlation
+            if np.std(test_s) == 0 or np.std(temp_s) == 0:
+                scores.append(0)
+            else:
+                r = np.corrcoef(test_s, temp_s)[0, 1]
+                scores.append(r)
+            
+        return possible_labels[np.argmax(scores)]
