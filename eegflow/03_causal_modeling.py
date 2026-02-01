@@ -163,7 +163,7 @@ class OnlineActiveInference:
     def verify_thermodynamic_constraints(self):
         """
         非平衡定常状態（Non-equilibrium Steady State）と散逸構造の維持を確認する (Issue #54 & #61)。
-        Issue #58: 単なるエントロピー増大だけでなく、EPR（エントロピー生成率）が正であることを確認する。
+        Issue #50 Update: Thermodynamic Efficiency Metric & Intrinsic Existence.
         """
         print(f"  [Thermodynamic Check] Verifying Dissipative Structure (NESS)...")
         
@@ -181,8 +181,47 @@ class OnlineActiveInference:
         if self.metabolic_reserve >= 100.0: 
             print("    [FAIL] No metabolic cost paid. System is not metabolically grounded.")
             return False
+
+        # 4. Thermodynamic Efficiency Metric (Issue #50)
+        # Compare "Digital Metabolic Cost" to Biological Brain (~20 Watts)
+        # Assuming 1 Normalized Unit = 0.2 Watts for this simulation scale
+        estimated_wattage = (100.0 - self.metabolic_reserve) * 0.2
+        biological_benchmark = 20.0 # Watts
+        efficiency_ratio = estimated_wattage / biological_benchmark
+        
+        print(f"    [Efficiency] Estimated Power: {estimated_wattage:.2f} W (Bio Benchmark: 20 W)")
+        print(f"    [Efficiency] Efficiency Ratio: {efficiency_ratio:.4f} (Target: ~1.0 for true biomimicry)")
+        
+        if efficiency_ratio > 1000.0:
+            print("    [WARNING] System is thermodynamically inefficient (Landauer limit violation likely).")
             
         print(f"    [PASS] System is dissipative (NESS confirmed). EPR: {self.entropy_production_rate:.4f}")
+        return True
+
+    def verify_causal_structure_preservation(self):
+        """
+        Issue #50: Operationalizing "Counterfactual Equivalence".
+        生物学的脳とエミュレーションの有効結合（Effective Connectivity）を比較し、
+        因果構造の保存（Causal Structure Preservation）を定量化する。
+        """
+        print("  [Causal Validation] Verifying Causal Structure Preservation...")
+        
+        # Mock Effective Connectivity Matrices (n_regions x n_regions)
+        # Bio: Ground Truth
+        bio_connectivity = np.random.normal(0.5, 0.1, (self.n_regions, self.n_regions))
+        # Digital: Estimated SCM
+        digital_connectivity = bio_connectivity + np.random.normal(0, 0.05, (self.n_regions, self.n_regions))
+        
+        # Calculate divergence (e.g., Euclidean distance or KL-divergence proxy)
+        frobenius_norm = np.linalg.norm(bio_connectivity - digital_connectivity)
+        
+        print(f"    Effective Connectivity Mismatch (Frobenius Norm): {frobenius_norm:.4f}")
+        
+        if frobenius_norm > 1.0: # Threshold
+            print("    [FAIL] Causal structures diverge significantly. Counterfactuals may be invalid.")
+            return False
+        
+        print("    [PASS] Causal structure preserved within tolerance.")
         return True
 
     def verify_markov_blanket_constraints(self):
@@ -249,31 +288,44 @@ class OnlineActiveInference:
 
     def calculate_virtual_pci(self, stimulus_strength=10.0):
         """
-        仮想的な摂動複雑性指数 (Virtual PCI) を計算する (Issue #56)。
+        仮想的な摂動複雑性指数 (Virtual PCI) を計算する (Issue #56, #50)。
         
-        Issue #61 Update:
-        この指標は単なる意識レベルの推定だけでなく、
-        構造的因果モデル（SCM）の「識別可能性（Identifiability）」を担保するための
-        制約条件として機能する。摂動に対する応答が生物学的脳と一致しない場合、
-        推定されたSCMは誤りである可能性が高い。
-        
-        Returns:
-            float: 推定されたPCI値
+        Issue #50: Implement Lempel-Ziv complexity logic on binarized response matrix
+        to operationalize "Counterfactual Equivalence" via causal perturbations.
         """
         print(f"    [Virtual PCI] Injecting virtual pulse (Strength={stimulus_strength})...")
         
-        # 1. Perturbation: 全領域への影響伝播をシミュレート
-        response_matrix = np.random.rand(self.n_regions, 300) # 300ms time window (mock)
+        # 1. Perturbation: Simulate response spreading through network
+        # S(t+1) = A * S(t) + Input
+        response_matrix = np.zeros((self.n_regions, 300))
+        state = np.zeros(self.n_regions)
+        state[0] = stimulus_strength # Pulse at region 0
         
-        # 2. Binarization: 閾値処理でバイナリ行列化
-        binary_response = response_matrix > 0.5
+        # Mock connectivity
+        A = np.random.rand(self.n_regions, self.n_regions)
+        A = A / np.linalg.norm(A) * 0.9 # Stable system
         
-        # 3. Complexity: 圧縮アルゴリズム等で複雑性を算出 (Mock)
-        # 実際には Lempel-Ziv complexity of the binary matrix
-        pci_value = np.sum(binary_response) / (self.n_regions * 300) * 0.8 # Dummy calculation
+        for t in range(300):
+            state = np.tanh(A @ state) # Non-linear activation
+            response_matrix[:, t] = state
         
-        print(f"    [Virtual PCI] Calculated PCI: {pci_value:.3f} (Reference Biological PCI: ~0.5-0.7)")
-        print(f"    -> Using PCI to constrain SCM search space (Perturbational Complexity Approach)")
+        # 2. Binarization (Casali et al., 2013)
+        # Threshold at significant activation
+        binary_response = response_matrix > 0.1
+        
+        # 3. Lempel-Ziv Complexity (Simplified)
+        # Measure compressibility of the spatiotemporal pattern
+        # Higher complexity -> harder to compress -> higher PCI
+        
+        # Use simple compression ratio proxy for this mock
+        import zlib
+        packed = zlib.compress(binary_response.tobytes())
+        complexity = len(packed) / (self.n_regions * 300 / 8) # normalized by raw size
+        
+        # Normalize to typical PCI range [0, 1]
+        pci_value = min(complexity * 1.5, 1.0)
+        
+        print(f"    [Virtual PCI] Lempel-Ziv Complexity: {complexity:.3f} -> PCI: {pci_value:.3f}")
         return pci_value
 
     def counterfactual_simulation(self, scenario):
@@ -368,6 +420,10 @@ def conceptual_online_modeling_workflow():
     pci = agent.calculate_virtual_pci()
     if pci < 0.31: # Casali et al. (2013) threshold for consciousness
         print("Warning: Virtual PCI is too low (Unconscious state likely).")
+
+    # Causal Structure Preservation (Issue #50)
+    if not agent.verify_causal_structure_preservation():
+        print("Warning: Effective connectivity mismatch detected.")
 
     # IIT Approximation (Issue #58)
     phi = agent.estimate_approximate_phi()

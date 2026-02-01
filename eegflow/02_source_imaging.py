@@ -158,36 +158,119 @@ class VariationalBayesianESI:
         self.posterior_mean_ = stc_mne
 
         # Estimate Posterior Uncertainty (Rigorous Approach)
-        # Issue #49: Instead of ratio of time series, we extract the noise_norm vector.
-        # The 'noise_norm' in inv operator (used for dSPM) corresponds to the
-        # inverse of the noise standard deviation projected to source space.
-        # i.e., noise_norm_i approx 1 / sigma_i (under the null hypothesis of noise only)
-        # For the posterior variance in a Bayesian sense (Gaussian approximation), 
-        # we treat this as the baseline uncertainty.
+        # Issue #50: Implement true Bayesian Posterior Covariance \Sigma_{J|Y}
+        # Replaces the dSPM 'noise_norm' heuristic.
+        # Formula: \Sigma_{J|Y} = \Sigma_p - \Sigma_p L^T (L \Sigma_p L^T + \Sigma_\epsilon)^{-1} L \Sigma_p
+        # (Using Woodbury Matrix Identity for computational efficiency)
         
-        print("  - Extracting Posterior Variance from Inverse Operator...")
+        print("  - Calculating Rigorous Posterior Covariance (Issue #50)...")
         
-        # prepare_inverse_operator performs the noise normalization calculation
-        inv_dspm = mne.minimum_norm.prepare_inverse_operator(
-            inv, navg=1, lambda2=1.0/9.0, method='dSPM'
-        )
+        # 1. Prepare Matrices
+        # L: Gain Matrix (n_sensors, n_sources)
+        # We need to pick the normal orientation if using fixed/constrained, 
+        # but here we assume loose/free orientation or handle it via forward.
+        # For simplicity in this snippet, we assume the forward solution is already prepared/converted.
         
-        # 'noise_norm' contains the normalization factors (1/sigma).
-        # So sigma = 1 / noise_norm
-        if inv_dspm.get('noise_norm') is not None:
-            noise_norm = inv_dspm['noise_norm']
-            # Handle potential zeros
-            sigma_vector = 1.0 / (noise_norm + 1e-9)
+        # Ensure forward is loaded and picked
+        fwd_surf = mne.convert_forward_solution(self.fwd, surf_ori=True, force_fixed=False,
+                                                use_cps=True, verbose=False)
+        # Restrict to EEG channels matching noise_cov
+        info = raw.info
+        # Note: In a real robust implementation, we would match channels carefully.
+        # Here we extract data arrays directly for the math.
+        
+        # L (Gain)
+        G = fwd_surf['sol']['data']
+        n_sensors, n_sources = G.shape
+        
+        # \Sigma_\epsilon (Noise Covariance)
+        # We use the method from MNE to get the whitening operator or covariance matrix
+        # For simplicity, we assume diagonal noise or use the full matrix if available.
+        # In MNE, noise_cov is typically processed into a whitener.
+        # Let's compute C_noise explicitly from the cov object.
+        C_noise = mne.cov.regularize(self.noise_cov, info, mag=0.1, grad=0.1, eeg=0.1, rank=None, verbose=False)
+        C_noise_mat = C_noise.data
+        
+        # \Sigma_p (Prior Covariance)
+        # In standard MNE, P = R^2 * I (or depth weighted).
+        # We use the lambda2 parameter to scale.
+        # lambda2 = 1/SNR^2 = Tr(C_noise) / Tr(L P L^T) roughly.
+        # MNE defines inverse with lambda2.
+        # We will assume P is identity scaled by a factor related to signal power.
+        # To strictly match the inverse operator used above:
+        # lambda2 = trace(noise_cov) / (trace(G @ G.T) * snr) roughly.
+        # Let's assume P = I for the structural shape (simplification), scaled by a hyperparam.
+        # Or better, derive P from the inverse operator's source covariance if possible.
+        
+        # Issue #50 suggests: "Optimization of hyperparameters... via Marginal Likelihood"
+        # We will implement the structural calculation assuming hyperparameters are fixed/estimated.
+        # Let alpha = 1 (Source variance), beta = 1/lambda2 (Noise precision proxy).
+        # Actually, let's use the lambda2 directly used in the inverse application.
+        lambda2 = 1.0/9.0
+        
+        # We model: Cov_post = (G.T @ C_noise^{-1} @ G + lambda2 * I)^{-1} is incorrect scaling.
+        # Correct Bayesian formulation matching MNE:
+        # C_post = P - P G.T (G P G.T + C_noise)^-1 G P
+        # If we normalize everything, it's easier.
+        
+        try:
+            from scipy import linalg
             
-            # Expand sigma to match data shape (n_dipoles, n_times)
-            # This represents the static uncertainty map derived from noise covariance + forward model
-            sigma_map = sigma_vector[:, np.newaxis]
+            # Simplified "Scalar" Prior P = \sigma_s^2 I
+            # We need to estimate \sigma_s^2.
+            # MNE assumes signal var / noise var = 1/lambda2 (roughly)
+            # Let's treat C_noise as fixed.
+            # P = (1/lambda2) * mean(diag(C_noise)) / mean(diag(G G.T)) * I ... heuristic
+            # Let's stick to the critique's formula structure directly.
             
-            # In a full Block-Champagne model, sigma would be data-dependent and time-varying (if non-stationary).
-            # Here we use the stationary posterior approximation (standard MNE assumption).
-            self.posterior_std_ = sigma_map
-        else:
-            print("Warning: noise_norm not found. Falling back to identity variance.")
+            # To make this computationally feasible and robust:
+            # We work in whitened space.
+            # W: Whitener (n_sensors, n_sensors)
+            # y_w = W y
+            # G_w = W G
+            # e_w ~ N(0, I)
+            # Then \Sigma_{J|Y} = (G_w^T G_w + \lambda_{reg} I)^{-1}
+            # This is the precision matrix. Inverting it (N_src x N_src) is hard.
+            # Using Woodbury: \Sigma_{J|Y} = (1/\lambda_{reg}) [ I - G_w^T (G_w G_w^T + \lambda_{reg} I)^{-1} G_w ]
+            # This is what we calculate.
+            
+            # 1. Whiten Gain Matrix
+            W, _ = mne.cov.compute_whitener(self.noise_cov, info, verbose=False)
+            G_w = W @ G # (n_sensors, n_sources)
+            
+            # 2. Compute Data Covariance Model in Whitened Space: K = G_w G_w^T + \lambda I
+            # lambda corresponds to the regularization parameter lambda2 used in MNE
+            # MNE definition: lambda2 ~ 1/SNR^2.
+            # In whitened space, noise variance is 1. Signal variance is 1/lambda2.
+            # So \Sigma_p = (1/lambda2) * I.
+            # Then \Sigma_{J|Y} = \Sigma_p - \Sigma_p G_w^T (G_w \Sigma_p G_w^T + I)^{-1} G_w \Sigma_p
+            #                   = (1/lambda2) [ I - (1/lambda2) G_w^T ( (1/lambda2) G_w G_w^T + I )^{-1} G_w ]
+            #                   = (1/lambda2) [ I - G_w^T ( G_w G_w^T + lambda2 I )^{-1} G_w ]
+            
+            # Compute term inside inverse: M = G_w G_w^T + lambda2 * I
+            n_chan = G_w.shape[0]
+            M = G_w @ G_w.T + lambda2 * np.eye(n_chan)
+            
+            # Compute Inverse M^{-1}
+            M_inv = linalg.inv(M)
+            
+            # Compute Diagonal of the second term: D = diag( G_w^T M^{-1} G_w )
+            # D_i = (G_w[:, i])^T @ M^{-1} @ (G_w[:, i])
+            # This can be vectorized: sum( G_w * (M_inv @ G_w), axis=0 )
+            term2_diag = np.sum(G_w * (M_inv @ G_w), axis=0)
+            
+            # Posterior Variance Diagonal
+            # var_post = (1/lambda2) * (1 - term2_diag)
+            # Note: If term2_diag > 1 (numerical error), clip it.
+            posterior_var = (1.0 / lambda2) * (1.0 - term2_diag)
+            posterior_var = np.maximum(posterior_var, 0) # Ensure non-negative
+            
+            self.posterior_std_ = np.sqrt(posterior_var)[:, np.newaxis] # broadcast for time
+            print(f"    Posterior Variance computed. Mean Std: {np.mean(self.posterior_std_):.4f}")
+
+        except Exception as e:
+            print(f"    Error in Posterior Covariance calculation: {e}")
+            print("    Falling back to heuristic.")
             self.posterior_std_ = np.ones_like(stc_mne.data)
 
         # 信頼区間 (Credible Intervals) - 95% CI (assuming Gaussian posterior)
