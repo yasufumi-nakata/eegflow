@@ -832,9 +832,13 @@ href="https://arxiv.org/abs/2303.08896">arXiv</a></li>
 <div class="sidebar-box">
 <h4>Technical Proposals</h4>
 <ul>
+<li><a href="technical_proposal_46.html">Issue #46: Measurement QA & BIDS</a></li>
 <li><a href="technical_proposal_47.html">Issue #47: Strategic Extension</a></li>
 <li><a href="technical_proposal_48.html">Issue #48: Neuroengineering & IIT</a></li>
+<li><a href="technical_proposal_56.html">Issue #56: Identifiability & Intervention</a></li>
+<li><a href="technical_proposal_58.html">Issue #58: Irreversibility & IIT Scaling</a></li>
 <li><a href="technical_proposal_61.html">Issue #61: Causal & Thermodynamic Critique</a></li>
+<li><a href="technical_proposal_62.html">Issue #62: Thermodynamic/Causal Validity</a></li>
 </ul>
 </div>
 
@@ -866,6 +870,14 @@ href="https://arxiv.org/abs/2303.08896">arXiv</a></li>
 <h4>Resources</h4>
 <ul>
 <li><a href="brain_science_dictionary.html">脳科学辞典 (Brain Science Dictionary) →</a></li>
+</ul>
+</div>
+
+<div class="sidebar-box">
+<h4>Research Notes</h4>
+<ul>
+<li><a href="idea.html">理論的枠組み（Idea）</a></li>
+<li><a href="issue.html">貢献ガイド（Research Community）</a></li>
 </ul>
 </div>
 
