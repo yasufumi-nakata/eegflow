@@ -23,9 +23,11 @@
 # - mne-python
 # - (Future Dependency) pymc / numpyro for full Empirical Bayes implementation
 
-import mne.bids
+import mne
+import mne_bids
 import os.path as op
 import numpy as np
+import sys
 from mne.minimum_norm import make_inverse_resolution_matrix, resolution_metrics
 
 # --- Configuration ---
@@ -299,6 +301,36 @@ class VariationalBayesianESI:
         # (Visualization logic would go here)
         pass
 
+    def build_posterior_std_stc(self, stc_template):
+        """
+        Posterior Standard Deviation を SourceEstimate として構築する。
+
+        注意:
+        - 本実装は時間に依存しない分散（静的共分散）を仮定し、
+          STCの全タイムポイントに同一の標準偏差を複製する。
+        - これにより、ROI集約や下流の不確実性伝播に利用可能となる。
+        """
+        if self.posterior_std_ is None:
+            raise RuntimeError("Posterior std is not available. Run fit() first.")
+
+        posterior_std = np.asarray(self.posterior_std_, dtype=float)
+        if posterior_std.ndim == 1:
+            posterior_std = posterior_std[:, np.newaxis]
+
+        n_times = stc_template.data.shape[1]
+        if posterior_std.shape[1] == 1 and n_times > 1:
+            posterior_std = np.repeat(posterior_std, n_times, axis=1)
+
+        stc_class = stc_template.__class__
+        stc_std = stc_class(
+            posterior_std,
+            vertices=stc_template.vertices,
+            tmin=stc_template.tmin,
+            tstep=stc_template.tstep,
+            subject=stc_template.subject
+        )
+        return stc_std
+
 
 def run_source_imaging(subject, session, task):
     """
@@ -346,6 +378,23 @@ def run_source_imaging(subject, session, task):
     vb_esi = VariationalBayesianESI(fwd, noise_cov)
     vb_esi.fit(raw, structured_priors="block_champagne") 
     vb_esi.plot_uncertainty(FREESURFER_SUBJECTS_DIR)
+
+    # --- Uncertainty Export for Downstream Causal Modeling (Issue #63) ---
+    # Save posterior standard deviation aligned with the STC vertex ordering.
+    # This is used in 03_causal_modeling.py for precision-weighted belief updates.
+    try:
+        stc_std = vb_esi.build_posterior_std_stc(vb_esi.posterior_mean_)
+        std_path = mne_bids.BIDSPath(
+            subject=subject, session=session, task=task,
+            root=DERIVATIVES_ROOT, check=False,
+            suffix='desc-ebayes_posterior_std', extension='.npy'
+        )
+        if not op.exists(std_path.directory):
+            std_path.directory.mkdir(parents=True)
+        np.save(std_path.fpath, stc_std.data)
+        print(f"Posterior STD saved for uncertainty propagation: {std_path.fpath}")
+    except Exception as e:
+        print(f"Warning: Could not export posterior uncertainty ({e}).", file=sys.stderr)
     
     print("Bayesian ESI fit complete. Posterior distribution available for bias analysis.")
 
