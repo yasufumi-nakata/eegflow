@@ -565,16 +565,92 @@ href="#ref-54">[54]</a></sup>。</p>
 <!-- Technical Proposals -->
 <section class="section" id="technical-proposals">
 <h2 class="section-title">Technical Proposals</h2>
-<p>研究ロードマップを支える具体的な技術提案です。課題ごとに要件と実装方針を整理しています。</p>
+<p>研究ロードマップを支える具体的な技術提案です。ここでは提案内容を本文に統合し、エビデンスと実装の焦点を一望できるように整理しています。</p>
+
+<div class="stage-list">
+<div class="stage-item">
+<div class="stage-number">46</div>
+<div class="stage-body">
+<h4>計測QA・同期・BIDS準拠の統合</h4>
+<p>計測品質の可視化（インピーダンス/ノイズフロア/CMRR）と同期の標準化を、BIDS-EEGのメタデータ構造に直接結び付ける。EEG-BIDSは <code>dataset_description.json</code> や <code>eeg.json</code>、<code>channels.tsv</code>、<code>electrodes.tsv</code> 等の明示的メタデータを要求し、再現性・可搬性を担保する枠組みを提供する。</p>
 <ul>
-<li><a href="technical_proposal_46.html">Issue #46: Measurement QA & BIDS</a></li>
-<li><a href="technical_proposal_47.html">Issue #47: Strategic Extension</a></li>
-<li><a href="technical_proposal_48.html">Issue #48: Neuroengineering & IIT</a></li>
-<li><a href="technical_proposal_56.html">Issue #56: Identifiability & Intervention</a></li>
-<li><a href="technical_proposal_58.html">Issue #58: Irreversibility & IIT Scaling</a></li>
-<li><a href="technical_proposal_61.html">Issue #61: Causal & Thermodynamic Critique</a></li>
-<li><a href="technical_proposal_62.html">Issue #62: Thermodynamic/Causal Validity</a></li>
+<li>BIDS-EEGの構造・必須メタデータをQAログと連携し、再現可能な「計測の証跡」を残す<sup><a href="#ref-83">[83]</a></sup></li>
+<li>マルチモーダル同期はLSLのサンプルタイムスタンプとジッタ補正を標準に据える<sup><a href="#ref-84">[84]</a></sup></li>
 </ul>
+<p><a href="technical_proposal_46.html">→ Technical Proposal #46</a></p>
+</div>
+</div>
+
+<div class="stage-item">
+<div class="stage-number">47</div>
+<div class="stage-body">
+<h4>前処理の再現性強化とネットワーク指標</h4>
+<p>ノイズ除去と接続性推定の「再現性」を担保することが重点。ASRの自動除去とZapLineの線雑音抑制を組み合わせ、wPLI/STEで体積伝導・方向性の問題に対処する。</p>
+<ul>
+<li>ASRは自動アーティファクト除去手法として評価が進んでおり、パラメータ範囲の指針が示されている<sup><a href="#ref-85">[85]</a></sup></li>
+<li>ZapLineは線雑音除去のための実証済み手法で、EEG/MEGに適用可能<sup><a href="#ref-86">[86]</a></sup></li>
+<li>wPLIは体積伝導とノイズの影響を抑えた位相同期指標<sup><a href="#ref-87">[87]</a></sup>、STEは方向性情報流の推定に有効<sup><a href="#ref-88">[88]</a></sup></li>
+</ul>
+<p><a href="technical_proposal_47.html">→ Technical Proposal #47</a></p>
+</div>
+</div>
+
+<div class="stage-item">
+<div class="stage-number">48</div>
+<div class="stage-body">
+<h4>神経工学的拡張（OPM-MEG / Hyper-scanning）</h4>
+<p>OPM-MEGの可搬性と動作自由度は、VRや自然行動下の計測を現実的にする。ウェアラブルMEGの実証は「動きながらの高時間分解能計測」を研究パイプラインに組み込む根拠となる。</p>
+<ul>
+<li>ウェアラブルMEGの実証により、自然な動きを伴う計測が可能になった<sup><a href="#ref-89">[89]</a></sup></li>
+</ul>
+<p><a href="technical_proposal_48.html">→ Technical Proposal #48</a></p>
+</div>
+</div>
+
+<div class="stage-item">
+<div class="stage-number">56</div>
+<div class="stage-body">
+<h4>識別可能性と因果介入（PCI / do-calculus）</h4>
+<p>反実仮想の検証は観測だけでは不可能であり、介入データが必要。PCI（TMS-EEGに基づく摂動複雑性）をGround Truthの参照点とし、介入に対する応答分布の一致を検証する。</p>
+<ul>
+<li>因果階層は「観測・介入・反実仮想」の3層で構成される<sup><a href="#ref-91">[91]</a></sup></li>
+<li>PCIはTMS-EEG応答の複雑性を用いた意識指標として提案されている<sup><a href="#ref-90">[90]</a></sup></li>
+</ul>
+<p><a href="technical_proposal_56.html">→ Technical Proposal #56</a></p>
+</div>
+</div>
+
+<div class="stage-item">
+<div class="stage-number">58</div>
+<div class="stage-body">
+<h4>熱力学・因果・IIT計算量のギャップ対応</h4>
+<p>「論理的コスト」だけでは不十分で、非平衡定常状態を支える散逸の指標（EPR）を明示する必要がある。またIITの厳密計算は指数的に重く、近似・境界条件の設計が必須。</p>
+<ul>
+<li>非平衡系のエントロピー生成は不可逆性の定量指標として確立されている<sup><a href="#ref-92">[92]</a></sup></li>
+<li>IITのMIP探索は系のサイズに対して指数的コストがかかるため、近似や計算戦略が必須<sup><a href="#ref-93">[93]</a></sup></li>
+</ul>
+<p><a href="technical_proposal_58.html">→ Technical Proposal #58</a></p>
+</div>
+</div>
+
+<div class="stage-item">
+<div class="stage-number">61</div>
+<div class="stage-body">
+<h4>因果・熱力学の論理ギャップ補強</h4>
+<p>因果構造保存とEPR<sup><a href="#ref-92">[92]</a></sup>の同時検証を「同一性要件」に組み込み、計算機上のエミュレーションが物理的制約を満たすかを可視化する。</p>
+<p><a href="technical_proposal_61.html">→ Technical Proposal #61</a></p>
+</div>
+</div>
+
+<div class="stage-item">
+<div class="stage-number">62</div>
+<div class="stage-body">
+<h4>熱力学的・因果的妥当性の強化</h4>
+<p>PCI<sup><a href="#ref-90">[90]</a></sup>・EPR<sup><a href="#ref-92">[92]</a></sup>・SCM<sup><a href="#ref-91">[91]</a></sup>の3点セットを検証パイプラインに組み込み、反実仮想と散逸の両側面から妥当性を判定する。</p>
+<p><a href="technical_proposal_62.html">→ Technical Proposal #62</a></p>
+</div>
+</div>
+</div>
 </section>
 
 <!-- About -->
@@ -795,6 +871,17 @@ href="https://arxiv.org/abs/2303.08896">arXiv</a></li>
 <li id="ref-80" value="80">Hohwy, J., et al. (2025). On the Minimal Theory of Consciousness Implicit in Active Inference. <em>Journal of Mathematical Psychology</em>.</li>
 <li id="ref-81" value="81">Li, J., et al. (2025). Computational complexity reduction in Integrated Information Theory via low-dimensional embedding. <em>Chaos, Solitons & Fractals</em>.</li>
 <li id="ref-82" value="82">Cai, C., et al. (2021). Robust estimation of noise for electromagnetic brain imaging with the Champagne algorithm. <em>NeuroImage</em>.</li>
+<li id="ref-83" value="83">Pernet, C. R., Appelhoff, S., Gorgolewski, K. J., et al. (2019). EEG-BIDS, an extension to the brain imaging data structure for electroencephalography. <em>Scientific Data</em>, 6, 103. <a href="https://doi.org/10.1038/s41597-019-0104-8">doi:10.1038/s41597-019-0104-8</a></li>
+<li id="ref-84" value="84">Kothe, C., Shirazi, S. Y., Stenner, T., et al. (2025). The lab streaming layer for synchronized multimodal recording. <em>Imaging Neuroscience</em>, 3, IMAG.a.136. <a href="https://doi.org/10.1162/IMAG.a.136">doi:10.1162/IMAG.a.136</a></li>
+<li id="ref-85" value="85">Chang, C.-Y., Hsu, S.-H., Pion-Tonachini, L., & Jung, T.-P. (2018). Evaluation of Artifact Subspace Reconstruction for automatic EEG artifact removal. <em>Proc. IEEE EMBC</em>. <a href="https://doi.org/10.1109/EMBC.2018.8512547">doi:10.1109/EMBC.2018.8512547</a></li>
+<li id="ref-86" value="86">de Cheveigne, A. (2020). ZapLine: A simple and effective method to remove power line artifacts. <em>NeuroImage</em>, 207, 116356. <a href="https://doi.org/10.1016/j.neuroimage.2019.116356">doi:10.1016/j.neuroimage.2019.116356</a></li>
+<li id="ref-87" value="87">Vinck, M., Oostenveld, R., van Wingerden, M., Battaglia, F., & Pennartz, C. M. A. (2011). An improved index of phase-synchronization for electrophysiological data in the presence of volume-conduction, noise and sample-size bias. <em>NeuroImage</em>, 55(4), 1548–1565. <a href="https://doi.org/10.1016/j.neuroimage.2011.01.055">doi:10.1016/j.neuroimage.2011.01.055</a></li>
+<li id="ref-88" value="88">Staniek, M., & Lehnertz, K. (2008). Symbolic Transfer Entropy. <em>Physical Review Letters</em>, 100, 158101. <a href="https://doi.org/10.1103/PhysRevLett.100.158101">doi:10.1103/PhysRevLett.100.158101</a></li>
+<li id="ref-89" value="89">Boto, E., Holmes, N., Leggett, J., et al. (2018). Moving magnetoencephalography towards real-world applications with a wearable system. <em>Nature</em>, 555, 657–661. <a href="https://doi.org/10.1038/nature26147">doi:10.1038/nature26147</a></li>
+<li id="ref-90" value="90">Casali, A. G., Gosseries, O., Rosanova, M., et al. (2013). A theoretically based index of consciousness independent of sensory processing and behavior. <em>Science Translational Medicine</em>, 5(198), 198ra105. <a href="https://doi.org/10.1126/scitranslmed.3006294">doi:10.1126/scitranslmed.3006294</a></li>
+<li id="ref-91" value="91">Correa, J. D., Lee, S., & Bareinboim, E. (2021). Nested Counterfactual Identification from Arbitrary Surrogate Experiments. <em>arXiv:2107.03190</em>. <a href="https://arxiv.org/abs/2107.03190">arXiv</a></li>
+<li id="ref-92" value="92">Seifert, U. (2012). Stochastic thermodynamics, fluctuation theorems and molecular machines. <em>Reports on Progress in Physics</em>, 75(12), 126001. <a href="https://doi.org/10.1088/0034-4885/75/12/126001">doi:10.1088/0034-4885/75/12/126001</a></li>
+<li id="ref-93" value="93">Kitazono, J., Kanai, R., & Oizumi, M. (2018). Efficient Algorithms for Searching the Minimum Information Partition in Integrated Information Theory. <em>Entropy</em>, 20(3), 173. <a href="https://doi.org/10.3390/e20030173">doi:10.3390/e20030173</a></li>
 </ol>
 </section>
 
