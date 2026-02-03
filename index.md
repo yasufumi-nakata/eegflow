@@ -562,6 +562,21 @@ href="#ref-54">[54]</a></sup>。</p>
 </p>
 </section>
 
+<!-- Technical Proposals -->
+<section class="section" id="technical-proposals">
+<h2 class="section-title">Technical Proposals</h2>
+<p>研究ロードマップを支える具体的な技術提案です。課題ごとに要件と実装方針を整理しています。</p>
+<ul>
+<li><a href="technical_proposal_46.html">Issue #46: Measurement QA & BIDS</a></li>
+<li><a href="technical_proposal_47.html">Issue #47: Strategic Extension</a></li>
+<li><a href="technical_proposal_48.html">Issue #48: Neuroengineering & IIT</a></li>
+<li><a href="technical_proposal_56.html">Issue #56: Identifiability & Intervention</a></li>
+<li><a href="technical_proposal_58.html">Issue #58: Irreversibility & IIT Scaling</a></li>
+<li><a href="technical_proposal_61.html">Issue #61: Causal & Thermodynamic Critique</a></li>
+<li><a href="technical_proposal_62.html">Issue #62: Thermodynamic/Causal Validity</a></li>
+</ul>
+</section>
+
 <!-- About -->
 <section class="section" id="about">
 <h2 class="section-title">About</h2>
@@ -799,6 +814,7 @@ href="https://arxiv.org/abs/2303.08896">arXiv</a></li>
 <li><a href="#research-program">Research Program</a></li>
 <li><a href="#llm-research-update">LLM Research Update</a></li>
 <li><a href="#eeg-consciousness-roadmap">EEG Consciousness Roadmap</a></li>
+<li><a href="#technical-proposals">Technical Proposals</a></li>
 <li><a href="#about">About</a></li>
 <li><a href="#references">References</a></li>
 </ul>
