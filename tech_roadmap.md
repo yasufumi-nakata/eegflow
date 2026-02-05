@@ -699,6 +699,147 @@ note: "暫定版（随時更新）"
 
 </section>
 
+<section class="section" id="swarm30">
+<h2 class="section-title">30ワーカー分解（並列実行）で「解けたこと/未解決」を可視化する</h2>
+<p>
+このロードマップは問いが多く、1人で順番に処理すると「何が前進で、何が未着手か」が見えにくくなります。そこで、<strong>1ワーカー=1つの明確な責務</strong>に分割し、30ワーカーで同時に調査・検証する前提で、現在地を整理します。
+</p>
+
+<div class="note-box">
+<strong>30ワーカー運用の原則</strong>
+<p>
+並列実行時は、各ワーカーに「結論」「根拠」「比較」「不確実性」「次アクション」の5点を必須出力として課し、最後に統合担当が重複・矛盾を監査します。
+</p>
+<p class="small">※ 実行ツールは固定せず、再現可能な形で運用ログだけを残す。</p>
+</div>
+
+<h3>W01-W30 分担表（2026-02-05時点）</h3>
+<p>
+判定は以下の3段階です。<strong>解決：</strong>実装/完了が資料上で確認できる、<strong>部分：</strong>提案や仕様はあるが検証が未完了、<strong>要研究：</strong>実証がほぼ未着手。
+</p>
+
+<table class="data-table">
+<thead>
+<tr>
+<th>Worker</th>
+<th>担当RQ（主）</th>
+<th>分解サブクエスチョン（例）</th>
+<th>判定</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>W01</td><td>P0</td><td>WBEの操作的定義をA/B/Cで固定し、反証条件を記述できているか</td><td>部分</td></tr>
+<tr><td>W02</td><td>P1</td><td>L0-L5クレーム階段と評価指標の対応表が運用可能か</td><td>部分</td></tr>
+<tr><td>W03</td><td>P2</td><td>データ/コード/評価/監査の最低成果物テンプレが実運用されているか</td><td>部分</td></tr>
+<tr><td>W04</td><td>M0</td><td>非侵襲/侵襲/破壊スキャンの選択を研究目的別に固定できているか</td><td>要研究</td></tr>
+<tr><td>W05</td><td>M1</td><td>EEG/fMRI/侵襲の識別可能性差分を同一課題で比較できるか</td><td>部分</td></tr>
+<tr><td>W06</td><td>M2</td><td>閉ループ課題で必要サンプリング周波数の下限を実測できているか</td><td>要研究</td></tr>
+<tr><td>W07</td><td>M3</td><td>領域/回路/シナプス粒度ごとの到達可能性とコストを定量化できるか</td><td>要研究</td></tr>
+<tr><td>W08</td><td>M4</td><td>主体境界（Boundary）を操作的に定義し、必要領域を確定できるか</td><td>部分</td></tr>
+<tr><td>W09</td><td>M5</td><td>EEG-MRI-fMRI位置合わせ誤差を監査可能な形で残せているか</td><td>部分</td></tr>
+<tr><td>W10</td><td>M6</td><td>識別可能性を最大化する介入デザイン（刺激/課題）を逆算できるか</td><td>要研究</td></tr>
+<tr><td>W11</td><td>M7</td><td>日内/日間で同一性指標がどこまで安定するか縦断評価できるか</td><td>要研究</td></tr>
+<tr><td>W12</td><td>M8</td><td>QC指標・欠損・ノイズ処理をログ付きで再現可能に管理できるか</td><td>解決（Issue #34）</td></tr>
+<tr><td>W13</td><td>M9</td><td>BIDS＋Motion-BIDSメタデータが追試可能性を満たしているか</td><td>部分（Issue #46）</td></tr>
+<tr><td>W14</td><td>R0</td><td>復元対象（構造/状態/学習則）の最小セットを検証軸に接続できるか</td><td>要研究</td></tr>
+<tr><td>W15</td><td>R1</td><td>逆問題の同定可能性を事前分布と感度分析で監査できるか</td><td>部分</td></tr>
+<tr><td>W16</td><td>R2</td><td>ベイズ推定で不確実性付きソース再構成を継続運用できるか</td><td>解決（Issue #43）</td></tr>
+<tr><td>W17</td><td>R3</td><td>潜在状態が圧縮ではなく介入予測に寄与していると示せるか</td><td>要研究</td></tr>
+<tr><td>W18</td><td>R4</td><td>反実仮想・介入応答まで含む因果モデルをマルチスケールで同定できるか</td><td>部分（Issue #52/#56）</td></tr>
+<tr><td>W19</td><td>R5</td><td>学習更新を許したときの本人性ドリフト許容範囲を定義できるか</td><td>要研究</td></tr>
+<tr><td>W20</td><td>R6</td><td>一般モデル＋個人パラメータの分離で過学習を抑制できるか</td><td>要研究</td></tr>
+<tr><td>W21</td><td>R7</td><td>前処理差分に頑健な結論のみを採択する同定監査を実装できるか</td><td>部分（Issue #56/#61）</td></tr>
+<tr><td>W22</td><td>R8</td><td>圧縮率と評価スイート性能の崩壊点（性能相転移）を特定できるか</td><td>要研究</td></tr>
+<tr><td>W23</td><td>R9</td><td>モデル差分・失敗例・ネガティブ結果を継続的に保存できるか</td><td>部分</td></tr>
+<tr><td>W24</td><td>R10</td><td>神経修飾（E/I・アミン系）を観測可能な近似で統合できるか</td><td>要研究</td></tr>
+<tr><td>W25</td><td>I0-I3</td><td>粒度別に計算量・電力・メモリのボトルネックを測定できるか</td><td>要研究</td></tr>
+<tr><td>W26</td><td>I4-I7</td><td>初期化感度・学習ドリフト・実装差分の再現性監査を固定できるか</td><td>要研究</td></tr>
+<tr><td>W27</td><td>I8-I10</td><td>安全隔離・熱力学制約・連続時間実装を統合要件として定式化できるか</td><td>部分（Issue #58/#61/#62）</td></tr>
+<tr><td>W28</td><td>V0-V2</td><td>事前登録済み評価スイートと介入テストを運用できるか</td><td>要研究</td></tr>
+<tr><td>W29</td><td>V3-V7</td><td>OOD・長期ドリフト・分岐本人性を同一プロトコルで判定できるか</td><td>部分（Issue #12）</td></tr>
+<tr><td>W30</td><td>V8-V11</td><td>模倣判定・情報幾何距離・トポロジー指標を統合評価できるか</td><td>部分（Issue #10）</td></tr>
+</tbody>
+</table>
+
+<h3>現在地サマリ（解決済み/これから研究）</h3>
+<div class="stage-list">
+<div class="stage-item">
+<div class="stage-number">A</div>
+<div class="stage-body">
+<h4>解決済み（資料上で実装/完了が確認できる）</h4>
+<ul>
+<li><strong>M8:</strong> QCログ出力と品質管理メトリクス（Issue #34）</li>
+<li><strong>R2:</strong> ベイズ型ソース推定と不確実性定量化（Issue #43）</li>
+<li><strong>V8の前提:</strong> LLM模倣判別の3軸ベンチマーク（Issue #10）</li>
+<li><strong>M4/V5の前提:</strong> Boundary Problem向けハイブリッド計測プロトコル（Issue #12）</li>
+</ul>
+</div>
+</div>
+
+<div class="stage-item">
+<div class="stage-number">B</div>
+<div class="stage-body">
+<h4>部分解決（提案・仕様は進んだが、実証が未完了）</h4>
+<ul>
+<li><strong>M9:</strong> Motion-BIDS拡張の方向性（Issue #46）</li>
+<li><strong>R4/V6:</strong> 因果構造保存と識別可能性の理論整理（Issue #52/#56）</li>
+<li><strong>I8-I10:</strong> 熱力学・不可逆性の要件化（Issue #58/#61/#62）</li>
+</ul>
+</div>
+</div>
+
+<div class="stage-item">
+<div class="stage-number">C</div>
+<div class="stage-body">
+<h4>要研究（次サイクルで優先して潰す）</h4>
+<ul>
+<li><strong>R4:</strong> 介入を含むマルチスケール因果モデルの実証ベンチ</li>
+<li><strong>I1/I3:</strong> 許容遅延と計算資源の実測境界</li>
+<li><strong>V2/V5:</strong> 因果同一性の合格基準（閾値）と失敗条件</li>
+<li><strong>V10/V11:</strong> 情報幾何・トポロジー指標の実装と再現評価</li>
+</ul>
+</div>
+</div>
+</div>
+
+<h3>深掘り例：R4（因果）をさらに12分割する</h3>
+<p>
+「1つのRQはさらに分解できる」という前提に立つと、R4は最低でも次の12タスクに割れます。これを別ワーカーに配ることで、議論を「実験計画」に変換できます。
+</p>
+<table class="data-table">
+<thead>
+<tr>
+<th>R4.x</th>
+<th>サブクエスチョン</th>
+<th>判定</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>R4.1</td><td>介入タイプ（刺激・課題・薬理）の優先順位は何か</td><td>要研究</td></tr>
+<tr><td>R4.2</td><td>介入強度/タイミングの探索空間をどう制約するか</td><td>要研究</td></tr>
+<tr><td>R4.3</td><td>因果グラフの事前分布をどこまで固定できるか</td><td>部分</td></tr>
+<tr><td>R4.4</td><td>R2由来の不確実性を因果推論へどう伝播させるか</td><td>部分（Issue #43を利用）</td></tr>
+<tr><td>R4.5</td><td>Active Inferenceの目的関数を検証可能な形で定義できるか</td><td>部分</td></tr>
+<tr><td>R4.6</td><td>反実仮想シナリオ生成（counterfactual generator）を実装できるか</td><td>要研究</td></tr>
+<tr><td>R4.7</td><td>一致度指標（KL/JS/FIM等）の採用基準を固定できるか</td><td>部分</td></tr>
+<tr><td>R4.8</td><td>シャム条件/偽介入のベースラインを用意できるか</td><td>要研究</td></tr>
+<tr><td>R4.9</td><td>未学習条件（OOD）で因果予測が維持されるか</td><td>要研究</td></tr>
+<tr><td>R4.10</td><td>長期ドリフト下で因果同一性が崩れる境界を測れるか</td><td>要研究</td></tr>
+<tr><td>R4.11</td><td>失敗時の停止規則（Stop Rule）を事前登録できるか</td><td>要研究</td></tr>
+<tr><td>R4.12</td><td>第三者追試用にデータ・コード・評価を束ねて公開できるか</td><td>要研究</td></tr>
+</tbody>
+</table>
+
+<div class="key-points">
+<h4>次サイクルの最短ルート</h4>
+<ul>
+<li><strong>Step 1:</strong> W12/M8 と W16/R2 の成果を固定ベースライン化（ここは既存資産が強い）</li>
+<li><strong>Step 2:</strong> W18/R4 と W28/V2 を優先し、介入可能な評価タスクを先に作る</li>
+<li><strong>Step 3:</strong> W25-I系と W30-V系を接続し、計算可能性と検証可能性を同時に満たす境界を測る</li>
+</ul>
+</div>
+</section>
+
 <section class="section" id="template">
 <h2 class="section-title">科学的中心問いページ用テンプレ（推奨）</h2>
 <p>新しい技術提案や問いのページを作成する際は、以下のMarkdownテンプレートをコピーして使用することを推奨します。R0（復元対象）とV0（検証基準）を先に固定する思考フローを強制する構成になっています。</p>
@@ -1033,6 +1174,7 @@ note: "暫定版（随時更新）"
 <li><a href="#reconstruction">再構成</a></li>
 <li><a href="#implementation">実装</a></li>
 <li><a href="#verification">検証</a></li>
+<li><a href="#swarm30">30ワーカー分解</a></li>
 <li><a href="#deployment">社会実装</a></li>
 <li><a href="#learning">学習の順序</a></li>
 <li><a href="#eegflow">EEGFlow の現在地</a></li>
