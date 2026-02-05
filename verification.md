@@ -6,7 +6,7 @@ article_type: Platform
 subtitle: "PDB×BIDS×PhysioNet×OSFの発想で、WBEの“勝利条件”と“再現可能な前進”を作る"
 author: Mind Uploading Research Project
 last_updated: "2026-02-05"
-note: "Design Draft"
+note: "Operational Specification"
 ---
 <!-- IMPORTANT: Do not delete or overwrite this information. It serves as the project's permanent knowledge base. -->
 
@@ -150,15 +150,54 @@ PDB（単一アーカイブ）やBIDS+OpenNeuro（規格＋置き場）、Physio
 </section>
 
 <section class="section" id="mvp">
-<h2 class="section-title">最初の90日で作る最小成果物（案）</h2>
+<h2 class="section-title">最初の90日で実装する必須成果物</h2>
 <div class="key-points">
-<h4>90-Day MVP</h4>
+<h4>90-Day Execution Contract</h4>
 <ul>
-<li><strong>Week 1-2：</strong>「前進の定義」ページを固定（L0〜L5／反証条件／評価スイートの骨格）</li>
-<li><strong>Week 3-4：</strong>BIDS拡張メタデータ案＋QCログの最小スキーマを公開（Issue #46系の統合）</li>
-<li><strong>Month 2：</strong>公開EEGデータで動くベースライン（前処理→特徴→評価）を1本作り、再現手順を固定</li>
-<li><strong>Month 3：</strong>反事実/介入予測を含むベンチv0を公開し、手動でもよいので比較表を継続運用する</li>
+<li><strong>Day 1-14：</strong>「前進の定義」を固定し、L0-L5ごとの合格条件・失敗条件・禁止される主張（すり替え）を明文化する。</li>
+<li><strong>Day 15-28：</strong>BIDS拡張メタデータとQCログ仕様を凍結し、必須フィールドを欠くデータは受理しない運用に切り替える。</li>
+<li><strong>Day 29-60：</strong>公開EEGデータで再現可能なベースラインを1本実装し、同一環境で再実行して同一スコアが出ることを確認する。</li>
+<li><strong>Day 61-90：</strong>反事実/介入予測を含む検証ベンチを公開し、モデル比較表（精度・頑健性・失敗例）を週次更新で運用開始する。</li>
 </ul>
+</div>
+
+<table class="data-table">
+<thead>
+<tr>
+<th>期間</th>
+<th>必須成果物</th>
+<th>受入条件（Doneの定義）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Day 1-14</td>
+<td>評価契約書（L0-L5対応）</td>
+<td>各レベルで「入力」「指標」「閾値」「反証条件」が空欄なしで定義され、ページ間で矛盾がない。</td>
+</tr>
+<tr>
+<td>Day 15-28</td>
+<td>BIDS拡張仕様 + QCスキーマ</td>
+<td>必須キー欠落時に検証失敗となる。計測条件・同期情報・QCログが機械可読で抽出できる。</td>
+</tr>
+<tr>
+<td>Day 29-60</td>
+<td>再現可能ベースライン</td>
+<td>クリーン環境で3回再実行し、主要指標の差分が事前許容幅内に収まる。</td>
+</tr>
+<tr>
+<td>Day 61-90</td>
+<td>介入込みベンチ + 比較表運用</td>
+<td>通常条件だけでなく反事実・介入条件のスコアを公開し、失敗ケースを毎週追記する。</td>
+</tr>
+</tbody>
+</table>
+
+<div class="note-box">
+<strong>運用ルール</strong>
+<p>
+上記4項目のいずれかが未達の場合、「準備中」ではなく「未達」と明記し、次の主張レベルへ進まない。達成条件を満たさない成果は、研究ノートとしては残しても、検証済み成果としては扱わない。
+</p>
 </div>
 </section>
 
