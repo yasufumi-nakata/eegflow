@@ -699,143 +699,248 @@ note: "暫定版（随時更新）"
 
 </section>
 
-<section class="section" id="swarm30">
-<h2 class="section-title">30ワーカー分解（並列実行）で「解けたこと/未解決」を可視化する</h2>
+<section class="section" id="unsolved">
+<h2 class="section-title">未解決問題の定義カタログ（厳密版）</h2>
 <p>
-このロードマップは問いが多く、1人で順番に処理すると「何が前進で、何が未着手か」が見えにくくなります。そこで、<strong>1ワーカー=1つの明確な責務</strong>に分割し、30ワーカーで同時に調査・検証する前提で、現在地を整理します。
-</p>
-
-<div class="note-box">
-<strong>30ワーカー運用の原則</strong>
-<p>
-並列実行時は、各ワーカーに「結論」「根拠」「比較」「不確実性」「次アクション」の5点を必須出力として課し、最後に統合担当が重複・矛盾を監査します。
-</p>
-<p class="small">※ 実行ツールは固定せず、再現可能な形で運用ログだけを残す。</p>
-</div>
-
-<h3>W01-W30 分担表（2026-02-05時点）</h3>
-<p>
-判定は以下の3段階です。<strong>解決：</strong>実装/完了が資料上で確認できる、<strong>部分：</strong>提案や仕様はあるが検証が未完了、<strong>要研究：</strong>実証がほぼ未着手。
+ここでは「未解決」を曖昧語にせず、<strong>何が入力で、何を出力し、どの条件で合格/失敗か</strong>を定義します。先行研究が厚くても、判定条件が曖昧なら研究は積み上がりません。逆に、定義が厳密なら小さな前進を確実に蓄積できます。
 </p>
 
 <table class="data-table">
 <thead>
 <tr>
-<th>Worker</th>
-<th>担当RQ（主）</th>
-<th>分解サブクエスチョン（例）</th>
-<th>判定</th>
+<th>ID</th>
+<th>未解決問題の定義（厳密化）</th>
+<th>既存到達点</th>
+<th>未解決境界（次に詰める点）</th>
 </tr>
 </thead>
 <tbody>
-<tr><td>W01</td><td>P0</td><td>WBEの操作的定義をA/B/Cで固定し、反証条件を記述できているか</td><td>部分</td></tr>
-<tr><td>W02</td><td>P1</td><td>L0-L5クレーム階段と評価指標の対応表が運用可能か</td><td>部分</td></tr>
-<tr><td>W03</td><td>P2</td><td>データ/コード/評価/監査の最低成果物テンプレが実運用されているか</td><td>部分</td></tr>
-<tr><td>W04</td><td>M0</td><td>非侵襲/侵襲/破壊スキャンの選択を研究目的別に固定できているか</td><td>要研究</td></tr>
-<tr><td>W05</td><td>M1</td><td>EEG/fMRI/侵襲の識別可能性差分を同一課題で比較できるか</td><td>部分</td></tr>
-<tr><td>W06</td><td>M2</td><td>閉ループ課題で必要サンプリング周波数の下限を実測できているか</td><td>要研究</td></tr>
-<tr><td>W07</td><td>M3</td><td>領域/回路/シナプス粒度ごとの到達可能性とコストを定量化できるか</td><td>要研究</td></tr>
-<tr><td>W08</td><td>M4</td><td>主体境界（Boundary）を操作的に定義し、必要領域を確定できるか</td><td>部分</td></tr>
-<tr><td>W09</td><td>M5</td><td>EEG-MRI-fMRI位置合わせ誤差を監査可能な形で残せているか</td><td>部分</td></tr>
-<tr><td>W10</td><td>M6</td><td>識別可能性を最大化する介入デザイン（刺激/課題）を逆算できるか</td><td>要研究</td></tr>
-<tr><td>W11</td><td>M7</td><td>日内/日間で同一性指標がどこまで安定するか縦断評価できるか</td><td>要研究</td></tr>
-<tr><td>W12</td><td>M8</td><td>QC指標・欠損・ノイズ処理をログ付きで再現可能に管理できるか</td><td>解決（Issue #34）</td></tr>
-<tr><td>W13</td><td>M9</td><td>BIDS＋Motion-BIDSメタデータが追試可能性を満たしているか</td><td>部分（Issue #46）</td></tr>
-<tr><td>W14</td><td>R0</td><td>復元対象（構造/状態/学習則）の最小セットを検証軸に接続できるか</td><td>要研究</td></tr>
-<tr><td>W15</td><td>R1</td><td>逆問題の同定可能性を事前分布と感度分析で監査できるか</td><td>部分</td></tr>
-<tr><td>W16</td><td>R2</td><td>ベイズ推定で不確実性付きソース再構成を継続運用できるか</td><td>解決（Issue #43）</td></tr>
-<tr><td>W17</td><td>R3</td><td>潜在状態が圧縮ではなく介入予測に寄与していると示せるか</td><td>要研究</td></tr>
-<tr><td>W18</td><td>R4</td><td>反実仮想・介入応答まで含む因果モデルをマルチスケールで同定できるか</td><td>部分（Issue #52/#56）</td></tr>
-<tr><td>W19</td><td>R5</td><td>学習更新を許したときの本人性ドリフト許容範囲を定義できるか</td><td>要研究</td></tr>
-<tr><td>W20</td><td>R6</td><td>一般モデル＋個人パラメータの分離で過学習を抑制できるか</td><td>要研究</td></tr>
-<tr><td>W21</td><td>R7</td><td>前処理差分に頑健な結論のみを採択する同定監査を実装できるか</td><td>部分（Issue #56/#61）</td></tr>
-<tr><td>W22</td><td>R8</td><td>圧縮率と評価スイート性能の崩壊点（性能相転移）を特定できるか</td><td>要研究</td></tr>
-<tr><td>W23</td><td>R9</td><td>モデル差分・失敗例・ネガティブ結果を継続的に保存できるか</td><td>部分</td></tr>
-<tr><td>W24</td><td>R10</td><td>神経修飾（E/I・アミン系）を観測可能な近似で統合できるか</td><td>要研究</td></tr>
-<tr><td>W25</td><td>I0-I3</td><td>粒度別に計算量・電力・メモリのボトルネックを測定できるか</td><td>要研究</td></tr>
-<tr><td>W26</td><td>I4-I7</td><td>初期化感度・学習ドリフト・実装差分の再現性監査を固定できるか</td><td>要研究</td></tr>
-<tr><td>W27</td><td>I8-I10</td><td>安全隔離・熱力学制約・連続時間実装を統合要件として定式化できるか</td><td>部分（Issue #58/#61/#62）</td></tr>
-<tr><td>W28</td><td>V0-V2</td><td>事前登録済み評価スイートと介入テストを運用できるか</td><td>要研究</td></tr>
-<tr><td>W29</td><td>V3-V7</td><td>OOD・長期ドリフト・分岐本人性を同一プロトコルで判定できるか</td><td>部分（Issue #12）</td></tr>
-<tr><td>W30</td><td>V8-V11</td><td>模倣判定・情報幾何距離・トポロジー指標を統合評価できるか</td><td>部分（Issue #10）</td></tr>
+<tr>
+<td>U0</td>
+<td><strong>操作的同一性</strong>: 介入集合Iと時間窓Tに対し、生体系とモデル系の条件付き分布差が閾値以下であることを「同一」と定義できるか。</td>
+<td>V0/V5で枠組み定義あり。心理的連続性と因果同一性の区別を導入済み。</td>
+<td>介入集合Iの最小完備条件、閾値設定、事前登録ルールが未確定。</td>
+</tr>
+<tr>
+<td>U1</td>
+<td><strong>逆問題の同定可能性</strong>: 観測yから潜在源xを推定する際、事後分布の集中度で「唯一解に近い」を定量化できるか。</td>
+<td>R2で不確実性付き推定（Issue #43）。</td>
+<td>前向きモデル誤差（導電率・形状）込みの全体同定可能性が未検証。</td>
+</tr>
+<tr>
+<td>U2</td>
+<td><strong>時空間解像度の下限</strong>: 認知・学習・介入応答を壊さない最小の時間/空間分解能を課題別に定義できるか。</td>
+<td>M2/M3で論点整理済み。</td>
+<td>閉ループ課題での実測境界（遅延許容量・粒度崩壊点）が不足。</td>
+</tr>
+<tr>
+<td>U3</td>
+<td><strong>主体境界（Boundary）</strong>: 主体に含める生理・神経・環境要素の最小集合を、検証可能な操作定義で固定できるか。</td>
+<td>Issue #12でハイブリッド計測プロトコルを整備。</td>
+<td>境界変更時にV5判定がどれだけ変動するかの感度分析が未了。</td>
+</tr>
+<tr>
+<td>U4</td>
+<td><strong>因果同値（Counterfactual Equivalence）</strong>: 観測一致ではなく介入分岐の予測一致で同値判定できるか。</td>
+<td>R4/V2/V6で理論的方針を明示。</td>
+<td>反実仮想生成器、偽介入ベースライン、停止規則の実装が不足。</td>
+</tr>
+<tr>
+<td>U5</td>
+<td><strong>学習則と本人性ドリフト</strong>: 学習更新を許した場合、どの程度の表現変化まで同一性を維持とみなすか。</td>
+<td>R5/V4で問題提起済み。</td>
+<td>更新規則ごとの許容ドリフト閾値とキルスイッチ条件が未定義。</td>
+</tr>
+<tr>
+<td>U6</td>
+<td><strong>個人化と汎化の分離</strong>: 個人固有パラメータと課題共通パラメータを同定し、過学習を回避できるか。</td>
+<td>R6で評価方針を提示。</td>
+<td>個人内/個人間分解を行う標準ベンチと検定計画が不足。</td>
+</tr>
+<tr>
+<td>U7</td>
+<td><strong>マルチモーダル整合</strong>: EEG/fMRI/行動/生理を統合したとき、座標・遅延・ノイズ差を監査可能に保てるか。</td>
+<td>M5/M9で要件化、Motion-BIDS方針（Issue #46）。</td>
+<td>同一データで複数統合パイプラインの一致率評価が未整備。</td>
+</tr>
+<tr>
+<td>U8</td>
+<td><strong>閉ループ安定性</strong>: 遅延・ノイズ・環境変動下で、モデルが破綻せず制御可能か。</td>
+<td>I1/I6で要件整理。</td>
+<td>遅延とジッタの実測に基づく安全運転領域の同定が不足。</td>
+</tr>
+<tr>
+<td>U9</td>
+<td><strong>OOD頑健性</strong>: 未学習環境・新規課題・雑音条件で同一性指標を維持できるか。</td>
+<td>V3で問題を明確化。</td>
+<td>劣化曲線の標準化（どの速度で崩れるか）が未確立。</td>
+</tr>
+<tr>
+<td>U10</td>
+<td><strong>熱力学的一貫性</strong>: 情報処理が物理的不可逆性・散逸制約を満たす実装条件を定式化できるか。</td>
+<td>I9とIssue #58/#61/#62で理論整理が進展。</td>
+<td>測定可能な実験指標（散逸率・因果密度・効率）の統一が未了。</td>
+</tr>
+<tr>
+<td>U11</td>
+<td><strong>IIT近似の妥当性</strong>: 厳密計算不能なΦを近似指標で置換したとき、何が保存され何が失われるか。</td>
+<td>V6で部分系Φ/上下界/PCI系の併用方針。</td>
+<td>近似間の序列保存性と誤判定率の比較試験が不足。</td>
+</tr>
+<tr>
+<td>U12</td>
+<td><strong>分岐本人性（多重インスタンス）</strong>: 複数分岐後の個体ID・責任・評価帰属をどう扱うか。</td>
+<td>V7で版管理の必要性を明示。</td>
+<td>分岐時点と評価期間を固定した制度設計が未着手。</td>
+</tr>
+<tr>
+<td>U13</td>
+<td><strong>模倣分離テスト</strong>: 振る舞い模倣（LLM型）と因果構造保存を実験的に区別できるか。</td>
+<td>Issue #10で3軸ベンチマーク、V8で統合方針。</td>
+<td>介入・閉ループ・内部状態整合を同時に課すテスト群が不足。</td>
+</tr>
+<tr>
+<td>U14</td>
+<td><strong>追試可能性の実装</strong>: 第三者が同じデータ・手順で同一結論に到達できる運用を固定できるか。</td>
+<td>P2/V9で必要条件は整理済み。</td>
+<td>実行環境・差分ログ・失敗例公開の運用フローが不完全。</td>
+</tr>
+<tr>
+<td>U15</td>
+<td><strong>社会実装ガバナンス</strong>: 権利・同意・責任分配を技術評価と同期させて設計できるか。</td>
+<td>D0-D2で論点抽出済み。</td>
+<td>技術KPIと制度KPIの連動ルール（中止基準含む）が未定義。</td>
+</tr>
 </tbody>
 </table>
 
-<h3>現在地サマリ（解決済み/これから研究）</h3>
+<div class="note-box">
+<strong>判定ルール</strong>
+<p>
+上のU0-U15は「良いアイデア」ではなく「反証可能な研究問題」です。各問題は、<strong>入力・出力・評価指標・失敗条件</strong>がそろって初めて「解いた」と判定します。
+</p>
+</div>
+
+<h3>最重要3課題の追加分解（さらに深く）</h3>
 <div class="stage-list">
 <div class="stage-item">
 <div class="stage-number">A</div>
 <div class="stage-body">
-<h4>解決済み（資料上で実装/完了が確認できる）</h4>
+<h4>U4 因果同値</h4>
 <ul>
-<li><strong>M8:</strong> QCログ出力と品質管理メトリクス（Issue #34）</li>
-<li><strong>R2:</strong> ベイズ型ソース推定と不確実性定量化（Issue #43）</li>
-<li><strong>V8の前提:</strong> LLM模倣判別の3軸ベンチマーク（Issue #10）</li>
-<li><strong>M4/V5の前提:</strong> Boundary Problem向けハイブリッド計測プロトコル（Issue #12）</li>
+<li>介入辞書（刺激・課題・薬理）の最小完備集合をどう作るか。</li>
+<li>反実仮想一致度（KL, JS, FIMなど）の閾値をどう校正するか。</li>
+<li>偽介入・シャム条件で過大評価をどう抑えるか。</li>
+<li>失敗時停止規則（Stop Rule）をどう事前登録するか。</li>
 </ul>
 </div>
 </div>
-
 <div class="stage-item">
 <div class="stage-number">B</div>
 <div class="stage-body">
-<h4>部分解決（提案・仕様は進んだが、実証が未完了）</h4>
+<h4>U10 熱力学的一貫性</h4>
 <ul>
-<li><strong>M9:</strong> Motion-BIDS拡張の方向性（Issue #46）</li>
-<li><strong>R4/V6:</strong> 因果構造保存と識別可能性の理論整理（Issue #52/#56）</li>
-<li><strong>I8-I10:</strong> 熱力学・不可逆性の要件化（Issue #58/#61/#62）</li>
+<li>情報処理の散逸率をどの時間窓で測るか。</li>
+<li>物理的不可逆性と計算論的不可逆性の差をどう扱うか。</li>
+<li>実装基盤が変わっても比較可能な共通指標を作れるか。</li>
+<li>エネルギー効率と因果性能のトレードオフをどう最適化するか。</li>
 </ul>
 </div>
 </div>
-
 <div class="stage-item">
 <div class="stage-number">C</div>
 <div class="stage-body">
-<h4>要研究（次サイクルで優先して潰す）</h4>
+<h4>U12 分岐本人性</h4>
 <ul>
-<li><strong>R4:</strong> 介入を含むマルチスケール因果モデルの実証ベンチ</li>
-<li><strong>I1/I3:</strong> 許容遅延と計算資源の実測境界</li>
-<li><strong>V2/V5:</strong> 因果同一性の合格基準（閾値）と失敗条件</li>
-<li><strong>V10/V11:</strong> 情報幾何・トポロジー指標の実装と再現評価</li>
+<li>分岐時点の定義（初期条件固定）をどこに置くか。</li>
+<li>分岐後の評価帰属期間をどう設定するか。</li>
+<li>複数分岐がある場合の責任分配と監査IDをどう管理するか。</li>
+<li>法的主体性と技術的同一性の不一致をどう扱うか。</li>
 </ul>
 </div>
 </div>
 </div>
+</section>
 
-<h3>深掘り例：R4（因果）をさらに12分割する</h3>
+<section class="section" id="priorwork-map">
+<h2 class="section-title">先行研究マップ（重点領域別）</h2>
 <p>
-「1つのRQはさらに分解できる」という前提に立つと、R4は最低でも次の12タスクに割れます。これを別ワーカーに配ることで、議論を「実験計画」に変換できます。
+未解決問題を解くために必要な先行研究を、分野別に整理します。目的は「文献の羅列」ではなく、<strong>どの問題に、どの証拠が効くか</strong>を明確にすることです。
 </p>
+
 <table class="data-table">
 <thead>
 <tr>
-<th>R4.x</th>
-<th>サブクエスチョン</th>
-<th>判定</th>
+<th>領域</th>
+<th>代表先行研究（抜粋）</th>
+<th>U0-U15への寄与</th>
 </tr>
 </thead>
 <tbody>
-<tr><td>R4.1</td><td>介入タイプ（刺激・課題・薬理）の優先順位は何か</td><td>要研究</td></tr>
-<tr><td>R4.2</td><td>介入強度/タイミングの探索空間をどう制約するか</td><td>要研究</td></tr>
-<tr><td>R4.3</td><td>因果グラフの事前分布をどこまで固定できるか</td><td>部分</td></tr>
-<tr><td>R4.4</td><td>R2由来の不確実性を因果推論へどう伝播させるか</td><td>部分（Issue #43を利用）</td></tr>
-<tr><td>R4.5</td><td>Active Inferenceの目的関数を検証可能な形で定義できるか</td><td>部分</td></tr>
-<tr><td>R4.6</td><td>反実仮想シナリオ生成（counterfactual generator）を実装できるか</td><td>要研究</td></tr>
-<tr><td>R4.7</td><td>一致度指標（KL/JS/FIM等）の採用基準を固定できるか</td><td>部分</td></tr>
-<tr><td>R4.8</td><td>シャム条件/偽介入のベースラインを用意できるか</td><td>要研究</td></tr>
-<tr><td>R4.9</td><td>未学習条件（OOD）で因果予測が維持されるか</td><td>要研究</td></tr>
-<tr><td>R4.10</td><td>長期ドリフト下で因果同一性が崩れる境界を測れるか</td><td>要研究</td></tr>
-<tr><td>R4.11</td><td>失敗時の停止規則（Stop Rule）を事前登録できるか</td><td>要研究</td></tr>
-<tr><td>R4.12</td><td>第三者追試用にデータ・コード・評価を束ねて公開できるか</td><td>要研究</td></tr>
+<tr>
+<td>WBE基礎・本人性</td>
+<td>Sandberg &amp; Bostrom (2008), Yamakawa et al. (2024), Parfit (1984), Clowes (2021), Weber (2025)</td>
+<td>U0, U12, U15</td>
+</tr>
+<tr>
+<td>意識理論と検証</td>
+<td>Tononi (2015), Tononi et al. (2016), Albantakis et al. (2023), Doerig et al. (2019), Ferrante et al. (2025), Casali et al. (2013), Comolatti et al. (2019)</td>
+<td>U0, U4, U11</td>
+</tr>
+<tr>
+<td>EEG/MEG逆問題</td>
+<td>Michel &amp; Brunet (2019), Wipf &amp; Nagarajan (2009), Cai et al. (2021), Feng et al. (2025), Vorwerk et al. (2014), Medani et al. (2025)</td>
+<td>U1, U2, U7</td>
+</tr>
+<tr>
+<td>前処理・同期・接続性</td>
+<td>Chang et al. (2018), de Cheveigne (2020), Vinck et al. (2011), Staniek &amp; Lehnertz (2008), Kothe et al. (2025)</td>
+<td>U1, U7, U8, U14</td>
+</tr>
+<tr>
+<td>デコーディング</td>
+<td>Huth et al. (2016), Tang et al. (2023), Horikawa et al. (2025), Ji et al. (2023)</td>
+<td>U4, U9, U13</td>
+</tr>
+<tr>
+<td>因果・能動的推論</td>
+<td>Friston et al. (2003), Friston (2010), Friston (2017), Parr &amp; Friston (2019), Laukkonen et al. (2025), Correa et al. (2021)</td>
+<td>U4, U5, U9</td>
+</tr>
+<tr>
+<td>生物学的制約</td>
+<td>Cook et al. (2019), Scheffer et al. (2020), Kasthuri et al. (2015), Santello et al. (2019), Ozcete et al. (2024), Gamlin et al. (2025)</td>
+<td>U2, U3, U6, U7</td>
+</tr>
+<tr>
+<td>計測拡張（OPM等）</td>
+<td>Boto et al. (2018), Logothetis (2008), Purdon et al. (2013)</td>
+<td>U2, U7, U8</td>
+</tr>
+<tr>
+<td>標準化・再現性</td>
+<td>Gorgolewski et al. (2016), Pernet et al. (2019), EEG-BIDS update, Open benchmark practices</td>
+<td>U14</td>
+</tr>
+<tr>
+<td>倫理・権利・法制度</td>
+<td>Yuste et al. (2017), Ienca &amp; Andorno (2017), MIND Act discourse (2025)</td>
+<td>U12, U15</td>
+</tr>
+<tr>
+<td>熱力学・計算可能性</td>
+<td>Seifert (2012), Kitazono et al. (2018), complexity reduction studies on IIT (2025)</td>
+<td>U10, U11</td>
+</tr>
 </tbody>
 </table>
 
 <div class="key-points">
-<h4>次サイクルの最短ルート</h4>
+<h4>読む順序（実務向け）</h4>
 <ul>
-<li><strong>Step 1:</strong> W12/M8 と W16/R2 の成果を固定ベースライン化（ここは既存資産が強い）</li>
-<li><strong>Step 2:</strong> W18/R4 と W28/V2 を優先し、介入可能な評価タスクを先に作る</li>
-<li><strong>Step 3:</strong> W25-I系と W30-V系を接続し、計算可能性と検証可能性を同時に満たす境界を測る</li>
+<li><strong>第1層:</strong> U1/U14（計測と再現性）を先に固める。ここが弱いと上位議論は全て不安定。</li>
+<li><strong>第2層:</strong> U4/U9（因果と一般化）を介入ベースで検証し、模倣との差分を確立する。</li>
+<li><strong>第3層:</strong> U10/U11/U12/U15（物理・同一性・制度）を、実証結果と接続して更新する。</li>
 </ul>
 </div>
 </section>
@@ -1117,15 +1222,102 @@ note: "暫定版（随時更新）"
 </section>
 
 <section class="section" id="sources">
-<h2 class="section-title">参考（Issue #42 関連文献）</h2>
+<h2 class="section-title">先行研究リスト（拡張版）</h2>
+<p>
+以下は、U0-U15の未解決問題に直接関係する主要文献です。詳細な拡張一覧は <a href="mind_uploading_papers.html">Paper Collection</a> と <a href="perspective.html#references">PerspectiveのReferences</a> を併読してください。
+</p>
+
+<h3>A. WBE基礎・本人性・哲学</h3>
 <ol>
-<li>Cea, I., et al. (2024). Only consciousness truly exists? Two problems for IIT 4.0's ontology. <em>Frontiers in Psychology</em>.</li>
-<li>Doerig, A., et al. (2019). The unfolding argument: Why diagrams of information flow cannot tell us anything about consciousness. <em>Consciousness and Cognition</em>.</li>
-<li>Laukkonen, R. E., et al. (2025). A beautiful loop: An active inference theory of consciousness. <em>Psychological Review</em>.</li>
-<li>Markram, H., et al. (2015). Reconstruction and Simulation of Neocortical Microcircuitry. <em>Cell</em>.</li>
-<li>U.S. Senate. (2025). <em>MIND Act of 2025 (S.2925)</em>.</li>
 <li>Sandberg, A., &amp; Bostrom, N. (2008). <em>Whole Brain Emulation: A Roadmap</em>.</li>
-<li>Yamakawa, H., et al. (2024). Technology roadmap toward the completion of whole-brain architecture...</li>
+<li>Yamakawa, H., et al. (2024). Technology roadmap toward the completion of whole-brain architecture.</li>
+<li>Parfit, D. (1984). <em>Reasons and Persons</em>.</li>
+<li>Whitehead, A. N. (1929). <em>Process and Reality</em>.</li>
+<li>Clowes, R. W. (2021). Slow Continuous Mind Uploading.</li>
+<li>Weber, C. (2025). The multiplicity objection against uploading optimism.</li>
+</ol>
+
+<h3>B. 意識理論・検証指標</h3>
+<ol>
+<li>Tononi, G. (2015). Integrated information theory.</li>
+<li>Tononi, G., et al. (2016). IIT: from consciousness to its physical substrate.</li>
+<li>Albantakis, L., et al. (2023). IIT 4.0.</li>
+<li>Doerig, A., et al. (2019). The unfolding argument.</li>
+<li>Boly, M., et al. (2017). Front vs back NCC debate.</li>
+<li>Tsuchiya, N., et al. (2015). No-report paradigms.</li>
+<li>Casali, A. G., et al. (2013). PCI.</li>
+<li>Comolatti, R., et al. (2019). PCI-ST.</li>
+<li>Ferrante, O., et al. (2025). Adversarial testing of GNWT and IIT.</li>
+<li>Massimini, M., et al. (2005). Breakdown of effective connectivity during sleep.</li>
+</ol>
+
+<h3>C. 計測・逆問題・不確実性推定</h3>
+<ol>
+<li>Michel, C. M., &amp; Brunet, D. (2019). EEG source imaging review.</li>
+<li>Wipf, D., &amp; Nagarajan, S. (2009). Unified Bayesian framework for MEG/EEG source imaging.</li>
+<li>Cai, C., et al. (2021). Robust noise estimation with Champagne.</li>
+<li>Feng, Z., et al. (2025). Block-Champagne with uncertainty quantification.</li>
+<li>Vorwerk, J., et al. (2014). Head volume conductor modeling guideline.</li>
+<li>Medani, T., et al. (2025). Conductivity uncertainty in forward/inverse solvers.</li>
+<li>Logothetis, N. K. (2008). Limits of fMRI inference.</li>
+<li>Purdon, P. L., et al. (2013). EEG signatures of loss/recovery of consciousness.</li>
+<li>Boto, E., et al. (2018). Wearable OPM-MEG.</li>
+</ol>
+
+<h3>D. 前処理・同期・ネットワーク解析</h3>
+<ol>
+<li>Chang, C.-Y., et al. (2018). Evaluation of Artifact Subspace Reconstruction.</li>
+<li>de Cheveigne, A. (2020). ZapLine.</li>
+<li>Vinck, M., et al. (2011). Weighted Phase Lag Index (wPLI).</li>
+<li>Staniek, M., &amp; Lehnertz, K. (2008). Symbolic Transfer Entropy.</li>
+<li>Kothe, C., et al. (2025). Lab Streaming Layer for synchronized multimodal recording.</li>
+</ol>
+
+<h3>E. デコーディング・生成モデル・模倣分離</h3>
+<ol>
+<li>Huth, A. G., et al. (2016). Semantic maps from natural speech.</li>
+<li>Tang, J., et al. (2023). Semantic reconstruction from non-invasive brain recordings.</li>
+<li>Horikawa, T., et al. (2025). Mind captioning.</li>
+<li>Ji, Z., et al. (2023). Hallucination survey in NLG.</li>
+<li>Manakul, P., et al. (2023). SelfCheckGPT.</li>
+</ol>
+
+<h3>F. 因果推論・能動的推論・反実仮想</h3>
+<ol>
+<li>Friston, K. J., Harrison, L., &amp; Penny, W. (2003). Dynamic causal modelling.</li>
+<li>Friston, K. (2010). Free-energy principle.</li>
+<li>Friston, K. (2017). Active inference: a process theory.</li>
+<li>Parr, T., &amp; Friston, K. J. (2019). Generalised free energy.</li>
+<li>Laukkonen, R., Friston, K., &amp; Chandaria, S. (2025). A beautiful loop.</li>
+<li>Correa, J. D., Lee, S., &amp; Bareinboim, E. (2021). Nested counterfactual identification.</li>
+</ol>
+
+<h3>G. 生物学的制約（コネクトーム・神経修飾・グリア）</h3>
+<ol>
+<li>Cook, S. J., et al. (2019). Whole-animal connectomes of both <em>C. elegans</em> sexes.</li>
+<li>Scheffer, L. K., et al. (2020). Adult <em>Drosophila</em> central brain connectome.</li>
+<li>Kasthuri, N., et al. (2015). Saturated reconstruction of neocortex volume.</li>
+<li>Santello, M., et al. (2019). Astrocyte-neuron interactions.</li>
+<li>Ozcete, O. D., et al. (2024). Neuromodulatory volume transmission.</li>
+<li>Gamlin, C. R., et al. (2025). Transcriptomic-connectomic linkage.</li>
+</ol>
+
+<h3>H. 標準化・再現性・倫理・制度</h3>
+<ol>
+<li>Gorgolewski, K. J., et al. (2016). BIDS.</li>
+<li>Pernet, C. R., et al. (2019). EEG-BIDS.</li>
+<li>Fleming, S. M., et al. (2023). Open letter on IIT interpretability and testability.</li>
+<li>Yuste, R., et al. (2017). Four ethical priorities for neurotechnologies and AI.</li>
+<li>Ienca, M., &amp; Andorno, R. (2017). New human rights in neuroscience.</li>
+<li>Schumer, C., et al. (2025). MIND Act discourse.</li>
+</ol>
+
+<h3>I. 熱力学・計算可能性・幾何学的評価</h3>
+<ol>
+<li>Seifert, U. (2012). Stochastic thermodynamics and fluctuation theorems.</li>
+<li>Kitazono, J., Kanai, R., &amp; Oizumi, M. (2018). Efficient algorithms for MIP in IIT.</li>
+<li>Complexity reduction studies on IIT via low-dimensional embedding (2025).</li>
+<li>Information geometric metrics for model distance (Fisher-based approaches).</li>
 </ol>
 </section>
 
@@ -1174,7 +1366,8 @@ note: "暫定版（随時更新）"
 <li><a href="#reconstruction">再構成</a></li>
 <li><a href="#implementation">実装</a></li>
 <li><a href="#verification">検証</a></li>
-<li><a href="#swarm30">30ワーカー分解</a></li>
+<li><a href="#unsolved">未解決問題の定義</a></li>
+<li><a href="#priorwork-map">先行研究マップ</a></li>
 <li><a href="#deployment">社会実装</a></li>
 <li><a href="#learning">学習の順序</a></li>
 <li><a href="#eegflow">EEGFlow の現在地</a></li>
