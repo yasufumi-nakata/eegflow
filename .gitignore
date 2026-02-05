@@ -23,6 +23,8 @@ ignore/
 automation/logs/
 automation/EegflowResolver.app/
 automation/node_modules/
+automation/run-codex.sh
+automation/run-gemini.sh
 
 # Python
 *.pyc

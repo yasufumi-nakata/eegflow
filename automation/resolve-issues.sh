@@ -234,23 +234,7 @@ if [[ ! -d "$REPO_DIR/.git" ]]; then
 fi
 
 if [[ "$DRY_RUN" == false && -z "$AI_CMD" ]]; then
-    if command -v codex >/dev/null 2>&1; then
-        if [[ -f "${AUTOMATION_DIR}/run-codex.sh" ]]; then
-            AI_CMD="bash \"${AUTOMATION_DIR}/run-codex.sh\""
-        else
-            AI_CMD="codex exec --full-auto"
-        fi
-        log "AI_CMD が未設定のため Codex を使用します"
-    elif command -v gemini >/dev/null 2>&1; then
-        if [[ -f "${AUTOMATION_DIR}/run-gemini.sh" ]]; then
-            AI_CMD="bash \"${AUTOMATION_DIR}/run-gemini.sh\""
-        else
-            AI_CMD="gemini --yolo"
-        fi
-        log "AI_CMD が未設定のため Gemini を使用します"
-    else
-        error_exit "AI_CMD が未設定で codex/gemini コマンドも見つかりません。"
-    fi
+    error_exit "AI_CMD が未設定です。.env で設定してください。"
 fi
 
 # 最新のコードを取得
