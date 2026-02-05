@@ -5,7 +5,7 @@ description: "EEGFlowプロジェクトへの参加・貢献方法"
 article_type: Guide
 subtitle: "Join the Research Community"
 author: Mind Uploading Research Project
-last_updated: "2026-01-25"
+last_updated: "2026-02-05"
 ---
 <!-- IMPORTANT: Do not delete or overwrite this information. It serves as the project's permanent knowledge base. -->
 
@@ -18,6 +18,15 @@ last_updated: "2026-01-25"
 <p>
 EEGFlowプロジェクトは、マインドアップロードの理論的・技術的基盤を構築するためのオープンな研究コミュニティです。神経科学、計算機科学、哲学など、多様なバックグラウンドを持つ研究者やエンジニアの参加を歓迎します。
 </p>
+</div>
+
+<div class="key-points">
+<h4>はじめての人へ</h4>
+<ul>
+<li><strong>迷ったら：</strong><a href="index.html">Start</a> → <a href="verification.html">Verification</a> → <a href="tech_roadmap.html#definition">前進の定義</a></li>
+<li><strong>用語で詰まったら：</strong><a href="glossary.html">Glossary</a> と <a href="faq.html">FAQ</a></li>
+<li><strong>最初に価値が出やすい貢献：</strong>「達成条件」と「反証条件」が書けるIssue</li>
+</ul>
 </div>
 
 <!-- Contribution Methods -->

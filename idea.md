@@ -131,7 +131,7 @@ note: "Theoretical Framework"
 <h4>Related Works</h4>
 <ul>
 <li><a href="mind_uploading_papers.html">Paper Archive →</a></li>
-<li><a href="index.html">Project Home →</a></li>
+<li><a href="index.html">Start →</a></li>
 </ul>
 </div>
 </aside>

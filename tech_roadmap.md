@@ -4,7 +4,7 @@ title: "技術ロードマップ：計測→再構成→実装でWBEを理解す
 description: "マインドアップロード（WBE）を技術面から俯瞰する学習ロードマップ。計測→再構成→実装→検証の問いの木で整理。"
 article_type: "Roadmap (Definition #1)"
 subtitle: "「何を解けたら前進か」を問いの木に分解し、読む順番と最低限の到達点を示す"
-last_updated: "2026-01-15"
+last_updated: "2026-02-05"
 note: "暫定版（随時更新）"
 ---
 <!-- IMPORTANT: Do not delete or overwrite this information. It serves as the project's permanent knowledge base. -->
@@ -15,6 +15,13 @@ note: "暫定版（随時更新）"
 <div class="abstract-box">
 <h2>Summary</h2>
 <p>このページは「攻略（= 学習ロードマップ）」の<strong>技術編</strong>です。マインドアップロード（Whole Brain Emulation, WBE）を“実現した”と言い張るには、①何を測り、②何を復元し、③どの基盤で実行し、④どう検証するか、を<strong>先に定義</strong>しなければ議論が散ります。ここでは最小の骨格として、<strong>計測 → 再構成 → 実装 → 検証 → 社会実装</strong>の問いの木で整理し、各ノードで「学ぶべき概念」「前進と言える条件（暫定）」「次に必要なデータ」をまとめます。</p>
+</div>
+
+<div class="note-box">
+<strong>新しく来た人へ</strong>
+<p>
+このページは情報量が多いので、先に <a href="wbe_101.html">WBE入門</a> と <a href="eeg_101.html">EEG入門</a>（必要なら <a href="glossary.html">用語集</a>）を読むと理解が早いです。
+</p>
 </div>
 
 <section class="section" id="howto">
@@ -1036,12 +1043,12 @@ note: "暫定版（随時更新）"
 <div class="sidebar-box">
 <h4>Links</h4>
 <ul>
-<li><a href="index.html">Home</a></li>
+<li><a href="index.html">Start</a></li>
 <li><a href="technical_proposal_47.html">Technical Proposal #47</a></li>
 <li><a href="mind_uploading_papers.html">Paper Collection</a></li>
 <li><a href="brain_science_dictionary.html">Brain Science Dictionary</a></li>
 <li><a href="https://github.com/yasufumi-nakata/eegflow" target="_blank">GitHub Repository</a></li>
-<li><a href="issue.md">Contribute Guide</a></li>
+<li><a href="issue.html">Contribute Guide</a></li>
 </ul>
 </div>
 
