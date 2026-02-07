@@ -1,7 +1,7 @@
 :root {
-    --font-body: 'Noto Sans JP', 'Segoe UI', sans-serif;
-    --font-heading: 'Noto Serif JP', 'Times New Roman', serif;
-    --font-mono: 'IBM Plex Mono', 'SFMono-Regular', Menlo, Monaco, Consolas, monospace;
+    --font-body: 'BIZ UDPGothic', 'BIZ UDP ゴシック', 'Meiryo', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'MS PGothic', sans-serif;
+    --font-heading: 'BIZ UDPGothic', 'BIZ UDP ゴシック', 'Meiryo', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'MS PGothic', sans-serif;
+    --font-mono: 'Consolas', 'SFMono-Regular', Menlo, Monaco, 'Courier New', monospace;
 
     --color-bg: #eaecf0;
     --color-surface: #ffffff;
