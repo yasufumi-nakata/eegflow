@@ -16,7 +16,7 @@
 ## 貢献方法
 
 - [issue.md](issue.md) を参照
-- [Issueを立てる](https://github.com/yasufumi-nakata/eegflow/issues)
+- [Issueを立てる](https://github.com/yasufumi-nakata/mind-upload/issues)
 
 ## LLM向けプロンプトの利用
 
@@ -25,7 +25,7 @@
 
 ## リンク
 
-- **GitHub**: https://github.com/yasufumi-nakata/eegflow
+- **GitHub**: https://github.com/yasufumi-nakata/mind-upload
 
 ## システム構成 (System Architecture)
 

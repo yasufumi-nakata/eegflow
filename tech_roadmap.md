@@ -1214,9 +1214,9 @@ note: "暫定版（随時更新）"
 <h2 class="section-title">Mind-Upload の現在地（このリポジトリでやること）</h2>
 <p>Mind-Upload は現時点では<strong>概念実装</strong>ですが、「計測→再構成→検証」のミニマムな流れを、EEG中心に試せる形を目指しています。</p>
 <ul>
-<li><a href="https://github.com/yasufumi-nakata/eegflow/blob/main/mind-upload/01_preprocess.py" target="_blank">01_preprocess.py</a>：前処理（アーチファクト・品質管理の雛形） <strong>[QC Implemented]</strong></li>
-<li><a href="https://github.com/yasufumi-nakata/eegflow/blob/main/mind-upload/02_source_imaging.py" target="_blank">02_source_imaging.py</a>：ソース推定（逆問題の入口） <strong>[Uncertainty Implemented]</strong></li>
-<li><a href="https://github.com/yasufumi-nakata/eegflow/blob/main/mind-upload/03_causal_modeling.py" target="_blank">03_causal_modeling.py</a>：因果/生成モデル（予測・介入へ）</li>
+<li><a href="https://github.com/yasufumi-nakata/mind-upload/blob/main/mind-upload/01_preprocess.py" target="_blank">01_preprocess.py</a>：前処理（アーチファクト・品質管理の雛形） <strong>[QC Implemented]</strong></li>
+<li><a href="https://github.com/yasufumi-nakata/mind-upload/blob/main/mind-upload/02_source_imaging.py" target="_blank">02_source_imaging.py</a>：ソース推定（逆問題の入口） <strong>[Uncertainty Implemented]</strong></li>
+<li><a href="https://github.com/yasufumi-nakata/mind-upload/blob/main/mind-upload/03_causal_modeling.py" target="_blank">03_causal_modeling.py</a>：因果/生成モデル（予測・介入へ）</li>
 </ul>
 <p class="mini">※「解析手順の再現性」や「データ標準（BIDS）」は、WBE以前に研究として必須の足場です。</p>
 </section>
@@ -1382,7 +1382,7 @@ note: "暫定版（随時更新）"
 <li><a href="technical_proposal_47.html">Technical Proposal #47</a></li>
 <li><a href="mind_uploading_papers.html">Paper Collection</a></li>
 <li><a href="brain_science_dictionary.html">Brain Science Dictionary</a></li>
-<li><a href="https://github.com/yasufumi-nakata/eegflow" target="_blank">GitHub Repository</a></li>
+<li><a href="https://github.com/yasufumi-nakata/mind-upload" target="_blank">GitHub Repository</a></li>
 <li><a href="issue.html">Contribute Guide</a></li>
 </ul>
 </div>

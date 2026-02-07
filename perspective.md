@@ -1018,7 +1018,7 @@ style="display: inline-block; margin-top: 10px; font-weight: bold; color: var(--
 <div class="cta-box">
 <h4>Contribute</h4>
 <p>このプロジェクトに参加しませんか？</p>
-<a href="https://github.com/yasufumi-nakata/eegflow/issues" target="_blank">Issue を立てる</a>
+<a href="https://github.com/yasufumi-nakata/mind-upload/issues" target="_blank">Issue を立てる</a>
 </div>
 
 </aside>

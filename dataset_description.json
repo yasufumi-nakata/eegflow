@@ -8,7 +8,7 @@
     "Mind-Upload Project Team"
   ],
   "Acknowledgements": "The project structure and placeholder analysis scripts were generated with assistance from Google's AI.",
-  "HowToAcknowledge": "Please cite the project's GitHub repository: https://github.com/yasufumi-nakata/eegflow and the website https://mind-upload.com",
+  "HowToAcknowledge": "Please cite the project's GitHub repository: https://github.com/yasufumi-nakata/mind-upload and the website https://mind-upload.com",
   "Funding": [
     "This research is conceptual and not currently funded."
   ],
@@ -17,7 +17,7 @@
   ],
   "ReferencesAndLinks": [
     "https://mind-upload.com",
-    "https://github.com/yasufumi-nakata/eegflow",
+    "https://github.com/yasufumi-nakata/mind-upload",
     "Nakata, Y. et al. (in preparation). A technical and theoretical roadmap for whole brain emulation.",
     "BIDS Specification for EEG: https://bids-specification.readthedocs.io/en/stable/04-modality-specific-files/03-electroencephalography.html"
   ],

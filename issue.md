@@ -59,7 +59,7 @@ Mind-Uploadプロジェクトは、マインドアップロードの理論的・
 <div class="cta-box">
 <h4>Start Contributing</h4>
 <p>GitHub Issue を作成して、議論に参加しましょう。</p>
-<a href="https://github.com/yasufumi-nakata/eegflow/issues" target="_blank">Open an Issue</a>
+<a href="https://github.com/yasufumi-nakata/mind-upload/issues" target="_blank">Open an Issue</a>
 </div>
 </section>
 
@@ -86,7 +86,7 @@ Mind-Uploadプロジェクトは、マインドアップロードの理論的・
 <div class="sidebar-box">
 <h4>Resources</h4>
 <ul>
-<li><a href="https://github.com/yasufumi-nakata/eegflow" target="_blank">GitHub Repository →</a></li>
+<li><a href="https://github.com/yasufumi-nakata/mind-upload" target="_blank">GitHub Repository →</a></li>
 <li><a href="idea.html">Theoretical Framework →</a></li>
 <li><a href="tech_roadmap.html">Technical Roadmap →</a></li>
 </ul>

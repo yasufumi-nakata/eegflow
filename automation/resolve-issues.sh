@@ -25,7 +25,7 @@ if [[ -f "$ENV_FILE" ]]; then
 fi
 
 # 設定（.env で上書き可能）
-REPO="${REPO:-yasufumi-nakata/eegflow}"
+REPO="${REPO:-yasufumi-nakata/mind-upload}"
 REPO_DIR="${REPO_DIR:-$DEFAULT_REPO_DIR}"
 AUTOMATION_DIR="${AUTOMATION_DIR:-$SCRIPT_DIR}"
 LOG_DIR="${LOG_DIR:-${AUTOMATION_DIR}/logs}"
