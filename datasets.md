@@ -16,7 +16,7 @@ note: "Curated List (v0)"
 <div class="abstract-box">
 <h2>How To Use</h2>
 <p>
-このページは「まず何で検証する？」に答えるための実務用リストです。Mind-Uploadでは、公開データを使って <strong>L0（再現可能性）</strong> と <strong>L1〜L2（予測と介入検証）</strong> を積み上げることを重視します。
+このページは、「最初にどのデータで練習すればよいか」を決めるための実用リストです。まずは公開データで、<strong>同じ結果を再現できる状態（L0）</strong>を作り、その次に<strong>予測できるか・条件変更に耐えるか（L1〜L2）</strong>を確かめます。
 </p>
 </div>
 
@@ -142,4 +142,3 @@ Mind-Uploadが目指すのは、単にデータを集めることではなく、
 
 </aside>
 </main>
-

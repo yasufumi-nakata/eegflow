@@ -16,7 +16,7 @@ note: "Reference Collection"
 <div class="abstract-box">
 <h2>Why This Page</h2>
 <p>
-「前進を測れない」「再現できない」「比較できない」という問題は、WBEに限らず科学史の常連です。ここでは、<strong>Web上の公開基盤</strong>がそれらをどう“解ける形”にしたかを、用途別に整理します。Mind-Uploadは、この型（パターン）をWBEへ移植します。
+「前進を測れない」「結果を再現できない」「研究同士を比較できない」という問題は、昔から多くの分野で起きてきました。ここでは、<strong>Web上の公開基盤</strong>がどうやってその問題を減らしたかを、実例で分かりやすく整理します。Mind-Uploadは、その成功パターンをWBEにも適用します。
 </p>
 </div>
 

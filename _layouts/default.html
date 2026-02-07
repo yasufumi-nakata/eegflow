@@ -59,6 +59,15 @@
     </header>
     {% endif %}
 
+    <section id="easy-guide" class="easy-guide" hidden aria-label="高校生向けの用語説明">
+        <div class="easy-guide-inner">
+            <h2>高校生向け：このページで出る言葉</h2>
+            <p id="easy-guide-status"></p>
+            <ul id="easy-term-list"></ul>
+            <p class="easy-guide-more">もっと見る: <a href="{{ '/glossary.html' | relative_url }}">用語集</a></p>
+        </div>
+    </section>
+
     <!-- Main Content -->
     {{ content }}
 
@@ -67,6 +76,68 @@
         <p class="site-policy">本サイトは、再現可能性と透明性を重視した研究ノートです。誤りの指摘や改善提案は GitHub Issues へ。</p>
         <p>&copy; 2024-2026 Mind Uploading Research Project. <a href="https://github.com/yasufumi-nakata/mind-upload">GitHub</a></p>
     </footer>
+
+    <script>
+        (function () {
+            var terms = [
+                ["再現性", "同じ手順で、ほぼ同じ結果をもう一度出せることです。"],
+                ["反証可能性", "「間違っている」と確かめられる形で主張することです。"],
+                ["操作的定義", "言葉の意味を、実際にどう測るかで決めることです。"],
+                ["標準化", "データの形式や作業手順をそろえることです。"],
+                ["ベンチマーク", "同じ条件で性能を比べるための共通テストです。"],
+                ["メタデータ", "データについての説明データです（いつ、どう測ったか等）。"],
+                ["デコーディング", "脳信号から状態や内容を推定する作業です。"],
+                ["エミュレーション", "脳の働きを別の計算基盤で再現することです。"],
+                ["因果", "何が原因で何が起きるか、という関係です。"],
+                ["相関", "2つが一緒に変わる関係です（原因と結果とは限りません）。"],
+                ["反事実", "「もし条件を変えたらどうなるか」を考える検証です。"],
+                ["閉ループ", "結果を次の入力に戻しながら動く制御の仕組みです。"],
+                ["QC", "Quality Controlの略で、データ品質チェックのことです。"],
+                ["BIDS", "脳計測データを整理して共有するための共通ルールです。"],
+                ["クレーム階段", "主張の強さを段階で分ける整理法です。"],
+                ["本人性", "その人らしさや同一人物とみなせるか、という問題です。"],
+                ["公開基盤", "データ・コード・評価方法を共有するための土台です。"],
+                ["追試", "他の人が同じ研究をやり直して確かめることです。"],
+                ["ガバナンス", "安全に運用するためのルールと管理の仕組みです。"]
+            ];
+
+            var contentRoot = document.querySelector(".content-column") || document.querySelector(".papers-page > main") || document.querySelector("main");
+            var guide = document.getElementById("easy-guide");
+            var list = document.getElementById("easy-term-list");
+            var status = document.getElementById("easy-guide-status");
+
+            if (!contentRoot || !guide || !list || !status) {
+                return;
+            }
+
+            var text = contentRoot.innerText || "";
+            var found = [];
+
+            for (var i = 0; i < terms.length; i++) {
+                if (text.indexOf(terms[i][0]) !== -1) {
+                    found.push(terms[i]);
+                }
+            }
+
+            if (found.length === 0) {
+                return;
+            }
+
+            var limit = Math.min(found.length, 10);
+            status.textContent = "先に " + limit + " 個だけ、やさしい言葉で説明します。";
+
+            for (var j = 0; j < limit; j++) {
+                var item = document.createElement("li");
+                var term = document.createElement("strong");
+                term.textContent = found[j][0] + "：";
+                item.appendChild(term);
+                item.appendChild(document.createTextNode(" " + found[j][1]));
+                list.appendChild(item);
+            }
+
+            guide.hidden = false;
+        })();
+    </script>
 
 </body>
 

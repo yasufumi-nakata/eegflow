@@ -16,7 +16,7 @@ note: "Human-friendly landing page"
 <div class="abstract-box">
 <h2>What This Is</h2>
 <p>
-Mind-Uploadは、マインドアップロード（Whole Brain Emulation, WBE）を「いつか誰かがやる話」ではなく、<strong>第三者が検証できる研究プログラム</strong>として前に進めるためのサイトです。ここで最優先するのは、派手な主張ではなく、<strong>前進の定義</strong>と<strong>比較可能な検証基盤</strong>（Commons）です。
+Mind-Uploadは、「心をコンピュータで再現できるのか？」という大きな問いを、<strong>検証できる小さな課題</strong>に分けて進めるサイトです。大きな結論を急がず、まずは<strong>何を達成したら前進か</strong>と、<strong>他の人が同じ結果を確認できるか</strong>を先に決めます。
 </p>
 </div>
 

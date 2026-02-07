@@ -16,8 +16,7 @@ note: "Auto-generated from site pages"
 <div class="abstract-box">
 <h2>Purpose</h2>
 <p>
-このページは、散らばりがちな提案書（Technical Proposal）を、Web上で<strong>発見可能</strong>にするための索引です。
-「計測QA」「同期」「BIDS」「因果検証」などの実装議論を、前進の定義（Roadmap）へ接続します。
+このページは、提案書（Technical Proposal）を探しやすくするための一覧ページです。各提案が「何を解決するのか」「どう確かめるのか」を見比べながら、Roadmapの前進条件につなげて読めます。
 </p>
 </div>
 
@@ -69,4 +68,3 @@ note: "Auto-generated from site pages"
 
 </aside>
 </main>
-

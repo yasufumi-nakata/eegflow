@@ -16,7 +16,7 @@ note: "Operational Specification"
 <div class="abstract-box">
 <h2>One Problem</h2>
 <p>
-マインドアップロード（WBE）を「物語」ではなく「検証可能な研究プログラム」にするには、<strong>前進の定義</strong>と<strong>検証の公共財</strong>が先に必要です。Mind-Uploadは、データ・指標・ルール・再現手順をWebで固定し、研究が積み上がる足場（Commons）を作ります。
+マインドアップロード（WBE）を「夢の話」で終わらせないために、まず必要なのは<strong>共通のルール</strong>です。Mind-Uploadでは、データの置き方、評価のしかた、失敗の判定、再現手順を先にそろえて、誰でも同じ基準で確かめられる土台を作ります。
 </p>
 </div>
 
