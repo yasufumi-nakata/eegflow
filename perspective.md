@@ -26,7 +26,7 @@ href="#ref-4">[4]</a></sup>に端を発する哲学的問題を概観し、今�
 
 <div class="cta-box">
 <h4>Start Here: Verification Commons</h4>
-<p>EEGFlowの中心は「前進の定義」と「比較可能な検証基盤」を先に作ることです。</p>
+<p>Mind-Uploadの中心は「前進の定義」と「比較可能な検証基盤」を先に作ることです。</p>
 <a href="verification.html">検証基盤（Platform）を見る →</a>
 </div>
 
@@ -107,7 +107,7 @@ style="margin: 0; padding-left: 20px; list-style-type: disc; font-size: 14px; li
 <strong>超高密度EEGとBlock-Champagneの統合：</strong>Block-Champagne Framework<sup><a href="#ref-78">[78]</a></sup>はスパースな活動推定に優れるが、深部脳活動や全脳ダイナミクスの再現には不十分である。したがって、<strong>超高密度EEG（High-density EEG, 256ch以上）</strong>と<strong>個体別MRIに基づく有限要素法（FEM）フォワードモデル</strong>の導入を必須条件とする。さらに、Feng et al. (2025)<sup><a href="#ref-78">[78]</a></sup>が指摘するノイズ特性の動的変化に対応するため、適応的ベイズ更新を実装に組み込む。
 </li>
 <li style="margin-bottom: 8px;">
-<strong>不確実性の可視化と信頼区間：</strong>推定された脳活動マップには、振幅だけでなくその<strong>「信頼区間（Credible Intervals）」</strong>を常に併記し、不確実性が高い領域を明示するプロトコルを必須化します。これは`eegflow/02_source_imaging.py`に実装されるべき中心機能です。
+<strong>不確実性の可視化と信頼区間：</strong>推定された脳活動マップには、振幅だけでなくその<strong>「信頼区間（Credible Intervals）」</strong>を常に併記し、不確実性が高い領域を明示するプロトコルを必須化します。これは`mind-upload/02_source_imaging.py`に実装されるべき中心機能です。
 </li>
 <li style="margin-bottom: 8px;">
 <strong>順問題の不確実性と誤差伝播：</strong>頭部組織（特に頭蓋骨）の導電率や形状の誤差を確率変数として扱う<strong>順問題の不確実性モデリング</strong><sup><a href="#ref-79">[79]</a></sup>を導入し、最終的なソース活動の事後分布に誤差を伝播させることで、結果のロバスト性を真に評価可能にします。
@@ -237,7 +237,7 @@ href="#ref-28">[28]</a></sup>。</li>
 <!-- Reproducibility -->
 <section class="section" id="reproducibility">
 <h2 class="section-title">プロジェクトの実体性と再現性 (Substance and Reproducibility)</h2>
-<p>「EEGFlow」というプロジェクト名が示す通り、本研究は計算論的手法に基づいている。しかし、現状のGitHubリポジトリはウェブサイト中心であり、研究プロジェクトとしての実体性・再現性が<strong>第三者に実行可能な形</strong>で十分提示されているとは言い難い。この重大な懸念に応えるため、本プロジェクトでは、データの整理規約としてBIDSおよびEEG-BIDS拡張<sup><a
+<p>「Mind-Upload」というプロジェクト名が示す通り、本研究は計算論的手法に基づいている。しかし、現状のGitHubリポジトリはウェブサイト中心であり、研究プロジェクトとしての実体性・再現性が<strong>第三者に実行可能な形</strong>で十分提示されているとは言い難い。この重大な懸念に応えるため、本プロジェクトでは、データの整理規約としてBIDSおよびEEG-BIDS拡張<sup><a
 href="#ref-25">[25]</a></sup><sup><a href="#ref-26">[26]</a></sup>を採用し、解析パイプライン・データスキーマ・実験条件ログを段階的に整備して、ウェブサイトの主張を裏付けるコードベースへ移行する。
 </p>
 <ul style="margin: 0; padding-left: 20px; list-style-type: disc; font-size: 14px; line-height: 1.6;">
@@ -380,7 +380,7 @@ href="#ref-65">[65]</a></sup><sup><a href="#ref-66">[66]</a></sup>。</li>
 <li style="margin-bottom: 8px;"><strong>幻覚の検出：</strong>ブラックボックスでも自己一致性から幻覚を検出する系（SelfCheckGPT等）が提案されている<sup><a href="#ref-67">[67]</a></sup>。</li>
 </ul>
 
-<h3>EEGFlow側での「因果的整合性チェック」への落とし込み</h3>
+<h3>Mind-Upload側での「因果的整合性チェック」への落とし込み</h3>
 <ul style="margin: 0; padding-left: 20px; list-style-type: disc; font-size: 14px; line-height: 1.6;">
 <li style="margin-bottom: 8px;"><strong>LLM由来ノイズの基準線：</strong>脳信号シャッフル／試行入れ替え等の反事実入力で出力分布を推定し、「言語事前分布だけで出る文章」をベースライン化する。</li>
 <li style="margin-bottom: 8px;"><strong>不確実性と棄権（abstention）：</strong>根拠が弱いときに無理に“それっぽい文”を出さない設計（低信頼時は要再計測/要追試として扱う）を先に決める。</li>

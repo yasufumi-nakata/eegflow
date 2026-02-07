@@ -1,10 +1,10 @@
 ---
 layout: default
 title: "技術提案書：計測品質・同期・モーション除去・BIDS準拠の統合強化"
-description: "EEGFlowを研究基盤へ引き上げるための計測QA・同期・解析・標準化の実装提案"
+description: "Mind-Uploadを研究基盤へ引き上げるための計測QA・同期・解析・標準化の実装提案"
 article_type: "Technical Proposal"
 subtitle: "Issue #46: Comprehensive Platform Proposal"
-author: "eegflow Project Contributor"
+author: "mind-upload Project Contributor"
 last_updated: "2026-02-01"
 note: "Proposal (Draft)"
 ---
@@ -15,7 +15,7 @@ note: "Proposal (Draft)"
 <div class="abstract-box">
 <h2>Abstract</h2>
 <p>
-本提案は、eegflowを実験プロトタイプから再現可能な研究基盤へ引き上げるための
+本提案は、mind-uploadを実験プロトタイプから再現可能な研究基盤へ引き上げるための
 技術的拡張案を、計測品質・同期・アーティファクト除去・BIDS準拠の4軸で整理する。
 </p>
 </div>
@@ -68,7 +68,7 @@ CMRR劣化を早期警告する。</li>
 <section class="section" id="impact">
 <h2 class="section-title">6. 実装への影響</h2>
 <ol>
-<li><strong>eegflow/01_preprocess.py:</strong> QA指標とASR/ICLabelの統合を追加。</li>
+<li><strong>mind-upload/01_preprocess.py:</strong> QA指標とASR/ICLabelの統合を追加。</li>
 <li><strong>データ出力:</strong> BIDS-EEGおよびMotion-BIDS対応のメタデータ生成。</li>
 <li><strong>同期ツール:</strong> CLET/LSL補正の標準化とログ出力。</li>
 </ol>

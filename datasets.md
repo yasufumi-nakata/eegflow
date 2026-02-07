@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "データ & ベンチ：まず何を使って検証するか"
-description: "公開データ（EEG中心）と共有基盤を、EEGFlowの目的（比較可能な検証）に沿って整理します。"
+description: "公開データ（EEG中心）と共有基盤を、Mind-Uploadの目的（比較可能な検証）に沿って整理します。"
 article_type: Resource
 subtitle: "「データがある」だけでは足りない。規格・メタデータ・評価がセット。"
 author: Mind Uploading Research Project
@@ -16,7 +16,7 @@ note: "Curated List (v0)"
 <div class="abstract-box">
 <h2>How To Use</h2>
 <p>
-このページは「まず何で検証する？」に答えるための実務用リストです。EEGFlowでは、公開データを使って <strong>L0（再現可能性）</strong> と <strong>L1〜L2（予測と介入検証）</strong> を積み上げることを重視します。
+このページは「まず何で検証する？」に答えるための実務用リストです。Mind-Uploadでは、公開データを使って <strong>L0（再現可能性）</strong> と <strong>L1〜L2（予測と介入検証）</strong> を積み上げることを重視します。
 </p>
 </div>
 
@@ -105,9 +105,9 @@ note: "Curated List (v0)"
 </section>
 
 <section class="section" id="bids">
-<h2 class="section-title">4) EEGFlowで「共有できるデータ」にする最短ルート</h2>
+<h2 class="section-title">4) Mind-Uploadで「共有できるデータ」にする最短ルート</h2>
 <p>
-EEGFlowが目指すのは、単にデータを集めることではなく、<strong>第三者が検証できる形</strong>で残すことです。
+Mind-Uploadが目指すのは、単にデータを集めることではなく、<strong>第三者が検証できる形</strong>で残すことです。
 そのための最短ルートは BIDS/EEG-BIDS に寄せることです。
 </p>
 <div class="cta-box">

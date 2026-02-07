@@ -4,7 +4,7 @@ title: "技術提案書：反実仮想的等価性検証における識別可能
 description: "Mind Uploadingにおける同一性検証のための、摂動複雑性指数（PCI）とdo-calculusの導入について"
 article_type: "Technical Proposal"
 subtitle: "Issue #56: Identifiability and Causal Intervention"
-author: "eegflow Project Contributor"
+author: "mind-upload Project Contributor"
 last_updated: "2026-01-30"
 note: "Proposal (Draft)"
 ---

@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "技術提案（一覧）"
-description: "EEGFlowの技術提案（Technical Proposal）をIssue連動で一覧化します。"
+description: "Mind-Uploadの技術提案（Technical Proposal）をIssue連動で一覧化します。"
 article_type: Index
 subtitle: "From Ideas to Implementable Milestones"
 author: Mind Uploading Research Project

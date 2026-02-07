@@ -3,8 +3,8 @@ layout: default
 title: "Technical Proposal: Addressing Logical Gaps in Causal Modeling and Thermodynamic Grounding"
 description: "Response to Issue #61: Refining the physical and causal foundations of Whole Brain Emulation"
 article_type: "Technical Proposal"
-subtitle: "Issue #61: eegflow.jp Causal & Thermodynamic Critique Response"
-author: "eegflow Project Contributor"
+subtitle: "Issue #61: mind-upload.com Causal & Thermodynamic Critique Response"
+author: "mind-upload Project Contributor"
 last_updated: "2026-02-01"
 note: "Proposal (Implemented)"
 ---
@@ -51,7 +51,7 @@ IIT 4.0が要求する「内因的実在（Intrinsic Existence）」は、フィ
 </p>
 <h3>3.2 Implementation Changes</h3>
 <p>
-<code>eegflow/03_causal_modeling.py</code> を修正し、以下の2層のコストモデルを導入した。
+<code>mind-upload/03_causal_modeling.py</code> を修正し、以下の2層のコストモデルを導入した。
 </p>
 <ol>
 <li><strong>Informational Cost:</strong> 信念更新（Bayesian Belief Update）に伴うKL情報量に基づくコスト。</li>
@@ -90,7 +90,7 @@ Cogitate Consortium (2025) の結果を受け、IITとGNWTの「統合」を目�
 <section class="section" id="conclusion">
 <h2 class="section-title">6. Conclusion</h2>
 <p>
-Issue #61による指摘は、eegflowプロジェクトを「SF的思考実験」から「検証可能な計算論的神経科学」へと引き上げるための重要な契機となった。
+Issue #61による指摘は、mind-uploadプロジェクトを「SF的思考実験」から「検証可能な計算論的神経科学」へと引き上げるための重要な契機となった。
 修正されたコードベースと理論的枠組みは、意識のハード・プロブレムに対するより謙虚かつ厳密なアプローチを体現している。
 </p>
 </section>

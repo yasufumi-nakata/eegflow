@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "用語集（Glossary）"
-description: "EEGFlowで頻出する用語を、人間が迷子にならない粒度でまとめます。厳密定義はRoadmapにリンクします。"
+description: "Mind-Uploadで頻出する用語を、人間が迷子にならない粒度でまとめます。厳密定義はRoadmapにリンクします。"
 article_type: Reference
 subtitle: "まずは“言葉のすり替え”を止める"
 author: Mind Uploading Research Project
@@ -27,13 +27,13 @@ WBEの議論は“言葉のすり替え”が起きやすいので、ここで�
 <thead>
 <tr>
 <th>用語</th>
-<th>EEGFlowでの意味（ざっくり）</th>
+<th>Mind-Uploadでの意味（ざっくり）</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><strong>マインドアップロード</strong></td>
-<td>「意識や記憶をデジタルに移す」一般呼称。EEGFlowでは主張レベルをクレーム階段で分けて扱う。</td>
+<td>「意識や記憶をデジタルに移す」一般呼称。Mind-Uploadでは主張レベルをクレーム階段で分けて扱う。</td>
 </tr>
 <tr>
 <td><strong>WBE（Whole Brain Emulation）</strong></td>
@@ -117,7 +117,7 @@ WBEの議論は“言葉のすり替え”が起きやすいので、ここで�
 <thead>
 <tr>
 <th>用語</th>
-<th>EEGFlowでの使いどころ</th>
+<th>Mind-Uploadでの使いどころ</th>
 </tr>
 </thead>
 <tbody>

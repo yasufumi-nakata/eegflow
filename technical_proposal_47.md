@@ -3,8 +3,8 @@ layout: default
 title: "戦略的技術拡張提案書：2025-2026年の神経科学研究における計算論的枠組みと標準化"
 description: "BIDS標準化、次世代信号処理(ASR/ZapLine)、ネットワーク神経科学(wPLI/STE)、LSL同期に関する技術的拡張提案"
 article_type: "Technical Proposal"
-subtitle: "Issue #47: eegflow.jp 戦略的技術拡張提案書"
-author: "eegflow Project Contributor"
+subtitle: "Issue #47: mind-upload.com 戦略的技術拡張提案書"
+author: "mind-upload Project Contributor"
 last_updated: "2026-01-25"
 note: "Proposal (Accepted)"
 ---
@@ -15,9 +15,9 @@ note: "Proposal (Accepted)"
 <div class="abstract-box">
 <h2>Abstract</h2>
 <p>
-本報告書は、eegflow.jp における技術的拡張提案を行うものである。
+本報告書は、mind-upload.com における技術的拡張提案を行うものである。
 2025-2026年の神経科学研究におけるパラダイムシフトを踏まえ、BIDSによるデータ構造の標準化、ASRやZapLineを用いた次世代信号前処理、ネットワーク神経科学（wPLI, STE）、およびLab Streaming Layer (LSL) によるマルチモーダル同期の実装を推奨する。
-これにより、eegflow.jp を単なる情報サイトから、世界標準の研究を行うための技術的インフラへと進化させることを目的とする。
+これにより、mind-upload.com を単なる情報サイトから、世界標準の研究を行うための技術的インフラへと進化させることを目的とする。
 </p>
 </div>
 
@@ -33,12 +33,12 @@ note: "Proposal (Accepted)"
 
 <h3>1.2 本報告書の目的と提案の範囲</h3>
 <p>
-本報告書は、eegflow.jpという既存の脳波研究情報プラットフォームに対し、現役の研究者の視点から、そのコンテンツ価値を飛躍的に高めるための技術的提案を行うものである。現状のウェブサイトが提供する基礎的な情報に加え、最先端の研究現場で真に求められている「計算論的詳細」「標準化プロトコル」「数理的背景」を補完することを目的とする。
+本報告書は、mind-upload.comという既存の脳波研究情報プラットフォームに対し、現役の研究者の視点から、そのコンテンツ価値を飛躍的に高めるための技術的提案を行うものである。現状のウェブサイトが提供する基礎的な情報に加え、最先端の研究現場で真に求められている「計算論的詳細」「標準化プロトコル」「数理的背景」を補完することを目的とする。
 </p>
 
 <h3>1.3 理論的枠組み：Active InferenceとIITの統合における課題</h3>
 <p>
-eegflow.jpが提唱する「意識のアップロード」の理論的基盤において、Laukkonen et al. (2025) の「反事実的等価性（Counterfactual Equivalence）」をアイデンティティの証明として用いる点には、IIT 4.0（統合情報理論）の観点から論理的な飛躍が指摘されている。
+mind-upload.comが提唱する「意識のアップロード」の理論的基盤において、Laukkonen et al. (2025) の「反事実的等価性（Counterfactual Equivalence）」をアイデンティティの証明として用いる点には、IIT 4.0（統合情報理論）の観点から論理的な飛躍が指摘されている。
 </p>
 <ul>
 <li><strong>課題:</strong> 生成モデルの分岐構造が一致するだけでは、現象的意識の必要条件である「因果構造（Causal Structure）」の保存、すなわちIITにおける「内在的存在（Intrinsic Existence）」が保証されない。</li>
@@ -148,7 +148,7 @@ ASRは、主成分分析（PCA）を用いて、データ内の高分散成分�
 従来のASR運用（例：固定カットオフ $k=20$）は、科学的に不十分であるとの指摘がある（Anders et al., 2020）。固定閾値は、個人差や課題によるノイズプロファイルの違いを無視し、特に高周波帯域（ガンマ波）の神経信号を過剰に除去するリスクがある。
 </p>
 <p>
-したがって、eegflow.jpでは以下の改善策を提案する。
+したがって、mind-upload.comでは以下の改善策を提案する。
 </p>
 <ul>
 <li><strong>データ駆動型閾値設定:</strong> 固定値ではなく、<strong>リーマン幾何学（Riemannian Geometry）</strong> を用いたアプローチ（例：Riemannian Potato）により、個々のデータの統計的分布に基づいて外れ値を検出・補間する手法を採用すべきである。</li>
@@ -185,7 +185,7 @@ ZapLineは、データを「ノイズ周波数成分」と「それ以外」に�
 <section class="section" id="connectivity">
 <h2 class="section-title">4. ネットワーク神経科学：コネクティビティ解析の落とし穴と解決策</h2>
 <p>
-脳波解析の関心は、局所的な活動から脳領域間のネットワークへと移行している。しかし、頭皮上脳波におけるコネクティビティ解析には「体積伝導（Volume Conduction）」という物理的な制約がつきまとう。eegflow.jpでは、この問題を回避するための堅牢な指標を推奨する必要がある。
+脳波解析の関心は、局所的な活動から脳領域間のネットワークへと移行している。しかし、頭皮上脳波におけるコネクティビティ解析には「体積伝導（Volume Conduction）」という物理的な制約がつきまとう。mind-upload.comでは、この問題を回避するための堅牢な指標を推奨する必要がある。
 </p>
 
 <h3>4.1 位相同期の堅牢性：Weighted Phase Lag Index (wPLI)</h3>
@@ -307,8 +307,8 @@ LSLのインポーター（load_xdf 等）は、収録されたクロックオ�
 </section>
 
 <section class="section" id="roadmap">
-<h2 class="section-title">8. 結論：eegflow.jpのロードマップへの提言</h2>
-<p>以上の技術的精査に基づき、eegflow.jpが今後1〜2年で実装すべきコンテンツのロードマップを以下に提案する。</p>
+<h2 class="section-title">8. 結論：mind-upload.comのロードマップへの提言</h2>
+<p>以上の技術的精査に基づき、mind-upload.comが今後1〜2年で実装すべきコンテンツのロードマップを以下に提案する。</p>
 <ul>
 <li><strong>「BIDS導入ガイド」の作成（優先度：高）:</strong> 日本語の実験環境（ミユキ技研、BrainProducts等）からBIDS形式へ変換するためのスクリプト例を提供。</li>
 <li><strong>「アーチファクト除去の数理」セクションの新設:</strong> ASRやZapLineのパラメータの意味を数理的に解説する教育的コンテンツ。</li>
@@ -317,7 +317,7 @@ LSLのインポーター（load_xdf 等）は、収録されたクロックオ�
 <li><strong>VR・モバイル脳波（MoBI）特集:</strong> 実環境下でのノイズ対策やVRヘッドセットとの物理的干渉対策。</li>
 </ul>
 <p>
-これらの情報を拡充することで、eegflow.jpは単なる情報サイトから、日本の神経科学研究者が世界標準の研究を行うための「技術的インフラ」へと進化することができるだろう。
+これらの情報を拡充することで、mind-upload.comは単なる情報サイトから、日本の神経科学研究者が世界標準の研究を行うための「技術的インフラ」へと進化することができるだろう。
 </p>
 </section>
 

@@ -275,7 +275,7 @@ echo "$ISSUES" | jq -c '.[]' | while read -r issue; do
     fi
     
     # AIに渡すプロンプトを構築
-    PROMPT="あなたはeegflowプロジェクトの開発者です。以下のGitHub Issueを解決してください。
+    PROMPT="あなたはmind-uploadプロジェクトの開発者です。以下のGitHub Issueを解決してください。
 
 ## Issue #${ISSUE_NUM}: ${ISSUE_TITLE}
 
@@ -293,7 +293,7 @@ ${ISSUE_BODY}
     fi
     
     # プロンプトを一時ファイルに保存（実行後に削除）
-    PROMPT_FILE=$(mktemp "${TMPDIR:-/tmp}/eegflow_prompt_${ISSUE_NUM}_XXXXXX.txt")
+    PROMPT_FILE=$(mktemp "${TMPDIR:-/tmp}/mind-upload_prompt_${ISSUE_NUM}_XXXXXX.txt")
     printf '%s' "$PROMPT" > "$PROMPT_FILE"
     
     log "Issue #${ISSUE_NUM} を解決中..."

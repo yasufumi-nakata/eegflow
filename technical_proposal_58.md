@@ -4,7 +4,7 @@ title: "技術提案書：物理的不可逆性・反実仮想的等価性・IIT
 description: "WBEフレームワークにおける熱力学・因果・IIT 4.0のギャップを埋めるための設計指針"
 article_type: "Technical Proposal"
 subtitle: "Issue #58: Thermodynamic and Causal Consistency"
-author: "eegflow Project Contributor"
+author: "mind-upload Project Contributor"
 last_updated: "2026-02-01"
 note: "Proposal (Draft)"
 ---
@@ -15,7 +15,7 @@ note: "Proposal (Draft)"
 <div class="abstract-box">
 <h2>Abstract</h2>
 <p>
-本提案書は、EEGFlowのWBE実現フレームワークに対して指摘された3点の重大な不整合
+本提案書は、Mind-UploadのWBE実現フレームワークに対して指摘された3点の重大な不整合
 （物理的不可逆性の軽視、反実仮想的等価性の定義不全、IIT 4.0の計算量問題）を体系的に整理し、
 工学的に検証可能な設計指針と実装ロードマップを提示する。
 </p>
@@ -44,7 +44,7 @@ Landauer限界に基づく情報消去コストは、<strong>論理的不可逆�
 <h2 class="section-title">2. 反実仮想的等価性：識別可能性の壁を越える</h2>
 <p>
 反実仮想（Level 3）は、観測データから一意に同定できない。
-EEGFlowが掲げる「反実仮想的等価性」は、
+Mind-Uploadが掲げる「反実仮想的等価性」は、
 <strong>構造方程式の同定可能性</strong>と<strong>介入設計</strong>をセットで要求する必要がある。
 </p>
 <ul>

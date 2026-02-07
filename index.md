@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "EEGFlow"
+title: "Mind-Upload"
 description: "マインドアップロード/WBEを「進歩を測れる科学」に寄せるための検証基盤（Verification Commons）。"
 article_type: Start Here
 subtitle: "勝利条件・標準・ベンチマーク・事前登録を先に作る"
@@ -16,7 +16,7 @@ note: "Human-friendly landing page"
 <div class="abstract-box">
 <h2>What This Is</h2>
 <p>
-EEGFlowは、マインドアップロード（Whole Brain Emulation, WBE）を「いつか誰かがやる話」ではなく、<strong>第三者が検証できる研究プログラム</strong>として前に進めるためのサイトです。ここで最優先するのは、派手な主張ではなく、<strong>前進の定義</strong>と<strong>比較可能な検証基盤</strong>（Commons）です。
+Mind-Uploadは、マインドアップロード（Whole Brain Emulation, WBE）を「いつか誰かがやる話」ではなく、<strong>第三者が検証できる研究プログラム</strong>として前に進めるためのサイトです。ここで最優先するのは、派手な主張ではなく、<strong>前進の定義</strong>と<strong>比較可能な検証基盤</strong>（Commons）です。
 </p>
 </div>
 
@@ -82,7 +82,7 @@ EEGFlowは、マインドアップロード（Whole Brain Emulation, WBE）を�
 <div class="stage-number">B</div>
 <div class="stage-body">
 <h4>EEG入門</h4>
-<p>EEGで何ができて何ができないか、解析の流れ、EEGFlowでの位置づけ。</p>
+<p>EEGで何ができて何ができないか、解析の流れ、Mind-Uploadでの位置づけ。</p>
 <a href="eeg_101.html" class="btn-action">Open EEG 101</a>
 </div>
 </div>
@@ -114,7 +114,7 @@ EEGFlowは、マインドアップロード（Whole Brain Emulation, WBE）を�
 <section class="section" id="cases">
 <h2 class="section-title">歴史のケースワーク（なぜWebが効くのか）</h2>
 <p>
-PDB、BIDS+OpenNeuro、PhysioNet、ImageNet、MLPerf、OSFなど、他分野が「検証可能性」を作ってきた型を整理し、EEGFlowへ移植するための参照ページを用意しています。
+PDB、BIDS+OpenNeuro、PhysioNet、ImageNet、MLPerf、OSFなど、他分野が「検証可能性」を作ってきた型を整理し、Mind-Uploadへ移植するための参照ページを用意しています。
 </p>
 <div class="cta-box">
 <h4>Casework</h4>

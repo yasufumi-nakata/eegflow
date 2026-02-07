@@ -16,7 +16,7 @@ note: "Operational Specification"
 <div class="abstract-box">
 <h2>One Problem</h2>
 <p>
-マインドアップロード（WBE）を「物語」ではなく「検証可能な研究プログラム」にするには、<strong>前進の定義</strong>と<strong>検証の公共財</strong>が先に必要です。EEGFlowは、データ・指標・ルール・再現手順をWebで固定し、研究が積み上がる足場（Commons）を作ります。
+マインドアップロード（WBE）を「物語」ではなく「検証可能な研究プログラム」にするには、<strong>前進の定義</strong>と<strong>検証の公共財</strong>が先に必要です。Mind-Uploadは、データ・指標・ルール・再現手順をWebで固定し、研究が積み上がる足場（Commons）を作ります。
 </p>
 </div>
 
@@ -53,13 +53,13 @@ note: "Operational Specification"
 <div class="note-box">
 <strong>Non-goals</strong>
 <p>
-このページは「マインドアップロードが可能/不可能」を断言する場所ではありません。EEGFlowが作るのは、<strong>断言が可能になるための検証基盤</strong>です（測定・評価・反証のルール）。
+このページは「マインドアップロードが可能/不可能」を断言する場所ではありません。Mind-Uploadが作るのは、<strong>断言が可能になるための検証基盤</strong>です（測定・評価・反証のルール）。
 </p>
 </div>
 </section>
 
 <section class="section" id="deliverables">
-<h2 class="section-title">EEGFlow Commons の成果物（公共財）</h2>
+<h2 class="section-title">Mind-Upload Commons の成果物（公共財）</h2>
 <div class="stage-list">
 <div class="stage-item">
 <div class="stage-number">01</div>
@@ -139,7 +139,7 @@ note: "Operational Specification"
 <section class="section" id="casework">
 <h2 class="section-title">歴史のケースワークから借りる設計</h2>
 <p>
-EEGFlowの設計は“新規発明”ではなく、他分野が既に解いてきた「検証の型」の移植です。代表例は <a href="casework.html">ケースワーク集</a> に整理しています。
+Mind-Uploadの設計は“新規発明”ではなく、他分野が既に解いてきた「検証の型」の移植です。代表例は <a href="casework.html">ケースワーク集</a> に整理しています。
 </p>
 <div class="note-box">
 <strong>移植のコツ</strong>

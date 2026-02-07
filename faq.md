@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "FAQ：よくある質問（と、よくある事故）"
-description: "EEGFlowを読んでいて出やすい疑問に、短く正確に答えます。"
+description: "Mind-Uploadを読んでいて出やすい疑問に、短く正確に答えます。"
 article_type: FAQ
 subtitle: "派手な結論より、検証できる前進を"
 author: Mind Uploading Research Project
@@ -21,7 +21,7 @@ note: "Human-first"
 </div>
 
 <section class="section" id="q0">
-<h2 class="section-title">Q. EEGFlowは結局、何をするサイト？</h2>
+<h2 class="section-title">Q. Mind-Uploadは結局、何をするサイト？</h2>
 <p>
 A. マインドアップロード/WBEを「検証可能な研究プログラム」に寄せるための<strong>検証基盤（Verification Commons）</strong>を作るサイトです。
 データ（入力）、評価（出力）、ルール（達成条件/反証条件）、運用（継続）を先に固定します。
@@ -39,7 +39,7 @@ A. マインドアップロード/WBEを「検証可能な研究プログラム�
 A. 「何をどこまで」と定義しないと答えられません。現実には、EEGはノイズや個体差が大きく、さらに言語モデルの事前分布が“それっぽい文章”を作れてしまうため、<strong>EEG由来の情報</strong>と<strong>モデル側の補完</strong>を反事実テストで切り分ける必要があります。
 </p>
 <p>
-EEGFlowの立場は、「派手な読み出し」を否定するのではなく、<strong>検証可能な主張に落とす</strong>ことです（失敗例まで含む）。
+Mind-Uploadの立場は、「派手な読み出し」を否定するのではなく、<strong>検証可能な主張に落とす</strong>ことです（失敗例まで含む）。
 </p>
 </section>
 
@@ -56,7 +56,7 @@ WBEに近づくには、後者を評価できるベンチマーク（介入・�
 <h2 class="section-title">Q. じゃあ、何を作れば“前進”になる？</h2>
 <p>
 A. まずは L0〜L2 が現実的です。つまり「再現できる解析」「比較できるベンチ」「介入予測で検証できるモデル」です。
-EEGFlowでは、これを“サイトとして運用できる形”に落とします（テンプレ・ログ・ルール）。
+Mind-Uploadでは、これを“サイトとして運用できる形”に落とします（テンプレ・ログ・ルール）。
 </p>
 <div class="key-points">
 <h4>具体的な成果物</h4>
@@ -82,7 +82,7 @@ PDBやBIDS+OpenNeuroなどの事例は、分野が違っても「前進を測れ
 <p>
 A. 指標に勝つことが、現実の目的達成とズレる現象です（Goodhartの罠）。
 例えば、データリークや過学習でスコアだけ上がる、実装コストが高すぎて実運用されない、などがあります。
-EEGFlowでは、失敗例・リーク検査・モデルカードを含めて運用設計します。
+Mind-Uploadでは、失敗例・リーク検査・モデルカードを含めて運用設計します。
 </p>
 </section>
 

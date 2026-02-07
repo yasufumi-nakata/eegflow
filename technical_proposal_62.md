@@ -4,7 +4,7 @@ title: "Technical Proposal: Strengthening Thermodynamic and Causal Validity"
 description: "Response to Issue #58: Addressing critical gaps in WBE framework regarding physical irreversibility, counterfactual identifiability, and computational complexity."
 article_type: "Technical Proposal"
 subtitle: "Issue #58: Response to Scientific Critique on Physics & Causality"
-author: "eegflow Project Contributor"
+author: "mind-upload Project Contributor"
 last_updated: "2026-02-01"
 note: "Proposal (Implemented)"
 ---
@@ -17,7 +17,7 @@ note: "Proposal (Implemented)"
 <p>
 本提案書は、Issue #58「学術的批判：WBE実現フレームワークにおける熱力学的・因果論的整合性に関する重大な不備」に対する正式な技術的回答である。
 指摘された3つの主要な不整合――(1) 生物学的脳の物理的不可逆性（NESS）とデジタル論理の乖離、(2) 反実仮想的等価性における数理的同定不能性、(3) IIT 4.0の計算量的爆発――に対し、
-EEGFlowプロジェクトは以下の具体的修正を行うことで、科学的整合性を担保する。
+Mind-Uploadプロジェクトは以下の具体的修正を行うことで、科学的整合性を担保する。
 </p>
 </div>
 
@@ -30,7 +30,7 @@ EEGFlowプロジェクトは以下の具体的修正を行うことで、科学�
 </p>
 <h3>1.2 Solution: Virtual Dissipation Protocol</h3>
 <p>
-<code>eegflow/03_causal_modeling.py</code> において、以下の指標を導入する。
+<code>mind-upload/03_causal_modeling.py</code> において、以下の指標を導入する。
 </p>
 <ul>
 <li><strong>Entropy Production Rate (EPR):</strong> システムの状態遷移が時間反転対称性を破る度合い（不可逆性）を定量化する。</li>
@@ -77,7 +77,7 @@ IIT 4.0の $\Phi$ 計測は、システムの部分系（Power Set）を探索�
 <section class="section" id="conclusion">
 <h2 class="section-title">4. Implementation Plan</h2>
 <p>
-本提案に基づき、直ちに <code>eegflow/03_causal_modeling.py</code> および <code>tech_roadmap.md</code> を更新する。
+本提案に基づき、直ちに <code>mind-upload/03_causal_modeling.py</code> および <code>tech_roadmap.md</code> を更新する。
 これは、WBEを「魔法のコピー」から「物理法則と計算理論に縛られた工学的課題」へと再定義する重要なステップである。
 </p>
 </section>

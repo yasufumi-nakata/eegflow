@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "ケースワーク：Web基盤が「検証可能性」を作った歴史"
-description: "標準化・検証・比較可能性（何を満たせば前進と言えるか）を、Webサイト/公開基盤がどう“解ける形”にしたか。EEGFlow設計の参照用。"
+description: "標準化・検証・比較可能性（何を満たせば前進と言えるか）を、Webサイト/公開基盤がどう“解ける形”にしたか。Mind-Upload設計の参照用。"
 article_type: Casework
 subtitle: "PDB / INSDC / BIDS+OpenNeuro / ImageNet / MLPerf / OSF から学ぶ"
 author: Mind Uploading Research Project
@@ -16,7 +16,7 @@ note: "Reference Collection"
 <div class="abstract-box">
 <h2>Why This Page</h2>
 <p>
-「前進を測れない」「再現できない」「比較できない」という問題は、WBEに限らず科学史の常連です。ここでは、<strong>Web上の公開基盤</strong>がそれらをどう“解ける形”にしたかを、用途別に整理します。EEGFlowは、この型（パターン）をWBEへ移植します。
+「前進を測れない」「再現できない」「比較できない」という問題は、WBEに限らず科学史の常連です。ここでは、<strong>Web上の公開基盤</strong>がそれらをどう“解ける形”にしたかを、用途別に整理します。Mind-Uploadは、この型（パターン）をWBEへ移植します。
 </p>
 </div>
 
@@ -59,7 +59,7 @@ note: "Reference Collection"
 </div>
 </div>
 </div>
-<p>EEGFlowが作ろうとしているのは、これらを構造的に起こしにくくするための基盤です（<a href="verification.html">検証基盤</a>）。</p>
+<p>Mind-Uploadが作ろうとしているのは、これらを構造的に起こしにくくするための基盤です（<a href="verification.html">検証基盤</a>）。</p>
 </section>
 
 <section class="section" id="data-standardization">
@@ -71,7 +71,7 @@ note: "Reference Collection"
 <li><strong>Web基盤の貢献：</strong>単一の世界アーカイブを作り、公開・参照の前提を揃えた。</li>
 </ul>
 <div class="note-box">
-<strong>EEGFlowが借りる点</strong>
+<strong>Mind-Uploadが借りる点</strong>
 <p>
 「唯一の提出先」と「提出時のバリデーション（品質チェック）」を用意すると、分野全体の再利用性が上がります。
 </p>
@@ -83,7 +83,7 @@ note: "Reference Collection"
 <li><strong>Web基盤の貢献：</strong>複数機関でも“同一データ”になる同期運用を維持した。</li>
 </ul>
 <div class="note-box">
-<strong>EEGFlowが借りる点</strong>
+<strong>Mind-Uploadが借りる点</strong>
 <p>
 ミラーが増えても“同じ参照”になる運用（ID、バージョン、同期ルール）があると、引用と比較が崩れません。
 </p>
@@ -95,7 +95,7 @@ note: "Reference Collection"
 <li><strong>Web基盤の貢献：</strong>フォーマット（規格）と置き場（アーカイブ）をセットで提供した。</li>
 </ul>
 <div class="note-box">
-<strong>EEGFlowが借りる点</strong>
+<strong>Mind-Uploadが借りる点</strong>
 <p>
 「規格がある」だけでは弱く、「その規格で置ける場所」「バリデータ」「メタデータの最小要件」が揃うと一気に進みます。
 </p>
@@ -107,7 +107,7 @@ note: "Reference Collection"
 <li><strong>Web基盤の貢献：</strong>種をまたいで使える統制語彙（共有語彙）を整備した。</li>
 </ul>
 <div class="note-box">
-<strong>EEGFlowが借りる点</strong>
+<strong>Mind-Uploadが借りる点</strong>
 <p>
 データ形式だけでなく、イベント名や状態ラベルなど“意味の規格（語彙）”が重要です。WBEは用語が割れると議論が崩れます。
 </p>
@@ -119,7 +119,7 @@ note: "Reference Collection"
 <li><strong>Web基盤の貢献：</strong>DOI・バージョニングで「引用可能な成果物」を固定した。</li>
 </ul>
 <div class="note-box">
-<strong>EEGFlowが借りる点</strong>
+<strong>Mind-Uploadが借りる点</strong>
 <p>
 インセンティブ（引用される、功績が残る）があると、公共財が増えます。再現性は“文化”も含めて設計します。
 </p>
@@ -165,7 +165,7 @@ note: "Reference Collection"
 <li><strong>Web基盤の貢献：</strong>標準ベンチ＋結果公開で、比較の共通基盤を作った。</li>
 </ul>
 <div class="note-box">
-<strong>EEGFlowが借りる点</strong>
+<strong>Mind-Uploadが借りる点</strong>
 <p>
 ベンチマークは「データを配る」だけではなく、<strong>ルール（禁止事項・提出形式・評価条件）</strong>と<strong>監査（リーク検査・失敗例）</strong>がセットで効きます。
 </p>
@@ -193,7 +193,7 @@ note: "Reference Collection"
 <li><strong>Web基盤の貢献：</strong>“計画された作業と非計画を区別する”仕組みを提供した。</li>
 </ul>
 <div class="note-box">
-<strong>EEGFlowが借りる点</strong>
+<strong>Mind-Uploadが借りる点</strong>
 <p>
 WBEのような“強い主張”ほど、探索と検証を混ぜると後から何でも言えてしまいます。だから「やる前の固定（prereg）」が効きます。
 </p>
@@ -221,7 +221,7 @@ WBEのような“強い主張”ほど、探索と検証を混ぜると後か�
 <li><strong>Web基盤の貢献：</strong>普遍符号化として、交換・処理・表示の前提を揃えた。</li>
 </ul>
 <div class="note-box">
-<strong>EEGFlowが借りる点</strong>
+<strong>Mind-Uploadが借りる点</strong>
 <p>
 「データ形式が揃った」だけではなく、イベント名・状態ラベル・評価ログなどの“意味論”まで揃えると、チームや施設が違っても協調できます。
 </p>
@@ -243,15 +243,15 @@ WBEのような“強い主張”ほど、探索と検証を混ぜると後か�
 <li><strong>Web基盤の貢献：</strong>検索可能性を公共インフラ化した。</li>
 </ul>
 <div class="note-box">
-<strong>EEGFlowが借りる点</strong>
+<strong>Mind-Uploadが借りる点</strong>
 <p>
-「探せる」だけで反復速度が上がります。EEGFlowでも、提案書や実装ノートが散逸しない索引（Proposals）が重要です。
+「探せる」だけで反復速度が上がります。Mind-Uploadでも、提案書や実装ノートが散逸しない索引（Proposals）が重要です。
 </p>
 </div>
 </section>
 
 <section class="section" id="principles">
-<h2 class="section-title">共通する設計原理（EEGFlowが採用する）</h2>
+<h2 class="section-title">共通する設計原理（Mind-Uploadが採用する）</h2>
 <div class="key-points">
 <h4>Design Principles</h4>
 <ul>
@@ -264,8 +264,8 @@ WBEのような“強い主張”ほど、探索と検証を混ぜると後か�
 </div>
 </section>
 
-<section class="section" id="transfer-to-eegflow">
-<h2 class="section-title">EEGFlowへの移植：パターン→機能の対応表（案）</h2>
+<section class="section" id="transfer-to-mind-upload">
+<h2 class="section-title">Mind-Uploadへの移植：パターン→機能の対応表（案）</h2>
 <div class="stage-list">
 <div class="stage-item">
 <div class="stage-number">A</div>
@@ -305,7 +305,7 @@ WBEのような“強い主張”ほど、探索と検証を混ぜると後か�
 </div>
 <div class="cta-box">
 <h4>Next</h4>
-<p>このケースワークを前提に、EEGFlowの「検証基盤」設計をまとめています。</p>
+<p>このケースワークを前提に、Mind-Uploadの「検証基盤」設計をまとめています。</p>
 <a href="verification.html">検証基盤（Verification Commons）を見る</a>
 </div>
 </section>

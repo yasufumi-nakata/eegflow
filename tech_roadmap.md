@@ -83,7 +83,7 @@ note: "暫定版（随時更新）"
 <li><strong>監査：</strong>モデル差分、再現実行ログ、失敗例（ネガティブ結果）</li>
 </ul>
 <p><strong>反証可能性：</strong>成果の“見せ方”だけが先行し、検証不能な主張になる</p>
-<p><strong>次に必要：</strong>EEGFlowでまずL0-L2の成果物テンプレ（データ構造・評価スクリプト）を固める</p>
+<p><strong>次に必要：</strong>Mind-UploadでまずL0-L2の成果物テンプレ（データ構造・評価スクリプト）を固める</p>
 </div>
 </details>
 </section>
@@ -216,7 +216,7 @@ note: "暫定版（随時更新）"
 <li><strong>ノイズフロア/SNR:</strong> 周波数帯ごとの実効SNRを可視化する。</li>
 <li><strong>VR干渉:</strong> HMDの電磁・機械ノイズをプロファイル化する。</li>
 </ul>
-<p><strong>次に必要：</strong>EEGFlowの前処理（`eegflow/01_preprocess.py`）に、QC指標とログ出力を組み込む <strong>(✅ Implemented in Issue #34)</strong>。計測前の「QAチェックリスト」を追加する。</p>
+<p><strong>次に必要：</strong>Mind-Uploadの前処理（`mind-upload/01_preprocess.py`）に、QC指標とログ出力を組み込む <strong>(✅ Implemented in Issue #34)</strong>。計測前の「QAチェックリスト」を追加する。</p>
 </div>
 </details>
 
@@ -276,7 +276,7 @@ note: "暫定版（随時更新）"
 <p><strong>問い：</strong>EEGソース推定は「領域×時間」の表現を得やすいが、ニューロン/シナプスは直接は見えない。復元対象（R0）に合わせて表現を選ぶ。</p>
 <p><strong>課題：</strong>従来は「高密度EEG(128ch)化」が推奨されてきたが、近年の研究はチャンネル数だけでは不良設定性（ill-posedness）を解決できないことを示している。特に、dSPMのような点推定法は不確実性を無視してしまう。</p>
 <p><strong>階層的ベイズモデルと高解像度計測の統合：</strong>Block-Champagne Framework<sup><a href="#ref-78">[78]</a></sup>の採用に加え、<strong>超高密度EEG（High-density EEG, 256ch以上）</strong>と<strong>個体別MRIに基づく有限要素法（FEM）フォワードモデル</strong>の導入を必須化する。これにより深部脳活動の推定精度を担保する。さらに、Feng et al. (2025)<sup><a href="#ref-78">[78]</a></sup>が指摘するノイズ特性の動的変化に対応するため、<strong>適応的ベイズ更新（Adaptive Bayesian Updating）</strong>を実装し、推定された脳活動マップには必ず<strong>信頼区間（Credible Intervals）</strong>を付随させる。</p>
-<p><strong>次に必要：</strong>`eegflow/02_source_imaging.py` に変分ベイズ（Variational Bayesian）アプローチを実装し、不確実性を考慮したソース再構成を行う <strong>(✅ Implemented in Issue #43)</strong></p>
+<p><strong>次に必要：</strong>`mind-upload/02_source_imaging.py` に変分ベイズ（Variational Bayesian）アプローチを実装し、不確実性を考慮したソース再構成を行う <strong>(✅ Implemented in Issue #43)</strong></p>
 </div>
 </details>
 
@@ -1210,13 +1210,13 @@ note: "暫定版（随時更新）"
 </ol>
 </section>
 
-<section class="section" id="eegflow">
-<h2 class="section-title">EEGFlow の現在地（このリポジトリでやること）</h2>
-<p>EEGFlow は現時点では<strong>概念実装</strong>ですが、「計測→再構成→検証」のミニマムな流れを、EEG中心に試せる形を目指しています。</p>
+<section class="section" id="mind-upload">
+<h2 class="section-title">Mind-Upload の現在地（このリポジトリでやること）</h2>
+<p>Mind-Upload は現時点では<strong>概念実装</strong>ですが、「計測→再構成→検証」のミニマムな流れを、EEG中心に試せる形を目指しています。</p>
 <ul>
-<li><a href="https://github.com/yasufumi-nakata/eegflow/blob/main/eegflow/01_preprocess.py" target="_blank">01_preprocess.py</a>：前処理（アーチファクト・品質管理の雛形） <strong>[QC Implemented]</strong></li>
-<li><a href="https://github.com/yasufumi-nakata/eegflow/blob/main/eegflow/02_source_imaging.py" target="_blank">02_source_imaging.py</a>：ソース推定（逆問題の入口） <strong>[Uncertainty Implemented]</strong></li>
-<li><a href="https://github.com/yasufumi-nakata/eegflow/blob/main/eegflow/03_causal_modeling.py" target="_blank">03_causal_modeling.py</a>：因果/生成モデル（予測・介入へ）</li>
+<li><a href="https://github.com/yasufumi-nakata/eegflow/blob/main/mind-upload/01_preprocess.py" target="_blank">01_preprocess.py</a>：前処理（アーチファクト・品質管理の雛形） <strong>[QC Implemented]</strong></li>
+<li><a href="https://github.com/yasufumi-nakata/eegflow/blob/main/mind-upload/02_source_imaging.py" target="_blank">02_source_imaging.py</a>：ソース推定（逆問題の入口） <strong>[Uncertainty Implemented]</strong></li>
+<li><a href="https://github.com/yasufumi-nakata/eegflow/blob/main/mind-upload/03_causal_modeling.py" target="_blank">03_causal_modeling.py</a>：因果/生成モデル（予測・介入へ）</li>
 </ul>
 <p class="mini">※「解析手順の再現性」や「データ標準（BIDS）」は、WBE以前に研究として必須の足場です。</p>
 </section>
@@ -1370,7 +1370,7 @@ note: "暫定版（随時更新）"
 <li><a href="#priorwork-map">先行研究マップ</a></li>
 <li><a href="#deployment">社会実装</a></li>
 <li><a href="#learning">学習の順序</a></li>
-<li><a href="#eegflow">EEGFlow の現在地</a></li>
+<li><a href="#mind-upload">Mind-Upload の現在地</a></li>
 <li><a href="#sources">参考文献</a></li>
 </ul>
 </div>
@@ -1391,7 +1391,7 @@ note: "暫定版（随時更新）"
 </main>
 
 <footer>
-<p>EEGFlow · 技術ロードマップ（暫定）</p>
+<p>Mind-Upload · 技術ロードマップ（暫定）</p>
 </footer>
 
 <script>

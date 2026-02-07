@@ -1,14 +1,14 @@
 {
-  "Name": "EEGFlow: A Framework for Whole Brain Emulation Research",
+  "Name": "Mind-Upload: A Framework for Whole Brain Emulation Research",
   "BIDSVersion": "1.9.0",
   "DatasetType": "raw",
   "License": "CC-BY-4.0",
   "Authors": [
     "Yasufumi Nakata",
-    "EEGFlow Project Team"
+    "Mind-Upload Project Team"
   ],
   "Acknowledgements": "The project structure and placeholder analysis scripts were generated with assistance from Google's AI.",
-  "HowToAcknowledge": "Please cite the project's GitHub repository: https://github.com/yasufumi-nakata/eegflow and the website https://eegflow.jp",
+  "HowToAcknowledge": "Please cite the project's GitHub repository: https://github.com/yasufumi-nakata/eegflow and the website https://mind-upload.com",
   "Funding": [
     "This research is conceptual and not currently funded."
   ],
@@ -16,7 +16,7 @@
     "Conceptual stage; no data collected. Future data collection will adhere to the Declaration of Helsinki and seek approval from the relevant institutional review board."
   ],
   "ReferencesAndLinks": [
-    "https://eegflow.jp",
+    "https://mind-upload.com",
     "https://github.com/yasufumi-nakata/eegflow",
     "Nakata, Y. et al. (in preparation). A technical and theoretical roadmap for whole brain emulation.",
     "BIDS Specification for EEG: https://bids-specification.readthedocs.io/en/stable/04-modality-specific-files/03-electroencephalography.html"
@@ -29,5 +29,5 @@
       "Description": "AI agent assisting in software development and scientific documentation."
     }
   ],
-  "Description": "This dataset description pertains to the conceptual framework of the EEGFlow project. No real data is included yet. The project aims to collect multimodal neuroimaging data (HD-EEG, fMRI, MRI) to validate theories of consciousness and develop technologies for mind uploading. The repository includes placeholder scripts demonstrating the intended BIDS-compliant analysis pipeline, from preprocessing to source imaging and causal modeling."
+  "Description": "This dataset description pertains to the conceptual framework of the Mind-Upload project. No real data is included yet. The project aims to collect multimodal neuroimaging data (HD-EEG, fMRI, MRI) to validate theories of consciousness and develop technologies for mind uploading. The repository includes placeholder scripts demonstrating the intended BIDS-compliant analysis pipeline, from preprocessing to source imaging and causal modeling."
 }

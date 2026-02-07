@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "貢献ガイド"
-description: "EEGFlowプロジェクトへの参加・貢献方法"
+description: "Mind-Uploadプロジェクトへの参加・貢献方法"
 article_type: Guide
 subtitle: "Join the Research Community"
 author: Mind Uploading Research Project
@@ -16,7 +16,7 @@ last_updated: "2026-02-05"
 <div class="abstract-box">
 <h2>Welcome</h2>
 <p>
-EEGFlowプロジェクトは、マインドアップロードの理論的・技術的基盤を構築するためのオープンな研究コミュニティです。神経科学、計算機科学、哲学など、多様なバックグラウンドを持つ研究者やエンジニアの参加を歓迎します。
+Mind-Uploadプロジェクトは、マインドアップロードの理論的・技術的基盤を構築するためのオープンな研究コミュニティです。神経科学、計算機科学、哲学など、多様なバックグラウンドを持つ研究者やエンジニアの参加を歓迎します。
 </p>
 </div>
 

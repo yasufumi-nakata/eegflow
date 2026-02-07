@@ -3,8 +3,8 @@ layout: default
 title: "技術提案書：神経工学的・計算論的神経科学的枠組みの拡張"
 description: "OPM-MEG、Deep Transfer Learning、Hyper-scanning、IIT 4.0実装論、Mind Captioning拡張に関する技術的精査とロードマップ"
 article_type: "Technical Proposal"
-subtitle: "Issue #48: eegflow.jp 神経工学的・計算論的枠組み拡張提案"
-author: "eegflow Project Contributor"
+subtitle: "Issue #48: mind-upload.com 神経工学的・計算論的枠組み拡張提案"
+author: "mind-upload Project Contributor"
 last_updated: "2026-01-25"
 note: "Proposal (Under Review)"
 ---
@@ -15,7 +15,7 @@ note: "Proposal (Under Review)"
 <div class="abstract-box">
 <h2>Abstract</h2>
 <p>
-本報告書は、eegflow.jp における神経工学的・計算論的神経科学的枠組みの拡張に関する技術提案書である。
+本報告書は、mind-upload.com における神経工学的・計算論的神経科学的枠組みの拡張に関する技術提案書である。
 マインドアップロード（WBE）の実現に向け、現状の技術スタックにおける「ミッシングリンク」を解消するため、OPM-MEGによる計測の革新、侵襲データ転移学習、Team Flowにおける因果性解析、VR空間での適応制御、そしてIIT 4.0の計算論的実装について詳述する。
 これらを通じて、対象サイトを世界的な研究ハブへと昇華させるための統合的ロードマップを提示する。
 </p>
@@ -25,7 +25,7 @@ note: "Proposal (Under Review)"
 <h2 class="section-title">1. 序論：マインドアップロード研究の現状と技術的課題の所在</h2>
 <h3>1.1 背景と目的</h3>
 <p>
-本報告書は、ウェブサイト eegflow.jp（以下、対象サイト）およびその運営者である中田康史氏（慶應義塾大学 青山敦研究室所属）の研究活動を対象に、その技術的内容を専門的見地から精査したものである。対象サイトは、「マインドアップロード（Mind Uploading）」、「Team Flow（チームフロー）」、「EEG（脳波）解析」、および「VR（仮想現実）における生体信号処理」を主要な研究テーマとして掲げている。
+本報告書は、ウェブサイト mind-upload.com（以下、対象サイト）およびその運営者である中田康史氏（慶應義塾大学 青山敦研究室所属）の研究活動を対象に、その技術的内容を専門的見地から精査したものである。対象サイトは、「マインドアップロード（Mind Uploading）」、「Team Flow（チームフロー）」、「EEG（脳波）解析」、および「VR（仮想現実）における生体信号処理」を主要な研究テーマとして掲げている。
 </p>
 <p>
 マインドアップロード（Whole Brain Emulation: WBE）は、生物学的な脳の情報処理構造と意識のダイナミクスを非生物学的基盤上に移植することを目指す壮大な挑戦である。しかし、WBEの実現やTeam Flowの工学的応用を視野に入れた場合、現状の技術スタックには、非侵襲計測における空間分解能の限界、意識の定量化における計算量的爆発、デコーディングにおける意味論的粒度の不足といった「ミッシングリンク」が存在する。
@@ -170,7 +170,7 @@ EEGの意味的特徴ベクトルを条件付け入力としてStable Diffusion�
 <section class="section" id="roadmap">
 <h2 class="section-title">7. 結論：統合的ロードマップの提言</h2>
 <p>
-eegflow.jp 研究テーマに対する技術的拡充事項を以下のロードマップにまとめる。
+mind-upload.com 研究テーマに対する技術的拡充事項を以下のロードマップにまとめる。
 </p>
 <ul>
 <li><strong>Phase 1: 高精度デジタルツインの構築（～2030年代）</strong>
@@ -194,7 +194,7 @@ eegflow.jp 研究テーマに対する技術的拡充事項を以下のロード
 </li>
 </ul>
 <p>
-本報告書で提案した数理的・工学的詳細を実装し、eegflow.jp がマインドアップロード研究における世界的なハブとなることを確信する。
+本報告書で提案した数理的・工学的詳細を実装し、mind-upload.com がマインドアップロード研究における世界的なハブとなることを確信する。
 </p>
 </section>
 
