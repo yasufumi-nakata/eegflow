@@ -148,6 +148,7 @@ PDB、BIDS+OpenNeuro、PhysioNet、ImageNet、MLPerf、OSFなど、他分野が�
 <h4>Quick Links</h4>
 <ul>
 <li><a href="verification.html">検証基盤（Verification）→</a></li>
+<li><a href="research_harvest_50.html">未解決問題×文献地図（50ワーカー）→</a></li>
 <li><a href="wbe_101.html">WBE入門 →</a></li>
 <li><a href="eeg_101.html">EEG入門 →</a></li>
 <li><a href="datasets.html">データ&ベンチ →</a></li>

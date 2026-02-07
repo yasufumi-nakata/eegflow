@@ -149,7 +149,7 @@ PDB（単一アーカイブ）やBIDS+OpenNeuro（規格＋置き場）、Physio
 </div>
 </section>
 
-<section class="section" id="mvp">
+<section class="section" id="execution-contract">
 <h2 class="section-title">最初の90日で実装する必須成果物</h2>
 <div class="key-points">
 <h4>90-Day Execution Contract</h4>
@@ -210,6 +210,7 @@ PDB（単一アーカイブ）やBIDS+OpenNeuro（規格＋置き場）、Physio
 <ul>
 <li><a href="tech_roadmap.html#definition">前進の定義（Roadmap）→</a></li>
 <li><a href="casework.html">ケースワーク集（歴史の型）→</a></li>
+<li><a href="research_harvest_50.html">50ワーカー文献地図（未解決問題分解）→</a></li>
 <li><a href="proposals.html">技術提案の一覧（Issue連動）→</a></li>
 <li><a href="glossary.html">用語集（Glossary）→</a></li>
 <li><a href="datasets.html">データ&ベンチ（Datasets）→</a></li>
