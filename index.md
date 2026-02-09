@@ -5,7 +5,7 @@ description: "マインドアップロード/WBEを「進歩を測れる科学�
 article_type: Start Here
 subtitle: "勝利条件・標準・ベンチマーク・事前登録を先に作る"
 author: Mind Uploading Research Project
-last_updated: "2026-02-05"
+last_updated: "2026-02-09"
 note: "Human-friendly landing page"
 ---
 <!-- IMPORTANT: Do not delete or overwrite this information. It serves as the project's permanent knowledge base. -->
@@ -61,6 +61,14 @@ Mind-Uploadは、「心をコンピュータで再現できるのか？」とい
 <h4>論文集（Papers）</h4>
 <p>過去10年のMind Uploading関連論文を収集・整理したアーカイブです。</p>
 <a href="mind_uploading_papers.html" class="btn-action">Open Papers</a>
+</div>
+</div>
+<div class="stage-item">
+<div class="stage-number">06</div>
+<div class="stage-body">
+<h4>技術提案統合（All Issues）</h4>
+<p>Issue #46/#47/#48/#56/#58/#61/#62 の提案・対応状況・根拠節を1ページ本文に統合しています。</p>
+<a href="proposals.html" class="btn-action">Open Integrated Proposals</a>
 </div>
 </div>
 </div>
@@ -138,6 +146,11 @@ PDB、BIDS+OpenNeuro、PhysioNet、ImageNet、MLPerf、OSFなど、他分野が�
 <p>議論はGitHub Issueから始められます。</p>
 <a href="issue.html">貢献ガイドを見る →</a>
 </div>
+<div class="cta-box">
+<h4>Issue対応状況</h4>
+<p>Technical Proposal 系 Issue の対応内容と根拠リンクを確認できます。</p>
+<a href="issue.html#technical-issue-tracker">Issueトラッカーを見る →</a>
+</div>
 </section>
 
 </article>
@@ -156,8 +169,9 @@ PDB、BIDS+OpenNeuro、PhysioNet、ImageNet、MLPerf、OSFなど、他分野が�
 <li><a href="faq.html">FAQ →</a></li>
 <li><a href="hands_on.html">ハンズオン →</a></li>
 <li><a href="casework.html">ケースワーク（歴史の型）→</a></li>
-<li><a href="proposals.html">技術提案（一覧）→</a></li>
+<li><a href="proposals.html">技術提案（統合本文）→</a></li>
 <li><a href="mind_uploading_papers.html">論文集（Papers）→</a></li>
+<li><a href="issue.html#technical-issue-tracker">Issue対応トラッカー →</a></li>
 </ul>
 </div>
 

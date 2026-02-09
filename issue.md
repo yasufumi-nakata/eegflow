@@ -1,11 +1,11 @@
 ---
 layout: default
 title: "貢献ガイド"
-description: "Mind-Uploadプロジェクトへの参加・貢献方法"
+description: "Mind-Uploadプロジェクトへの参加方法と、Issue対応状況（根拠リンク付き）"
 article_type: Guide
-subtitle: "Join the Research Community"
+subtitle: "Join the Research Community + Issue Tracker"
 author: Mind Uploading Research Project
-last_updated: "2026-02-05"
+last_updated: "2026-02-09"
 ---
 <!-- IMPORTANT: Do not delete or overwrite this information. It serves as the project's permanent knowledge base. -->
 
@@ -76,6 +76,81 @@ Mind-Uploadは、マインドアップロードを「検証できる研究」に
 <li><strong>Issue #34:</strong> M8品質管理 (QC) メトリクスのJSONログ出力機能の実装</li>
 <li><strong>Issue #43:</strong> R2経験的ベイズによるソース推定と不確実性定量化（信頼区間）の実装</li>
 </ul>
+</div>
+</section>
+
+<section class="section" id="technical-issue-tracker">
+<h2 class="section-title">Technical Issue Tracker（本文統合済み）</h2>
+<p>
+以下は、Technical Proposal 系 Issue の対応状況です。判断根拠は、各 Proposal の該当節へ直接リンクしています。
+</p>
+
+<table class="data-table">
+<thead>
+<tr>
+<th>Issue</th>
+<th>対応内容（要約）</th>
+<th>状態</th>
+<th>根拠リンク</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>#46</strong></td>
+<td>計測QA、同期補正、アーティファクト除去、BIDS/Motion-BIDSの統合方針を整理</td>
+<td>提案化済み</td>
+<td><a href="technical_proposal_46.html#qa">#qa</a> / <a href="technical_proposal_46.html#sync">#sync</a> / <a href="technical_proposal_46.html#bids">#bids</a></td>
+</tr>
+<tr>
+<td><strong>#47</strong></td>
+<td>BIDS標準化、ASR/ZapLine、wPLI/STE、LSL同期の実装方針を拡張</td>
+<td>提案受理（文書）</td>
+<td><a href="technical_proposal_47.html#bids">#bids</a> / <a href="technical_proposal_47.html#preprocessing">#preprocessing</a> / <a href="technical_proposal_47.html#connectivity">#connectivity</a></td>
+</tr>
+<tr>
+<td><strong>#48</strong></td>
+<td>OPM-MEG、転移学習、Team Flow因果、IIT実装の拡張案を提出</td>
+<td>審査中提案</td>
+<td><a href="technical_proposal_48.html#measurement">#measurement</a> / <a href="technical_proposal_48.html#teamflow">#teamflow</a> / <a href="technical_proposal_48.html#iit-implementation">#iit-implementation</a></td>
+</tr>
+<tr>
+<td><strong>#56</strong></td>
+<td>反実仮想の識別不能性に対して PCI と do-calculus を導入する検証設計へ変更</td>
+<td>提案化済み</td>
+<td><a href="technical_proposal_56.html#problem-statement">#problem-statement</a> / <a href="technical_proposal_56.html#proposal">#proposal</a></td>
+</tr>
+<tr>
+<td><strong>#58</strong></td>
+<td>NESS散逸・因果識別可能性・IIT近似計算の3課題に対する設計方針を明文化</td>
+<td>提案化済み</td>
+<td><a href="technical_proposal_58.html#thermo">#thermo</a> / <a href="technical_proposal_58.html#counterfactual">#counterfactual</a> / <a href="technical_proposal_58.html#iit">#iit</a></td>
+</tr>
+<tr>
+<td><strong>#61</strong></td>
+<td>Unfolding論点・熱力学コスト2層化・SCM厳密化・多モデル推論への修正を提示</td>
+<td>実装方針反映（文書）</td>
+<td><a href="technical_proposal_61.html#causal-structure">#causal-structure</a> / <a href="technical_proposal_61.html#thermodynamics">#thermodynamics</a> / <a href="technical_proposal_61.html#multi-model-inference">#multi-model-inference</a></td>
+</tr>
+<tr>
+<td><strong>#62</strong></td>
+<td>#58批判に対し、同値類警告とIIT近似の実装計画を追加補強</td>
+<td>実装計画化（文書）</td>
+<td><a href="technical_proposal_62.html#thermodynamics">#thermodynamics</a> / <a href="technical_proposal_62.html#identifiability">#identifiability</a> / <a href="technical_proposal_62.html#complexity">#complexity</a></td>
+</tr>
+</tbody>
+</table>
+
+<div class="note-box">
+<strong>運用ルール</strong>
+<p>
+このトラッカーは「サイト内で確認可能な証跡」を基準に更新します。外部実装（実験・法務・機材調達等）は外部依存として分離し、本ページでは主張しません。
+</p>
+</div>
+
+<div class="cta-box">
+<h4>統合本文</h4>
+<p>Technical Proposal 全体の統合本文は `proposals.html` に集約しています。</p>
+<a href="proposals.html">統合本文を見る →</a>
 </div>
 </section>
 
