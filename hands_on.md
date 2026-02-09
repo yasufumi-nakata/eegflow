@@ -5,7 +5,7 @@ description: "公開データでも自前データでも使える、BIDS→QC→
 article_type: Tutorial
 subtitle: "まずは“再現できる”を達成してから、性能を競う"
 author: Mind Uploading Research Project
-last_updated: "2026-02-05"
+last_updated: "2026-02-10"
 note: "Practical"
 ---
 <!-- IMPORTANT: Do not delete or overwrite this information. It serves as the project's permanent knowledge base. -->
@@ -63,7 +63,7 @@ my_bids_eeg/
 <section class="section" id="validator">
 <h2 class="section-title">Step 2：BIDS Validator を回す</h2>
 <p>
-機械的にチェックできる部分は、機械に任せます。BIDS Validatorは「規格違反」を早期に潰すための重要な道具です。
+機械で検証できる項目はBIDS Validatorに任せ、最初の段階で規格違反を洗い出してください。この手順を全データ投入前に挟むだけで、後工程の手戻りがほぼ無くなり、レビュー負荷も抑えられます。
 </p>
 
 ```bash

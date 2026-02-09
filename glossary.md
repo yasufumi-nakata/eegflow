@@ -5,7 +5,7 @@ description: "Mind-Uploadで頻出する用語を、人間が迷子にならな�
 article_type: Reference
 subtitle: "まずは“言葉のすり替え”を止める"
 author: Mind Uploading Research Project
-last_updated: "2026-02-05"
+last_updated: "2026-02-10"
 note: "Living document"
 ---
 <!-- IMPORTANT: Do not delete or overwrite this information. It serves as the project's permanent knowledge base. -->
@@ -16,7 +16,7 @@ note: "Living document"
 <div class="abstract-box">
 <h2>How To Use</h2>
 <p>
-この用語集は、「その言葉、どういう意味？」をすぐ確認するためのページです。難しい言葉はまず日常の言い方で理解し、必要なときだけ厳密な定義に進める構成にしています。WBEの議論は言葉のズレで混乱しやすいため、ここでは<strong>実際にどう測って扱うか</strong>を重視します。
+この用語集は、用語の意味をすぐ確認するためのリファレンスです。まず日常語の説明で把握し、必要なときだけ厳密な定義に進む構成とし、議論を測定と扱い方に結び付けます。WBEの議論は言葉のズレで混乱しやすいため、ここでは<strong>実際にどう測って扱うか</strong>を重視します。
 </p>
 </div>
 

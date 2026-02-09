@@ -5,7 +5,7 @@ description: "標準化・検証・比較可能性（何を満たせば前進と
 article_type: Casework
 subtitle: "PDB / INSDC / BIDS+OpenNeuro / ImageNet / MLPerf / OSF から学ぶ"
 author: Mind Uploading Research Project
-last_updated: "2026-02-05"
+last_updated: "2026-02-10"
 note: "Reference Collection"
 ---
 <!-- IMPORTANT: Do not delete or overwrite this information. It serves as the project's permanent knowledge base. -->
@@ -97,7 +97,7 @@ note: "Reference Collection"
 <div class="note-box">
 <strong>Mind-Uploadが借りる点</strong>
 <p>
-「規格がある」だけでは弱く、「その規格で置ける場所」「バリデータ」「メタデータの最小要件」が揃うと一気に進みます。
+規格策定に加えて、その規格で投稿できるリポジトリ、自動バリデータ、必須メタデータ要件を同時に提供すると、データ共有と追試が一気に加速します。
 </p>
 </div>
 

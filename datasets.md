@@ -5,7 +5,7 @@ description: "公開データ（EEG中心）と共有基盤を、Mind-Uploadの�
 article_type: Resource
 subtitle: "「データがある」だけでは足りない。規格・メタデータ・評価がセット。"
 author: Mind Uploading Research Project
-last_updated: "2026-02-05"
+last_updated: "2026-02-10"
 note: "Curated List (v0)"
 ---
 <!-- IMPORTANT: Do not delete or overwrite this information. It serves as the project's permanent knowledge base. -->
@@ -53,8 +53,7 @@ note: "Curated List (v0)"
 <section class="section" id="starter">
 <h2 class="section-title">2) EEGスターターパック（まずこれでL0〜L1）</h2>
 <p>
-最初は「使いやすい」「参照が多い」「前処理パイプラインが作りやすい」データから始めるのがおすすめです。
-ここでは入口として有名なものを挙げます（網羅ではありません）。
+以下は、使いやすさと参照の多さを重視したEEG入門用データセットの代表例です。前処理パイプラインの練習とL0〜L1到達を意識し、再現されたベースライン比較にすぐ着手できる範囲へ絞り込んでいます。
 </p>
 
 <table class="data-table">

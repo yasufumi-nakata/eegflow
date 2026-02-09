@@ -5,7 +5,7 @@ description: "マインドアップロード/WBEを「進歩を測れる科学�
 article_type: Platform
 subtitle: "PDB×BIDS×PhysioNet×OSFの発想で、WBEの“勝利条件”と“再現可能な前進”を作る"
 author: Mind Uploading Research Project
-last_updated: "2026-02-05"
+last_updated: "2026-02-10"
 note: "Operational Specification"
 ---
 <!-- IMPORTANT: Do not delete or overwrite this information. It serves as the project's permanent knowledge base. -->
@@ -85,7 +85,7 @@ note: "Operational Specification"
 <div class="stage-number">03</div>
 <div class="stage-body">
 <h4>Registry & Prereg（“やる前”の固定）</h4>
-<p>実験・解析計画を事前登録し、探索と検証を区別する。プロトコルと変更履歴を残し、報告バイアスを下げる。</p>
+<p>実験・解析計画を事前登録し、探索と検証を分離する。最初にテンプレート化した前提・評価指標・停止条件を提出し、更新時は差分付きで審査ログに追記して報告バイアスを下げる。</p>
 <div class="tag-list">
 <span class="tag">Preregistration</span><span class="tag">Protocol</span><span class="tag">Audit</span>
 </div>

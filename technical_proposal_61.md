@@ -5,7 +5,7 @@ description: "Response to Issue #61: Refining the physical and causal foundation
 article_type: "Technical Proposal"
 subtitle: "Issue #61: mind-upload.com Causal & Thermodynamic Critique Response"
 author: "mind-upload Project Contributor"
-last_updated: "2026-02-01"
+last_updated: "2026-02-10"
 note: "Proposal (Implemented)"
 ---
 
@@ -24,7 +24,7 @@ note: "Proposal (Implemented)"
 <section class="section" id="introduction">
 <h2 class="section-title">1. Introduction: Critique as a Catalyst</h2>
 <p>
-Issue #61で指摘された論点は、マインドアップロード（WBE）が単なる機能的模倣（Functional Mimicry）で終わるか、物理的な実在性を伴うか（Causal Reality）を分かつ決定的な分岐点である。
+Issue #61で問われたのは、WBEがソフトウェア的な模倣で終わるのか、それとも脳と同じ因果メカニズムまで再現できるのかという点である。本提案はこの疑問に答えるため、因果構造・熱力学・反実仮想検証の3領域を順番に修正し、読者が改善内容を素早く把握できるよう整理した。
 本プロジェクトは、この批判を全面的に受け入れ、以下の3つの主要な論理的修正を行う。
 </p>
 </section>

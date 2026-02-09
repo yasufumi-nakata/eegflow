@@ -5,7 +5,7 @@ description: "Mind-Uploadを研究基盤へ引き上げるための計測QA・�
 article_type: "Technical Proposal"
 subtitle: "Issue #46: Comprehensive Platform Proposal"
 author: "mind-upload Project Contributor"
-last_updated: "2026-02-01"
+last_updated: "2026-02-10"
 note: "Proposal (Draft)"
 ---
 
@@ -15,8 +15,7 @@ note: "Proposal (Draft)"
 <div class="abstract-box">
 <h2>Abstract</h2>
 <p>
-本提案は、mind-uploadを実験プロトタイプから再現可能な研究基盤へ引き上げるための
-技術的拡張案を、計測品質・同期・アーティファクト除去・BIDS準拠の4軸で整理する。
+本提案は、mind-uploadを実験プロトタイプから再現可能な研究基盤へ引き上げるため、計測品質・同期・アーティファクト除去・BIDS準拠の4軸で整理した技術的拡張案を提示する。
 </p>
 </div>
 

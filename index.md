@@ -5,7 +5,7 @@ description: "マインドアップロード/WBEを「進歩を測れる科学�
 article_type: Start Here
 subtitle: "勝利条件・標準・ベンチマーク・事前登録を先に作る"
 author: Mind Uploading Research Project
-last_updated: "2026-02-09"
+last_updated: "2026-02-10"
 note: "Human-friendly landing page"
 ---
 <!-- IMPORTANT: Do not delete or overwrite this information. It serves as the project's permanent knowledge base. -->
@@ -122,7 +122,7 @@ Mind-Uploadは、「心をコンピュータで再現できるのか？」とい
 <section class="section" id="cases">
 <h2 class="section-title">歴史のケースワーク（なぜWebが効くのか）</h2>
 <p>
-PDB、BIDS+OpenNeuro、PhysioNet、ImageNet、MLPerf、OSFなど、他分野が「検証可能性」を作ってきた型を整理し、Mind-Uploadへ移植するための参照ページを用意しています。
+PDB、BIDS+OpenNeuro、PhysioNet、ImageNet、MLPerf、OSFで築かれた検証手法を整理し、Mind-Uploadに転用するための参照ページです。過去の成功例を型として提示し、必要な要素を即座に確認できます。
 </p>
 <div class="cta-box">
 <h4>Casework</h4>

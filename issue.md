@@ -5,7 +5,7 @@ description: "Mind-Uploadプロジェクトへの参加方法と、Issue対応�
 article_type: Guide
 subtitle: "Join the Research Community + Issue Tracker"
 author: Mind Uploading Research Project
-last_updated: "2026-02-09"
+last_updated: "2026-02-10"
 ---
 <!-- IMPORTANT: Do not delete or overwrite this information. It serves as the project's permanent knowledge base. -->
 
@@ -16,7 +16,7 @@ last_updated: "2026-02-09"
 <div class="abstract-box">
 <h2>Welcome</h2>
 <p>
-Mind-Uploadは、マインドアップロードを「検証できる研究」にするためのオープンコミュニティです。専門分野は問いません。はじめての方でも、文章の改善、用語の整理、誤解の指摘から十分に貢献できます。
+Mind-Uploadは、マインドアップロードを検証可能な研究へ進めるオープンコミュニティです。分野や経験を問わず、文章改善や用語整理、誤解の指摘など再現性向上に直結する作業からすぐに参加いただけます。
 </p>
 </div>
 

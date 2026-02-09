@@ -5,7 +5,7 @@ description: "Issue #46/#47/#48/#56/#58/#61/#62 に対応する Technical Propos
 article_type: Index
 subtitle: "Issue対応・実装方針・根拠リンクを1ページで追跡"
 author: Mind Uploading Research Project
-last_updated: "2026-02-09"
+last_updated: "2026-02-10"
 note: "Integrated Compendium"
 ---
 <!-- IMPORTANT: Do not delete or overwrite this information. It serves as the project's permanent knowledge base. -->
@@ -100,7 +100,7 @@ note: "Integrated Compendium"
 <div class="stage-body">
 <h4>計測品質・同期・標準化ストリーム</h4>
 <p>
-Issue #46/#47 の共通核です。計測品質の定量化、同期誤差（遅延/ジッタ/ドリフト）補正、BIDS準拠の3点を「再現可能性の最低条件」として固定します。
+計測品質の定量化・同期誤差（遅延/ジッタ/ドリフト）補正・BIDS準拠を再現可能性の最低条件として固定し、Issue #46/#47 共通の計測品質・同期・標準化ストリームとして扱います。
 </p>
 <div class="tag-list">
 <span class="tag">QA</span><span class="tag">LSL</span><span class="tag">BIDS</span><span class="tag">Motion-BIDS</span>

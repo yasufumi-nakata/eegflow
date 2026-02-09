@@ -5,7 +5,7 @@ description: "Mind-Uploadを読んでいて出やすい疑問に、短く正確�
 article_type: FAQ
 subtitle: "派手な結論より、検証できる前進を"
 author: Mind Uploading Research Project
-last_updated: "2026-02-05"
+last_updated: "2026-02-10"
 note: "Human-first"
 ---
 <!-- IMPORTANT: Do not delete or overwrite this information. It serves as the project's permanent knowledge base. -->
@@ -36,7 +36,7 @@ A. マインドアップロード/WBEを「検証可能な研究プログラム�
 <section class="section" id="q1">
 <h2 class="section-title">Q. EEGで“思考”は読める？</h2>
 <p>
-A. 「何をどこまで」と定義しないと答えられません。現実には、EEGはノイズや個体差が大きく、さらに言語モデルの事前分布が“それっぽい文章”を作れてしまうため、<strong>EEG由来の情報</strong>と<strong>モデル側の補完</strong>を反事実テストで切り分ける必要があります。
+A. 「何をどこまで」と定義しない限り答えられません。EEGはノイズと個体差が大きく、言語モデルも尤もらしい文を補完するため、EEG由来情報とモデル補完を反事実テストで分離する手順を先に固定します。
 </p>
 <p>
 Mind-Uploadの立場は、「派手な読み出し」を否定するのではなく、<strong>検証可能な主張に落とす</strong>ことです（失敗例まで含む）。
