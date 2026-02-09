@@ -216,7 +216,6 @@ note: "暫定版（随時更新）"
 <li><strong>ノイズフロア/SNR:</strong> 周波数帯ごとの実効SNRを可視化する。</li>
 <li><strong>VR干渉:</strong> HMDの電磁・機械ノイズをプロファイル化する。</li>
 </ul>
-<p><strong>次に必要：</strong>Mind-Uploadの前処理（`mind-upload/01_preprocess.py`）に、QC指標とログ出力を組み込む <strong>(✅ Implemented in Issue #34)</strong>。計測前の「QAチェックリスト」を追加する。</p>
 </div>
 </details>
 
@@ -1210,16 +1209,7 @@ note: "暫定版（随時更新）"
 </ol>
 </section>
 
-<section class="section" id="mind-upload">
-<h2 class="section-title">Mind-Upload の現在地（このリポジトリでやること）</h2>
-<p>Mind-Upload は現時点では<strong>概念実装</strong>ですが、「計測→再構成→検証」のミニマムな流れを、EEG中心に試せる形を目指しています。</p>
-<ul>
-<li><a href="https://github.com/yasufumi-nakata/mind-upload/blob/main/mind-upload/01_preprocess.py" target="_blank">01_preprocess.py</a>：前処理（アーチファクト・品質管理の雛形） <strong>[QC Implemented]</strong></li>
-<li><a href="https://github.com/yasufumi-nakata/mind-upload/blob/main/mind-upload/02_source_imaging.py" target="_blank">02_source_imaging.py</a>：ソース推定（逆問題の入口） <strong>[Uncertainty Implemented]</strong></li>
-<li><a href="https://github.com/yasufumi-nakata/mind-upload/blob/main/mind-upload/03_causal_modeling.py" target="_blank">03_causal_modeling.py</a>：因果/生成モデル（予測・介入へ）</li>
-</ul>
-<p class="mini">※「解析手順の再現性」や「データ標準（BIDS）」は、WBE以前に研究として必須の足場です。</p>
-</section>
+
 
 <section class="section" id="sources">
 <h2 class="section-title">先行研究リスト（拡張版）</h2>
