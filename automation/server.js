@@ -47,11 +47,20 @@ const toNumberOrDefault = (value, fallback) => {
     return Number.isFinite(num) ? num : fallback;
 };
 
+const toMinuteOrDefault = (value, fallback) => {
+    const minute = Math.trunc(toNumberOrDefault(value, fallback));
+    if (minute < 0 || minute > 59) {
+        return fallback;
+    }
+    return minute;
+};
+
 const PORT = toNumberOrDefault(process.env.PORT, 3000);
 const HOST = process.env.HOST || '127.0.0.1';
 const RUN_TIMEOUT_SECONDS = toNumberOrDefault(process.env.RUN_TIMEOUT_SECONDS, 3600);
 const RUN_TIMEOUT_GRACE_SECONDS = toNumberOrDefault(process.env.RUN_TIMEOUT_GRACE_SECONDS, 30);
 const QUEUE_ON_BUSY = String(process.env.QUEUE_ON_BUSY ?? 'true').toLowerCase() !== 'false';
+const SCHEDULE_MINUTE = toMinuteOrDefault(process.env.SCHEDULE_MINUTE, 0);
 const RAW_SCRIPT_PATH = process.env.RESOLVE_SCRIPT;
 const SCRIPT_PATH = RAW_SCRIPT_PATH
     ? (path.isAbsolute(RAW_SCRIPT_PATH)
@@ -130,13 +139,13 @@ const runAutomation = (trigger) => {
     return 'started';
 };
 
-const scheduleDailyRun = (hour, minute, label) => {
+const scheduleHourlyRun = (minute, label) => {
     const scheduleNext = () => {
         const now = new Date();
         const next = new Date(now);
-        next.setHours(hour, minute, 0, 0);
+        next.setMinutes(minute, 0, 0);
         if (next <= now) {
-            next.setDate(next.getDate() + 1);
+            next.setHours(next.getHours() + 1);
         }
         const delayMs = next.getTime() - now.getTime();
         setTimeout(() => {
@@ -147,15 +156,14 @@ const scheduleDailyRun = (hour, minute, label) => {
     scheduleNext();
 };
 
-// 毎日11:00と17:00に実行
+// 毎時 SCHEDULE_MINUTE 分に実行
 if (cron) {
-    cron.schedule('0 11 * * *', () => runAutomation('scheduled-11'));
-    cron.schedule('0 17 * * *', () => runAutomation('scheduled-17'));
-    console.log('Cron jobs scheduled: runs daily at 11:00 and 17:00');
+    const cronExpr = `${SCHEDULE_MINUTE} * * * *`;
+    cron.schedule(cronExpr, () => runAutomation('scheduled-hourly'));
+    console.log(`Cron job scheduled: runs hourly at minute ${SCHEDULE_MINUTE}`);
 } else {
-    scheduleDailyRun(11, 0, 'scheduled-11');
-    scheduleDailyRun(17, 0, 'scheduled-17');
-    console.log('Fallback scheduler enabled: runs daily at 11:00 and 17:00');
+    scheduleHourlyRun(SCHEDULE_MINUTE, 'scheduled-hourly');
+    console.log(`Fallback scheduler enabled: runs hourly at minute ${SCHEDULE_MINUTE}`);
 }
 
 const server = http.createServer((req, res) => {

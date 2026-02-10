@@ -25,14 +25,14 @@ if [[ -f "$ENV_FILE" ]]; then
 fi
 
 # 設定（.env で上書き可能）
-REPO="${REPO:-yasufumi-nakata/mind-upload}"
+REPO="${REPO:-yasufumi-nakata/eegflow}"
 REPO_DIR="${REPO_DIR:-$DEFAULT_REPO_DIR}"
 AUTOMATION_DIR="${AUTOMATION_DIR:-$SCRIPT_DIR}"
 LOG_DIR="${LOG_DIR:-${AUTOMATION_DIR}/logs}"
 LOG_FILE="${LOG_FILE:-${LOG_DIR}/resolve-issues-$(date +%Y%m%d-%H%M%S).log}"
 TARGET_BRANCH="${TARGET_BRANCH:-main}"
 ISSUE_LIMIT="${ISSUE_LIMIT:-${issue_limit:-50}}"
-AI_CMD="${AI_CMD:-}"
+AI_CMD="${AI_CMD:-codex exec --full-auto -}"
 AI_TIMEOUT_SECONDS="${AI_TIMEOUT_SECONDS:-300}"
 AI_WORKDIR="${AI_WORKDIR:-$REPO_DIR}"
 CO_AUTHOR="${CO_AUTHOR:-}"
@@ -65,6 +65,67 @@ error_exit() {
 require_cmd() {
     local cmd="$1"
     command -v "$cmd" >/dev/null 2>&1 || error_exit "必要なコマンドが見つかりません: $cmd"
+}
+
+append_markdown_path_list() {
+    local paths="$1"
+    local out_file="$2"
+    if [[ -z "$paths" ]]; then
+        echo "- (変更ファイルなし)" >> "$out_file"
+        return
+    fi
+    while IFS= read -r path; do
+        [[ -z "$path" ]] && continue
+        printf -- '- `%s`\n' "$path" >> "$out_file"
+    done <<< "$paths"
+}
+
+append_markdown_numstat_list() {
+    local numstat="$1"
+    local out_file="$2"
+    if [[ -z "$numstat" ]]; then
+        echo "- (差分統計なし)" >> "$out_file"
+        return
+    fi
+    while IFS=$'\t' read -r added deleted path; do
+        [[ -z "$path" ]] && continue
+        printf -- '- `%s` (+%s / -%s)\n' "$path" "$added" "$deleted" >> "$out_file"
+    done <<< "$numstat"
+}
+
+build_issue_resolution_comment() {
+    local issue_num="$1"
+    local issue_title="$2"
+    local commit_sha="$3"
+    local changed_files="$4"
+    local diff_numstat="$5"
+    local out_file="$6"
+
+    cat > "$out_file" <<EOF
+自動対応を完了しました。
+
+### 修正案
+- Issue #${issue_num}「${issue_title}」の要件を満たすため、関連箇所を確認し、影響範囲を最小化して修正する方針で対応しました。
+- 変更内容と差分統計を以下に記録します。
+
+### 修正内容
+- コミット: \`${commit_sha}\`
+- 変更ファイル:
+EOF
+
+    append_markdown_path_list "$changed_files" "$out_file"
+
+    cat >> "$out_file" <<'EOF'
+
+### 差分統計
+EOF
+
+    append_markdown_numstat_list "$diff_numstat" "$out_file"
+
+    cat >> "$out_file" <<'EOF'
+
+実行環境に関する情報はこのIssueには記載していません。
+EOF
 }
 
 run_with_timeout() {
@@ -233,8 +294,12 @@ if [[ ! -d "$REPO_DIR/.git" ]]; then
     error_exit "REPO_DIR が Git リポジトリではありません: $REPO_DIR"
 fi
 
-if [[ "$DRY_RUN" == false && -z "$AI_CMD" ]]; then
-    error_exit "AI_CMD が未設定です。.env で設定してください。"
+if [[ "$DRY_RUN" == false ]]; then
+    AI_CMD_BIN=$(printf '%s\n' "$AI_CMD" | awk '{print $1}')
+    if [[ -z "$AI_CMD_BIN" ]]; then
+        error_exit "AI_CMD が空です。.env で設定してください。"
+    fi
+    require_cmd "$AI_CMD_BIN"
 fi
 
 # 最新のコードを取得
@@ -275,7 +340,7 @@ echo "$ISSUES" | jq -c '.[]' | while read -r issue; do
     fi
     
     # AIに渡すプロンプトを構築
-    PROMPT="あなたはmind-uploadプロジェクトの開発者です。以下のGitHub Issueを解決してください。
+    PROMPT="あなたはeegflowプロジェクトの開発者です。以下のGitHub Issueを解決してください。
 
 ## Issue #${ISSUE_NUM}: ${ISSUE_TITLE}
 
@@ -284,7 +349,8 @@ ${ISSUE_BODY}
 ---
 
 リポジトリの構造を確認し、適切なファイルを修正してください。
-修正が完了したら、変更内容の要約を教えてください。"
+修正が完了したら、変更内容の要約と実施した確認手順を教えてください。
+実行環境（OS情報、ユーザー名、絶対パス、秘密情報）はGitHubへ記載しないでください。"
 
     if [[ "$DRY_RUN" == true ]]; then
         log "[DRY-RUN] Issue #${ISSUE_NUM} のプロンプトを生成しました"
@@ -293,11 +359,11 @@ ${ISSUE_BODY}
     fi
     
     # プロンプトを一時ファイルに保存（実行後に削除）
-    PROMPT_FILE=$(mktemp "${TMPDIR:-/tmp}/mind-upload_prompt_${ISSUE_NUM}_XXXXXX.txt")
+    PROMPT_FILE=$(mktemp "${TMPDIR:-/tmp}/eegflow_prompt_${ISSUE_NUM}_XXXXXX.txt")
     printf '%s' "$PROMPT" > "$PROMPT_FILE"
     
     log "Issue #${ISSUE_NUM} を解決中..."
-    if ! run_ai < "$PROMPT_FILE" >/dev/null 2>&1; then
+    if ! run_ai < "$PROMPT_FILE" >>"$LOG_FILE" 2>&1; then
         log "ERROR: Issue #${ISSUE_NUM} の解決に失敗しました"
         stash_failed_issue "$ISSUE_NUM"
         rm -f "$PROMPT_FILE"
@@ -324,6 +390,13 @@ ${ISSUE_BODY}
             git -C "$REPO_DIR" reset -q -- "$path"
         done <<< "$UNTRACKED_BEFORE"
     fi
+    STAGED_FILES=$(git -C "$REPO_DIR" diff --cached --name-only)
+    STAGED_NUMSTAT=$(git -C "$REPO_DIR" diff --cached --numstat)
+    if [[ -z "$STAGED_FILES" ]]; then
+        log "Issue #${ISSUE_NUM}: コミット対象の変更がありませんでした"
+        git -C "$REPO_DIR" reset -q
+        continue
+    fi
     COMMIT_MSG="Fixes #${ISSUE_NUM}: ${ISSUE_TITLE}
 
 自動生成による修正
@@ -332,6 +405,7 @@ ${ISSUE_BODY}
         COMMIT_MSG="${COMMIT_MSG}"$'\n\n'"Co-authored-by: ${CO_AUTHOR}"
     fi
     git -C "$REPO_DIR" commit -m "$COMMIT_MSG"
+    COMMIT_SHA=$(git -C "$REPO_DIR" rev-parse --short HEAD)
     
     # プッシュ
     log "変更をプッシュ中..."
@@ -339,7 +413,14 @@ ${ISSUE_BODY}
     
     # Issueをクローズ
     log "Issue #${ISSUE_NUM} をクローズ中..."
-    gh issue close "$ISSUE_NUM" --repo "$REPO" --comment "このIssueは自動解決システムにより対応されました。" || log "WARN: Issueのクローズに失敗しました"
+    CLOSE_COMMENT_FILE=$(mktemp "${TMPDIR:-/tmp}/issue_close_${ISSUE_NUM}_XXXXXX.md")
+    build_issue_resolution_comment "$ISSUE_NUM" "$ISSUE_TITLE" "$COMMIT_SHA" "$STAGED_FILES" "$STAGED_NUMSTAT" "$CLOSE_COMMENT_FILE"
+    if gh issue comment "$ISSUE_NUM" --repo "$REPO" --body-file "$CLOSE_COMMENT_FILE" >>"$LOG_FILE" 2>&1; then
+        gh issue close "$ISSUE_NUM" --repo "$REPO" >>"$LOG_FILE" 2>&1 || log "WARN: Issueのクローズに失敗しました"
+    else
+        log "ERROR: Issue #${ISSUE_NUM} の修正内容コメント投稿に失敗したため、クローズをスキップしました"
+    fi
+    rm -f "$CLOSE_COMMENT_FILE"
     
     log "Issue #${ISSUE_NUM} の処理が完了しました"
 done
