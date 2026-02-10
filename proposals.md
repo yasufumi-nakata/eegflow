@@ -182,6 +182,33 @@ Issue #56/#58/#61/#62 の統合論点です。観測一致だけでなく、介�
 </div>
 </section>
 
+<section class="section" id="evidence-gaps">
+<h2 class="section-title">エビデンスギャップ（未解決課題）</h2>
+<p>
+各提案ストリームについて、文献的裏付けが不足している領域を明示します。
+</p>
+<div class="key-points">
+<h4>Stream A: 計測品質</h4>
+<ul>
+<li><strong>ASR のパラメータ選択根拠：</strong>ASR（Artifact Subspace Reconstruction）の閾値設定は経験的であり、WBE用途での最適パラメータの理論的根拠は未確立。</li>
+<li><strong>OPM-MEGとの統合：</strong>OPM-MEG（Optically Pumped Magnetometer）は動き耐性を改善するが、EEGとのマルチモーダル統合プロトコルは標準化されていない（Boto et al., 2018）。</li>
+</ul>
+</div>
+<div class="key-points">
+<h4>Stream C: WBE同一性検証</h4>
+<ul>
+<li><strong>do-calculusの実装可能性：</strong>Pearl のdo-calculusは理論的に強力だが、神経データに対する観測変数の選択と介入変数の特定が実験設計上の最大のボトルネック。</li>
+<li><strong>SCMのサイクル問題：</strong>脳の再帰的接続ではDAG仮定が成り立たず、cyclic SCM（動的因果モデルとの接続）の理論的整備が必要。</li>
+</ul>
+</div>
+<div class="key-points">
+<h4>Stream D: 熱力学</h4>
+<ul>
+<li><strong>NESS測定の実現性：</strong>非平衡定常状態のエントロピー生成速度を神経系で直接測定する手法は確立されていない。代理指標（代謝率、ATP消費量等）との対応関係の検証が必要。</li>
+</ul>
+</div>
+</section>
+
 <section class="section" id="references">
 <h2 class="section-title">参考文献（横断）</h2>
 <ol>
@@ -193,6 +220,9 @@ Issue #56/#58/#61/#62 の統合論点です。観測一致だけでなく、介�
 <li>Seifert, U. (2012). Stochastic thermodynamics. <a href="https://doi.org/10.1088/0034-4885/75/12/126001" target="_blank">doi:10.1088/0034-4885/75/12/126001</a></li>
 <li>Kitazono, J., Kanai, R., &amp; Oizumi, M. (2018). Efficient MIP search in IIT. <a href="https://doi.org/10.3390/e20030173" target="_blank">doi:10.3390/e20030173</a></li>
 <li>Kothe, C., et al. (2025). Lab Streaming Layer. <a href="https://doi.org/10.1162/IMAG.a.136" target="_blank">doi:10.1162/IMAG.a.136</a></li>
+<li>Boto, E., et al. (2018). Moving magnetoencephalography towards real-world applications with wearable OPM-MEG. <a href="https://doi.org/10.1038/nature26147" target="_blank">doi:10.1038/nature26147</a></li>
+<li>Pearl, J. (2009). <em>Causality: Models, Reasoning, and Inference</em> (2nd ed.). Cambridge University Press.</li>
+<li>Friston, K. J., Harrison, L., &amp; Penny, W. (2003). Dynamic causal modelling. <a href="https://doi.org/10.1016/S1053-8119(03)00202-7" target="_blank">doi:10.1016/S1053-8119(03)00202-7</a></li>
 </ol>
 </section>
 

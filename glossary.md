@@ -76,6 +76,52 @@ note: "Living document"
 </table>
 </section>
 
+<section class="section" id="consciousness-theories">
+<h2 class="section-title">意識理論（Theories of Consciousness）</h2>
+<table class="data-table">
+<thead>
+<tr>
+<th>用語</th>
+<th>Mind-Uploadでの意味</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>IIT（統合情報理論）</strong></td>
+<td>意識を「統合された情報量（Φ）」で測る理論。IIT 4.0（Albantakis et al., 2023）では公理系を刷新し、Φ構造（cause-effect structure）で意識を特定する。WBEでは因果構造の保存要件に直結する。</td>
+</tr>
+<tr>
+<td><strong>GNWT（グローバル神経ワークスペース理論）</strong></td>
+<td>情報が前頭-頭頂ネットワークで「イグニッション」し広域共有されることで意識が成立するとする理論。IITとの実験的対立はCogitate Consortium（2025）で検証された。</td>
+</tr>
+<tr>
+<td><strong>FEP（自由エネルギー原理）</strong></td>
+<td>生物が環境との境界を維持するために、感覚入力の「驚き」を最小化するという包括的枠組み（Friston, 2010）。WBEでは実装原理として採用。</td>
+</tr>
+<tr>
+<td><strong>能動的推論（Active Inference）</strong></td>
+<td>FEPの行動側面。環境を能動的に変えて予測誤差を最小化する。エミュレータの自律性の基盤。</td>
+</tr>
+<tr>
+<td><strong>PCI / PCI-ST（摂動複雑性指標）</strong></td>
+<td>TMS刺激に対するEEG応答の複雑性で意識レベルを定量する。理論に依存しない経験的指標としてWBEの検証基盤に位置づける（Casali et al., 2013）。</td>
+</tr>
+<tr>
+<td><strong>マルコフブランケット（Markov Blanket）</strong></td>
+<td>システムと環境の統計的境界。FEPにおける「自己」の定義に使われるが、意識の境界への適用には批判もある（Bruineberg et al., 2022）。</td>
+</tr>
+<tr>
+<td><strong>Unfolding Argument</strong></td>
+<td>任意のリカレントネットワークは機能的に等価なフィードフォワード網で置換でき、IITではΦ=0となるという批判（Doerig et al., 2019）。WBEでは因果構造保存の必要性を支持する論拠。</td>
+</tr>
+<tr>
+<td><strong>HOT（高次理論）</strong></td>
+<td>意識は一次表象に対する高次の表象（「自分が知覚していることを知っている」）によって成立するとする理論群。</td>
+</tr>
+</tbody>
+</table>
+</section>
+
 <section class="section" id="measurement">
 <h2 class="section-title">計測（Measurement）</h2>
 <table class="data-table">
@@ -105,6 +151,40 @@ note: "Living document"
 <tr>
 <td><strong>QC（Quality Control）</strong></td>
 <td>インピーダンス、ノイズ、欠損、アーティファクトなどを定量化し、ログとして残すこと。</td>
+</tr>
+</tbody>
+</table>
+</section>
+
+<section class="section" id="implementation">
+<h2 class="section-title">実装基盤（Implementation）</h2>
+<table class="data-table">
+<thead>
+<tr>
+<th>用語</th>
+<th>Mind-Uploadでの意味</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ニューロモルフィック・ハードウェア</strong></td>
+<td>生物学的ニューロンの動態を電子回路で模倣する専用チップ（Intel Loihi 2, SpiNNaker 2等）。IITの因果構造要件への対応候補。</td>
+</tr>
+<tr>
+<td><strong>Slow Continuous Mind Uploading</strong></td>
+<td>一括コピーではなく、生体脳とデジタル基盤を段階的に統合する移行戦略（Clowes, 2021）。本人性保存の工学的アプローチ。</td>
+</tr>
+<tr>
+<td><strong>コネクトーム（Connectome）</strong></td>
+<td>脳内の神経結合の完全地図。ショウジョウバエ全脳コネクトーム（FlyWire, Dorkenwald et al., 2024）が完成し、マウス脳が次の目標。</td>
+</tr>
+<tr>
+<td><strong>NMM（Neural Mass Model）</strong></td>
+<td>大規模ニューロン群の平均活動を記述するモデル。DCMの基盤となり、E/Iバランスの推定に使用。</td>
+</tr>
+<tr>
+<td><strong>E/Iバランス（興奮/抑制バランス）</strong></td>
+<td>神経回路の興奮性と抑制性の動的均衡。意識の質やレベルの変化に関与する。</td>
 </tr>
 </tbody>
 </table>
@@ -184,6 +264,11 @@ note: "Living document"
 <li>Staniek, M., &amp; Lehnertz, K. (2008). Symbolic Transfer Entropy. <a href="https://doi.org/10.1103/PhysRevLett.100.158101" target="_blank">doi:10.1103/PhysRevLett.100.158101</a></li>
 <li>Gorgolewski, K. J., et al. (2016). BIDS. <a href="https://doi.org/10.1038/sdata.2016.44" target="_blank">doi:10.1038/sdata.2016.44</a></li>
 <li>Pernet, C. R., et al. (2019). EEG-BIDS. <a href="https://doi.org/10.1038/s41597-019-0104-8" target="_blank">doi:10.1038/s41597-019-0104-8</a></li>
+<li>Albantakis, L., et al. (2023). Integrated Information Theory (IIT) 4.0. <a href="https://doi.org/10.1371/journal.pcbi.1011465" target="_blank">doi:10.1371/journal.pcbi.1011465</a></li>
+<li>Friston, K. (2010). The free-energy principle. <a href="https://doi.org/10.1038/nrn2787" target="_blank">doi:10.1038/nrn2787</a></li>
+<li>Casali, A. G., et al. (2013). PCI. <a href="https://doi.org/10.1126/scitranslmed.3006294" target="_blank">doi:10.1126/scitranslmed.3006294</a></li>
+<li>Doerig, A., et al. (2019). Unfolding Argument. <a href="https://doi.org/10.1016/j.concog.2019.04.002" target="_blank">doi:10.1016/j.concog.2019.04.002</a></li>
+<li>Tononi, G., et al. (2016). IIT: from the phenomenology to the mechanisms of consciousness. <a href="https://doi.org/10.1038/nrn.2016.44" target="_blank">doi:10.1038/nrn.2016.44</a></li>
 </ol>
 </section>
 

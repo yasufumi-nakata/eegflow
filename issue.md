@@ -69,13 +69,19 @@ Mind-Uploadは、マインドアップロードを検証可能な研究へ進め
 <p>コミュニティの貢献により解決された主要な課題です。</p>
 
 <div class="key-points">
-<h4>Completed Tasks</h4>
+<h4>設計完了（実装コード未公開）</h4>
 <ul>
-<li><strong>Issue #10:</strong> MUとLLMシミュレーションの判別基準（予測不可能性・自己更新性・因果反応性）の3軸ベンチマーク確立</li>
-<li><strong>Issue #12:</strong> Boundary Problem に対するグリア・代謝指標を含むハイブリッド計測プロトコルの策定</li>
-<li><strong>Issue #34:</strong> M8品質管理 (QC) メトリクスのJSONログ出力機能の実装</li>
-<li><strong>Issue #43:</strong> R2経験的ベイズによるソース推定と不確実性定量化（信頼区間）の実装</li>
+<li><strong>Issue #10:</strong> MUとLLMシミュレーションの判別基準（予測不可能性・自己更新性・因果反応性）の3軸ベンチマーク — <em>設計文書は完了。再現可能な実装コード・テストデータ・評価結果は未公開。</em></li>
+<li><strong>Issue #12:</strong> Boundary Problem に対するグリア・代謝指標を含むハイブリッド計測プロトコル — <em>概念設計は完了。プロトコル詳細・必要機材リスト・パイロットデータは未整備。</em></li>
+<li><strong>Issue #34:</strong> M8品質管理 (QC) メトリクスのJSONログ出力機能 — <em>スキーマ設計は完了。実装コードはリポジトリに未反映。</em></li>
+<li><strong>Issue #43:</strong> R2経験的ベイズによるソース推定と不確実性定量化（信頼区間） — <em>理論的枠組みは文書化済み。<code>02_source_imaging.py</code>の実装コードは未公開。</em></li>
 </ul>
+</div>
+<div class="note-box">
+<strong>透明性に関する注記</strong>
+<p>
+上記のIssueは、サイト内の文書レベルでは対応が完了していますが、第三者が再現・検証できる形（実行可能コード、テストデータ、評価結果）での公開には至っていません。本プロジェクトが掲げる再現性の基準（L0: 第三者による再現可能性）を満たすためには、これらの実装の公開が必要です。
+</p>
 </div>
 </section>
 
@@ -151,6 +157,77 @@ Mind-Uploadは、マインドアップロードを検証可能な研究へ進め
 <h4>統合本文</h4>
 <p>Technical Proposal 全体の統合本文は `proposals.html` に集約しています。</p>
 <a href="proposals.html">統合本文を見る →</a>
+</div>
+</section>
+
+<!-- Verification Audit -->
+<section class="section" id="verification-audit">
+<h2 class="section-title">Verification Audit（180件の検証監査）</h2>
+<p>
+2026年2月に実施した全サイトコンテンツの体系的検証監査の結果です。4カテゴリ・180件のGitHub Issueとして登録し、サイト修正を通じて対応しています。
+</p>
+
+<table class="data-table">
+<thead>
+<tr>
+<th>カテゴリ</th>
+<th>Issue範囲</th>
+<th>件数</th>
+<th>対応状況</th>
+<th>主な修正内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>LIT（文献検証）</strong></td>
+<td>#71–#110</td>
+<td>40件</td>
+<td>文書修正済み</td>
+<td>DOI検証、重複参照の除去（ref-68/69/72/75）、FlyWire 2024追加、未検証引用の明示</td>
+</tr>
+<tr>
+<td><strong>THEO（理論的ギャップ）</strong></td>
+<td>#111–#145</td>
+<td>35件</td>
+<td>文書修正済み</td>
+<td>ハードプロブレムの立場明示、Unfolding Argument対応、FEP批判の認知、哲学的前提の表化</td>
+</tr>
+<tr>
+<td><strong>IMPL（実装ギャップ）</strong></td>
+<td>#146–#195</td>
+<td>50件</td>
+<td>文書修正済み</td>
+<td>実装ステータス透明性報告、L0未達成の明示、エビデンスギャップ分析、Deployment節追加</td>
+</tr>
+<tr>
+<td><strong>METH（方法論・最新研究）</strong></td>
+<td>#196–#250</td>
+<td>55件</td>
+<td>文書修正済み</td>
+<td>コネクトーム進捗更新、代替アプローチ比較表、倫理FAQ追加、用語集拡充（13用語追加）</td>
+</tr>
+</tbody>
+</table>
+
+<div class="key-points">
+<h4>主要な修正（サイト横断）</h4>
+<ul>
+<li><strong>perspective.md：</strong>重複参照4件除去、Limitations節追加、FlyWireコネクトーム更新、Chalmers 1995追加</li>
+<li><strong>idea.md：</strong>Limitations and Open Questions節追加、Weber 2025にDOIリンク付与、参考文献5件追加</li>
+<li><strong>verification.md：</strong>実装ステータス透明性報告表追加、科学的ギャップ分析節追加、MOABB/FAIR参照追加</li>
+<li><strong>glossary.md：</strong>意識理論セクション（IIT/GNWT/FEP/PCI/マルコフブランケット等8用語）と実装基盤セクション（5用語）を追加</li>
+<li><strong>faq.md：</strong>ハードプロブレム、コピー問題、Cogitate結果、倫理、他プロジェクト比較の5問を追加</li>
+<li><strong>wbe_101.md：</strong>哲学的前提の比較表、代替アプローチ比較表を追加</li>
+<li><strong>proposals.md：</strong>エビデンスギャップ節追加（ASR/OPM-MEG/do-calculus/NESS課題の明示）</li>
+<li><strong>tech_roadmap.md：</strong>I8/I9構造バグ修正、Deployment & Governance節（D0-D3）追加</li>
+</ul>
+</div>
+
+<div class="note-box">
+<strong>透明性に関する注記</strong>
+<p>
+上記の修正はすべて「文書レベル」です。実行可能コード、テストデータ、評価結果としての公開（L0達成）は別途必要であり、本監査ではその乖離を明示することを優先しました。
+</p>
 </div>
 </section>
 

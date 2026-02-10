@@ -507,6 +507,10 @@ note: "暫定版（随時更新）"
 </summary>
 <div class="qa-body">
 <p><strong>問い：</strong>強い主張（P1のL4-L5）に近づくほど、安全が技術要件になる。</p>
+<p><strong>次に必要：</strong>隔離環境、監視指標、停止プロトコルの3点セットを、L3以降の実装計画に含める</p>
+</div>
+</details>
+
 <details open class="qa" data-tags="implementation">
 <summary>
 <span class="qa-id">I9</span>
@@ -691,6 +695,61 @@ note: "暫定版（随時更新）"
 <p><strong>問い：</strong>PCI（複雑性）などのスカラー値だけでは、意識の「質的な構造（Qualitative Structure）」が同じかどうかわからない。</p>
 <p><strong>提案：</strong>検証指標として<strong>位相的データ解析（TDA）</strong>、特に<strong>パーシステント・ホモロジー（Persistent Homology）</strong>を導入する。神経活動多様体（Neural Manifold）の「穴（サイクル）」や連結成分の数（ベッティ数）を比較することで、動的なアトラクタ構造の同一性を幾何学的に保証する。</p>
 <p><strong>次に必要：</strong>パーシステンス図（Persistence Diagrams）を用いて、生体脳とエミュレーションの間のトポロジー距離（Bottleneck distance等）を計測する</p>
+</div>
+</details>
+</div>
+
+<div class="node" id="deployment" data-qa-group>
+<div class="node-kicker">5. Deployment & Governance</div>
+<h3>社会実装：技術を越えて何が必要か？</h3>
+<p class="mini"><strong>中心問い：</strong>「L5（社会実装）に向けて、技術以外にどのような制度・倫理・法的基盤が必要か？」</p>
+
+<details open class="qa" data-tags="deployment">
+<summary>
+<span class="qa-id">D0</span>
+<span class="qa-title">倫理的フレームワーク：エミュレートされた存在の権利は？</span>
+<span class="qa-tags"><span class="tag">ETHICS</span></span>
+</summary>
+<div class="qa-body">
+<p><strong>問い：</strong>WBEが成功した場合、エミュレーションは権利主体か？停止は「死」か？複製は「出生」か？</p>
+<p><strong>現状：</strong>EU AI Act、米国MIND Act（2025提案）等で神経データ保護の枠組みが整備されつつあるが、WBE固有の課題（複製、停止、改変）には対応していない。</p>
+<p><strong>次に必要：</strong>技術的検証（L0-L2）と並行して、倫理レビュー委員会の設計指針を策定する</p>
+</div>
+</details>
+
+<details open class="qa" data-tags="deployment">
+<summary>
+<span class="qa-id">D1</span>
+<span class="qa-title">同意と撤回：本人のインフォームドコンセントをどう設計する？</span>
+<span class="qa-tags"><span class="tag">CONSENT</span></span>
+</summary>
+<div class="qa-body">
+<p><strong>問い：</strong>WBEプロセスへの同意は事前に与えられるが、プロセス中やプロセス後の撤回権をどう保証するか？</p>
+<p><strong>次に必要：</strong>段階的同意モデル（各フェーズでの再同意）と、停止権の工学的実装を設計する</p>
+</div>
+</details>
+
+<details open class="qa" data-tags="deployment">
+<summary>
+<span class="qa-id">D2</span>
+<span class="qa-title">アクセスと公正：誰がWBEにアクセスできるべきか？</span>
+<span class="qa-tags"><span class="tag">EQUITY</span></span>
+</summary>
+<div class="qa-body">
+<p><strong>問い：</strong>WBEが実現した場合、富裕層のみが「不死」にアクセスできる格差問題をどう扱うか？</p>
+<p><strong>次に必要：</strong>検証基盤（Verification Commons）のオープンアクセス設計を、格差防止の第一歩として位置づける</p>
+</div>
+</details>
+
+<details open class="qa" data-tags="deployment">
+<summary>
+<span class="qa-id">D3</span>
+<span class="qa-title">安全保障：悪用リスクと制御をどう設計する？</span>
+<span class="qa-tags"><span class="tag">SECURITY</span></span>
+</summary>
+<div class="qa-body">
+<p><strong>問い：</strong>エミュレーションの改変、強制的な精神操作、軍事利用等のリスクにどう対処するか？</p>
+<p><strong>次に必要：</strong>I8（containment）の設計と連動し、アクセス制御・改変監査・停止権の技術的保証を設計する</p>
 </div>
 </details>
 </div>

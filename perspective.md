@@ -272,7 +272,7 @@ href="#ref-33">[33]</a></sup>や、神経修飾状態をマッピングする動
 </div>
 <div class="timeline-item">
 <div class="timeline-dot done"></div>
-<div class="timeline-label">ショウジョウバエ（hemibrain）<br><strong>~25,000</strong> neurons</div>
+<div class="timeline-label">ショウジョウバエ（FlyWire全脳）<br><strong>~139,000</strong> neurons<br><span style="font-size:10px; opacity:0.7;">Dorkenwald et al., Nature 2024</span></div>
 </div>
 <div class="timeline-item">
 <div class="timeline-dot current"></div>
@@ -286,7 +286,7 @@ href="#ref-33">[33]</a></sup>や、神経修飾状態をマッピングする動
 </div>
 <p class="figure-label">Figure 1</p>
 <p class="figure-caption">コネクトーム研究の進展とスケール。線虫（<em>C.
-elegans</em>）では全神経系のコネクトームが整備されつつあり<sup><a href="#ref-20">[20]</a></sup>、ショウジョウバエでは成人脳の大規模部分接続図（hemibrain）などが公開されている<sup><a
+elegans</em>）では全神経系のコネクトームが整備されつつあり<sup><a href="#ref-20">[20]</a></sup>、ショウジョウバエでは2024年にFlyWireプロジェクトにより成虫全脳コネクトーム（約139,000ニューロン）が完成した（Dorkenwald et al., 2024）<sup><a
 href="#ref-21">[21]</a></sup>。一方で、機能的ダイナミクス（状態依存の結合変化）や、シナプス強度・神経修飾・グリアを含む力学の同定は依然課題である。マウスでは皮質の小体積で飽和再構成が達成されているが<sup><a
 href="#ref-22">[22]</a></sup>、全脳規模の再構成は現在進行中である。ヒト脳は約860億ニューロンを有する<sup><a
 href="#ref-57">[57]</a></sup>。
@@ -661,6 +661,39 @@ href="#ref-54">[54]</a></sup>。</p>
 </div>
 </section>
 
+<!-- Limitations -->
+<section class="section" id="limitations">
+<h2 class="section-title">Limitations and Epistemic Humility</h2>
+
+<div class="note-box">
+<strong>このページの限界を明示する</strong>
+<p>
+研究ノートとして、以下の構造的限界を認識し明記します。これらは「弱点」ではなく、科学的誠実さの要件です。
+</p>
+</div>
+
+<h3>理論的限界</h3>
+<ul style="margin: 0; padding-left: 20px; list-style-type: disc; font-size: 14px; line-height: 1.6;">
+<li style="margin-bottom: 8px;"><strong>ハードプロブレムの回避：</strong>本ページは機能的等価性を操作的定義として採用するが、現象的意識（phenomenal consciousness）の同一性は検証対象外である。機能的に完全なエミュレーションが「意識を持つ」ことの十分条件であるかは、本プロジェクトの枠組みでは判定不能である（Chalmers, 1995）。</li>
+<li style="margin-bottom: 8px;"><strong>理論的中立性の限界：</strong>「理論に依存しない」と宣言しつつも、PCI等の指標選択自体がIIT寄りの暗黙的前提を含む可能性がある。この潜在的バイアスを完全に排除することはできない。</li>
+<li style="margin-bottom: 8px;"><strong>FEPの反証可能性：</strong>自由エネルギー原理は包括的すぎて反証不可能との批判がある。本プロジェクトはFEPを「実装原理」として採用するが、その妥当性は経験的成果で別途検証する必要がある。</li>
+<li style="margin-bottom: 8px;"><strong>Unfolding Argumentの含意：</strong>Doerig et al. (2019)<sup><a href="#ref-40">[40]</a></sup>の議論が正しければ、デジタルエミュレーションではIITの意味での意識（Φ>0）は原理的に生じない。ニューロモルフィック基盤への移行は必須となるが、その工学的実現可能性は未検証である。</li>
+</ul>
+
+<h3>工学的限界</h3>
+<ul style="margin: 0; padding-left: 20px; list-style-type: disc; font-size: 14px; line-height: 1.6;">
+<li style="margin-bottom: 8px;"><strong>計測−再現ギャップ：</strong>非侵襲EEG（空間解像度~1-2cm）とWBEが要求する詳細度（シナプスレベル~nm）の間には約7桁のギャップがある。逆問題の不良設定性は原理的に解消されない。</li>
+<li style="margin-bottom: 8px;"><strong>再現性の現状：</strong>本プロジェクトが掲げるL0（第三者再現可能性）は、現時点では達成されていない。リポジトリは主にウェブサイトコンテンツであり、実行可能なコード・データ・環境情報は未公開である。</li>
+<li style="margin-bottom: 8px;"><strong>コネクトーム-ダイナミクスギャップの深刻さ：</strong>FlyWire（2024）やC. elegans（2019）のコネクトームが完成しても、それだけでは行動の予測に不十分であることが示されている。構造から機能への変換は、WBEの中核的未解決問題である。</li>
+</ul>
+
+<h3>プロジェクト運営の限界</h3>
+<ul style="margin: 0; padding-left: 20px; list-style-type: disc; font-size: 14px; line-height: 1.6;">
+<li style="margin-bottom: 8px;"><strong>個人プロジェクト：</strong>現時点では個人の研究ノートであり、ピアレビューを受けた研究ではない。外部検証と共同研究の拡大が必要である。</li>
+<li style="margin-bottom: 8px;"><strong>設計と実装の乖離：</strong>本ページに記述された設計方針の多くは文書レベルに留まり、実装コード・テストデータ・評価結果として公開されていない。</li>
+</ul>
+</section>
+
 <!-- About -->
 <section class="section" id="about">
 <h2 class="section-title">About</h2>
@@ -864,14 +897,10 @@ Tools. <em>arXiv:2302.04761</em>. <a href="https://arxiv.org/abs/2302.04761">arX
 <li id="ref-67" value="67">Manakul, P., et al. (2023). SelfCheckGPT: Zero-Resource Black-Box Hallucination
 Detection for Generative Large Language Models. <em>arXiv:2303.08896</em>. <a
 href="https://arxiv.org/abs/2303.08896">arXiv</a></li>
-<li id="ref-68" value="68">Cogitate Consortium, Ferrante, O., et al. (2025). Adversarial testing of global neuronal workspace and integrated information theories of consciousness. <em>Nature</em>, 642(8066), 133–142.</li>
-<li id="ref-69" value="69">Doerig, A., et al. (2019). The unfolding argument: Why structuralism and functionalism cannot be the basis of consciousness. <em>Consciousness and Cognition</em>, 72, 49-59.</li>
 <li id="ref-70" value="70">Friston, K. J., et al. (2017). Active inference, mathematical constitution, and pure consciousness. <em>Frontiers in Psychology</em>, 8, 1322.</li>
 <li id="ref-71" value="71">Zanichelli, N., et al. (2025). State of Brain Emulation Report 2025. <em>arXiv:2510.15745</em>.</li>
-<li id="ref-72" value="72">Ienca, M., & Andorno, R. (2017). Towards new human rights in the age of neuroscience and neurotechnology. <em>Life Sciences, Society and Policy</em>, 13(1), 5.</li>
 <li id="ref-73" value="73">Koulouri, A. (2025). Bayesian model parameter learning in linear inverse problems. <em>Machine Learning: Science and Technology</em>.</li>
 <li id="ref-74" value="74">Nzakuna, P. S., et al. (2025). Monte Carlo-based Strategy for Assessing the Impact of EEG Data Uncertainty. <em>IEEE Transactions on Instrumentation and Measurement</em>.</li>
-<li id="ref-75" value="75">Zanichelli, N., et al. (2025). State of Brain Emulation Report 2025. <em>arXiv:2510.15745</em>.</li>
 <li id="ref-76" value="76">Laukkonen, R., Friston, K., & Chandaria, S. (2025). A beautiful loop: An active inference theory of consciousness. <em>Neuroscience & Biobehavioral Reviews</em>.</li>
 <li id="ref-77" value="77">Clark, A. (2013). The Mark of the Mental: In Search of the Markov Blanket. In: <em>The Mark of the Mental</em>. Oxford University Press.</li>
 <li id="ref-78" value="78">Feng, Z., et al. (2025). Block-Champagne: A Novel Bayesian Framework for Accurate EEG Source Imaging with Uncertainty Quantification. <em>NeuroImage</em>.</li>
@@ -890,6 +919,8 @@ href="https://arxiv.org/abs/2303.08896">arXiv</a></li>
 <li id="ref-91" value="91">Correa, J. D., Lee, S., & Bareinboim, E. (2021). Nested Counterfactual Identification from Arbitrary Surrogate Experiments. <em>arXiv:2107.03190</em>. <a href="https://arxiv.org/abs/2107.03190">arXiv</a></li>
 <li id="ref-92" value="92">Seifert, U. (2012). Stochastic thermodynamics, fluctuation theorems and molecular machines. <em>Reports on Progress in Physics</em>, 75(12), 126001. <a href="https://doi.org/10.1088/0034-4885/75/12/126001">doi:10.1088/0034-4885/75/12/126001</a></li>
 <li id="ref-93" value="93">Kitazono, J., Kanai, R., & Oizumi, M. (2018). Efficient Algorithms for Searching the Minimum Information Partition in Integrated Information Theory. <em>Entropy</em>, 20(3), 173. <a href="https://doi.org/10.3390/e20030173">doi:10.3390/e20030173</a></li>
+<li id="ref-94" value="94">Dorkenwald, S., et al. (2024). Neuronal wiring diagram of an adult brain. <em>Nature</em>, 634, 124–138. <a href="https://doi.org/10.1038/s41586-024-07558-y">doi:10.1038/s41586-024-07558-y</a></li>
+<li id="ref-95" value="95">Chalmers, D. J. (1995). Facing up to the problem of consciousness. <em>Journal of Consciousness Studies</em>, 2(3), 200-219.</li>
 </ol>
 </section>
 

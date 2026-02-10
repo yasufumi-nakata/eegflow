@@ -86,6 +86,71 @@ Mind-Uploadでは、失敗例・リーク検査・モデルカードを含めて
 </p>
 </section>
 
+<section class="section" id="q6">
+<h2 class="section-title">Q. 意識の「ハードプロブレム」に対するスタンスは？</h2>
+<p>
+A. Mind-Uploadは、ハードプロブレム（Chalmers, 1995）について特定の哲学的立場を前提にしません。
+機能主義的アプローチを実装基盤として採用しますが、それが現象的意識の十分条件であるとは主張しません。
+代わりに、<strong>検証可能な操作的指標</strong>（PCI-ST、反事実テスト、介入応答一致等）を評価基準とし、
+哲学的帰結は結果の解釈段階で議論する立場を取ります。
+</p>
+<div class="note-box">
+<strong>透明性</strong>
+<p>
+これは重大な制約です。機能的等価性が確認されても、現象的意識の同一性は保証されません。
+この限界を明示した上で、測定可能な前進を積み上げます。
+</p>
+</div>
+</section>
+
+<section class="section" id="q7">
+<h2 class="section-title">Q. コピー問題（分身のパラドックス）をどう扱う？</h2>
+<p>
+A. 「スキャン＆コピー」方式では、コピー直後にオリジナルとコピーが独立に分岐するため、
+どちらが「本人」かは原理的に決定できません（パーフィットの心理的連続性理論）。
+Mind-Uploadでは、<strong>Slow Continuous Mind Uploading</strong>（段階的移行）を主軸に据え、
+分断を伴わないプロセスの連続性を工学的要件として設計します。
+ただし、この戦略も「どの時点で移行が完了したか」の判定基準を事前に固定する必要があり、
+これはクレーム階段 L4 の課題として扱います。
+</p>
+</section>
+
+<section class="section" id="q8">
+<h2 class="section-title">Q. IITとGNWTの実験的検証はどうなった？</h2>
+<p>
+A. 2025年のCogitate Consortium（敵対的共同研究）が、IITとGNWTの予測を大規模に検証しました。
+結果は<strong>双方とも完全には支持されなかった</strong>：IITの後方皮質持続活動は部分的支持のみ、
+GNWTの前頭前野イグニッションは報告動作と分離困難でした。
+Mind-Uploadではこの結果を受け、特定理論への固執を避け、PCI等の理論非依存な経験的指標を中心に据えています。
+</p>
+</section>
+
+<section class="section" id="q9">
+<h2 class="section-title">Q. 倫理的課題はどう扱っている？</h2>
+<p>
+A. WBEは固有の倫理的課題を伴います：(1) エミュレートされた存在の法的地位と権利、
+(2) 同意の撤回可能性（停止する権利）、(3) 複製による多重人格の倫理、
+(4) アクセス格差と社会的公正。Mind-Uploadでは、技術的検証と並行して、
+<strong>倫理的レビュー委員会の設計</strong>をクレーム階段 L5（社会実装）の前提条件として位置づけています。
+現時点では技術的基盤（L0-L2）に集中していますが、L3以降の計画には倫理ガバナンスの設計を含みます。
+</p>
+</section>
+
+<section class="section" id="q10">
+<h2 class="section-title">Q. 他のWBEプロジェクトとの違いは？</h2>
+<p>
+A. 主な既存プロジェクトとの位置づけ：
+</p>
+<ul>
+<li><strong>Blue Brain / Human Brain Project：</strong>大規模シミュレーション重視。Mind-Uploadは検証基盤設計を先行させる点が異なる。</li>
+<li><strong>全脳アーキテクチャ・イニシアティブ（WBAI）：</strong>構成論的・ロードマップ重視。Mind-Uploadはベンチマークと反証条件を先に固定する点が補完的。</li>
+<li><strong>OpenWorm：</strong>C. elegans全コネクトーム実装。Mind-Uploadはヒト脳の非侵襲計測（EEG）からのアプローチ。</li>
+</ul>
+<p>
+Mind-Uploadの差別化点は、<strong>「検証基盤（Verification Commons）を先に作る」</strong>という戦略です。
+</p>
+</section>
+
 <section class="section" id="references">
 <h2 class="section-title">参考文献（FAQ）</h2>
 <ol>
@@ -95,6 +160,8 @@ Mind-Uploadでは、失敗例・リーク検査・モデルカードを含めて
 <li>Gorgolewski, K. J., et al. (2016). BIDS. <a href="https://doi.org/10.1038/sdata.2016.44" target="_blank">doi:10.1038/sdata.2016.44</a></li>
 <li>Pernet, C. R., et al. (2019). EEG-BIDS. <a href="https://doi.org/10.1038/s41597-019-0104-8" target="_blank">doi:10.1038/s41597-019-0104-8</a></li>
 <li>Casali, A. G., et al. (2013). PCI. <a href="https://doi.org/10.1126/scitranslmed.3006294" target="_blank">doi:10.1126/scitranslmed.3006294</a></li>
+<li>Chalmers, D. J. (1995). Facing up to the problem of consciousness. <em>Journal of Consciousness Studies</em>, 2(3), 200-219.</li>
+<li>Parfit, D. (1984). <em>Reasons and Persons</em>. Oxford University Press.</li>
 </ol>
 </section>
 

@@ -149,6 +149,69 @@ PDB（単一アーカイブ）やBIDS+OpenNeuro（規格＋置き場）、Physio
 </div>
 </section>
 
+<section class="section" id="current-status">
+<h2 class="section-title">実装ステータス（透明性報告）</h2>
+<div class="note-box">
+<strong>率直な現状</strong>
+<p>
+科学的誠実さのため、各成果物の現在の実装状況を明記します。「設計文書の完成」と「実装の完了」を混同しないよう注意してください。
+</p>
+</div>
+
+<table class="data-table">
+<thead>
+<tr>
+<th>成果物</th>
+<th>設計状態</th>
+<th>実装状態</th>
+<th>次のステップ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Data Standard</strong></td>
+<td>BIDS/EEG-BIDS準拠の拡張仕様を文書化済み</td>
+<td>サンプルデータセットは未公開。バリデータ未実装。</td>
+<td>1データセット分のBIDS変換パイプラインと検証スクリプトの公開</td>
+</tr>
+<tr>
+<td><strong>Benchmark Suite</strong></td>
+<td>タスク定義・指標定義を文書化済み</td>
+<td>ベンチマークコード・ベースライン結果は未公開。</td>
+<td>L0/L1レベルの最小ベンチマーク1セットの実装と公開</td>
+</tr>
+<tr>
+<td><strong>Registry & Prereg</strong></td>
+<td>テンプレート設計済み</td>
+<td>登録システム未構築。テンプレートのみ文書内に記載。</td>
+<td>OSF連携またはGitHub Issueベースの簡易登録フローの構築</td>
+</tr>
+<tr>
+<td><strong>Leaderboard</strong></td>
+<td>Model Card形式を定義済み</td>
+<td>実データによるエントリーなし。</td>
+<td>ベンチマークの実装後に最初のエントリーを登録</td>
+</tr>
+</tbody>
+</table>
+</section>
+
+<section class="section" id="gap-analysis">
+<h2 class="section-title">科学的ギャップ分析</h2>
+<p>
+Verification Commonsが「科学に貢献する」ために、以下のギャップを認識し、優先的に対処します。
+</p>
+<div class="key-points">
+<h4>優先対処事項</h4>
+<ul>
+<li><strong>L0の実現：</strong>第三者がコード・データ・環境を揃えて同じ結果を再現できる状態を最優先とする。現状、再現に必要な全構成要素を含むリポジトリは存在しない。</li>
+<li><strong>反事実テストの操作化：</strong>「反事実」「介入予測」は概念として定義されているが、具体的な実験プロトコルとしてのテスト手順は未確定。</li>
+<li><strong>既存ベンチマークとの接続：</strong>BCI Competition、MOABB等の既存ベンチマークとの互換性・差分を明確にし、車輪の再発明を避ける。</li>
+<li><strong>失敗事例の体系化：</strong>Commonsの設計にはネガティブリザルトの収集と公開が含まれるが、収集のインセンティブ設計が未着手。</li>
+</ul>
+</div>
+</section>
+
 <section class="section" id="references">
 <h2 class="section-title">参考文献（主要）</h2>
 <ol>
@@ -157,6 +220,8 @@ PDB（単一アーカイブ）やBIDS+OpenNeuro（規格＋置き場）、Physio
 <li>Markiewicz, C. J., et al. (2021). OpenNeuro resource paper. <a href="https://doi.org/10.7554/eLife.71774" target="_blank">doi:10.7554/eLife.71774</a></li>
 <li>Goldberger, A. L., et al. (2000). PhysioBank/PhysioNet. <a href="https://doi.org/10.1161/01.CIR.101.23.e215" target="_blank">doi:10.1161/01.CIR.101.23.e215</a></li>
 <li>Nosek, B. A., et al. (2015). Promoting an open research culture. <a href="https://doi.org/10.1126/science.aab2374" target="_blank">doi:10.1126/science.aab2374</a></li>
+<li>Jayaram, V., &amp; Barachant, A. (2018). MOABB: BCI benchmark framework. <a href="https://doi.org/10.1088/1741-2552/aaddc8" target="_blank">doi:10.1088/1741-2552/aaddc8</a></li>
+<li>Wilkinson, M. D., et al. (2016). The FAIR Guiding Principles. <a href="https://doi.org/10.1038/sdata.2016.18" target="_blank">doi:10.1038/sdata.2016.18</a></li>
 </ol>
 </section>
 

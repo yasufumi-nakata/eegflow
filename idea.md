@@ -25,7 +25,7 @@ note: "Theoretical Framework"
 <h2 class="section-title">Epistemological Turn</h2>
 <h3>1. 認識論的転回：静的構造から動的プロセスへ</h3>
 <p>
-我々は、意識の本質を「状態」ではなく「遷移」に見出す。Weber (2025) が指摘する<strong>「多重性の異議（Multiplicity Objection）」</strong>は、静的なコピーが生成された瞬間に、オリジナルとコピーの分岐が始まることを問題視する。これに対し、我々は「コピー」ではなく「移行（Transfer）」の概念を、連続的なプロセスとして再構築する。
+我々は、意識の本質を「状態」ではなく「遷移」に見出す。Weber (2025)<sup><a href="https://doi.org/10.1007/s11229-025-05057-9">[Weber]</a></sup> が指摘する<strong>「多重性の異議（Multiplicity Objection）」</strong>は、静的なコピーが生成された瞬間に、オリジナルとコピーの分岐が始まることを問題視する。これに対し、我々は「コピー」ではなく「移行（Transfer）」の概念を、連続的なプロセスとして再構築する。
 </p>
 <div class="note-box">
 <strong>Key Concept: Dynamic Process</strong>
@@ -98,6 +98,35 @@ note: "Theoretical Framework"
 </p>
 </section>
 
+<section class="section" id="limitations">
+<h2 class="section-title">Limitations and Open Questions</h2>
+<div class="note-box">
+<strong>この枠組みの限界を明示する</strong>
+<p>
+本フレームワークは、以下の未解決課題を抱えており、これらは科学的誠実さのために明記します。
+</p>
+</div>
+
+<div class="key-points">
+<h4>理論的限界</h4>
+<ul>
+<li><strong>ハードプロブレムの回避：</strong>本枠組みは機能的等価性を操作的定義として採用するが、現象的意識（Phenomenal Consciousness）の同一性は検証対象外である。これは重大な制約であり、機能的に完全なエミュレーションが「意識を持つ」ことの十分条件であるかは未決定である。</li>
+<li><strong>IIT 4.0の計算困難性：</strong>Φの正確な計算は、素子数に対して超指数的に増大する（Kitazono et al., 2018）。実用的なWBEでは近似が不可避であり、その近似がどの程度の情報損失を伴うかは未解明である。</li>
+<li><strong>FEP批判への応答：</strong>自由エネルギー原理は「反証不可能（unfalsifiable）」との批判がある（Andrews, 2021; Bruineberg et al., 2022）。マルコフブランケットの実在性を前提にすることの妥当性も議論が続いている。</li>
+<li><strong>Unfolding Argumentの含意：</strong>Doerig et al. (2019) の議論が正しければ、純粋なソフトウェアエミュレーションではΦ=0となり、IITの意味での意識は生じない。これはニューロモルフィック・ハードウェアへの要件を強く示唆するが、代替理論では問題にならない可能性もある。</li>
+</ul>
+</div>
+
+<div class="key-points">
+<h4>工学的限界</h4>
+<ul>
+<li><strong>EEGの空間分解能：</strong>頭皮EEGは皮質表面の空間解像度が約1-2cmであり、個々のニューロンの活動を直接読み取ることはできない。逆問題の不良設定性は原理的に解消されない。</li>
+<li><strong>計測−再現ギャップ：</strong>現在利用可能な非侵襲計測技術（EEG/MEG/fMRI）と、WBEが要求する詳細度の間には数桁のギャップがある。これは段階的に埋めるべき課題である。</li>
+<li><strong>閉ループ制御の安全性：</strong>L3（閉ループ）以降で、エミュレータが環境と相互作用する場合の安全性保証メカニズムは未設計である。</li>
+</ul>
+</div>
+</section>
+
 <section class="section" id="references">
 <h2 class="section-title">参考文献（主要）</h2>
 <ol>
@@ -107,6 +136,11 @@ note: "Theoretical Framework"
 <li>Casali, A. G., et al. (2013). PCI. <a href="https://doi.org/10.1126/scitranslmed.3006294" target="_blank">doi:10.1126/scitranslmed.3006294</a></li>
 <li>Yamakawa, H., et al. (2024). Whole-brain architecture roadmap. <a href="https://doi.org/10.1016/j.cogsys.2024.101300" target="_blank">doi:10.1016/j.cogsys.2024.101300</a></li>
 <li>Sandberg, A., &amp; Bostrom, N. (2008). Whole Brain Emulation: A Roadmap. <a href="https://www.fhi.ox.ac.uk/wp-content/uploads/Whole-Brain-Emulation-Roadmap-v1.2-web.pdf" target="_blank">Report PDF</a></li>
+<li>Doerig, A., et al. (2019). The Unfolding Argument. <a href="https://doi.org/10.1016/j.concog.2019.04.002" target="_blank">doi:10.1016/j.concog.2019.04.002</a></li>
+<li>Chalmers, D. J. (1995). Facing up to the problem of consciousness. <em>Journal of Consciousness Studies</em>, 2(3), 200-219.</li>
+<li>Kitazono, J., Kanai, R., &amp; Oizumi, M. (2018). Efficient MIP search for IIT. <a href="https://doi.org/10.3390/e20030173" target="_blank">doi:10.3390/e20030173</a></li>
+<li>Parfit, D. (1984). <em>Reasons and Persons</em>. Oxford University Press.</li>
+<li>Weber, M. (2025). The Multiplicity Objection to mind uploading. <a href="https://doi.org/10.1007/s11229-025-05057-9" target="_blank">doi:10.1007/s11229-025-05057-9</a></li>
 </ol>
 </section>
 
