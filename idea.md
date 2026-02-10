@@ -98,6 +98,18 @@ note: "Theoretical Framework"
 </p>
 </section>
 
+<section class="section" id="references">
+<h2 class="section-title">参考文献（主要）</h2>
+<ol>
+<li>Friston, K. (2010). Free-energy principle. <a href="https://doi.org/10.1038/nrn2787" target="_blank">doi:10.1038/nrn2787</a></li>
+<li>Friston, K. (2017). Active inference: a process theory. <a href="https://doi.org/10.1162/NECO_a_00912" target="_blank">doi:10.1162/NECO_a_00912</a></li>
+<li>Albantakis, L., et al. (2023). IIT 4.0. <a href="https://doi.org/10.1371/journal.pcbi.1011465" target="_blank">doi:10.1371/journal.pcbi.1011465</a></li>
+<li>Casali, A. G., et al. (2013). PCI. <a href="https://doi.org/10.1126/scitranslmed.3006294" target="_blank">doi:10.1126/scitranslmed.3006294</a></li>
+<li>Yamakawa, H., et al. (2024). Whole-brain architecture roadmap. <a href="https://doi.org/10.1016/j.cogsys.2024.101300" target="_blank">doi:10.1016/j.cogsys.2024.101300</a></li>
+<li>Sandberg, A., &amp; Bostrom, N. (2008). Whole Brain Emulation: A Roadmap. <a href="https://www.fhi.ox.ac.uk/wp-content/uploads/Whole-Brain-Emulation-Roadmap-v1.2-web.pdf" target="_blank">Report PDF</a></li>
+</ol>
+</section>
+
 <div class="cta-box">
 <h4>Detailed Roadmap</h4>
 <p>より詳細な技術的マイルストーンについては、技術ロードマップを参照してください。</p>

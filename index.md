@@ -172,6 +172,21 @@ PDB、BIDS+OpenNeuro、PhysioNet、ImageNet、MLPerf、OSFで築かれた検証�
 <li><a href="proposals.html">技術提案（統合本文）→</a></li>
 <li><a href="mind_uploading_papers.html">論文集（Papers）→</a></li>
 <li><a href="issue.html#technical-issue-tracker">Issue対応トラッカー →</a></li>
+<li><a href="README.html">README（プロジェクト概要）→</a></li>
+</ul>
+</div>
+
+<div class="sidebar-box">
+<h4>Repository Docs</h4>
+<ul>
+<li><a href="AGENTS.md">AGENTS.md</a></li>
+<li><a href=".agent/agent.md">.agent/agent.md</a></li>
+<li><a href="automation/README.md">automation/README.md</a></li>
+<li><a href="ignore/idea.md">ignore/idea.md</a></li>
+<li><a href="ignore/mind_uploading_papers.md">ignore/mind_uploading_papers.md</a></li>
+<li><a href="ignore/research_pack_50.md">ignore/research_pack_50.md</a></li>
+<li><a href="ignore/swarm50/worker_results.md">ignore/swarm50/worker_results.md</a></li>
+<li><a href="ignore/swarm50/worker_results_v2.md">ignore/swarm50/worker_results_v2.md</a></li>
 </ul>
 </div>
 

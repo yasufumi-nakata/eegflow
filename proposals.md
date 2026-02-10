@@ -182,6 +182,20 @@ Issue #56/#58/#61/#62 の統合論点です。観測一致だけでなく、介�
 </div>
 </section>
 
+<section class="section" id="references">
+<h2 class="section-title">参考文献（横断）</h2>
+<ol>
+<li>Chang, C.-Y., et al. (2018). ASR evaluation. <a href="https://doi.org/10.1109/EMBC.2018.8512547" target="_blank">doi:10.1109/EMBC.2018.8512547</a></li>
+<li>de Cheveigne, A. (2020). ZapLine. <a href="https://doi.org/10.1016/j.neuroimage.2019.116356" target="_blank">doi:10.1016/j.neuroimage.2019.116356</a></li>
+<li>Vinck, M., et al. (2011). wPLI. <a href="https://doi.org/10.1016/j.neuroimage.2011.01.055" target="_blank">doi:10.1016/j.neuroimage.2011.01.055</a></li>
+<li>Staniek, M., &amp; Lehnertz, K. (2008). Symbolic Transfer Entropy. <a href="https://doi.org/10.1103/PhysRevLett.100.158101" target="_blank">doi:10.1103/PhysRevLett.100.158101</a></li>
+<li>Correa, J. D., Lee, S., &amp; Bareinboim, E. (2021). Nested Counterfactual Identification. <a href="https://arxiv.org/abs/2107.03190" target="_blank">arXiv:2107.03190</a></li>
+<li>Seifert, U. (2012). Stochastic thermodynamics. <a href="https://doi.org/10.1088/0034-4885/75/12/126001" target="_blank">doi:10.1088/0034-4885/75/12/126001</a></li>
+<li>Kitazono, J., Kanai, R., &amp; Oizumi, M. (2018). Efficient MIP search in IIT. <a href="https://doi.org/10.3390/e20030173" target="_blank">doi:10.3390/e20030173</a></li>
+<li>Kothe, C., et al. (2025). Lab Streaming Layer. <a href="https://doi.org/10.1162/IMAG.a.136" target="_blank">doi:10.1162/IMAG.a.136</a></li>
+</ol>
+</section>
+
 </article>
 
 <aside class="sidebar-column">

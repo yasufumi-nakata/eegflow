@@ -274,7 +274,7 @@ note: "暫定版（随時更新）"
 <div class="qa-body">
 <p><strong>問い：</strong>EEGソース推定は「領域×時間」の表現を得やすいが、ニューロン/シナプスは直接は見えない。復元対象（R0）に合わせて表現を選ぶ。</p>
 <p><strong>課題：</strong>従来は「高密度EEG(128ch)化」が推奨されてきたが、近年の研究はチャンネル数だけでは不良設定性（ill-posedness）を解決できないことを示している。特に、dSPMのような点推定法は不確実性を無視してしまう。</p>
-<p><strong>階層的ベイズモデルと高解像度計測の統合：</strong>Block-Champagne Framework<sup><a href="#ref-78">[78]</a></sup>の採用に加え、<strong>超高密度EEG（High-density EEG, 256ch以上）</strong>と<strong>個体別MRIに基づく有限要素法（FEM）フォワードモデル</strong>の導入を必須化する。これにより深部脳活動の推定精度を担保する。さらに、Feng et al. (2025)<sup><a href="#ref-78">[78]</a></sup>が指摘するノイズ特性の動的変化に対応するため、<strong>適応的ベイズ更新（Adaptive Bayesian Updating）</strong>を実装し、推定された脳活動マップには必ず<strong>信頼区間（Credible Intervals）</strong>を付随させる。</p>
+<p><strong>階層的ベイズモデルと高解像度計測の統合：</strong>Block-Champagne系の手法（Cai et al., 2021; Sechet et al., 2025）を採用し、<strong>超高密度EEG（High-density EEG, 256ch以上）</strong>と<strong>個体別MRIに基づく有限要素法（FEM）フォワードモデル</strong>の導入を必須化する。これにより深部脳活動の推定精度を担保する。さらに、ノイズ推定の頑健化研究（<a href="https://doi.org/10.1016/j.neuroimage.2020.117411" target="_blank">doi:10.1016/j.neuroimage.2020.117411</a>, <a href="https://doi.org/10.1109/SAMPTA64769.2025.11133512" target="_blank">doi:10.1109/SAMPTA64769.2025.11133512</a>）で示される条件変動への対応として、<strong>適応的ベイズ更新（Adaptive Bayesian Updating）</strong>を実装し、推定された脳活動マップには必ず<strong>信頼区間（Credible Intervals）</strong>を付随させる。</p>
 <p><strong>次に必要：</strong>`mind-upload/02_source_imaging.py` に変分ベイズ（Variational Bayesian）アプローチを実装し、不確実性を考慮したソース再構成を行う <strong>(✅ Implemented in Issue #43)</strong></p>
 </div>
 </details>
@@ -888,7 +888,7 @@ note: "暫定版（随時更新）"
 </tr>
 <tr>
 <td>EEG/MEG逆問題</td>
-<td>Michel &amp; Brunet (2019), Wipf &amp; Nagarajan (2009), Cai et al. (2021), Feng et al. (2025), Vorwerk et al. (2014), Medani et al. (2025)</td>
+<td>Michel &amp; Brunet (2019), Wipf &amp; Nagarajan (2009), Cai et al. (2021), Sechet et al. (2025), Vorwerk et al. (2014), Medani et al. (2025)</td>
 <td>U1, U2, U7</td>
 </tr>
 <tr>
@@ -1245,8 +1245,8 @@ note: "暫定版（随時更新）"
 <ol>
 <li>Michel, C. M., &amp; Brunet, D. (2019). EEG source imaging review.</li>
 <li>Wipf, D., &amp; Nagarajan, S. (2009). Unified Bayesian framework for MEG/EEG source imaging.</li>
-<li>Cai, C., et al. (2021). Robust noise estimation with Champagne.</li>
-<li>Feng, Z., et al. (2025). Block-Champagne with uncertainty quantification.</li>
+<li>Cai, C., et al. (2021). Robust noise estimation with Champagne. <a href="https://doi.org/10.1016/j.neuroimage.2020.117411" target="_blank">doi:10.1016/j.neuroimage.2020.117411</a></li>
+<li>Sechet, D., Kowalski, M., Mokhtari, S., &amp; Torrésani, B. (2025). Revisiting CHAMPAGNE: Sparse Bayesian Learning as Reweighted Sparse Coding. <a href="https://doi.org/10.1109/SAMPTA64769.2025.11133512" target="_blank">doi:10.1109/SAMPTA64769.2025.11133512</a></li>
 <li>Vorwerk, J., et al. (2014). Head volume conductor modeling guideline.</li>
 <li>Medani, T., et al. (2025). Conductivity uncertainty in forward/inverse solvers.</li>
 <li>Logothetis, N. K. (2008). Limits of fMRI inference.</li>
