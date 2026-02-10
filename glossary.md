@@ -257,7 +257,7 @@ note: "Living document"
 <section class="section" id="references">
 <h2 class="section-title">参考文献（用語定義）</h2>
 <ol>
-<li>Michel, C. M., &amp; Brunet, D. (2019). EEG source imaging review. <a href="https://doi.org/10.1038/s41582-019-0149-6" target="_blank">doi:10.1038/s41582-019-0149-6</a></li>
+<li>Michel, C. M., &amp; Brunet, D. (2019). EEG source imaging review. <a href="https://doi.org/10.3389/fneur.2019.00325" target="_blank">doi:10.3389/fneur.2019.00325</a></li>
 <li>Wipf, D., &amp; Nagarajan, S. (2009). Unified Bayesian framework for MEG/EEG source imaging. <a href="https://doi.org/10.1016/j.neuroimage.2008.02.059" target="_blank">doi:10.1016/j.neuroimage.2008.02.059</a></li>
 <li>Friston, K. J., Harrison, L., &amp; Penny, W. (2003). Dynamic causal modelling. <a href="https://doi.org/10.1016/S1053-8119(03)00202-7" target="_blank">doi:10.1016/S1053-8119(03)00202-7</a></li>
 <li>Vinck, M., et al. (2011). Weighted Phase Lag Index (wPLI). <a href="https://doi.org/10.1016/j.neuroimage.2011.01.055" target="_blank">doi:10.1016/j.neuroimage.2011.01.055</a></li>

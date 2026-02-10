@@ -135,7 +135,7 @@ note: "Theoretical Framework"
 <li>Albantakis, L., et al. (2023). IIT 4.0. <a href="https://doi.org/10.1371/journal.pcbi.1011465" target="_blank">doi:10.1371/journal.pcbi.1011465</a></li>
 <li>Casali, A. G., et al. (2013). PCI. <a href="https://doi.org/10.1126/scitranslmed.3006294" target="_blank">doi:10.1126/scitranslmed.3006294</a></li>
 <li>Yamakawa, H., et al. (2024). Whole-brain architecture roadmap. <a href="https://doi.org/10.1016/j.cogsys.2024.101300" target="_blank">doi:10.1016/j.cogsys.2024.101300</a></li>
-<li>Sandberg, A., &amp; Bostrom, N. (2008). Whole Brain Emulation: A Roadmap. <a href="https://www.fhi.ox.ac.uk/wp-content/uploads/Whole-Brain-Emulation-Roadmap-v1.2-web.pdf" target="_blank">Report PDF</a></li>
+<li>Sandberg, A., &amp; Bostrom, N. (2008). Whole Brain Emulation: A Roadmap. <a href="https://www.philosophyofbrains.com/wp-content/uploads/2013/08/2008-3.pdf" target="_blank">Report PDF</a></li>
 <li>Doerig, A., et al. (2019). The Unfolding Argument. <a href="https://doi.org/10.1016/j.concog.2019.04.002" target="_blank">doi:10.1016/j.concog.2019.04.002</a></li>
 <li>Chalmers, D. J. (1995). Facing up to the problem of consciousness. <em>Journal of Consciousness Studies</em>, 2(3), 200-219.</li>
 <li>Kitazono, J., Kanai, R., &amp; Oizumi, M. (2018). Efficient MIP search for IIT. <a href="https://doi.org/10.3390/e20030173" target="_blank">doi:10.3390/e20030173</a></li>

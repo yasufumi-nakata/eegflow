@@ -708,7 +708,7 @@ href="#ref-54">[54]</a></sup>。</p>
 <ol>
 <li id="ref-1" value="1">Fleming, S. M., et al. (2023). Open letter regarding "The integrated information
 theory of consciousness". <em>Neuroscience of Consciousness</em>, 2023(1), niad001. <a
-href="https://doi.org/10.1093/nc/niad001">doi:10.1093/nc/niad001</a></li>
+href="https://doi.org/10.31234/osf.io/zsr78">doi:10.31234/osf.io/zsr78</a></li>
 <li id="ref-2" value="2">Tononi, G., et al. (2016). Integrated information theory: from consciousness to its
 physical substrate. <em>Nat. Rev. Neurosci.</em>, 17, 450–461. <a
 href="https://doi.org/10.1038/nrn.2016.44">doi:10.1038/nrn.2016.44</a></li>
@@ -718,8 +718,8 @@ href="https://doi.org/10.1093/nc/niad014">doi:10.1093/nc/niad014</a>
 </li>
 <li id="ref-4" value="4">Parfit, D. (1984). <em>Reasons and Persons</em>. Oxford University Press.</li>
 <li id="ref-5" value="5">Michel, C. M., & Brunet, D. (2019). EEG source imaging: a practical review of the
-methodology. <em>Nature Reviews Neurology</em>, 15, 193–205. <a
-href="https://doi.org/10.1038/s41582-019-0149-6">doi:10.1038/s41582-019-0149-6</a></li>
+methodology. <em>Frontiers in Neurology</em>, 10, 325. <a
+href="https://doi.org/10.3389/fneur.2019.00325">doi:10.3389/fneur.2019.00325</a></li>
 <li id="ref-6" value="6">Koch, C., Massimini, M., Boly, M., & Tononi, G. (2016). Neural correlates of consciousness: Progress and
 problems. <em>Nature Reviews Neuroscience</em>, 17(5), 307–321. <a
 href="https://doi.org/10.1038/nrn.2016.22">doi:10.1038/nrn.2016.22</a></li>
@@ -729,7 +729,7 @@ href="https://doi.org/10.1016/j.cogsys.2024.101300">doi:10.1016/j.cogsys.2024.10
 </li>
 <li id="ref-8" value="8">Sandberg, A., & Bostrom, N. (2008). <em>Whole Brain Emulation: A Roadmap</em>. Future
 of Humanity Institute, Oxford University. <a
-href="https://www.fhi.ox.ac.uk/wp-content/uploads/Whole-Brain-Emulation-Roadmap-v1.2-web.pdf">Link</a>
+href="https://www.philosophyofbrains.com/wp-content/uploads/2013/08/2008-3.pdf">Link</a>
 </li>
 <li id="ref-9" value="9">Logothetis, N. K. (2008). What we can do and what we cannot do with fMRI.
 <em>Nature</em>, 453(7197), 869-878. <a
