@@ -227,6 +227,33 @@ href="#ref-47">[47]</a></sup><sup><a href="#ref-51">[51]</a></sup>。</li>
 <li style="margin-bottom: 8px;"><strong>反事実ベースラインを必須化する：</strong>入力シャッフル・試行入れ替え・モデルの温度固定などで、言語事前分布だけで出る出力を定量化し、効果量として報告する<sup><a
 href="#ref-28">[28]</a></sup>。</li>
 </ol>
+
+<h3>因果構造の定量的検証指標（Issues #64–#70への回答）</h3>
+<p>上記の実証プランを具体的に展開するにあたり、GitHub Issues #64–#70で指摘された技術的課題に対し、以下の5点で回答する。</p>
+
+<ol style="margin: 0; padding-left: 20px; font-size: 14px; line-height: 1.6;">
+<li style="margin-bottom: 12px;">
+<strong>DCMの適用限界と対策：</strong>EEG-based Dynamic Causal Modelling（DCM）はモデル同定可能性（model identifiability）の問題を内在する。特に、EEGの空間分解能制約下では、類似した観測データを生成する複数のモデルが存在し得る。この問題に対し、Bayesian Model Reduction（BMR; Friston &amp; Penny, 2011）によるモデル空間の効率的探索が不可欠である。さらに、推定された有効結合（effective connectivity）が安定した個人特性（individual trait）を表現しているかを検証するため、Causal Fingerprinting（Frässle et al., 2021）<sup><a href="#ref-96">[96]</a></sup>を適用し、test-retest信頼性を定量化する。Regression DCMは従来のDCMに比べ、計算コストを大幅に削減しつつモデル比較の精度を維持できるため、大規模データへのスケーラビリティも確保される。
+</li>
+<li style="margin-bottom: 12px;">
+<strong>因果構造保存の定量指標：</strong>反事実等価性（counterfactual equivalence）のみではエミュレーションの因果的忠実度を十分に評価できない。以下の3指標を追加的に要求する：
+<ul style="margin-top: 6px; padding-left: 20px; list-style-type: disc;">
+<li style="margin-bottom: 4px;"><strong>Effective Information（EI）：</strong>システム遷移の因果的パワーを定量化する指標（Albantakis et al., 2023）。状態遷移確率行列の決定論性と縮退性のバランスを捉え、マクロレベルでの因果的粗視化が適切かを判定する。</li>
+<li style="margin-bottom: 4px;"><strong>Causal Density：</strong>単なるコネクティビティの強度を超え、因果的相互作用の「豊かさ」を測定する。疎結合系と密結合系の質的差異を捉えるために必要となる。</li>
+<li style="margin-bottom: 4px;"><strong>Symbolic Transfer Entropy（STE; Staniek &amp; Lehnertz, 2008）<sup><a href="#ref-99">[99]</a></sup>：</strong>非線形な有向情報フロー（nonlinear directed information flow）を定量化する。シンボル化により高次元時系列データへのスケーラビリティを確保しつつ、Transfer Entropyの本質的な因果方向性検出能力を維持する。</li>
+</ul>
+</li>
+<li style="margin-bottom: 12px;">
+<strong>IIT計算量問題への工学的対応：</strong>Integrated Information Theory（IIT）のΦ計算は系のサイズに対して指数的コストを要するため<sup><a href="#ref-93">[93]</a></sup>、実用的な脳規模のシステムへの直接適用は現実的ではない。Hierarchical coarse-grainingにより、Φが最大化される空間スケールを同定するアプローチが有効である<sup><a href="#ref-97">[97]</a></sup>。Hoel et al.（2016）が示したように、マクロレベルの記述がミクロレベルよりも高いEIを持ちうるという知見は、理論を大規模系に適用する際の「空洞化（hollowing out）」を回避する鍵となる。本プロジェクトでは、EEGの空間分解能に適合したメソスケールでの粗視化戦略を採用し、Φの近似計算を実行可能な範囲に収める。
+</li>
+<li style="margin-bottom: 12px;">
+<strong>「哲学的ゾンビ」リスクの明示的扱い：</strong>フォン・ノイマン型アーキテクチャ上の標準的デジタルエミュレーションは、すべての機能テスト（behavioral test）を通過しながらもΦ≈0となる可能性がある。これはIITの観点からは「意識を欠く機能的等価物」、すなわち哲学的ゾンビに相当する<sup><a href="#ref-95">[95]</a></sup>。本プロジェクトは、L4/L5レベルの同一性主張（identity claim）には以下のいずれかが必要であることを明示的に認める：(a) 因果構造の同型性（causal structure isomorphism）が証明されたニューロモルフィックハードウェア、または (b) 生物学的−デジタルのハイブリッドシステム。<strong>機能的等価性は同一性主張の必要条件であるが、十分条件ではない。</strong>
+</li>
+<li style="margin-bottom: 12px;">
+<strong>NESS熱力学的接地：</strong>Landauerの限界（1ビット消去あたりkT ln 2）を超えて、生物学的な脳は非平衡定常状態（Non-Equilibrium Steady State; NESS）を維持しており、構造維持コストとして脳エネルギーの50%以上を消費する。Entropy Production Rate（EPR）は、神経状態空間のFisher Informationと結びつけられなければならない<sup><a href="#ref-98">[98]</a></sup>。意識は単なる情報処理ではなく、能動的な散逸（active dissipation）を要求する。したがって、エミュレーションが物理的制約を満たすかの検証には、EPRの再現が不可欠な指標となる<sup><a href="#ref-92">[92]</a></sup>。
+</li>
+</ol>
+
 </section>
 
 <!-- Reproducibility -->
@@ -921,6 +948,10 @@ href="https://arxiv.org/abs/2303.08896">arXiv</a></li>
 <li id="ref-93" value="93">Kitazono, J., Kanai, R., & Oizumi, M. (2018). Efficient Algorithms for Searching the Minimum Information Partition in Integrated Information Theory. <em>Entropy</em>, 20(3), 173. <a href="https://doi.org/10.3390/e20030173">doi:10.3390/e20030173</a></li>
 <li id="ref-94" value="94">Dorkenwald, S., et al. (2024). Neuronal wiring diagram of an adult brain. <em>Nature</em>, 634, 124–138. <a href="https://doi.org/10.1038/s41586-024-07558-y">doi:10.1038/s41586-024-07558-y</a></li>
 <li id="ref-95" value="95">Chalmers, D. J. (1995). Facing up to the problem of consciousness. <em>Journal of Consciousness Studies</em>, 2(3), 200-219.</li>
+<li id="ref-96" value="96">Frässle, S., et al. (2021). Regression DCMs for fMRI. <em>NeuroImage</em>, 227, 117566. <a href="https://doi.org/10.1016/j.neuroimage.2020.117566">doi:10.1016/j.neuroimage.2020.117566</a></li>
+<li id="ref-97" value="97">Hoel, E., Albantakis, L., & Tononi, G. (2016). Can the macro beat the micro? Integrated information across spatiotemporal scales. <em>Neuroscience</em>, 311, 393–401. <a href="https://doi.org/10.1016/j.neuroscience.2016.09.049">doi:10.1016/j.neuroscience.2016.09.049</a></li>
+<li id="ref-98" value="98">Seifert, U. (2012). Stochastic thermodynamics, fluctuation theorems and molecular machines. <em>Reports on Progress in Physics</em>, 75(12), 126001. <a href="https://doi.org/10.1088/0034-4885/75/12/126001">doi:10.1088/0034-4885/75/12/126001</a></li>
+<li id="ref-99" value="99">Staniek, M. & Lehnertz, K. (2008). Symbolic Transfer Entropy. <em>Physical Review Letters</em>, 100(15), 158101. <a href="https://doi.org/10.1103/PhysRevLett.100.158101">doi:10.1103/PhysRevLett.100.158101</a></li>
 </ol>
 </section>
 

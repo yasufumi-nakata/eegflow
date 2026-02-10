@@ -212,6 +212,40 @@ Verification Commonsが「科学に貢献する」ために、以下のギャッ
 </div>
 </section>
 
+<section class="section" id="verification-rigor">
+<h2 class="section-title">検証の厳密性要件（Technical Critique対応）</h2>
+<p>
+Issues #64–#70 で指摘された技術的批判を受け、Verification Commonsの検証基準を以下のとおり強化します。
+</p>
+<div class="key-points">
+<h4>強化要件</h4>
+<ul>
+<li><strong>不確実性定量化の義務化：</strong>Benchmark Suiteに提出されるすべてのESI（EEG Source Imaging）結果には、信用区間（credible intervals）または事後分布の集中度指標を必ず含めること。点推定のみではWBEグレードの検証として不十分である。</li>
+<li><strong>摂動ベース検証の標準化：</strong>同一性検証には、学習済みタスクを超えた摂動ベーステストを必須とする。
+<ul>
+<li>シミュレーションTMS応答が生体脳とエミュレーション間で一致すること</li>
+<li>PCI-STの空間分布比較を複数の摂動部位で実施すること</li>
+<li>未学習（新規）刺激に対する応答が統計的に区別不能であること</li>
+</ul>
+</li>
+<li><strong>適応的前処理の要件：</strong>
+<ul>
+<li>ASRカットオフ閾値は静的ではなく適応的とし、リーマン幾何ベースの外れ値検出を用いること</li>
+<li>周波数追従型ノイズ除去にはZapLine-plusを使用すること</li>
+<li>除去されたコンポーネントの空間トポグラフィをBIDS監査証跡としてログに記録すること</li>
+</ul>
+</li>
+<li><strong>因果指標の検証スイートへの統合：</strong>
+<ul>
+<li>Effective Information（EI）およびCausal Densityをコア検証指標とすること</li>
+<li>有向非線形情報フローにはSymbolic Transfer Entropy（STE）を用いること</li>
+<li>Pearlの因果階梯（観察→介入→反事実）を評価フレームワークとすること</li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
 <section class="section" id="references">
 <h2 class="section-title">参考文献（主要）</h2>
 <ol>

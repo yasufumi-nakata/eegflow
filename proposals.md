@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "技術提案（統合本文）"
-description: "Issue #46/#47/#48/#56/#58/#61/#62 に対応する Technical Proposal を1ページ本文に統合した根拠付きサマリー。"
+description: "Issue #46/#47/#48/#56/#58/#61/#62/#64–#70 に対応する Technical Proposal を1ページ本文に統合した根拠付きサマリー。"
 article_type: Index
 subtitle: "Issue対応・実装方針・根拠リンクを1ページで追跡"
 author: Mind Uploading Research Project
@@ -120,6 +120,12 @@ ASR/ZapLine 系の適応的デノイジングと、体積伝導に頑健な接�
 <span class="tag">ASR</span><span class="tag">ZapLine-plus</span><span class="tag">wPLI</span><span class="tag">STE</span>
 </div>
 <p><strong>根拠:</strong> <a href="technical_proposal_47.html#preprocessing">#47: 前処理</a> / <a href="technical_proposal_47.html#connectivity">#47: 接続性</a></p>
+<p>
+<strong>適応的前処理の拡張要件（Issue #64–#70）：</strong>
+ASR のパラメータ選択においては、静的閾値ではなく Riemannian geometry に基づく外れ値検出（Riemannian Potato; Barachant et al., 2013）を採用し、共分散行列のリーマン距離を用いたデータ駆動型の適応閾値を標準とします。
+周波数追従型デノイジングには ZapLine-plus（Klug &amp; Kloosterman, 2022）を標準パイプラインに組み込み、線スペクトルノイズの自動検出・除去を行います。
+また、ICA/ASR 等で除去されたコンポーネントのトポグラフィは、再現性・監査可能性の観点から BIDS 監査ログ（derivatives 内 audit/ ディレクトリ）に必ず記録する運用とします。
+</p>
 </div>
 </div>
 
@@ -134,6 +140,12 @@ Issue #56/#58/#61/#62 の統合論点です。観測一致だけでなく、介�
 <span class="tag">Counterfactual</span><span class="tag">do-calculus</span><span class="tag">SCM</span><span class="tag">Identifiability</span>
 </div>
 <p><strong>根拠:</strong> <a href="technical_proposal_56.html#proposal">#56: 介入提案</a> / <a href="technical_proposal_58.html#counterfactual">#58: 識別可能性</a> / <a href="technical_proposal_61.html#scm-identifiability">#61: 厳密化</a> / <a href="technical_proposal_62.html#identifiability">#62: 同値類警告</a></p>
+<p>
+<strong>定量的因果メトリクスの導入（Issue #64–#70）：</strong>
+WBE 同一性検証の形式要件として、Effective Information（EI）および Causal Density を定量的検証指標に採用します。EI はシステムの因果的影響力を情報量として測定し、Causal Density は接続パターン全体の因果的豊かさを評価します。
+DCM モデル空間の効率的探索には Bayesian Model Reduction（BMR; Frässle et al., 2021）を適用し、フルモデルの事後分布から縮約モデル群のエビデンスを解析的に近似することで、計算コストを大幅に低減します。
+さらに、接続性推定値が安定した個人特性であることを確認するため Causal Fingerprinting（テスト−リテスト間の因果的接続プロファイルの個人識別精度）を検証基準に組み込みます。
+</p>
 </div>
 </div>
 
@@ -223,6 +235,9 @@ Issue #56/#58/#61/#62 の統合論点です。観測一致だけでなく、介�
 <li>Boto, E., et al. (2018). Moving magnetoencephalography towards real-world applications with wearable OPM-MEG. <a href="https://doi.org/10.1038/nature26147" target="_blank">doi:10.1038/nature26147</a></li>
 <li>Pearl, J. (2009). <em>Causality: Models, Reasoning, and Inference</em> (2nd ed.). Cambridge University Press.</li>
 <li>Friston, K. J., Harrison, L., &amp; Penny, W. (2003). Dynamic causal modelling. <a href="https://doi.org/10.1016/S1053-8119(03)00202-7" target="_blank">doi:10.1016/S1053-8119(03)00202-7</a></li>
+<li>Barachant, A., et al. (2013). Classification of covariance matrices using a Riemannian-based kernel for BCI applications. <a href="https://doi.org/10.1016/j.neucom.2013.04.027" target="_blank">doi:10.1016/j.neucom.2013.04.027</a></li>
+<li>Klug, M. &amp; Kloosterman, N. A. (2022). ZapLine-plus: A flexible and accurate removal of line noise. <a href="https://doi.org/10.1016/j.neuroimage.2022.119265" target="_blank">doi:10.1016/j.neuroimage.2022.119265</a></li>
+<li>Frässle, S., et al. (2021). Regression DCMs for group studies. <a href="https://doi.org/10.1016/j.neuroimage.2020.117566" target="_blank">doi:10.1016/j.neuroimage.2020.117566</a></li>
 </ol>
 </section>
 

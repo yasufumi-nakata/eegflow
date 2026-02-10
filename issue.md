@@ -231,6 +231,63 @@ Mind-Uploadは、マインドアップロードを検証可能な研究へ進め
 </div>
 </section>
 
+<!-- Technical Critique Response -->
+<section class="section" id="technical-critique">
+<h2 class="section-title">Technical Critique対応（#64–#70）</h2>
+<p>
+2026年2月に提出された7件の技術的・科学的批判（Issues #64–#70）への対応です。共通テーマをまとめて各ファイルに反映しています。
+</p>
+
+<table class="data-table">
+<thead>
+<tr>
+<th>テーマ</th>
+<th>対応Issue</th>
+<th>修正内容</th>
+<th>反映先</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>IIT 4.0計算量・Unfolding Argument</strong></td>
+<td>#64, #65, #68, #69</td>
+<td>哲学的ゾンビリスクの明示、ニューロモルフィック必要性の強調、階層的粗視化の導入</td>
+<td><a href="perspective.html#decoding-to-emulation-gap">perspective</a></td>
+</tr>
+<tr>
+<td><strong>EEG空間解像度の限界</strong></td>
+<td>#64, #66, #67, #70</td>
+<td>情報理論的限界の明示（7桁ギャップ）、WBEでの現実的役割の再定義</td>
+<td><a href="eeg_101.html#information-theoretic-limits">eeg_101</a></td>
+</tr>
+<tr>
+<td><strong>反実仮想的等価性の不十分さ</strong></td>
+<td>#65, #66, #69, #70</td>
+<td>EI・Causal Density・STEの3指標追加、Pearlの因果梯子による評価枠組み</td>
+<td><a href="perspective.html#decoding-to-emulation-gap">perspective</a> / <a href="verification.html#verification-rigor">verification</a></td>
+</tr>
+<tr>
+<td><strong>NESS熱力学的接地</strong></td>
+<td>#68</td>
+<td>Landauer限界を超えるEPR要件、Fisher Informationとの結合</td>
+<td><a href="perspective.html#decoding-to-emulation-gap">perspective</a></td>
+</tr>
+<tr>
+<td><strong>DCM/ベイズ法の限界</strong></td>
+<td>#64, #65, #67, #70</td>
+<td>BMR・Causal Fingerprinting・適応的前処理（Riemannian Potato）の導入</td>
+<td><a href="proposals.html#integrated-streams">proposals</a></td>
+</tr>
+<tr>
+<td><strong>ESI不確実性定量化</strong></td>
+<td>#67, #69, #70</td>
+<td>信頼区間義務化、適応的ASR/ZapLine-plus、順問題誤差伝播</td>
+<td><a href="eeg_101.html#esi-uncertainty">eeg_101</a> / <a href="verification.html#verification-rigor">verification</a></td>
+</tr>
+</tbody>
+</table>
+</section>
+
 </article>
 
 <aside class="sidebar-column">
