@@ -4,7 +4,7 @@ title: "技術ロードマップ：計測→再構成→実装でWBEを理解す
 description: "マインドアップロード（WBE）を技術面から俯瞰する学習ロードマップ。計測→再構成→実装→検証の問いの木で整理。"
 article_type: "Roadmap (Definition #1)"
 subtitle: "「何を解けたら前進か」を問いの木に分解し、読む順番と最低限の到達点を示す"
-last_updated: "2026-02-05"
+last_updated: "2026-02-14"
 note: "暫定版（随時更新）"
 ---
 <!-- IMPORTANT: Do not delete or overwrite this information. It serves as the project's permanent knowledge base. -->
@@ -29,11 +29,139 @@ note: "暫定版（随時更新）"
 <p>このページは“本”ではなく、研究全体像の<strong>地図</strong>です。まず「問いの木」を通読し、次に「学習の順序」に沿って各ノードを深掘りしてください。重要な運用ルールは2つだけです：<strong>(1) 出典リンクを残す</strong>、<strong>(2) 暫定（不確実性）を明示する</strong>。</p>
 </section>
 
+<section class="section" id="roadmap-index">
+<h2 class="section-title">索引（キーワード→QA）</h2>
+<p>用語から該当QAへ直接ジャンプできます。括弧内はQA-IDです。本文側にも同じアンカーを付けています。</p>
+
+<div class="note-box">
+<strong>使い方</strong>
+<p>まず「クイック索引」で目的語へ移動し、次に「カテゴリ別QA索引」で周辺ノードを横断してください。</p>
+</div>
+
+<h3>クイック索引</h3>
+<ul>
+<li><a href="#qa-p0">操作的定義（P0）</a></li>
+<li><a href="#qa-p1">クレーム階段（P1）</a></li>
+<li><a href="#qa-p2">成果物テンプレ（P2）</a></li>
+<li><a href="#qa-m0">計測路線（非侵襲/侵襲/破壊）（M0）</a></li>
+<li><a href="#qa-m2">時間解像度（M2）</a></li>
+<li><a href="#qa-m3">空間解像度（M3）</a></li>
+<li><a href="#qa-m9">BIDS/標準化（M9）</a></li>
+<li><a href="#qa-r1">逆問題（R1）</a></li>
+<li><a href="#qa-r3">潜在状態（R3）</a></li>
+<li><a href="#qa-r4">因果モデル（R4）</a></li>
+<li><a href="#qa-r7">同定可能性（R7）</a></li>
+<li><a href="#qa-r8">圧縮と忠実度（R8）</a></li>
+<li><a href="#qa-i1">閉ループ遅延（I1）</a></li>
+<li><a href="#qa-i2">モデル粒度（I2）</a></li>
+<li><a href="#qa-i3">計算量ボトルネック（I3）</a></li>
+<li><a href="#qa-i5">安全な更新（I5）</a></li>
+<li><a href="#qa-i8">containment / 停止（I8）</a></li>
+<li><a href="#qa-v1">評価スイート（V1）</a></li>
+<li><a href="#qa-v2">因果テスト（V2）</a></li>
+<li><a href="#qa-v5">本人性（V5）</a></li>
+<li><a href="#qa-v7">コピー/分岐（V7）</a></li>
+<li><a href="#qa-v9">追試可能性（V9）</a></li>
+<li><a href="#qa-d1">同意と撤回（D1）</a></li>
+<li><a href="#qa-d2">アクセスと公正（D2）</a></li>
+<li><a href="#qa-d3">安全保障（D3）</a></li>
+</ul>
+
+<h3>カテゴリ別QA索引（全件）</h3>
+<details class="qa-index-group" open>
+<summary><strong>Meta（前進の定義）</strong></summary>
+<ul>
+<li><a href="#qa-p0"><strong>P0</strong> 「マインドアップロード」の操作的定義は？（何を再現する？）</a></li>
+<li><a href="#qa-p1"><strong>P1</strong> 主張レベル（クレーム階段）をどこに置く？</a></li>
+<li><a href="#qa-p2"><strong>P2</strong> 最低限の成果物は何？（データ・コード・評価・監査）</a></li>
+</ul>
+</details>
+
+<details class="qa-index-group" open>
+<summary><strong>Measurement（計測）</strong></summary>
+<ul>
+<li><a href="#qa-m0"><strong>M0</strong> 計測の前提：in vivo / 侵襲 / 破壊スキャンのどれを想定？</a></li>
+<li><a href="#qa-m1"><strong>M1</strong> 観測変数：電気（EEG）/血流（fMRI）/スパイク（侵襲）で何が違う？</a></li>
+<li><a href="#qa-m2"><strong>M2</strong> 時間解像度の下限：どの時間スケールを“保存”すべき？</a></li>
+<li><a href="#qa-m3"><strong>M3</strong> 空間解像度の下限：どの粒度（領域/カラム/ニューロン/シナプス）を目指す？</a></li>
+<li><a href="#qa-m4"><strong>M4</strong> 全脳カバレッジ：どこまで“全体”を測る必要がある？</a></li>
+<li><a href="#qa-m5"><strong>M5</strong> マルチモーダル統合：位置合わせ（MRI/EEG/fMRI）をどう保証する？</a></li>
+<li><a href="#qa-m6"><strong>M6</strong> 介入・刺激：同定可能性を上げる“実験デザイン”は？</a></li>
+<li><a href="#qa-m7"><strong>M7</strong> 縦断：日内/日間変動に対して“本人性特徴”は安定か？</a></li>
+<li><a href="#qa-m8"><strong>M8</strong> 品質管理：アーチファクト/欠損/ノイズをどう“定量化”して扱う？</a></li>
+<li><a href="#qa-m9"><strong>M9</strong> 標準化：BIDS/メタデータで“他人が追試できる”形にするには？</a></li>
+</ul>
+</details>
+
+<details class="qa-index-group" open>
+<summary><strong>Reconstruction（再構成）</strong></summary>
+<ul>
+<li><a href="#qa-r0"><strong>R0</strong> 復元対象の最小セットは？（構造/状態/学習則）</a></li>
+<li><a href="#qa-r1"><strong>R1</strong> 逆問題：観測（M1）から何が一意に推定できる？</a></li>
+<li><a href="#qa-r2"><strong>R2</strong> ソース推定：EEGから“どの表現”の脳活動が欲しい？</a></li>
+<li><a href="#qa-r3"><strong>R3</strong> 状態推定：潜在状態（latent）をどう定義し、どう検証する？</a></li>
+<li><a href="#qa-r4"><strong>R4</strong> 因果：介入に対する反応を予測できるモデルは何？</a></li>
+<li><a href="#qa-r5"><strong>R5</strong> 可塑性：学習則を“入れる/入れない”の境界は？</a></li>
+<li><a href="#qa-r6"><strong>R6</strong> 個人化：一般モデル＋個人パラメータ？それとも完全に個人別？</a></li>
+<li><a href="#qa-r7"><strong>R7</strong> 同定可能性：推定は“唯一解”に近づく？不確実性は？</a></li>
+<li><a href="#qa-r8"><strong>R8</strong> 圧縮：どの情報を捨てても“検証基準”は保てる？</a></li>
+<li><a href="#qa-r9"><strong>R9</strong> 監査：モデル差分と失敗例を“残す仕組み”は？</a></li>
+<li><a href="#qa-r10"><strong>R10</strong> 神経修飾：気分や覚醒度（Volume Transmission）をどう組み込む？</a></li>
+</ul>
+</details>
+
+<details class="qa-index-group" open>
+<summary><strong>Implementation（実装）</strong></summary>
+<ul>
+<li><a href="#qa-i0"><strong>I0</strong> 実行基盤：汎用計算/GPU/HPC/ニューロモーフィックのどれを狙う？</a></li>
+<li><a href="#qa-i10"><strong>I10</strong> 時間連続性：離散時間(RNN)と連続時間(ODE)のどちらを選ぶ？</a></li>
+<li><a href="#qa-i1"><strong>I1</strong> 閉ループ：リアルタイムに何msの遅延まで許される？</a></li>
+<li><a href="#qa-i2"><strong>I2</strong> モデル粒度：スパイキング/レート/抽象のどこで戦う？</a></li>
+<li><a href="#qa-i3"><strong>I3</strong> 計算量：メモリ/電力/並列化のボトルネックはどこ？</a></li>
+<li><a href="#qa-i4"><strong>I4</strong> 初期化：モデルの“初期状態”をどう与える？</a></li>
+<li><a href="#qa-i5"><strong>I5</strong> 学習とドリフト：学習させるなら“安全な更新”をどう設計する？</a></li>
+<li><a href="#qa-i6"><strong>I6</strong> 身体性：入力/出力（センサー/運動/言語）をどこまで持たせる？</a></li>
+<li><a href="#qa-i7"><strong>I7</strong> 再現性：実装差（言語/ハード）で結果が変わらない保証は？</a></li>
+<li><a href="#qa-i8"><strong>I8</strong> 安全：隔離・監視・停止（containment）をどう作る？</a></li>
+<li><a href="#qa-i9"><strong>I9</strong> 熱力学：デジタル基盤で“意識の物理的コスト”を払えるか？</a></li>
+</ul>
+</details>
+
+<details class="qa-index-group" open>
+<summary><strong>Verification（検証）</strong></summary>
+<ul>
+<li><a href="#qa-v0"><strong>V0</strong> 検証対象：同一性・意識・行動のどれを“工学的に”検証する？</a></li>
+<li><a href="#qa-v1"><strong>V1</strong> 評価スイート：何を測れば“前進”と言える？（事前登録）</a></li>
+<li><a href="#qa-v2"><strong>V2</strong> 因果テスト：刺激/介入で“同じ反応”を出せるか？</a></li>
+<li><a href="#qa-v3"><strong>V3</strong> 一般化：分布外（OOD）でも“本人らしさ”は保てる？</a></li>
+<li><a href="#qa-v4"><strong>V4</strong> 長期：学習・ドリフト・忘却の扱いをどう評価する？</a></li>
+<li><a href="#qa-v5"><strong>V5</strong> 本人性：心理的連続性を超えた“因果的同一性”とは？</a></li>
+<li><a href="#qa-v6"><strong>V6</strong> 意識：理論に依存した予測を、どこまで“検証可能”にできる？</a></li>
+<li><a href="#qa-v7"><strong>V7</strong> コピー/分岐：複数インスタンスが走ったら“本人”はどう扱う？</a></li>
+<li><a href="#qa-v8"><strong>V8</strong> LLM/模倣との区別：外形が似ていても“中身が違う”をどう判定する？</a></li>
+<li><a href="#qa-v9"><strong>V9</strong> 追試：第三者が“同じ結論”に到達できる設計になっている？</a></li>
+<li><a href="#qa-v10"><strong>V10</strong> モデル距離：生体脳とエミュレーションの“近さ”をどう測る？</a></li>
+<li><a href="#qa-v11"><strong>V11</strong> トポロジー：意識の“構造”は保存されているか？</a></li>
+</ul>
+</details>
+
+<details class="qa-index-group" open>
+<summary><strong>Deployment（社会実装）</strong></summary>
+<ul>
+<li><a href="#qa-d0"><strong>D0</strong> 倫理的フレームワーク：エミュレートされた存在の権利は？</a></li>
+<li><a href="#qa-d1"><strong>D1</strong> 同意と撤回：本人のインフォームドコンセントをどう設計する？</a></li>
+<li><a href="#qa-d2"><strong>D2</strong> アクセスと公正：誰がWBEにアクセスできるべきか？</a></li>
+<li><a href="#qa-d3"><strong>D3</strong> 安全保障：悪用リスクと制御をどう設計する？</a></li>
+</ul>
+</details>
+
+</section>
+
 <section class="section" id="definition" data-qa-group>
 <h2 class="section-title">前進の定義（最初に固定する）</h2>
 <p>“前進”を主張するには、<strong>何を再現できたら勝ちか</strong>（＝評価軸）と、<strong>何が起きたら負けか</strong>（＝反証条件）を先に決める必要があります。ここでは、その前提となる問いを3つに圧縮します。</p>
 
-<details open class="qa" data-tags="meta">
+<details open class="qa" data-tags="meta" id="qa-p0">
 <summary>
 <span class="qa-id">P0</span>
 <span class="qa-title">「マインドアップロード」の操作的定義は？（何を再現する？）</span>
@@ -47,7 +175,7 @@ note: "暫定版（随時更新）"
 </div>
 </details>
 
-<details open class="qa" data-tags="meta">
+<details open class="qa" data-tags="meta" id="qa-p1">
 <summary>
 <span class="qa-id">P1</span>
 <span class="qa-title">主張レベル（クレーム階段）をどこに置く？</span>
@@ -68,7 +196,7 @@ note: "暫定版（随時更新）"
 </div>
 </details>
 
-<details open class="qa" data-tags="meta">
+<details open class="qa" data-tags="meta" id="qa-p2">
 <summary>
 <span class="qa-id">P2</span>
 <span class="qa-title">最低限の成果物は何？（データ・コード・評価・監査）</span>
@@ -97,7 +225,7 @@ note: "暫定版（随時更新）"
 <h3>計測：どの解像度が必要？</h3>
 <p class="mini"><strong>中心問い：</strong>「脳の何を、どの時空間解像度で取れば、“復元すべき対象”が一意に近づくか？」</p>
 
-<details open class="qa" data-tags="measurement">
+<details open class="qa" data-tags="measurement" id="qa-m0">
 <summary>
 <span class="qa-id">M0</span>
 <span class="qa-title">計測の前提：in vivo / 侵襲 / 破壊スキャンのどれを想定？</span>
@@ -111,7 +239,7 @@ note: "暫定版（随時更新）"
 </div>
 </details>
 
-<details open class="qa" data-tags="measurement">
+<details open class="qa" data-tags="measurement" id="qa-m1">
 <summary>
 <span class="qa-id">M1</span>
 <span class="qa-title">観測変数：電気（EEG）/血流（fMRI）/スパイク（侵襲）で何が違う？</span>
@@ -124,7 +252,7 @@ note: "暫定版（随時更新）"
 </div>
 </details>
 
-<details open class="qa" data-tags="measurement">
+<details open class="qa" data-tags="measurement" id="qa-m2">
 <summary>
 <span class="qa-id">M2</span>
 <span class="qa-title">時間解像度の下限：どの時間スケールを“保存”すべき？</span>
@@ -140,7 +268,7 @@ note: "暫定版（随時更新）"
 </div>
 </details>
 
-<details open class="qa" data-tags="measurement">
+<details open class="qa" data-tags="measurement" id="qa-m3">
 <summary>
 <span class="qa-id">M3</span>
 <span class="qa-title">空間解像度の下限：どの粒度（領域/カラム/ニューロン/シナプス）を目指す？</span>
@@ -153,7 +281,7 @@ note: "暫定版（随時更新）"
 </div>
 </details>
 
-<details open class="qa" data-tags="measurement">
+<details open class="qa" data-tags="measurement" id="qa-m4">
 <summary>
 <span class="qa-id">M4</span>
 <span class="qa-title">全脳カバレッジ：どこまで“全体”を測る必要がある？</span>
@@ -165,7 +293,7 @@ note: "暫定版（随時更新）"
 </div>
 </details>
 
-<details open class="qa" data-tags="measurement">
+<details open class="qa" data-tags="measurement" id="qa-m5">
 <summary>
 <span class="qa-id">M5</span>
 <span class="qa-title">マルチモーダル統合：位置合わせ（MRI/EEG/fMRI）をどう保証する？</span>
@@ -178,7 +306,7 @@ note: "暫定版（随時更新）"
 </div>
 </details>
 
-<details open class="qa" data-tags="measurement">
+<details open class="qa" data-tags="measurement" id="qa-m6">
 <summary>
 <span class="qa-id">M6</span>
 <span class="qa-title">介入・刺激：同定可能性を上げる“実験デザイン”は？</span>
@@ -190,7 +318,7 @@ note: "暫定版（随時更新）"
 </div>
 </details>
 
-<details open class="qa" data-tags="measurement">
+<details open class="qa" data-tags="measurement" id="qa-m7">
 <summary>
 <span class="qa-id">M7</span>
 <span class="qa-title">縦断：日内/日間変動に対して“本人性特徴”は安定か？</span>
@@ -203,7 +331,7 @@ note: "暫定版（随時更新）"
 </div>
 </details>
 
-<details open class="qa" data-tags="measurement">
+<details open class="qa" data-tags="measurement" id="qa-m8">
 <summary>
 <span class="qa-id">M8</span>
 <span class="qa-title">品質管理：アーチファクト/欠損/ノイズをどう“定量化”して扱う？</span>
@@ -219,7 +347,7 @@ note: "暫定版（随時更新）"
 </div>
 </details>
 
-<details open class="qa" data-tags="measurement">
+<details open class="qa" data-tags="measurement" id="qa-m9">
 <summary>
 <span class="qa-id">M9</span>
 <span class="qa-title">標準化：BIDS/メタデータで“他人が追試できる”形にするには？</span>
@@ -238,7 +366,7 @@ note: "暫定版（随時更新）"
 <h3>再構成：何を復元する？（回路 / 状態 / 学習則）</h3>
 <p class="mini"><strong>中心問い：</strong>「“本人の心的機能”に必要なのは、構造（結合）・動的状態（活動）・学習則（可塑性）のどこまでか？」</p>
 
-<details open class="qa" data-tags="reconstruction">
+<details open class="qa" data-tags="reconstruction" id="qa-r0">
 <summary>
 <span class="qa-id">R0</span>
 <span class="qa-title">復元対象の最小セットは？（構造/状態/学習則）</span>
@@ -252,7 +380,7 @@ note: "暫定版（随時更新）"
 </div>
 </details>
 
-<details open class="qa" data-tags="reconstruction">
+<details open class="qa" data-tags="reconstruction" id="qa-r1">
 <summary>
 <span class="qa-id">R1</span>
 <span class="qa-title">逆問題：観測（M1）から何が一意に推定できる？</span>
@@ -265,7 +393,7 @@ note: "暫定版（随時更新）"
 </div>
 </details>
 
-<details open class="qa" data-tags="reconstruction">
+<details open class="qa" data-tags="reconstruction" id="qa-r2">
 <summary>
 <span class="qa-id">R2</span>
 <span class="qa-title">ソース推定：EEGから“どの表現”の脳活動が欲しい？</span>
@@ -279,7 +407,7 @@ note: "暫定版（随時更新）"
 </div>
 </details>
 
-<details open class="qa" data-tags="reconstruction">
+<details open class="qa" data-tags="reconstruction" id="qa-r3">
 <summary>
 <span class="qa-id">R3</span>
 <span class="qa-title">状態推定：潜在状態（latent）をどう定義し、どう検証する？</span>
@@ -292,7 +420,7 @@ note: "暫定版（随時更新）"
 </div>
 </details>
 
-<details open class="qa" data-tags="reconstruction">
+<details open class="qa" data-tags="reconstruction" id="qa-r4">
 <summary>
 <span class="qa-id">R4</span>
 <span class="qa-title">因果：介入に対する反応を予測できるモデルは何？</span>
@@ -307,7 +435,7 @@ note: "暫定版（随時更新）"
 </div>
 </details>
 
-<details open class="qa" data-tags="reconstruction">
+<details open class="qa" data-tags="reconstruction" id="qa-r5">
 <summary>
 <span class="qa-id">R5</span>
 <span class="qa-title">可塑性：学習則を“入れる/入れない”の境界は？</span>
@@ -320,7 +448,7 @@ note: "暫定版（随時更新）"
 </div>
 </details>
 
-<details open class="qa" data-tags="reconstruction">
+<details open class="qa" data-tags="reconstruction" id="qa-r6">
 <summary>
 <span class="qa-id">R6</span>
 <span class="qa-title">個人化：一般モデル＋個人パラメータ？それとも完全に個人別？</span>
@@ -332,7 +460,7 @@ note: "暫定版（随時更新）"
 </div>
 </details>
 
-<details open class="qa" data-tags="reconstruction">
+<details open class="qa" data-tags="reconstruction" id="qa-r7">
 <summary>
 <span class="qa-id">R7</span>
 <span class="qa-title">同定可能性：推定は“唯一解”に近づく？不確実性は？</span>
@@ -345,7 +473,7 @@ note: "暫定版（随時更新）"
 </div>
 </details>
 
-<details open class="qa" data-tags="reconstruction">
+<details open class="qa" data-tags="reconstruction" id="qa-r8">
 <summary>
 <span class="qa-id">R8</span>
 <span class="qa-title">圧縮：どの情報を捨てても“検証基準”は保てる？</span>
@@ -357,7 +485,7 @@ note: "暫定版（随時更新）"
 </div>
 </details>
 
-<details open class="qa" data-tags="reconstruction">
+<details open class="qa" data-tags="reconstruction" id="qa-r9">
 <summary>
 <span class="qa-id">R9</span>
 <span class="qa-title">監査：モデル差分と失敗例を“残す仕組み”は？</span>
@@ -369,7 +497,7 @@ note: "暫定版（随時更新）"
 </div>
 </details>
 
-<details open class="qa" data-tags="reconstruction">
+<details open class="qa" data-tags="reconstruction" id="qa-r10">
 <summary>
 <span class="qa-id">R10</span>
 <span class="qa-title">神経修飾：気分や覚醒度（Volume Transmission）をどう組み込む？</span>
@@ -388,7 +516,7 @@ note: "暫定版（随時更新）"
 <h3>実装：どの基盤で？リアルタイム性は？</h3>
 <p class="mini"><strong>中心問い：</strong>「復元したモデルを、どの計算基盤（HPC/クラウド/ニューロモーフィック/ハイブリッド）で動かすか？閉ループ（身体・環境）に入れられるか？」</p>
 
-<details open class="qa" data-tags="implementation">
+<details open class="qa" data-tags="implementation" id="qa-i0">
 <summary>
 <span class="qa-id">I0</span>
 <span class="qa-title">実行基盤：汎用計算/GPU/HPC/ニューロモーフィックのどれを狙う？</span>
@@ -400,7 +528,7 @@ note: "暫定版（随時更新）"
 </div>
 </details>
 
-<details open class="qa" data-tags="implementation">
+<details open class="qa" data-tags="implementation" id="qa-i10">
 <summary>
 <span class="qa-id">I10</span>
 <span class="qa-title">時間連続性：離散時間(RNN)と連続時間(ODE)のどちらを選ぶ？</span>
@@ -413,7 +541,7 @@ note: "暫定版（随時更新）"
 </div>
 </details>
 
-<details open class="qa" data-tags="implementation">
+<details open class="qa" data-tags="implementation" id="qa-i1">
 <summary>
 <span class="qa-id">I1</span>
 <span class="qa-title">閉ループ：リアルタイムに何msの遅延まで許される？</span>
@@ -426,7 +554,7 @@ note: "暫定版（随時更新）"
 </div>
 </details>
 
-<details open class="qa" data-tags="implementation">
+<details open class="qa" data-tags="implementation" id="qa-i2">
 <summary>
 <span class="qa-id">I2</span>
 <span class="qa-title">モデル粒度：スパイキング/レート/抽象のどこで戦う？</span>
@@ -438,7 +566,7 @@ note: "暫定版（随時更新）"
 </div>
 </details>
 
-<details open class="qa" data-tags="implementation">
+<details open class="qa" data-tags="implementation" id="qa-i3">
 <summary>
 <span class="qa-id">I3</span>
 <span class="qa-title">計算量：メモリ/電力/並列化のボトルネックはどこ？</span>
@@ -450,7 +578,7 @@ note: "暫定版（随時更新）"
 </div>
 </details>
 
-<details open class="qa" data-tags="implementation">
+<details open class="qa" data-tags="implementation" id="qa-i4">
 <summary>
 <span class="qa-id">I4</span>
 <span class="qa-title">初期化：モデルの“初期状態”をどう与える？</span>
@@ -463,7 +591,7 @@ note: "暫定版（随時更新）"
 </div>
 </details>
 
-<details open class="qa" data-tags="implementation">
+<details open class="qa" data-tags="implementation" id="qa-i5">
 <summary>
 <span class="qa-id">I5</span>
 <span class="qa-title">学習とドリフト：学習させるなら“安全な更新”をどう設計する？</span>
@@ -475,7 +603,7 @@ note: "暫定版（随時更新）"
 </div>
 </details>
 
-<details open class="qa" data-tags="implementation">
+<details open class="qa" data-tags="implementation" id="qa-i6">
 <summary>
 <span class="qa-id">I6</span>
 <span class="qa-title">身体性：入力/出力（センサー/運動/言語）をどこまで持たせる？</span>
@@ -487,7 +615,7 @@ note: "暫定版（随時更新）"
 </div>
 </details>
 
-<details open class="qa" data-tags="implementation">
+<details open class="qa" data-tags="implementation" id="qa-i7">
 <summary>
 <span class="qa-id">I7</span>
 <span class="qa-title">再現性：実装差（言語/ハード）で結果が変わらない保証は？</span>
@@ -499,7 +627,7 @@ note: "暫定版（随時更新）"
 </div>
 </details>
 
-<details open class="qa" data-tags="implementation">
+<details open class="qa" data-tags="implementation" id="qa-i8">
 <summary>
 <span class="qa-id">I8</span>
 <span class="qa-title">安全：隔離・監視・停止（containment）をどう作る？</span>
@@ -511,7 +639,7 @@ note: "暫定版（随時更新）"
 </div>
 </details>
 
-<details open class="qa" data-tags="implementation">
+<details open class="qa" data-tags="implementation" id="qa-i9">
 <summary>
 <span class="qa-id">I9</span>
 <span class="qa-title">熱力学：デジタル基盤で“意識の物理的コスト”を払えるか？</span>
@@ -535,7 +663,7 @@ note: "暫定版（随時更新）"
 <h3>検証：何を満たせば「同じ」と言える？</h3>
 <p class="mini"><strong>中心問い：</strong>「同一性/意識/行動のうち、技術的に検証可能な基準をどう定義し、反証条件をどう置くか？」</p>
 
-<details open class="qa" data-tags="verification">
+<details open class="qa" data-tags="verification" id="qa-v0">
 <summary>
 <span class="qa-id">V0</span>
 <span class="qa-title">検証対象：同一性・意識・行動のどれを“工学的に”検証する？</span>
@@ -548,7 +676,7 @@ note: "暫定版（随時更新）"
 </div>
 </details>
 
-<details open class="qa" data-tags="verification">
+<details open class="qa" data-tags="verification" id="qa-v1">
 <summary>
 <span class="qa-id">V1</span>
 <span class="qa-title">評価スイート：何を測れば“前進”と言える？（事前登録）</span>
@@ -565,7 +693,7 @@ note: "暫定版（随時更新）"
 </div>
 </details>
 
-<details open class="qa" data-tags="verification">
+<details open class="qa" data-tags="verification" id="qa-v2">
 <summary>
 <span class="qa-id">V2</span>
 <span class="qa-title">因果テスト：刺激/介入で“同じ反応”を出せるか？</span>
@@ -577,7 +705,7 @@ note: "暫定版（随時更新）"
 </div>
 </details>
 
-<details open class="qa" data-tags="verification">
+<details open class="qa" data-tags="verification" id="qa-v3">
 <summary>
 <span class="qa-id">V3</span>
 <span class="qa-title">一般化：分布外（OOD）でも“本人らしさ”は保てる？</span>
@@ -589,7 +717,7 @@ note: "暫定版（随時更新）"
 </div>
 </details>
 
-<details open class="qa" data-tags="verification">
+<details open class="qa" data-tags="verification" id="qa-v4">
 <summary>
 <span class="qa-id">V4</span>
 <span class="qa-title">長期：学習・ドリフト・忘却の扱いをどう評価する？</span>
@@ -601,7 +729,7 @@ note: "暫定版（随時更新）"
 </div>
 </details>
 
-<details open class="qa" data-tags="verification">
+<details open class="qa" data-tags="verification" id="qa-v5">
 <summary>
 <span class="qa-id">V5</span>
 <span class="qa-title">本人性：心理的連続性を超えた“因果的同一性”とは？</span>
@@ -619,7 +747,7 @@ note: "暫定版（随時更新）"
 </ul>                        </div>
 </details>
 
-<details open class="qa" data-tags="verification">
+<details open class="qa" data-tags="verification" id="qa-v6">
 <summary>
 <span class="qa-id">V6</span>
 <span class="qa-title">意識：理論に依存した予測を、どこまで“検証可能”にできる？</span>
@@ -636,7 +764,7 @@ note: "暫定版（随時更新）"
 </div>
 </details>
 
-<details open class="qa" data-tags="verification">
+<details open class="qa" data-tags="verification" id="qa-v7">
 <summary>
 <span class="qa-id">V7</span>
 <span class="qa-title">コピー/分岐：複数インスタンスが走ったら“本人”はどう扱う？</span>
@@ -648,7 +776,7 @@ note: "暫定版（随時更新）"
 </div>
 </details>
 
-<details open class="qa" data-tags="verification">
+<details open class="qa" data-tags="verification" id="qa-v8">
 <summary>
 <span class="qa-id">V8</span>
 <span class="qa-title">LLM/模倣との区別：外形が似ていても“中身が違う”をどう判定する？</span>
@@ -660,7 +788,7 @@ note: "暫定版（随時更新）"
 </div>
 </details>
 
-<details open class="qa" data-tags="verification">
+<details open class="qa" data-tags="verification" id="qa-v9">
 <summary>
 <span class="qa-id">V9</span>
 <span class="qa-title">追試：第三者が“同じ結論”に到達できる設計になっている？</span>
@@ -672,7 +800,7 @@ note: "暫定版（随時更新）"
 </div>
 </details>
 
-<details open class="qa" data-tags="verification">
+<details open class="qa" data-tags="verification" id="qa-v10">
 <summary>
 <span class="qa-id">V10</span>
 <span class="qa-title">モデル距離：生体脳とエミュレーションの“近さ”をどう測る？</span>
@@ -685,7 +813,7 @@ note: "暫定版（随時更新）"
 </div>
 </details>
 
-<details open class="qa" data-tags="verification">
+<details open class="qa" data-tags="verification" id="qa-v11">
 <summary>
 <span class="qa-id">V11</span>
 <span class="qa-title">トポロジー：意識の“構造”は保存されているか？</span>
@@ -704,7 +832,7 @@ note: "暫定版（随時更新）"
 <h3>社会実装：技術を越えて何が必要か？</h3>
 <p class="mini"><strong>中心問い：</strong>「L5（社会実装）に向けて、技術以外にどのような制度・倫理・法的基盤が必要か？」</p>
 
-<details open class="qa" data-tags="deployment">
+<details open class="qa" data-tags="deployment" id="qa-d0">
 <summary>
 <span class="qa-id">D0</span>
 <span class="qa-title">倫理的フレームワーク：エミュレートされた存在の権利は？</span>
@@ -717,7 +845,7 @@ note: "暫定版（随時更新）"
 </div>
 </details>
 
-<details open class="qa" data-tags="deployment">
+<details open class="qa" data-tags="deployment" id="qa-d1">
 <summary>
 <span class="qa-id">D1</span>
 <span class="qa-title">同意と撤回：本人のインフォームドコンセントをどう設計する？</span>
@@ -729,7 +857,7 @@ note: "暫定版（随時更新）"
 </div>
 </details>
 
-<details open class="qa" data-tags="deployment">
+<details open class="qa" data-tags="deployment" id="qa-d2">
 <summary>
 <span class="qa-id">D2</span>
 <span class="qa-title">アクセスと公正：誰がWBEにアクセスできるべきか？</span>
@@ -741,7 +869,7 @@ note: "暫定版（随時更新）"
 </div>
 </details>
 
-<details open class="qa" data-tags="deployment">
+<details open class="qa" data-tags="deployment" id="qa-d3">
 <summary>
 <span class="qa-id">D3</span>
 <span class="qa-title">安全保障：悪用リスクと制御をどう設計する？</span>
@@ -1410,6 +1538,7 @@ note: "暫定版（随時更新）"
 <ul>
 <li><a href="#howto">How to Use</a></li>
 <li><a href="#definition">前進の定義</a></li>
+<li><a href="#roadmap-index">索引</a></li>
 <li><a href="#tree">問いの木</a></li>
 <li><a href="#measurement">計測</a></li>
 <li><a href="#reconstruction">再構成</a></li>
