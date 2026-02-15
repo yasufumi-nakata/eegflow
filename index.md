@@ -71,6 +71,14 @@ Mind-Uploadは、「心をコンピュータで再現できるのか？」とい
 <a href="proposals.html" class="btn-action">Open Integrated Proposals</a>
 </div>
 </div>
+<div class="stage-item">
+<div class="stage-number">07</div>
+<div class="stage-body">
+<h4>協業候補（Collaborations）</h4>
+<p>検証基盤に接続可能な研究機関・プロジェクト・企業・助成制度を優先度付きで整理。</p>
+<a href="collaborations.html" class="btn-action">Open Collaborations</a>
+</div>
+</div>
 </div>
 </section>
 

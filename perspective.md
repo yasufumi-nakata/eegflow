@@ -150,6 +150,9 @@ style="margin: 0; padding-left: 20px; list-style-type: disc; font-size: 14px; li
 <strong>計算可能な近似指標の採用：</strong>Φ（統合情報量）の直接計算はシステム規模に対して指数関数的に困難です。そのため、<strong>摂動複雑性指標（PCI-ST）</strong>や、大規模言語モデル（LLM）等でも適用可能な<strong>低次元埋め込みによる近似手法</strong><sup><a href="#ref-81">[81]</a></sup>を工学的目標に据えます。
 </li>
 <li style="margin-bottom: 8px;">
+<strong>神経活動多様体の幾何学的比較（Neural Manifold Geometry）：</strong>PCI等のスカラー値指標だけでは、意識の「質的な構造（Qualitative Structure）」の同一性を保証できない。本プロジェクトでは、グラフ理論的指標（Small-worldness等）に加え、<strong>位相的データ解析（TDA）</strong>、特に<strong>パーシステント・ホモロジー（Persistent Homology）</strong>を導入する。神経活動多様体のアトラクタ構造の「穴（サイクル）」やベッティ数を比較し、<strong>Bottleneck distance</strong>で生体脳とエミュレーション間のトポロジー距離を定量化することで、IITの因果構造保存との数学的対応を強化する。
+</li>
+<li style="margin-bottom: 8px;">
 <strong>熱力学的制約の導入：</strong>デジタルエミュレーションにおける意識の維持条件として、情報の散逸構造や熱力学的不可逆性を考慮した<strong>「物理的基盤の要件」</strong>を明文化します。意識が非平衡開放系における散逸構造として維持されていることを踏まえ、エミュレーションにおける因果的力の密度やエネルギー効率が生物学的制約を満たすかを検証します。
 </li>
 </ul>
@@ -251,6 +254,7 @@ href="#ref-28">[28]</a></sup>。</li>
 </li>
 <li style="margin-bottom: 12px;">
 <strong>NESS熱力学的接地：</strong>Landauerの限界（1ビット消去あたりkT ln 2）を超えて、生物学的な脳は非平衡定常状態（Non-Equilibrium Steady State; NESS）を維持しており、構造維持コストとして脳エネルギーの50%以上を消費する。Entropy Production Rate（EPR）は、神経状態空間のFisher Informationと結びつけられなければならない<sup><a href="#ref-98">[98]</a></sup>。意識は単なる情報処理ではなく、能動的な散逸（active dissipation）を要求する。したがって、エミュレーションが物理的制約を満たすかの検証には、EPRの再現が不可欠な指標となる<sup><a href="#ref-92">[92]</a></sup>。
+<br><strong>実証的EPR測定の導入：</strong>EEG時系列データから非平衡性（詳細釣り合いの破れ）を定量化するため、時間反転対称性の破れに基づく<strong>Entropy Production Rate下界推定</strong>を検証指標に追加する。意識状態の変化（睡眠、麻酔、覚醒）がEPRの変化と密接に関連することが近年の研究で示されており（Lynn et al., 2021, PNAS; Ishihara &amp; Shimazaki, 2025, Nature Communications）、エミュレーションの物理的整合性評価にCrossing-time statisticsやThermodynamic Uncertainty Relationsを活用する。
 </li>
 </ol>
 
@@ -1060,6 +1064,7 @@ href="https://arxiv.org/abs/2303.08896">arXiv</a></li>
 <h4>Research Notes</h4>
 <ul>
 <li><a href="idea.html">理論的枠組み（Idea）</a></li>
+<li><a href="collaborations.html">協業候補（Collaborations）</a></li>
 <li><a href="issue.html">貢献ガイド（Research Community）</a></li>
 </ul>
 </div>

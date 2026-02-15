@@ -68,6 +68,29 @@ note: "Theoretical Framework"
 </div>
 </section>
 
+<!-- Section: Thermodynamic Grounding -->
+<section class="section">
+<h2 class="section-title">Thermodynamic Grounding</h2>
+<h3>熱力学的散逸構造としての意識基盤</h3>
+<p>
+意識を「動的プロセス」として定義する本フレームワークは、情報処理の観点だけでなく、その物理的基盤としての<strong>熱力学的散逸構造（Dissipative Structure）</strong>を明示的に要求する。生物学的脳は非平衡開放系における散逸構造であり、エネルギー消費と情報処理は不可分な関係にある。
+</p>
+<div class="key-points">
+<h4>WBE実現要件としての熱力学的効率</h4>
+<ul>
+<li><strong>非平衡定常状態（NESS）の維持：</strong>意識の維持には特定のエントロピー散逸率（EPR）が伴う。デジタルエミュレーションが生物学的脳と同じ「低散逸・等温的な情報処理」を実現できない場合、たとえ因果構造が形式的に等価であっても、現象的な質が変化する可能性がある。</li>
+<li><strong>Consciousness as IDS：</strong>「意識は情報散逸構造（Informational Dissipative Structure）である」というモデル（2025）が示唆するように、意識の維持には特定のエントロピー散逸パターンが伴い、これはデジタルエミュレーションにおいても再現されるべき物理的制約である。</li>
+<li><strong>エネルギー効率の比較指標：</strong>生体脳の計算コスト（約20W）に対する、エミュレーションの仮想エネルギー流の比率をKPIとして定義する。特に、通信と計算のエネルギー消費比率（皮質では通信が計算の約35倍；Niven & Laughlin, 2008）を考慮した上で、仮想散逸プロトコル（VDP）が生物学的脳のNESSをどの程度忠実に再現しているかを定量的に評価する。</li>
+</ul>
+</div>
+<div class="note-box">
+<strong>検証指標への反映</strong>
+<p>
+本フレームワークは、Verification Commons（検証基盤）のBenchmark Suiteに以下の熱力学的指標を追加することを要求する：(1) EEG時系列から推定されるEntropy Production Rate（EPR）の下界、(2) 時間反転対称性の破れの定量化、(3) エミュレーションのエネルギー消費量と生物学的脳の比較。これらは情報論的指標（Φ, PCI等）を補完する物理的制約として機能する。
+</p>
+</div>
+</section>
+
 <!-- Section 3 -->
 <section class="section">
 <h2 class="section-title">Sensing Strategy</h2>

@@ -242,7 +242,60 @@ Issues #64–#70 で指摘された技術的批判を受け、Verification Commo
 <li>Pearlの因果階梯（観察→介入→反事実）を評価フレームワークとすること</li>
 </ul>
 </li>
+  </ul>
+  </div>
+</section>
+
+<section class="section" id="causal-perturbation-suite">
+<h2 class="section-title">因果的摂動スイート（Causal Perturbation Suite）</h2>
+<p>
+Issues #251・#254 を踏まえ、標準的な行動テストを超えてWBE同一性を検証するベンチマークとして「因果的摂動スイート（Causal Perturbation Suite）」を定義します。単なる出力の一致ではなく、<strong>摂動に対する応答構造の等価性</strong>を検証するテスト群です。
+</p>
+<div class="key-points">
+<h4>三つのテストカテゴリ</h4>
+<ul>
+<li><strong>1. シミュレーションTMS応答の一致：</strong>仮想摂動（virtual perturbation）を印加し、生物学的脳とエミュレーション間のEEG応答パターンを比較する。複数摂動部位での応答伝播の統計的一致を検証する。</li>
+<li><strong>2. 薬理学的介入シミュレーション：</strong>麻酔・薬物効果の伝播をモデル化し、生体脳における実測データと比較する。状態遷移（覚醒↔鎮静など）のパターン再現性を検証する。</li>
+<li><strong>3. 新規・極端刺激応答：</strong>学習中に一度も見せていない新規・極端刺激に対する応答を比較し、KLダイバージェンスを用いた分岐パターンの違いを評価する。</li>
 </ul>
+</div>
+<div class="note-box">
+<strong>評価指標</strong>
+<p>
+PCI-ST空間分布比較、パーシステンス図のBottleneck distance、生成モデル間距離のFisher Information Metric (FIM) を採用する。反事実等価性については Laukkonen et al. (2025) を参照する。
+</p>
+</div>
+</section>
+
+<section class="section" id="thermodynamic-verification">
+<h2 class="section-title">熱力学的検証要件（Thermodynamic Verification Requirements）</h2>
+<p>
+Issues #251・#254 に基づき、NESS（非平衡定常状態）およびEPR（エントロピー生成速度）の観点から熱力学指標を検証スイートに組み込みます。
+</p>
+<div class="key-points">
+<h4>必須要件</h4>
+<ul>
+<li><strong>熱力学指標の報告義務：</strong>ベンチマークへのエミュレーション提出物は、必ず熱力学関連指標を報告すること。既存の情報論的指標を補完する。</li>
+</ul>
+</div>
+<div class="key-points">
+<h4>実証的EPR測定</h4>
+<ul>
+<li><strong>下界エントロピー生成速度：</strong>EEG時系列を用い、時間反転対称性の破れ（time-reversal asymmetry）に基づいてエントロピー生成速度の下界を推定する（Lynn et al., 2021, PNAS; Ishihara &amp; Shimazaki, 2025, Nature Communications）。</li>
+</ul>
+</div>
+<div class="key-points">
+<h4>エネルギー効率の比較</h4>
+<ul>
+<li><strong>仮想エネルギー流の比率：</strong>エミュレーションの仮想エネルギー流と、生物学的脳の約20Wとの比を算出し、効率性を比較する。</li>
+<li><strong>通信 vs 計算のエネルギー比：</strong>Niven &amp; Laughlin (2008) に従い、大脳皮質において通信コストが計算コストの約35倍となる点を考慮し、エミュレーション設計の評価に反映する。</li>
+</ul>
+</div>
+<div class="note-box">
+<strong>位置づけ</strong>
+<p>
+これらの熱力学指標は、既存の情報論的指標（Effective Information、Causal Density 等）を補完する。同一性検証において、非平衡熱力学の観点を欠いた主張は不十分とみなす。
+</p>
 </div>
 </section>
 
