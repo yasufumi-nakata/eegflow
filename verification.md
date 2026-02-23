@@ -5,7 +5,7 @@ description: "マインドアップロード/WBEを「進歩を測れる科学�
 article_type: Platform
 subtitle: "PDB×BIDS×PhysioNet×OSFの発想で、WBEの“勝利条件”と“再現可能な前進”を作る"
 author: Mind Uploading Research Project
-last_updated: "2026-02-10"
+last_updated: "2026-02-23"
 note: "Operational Specification"
 ---
 <!-- IMPORTANT: Do not delete or overwrite this information. It serves as the project's permanent knowledge base. -->
@@ -263,6 +263,30 @@ Issues #251・#254 を踏まえ、標準的な行動テストを超えてWBE同�
 <strong>評価指標</strong>
 <p>
 PCI-ST空間分布比較、パーシステンス図のBottleneck distance、生成モデル間距離のFisher Information Metric (FIM) を採用する。反事実等価性については Laukkonen et al. (2025) を参照する。
+</p>
+</div>
+</section>
+
+<section class="section" id="verification-rigor-2026-02">
+<h2 class="section-title">検証要件の追加更新（Issue #257–#260）</h2>
+<p>
+2026年2月後半に提出された技術批判（Issue #257–#260）に対応し、既存要件に不足していた判定ログを追加します。目的は「主張の強化」ではなく、第三者が反証可能な形で再現監査できることです。
+</p>
+<div class="key-points">
+<h4>追加必須ログ</h4>
+<ul>
+<li><strong>HBM不確実性マップ：</strong>EEG逆問題では、頭蓋導電率を含む順問題パラメータとソース活動を同時推定し、モンテカルロ感度分析の空間マップを提出すること。</li>
+<li><strong>因果同値類の明示：</strong>推定モデルが唯一解であるとは主張せず、同一観測統計量を説明しうる代替モデル群（causal equivalence class）の存在を報告すること。</li>
+<li><strong>摂動一致の追加判定：</strong>PCI-STの値比較だけでなく、局所介入（TMS/tDCS相当）での応答分岐一致を必須とすること。</li>
+<li><strong>前処理忠実度監査：</strong>ASR適用前後の相互情報量（MI）および位相同期（PLV/wPLI）の保存率を記録し、高周波成分の過抑制を検査すること。</li>
+<li><strong>セマンティックメタデータ：</strong>BIDSメタデータにCogPO/NIF準拠タグと主観報告（ESM等）を追加し、認知文脈の欠落を防ぐこと。</li>
+<li><strong>熱力学KPI：</strong>FLOPs系の論理コストとEPR系の散逸コストを分離し、通信対計算エネルギー比を併記すること。</li>
+</ul>
+</div>
+<div class="note-box">
+<strong>外部依存タスクの扱い</strong>
+<p>
+実被験者介入（TMS/tDCS）、IRB審査、機材調達を要する検証は外部依存タスクとして管理します。本リポジトリでは「要求仕様・判定条件・公開ログ形式」までを先行実装し、実験実施自体は別トラックで進めます。
 </p>
 </div>
 </section>

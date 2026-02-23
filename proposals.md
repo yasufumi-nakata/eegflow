@@ -1,11 +1,11 @@
 ---
 layout: default
 title: "技術提案（統合本文）"
-description: "Issue #46/#47/#48/#56/#58/#61/#62/#64–#70 に対応する Technical Proposal を1ページ本文に統合した根拠付きサマリー。"
+description: "Issue #46/#47/#48/#56/#58/#61/#62/#64–#70/#257–#260 に対応する Technical Proposal を1ページ本文に統合した根拠付きサマリー。"
 article_type: Index
 subtitle: "Issue対応・実装方針・根拠リンクを1ページで追跡"
 author: Mind Uploading Research Project
-last_updated: "2026-02-10"
+last_updated: "2026-02-23"
 note: "Integrated Compendium"
 ---
 <!-- IMPORTANT: Do not delete or overwrite this information. It serves as the project's permanent knowledge base. -->
@@ -16,7 +16,7 @@ note: "Integrated Compendium"
 <div class="abstract-box">
 <h2>Purpose</h2>
 <p>
-このページは、Technical Proposal 群（Issue #46/#47/#48/#56/#58/#61/#62）を「一覧」ではなく<strong>本文として統合</strong>したページです。
+このページは、Technical Proposal 群（Issue #46/#47/#48/#56/#58/#61/#62/#257–#260）を「一覧」ではなく<strong>本文として統合</strong>したページです。
 各提案の主張、対応状況、実装影響、根拠節へのリンクを1か所にまとめ、検証と更新を容易にします。
 </p>
 </div>
@@ -87,6 +87,30 @@ note: "Integrated Compendium"
 <td>NESS・同値類警告・IIT近似（ヒューリスティクス）</td>
 <td><a href="technical_proposal_62.html#thermodynamics">#thermodynamics</a> / <a href="technical_proposal_62.html#identifiability">#identifiability</a> / <a href="technical_proposal_62.html#complexity">#complexity</a></td>
 </tr>
+<tr>
+<td><strong>#257</strong></td>
+<td>提案受理（本文追記）</td>
+<td>HBMでの導電率同時推定・因果同値類の明示・NESS要件の実装化</td>
+<td><a href="#stream-e-rigor">#stream-e-rigor</a> / <a href="verification.html#verification-rigor-2026-02">verification</a></td>
+</tr>
+<tr>
+<td><strong>#258</strong></td>
+<td>提案受理（本文追記）</td>
+<td>IIT計算量制約の実務化（PCI-ST中心）と熱力学KPIの強化</td>
+<td><a href="#stream-e-rigor">#stream-e-rigor</a> / <a href="verification.html#thermodynamic-verification">thermodynamic-verification</a></td>
+</tr>
+<tr>
+<td><strong>#259</strong></td>
+<td>提案受理（本文追記）</td>
+<td>ASR前後の忠実度監査、BIDSセマンティック拡張（CogPO/NIF）を要件化</td>
+<td><a href="#stream-e-rigor">#stream-e-rigor</a> / <a href="verification.html#verification-rigor-2026-02">verification</a></td>
+</tr>
+<tr>
+<td><strong>#260</strong></td>
+<td>提案受理（本文追記）</td>
+<td>逆問題不確実性伝播・因果識別限界・熱力学整合性を統合追記</td>
+<td><a href="#stream-e-rigor">#stream-e-rigor</a> / <a href="verification.html#causal-perturbation-suite">causal-perturbation-suite</a></td>
+</tr>
 </tbody>
 </table>
 </section>
@@ -126,6 +150,11 @@ ASR のパラメータ選択においては、静的閾値ではなく Riemannia
 周波数追従型デノイジングには ZapLine-plus（Klug &amp; Kloosterman, 2022）を標準パイプラインに組み込み、線スペクトルノイズの自動検出・除去を行います。
 また、ICA/ASR 等で除去されたコンポーネントのトポグラフィは、再現性・監査可能性の観点から BIDS 監査ログ（derivatives 内 audit/ ディレクトリ）に必ず記録する運用とします。
 </p>
+<p>
+<strong>信号忠実度の追加要件（Issue #259）：</strong>
+ASR 適用前後で、相互情報量（Mutual Information）および位相同期指標（PLV/wPLI）の保存率を監査指標として記録します。
+さらに、ASR 単独での除去性能に偏らないよう、深層学習ベースのBSS（ICA-U-Net 等）を比較対象に含め、タスク別に副作用（高周波成分の過抑制）を評価します。
+</p>
 </div>
 </div>
 
@@ -160,6 +189,24 @@ DCM モデル空間の効率的探索には Bayesian Model Reduction（BMR; Frä
 <span class="tag">NESS</span><span class="tag">EPR</span><span class="tag">Metabolic Flux</span><span class="tag">IIT Approximation</span>
 </div>
 <p><strong>根拠:</strong> <a href="technical_proposal_58.html#thermo">#58: 散逸制約</a> / <a href="technical_proposal_61.html#thermodynamics">#61: 2層コスト</a> / <a href="technical_proposal_62.html#complexity">#62: 計算量対応</a></p>
+</div>
+</div>
+
+<div class="stage-item">
+<div class="stage-number">E</div>
+<div class="stage-body">
+<h4 id="stream-e-rigor">2026年2月 追加厳密化ストリーム（Issue #257–#260）</h4>
+<p>
+Issue #257–#260 で提示された技術批判を、既存ストリームの上位制約として統合します。ここでは「提案の追加」ではなく、公開済み要件の判定条件を厳密化し、検証時に欠落しやすい論点を明示します。
+</p>
+<ul>
+<li><strong>逆問題不確実性：</strong>導電率・ノイズ・逆問題不良設定性を分離し、HBMでの同時推定結果とモンテカルロ感度分析を提出必須にします。</li>
+<li><strong>因果同値類の警告：</strong>観測一致のみでは同一性を主張しない運用とし、推定モデルが同値類の一要素であることを明記します。</li>
+<li><strong>介入設計の実務化：</strong>PCI-STの単独報告ではなく、局所摂動（TMS/tDCS相当）に対する因果応答不一致の検出を評価契約に組み込みます。</li>
+<li><strong>熱力学制約：</strong>論理コスト（FLOPs）と散逸コスト（EPR）を分離し、通信対計算のエネルギー比をKPIとして記録します。</li>
+<li><strong>BIDSセマンティック拡張：</strong>CogPO/NIF と主観報告メタデータ（ESM等）を併用し、実験文脈の欠落を防ぎます。</li>
+</ul>
+<p><strong>根拠:</strong> <a href="verification.html#verification-rigor-2026-02">検証要件（#257–#260）</a> / <a href="verification.html#causal-perturbation-suite">因果的摂動スイート</a> / <a href="verification.html#thermodynamic-verification">熱力学的検証要件</a></p>
 </div>
 </div>
 </div>
@@ -238,6 +285,9 @@ DCM モデル空間の効率的探索には Bayesian Model Reduction（BMR; Frä
 <li>Barachant, A., et al. (2013). Classification of covariance matrices using a Riemannian-based kernel for BCI applications. <a href="https://doi.org/10.1016/j.neucom.2013.04.027" target="_blank">doi:10.1016/j.neucom.2013.04.027</a></li>
 <li>Klug, M. &amp; Kloosterman, N. A. (2022). ZapLine-plus: A flexible and accurate removal of line noise. <a href="https://doi.org/10.1016/j.neuroimage.2022.119265" target="_blank">doi:10.1016/j.neuroimage.2022.119265</a></li>
 <li>Frässle, S., et al. (2021). Regression DCMs for group studies. <a href="https://doi.org/10.1016/j.neuroimage.2020.117566" target="_blank">doi:10.1016/j.neuroimage.2020.117566</a></li>
+<li>Mullen, T. R., et al. (2015). Real-time neuroimaging and cognitive monitoring using wearable EEG. <a href="https://doi.org/10.1109/TBME.2015.2437932" target="_blank">doi:10.1109/TBME.2015.2437932</a></li>
+<li>Turner, B. O., et al. (2016). The Cognitive Paradigm Ontology (CogPO). <a href="https://doi.org/10.1007/s12021-016-9297-2" target="_blank">doi:10.1007/s12021-016-9297-2</a></li>
+<li>Bug, W. J., et al. (2008). The Neuroscience Information Framework (NIF). <a href="https://doi.org/10.1007/s12021-008-9006-y" target="_blank">doi:10.1007/s12021-008-9006-y</a></li>
 </ol>
 </section>
 

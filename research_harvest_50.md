@@ -5,7 +5,7 @@ description: "50分解クエスチョンで収集した先行研究を、解決�
 article_type: "Evidence Bank"
 subtitle: "U0-U15 の分解、現状評価、先行研究（大量引用）"
 author: Mind Uploading Research Project
-last_updated: "2026-02-07"
+last_updated: "2026-02-23"
 note: "Compiled from 50 worker tasks (curated for relevance)"
 ---
 <!-- IMPORTANT: Do not delete or overwrite this information. It serves as the project's permanent knowledge base. -->
@@ -37,6 +37,25 @@ note: "Compiled from 50 worker tasks (curated for relevance)"
 <li>重複（DOI/URL/タイトル）を統合し、スコア上位のみ残す</li>
 <li>各Uに対して「解かれている範囲」と「未解決」を明示</li>
 </ol>
+</section>
+
+<section class="section" id="recent-intake-2026-02">
+<h2 class="section-title">最新追加入力（Issue #261–#263）</h2>
+<p>
+2026年2月23日に受領した内容追加Issue（#261–#263）に基づき、一次参照URLをエビデンスバンクへ登録しました。ここでは「受理済みリンク」と「学術統合前（要査読確認）」を分離して管理します。
+</p>
+<ol>
+<li><strong>[Media]</strong> <a href="https://nazology.kusuguru.co.jp/archives/189938" target="_blank">AIに意識を宿すには「正しいコード」だけでは足りないかもしれない</a>（Issue #261）<br><span class="small">status=source_logged / 学術一次文献へのトレースを継続</span></li>
+<li><strong>[Review]</strong> <a href="https://www.sciencedirect.com/science/article/pii/S0149763425005251?via%3Dihub" target="_blank">On biological and artificial consciousness: A case for biological computationalism</a>（Issue #262）<br><span class="small">status=source_logged / レビュー本文の精読要約は次回更新で実施</span></li>
+<li><strong>[arXiv]</strong> <a href="https://arxiv.org/abs/2512.01591" target="_blank">Scaling and context steer LLMs along the same computational path as the human brain</a>（Issue #262）<br><span class="small">status=source_logged / WBE同一性検証への接続可能性を評価予定</span></li>
+<li><strong>[arXiv]</strong> <a href="https://arxiv.org/abs/2305.19798" target="_blank">Primal-Attention: Self-attention through Asymmetric Kernel SVD in Primal Representation</a>（Issue #263）<br><span class="small">status=source_logged / 直接関連性（U0-U15）の再スクリーニング対象</span></li>
+</ol>
+<div class="note-box">
+<strong>運用メモ</strong>
+<p>
+本節は「入力受理ログ」です。採否判定（Uマップ反映、引用優先度、ノイズ除外）は品質ゲート手順に従い、後続の定期更新で確定します。
+</p>
+</div>
 </section>
 
 <section class="section" id="u-overview">

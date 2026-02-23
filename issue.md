@@ -5,7 +5,7 @@ description: "Mind-Uploadプロジェクトへの参加方法と、Issue対応�
 article_type: Guide
 subtitle: "Join the Research Community + Issue Tracker"
 author: Mind Uploading Research Project
-last_updated: "2026-02-10"
+last_updated: "2026-02-23"
 ---
 <!-- IMPORTANT: Do not delete or overwrite this information. It serves as the project's permanent knowledge base. -->
 
@@ -157,6 +157,83 @@ Mind-Uploadは、マインドアップロードを検証可能な研究へ進め
 <h4>統合本文</h4>
 <p>Technical Proposal 全体の統合本文は `proposals.html` に集約しています。</p>
 <a href="proposals.html">統合本文を見る →</a>
+</div>
+</section>
+
+<section class="section" id="recent-issue-responses">
+<h2 class="section-title">最新Issue対応（#257–#263）</h2>
+<p>
+以下は 2026年2月後半に追加された Issue への反映結果です。今回は「今回実行する変更」と「外部依存で保留」を明確に分離して記録します。
+</p>
+
+<table class="data-table">
+<thead>
+<tr>
+<th>Issue</th>
+<th>要求</th>
+<th>今回実行する変更</th>
+<th>状態</th>
+<th>根拠</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>#257</strong></td>
+<td>逆問題不確実性・因果同値性・熱力学整合性の厳密化</td>
+<td>HBM不確実性マップ、因果同値類の明示、NESS/EPR要件を本文基準へ追記</td>
+<td>反映済み（文書）</td>
+<td><a href="proposals.html#stream-e-rigor">proposals#stream-e-rigor</a> / <a href="verification.html#verification-rigor-2026-02">verification#verification-rigor-2026-02</a></td>
+</tr>
+<tr>
+<td><strong>#258</strong></td>
+<td>IIT計算量制約と熱力学的検証要件の明確化</td>
+<td>PCI-ST中心運用と熱力学KPI（論理コスト/散逸コスト分離）を追加</td>
+<td>反映済み（文書）</td>
+<td><a href="proposals.html#stream-e-rigor">proposals#stream-e-rigor</a> / <a href="verification.html#thermodynamic-verification">verification#thermodynamic-verification</a></td>
+</tr>
+<tr>
+<td><strong>#259</strong></td>
+<td>ASR副作用・BIDSセマンティック不足への対応</td>
+<td>ASR前後のMI/PLV監査とCogPO/NIF/主観報告メタデータ要件を追加</td>
+<td>反映済み（文書）</td>
+<td><a href="proposals.html#stream-e-rigor">proposals#stream-e-rigor</a> / <a href="verification.html#verification-rigor-2026-02">verification#verification-rigor-2026-02</a></td>
+</tr>
+<tr>
+<td><strong>#260</strong></td>
+<td>逆問題・反実仮想・熱力学の統合強化</td>
+<td>#257〜#259の追記を統合要件として束ね、検証条件を再定義</td>
+<td>反映済み（文書）</td>
+<td><a href="proposals.html#stream-e-rigor">proposals#stream-e-rigor</a> / <a href="verification.html#causal-perturbation-suite">verification#causal-perturbation-suite</a></td>
+</tr>
+<tr>
+<td><strong>#261</strong></td>
+<td>外部記事URLの内容追加</td>
+<td>収集済み文献導線へ追記し、参照URLをEvidence Bankに登録</td>
+<td>反映済み（文書）</td>
+<td><a href="research_harvest_50.html#recent-intake-2026-02">research_harvest_50#recent-intake-2026-02</a></td>
+</tr>
+<tr>
+<td><strong>#262</strong></td>
+<td>ScienceDirect/arXiv URLの内容追加</td>
+<td>2件のURLをEvidence Bankの新規受け入れログへ追加</td>
+<td>反映済み（文書）</td>
+<td><a href="research_harvest_50.html#recent-intake-2026-02">research_harvest_50#recent-intake-2026-02</a></td>
+</tr>
+<tr>
+<td><strong>#263</strong></td>
+<td>arXiv URLの内容追加</td>
+<td>arXiv文献を受け入れログに追加し、要確認ステータスを明示</td>
+<td>反映済み（文書）</td>
+<td><a href="research_harvest_50.html#recent-intake-2026-02">research_harvest_50#recent-intake-2026-02</a></td>
+</tr>
+</tbody>
+</table>
+
+<div class="note-box">
+<strong>外部依存で保留</strong>
+<ul>
+<li><strong>タスク:</strong> 実被験者を対象としたTMS/tDCS介入実験 <strong>担当:</strong> 実験担当PI <strong>前提条件:</strong> IRB承認・機材確保・被験者募集 <strong>完了条件:</strong> 事前登録済みプロトコルで取得した公開可能データと監査ログが揃うこと</li>
+</ul>
 </div>
 </section>
 
