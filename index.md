@@ -5,7 +5,7 @@ description: "マインドアップロード/WBEを「進歩を測れる科学�
 article_type: Start Here
 subtitle: "勝利条件・標準・ベンチマーク・事前登録を先に作る"
 author: Mind Uploading Research Project
-last_updated: "2026-02-10"
+last_updated: "2026-02-24"
 note: "Human-friendly landing page"
 ---
 <!-- IMPORTANT: Do not delete or overwrite this information. It serves as the project's permanent knowledge base. -->
@@ -180,21 +180,17 @@ PDB、BIDS+OpenNeuro、PhysioNet、ImageNet、MLPerf、OSFで築かれた検証�
 <li><a href="proposals.html">技術提案（統合本文）→</a></li>
 <li><a href="mind_uploading_papers.html">論文集（Papers）→</a></li>
 <li><a href="issue.html#technical-issue-tracker">Issue対応トラッカー →</a></li>
-<li><a href="README.html">README（プロジェクト概要）→</a></li>
+<li><a href="content_hub.html">公開コンテンツ統合ハブ →</a></li>
 </ul>
 </div>
 
 <div class="sidebar-box">
-<h4>Repository Docs</h4>
+<h4>Content Governance</h4>
 <ul>
-<li><a href="AGENTS.md">AGENTS.md</a></li>
-<li><a href=".agent/agent.md">.agent/agent.md</a></li>
-<li><a href="automation/README.md">automation/README.md</a></li>
-<li><a href="ignore/idea.md">ignore/idea.md</a></li>
-<li><a href="ignore/mind_uploading_papers.md">ignore/mind_uploading_papers.md</a></li>
-<li><a href="ignore/research_pack_50.md">ignore/research_pack_50.md</a></li>
-<li><a href="ignore/swarm50/worker_results.md">ignore/swarm50/worker_results.md</a></li>
-<li><a href="ignore/swarm50/worker_results_v2.md">ignore/swarm50/worker_results_v2.md</a></li>
+<li><a href="content_hub.html">公開コンテンツ統合ハブ →</a></li>
+<li><a href="https://github.com/yasufumi-nakata/mind-upload/blob/main/README.md" target="_blank">README.md ↗</a></li>
+<li><a href="https://github.com/yasufumi-nakata/mind-upload/tree/main/.agent" target="_blank">.agent/ ↗</a></li>
+<li><a href="https://github.com/yasufumi-nakata/mind-upload/tree/main/automation" target="_blank">automation/ ↗</a></li>
 </ul>
 </div>
 

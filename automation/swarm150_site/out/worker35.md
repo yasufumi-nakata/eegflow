@@ -1,1 +1,0 @@
-{"worker_id":35,"file":"hands_on.md","lens":"次に読むべきページへの導線強化","section_hint":"Verification CTA","problem":"検証基盤ページに進む意義の説明が短く遷移動機が弱いです。","before_excerpt":"Next\nL0を“公共財”にして積み上げる設計図。\n検証基盤を見る →","after_text":"L0の成果を同じ物差しで比べる検証ワークフロー（共通指標、レポート例、レビュー手順）を verification.html で詳述しています。次はそこで公開ルールを固めてください。","reason":"遷移先で得られる具体的価値を示すことで、読者が検証ページを次の行動として自然に選びやすくなります。","priority":"high"}

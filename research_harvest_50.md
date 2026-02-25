@@ -5,7 +5,7 @@ description: "50分解クエスチョンで収集した先行研究を、解決�
 article_type: "Evidence Bank"
 subtitle: "U0-U15 の分解、現状評価、先行研究（大量引用）"
 author: Mind Uploading Research Project
-last_updated: "2026-02-23"
+last_updated: "2026-02-24"
 note: "Compiled from 50 worker tasks (curated for relevance)"
 ---
 <!-- IMPORTANT: Do not delete or overwrite this information. It serves as the project's permanent knowledge base. -->
@@ -96,6 +96,63 @@ note: "Compiled from 50 worker tasks (curated for relevance)"
 </tbody></table>
 </section>
 
+<section class="section" id="issue-rq-audit-20260224">
+<h2 class="section-title">Issue反映とRQ監査（2026-02-24）</h2>
+<p>GitHub Issue #264/#265 を取り込み、各Uセクションのリサーチクエスチョン件数と多様性を点検しました。重複が出やすい領域（U3/U7/U8/U12/U13/U14）は、評価軸を分離してクエスチョンを増補しています。</p>
+
+<h3>Issue取り込み（完了）</h3>
+<table class="data-table">
+<thead><tr><th>Issue</th><th>入力ソース</th><th>反映先</th><th>状態</th></tr></thead><tbody>
+<tr><td>#264</td><td>Neuron URL (PII: S0896-6273(25)00843-8)</td><td>U3 主要先行研究（DOI: 10.1016/j.neuron.2025.10.036）</td><td>反映済み</td></tr>
+<tr><td>#265</td><td>Neuroscience News URL</td><td>U13 主要先行研究（一次研究 DOI: 10.1126/sciadv.adw1464 を併記）</td><td>反映済み</td></tr>
+</tbody></table>
+
+<h3>RQ件数と多様性評価</h3>
+<table class="data-table">
+<thead><tr><th>U</th><th>更新前RQ数</th><th>更新後RQ数</th><th>多様性評価</th></tr></thead><tbody>
+<tr><td>U0</td><td>4</td><td>4</td><td>高（定義・閾値・分岐を分離）</td></tr>
+<tr><td>U1</td><td>4</td><td>4</td><td>中（推定不確実性中心）</td></tr>
+<tr><td>U3</td><td>4</td><td>6</td><td>中（構造/体液/免疫へ軸拡張）</td></tr>
+<tr><td>U4</td><td>4</td><td>4</td><td>高（識別・介入・反証を分離）</td></tr>
+<tr><td>U7</td><td>4</td><td>6</td><td>中（同期・QC・欠損耐性へ拡張）</td></tr>
+<tr><td>U8</td><td>4</td><td>6</td><td>高（安定性・安全性・運用回復を分離）</td></tr>
+<tr><td>U10</td><td>4</td><td>4</td><td>高（理論・観測・コストを分離）</td></tr>
+<tr><td>U11</td><td>4</td><td>4</td><td>高（理論比較・計算量・失敗条件を分離）</td></tr>
+<tr><td>U12</td><td>4</td><td>6</td><td>高（法的帰属・同意運用を追加）</td></tr>
+<tr><td>U13</td><td>4</td><td>6</td><td>中（復元精度・リーク検出軸を追加）</td></tr>
+<tr><td>U14</td><td>4</td><td>6</td><td>中（否定例公開・再現コスト軸を追加）</td></tr>
+<tr><td>U15</td><td>4</td><td>4</td><td>高（法概念・監査・停止基準を分離）</td></tr>
+<tr><td><strong>合計</strong></td><td><strong>48</strong></td><td><strong>60</strong></td><td>重複クラスタを分散済み</td></tr>
+</tbody></table>
+
+<div class="note-box">
+<strong>重複処理ルール（今回適用）</strong>
+<ul>
+<li>同一テーマでも「測定」「因果」「運用」の評価軸を分離して別クエスチョン化。</li>
+<li>文献は一次研究を優先し、ニュース記事は一次研究リンク付きの補助参照として保持。</li>
+<li>低関連・重複傾向の文献を差し替え、各Uの文献件数は維持。</li>
+</ul>
+</div>
+</section>
+
+<section class="section" id="literature-refresh-20260224b">
+<h2 class="section-title">追加文献探索（2026-02-24 第2便）</h2>
+<p>2024-2026の一次文献を再探索し、関連性が高い DOI を各Uの根拠例へ追補しました。今回の追補は「理論更新」「実装更新」「監査規約更新」の3軸で選定しています。</p>
+<table class="data-table">
+<thead><tr><th>U</th><th>追補DOI</th><th>要点</th></tr></thead><tbody>
+<tr><td>U1</td><td><a href="https://doi.org/10.1109/JSEN.2024.3502917" target="_blank">10.1109/JSEN.2024.3502917</a></td><td>M/EEG逆問題の2025レビュー</td></tr>
+<tr><td>U4</td><td><a href="https://doi.org/10.1109/TBME.2024.3423803" target="_blank">10.1109/TBME.2024.3423803</a></td><td>発達過程の動的有効結合を因果モデル化</td></tr>
+<tr><td>U7</td><td><a href="https://doi.org/10.1038/s41597-024-03559-8" target="_blank">10.1038/s41597-024-03559-8</a></td><td>Motion-BIDSによる再現可能な運動データ整理</td></tr>
+<tr><td>U8</td><td><a href="https://doi.org/10.1088/1741-2552/adbb20" target="_blank">10.1088/1741-2552/adbb20</a></td><td>閉ループBCI実験基盤のモジュール化</td></tr>
+<tr><td>U10</td><td><a href="https://doi.org/10.1016/j.tics.2024.03.009" target="_blank">10.1016/j.tics.2024.03.009</a></td><td>心的過程と熱力学の接続レビュー</td></tr>
+<tr><td>U11</td><td><a href="https://doi.org/10.1038/s41586-025-08888-1" target="_blank">10.1038/s41586-025-08888-1</a></td><td>GNWとIITの敵対的検証</td></tr>
+<tr><td>U12</td><td><a href="https://doi.org/10.20318/universitas.2025.9574" target="_blank">10.20318/universitas.2025.9574</a></td><td>神経権利の欧州・中南米比較規制</td></tr>
+<tr><td>U13</td><td><a href="https://doi.org/10.1088/1741-2552/adfab1" target="_blank">10.1088/1741-2552/adfab1</a></td><td>LLM併用のbrain-to-text最新報告</td></tr>
+<tr><td>U14</td><td><a href="https://doi.org/10.1098/rsos.242057" target="_blank">10.1098/rsos.242057</a></td><td>再現性向上介入のスコーピングレビュー</td></tr>
+<tr><td>U15</td><td><a href="https://doi.org/10.1007/s11673-025-10440-9" target="_blank">10.1007/s11673-025-10440-9</a></td><td>神経技術の責任ある倫理ガバナンス戦略</td></tr>
+</tbody></table>
+</section>
+
 <section class="section" id="u0">
 <h2 class="section-title">U0: 操作的同一性</h2>
 <p><strong>厳密定義:</strong> 介入集合 I と時間窓 T を固定したとき、生体系とモデル系の条件付き分布差 D(P_bio, P_model | I, T) をしきい値以下で規定できるか。</p>
@@ -112,12 +169,14 @@ note: "Compiled from 50 worker tasks (curated for relevance)"
 <li>段階置換とscan-and-copyの比較で、手続き差が同一性の十分条件にならないという反論は蓄積済み。</li>
 <li>同一性を単一の形而上学命題でなく、操作的判定問題に変換する方向性は共有されている。</li>
 </ul>
+<p class="small"><strong>根拠例:</strong> <a href="https://doi.org/10.7551/mitpress/10366.003.0009" target="_blank">Continuity: Kinks Not Breaks</a>、<a href="https://doi.org/10.1093/acprof:oso/9780198754855.003.0013" target="_blank">Enhancement, Mind-Uploading, and Personal Identity</a>、<a href="https://doi.org/10.31219/osf.io/zw3v4" target="_blank">The Fallacy of Favoring Gradual Replacement Mind Uploading Over Scan-and-Copy</a>。</p>
 <h3>これから研究が必要なもの（未解決）</h3>
 <ul>
 <li>介入実験を含む同一性評価ベンチは未標準化。</li>
 <li>長期ドリフトを含む同一性維持（週〜月スケール）の定量指標が未確立。</li>
 <li>分岐後主体の責任帰属と評価帰属を技術評価へ接続する規約が不足。</li>
 </ul>
+<p class="small"><strong>根拠例:</strong> <a href="https://doi.org/10.7551/mitpress/10058.003.0005" target="_blank">Whole Brain Emulation</a>、<a href="https://arxiv.org/abs/2510.15745v3" target="_blank">State of Brain Emulation Report 2025</a>、<a href="https://doi.org/10.1017/9781009486309.002" target="_blank">The Right to Personal Identity</a>。</p>
 <h3>主要先行研究（厳選 23 件）</h3>
 <ol>
 <li><strong>[Crossref]</strong> <a href="https://doi.org/10.1017/9781009486309.002" target="_blank">The Right to Personal Identity</a> (2026)<br><span class="small">worker=04 / Minds, Freedoms and Rights</span></li>
@@ -162,12 +221,14 @@ note: "Compiled from 50 worker tasks (curated for relevance)"
 <li>頭部導電率不確実性が逆解精度を大きく左右する点は多数研究で再現。</li>
 <li>Champagne系のspatio-temporal SBLは実データ評価を含む報告が蓄積。</li>
 </ul>
+<p class="small"><strong>根拠例:</strong> <a href="https://doi.org/10.1007/978-3-319-14947-9_4" target="_blank">Sparse Bayesian (Champagne) Algorithm</a>、<a href="https://doi.org/10.1109/sampta64769.2025.11133512" target="_blank">Revisiting CHAMPAGNE</a>、<a href="https://doi.org/10.1109/JSEN.2024.3502917" target="_blank">Inverse Problem for M/EEG Source Localization: A Review</a>、<a href="https://arxiv.org/abs/1810.04410v2" target="_blank">Fast Approximation of EEG Forward Problem and Application to Tissue Conductivity Estimation</a>。</p>
 <h3>これから研究が必要なもの（未解決）</h3>
 <ul>
 <li>被験者間・装置間の不確実性を横断した一般化誤差境界が不足。</li>
 <li>逆問題の識別可能性をタスク依存で比較する統一ベンチが不足。</li>
 <li>因果介入評価に接続できる逆問題の品質指標が未整備。</li>
 </ul>
+<p class="small"><strong>根拠例:</strong> <a href="https://doi.org/10.1137/1.9781611977844.ch7" target="_blank">Parameter Identifiability and Influence</a>、<a href="https://doi.org/10.1007/978-3-030-74918-7" target="_blank">EEG/MEG Source Reconstruction</a>、<a href="https://arxiv.org/abs/2209.11233v2" target="_blank">Evaluating Latent Space Robustness and Uncertainty of EEG-ML Models</a>。</p>
 <h3>主要先行研究（厳選 26 件）</h3>
 <ol>
 <li><strong>[arXiv]</strong> <a href="https://arxiv.org/abs/2506.20534v1" target="_blank">Revisiting CHAMPAGNE: Sparse Bayesian Learning as Reweighted Sparse Coding</a> (2025-06-25T15:24:38Z)<br><span class="small">worker=08 / This paper revisits the CHAMPAGNE algorithm within the Sparse Bayesian Learning (SBL) framework and establishes its connection to reweighted sparse coding. We demonstrate that the </span></li>
@@ -208,6 +269,8 @@ note: "Compiled from 50 worker tasks (curated for relevance)"
 <li>connectome完全性と機能予測性能の関係を、種横断でどう比較するか。</li>
 <li>身体・環境結合を除去したモデルで失われる機能をどう定量化するか。</li>
 <li>『必要最小構成』の判定を理論的主張ではなくデータでどう固定するか。</li>
+<li>glymphatic/meningeal lymphatic 系を含むとき、予測精度と説明可能性はどの程度改善するか。</li>
+<li>免疫監視（髄膜免疫・炎症性シグナル）を除外したモデルは、どの時点で長期予測が破綻するか。</li>
 </ol>
 <h3>今、解かれているもの（文献で積み上がっている領域）</h3>
 <ul>
@@ -215,17 +278,19 @@ note: "Compiled from 50 worker tasks (curated for relevance)"
 <li>astrocyte-neuron相互作用やneuromodulatory volume transmissionの機能的寄与は実験報告が増加。</li>
 <li>embodied cognitionは脳単体モデルの限界を示す理論・実証が蓄積。</li>
 </ul>
+<p class="small"><strong>根拠例:</strong> <a href="https://doi.org/10.1101/146035" target="_blank">The Emergent Connectome in C. elegans Embryogenesis</a>、<a href="https://doi.org/10.5220/0005190601840188" target="_blank">Towards an Electro-optical Emulation of the C. elegans Connectome</a>、<a href="https://doi.org/10.1007/978-3-031-64839-7_12" target="_blank">Astrocyte-Neuron Interactions Contributing to ALS Progression</a>、<a href="https://doi.org/10.1101/174276" target="_blank">Rhythms of the Body, Rhythms of the Brain</a>。</p>
 <h3>これから研究が必要なもの（未解決）</h3>
 <ul>
 <li>どの粒度まで含めれば『同等な主体』と見なせるかの閾値が未確定。</li>
 <li>構造データと機能ダイナミクスを統合する計算コストが依然高い。</li>
 <li>神経外要素（体内環境、ホルモン、免疫）を含む可搬な評価系が不足。</li>
 </ul>
+<p class="small"><strong>根拠例:</strong> <a href="https://doi.org/10.1016/j.neuron.2025.10.036" target="_blank">Resolving the mysteries of brain clearance and immune surveillance</a>、<a href="https://doi.org/10.3390/neuroglia5010001" target="_blank">Contribution of Small Extracellular Vesicles from Glial Cells to Pain Processing</a>、<a href="https://arxiv.org/abs/1801.04819v3" target="_blank">Robots as Powerful Allies for the Study of Embodied Cognition</a>。</p>
 <h3>主要先行研究（厳選 26 件）</h3>
 <ol>
 <li><strong>[Crossref]</strong> <a href="https://doi.org/10.1016/b978-0-443-22335-8.00010-3" target="_blank">Role of cellular redox in organismal biology: Lessons from C. elegans, zebrafish, Drosophila, and mouse</a> (2026)<br><span class="small">worker=13 / Fundamentals of Redox Biology</span></li>
 <li><strong>[Crossref]</strong> <a href="https://doi.org/10.1101/146035" target="_blank">The Emergent Connectome in <i>Caenorhabditis elegans</i> Embryogenesis</a> (2017)<br><span class="small">worker=13 / </span></li>
-<li><strong>[arXiv]</strong> <a href="https://arxiv.org/abs/1406.6311v4" target="_blank">The Physics of the B Factories</a> (2014-06-24T17:09:30Z)<br><span class="small">worker=13 / This work is on the Physics of the B Factories. Part A of this book contains a brief description of the SLAC and KEK B Factories as well as their detectors, BaBar and Belle, and da</span></li>
+<li><strong>[Crossref]</strong> <a href="https://doi.org/10.1016/j.neuron.2025.10.036" target="_blank">Resolving the mysteries of brain clearance and immune surveillance.</a> (2025)<br><span class="small">issue=264 / Neuron (PMID: 41289996, PII: S0896-6273(25)00843-8)</span></li>
 <li><strong>[Crossref]</strong> <a href="https://doi.org/10.5220/0005190601840188" target="_blank">Towards an Electro-optical Emulation of the C. elegans Connectome</a> (2014)<br><span class="small">worker=13 / Proceedings of the 2nd International Congress on Neurotechnology, Electronics and Informatics</span></li>
 <li><strong>[arXiv]</strong> <a href="https://arxiv.org/abs/2508.14160v2" target="_blank">RynnEC: Bringing MLLMs into Embodied World</a> (2025-08-19T18:00:01Z)<br><span class="small">worker=14 / We introduce RynnEC, a video multimodal large language model designed for embodied cognition. Built upon a general-purpose vision-language foundation model, RynnEC incorporates a r</span></li>
 <li><strong>[arXiv]</strong> <a href="https://arxiv.org/abs/2311.08135v2" target="_blank">Neuron-Astrocyte Associative Memory</a> (2023-11-14T13:01:50Z)<br><span class="small">worker=11 / Astrocytes, the most abundant type of glial cell, play a fundamental role in memory. Despite most hippocampal synapses being contacted by an astrocyte, there are no current theorie</span></li>
@@ -268,12 +333,14 @@ note: "Compiled from 50 worker tasks (curated for relevance)"
 <li>神経科学でDCMや介入実験を使った因果方向推定の実践知は存在。</li>
 <li>反事実推論を含む評価設計の必要性は理論的にほぼ合意。</li>
 </ul>
+<p class="small"><strong>根拠例:</strong> <a href="https://doi.org/10.1007/978-1-4614-7320-6_57-1" target="_blank">Dynamic Causal Modeling with Neural Population Models</a>、<a href="https://doi.org/10.1101/2021.06.01.446526" target="_blank">Test-retest reliability of regression dynamic causal modeling</a>、<a href="https://doi.org/10.1109/TBME.2024.3423803" target="_blank">A Deep Dynamic Causal Learning Model</a>、<a href="https://arxiv.org/abs/2010.09429v2" target="_blank">Neural Additive VAR for Causal Discovery in Time Series</a>。</p>
 <h3>これから研究が必要なもの（未解決）</h3>
 <ul>
 <li>高次元時系列での因果識別可能性がデータ条件に強く依存。</li>
 <li>観測ノイズ・遅延・未観測交絡を含む現実設定での頑健評価が不足。</li>
 <li>WBE水準の介入同値判定に使える公開ベンチが未整備。</li>
 </ul>
+<p class="small"><strong>根拠例:</strong> <a href="https://arxiv.org/abs/2209.03427v1" target="_blank">Causal discovery for time series with latent confounders</a>、<a href="https://arxiv.org/abs/2306.08946v2" target="_blank">Bootstrap aggregation and confidence measures for time-series causal discovery</a>、<a href="https://doi.org/10.32614/cran.package.cfid" target="_blank">cfid: Identification of Counterfactual Queries in Causal Models</a>。</p>
 <h3>主要先行研究（厳選 26 件）</h3>
 <ol>
 <li><strong>[arXiv]</strong> <a href="https://arxiv.org/abs/2507.00083v1" target="_blank">Strategic Counterfactual Modeling of Deep-Target Airstrike Systems via Intervention-Aware Spatio-Causal Graph Networks</a> (2025-06-30T04:26:10Z)<br><span class="small">worker=17 / This study addresses the lack of structured causal modeling between tactical strike behavior and strategic delay in current strategic-level simulations, particularly the structural</span></li>
@@ -314,6 +381,8 @@ note: "Compiled from 50 worker tasks (curated for relevance)"
 <li>LSL等の時刻同期誤差を検証可能な指標に落とせるか。</li>
 <li>アーチファクト除去（ASR, ZapLine等）の設定差が結果へ与える影響をどう監査するか。</li>
 <li>モダリティ間アライメント失敗時の再計測/除外基準をどう固定するか。</li>
+<li>前処理差分をCIで自動比較する場合、どの再現率低下をリリースブロック閾値にするか。</li>
+<li>モダリティ欠損（EEG欠損・fMRI欠損）条件でも同等結論を保てる最小観測セットは何か。</li>
 </ol>
 <h3>今、解かれているもの（文献で積み上がっている領域）</h3>
 <ul>
@@ -321,12 +390,14 @@ note: "Compiled from 50 worker tasks (curated for relevance)"
 <li>LSLと同期ログの実装実践はコミュニティで広く利用されている。</li>
 <li>EEG品質管理の標準的前処理（ASR等）に関する知見は蓄積。</li>
 </ul>
+<p class="small"><strong>根拠例:</strong> <a href="https://doi.org/10.1162/imag.a.136" target="_blank">The lab streaming layer for synchronized multimodal recording</a>、<a href="https://doi.org/10.1038/s41597-024-03559-8" target="_blank">Motion-BIDS</a>、<a href="https://doi.org/10.1101/2024.02.13.580071" target="_blank">The Lab Streaming Layer for Synchronized Multimodal Recording</a>、<a href="https://doi.org/10.1093/sleep/zsad241" target="_blank">Artifact subspace reconstruction in EEG studies</a>、<a href="https://doi.org/10.3389/fnhum.2019.00141" target="_blank">Riemannian Modification of Artifact Subspace Reconstruction</a>。</p>
 <h3>これから研究が必要なもの（未解決）</h3>
 <ul>
 <li>同期誤差の許容域をタスク別に定義した共通規約が不足。</li>
 <li>異なる前処理パイプライン間での出力差分監査が不十分。</li>
 <li>失敗例まで含めた公開QCログ運用が限定的。</li>
 </ul>
+<p class="small"><strong>根拠例:</strong> <a href="https://api.openalex.org/W4390079365" target="_blank">Two common issues in synchronized multimodal recordings with EEG: Jitter and latency</a>、<a href="https://doi.org/10.1109/bibm58861.2023.10385390" target="_blank">IMU-integrated Artifact Subspace Reconstruction for Wearable EEG Devices</a>、<a href="https://arxiv.org/abs/2403.09707v1" target="_blank">Understanding data analysis aspects of TMS-EEG in clinical study</a>。</p>
 <h3>主要先行研究（厳選 26 件）</h3>
 <ol>
 <li><strong>[Crossref]</strong> <a href="https://doi.org/10.1162/imag.a.136" target="_blank">The lab streaming layer for synchronized multimodal recording</a> (2025)<br><span class="small">worker=22 / Imaging Neuroscience</span></li>
@@ -367,6 +438,8 @@ note: "Compiled from 50 worker tasks (curated for relevance)"
 <li>オンライン較正と概念ドリフト対策をどう組み込むか。</li>
 <li>個体差と日内変動をまたぐ安定性をどの指標で評価するか。</li>
 <li>異常検知とフェイルセーフを評価契約へどう組み込むか。</li>
+<li>ヒューマンオーバーライドを導入したとき、誤作動率と回復時間をどうKPI化するか。</li>
+<li>週〜月スケール運用での再学習頻度を、性能劣化と安全余裕のトレードオフでどう最適化するか。</li>
 </ol>
 <h3>今、解かれているもの（文献で積み上がっている領域）</h3>
 <ul>
@@ -374,12 +447,14 @@ note: "Compiled from 50 worker tasks (curated for relevance)"
 <li>オンライン再学習や適応フィルタにより短期安定性を改善できることは確認済み。</li>
 <li>リアルタイム神経フィードバック系の基本アーキテクチャは確立。</li>
 </ul>
+<p class="small"><strong>根拠例:</strong> <a href="https://doi.org/10.31224/4555" target="_blank">Closed-Loop Mu-Rhythm BCI for Neuroadaptive Control</a>、<a href="https://doi.org/10.1088/1741-2552/adbb20" target="_blank">Dareplane: a modular open-source software platform for BCI research</a>、<a href="https://doi.org/10.1016/j.bspc.2022.104183" target="_blank">Self-adaptive multiple-kernel ELM for MI-BCI</a>、<a href="https://arxiv.org/abs/2508.10474v1" target="_blank">EDAPT: Calibration-Free BCIs with Continual Online Adaptation</a>。</p>
 <h3>これから研究が必要なもの（未解決）</h3>
 <ul>
 <li>長期運用でのドリフト耐性と再現性評価が不足。</li>
 <li>安全制約違反を事前検出する統一検証手順が不足。</li>
 <li>閉ループ破綻時の責任境界と運用基準が未整備。</li>
 </ul>
+<p class="small"><strong>根拠例:</strong> <a href="https://arxiv.org/abs/2011.12362v1" target="_blank">Fixed-Time Stable Adaptation Law for Safety-Critical Control</a>、<a href="https://arxiv.org/abs/2508.08153v2" target="_blank">Robust Adaptive Discrete-Time Control Barrier Certificate</a>、<a href="https://doi.org/10.1109/bci60775.2024.10480468" target="_blank">Calibration-free online test-time adaptation for EEG MI decoding</a>。</p>
 <h3>主要先行研究（厳選 26 件）</h3>
 <ol>
 <li><strong>[Crossref]</strong> <a href="https://doi.org/10.31224/4555" target="_blank">Closed-Loop Mu-Rhythm Brain–Computer Interface for Neuroadaptive Control of the Chrome Dinosaur Game</a> (2025)<br><span class="small">worker=25 / </span></li>
@@ -427,12 +502,14 @@ note: "Compiled from 50 worker tasks (curated for relevance)"
 <li>神経科学へ情報熱力学を接続するレビュー/視点論文が増加。</li>
 <li>計算効率とエネルギー制約を同時評価する問題設定は明確化。</li>
 </ul>
+<p class="small"><strong>根拠例:</strong> <a href="https://arxiv.org/abs/2003.07436v1" target="_blank">Landauer Principle and General Relativity</a>、<a href="https://doi.org/10.3390/e26090779" target="_blank">Information Thermodynamics: From Physics to Neuroscience</a>、<a href="https://doi.org/10.1016/j.tics.2024.03.009" target="_blank">The Thermodynamics of Mind</a>、<a href="https://doi.org/10.1017/9781316650394.024" target="_blank">Information and Thermodynamics</a>。</p>
 <h3>これから研究が必要なもの（未解決）</h3>
 <ul>
 <li>神経回路実装における実効下限の実測研究が限定的。</li>
 <li>熱散逸推定の標準化された計測パイプラインが不足。</li>
 <li>WBEスケール推定で使える合意済みコストモデルが未成立。</li>
 </ul>
+<p class="small"><strong>根拠例:</strong> <a href="https://doi.org/10.1007/978-3-319-93458-7_2" target="_blank">Conditional Erasure and the Landauer Limit</a>、<a href="https://doi.org/10.3390/books978-3-7258-4142-4" target="_blank">The Landauer Principle and Its Implementations in Physics, Chemistry and Biology</a>、<a href="https://doi.org/10.1016/b978-0-444-59557-7.00011-4" target="_blank">Thermodynamics and Biological Systems</a>。</p>
 <h3>主要先行研究（厳選 26 件）</h3>
 <ol>
 <li><strong>[arXiv]</strong> <a href="https://arxiv.org/abs/2003.07436v1" target="_blank">Landauer Principle and General Relativity</a> (2020-03-16T20:41:26Z)<br><span class="small">worker=30 / We endeavour to illustrate the physical relevance of the Landauer principle applying it to different important issues concerning the theory of gravitation. We shall first analyze, </span></li>
@@ -480,12 +557,14 @@ note: "Compiled from 50 worker tasks (curated for relevance)"
 <li>adversarial collaboration型の理論比較アプローチが提案され、対立点の明示が進展。</li>
 <li>PCIは臨床・意識状態研究で一定の有用性が示されている。</li>
 </ul>
+<p class="small"><strong>根拠例:</strong> <a href="https://doi.org/10.1093/nc/niad016" target="_blank">PCI と GWT の整合可能性検討</a>、<a href="https://doi.org/10.31234/osf.io/rdq52" target="_blank">Structured Adversarial Collaboration Process</a>、<a href="https://doi.org/10.1038/s41586-025-08888-1" target="_blank">Adversarial testing of global neuronal workspace and integrated information theories of consciousness</a>、<a href="https://arxiv.org/abs/2212.14787v1" target="_blank">Integrated Information Theory (IIT) 4.0</a>。</p>
 <h3>これから研究が必要なもの（未解決）</h3>
 <ul>
 <li>理論間を同条件で比較する公開ベンチが不足。</li>
 <li>IIT計算量問題を回避した近似指標の妥当域が未確定。</li>
 <li>複数理論を統合した実務的判定規約が未整備。</li>
 </ul>
+<p class="small"><strong>根拠例:</strong> <a href="https://doi.org/10.31234/osf.io/gauqm_v1" target="_blank">IIT の実験予測可能性に関する検討</a>、<a href="https://doi.org/10.31234/osf.io/kxywt" target="_blank">弱い IIT の分解と評価</a>、<a href="https://doi.org/10.1101/2020.01.08.898775" target="_blank">PCI の再現性評価（TMS-EEG）</a>。</p>
 <h3>主要先行研究（厳選 26 件）</h3>
 <ol>
 <li><strong>[arXiv]</strong> <a href="https://arxiv.org/abs/2508.00190v1" target="_blank">On the utility of toy models for theories of consciousness</a> (2025-07-31T22:13:28Z)<br><span class="small">worker=36 / Toy models are highly idealized and deliberately simplified models that retain only the essential features of a system in order to explore specific theoretical questions. Long used</span></li>
@@ -526,6 +605,8 @@ note: "Compiled from 50 worker tasks (curated for relevance)"
 <li>責任・権利・同意の継承ルールをどの時点で分岐させるか。</li>
 <li>心理的連続性基準と法的個体基準の不一致をどう扱うか。</li>
 <li>技術評価（性能）と人格評価（帰属）をどう接続するか。</li>
+<li>分岐主体間で記憶編集・再同期が起きた場合、法的主体IDを再編する基準は何か。</li>
+<li>同意撤回が発生したとき、複数分岐主体への権限剥奪を技術的にどう実装・監査するか。</li>
 </ol>
 <h3>今、解かれているもの（文献で積み上がっている領域）</h3>
 <ul>
@@ -533,12 +614,14 @@ note: "Compiled from 50 worker tasks (curated for relevance)"
 <li>心理的連続性 vs 数的同一性の対立構造は明確。</li>
 <li>法制度側でデジタル人格・データ主体性の議論が拡大。</li>
 </ul>
+<p class="small"><strong>根拠例:</strong> <a href="https://doi.org/10.1007/s11023-014-9352-8" target="_blank">Uploading and Branching Identity</a>、<a href="https://doi.org/10.1093/acprof:oso/9780198754855.003.0013" target="_blank">Enhancement, Mind-Uploading, and Personal Identity</a>、<a href="https://doi.org/10.20318/universitas.2025.9574" target="_blank">Neurotecnologías y neuroderechos</a>、<a href="https://doi.org/10.1017/9781009486309.002" target="_blank">The Right to Personal Identity</a>。</p>
 <h3>これから研究が必要なもの（未解決）</h3>
 <ul>
 <li>技術システムに直結する運用規約（監査・責任追跡）が未整備。</li>
 <li>分岐後の評価KPI（福祉・責任・所有）を定義する実務設計が不足。</li>
 <li>国際法域をまたぐ整合ルールが未確定。</li>
 </ul>
+<p class="small"><strong>根拠例:</strong> <a href="https://doi.org/10.52340/scai.2025.02.13" target="_blank">Digital Identity and Legal Personhood</a>、<a href="https://doi.org/10.69971/lra.3.1.2025.42" target="_blank">Legal Personhood and Identity of Human Digital Twins</a>、<a href="https://doi.org/10.1007/978-1-137-01616-4_15" target="_blank">Defining Identity IV: Personhood</a>。</p>
 <h3>主要先行研究（厳選 19 件）</h3>
 <ol>
 <li><strong>[arXiv]</strong> <a href="https://arxiv.org/abs/2401.15284v6" target="_blank">Beyond principlism: Practical strategies for ethical AI use in research practices</a> (2024-01-27T03:53:25Z)<br><span class="small">worker=37 / The rapid adoption of generative artificial intelligence (AI) in scientific research, particularly large language models (LLMs), has outpaced the development of ethical guidelines,</span></li>
@@ -572,6 +655,8 @@ note: "Compiled from 50 worker tasks (curated for relevance)"
 <li>LLMの幻覚・整合性検査を神経デコード評価へどう接続するか。</li>
 <li>同一出力でも内部機構が異なるケースをどう検出するか。</li>
 <li>模倣性能の上限を因果評価でどこまで抑制できるか。</li>
+<li>視覚知覚と視覚想起で同一デコーダを使ったとき、意味復元精度の劣化パターンはどこで分岐するか。</li>
+<li>プロンプト誘導・データリーク・shortcut学習を分離検出する対照実験をどう設計するか。</li>
 </ol>
 <h3>今、解かれているもの（文献で積み上がっている領域）</h3>
 <ul>
@@ -579,12 +664,14 @@ note: "Compiled from 50 worker tasks (curated for relevance)"
 <li>LLM幻覚検出・自己整合性評価の方法論は拡張中。</li>
 <li>『出力一致だけでは内部同一性を保証しない』点は広く共有。</li>
 </ul>
+<p class="small"><strong>根拠例:</strong> <a href="https://doi.org/10.1126/sciadv.adw1464" target="_blank">Mind captioning</a>、<a href="https://doi.org/10.1088/1741-2552/adfab1" target="_blank">Brain-to-text decoding with context-aware neural representations and large language models</a>、<a href="https://doi.org/10.1101/2022.09.29.509744" target="_blank">Semantic reconstruction of continuous language from non-invasive brain recordings</a>、<a href="https://doi.org/10.1002/brx2.37" target="_blank">Advancements and implications of semantic reconstruction</a>。</p>
 <h3>これから研究が必要なもの（未解決）</h3>
 <ul>
 <li>模倣と因果保存を同時評価する統一ベンチが不足。</li>
 <li>神経デコードでのデータリーク・shortcut学習検出が不十分。</li>
 <li>介入実験を含む因果評価の標準手順が未整備。</li>
 </ul>
+<p class="small"><strong>根拠例:</strong> <a href="https://doi.org/10.18653/v1/2025.emnlp-industry.139" target="_blank">Zero-knowledge LLM hallucination detection and mitigation</a>、<a href="https://doi.org/10.18653/v1/2025.findings-emnlp.527" target="_blank">Factuality Hallucination Type Detection via Belief State</a>、<a href="https://doi.org/10.1101/2024.03.19.585656" target="_blank">Decoding Continuous Character-based Language from Non-invasive Brain Recordings</a>。</p>
 <h3>主要先行研究（厳選 26 件）</h3>
 <ol>
 <li><strong>[arXiv]</strong> <a href="https://arxiv.org/abs/2510.13852v2" target="_blank">ConsistencyAI: A Benchmark to Assess LLMs' Factual Consistency When Responding to Different Demographic Groups</a> (2025-10-11T23:32:02Z)<br><span class="small">worker=43 / Is an LLM telling you different facts than it's telling me? This paper introduces ConsistencyAI, an independent benchmark for measuring the factual consistency of large language mo</span></li>
@@ -601,8 +688,8 @@ note: "Compiled from 50 worker tasks (curated for relevance)"
 <li><strong>[arXiv]</strong> <a href="https://arxiv.org/abs/2406.11568v1" target="_blank">Towards an End-to-End Framework for Invasive Brain Signal Decoding with Large Language Models</a> (2024-06-17T14:04:18Z)<br><span class="small">worker=40 / In this paper, we introduce a groundbreaking end-to-end (E2E) framework for decoding invasive brain signals, marking a significant advancement in the field of speech neuroprosthesi</span></li>
 <li><strong>[arXiv]</strong> <a href="https://arxiv.org/abs/2306.10354v2" target="_blank">LLMVA-GEBC: Large Language Model with Video Adapter for Generic Event Boundary Captioning</a> (2023-06-17T13:55:54Z)<br><span class="small">worker=41 / Our winning entry for the CVPR 2023 Generic Event Boundary Captioning (GEBC) competition is detailed in this paper. Unlike conventional video captioning tasks, GEBC demands that th</span></li>
 <li><strong>[Crossref]</strong> <a href="https://doi.org/10.59350/pp2bd-w3k04" target="_blank">Refining AI Vision: How Retrieval-Augmented Generation Transforms Image Captioning in Large Language Models</a> (2024)<br><span class="small">worker=41 / </span></li>
-<li><strong>[Crossref]</strong> <a href="https://doi.org/10.59350/pn1ra-vpc97" target="_blank">Refining AI Vision: How Retrieval-Augmented Generation Transforms Image Captioning in Large Language Models</a> (2024)<br><span class="small">worker=41 / </span></li>
-<li><strong>[arXiv]</strong> <a href="https://arxiv.org/abs/1411.6643v4" target="_blank">Quantum memories at finite temperature</a> (2014-11-24T21:08:19Z)<br><span class="small">worker=43 / To use quantum systems for technological applications we first need to preserve their coherence for macroscopic timescales, even at finite temperature. Quantum error correction has</span></li>
+<li><strong>[News]</strong> <a href="https://neurosciencenews.com/brain-decoder-translates-visual-thoughts-into-text/" target="_blank">Brain Decoder Translates Visual Thoughts Into Text</a> (2025)<br><span class="small">issue=265 / Neuroscience News（一次研究は doi:10.1126/sciadv.adw1464）</span></li>
+<li><strong>[Crossref]</strong> <a href="https://doi.org/10.1126/sciadv.adw1464" target="_blank">Mind captioning: Evolving descriptive text of mental content from human brain activity</a> (2025)<br><span class="small">issue=265 / Science Advances</span></li>
 <li><strong>[OpenAlex]</strong> <a href="https://api.openalex.org/W4392669753" target="_blank">A Multitask, Multilingual, Multimodal Evaluation of ChatGPT on Reasoning, Hallucination, and Interactivity</a> (2023)<br><span class="small">worker=43 / </span></li>
 <li><strong>[Crossref]</strong> <a href="https://doi.org/10.1101/327601" target="_blank">Incorporating Context into Language Encoding Models for fMRI</a> (2018)<br><span class="small">worker=41 / </span></li>
 <li><strong>[arXiv]</strong> <a href="https://arxiv.org/abs/2403.11183v2" target="_blank">Decoding Continuous Character-based Language from Non-invasive Brain Recordings</a> (2024-03-17T12:12:33Z)<br><span class="small">worker=40 / Deciphering natural language from brain activity through non-invasive devices remains a formidable challenge. Previous non-invasive decoders either require multiple experiments wit</span></li>
@@ -625,6 +712,8 @@ note: "Compiled from 50 worker tasks (curated for relevance)"
 <li>探索研究と検証研究を運用上どう分離するか。</li>
 <li>leaderboardでのリーク・過適合・報告バイアスをどう監査するか。</li>
 <li>Model Card / Dataset Card を評価契約へどう統合するか。</li>
+<li>再現失敗ケースを否定例レジストリとして公開し、再試行サイクルをどう運用するか。</li>
+<li>コンテナ固定（OS・依存ライブラリ・乱数種）を必須化した場合、再現コスト増分をどこまで許容するか。</li>
 </ol>
 <h3>今、解かれているもの（文献で積み上がっている領域）</h3>
 <ul>
@@ -632,12 +721,14 @@ note: "Compiled from 50 worker tasks (curated for relevance)"
 <li>Model Card / Dataset Card の実務フレームは利用可能。</li>
 <li>ベンチ運用の落とし穴（リーク、データ重複）に関する知見は豊富。</li>
 </ul>
+<p class="small"><strong>根拠例:</strong> <a href="https://doi.org/10.1098/rsos.210155" target="_blank">Preregistration template for cognitive models</a>、<a href="https://doi.org/10.31219/osf.io/xsfam" target="_blank">Preregistration and increased transparency will benefit science</a>、<a href="https://doi.org/10.1038/s41746-022-00592-y" target="_blank">Methodological failures in medical imaging ML and recommendations</a>。</p>
 <h3>これから研究が必要なもの（未解決）</h3>
 <ul>
 <li>神経科学×機械学習を跨ぐ共通監査規約が不十分。</li>
 <li>失敗例を継続公開する文化・実装が限定的。</li>
 <li>長期運用での評価劣化を追跡する仕組みが不足。</li>
 </ul>
+<p class="small"><strong>根拠例:</strong> <a href="https://doi.org/10.1093/oso/9780190881481.003.0007" target="_blank">The Reproducibility Crisis</a>、<a href="https://doi.org/10.1098/rsos.242057" target="_blank">Open science interventions to improve reproducibility and replicability of research</a>、<a href="https://doi.org/10.31234/osf.io/dzsh4" target="_blank">Barriers and solutions for early career researchers in tackling reproducibility</a>、<a href="https://doi.org/10.37473/dac/10.1002/jrsm.1540" target="_blank">PreregRS guides preregistration for research syntheses</a>。</p>
 <h3>主要先行研究（厳選 26 件）</h3>
 <ol>
 <li><strong>[arXiv]</strong> <a href="https://arxiv.org/abs/2501.18129v1" target="_blank">Revisiting gender bias research in bibliometrics: Standardizing methodological variability using Scholarly Data Analysis (SoDA) Cards</a> (2025-01-30T04:22:50Z)<br><span class="small">worker=47 / Gender biases in scholarly metrics remain a persistent concern, despite numerous bibliometric studies exploring their presence and absence across productivity, impact, acknowledgme</span></li>
@@ -685,12 +776,14 @@ note: "Compiled from 50 worker tasks (curated for relevance)"
 <li>BCIプライバシー・安全性のリスク領域は比較的明確化。</li>
 <li>AIガバナンス枠組みを神経技術へ接続する試みが増加。</li>
 </ul>
+<p class="small"><strong>根拠例:</strong> <a href="https://doi.org/10.1007/978-3-030-72254-8_19" target="_blank">Privacy and Security in Brain-Computer Interfaces</a>、<a href="https://doi.org/10.1201/9781351231954-34" target="_blank">Privacy and Ethics in Brain-Computer Interface Research</a>、<a href="https://doi.org/10.1007/s11673-025-10440-9" target="_blank">Ethical Governance Strategies for the Responsible Innovation of Neurotechnologies</a>、<a href="https://doi.org/10.2196/56665" target="_blank">Ethics and Governance of Neurotechnology in Africa</a>。</p>
 <h3>これから研究が必要なもの（未解決）</h3>
 <ul>
 <li>技術指標と法的停止基準を結びつけた実装規格が不足。</li>
 <li>国際相互運用可能な監査テンプレートが未整備。</li>
 <li>研究用途と商用用途の境界で運用ルールが分断。</li>
 </ul>
+<p class="small"><strong>根拠例:</strong> <a href="https://doi.org/10.1017/9781009207898.029" target="_blank">Responsible AI Healthcare and Neurotechnology Governance</a>、<a href="https://doi.org/10.4337/9781786438515.00015" target="_blank">Social values and privacy law and policy</a>、<a href="https://api.openalex.org/W4200185524" target="_blank">On Neurorights</a>。</p>
 <h3>主要先行研究（厳選 26 件）</h3>
 <ol>
 <li><strong>[arXiv]</strong> <a href="https://arxiv.org/abs/2407.14390v1" target="_blank">Honest Computing: Achieving demonstrable data lineage and provenance for driving data and process-sensitive policies</a> (2024-07-19T15:13:42Z)<br><span class="small">worker=48 / Data is the foundation of any scientific, industrial or commercial process. Its journey typically flows from collection to transport, storage, management and processing. While best</span></li>

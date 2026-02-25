@@ -18,6 +18,12 @@
 - [issue.md](issue.md) を参照
 - [Issueを立てる](https://github.com/yasufumi-nakata/mind-upload/issues)
 
+## 公開コンテンツ統合ポリシー
+
+- 公開ページの統合先は [content_hub.md](content_hub.md) で一元管理します。
+- 新規ファイルを作成する前に、既存ページ（`verification.md` / `tech_roadmap.md` / `perspective.md` / `research_harvest_50.md` / `issue.md`）へ統合可能かを確認します。
+- 中間成果・作業ログ・自動生成物は原則 `automation/` または `ignore/` で管理し、公開導線は `index.md` と `content_hub.md` に集約します。
+
 ## LLM向けプロンプトの利用
 
 - LLMに調査や分析を依頼する際の科学者スタイルのプロンプト例は [.agent/agent.md](.agent/agent.md) にまとめています。
