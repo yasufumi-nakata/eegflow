@@ -1,0 +1,11 @@
+uid,rq_index,rq_text,return_condition_ja,return_gate_1_ja,return_gate_2_ja,return_gate_3_ja,return_rule_ja,return_state,generated_at_utc
+U12,1,分岐後主体の識別子を何に基づいて付与するか。,execution_packet_ready 後,再検証結果一致を確認,差分再発なしを確認,次回監視窓を更新,3条件達成でrestabilization_return_ready,return_gate_fixed,2026-03-02T00:16:00Z
+U12,2,責任・権利・同意の継承ルールをどの時点で分岐させるか。,execution_packet_ready 後,再検証結果一致を確認,差分再発なしを確認,次回監視窓を更新,3条件達成でrestabilization_return_ready,return_gate_fixed,2026-03-02T00:16:00Z
+U12,3,心理的連続性基準と法的個体基準の不一致をどう扱うか。,execution_packet_ready 後,再検証結果一致を確認,差分再発なしを確認,次回監視窓を更新,3条件達成でrestabilization_return_ready,return_gate_fixed,2026-03-02T00:16:00Z
+U12,4,技術評価（性能）と人格評価（帰属）をどう接続するか。,execution_packet_ready 後,再検証結果一致を確認,差分再発なしを確認,次回監視窓を更新,3条件達成でrestabilization_return_ready,return_gate_fixed,2026-03-02T00:16:00Z
+U12,5,分岐主体間で記憶編集・再同期が起きた場合、法的主体IDを再編する基準は何か。,execution_packet_ready 後,再検証結果一致を確認,差分再発なしを確認,次回監視窓を更新,3条件達成でrestabilization_return_ready,return_gate_fixed,2026-03-02T00:16:00Z
+U12,6,同意撤回が発生したとき、複数分岐主体への権限剥奪を技術的にどう実装・監査するか。,execution_packet_ready 後,再検証結果一致を確認,差分再発なしを確認,次回監視窓を更新,3条件達成でrestabilization_return_ready,return_gate_fixed,2026-03-02T00:16:00Z
+U15,1,神経データの機微性をどの法概念で扱うか（個人情報・生体情報・人格情報）。,execution_packet_ready 後,再検証結果一致を確認,差分再発なしを確認,次回監視窓を更新,3条件達成でrestabilization_return_ready,return_gate_fixed,2026-03-02T00:16:00Z
+U15,2,neurorightsを技術監査項目へどう写像するか。,execution_packet_ready 後,再検証結果一致を確認,差分再発なしを確認,次回監視窓を更新,3条件達成でrestabilization_return_ready,return_gate_fixed,2026-03-02T00:16:00Z
+U15,3,法域差（EU/US/JP等）を跨ぐ最小共通運用をどう定義するか。,execution_packet_ready 後,再検証結果一致を確認,差分再発なしを確認,次回監視窓を更新,3条件達成でrestabilization_return_ready,return_gate_fixed,2026-03-02T00:16:00Z
+U15,4,技術進展に応じた停止条件・更新条件をどうガバナンス化するか。,execution_packet_ready 後,再検証結果一致を確認,差分再発なしを確認,次回監視窓を更新,3条件達成でrestabilization_return_ready,return_gate_fixed,2026-03-02T00:16:00Z

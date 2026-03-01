@@ -94,6 +94,7 @@ note: "for iterative deep research"
 <li><code>research_deepening_round67_2026-03-01.md</code>: 再クローズ認証台帳と再開クールダウン監視固定（Round 67）</li>
 <li><code>research_deepening_round68_2026-03-01.md</code>: 安定状態チェックポイントと再開再入ゲート固定（Round 68）</li>
 <li><code>research_deepening_round69_2026-03-01.md</code>: 再入候補トリアージと再検証再接続ブリッジ固定（Round 69）</li>
+<li><code>research_deepening_round70_2026-03-01.md</code>: 再入実行パケットと再安定化復帰ゲート固定（Round 70）</li>
 <li><code>automation/rq_deepening_backlog_2026-03-01.csv</code>: 全60問いの実行バックログ</li>
 <li><code>automation/rq_deepening_backlog_2026-03-01_enriched.csv</code>: 上記 + 一次情報リンク + 根拠確度</li>
 <li><code>automation/rq_deepening_progress_round2_2026-03-01.csv</code>: Round 2 進捗管理（U0/U1/U3）</li>
@@ -231,6 +232,8 @@ note: "for iterative deep research"
 <li><code>automation/rq_regulation_reopen_reentry_gate_round68_2026-03-01.csv</code>: Round 68 の問い別再開再入ゲート（10問い）</li>
 <li><code>automation/rq_regulation_reentry_candidate_triage_round69_2026-03-01.csv</code>: Round 69 の問い別再入候補トリアージ（10問い）</li>
 <li><code>automation/rq_regulation_revalidation_reconnect_bridge_round69_2026-03-01.csv</code>: Round 69 の問い別再検証再接続ブリッジ（10問い）</li>
+<li><code>automation/rq_regulation_reentry_execution_packet_round70_2026-03-01.csv</code>: Round 70 の問い別再入実行パケット（10問い）</li>
+<li><code>automation/rq_regulation_restabilization_return_gate_round70_2026-03-01.csv</code>: Round 70 の問い別再安定化復帰ゲート（10問い）</li>
 </ul>
 </section>
 
@@ -306,9 +309,10 @@ note: "for iterative deep research"
 <li>Round 67: 10問いの再クローズ認証台帳と再開クールダウン監視を固定済み。</li>
 <li>Round 68: 10問いの安定状態チェックポイントと再開再入ゲートを固定済み。</li>
 <li>Round 69: 10問いの再入候補トリアージと再検証再接続ブリッジを固定済み。</li>
-<li>統合反映: research_harvest_50.md 本体へ Round 1-69 結果を統合済み。</li>
+<li>Round 70: 10問いの再入実行パケットと再安定化復帰ゲートを固定済み。</li>
+<li>統合反映: research_harvest_50.md 本体へ Round 1-70 結果を統合済み。</li>
 <li>整合監査: 全60問いカバレッジ監査と引用関連性点検を生成済み。</li>
-<li>次回 continue の優先対象: 2026-03-08 UTC に Round 69 reentry_candidate_triage の3判定と revalidation_reconnect_bridge の3接続を更新し、reentry_ready 問いは reopen_revalidation_packet と reclose_decision_gate へ再接続する。</li>
+<li>次回 continue の優先対象: 2026-03-08 UTC に Round 70 reentry_execution_packet の3証跡と restabilization_return_gate の3条件を更新し、復帰可問いは stable_state_checkpoint と reopen_cooldown_watch へ再接続する。</li>
 </ul>
 </section>
 
