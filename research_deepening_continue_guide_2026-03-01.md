@@ -63,6 +63,7 @@ note: "for iterative deep research"
 <li><code>research_deepening_round36_2026-03-01.md</code>: 複数ソース照合マップとエスカレーション規則の固定（Round 36）</li>
 <li><code>research_deepening_round37_2026-03-01.md</code>: 判定衝突解消行列と外部依存ハンドオフSLAの固定（Round 37）</li>
 <li><code>research_deepening_round38_2026-03-01.md</code>: 残余リスク登録表と検証証跡インデックスの固定（Round 38）</li>
+<li><code>research_deepening_round39_2026-03-01.md</code>: 証跡鮮度スコアと判定クローズ条件の固定（Round 39）</li>
 <li><code>automation/rq_deepening_backlog_2026-03-01.csv</code>: 全60問いの実行バックログ</li>
 <li><code>automation/rq_deepening_backlog_2026-03-01_enriched.csv</code>: 上記 + 一次情報リンク + 根拠確度</li>
 <li><code>automation/rq_deepening_progress_round2_2026-03-01.csv</code>: Round 2 進捗管理（U0/U1/U3）</li>
@@ -138,6 +139,8 @@ note: "for iterative deep research"
 <li><code>automation/rq_regulation_external_handoff_sla_round37_2026-03-01.csv</code>: Round 37 の問い別外部依存ハンドオフSLA（10問い）</li>
 <li><code>automation/rq_regulation_residual_risk_register_round38_2026-03-01.csv</code>: Round 38 の問い別残余リスク登録表（10問い）</li>
 <li><code>automation/rq_regulation_verification_artifact_index_round38_2026-03-01.csv</code>: Round 38 の問い別検証証跡インデックス（10問い）</li>
+<li><code>automation/rq_regulation_evidence_freshness_score_round39_2026-03-01.csv</code>: Round 39 の問い別証跡鮮度スコア（10問い）</li>
+<li><code>automation/rq_regulation_decision_closure_checklist_round39_2026-03-01.csv</code>: Round 39 の問い別判定クローズ条件（10問い）</li>
 </ul>
 </section>
 
@@ -182,9 +185,10 @@ note: "for iterative deep research"
 <li>Round 36: 10問いの複数ソース照合マップとエスカレーション規則を固定済み。</li>
 <li>Round 37: 10問いの判定衝突解消行列と外部依存ハンドオフSLAを固定済み。</li>
 <li>Round 38: 10問いの残余リスク登録表と検証証跡インデックスを固定済み。</li>
-<li>統合反映: research_harvest_50.md 本体へ Round 1-38 結果を統合済み。</li>
+<li>Round 39: 10問いの証跡鮮度スコアと判定クローズ条件を固定済み。</li>
+<li>統合反映: research_harvest_50.md 本体へ Round 1-39 結果を統合済み。</li>
 <li>整合監査: 全60問いカバレッジ監査と引用関連性点検を生成済み。</li>
-<li>次回 continue の優先対象: 2026-03-08 UTC に Round 33 実行順を適用し、Round 38 の証跡インデックスを満たすかを先に確認し、残余リスク high の問いを優先再判定し、証跡が揃った問いのみ最終報告テンプレートで記録して本文反映する。</li>
+<li>次回 continue の優先対象: 2026-03-08 UTC に Round 33 実行順を適用し、Round 39 の証跡鮮度スコアを更新し、クローズ条件3ゲートを満たした問いのみ最終報告テンプレートで確定記録して本文反映する。</li>
 </ul>
 </section>
 
