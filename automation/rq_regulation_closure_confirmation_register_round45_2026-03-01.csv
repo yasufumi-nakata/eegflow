@@ -1,0 +1,11 @@
+uid,rq_index,rq_text,closure_state,closure_basis_ja,reopen_watch_required,reopen_trigger_summary_ja,closure_approved_by,closure_approved_at_utc,generated_at_utc
+U12,1,分岐後主体の識別子を何に基づいて付与するか。,closed_final,ゲート判定passと転記完了,yes,定義語改訂行の追加,U12_monitor_owner,2026-03-01T19:05:20Z,2026-03-01T19:05:20Z
+U12,2,責任・権利・同意の継承ルールをどの時点で分岐させるか。,closed_final,2回目判定passと転記完了,no,時点語版更新時のみ再開,U12_monitor_owner,2026-03-01T19:05:20Z,2026-03-01T19:05:20Z
+U12,3,心理的連続性基準と法的個体基準の不一致をどう扱うか。,closed_final,連続成功2/2達成と保留解除反映,yes,条項抽出で新規条件語を検出,U12_monitor_owner,2026-03-01T19:05:20Z,2026-03-01T19:05:20Z
+U12,4,技術評価（性能）と人格評価（帰属）をどう接続するか。,closed_final,2回目判定passと転記完了,no,監査語追加時に再開,U12_monitor_owner,2026-03-01T19:05:20Z,2026-03-01T19:05:20Z
+U12,5,分岐主体間で記憶編集・再同期が起きた場合、法的主体IDを再編する基準は何か。,closed_final,2回目判定passと転記完了,no,同義語追加時に再開,U12_monitor_owner,2026-03-01T19:05:20Z,2026-03-01T19:05:20Z
+U12,6,同意撤回が発生したとき、複数分岐主体への権限剥奪を技術的にどう実装・監査するか。,closed_final,2回目判定passと転記完了,no,表記世代更新時に再開,U12_monitor_owner,2026-03-01T19:05:20Z,2026-03-01T19:05:20Z
+U15,1,神経データの機微性をどの法概念で扱うか（個人情報・生体情報・人格情報）。,closed_final,ゲート判定passと転記完了,yes,法文定義行の改訂,U15_monitor_owner,2026-03-01T19:05:20Z,2026-03-01T19:05:20Z
+U15,2,neurorightsを技術監査項目へどう写像するか。,closed_final,2回目判定passと転記完了,no,写像語粒度ルール更新時に再開,U15_monitor_owner,2026-03-01T19:05:20Z,2026-03-01T19:05:20Z
+U15,3,法域差（EU/US/JP等）を跨ぐ最小共通運用をどう定義するか。,closed_final,連続成功2/2達成と保留解除反映,yes,共通三要件抽出が変化,U15_monitor_owner,2026-03-01T19:05:20Z,2026-03-01T19:05:20Z
+U15,4,技術進展に応じた停止条件・更新条件をどうガバナンス化するか。,closed_final,2回目判定passと転記完了,no,周期語公式追記時に再開,U15_monitor_owner,2026-03-01T19:05:20Z,2026-03-01T19:05:20Z

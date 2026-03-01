@@ -1,0 +1,11 @@
+uid,rq_index,rq_text,source_state_before_reflection,report_template_section_ja,reflection_status,reflected_summary_ja,reviewer_ja,next_watch_action_ja,generated_at_utc
+U12,1,分岐後主体の識別子を何に基づいて付与するか。,closed_final,最終判定要約,applied,closed_final維持とwatch継続を反映,U12_monitor_owner,reopen trigger監視を継続,2026-03-01T19:05:20Z
+U12,2,責任・権利・同意の継承ルールをどの時点で分岐させるか。,ready_to_close,最終判定要約,applied,時点語新版確認後にclosed_finalへ更新,U12_monitor_owner,reopen trigger監視を継続,2026-03-01T19:05:20Z
+U12,3,心理的連続性基準と法的個体基準の不一致をどう扱うか。,ready_to_close,保留解除と最終判定要約,applied,連続成功2/2達成によりclosed_finalへ更新,U12_monitor_owner,reopen trigger監視を継続,2026-03-01T19:05:20Z
+U12,4,技術評価（性能）と人格評価（帰属）をどう接続するか。,ready_to_close,最終判定要約,applied,監査語差分非影響を確認しclosed_finalへ更新,U12_monitor_owner,reopen trigger監視を継続,2026-03-01T19:05:20Z
+U12,5,分岐主体間で記憶編集・再同期が起きた場合、法的主体IDを再編する基準は何か。,ready_to_close,最終判定要約,applied,同義語次版整合を確認しclosed_finalへ更新,U12_monitor_owner,reopen trigger監視を継続,2026-03-01T19:05:20Z
+U12,6,同意撤回が発生したとき、複数分岐主体への権限剥奪を技術的にどう実装・監査するか。,ready_to_close,最終判定要約,applied,表記再確認完了によりclosed_finalへ更新,U12_monitor_owner,reopen trigger監視を継続,2026-03-01T19:05:20Z
+U15,1,神経データの機微性をどの法概念で扱うか（個人情報・生体情報・人格情報）。,closed_final,最終判定要約,applied,closed_final維持とwatch継続を反映,U15_monitor_owner,reopen trigger監視を継続,2026-03-01T19:05:20Z
+U15,2,neurorightsを技術監査項目へどう写像するか。,ready_to_close,最終判定要約,applied,粒度対応整合を確認しclosed_finalへ更新,U15_monitor_owner,reopen trigger監視を継続,2026-03-01T19:05:20Z
+U15,3,法域差（EU/US/JP等）を跨ぐ最小共通運用をどう定義するか。,ready_to_close,保留解除と最終判定要約,applied,連続成功2/2達成によりclosed_finalへ更新,U15_monitor_owner,reopen trigger監視を継続,2026-03-01T19:05:20Z
+U15,4,技術進展に応じた停止条件・更新条件をどうガバナンス化するか。,ready_to_close,最終判定要約,applied,周期語監視条件を残してclosed_finalへ更新,U15_monitor_owner,reopen trigger監視を継続,2026-03-01T19:05:20Z
