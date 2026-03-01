@@ -104,6 +104,7 @@ note: "for iterative deep research"
 <li><code>research_deepening_round77_2026-03-01.md</code>: 監視再起動台帳と再接続再開ゲート固定（Round 77）</li>
 <li><code>research_deepening_round78_2026-03-01.md</code>: 再開反映台帳と監視再連結ゲート固定（Round 78）</li>
 <li><code>research_deepening_round79_2026-03-01.md</code>: 再連結更新台帳と監視再同期再開ゲート固定（Round 79）</li>
+<li><code>research_deepening_round80_2026-03-01.md</code>: 再接続フィードバック台帳と監視再同期再点検ゲート固定（Round 80）</li>
 <li><code>automation/rq_deepening_backlog_2026-03-01.csv</code>: 全60問いの実行バックログ</li>
 <li><code>automation/rq_deepening_backlog_2026-03-01_enriched.csv</code>: 上記 + 一次情報リンク + 根拠確度</li>
 <li><code>automation/rq_deepening_progress_round2_2026-03-01.csv</code>: Round 2 進捗管理（U0/U1/U3）</li>
@@ -261,6 +262,8 @@ note: "for iterative deep research"
 <li><code>automation/rq_regulation_reentry_watch_relink_gate_round78_2026-03-01.csv</code>: Round 78 の問い別監視再連結ゲート（10問い）</li>
 <li><code>automation/rq_regulation_reentry_relink_update_ledger_round79_2026-03-01.csv</code>: Round 79 の問い別再連結更新台帳（10問い）</li>
 <li><code>automation/rq_regulation_reentry_watch_resync_resume_gate_round79_2026-03-01.csv</code>: Round 79 の問い別監視再同期再開ゲート（10問い）</li>
+<li><code>automation/rq_regulation_reentry_reconnect_feedback_ledger_round80_2026-03-01.csv</code>: Round 80 の問い別再接続フィードバック台帳（10問い）</li>
+<li><code>automation/rq_regulation_reentry_watch_resync_recheck_gate_round80_2026-03-01.csv</code>: Round 80 の問い別監視再同期再点検ゲート（10問い）</li>
 </ul>
 </section>
 
@@ -346,9 +349,10 @@ note: "for iterative deep research"
 <li>Round 77: 10問いの監視再起動台帳と再接続再開ゲートを固定済み。</li>
 <li>Round 78: 10問いの再開反映台帳と監視再連結ゲートを固定済み。</li>
 <li>Round 79: 10問いの再連結更新台帳と監視再同期再開ゲートを固定済み。</li>
-<li>統合反映: research_harvest_50.md 本体へ Round 1-79 結果を統合済み。</li>
+<li>Round 80: 10問いの再接続フィードバック台帳と監視再同期再点検ゲートを固定済み。</li>
+<li>統合反映: research_harvest_50.md 本体へ Round 1-80 結果を統合済み。</li>
 <li>整合監査: 全60問いカバレッジ監査と引用関連性点検を生成済み。</li>
-<li>次回 continue の優先対象: 2026-03-08 UTC に Round 79 reentry_relink_update_ledger の3記録と reentry_watch_resync_resume_gate の3項目を更新し、再発あり問いは reentry_update_propagation_ledger と reentry_watch_resync_gate へ再接続する。</li>
+<li>次回 continue の優先対象: 2026-03-08 UTC に Round 80 reentry_reconnect_feedback_ledger の3記録と reentry_watch_resync_recheck_gate の3項目を更新し、再発あり問いは reentry_update_propagation_ledger と reentry_watch_resync_gate へ再接続する。</li>
 </ul>
 </section>
 
