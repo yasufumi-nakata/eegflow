@@ -1,0 +1,10 @@
+unit,old_count,new_count,action,source_basis,evidence
+U0,23,12,replaced_with_curated_set,research_deepening_round2_2026-03-01.md#u0,research_harvest_50.md#u0
+U1,26,14,replaced_with_curated_set,research_deepening_round2_2026-03-01.md#u1,research_harvest_50.md#u1
+U3,26,15,replaced_with_curated_set,research_deepening_round2_2026-03-01.md#u3,research_harvest_50.md#u3
+U4,26,14,replaced_with_curated_set,research_deepening_round3_2026-03-01.md#u4,research_harvest_50.md#u4
+U7,26,16,replaced_with_curated_set,research_deepening_round3_2026-03-01.md#u7,research_harvest_50.md#u7
+U10,26,14,replaced_with_curated_set,research_deepening_round5_2026-03-01.md#u10,research_harvest_50.md#u10
+U11,26,14,replaced_with_curated_set,research_deepening_round5_2026-03-01.md#u11,research_harvest_50.md#u11
+U12,19,14,replaced_with_curated_set,research_deepening_round5_2026-03-01.md#u12,research_harvest_50.md#u12
+TOTAL,198,113,replaced_with_curated_set,research_deepening_round2_2026-03-01.md|research_deepening_round3_2026-03-01.md|research_deepening_round5_2026-03-01.md,research_harvest_50.md
