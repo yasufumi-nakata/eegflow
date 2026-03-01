@@ -1,0 +1,11 @@
+uid,rq_index,rq_text,escalation_trigger_ja,escalation_level,required_artifact_1_ja,required_artifact_2_ja,escalation_owner,next_review_utc,generated_at_utc
+U12,1,分岐後主体の識別子を何に基づいて付与するか。,証跡不足または判定衝突,level_1,decision_trace更新行,publish_gate判定ログ,U12_escalation_owner,2026-03-15T14:38:23Z,2026-03-01T22:36:00Z
+U12,2,責任・権利・同意の継承ルールをどの時点で分岐させるか。,証跡不足または判定衝突,level_1,decision_trace更新行,publish_gate判定ログ,U12_escalation_owner,2026-03-15T14:38:23Z,2026-03-01T22:36:00Z
+U12,3,心理的連続性基準と法的個体基準の不一致をどう扱うか。,証跡不足または判定衝突,level_1,decision_trace更新行,publish_gate判定ログ,U12_escalation_owner,2026-03-15T14:38:23Z,2026-03-01T22:36:00Z
+U12,4,技術評価（性能）と人格評価（帰属）をどう接続するか。,証跡不足または判定衝突,level_1,decision_trace更新行,publish_gate判定ログ,U12_escalation_owner,2026-03-15T14:38:23Z,2026-03-01T22:36:00Z
+U12,5,分岐主体間で記憶編集・再同期が起きた場合、法的主体IDを再編する基準は何か。,証跡不足または判定衝突,level_1,decision_trace更新行,publish_gate判定ログ,U12_escalation_owner,2026-03-15T14:38:23Z,2026-03-01T22:36:00Z
+U12,6,同意撤回が発生したとき、複数分岐主体への権限剥奪を技術的にどう実装・監査するか。,証跡不足または判定衝突,level_1,decision_trace更新行,publish_gate判定ログ,U12_escalation_owner,2026-03-15T14:38:23Z,2026-03-01T22:36:00Z
+U15,1,神経データの機微性をどの法概念で扱うか（個人情報・生体情報・人格情報）。,証跡不足または判定衝突,level_1,decision_trace更新行,publish_gate判定ログ,U15_escalation_owner,2026-03-15T14:38:23Z,2026-03-01T22:36:00Z
+U15,2,neurorightsを技術監査項目へどう写像するか。,証跡不足または判定衝突,level_1,decision_trace更新行,publish_gate判定ログ,U15_escalation_owner,2026-03-15T14:38:23Z,2026-03-01T22:36:00Z
+U15,3,法域差（EU/US/JP等）を跨ぐ最小共通運用をどう定義するか。,証跡不足または判定衝突,level_1,decision_trace更新行,publish_gate判定ログ,U15_escalation_owner,2026-03-15T14:38:23Z,2026-03-01T22:36:00Z
+U15,4,技術進展に応じた停止条件・更新条件をどうガバナンス化するか。,証跡不足または判定衝突,level_1,decision_trace更新行,publish_gate判定ログ,U15_escalation_owner,2026-03-15T14:38:23Z,2026-03-01T22:36:00Z

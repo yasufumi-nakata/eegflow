@@ -84,6 +84,7 @@ note: "for iterative deep research"
 <li><code>research_deepening_round57_2026-03-01.md</code>: 証跡完全性チェックと公開反映ゲート固定（Round 57）</li>
 <li><code>research_deepening_round58_2026-03-01.md</code>: 公開適用キューとpending解消確認表の固定（Round 58）</li>
 <li><code>research_deepening_round59_2026-03-01.md</code>: 公開コミット台帳と保留繰越バックログ固定（Round 59）</li>
+<li><code>research_deepening_round60_2026-03-01.md</code>: 公開結果マトリクスと未解消エスカレーション登録固定（Round 60）</li>
 <li><code>automation/rq_deepening_backlog_2026-03-01.csv</code>: 全60問いの実行バックログ</li>
 <li><code>automation/rq_deepening_backlog_2026-03-01_enriched.csv</code>: 上記 + 一次情報リンク + 根拠確度</li>
 <li><code>automation/rq_deepening_progress_round2_2026-03-01.csv</code>: Round 2 進捗管理（U0/U1/U3）</li>
@@ -201,6 +202,8 @@ note: "for iterative deep research"
 <li><code>automation/rq_regulation_pending_review_resolution_round58_2026-03-01.csv</code>: Round 58 の問い別pending解消確認表（10問い）</li>
 <li><code>automation/rq_regulation_publish_commit_ledger_round59_2026-03-01.csv</code>: Round 59 の問い別公開コミット台帳（10問い）</li>
 <li><code>automation/rq_regulation_pending_carryover_backlog_round59_2026-03-01.csv</code>: Round 59 の問い別保留繰越バックログ（10問い）</li>
+<li><code>automation/rq_regulation_publish_outcome_matrix_round60_2026-03-01.csv</code>: Round 60 の問い別公開結果マトリクス（10問い）</li>
+<li><code>automation/rq_regulation_unresolved_escalation_register_round60_2026-03-01.csv</code>: Round 60 の問い別未解消エスカレーション登録（10問い）</li>
 </ul>
 </section>
 
@@ -266,9 +269,10 @@ note: "for iterative deep research"
 <li>Round 57: 10問いの証跡完全性チェックと公開反映ゲートを固定済み。</li>
 <li>Round 58: 10問いの公開適用キューとpending解消確認表を固定済み。</li>
 <li>Round 59: 10問いの公開コミット台帳と保留繰越バックログを固定済み。</li>
-<li>統合反映: research_harvest_50.md 本体へ Round 1-59 結果を統合済み。</li>
+<li>Round 60: 10問いの公開結果マトリクスと未解消エスカレーション登録を固定済み。</li>
+<li>統合反映: research_harvest_50.md 本体へ Round 1-60 結果を統合済み。</li>
 <li>整合監査: 全60問いカバレッジ監査と引用関連性点検を生成済み。</li>
-<li>次回 continue の優先対象: 2026-03-08 UTC に Round 57 publish_gate を更新し、publish_ready 問いは Round 59 commit_ledger へ記録して本文反映へ進め、未達問いは carryover_backlog へ記録して 2026-03-15 UTC サイクルへ繰り越す。</li>
+<li>次回 continue の優先対象: 2026-03-08 UTC に Round 60 outcome_matrix の分岐を確定し、要エスカレーション問いは unresolved_register へ登録、本文反映問いは commit_ledger、繰越問いは carryover_backlog へそれぞれ記録する。</li>
 </ul>
 </section>
 
