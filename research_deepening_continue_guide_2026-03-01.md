@@ -78,6 +78,7 @@ note: "for iterative deep research"
 <li><code>research_deepening_round51_2026-03-01.md</code>: 再開候補スクリーニングと監視継続コミットメントの固定（Round 51）</li>
 <li><code>research_deepening_round52_2026-03-01.md</code>: raise候補レビューと監視サイクル確約の固定（Round 52）</li>
 <li><code>research_deepening_round53_2026-03-01.md</code>: high先行実行順とraise移行証跡の固定（Round 53）</li>
+<li><code>research_deepening_round54_2026-03-01.md</code>: preflight固定とraise反映チェックポイント整備（Round 54）</li>
 <li><code>automation/rq_deepening_backlog_2026-03-01.csv</code>: 全60問いの実行バックログ</li>
 <li><code>automation/rq_deepening_backlog_2026-03-01_enriched.csv</code>: 上記 + 一次情報リンク + 根拠確度</li>
 <li><code>automation/rq_deepening_progress_round2_2026-03-01.csv</code>: Round 2 進捗管理（U0/U1/U3）</li>
@@ -183,6 +184,8 @@ note: "for iterative deep research"
 <li><code>automation/rq_regulation_watch_cycle_commitment_round52_2026-03-01.csv</code>: Round 52 の問い別監視サイクル確約（10問い）</li>
 <li><code>automation/rq_regulation_high_lane_execution_round53_2026-03-01.csv</code>: Round 53 の問い別high先行実行順（10問い）</li>
 <li><code>automation/rq_regulation_raise_transition_packet_round53_2026-03-01.csv</code>: Round 53 の問い別raise移行証跡パケット（10問い）</li>
+<li><code>automation/rq_regulation_high_lane_preflight_round54_2026-03-01.csv</code>: Round 54 の問い別preflight固定（10問い）</li>
+<li><code>automation/rq_regulation_raise_apply_checkpoint_round54_2026-03-01.csv</code>: Round 54 の問い別raise反映チェックポイント（10問い）</li>
 </ul>
 </section>
 
@@ -242,9 +245,10 @@ note: "for iterative deep research"
 <li>Round 51: 10問いの再開候補スクリーニングと監視継続コミットメントを固定済み。</li>
 <li>Round 52: 10問いのraise候補レビューと監視サイクル確約を固定済み。</li>
 <li>Round 53: 10問いのhigh先行実行順とraise移行証跡パケットを固定済み。</li>
-<li>統合反映: research_harvest_50.md 本体へ Round 1-53 結果を統合済み。</li>
+<li>Round 54: 10問いのpreflight固定とraise反映チェックポイントを固定済み。</li>
+<li>統合反映: research_harvest_50.md 本体へ Round 1-54 結果を統合済み。</li>
 <li>整合監査: 全60問いカバレッジ監査と引用関連性点検を生成済み。</li>
-<li>次回 continue の優先対象: 2026-03-08 UTC に Round 53 の execution_order 1-4（high）を先行実行し、precheck 3項目が揃った問いだけ raise_transition_packet を確定して reopen 判定へ進める。</li>
+<li>次回 continue の優先対象: 2026-03-08 UTC に Round 54 の preflight_status=ready_for_window を全件確認したうえで、execution_order 1-4（high）を先行実行し、条件一致問いのみ raise_apply_checkpoint を実施して reopen 判定へ進める。</li>
 </ul>
 </section>
 
