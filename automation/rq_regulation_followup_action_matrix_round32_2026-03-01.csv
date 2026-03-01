@@ -1,0 +1,11 @@
+uid,rq_index,rq_text,action_tier,trigger_state,immediate_repo_action_ja,external_dependency_action_ja,hold_reason_ja,resume_signal_ja,generated_at_utc
+U12,1,分岐後主体の識別子を何に基づいて付与するか。,tier1_high_confidence,non_trigger,据え置き文を監査導線直下へ追記,アクセス経路変動時のみResearch operatorへ再確認依頼,実体差分なし,2xx回復と見出し取得完了,2026-03-01T15:46:20Z
+U12,2,責任・権利・同意の継承ルールをどの時点で分岐させるか。,tier1_high_confidence,non_trigger,据え置き文を監査導線直下へ追記,改訂履歴未取得時のみResearch operatorへ再確認依頼,改訂履歴不足,改訂日と見出しの取得完了,2026-03-01T15:46:20Z
+U12,3,心理的連続性基準と法的個体基準の不一致をどう扱うか。,tier2_medium_high,watch_trigger_boundary,語彙揺れメモを追加し据え置き記録,判定衝突時にResearch operatorへ判断依頼,trigger境界が曖昧,語彙照合で単一結論が可能,2026-03-01T15:46:20Z
+U12,4,技術評価（性能）と人格評価（帰属）をどう接続するか。,tier2_medium_high,non_trigger,non trigger理由を明示して据え置き記録,UI差分継続時にResearch operatorへ確認依頼,非実体差分のみ,実体差分見出しの取得完了,2026-03-01T15:46:20Z
+U12,5,分岐主体間で記憶編集・再同期が起きた場合、法的主体IDを再編する基準は何か。,tier2_medium_high,watch_trigger_boundary,同義語照合表更新後に据え置き記録,語彙揺れ継続時にResearch operatorへ確認依頼,同義語判定が不安定,同義語照合ルール更新完了,2026-03-01T15:46:20Z
+U12,6,同意撤回が発生したとき、複数分岐主体への権限剥奪を技術的にどう実装・監査するか。,tier1_high_confidence,non_trigger,据え置き文を監査導線直下へ追記,証跡欠落時のみResearch operatorへ補完依頼,証跡項目不足,必須証跡項目の充足完了,2026-03-01T15:46:20Z
+U15,1,神経データの機微性をどの法概念で扱うか（個人情報・生体情報・人格情報）。,tier1_high_confidence,non_trigger,据え置き文を監査導線直下へ追記,公式ページ遅延時にResearch operatorへ再試行依頼,公式改訂日未取得,改訂日と見出しの取得完了,2026-03-01T15:46:20Z
+U15,2,neurorightsを技術監査項目へどう写像するか。,tier2_medium_high,watch_trigger_boundary,更新日矛盾メモを追加し据え置き記録,参照源不一致時にResearch operatorへ確認依頼,更新日矛盾,優先公式文書で更新日一致,2026-03-01T15:46:20Z
+U15,3,法域差（EU/US/JP等）を跨ぐ最小共通運用をどう定義するか。,tier3_medium,watch_trigger_boundary,最小共通要件抽出ログを追加し据え置き記録,共通要件抽出不能時にResearch operatorへ確認依頼,法域差分過大,共通要件3点以上の抽出完了,2026-03-01T15:46:20Z
+U15,4,技術進展に応じた停止条件・更新条件をどうガバナンス化するか。,tier2_medium_high,watch_trigger_boundary,再評価周期メモを追加し据え置き記録,再評価周期未記載時にResearch operatorへ確認依頼,再評価周期不明,停止条件と再評価周期の同時確認完了,2026-03-01T15:46:20Z
