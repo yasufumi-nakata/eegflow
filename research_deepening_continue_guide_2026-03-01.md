@@ -32,6 +32,7 @@ note: "for iterative deep research"
 <li><code>research_deepening_round5_2026-03-01.md</code>: U10/U11/U12 の深掘り追補（Round 5）</li>
 <li><code>research_deepening_round6_2026-03-01.md</code>: U13/U14/U15 の深掘り追補（Round 6）</li>
 <li><code>research_deepening_round7_2026-03-01.md</code>: U8/U13/U14/U15 の参照精査（Round 7）</li>
+<li><code>research_deepening_round8_2026-03-01.md</code>: U8/U13/U14/U15 の参照置換を本体反映（Round 8）</li>
 <li><code>automation/rq_deepening_backlog_2026-03-01.csv</code>: 全60問いの実行バックログ</li>
 <li><code>automation/rq_deepening_backlog_2026-03-01_enriched.csv</code>: 上記 + 一次情報リンク + 根拠確度</li>
 <li><code>automation/rq_deepening_progress_round2_2026-03-01.csv</code>: Round 2 進捗管理（U0/U1/U3）</li>
@@ -43,6 +44,7 @@ note: "for iterative deep research"
 <li><code>automation/rq_deepening_coverage_summary_2026-03-01.csv</code>: U別カバレッジ集計</li>
 <li><code>automation/rq_reference_relevance_audit_2026-03-01.md</code>: 引用関連性の機械点検（要目視確認）</li>
 <li><code>automation/rq_reference_manual_triage_round7_2026-03-01.csv</code>: 高ノイズ比率ユニットの手動トリアージ</li>
+<li><code>automation/rq_reference_replacement_applied_round8_2026-03-01.csv</code>: Round 8 の置換適用ログ</li>
 </ul>
 </section>
 
@@ -56,9 +58,10 @@ note: "for iterative deep research"
 <li>Round 5: U10/U11/U12 の全14問いを深掘りし、追加一次情報を紐づけ済み。</li>
 <li>Round 6: U13/U14/U15 の全16問いを深掘りし、追加一次情報を紐づけ済み。</li>
 <li>Round 7: U8/U13/U14/U15 の疑義文献 32件を手動トリアージし、置換候補を固定済み。</li>
-<li>統合反映: research_harvest_50.md 本体へ Round 1-7 結果を統合済み。</li>
+<li>Round 8: U8/U13/U14/U15 の主要先行研究リストを再精査版へ実置換（104件→60件）済み。</li>
+<li>統合反映: research_harvest_50.md 本体へ Round 1-8 結果を統合済み。</li>
 <li>整合監査: 全60問いカバレッジ監査と引用関連性点検を生成済み。</li>
-<li>次回 continue の優先対象: research_harvest_50.md の主要先行研究リストを、Round 7 判定に沿って段階置換。</li>
+<li>次回 continue の優先対象: U0/U1/U3/U4/U7/U10/U11/U12 の主要先行研究に同じ参照精査フローを適用。</li>
 </ul>
 </section>
 
