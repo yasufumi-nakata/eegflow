@@ -1,0 +1,11 @@
+uid,rq_index,rq_text,execution_order,window_slot_utc,trigger_match,threshold_exceeded,decision_state,evidence_packet_state,generated_at_utc
+U12,1,分岐後主体の識別子を何に基づいて付与するか。,1,2026-03-08T14:38:23Z,pending,pending,pending,pending,2026-03-01T21:31:00Z
+U12,2,責任・権利・同意の継承ルールをどの時点で分岐させるか。,5,2026-03-08T14:38:23Z,pending,pending,pending,pending,2026-03-01T21:31:00Z
+U12,3,心理的連続性基準と法的個体基準の不一致をどう扱うか。,2,2026-03-08T14:38:23Z,pending,pending,pending,pending,2026-03-01T21:31:00Z
+U12,4,技術評価（性能）と人格評価（帰属）をどう接続するか。,6,2026-03-08T14:38:23Z,pending,pending,pending,pending,2026-03-01T21:31:00Z
+U12,5,分岐主体間で記憶編集・再同期が起きた場合、法的主体IDを再編する基準は何か。,7,2026-03-08T14:38:23Z,pending,pending,pending,pending,2026-03-01T21:31:00Z
+U12,6,同意撤回が発生したとき、複数分岐主体への権限剥奪を技術的にどう実装・監査するか。,8,2026-03-08T14:38:23Z,pending,pending,pending,pending,2026-03-01T21:31:00Z
+U15,1,神経データの機微性をどの法概念で扱うか（個人情報・生体情報・人格情報）。,3,2026-03-08T14:38:23Z,pending,pending,pending,pending,2026-03-01T21:31:00Z
+U15,2,neurorightsを技術監査項目へどう写像するか。,9,2026-03-08T14:38:23Z,pending,pending,pending,pending,2026-03-01T21:31:00Z
+U15,3,法域差（EU/US/JP等）を跨ぐ最小共通運用をどう定義するか。,4,2026-03-08T14:38:23Z,pending,pending,pending,pending,2026-03-01T21:31:00Z
+U15,4,技術進展に応じた停止条件・更新条件をどうガバナンス化するか。,10,2026-03-08T14:38:23Z,pending,pending,pending,pending,2026-03-01T21:31:00Z
