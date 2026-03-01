@@ -1,0 +1,8 @@
+metric,value
+rq_count,60
+avg_total_minutes,25.47
+audit_flag_yes,10
+audit_flag_no,50
+tag_experiment,38
+tag_operation,12
+tag_regulation,10

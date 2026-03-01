@@ -1,0 +1,10 @@
+scope,metric,value
+ALL,rq_count,60
+ALL,must_refs_total,120
+ALL,support_refs_total,60
+TRACK,experiment-track,38
+TRACK,operation-track,12
+TRACK,regulation-track,10
+TAG,experiment,38
+TAG,operation,12
+TAG,regulation,10
