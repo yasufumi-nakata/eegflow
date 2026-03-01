@@ -92,6 +92,7 @@ note: "for iterative deep research"
 <li><code>research_deepening_round65_2026-03-01.md</code>: クローズドリフト対応と再開ハンドオフ固定（Round 65）</li>
 <li><code>research_deepening_round66_2026-03-01.md</code>: 再開再検証パケットと再クローズ判定ゲート固定（Round 66）</li>
 <li><code>research_deepening_round67_2026-03-01.md</code>: 再クローズ認証台帳と再開クールダウン監視固定（Round 67）</li>
+<li><code>research_deepening_round68_2026-03-01.md</code>: 安定状態チェックポイントと再開再入ゲート固定（Round 68）</li>
 <li><code>automation/rq_deepening_backlog_2026-03-01.csv</code>: 全60問いの実行バックログ</li>
 <li><code>automation/rq_deepening_backlog_2026-03-01_enriched.csv</code>: 上記 + 一次情報リンク + 根拠確度</li>
 <li><code>automation/rq_deepening_progress_round2_2026-03-01.csv</code>: Round 2 進捗管理（U0/U1/U3）</li>
@@ -225,6 +226,8 @@ note: "for iterative deep research"
 <li><code>automation/rq_regulation_reclose_decision_gate_round66_2026-03-01.csv</code>: Round 66 の問い別再クローズ判定ゲート（10問い）</li>
 <li><code>automation/rq_regulation_reclose_certification_ledger_round67_2026-03-01.csv</code>: Round 67 の問い別再クローズ認証台帳（10問い）</li>
 <li><code>automation/rq_regulation_reopen_cooldown_watch_round67_2026-03-01.csv</code>: Round 67 の問い別再開クールダウン監視（10問い）</li>
+<li><code>automation/rq_regulation_stable_state_checkpoint_round68_2026-03-01.csv</code>: Round 68 の問い別安定状態チェックポイント（10問い）</li>
+<li><code>automation/rq_regulation_reopen_reentry_gate_round68_2026-03-01.csv</code>: Round 68 の問い別再開再入ゲート（10問い）</li>
 </ul>
 </section>
 
@@ -298,9 +301,10 @@ note: "for iterative deep research"
 <li>Round 65: 10問いのクローズドリフト対応行列と再開エスカレーション引継ぎを固定済み。</li>
 <li>Round 66: 10問いの再開再検証パケットと再クローズ判定ゲートを固定済み。</li>
 <li>Round 67: 10問いの再クローズ認証台帳と再開クールダウン監視を固定済み。</li>
-<li>統合反映: research_harvest_50.md 本体へ Round 1-67 結果を統合済み。</li>
+<li>Round 68: 10問いの安定状態チェックポイントと再開再入ゲートを固定済み。</li>
+<li>統合反映: research_harvest_50.md 本体へ Round 1-68 結果を統合済み。</li>
 <li>整合監査: 全60問いカバレッジ監査と引用関連性点検を生成済み。</li>
-<li>次回 continue の優先対象: 2026-03-08 UTC に Round 67 reclose_certification_ledger の3記録と cooldown_watch の3監視項目を更新し、再発あり問いは reopen_watch_signal と reopen_candidate_triage へ再接続する。</li>
+<li>次回 continue の優先対象: 2026-03-08 UTC に Round 68 stable_state_checkpoint の3確認と reopen_reentry_gate の3判定を更新し、再発あり問いは reopen_revalidation_packet と reopen_watch_signal へ再接続する。</li>
 </ul>
 </section>
 
