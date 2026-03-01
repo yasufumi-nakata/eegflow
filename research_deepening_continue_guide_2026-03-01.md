@@ -65,6 +65,7 @@ note: "for iterative deep research"
 <li><code>research_deepening_round38_2026-03-01.md</code>: 残余リスク登録表と検証証跡インデックスの固定（Round 38）</li>
 <li><code>research_deepening_round39_2026-03-01.md</code>: 証跡鮮度スコアと判定クローズ条件の固定（Round 39）</li>
 <li><code>research_deepening_round40_2026-03-01.md</code>: 監査バンドルマニフェストとreopenウォッチリストの固定（Round 40）</li>
+<li><code>research_deepening_round41_2026-03-01.md</code>: ハンドオフ完了証跡と未解決キュー管理の固定（Round 41）</li>
 <li><code>automation/rq_deepening_backlog_2026-03-01.csv</code>: 全60問いの実行バックログ</li>
 <li><code>automation/rq_deepening_backlog_2026-03-01_enriched.csv</code>: 上記 + 一次情報リンク + 根拠確度</li>
 <li><code>automation/rq_deepening_progress_round2_2026-03-01.csv</code>: Round 2 進捗管理（U0/U1/U3）</li>
@@ -144,6 +145,8 @@ note: "for iterative deep research"
 <li><code>automation/rq_regulation_decision_closure_checklist_round39_2026-03-01.csv</code>: Round 39 の問い別判定クローズ条件（10問い）</li>
 <li><code>automation/rq_regulation_audit_bundle_manifest_round40_2026-03-01.csv</code>: Round 40 の問い別監査バンドルマニフェスト（10問い）</li>
 <li><code>automation/rq_regulation_reopen_watchlist_round40_2026-03-01.csv</code>: Round 40 の問い別reopenウォッチリスト（10問い）</li>
+<li><code>automation/rq_regulation_handoff_completion_certificate_round41_2026-03-01.csv</code>: Round 41 の問い別ハンドオフ完了証跡（10問い）</li>
+<li><code>automation/rq_regulation_unresolved_issue_queue_round41_2026-03-01.csv</code>: Round 41 の問い別未解決キュー（10問い）</li>
 </ul>
 </section>
 
@@ -190,9 +193,10 @@ note: "for iterative deep research"
 <li>Round 38: 10問いの残余リスク登録表と検証証跡インデックスを固定済み。</li>
 <li>Round 39: 10問いの証跡鮮度スコアと判定クローズ条件を固定済み。</li>
 <li>Round 40: 10問いの監査バンドルマニフェストとreopenウォッチリストを固定済み。</li>
-<li>統合反映: research_harvest_50.md 本体へ Round 1-40 結果を統合済み。</li>
+<li>Round 41: 10問いのハンドオフ完了証跡と未解決キュー管理を固定済み。</li>
+<li>統合反映: research_harvest_50.md 本体へ Round 1-41 結果を統合済み。</li>
 <li>整合監査: 全60問いカバレッジ監査と引用関連性点検を生成済み。</li>
-<li>次回 continue の優先対象: 2026-03-08 UTC に Round 33 実行順を適用し、Round 40 の監査バンドル4要素を確認し、reopen trigger に一致した問いをpriority順で再開し、非該当問いはclosed_watchを維持して最終報告を更新する。</li>
+<li>次回 continue の優先対象: 2026-03-08 UTC に Round 33 実行順を適用し、Round 41 の未解決キューで high を先行処理し、completion_state が ready_to_close の問いを最終報告テンプレートで確定記録して本文反映する。</li>
 </ul>
 </section>
 
