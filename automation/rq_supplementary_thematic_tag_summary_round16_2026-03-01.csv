@@ -1,0 +1,16 @@
+scope,uid,tag_primary,count
+ALL,ALL,experiment,44
+ALL,ALL,operation,12
+ALL,ALL,regulation,4
+UNIT,U0,experiment,4
+UNIT,U1,experiment,4
+UNIT,U10,experiment,4
+UNIT,U11,experiment,4
+UNIT,U12,experiment,6
+UNIT,U13,experiment,6
+UNIT,U14,operation,6
+UNIT,U15,regulation,4
+UNIT,U3,experiment,6
+UNIT,U4,experiment,4
+UNIT,U7,operation,6
+UNIT,U8,experiment,6
