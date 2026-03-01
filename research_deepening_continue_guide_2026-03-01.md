@@ -351,6 +351,8 @@ note: "for iterative deep research"
 <li><code>automation/rq_regulation_reentry_followup_reconnect_followup_reconnect_followup_reconnect_followup_watch_resync_followup_stability_gate_round111_2026-03-01.csv</code>: Round 111 の問い別フォローアップ再接続フォローアップ再接続フォローアップ再接続フォローアップ監視再同期フォローアップ維持ゲート（10問い）</li>
 <li><code>automation/rq_regulation_reentry_followup_reconnect_followup_reconnect_followup_reconnect_followup_reevaluation_followup_stability_confirmation_ledger_round112_2026-03-01.csv</code>: Round 112 の問い別フォローアップ再接続フォローアップ再接続フォローアップ再接続フォローアップ再評価フォローアップ安定化確認台帳（10問い）</li>
 <li><code>automation/rq_regulation_reentry_followup_reconnect_followup_reconnect_followup_reconnect_followup_reconnect_followup_remonitor_gate_round112_2026-03-01.csv</code>: Round 112 の問い別フォローアップ再接続フォローアップ再接続フォローアップ再接続フォローアップ再接続フォローアップ再監視ゲート（10問い）</li>
+<li><code>automation/rq_regulation_reentry_followup_reconnect_followup_reconnect_followup_reconnect_followup_reconnect_followup_remonitor_execution_ledger_round113_2026-03-01.csv</code>: Round 113 の問い別フォローアップ再接続フォローアップ再接続フォローアップ再接続フォローアップ再接続フォローアップ再監視実行台帳（10問い）</li>
+<li><code>automation/rq_regulation_reentry_followup_reconnect_followup_reconnect_followup_reconnect_followup_reconnect_followup_reevaluation_gate_round113_2026-03-01.csv</code>: Round 113 の問い別フォローアップ再接続フォローアップ再接続フォローアップ再接続フォローアップ再接続フォローアップ再評価ゲート（10問い）</li>
 </ul>
 </section>
 
@@ -469,9 +471,10 @@ note: "for iterative deep research"
 <li>Round 110: 10問いのフォローアップ再接続フォローアップ再接続フォローアップ再接続フォローアップ再評価フォローアップ結果台帳とフォローアップ再接続フォローアップ再接続フォローアップ再接続フォローアップ監視再同期フォローアップ再接続ゲートを固定済み。</li>
 <li>Round 111: 10問いのフォローアップ再接続フォローアップ再接続フォローアップ再接続フォローアップ再評価フォローアップ再接続結果台帳とフォローアップ再接続フォローアップ再接続フォローアップ再接続フォローアップ監視再同期フォローアップ維持ゲートを固定済み。</li>
 <li>Round 112: 10問いのフォローアップ再接続フォローアップ再接続フォローアップ再接続フォローアップ再評価フォローアップ安定化確認台帳とフォローアップ再接続フォローアップ再接続フォローアップ再接続フォローアップ再接続フォローアップ再監視ゲートを固定済み。</li>
-<li>統合反映: research_harvest_50.md 本体へ Round 1-112 結果を統合済み。</li>
+<li>Round 113: 10問いのフォローアップ再接続フォローアップ再接続フォローアップ再接続フォローアップ再接続フォローアップ再監視実行台帳とフォローアップ再接続フォローアップ再接続フォローアップ再接続フォローアップ再接続フォローアップ再評価ゲートを固定済み。</li>
+<li>統合反映: research_harvest_50.md 本体へ Round 1-113 結果を統合済み。</li>
 <li>整合監査: 全60問いカバレッジ監査と引用関連性点検を生成済み。</li>
-<li>次回 continue の優先対象: 2026-03-08 UTC に Round 112 reentry_followup_reconnect_followup_reconnect_followup_reconnect_followup_reevaluation_followup_stability_confirmation_ledger の3記録と reentry_followup_reconnect_followup_reconnect_followup_reconnect_followup_reconnect_followup_remonitor_gate の3項目を更新し、再発あり問いは reentry_update_propagation_ledger と reentry_watch_resync_gate へ再接続する。</li>
+<li>次回 continue の優先対象: 2026-03-08 UTC に Round 113 reentry_followup_reconnect_followup_reconnect_followup_reconnect_followup_reconnect_followup_remonitor_execution_ledger の3記録と reentry_followup_reconnect_followup_reconnect_followup_reconnect_followup_reconnect_followup_reevaluation_gate の3項目を更新し、再発あり問いは reentry_update_propagation_ledger と reentry_watch_resync_gate へ再接続する。</li>
 </ul>
 </section>
 
