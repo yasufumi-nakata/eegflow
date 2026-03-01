@@ -89,6 +89,7 @@ note: "for iterative deep research"
 <li><code>research_deepening_round62_2026-03-01.md</code>: クローズ証明と再開ガード固定（Round 62）</li>
 <li><code>research_deepening_round63_2026-03-01.md</code>: クローズ維持スケジュールと再開候補トリアージ固定（Round 63）</li>
 <li><code>research_deepening_round64_2026-03-01.md</code>: クローズ一貫性監査と再開兆候監視固定（Round 64）</li>
+<li><code>research_deepening_round65_2026-03-01.md</code>: クローズドリフト対応と再開ハンドオフ固定（Round 65）</li>
 <li><code>automation/rq_deepening_backlog_2026-03-01.csv</code>: 全60問いの実行バックログ</li>
 <li><code>automation/rq_deepening_backlog_2026-03-01_enriched.csv</code>: 上記 + 一次情報リンク + 根拠確度</li>
 <li><code>automation/rq_deepening_progress_round2_2026-03-01.csv</code>: Round 2 進捗管理（U0/U1/U3）</li>
@@ -216,6 +217,8 @@ note: "for iterative deep research"
 <li><code>automation/rq_regulation_reopen_candidate_triage_round63_2026-03-01.csv</code>: Round 63 の問い別再開候補トリアージ（10問い）</li>
 <li><code>automation/rq_regulation_closure_consistency_audit_round64_2026-03-01.csv</code>: Round 64 の問い別クローズ一貫性監査（10問い）</li>
 <li><code>automation/rq_regulation_reopen_watch_signal_round64_2026-03-01.csv</code>: Round 64 の問い別再開兆候監視（10問い）</li>
+<li><code>automation/rq_regulation_closure_drift_response_round65_2026-03-01.csv</code>: Round 65 の問い別クローズドリフト対応行列（10問い）</li>
+<li><code>automation/rq_regulation_reopen_escalation_handoff_round65_2026-03-01.csv</code>: Round 65 の問い別再開エスカレーション引継ぎ（10問い）</li>
 </ul>
 </section>
 
@@ -286,9 +289,10 @@ note: "for iterative deep research"
 <li>Round 62: 10問いのクローズ証明チェックと再開ガード条件を固定済み。</li>
 <li>Round 63: 10問いのクローズ維持スケジュールと再開候補トリアージを固定済み。</li>
 <li>Round 64: 10問いのクローズ一貫性監査と再開兆候監視を固定済み。</li>
-<li>統合反映: research_harvest_50.md 本体へ Round 1-64 結果を統合済み。</li>
+<li>Round 65: 10問いのクローズドリフト対応行列と再開エスカレーション引継ぎを固定済み。</li>
+<li>統合反映: research_harvest_50.md 本体へ Round 1-65 結果を統合済み。</li>
 <li>整合監査: 全60問いカバレッジ監査と引用関連性点検を生成済み。</li>
-<li>次回 continue の優先対象: 2026-03-08 UTC に Round 64 closure_consistency_audit の3確認を更新し、再開兆候が2項目以上一致した問いを reopen_candidate_triage へ連結して unresolved_register と closure_plan へ接続する。</li>
+<li>次回 continue の優先対象: 2026-03-08 UTC に Round 65 closure_drift_response の3ステップを更新し、reopen候補問いは handoff の3証跡をそろえて unresolved_register と closure_plan へ再接続する。</li>
 </ul>
 </section>
 
