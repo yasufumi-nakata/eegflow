@@ -1,0 +1,11 @@
+uid,rq_index,rq_text,reopen_trigger_ja,watch_priority,reopen_check_window_hours,required_new_evidence_ja,temporary_status_ja,reopen_decision_owner,generated_at_utc
+U12,1,分岐後主体の識別子を何に基づいて付与するか。,定義語に新規改訂行が追加,high,24,改訂行差分と見出し差分,closed_watch,U12_monitor_owner,2026-03-01T17:49:30Z
+U12,2,責任・権利・同意の継承ルールをどの時点で分岐させるか。,時点語版が更新され開始分岐対応が変化,high,24,時点語対照表新版と条項見出し差分,closed_watch,U12_monitor_owner,2026-03-01T17:49:30Z
+U12,3,心理的連続性基準と法的個体基準の不一致をどう扱うか。,条項抽出で新規条件語を検出,high,12,公式条項差分と条件語差分ログ,hold_watch,U12_monitor_owner,2026-03-01T17:49:30Z
+U12,4,技術評価（性能）と人格評価（帰属）をどう接続するか。,監査語追加または接続語定義変更,medium,24,接続語一覧新版と監査語差分,closed_watch,U12_monitor_owner,2026-03-01T17:49:30Z
+U12,5,分岐主体間で記憶編集・再同期が起きた場合、法的主体IDを再編する基準は何か。,同義語正規化表に採用語追加,medium,24,同義語表新版と判定差分,closed_watch,U12_monitor_owner,2026-03-01T17:49:30Z
+U12,6,同意撤回が発生したとき、複数分岐主体への権限剥奪を技術的にどう実装・監査するか。,表記世代が更新され旧語が廃止,medium,24,新旧表記対照新版と証跡更新ログ,closed_watch,U12_monitor_owner,2026-03-01T17:49:30Z
+U15,1,神経データの機微性をどの法概念で扱うか（個人情報・生体情報・人格情報）。,法文定義行の改訂,low,48,法文定義差分と改訂日更新,closed_watch,U15_monitor_owner,2026-03-01T17:49:30Z
+U15,2,neurorightsを技術監査項目へどう写像するか。,写像語粒度ルールの更新,medium,24,粒度対応表新版と更新日比較,closed_watch,U15_monitor_owner,2026-03-01T17:49:30Z
+U15,3,法域差（EU/US/JP等）を跨ぐ最小共通運用をどう定義するか。,共通三要件抽出が成立に変化,high,12,法域別要件新版と三要件表差分,hold_watch,U15_monitor_owner,2026-03-01T17:49:30Z
+U15,4,技術進展に応じた停止条件・更新条件をどうガバナンス化するか。,周期語が公式側で新規追記,medium,24,周期語抽出新版と停止条件差分,closed_watch,U15_monitor_owner,2026-03-01T17:49:30Z
