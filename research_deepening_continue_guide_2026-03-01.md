@@ -82,6 +82,7 @@ note: "for iterative deep research"
 <li><code>research_deepening_round55_2026-03-01.md</code>: 実行ログ雛形とkeep_watch繰越台帳の固定（Round 55）</li>
 <li><code>research_deepening_round56_2026-03-01.md</code>: raise判定トレース台帳と次サイクル引継ぎ固定（Round 56）</li>
 <li><code>research_deepening_round57_2026-03-01.md</code>: 証跡完全性チェックと公開反映ゲート固定（Round 57）</li>
+<li><code>research_deepening_round58_2026-03-01.md</code>: 公開適用キューとpending解消確認表の固定（Round 58）</li>
 <li><code>automation/rq_deepening_backlog_2026-03-01.csv</code>: 全60問いの実行バックログ</li>
 <li><code>automation/rq_deepening_backlog_2026-03-01_enriched.csv</code>: 上記 + 一次情報リンク + 根拠確度</li>
 <li><code>automation/rq_deepening_progress_round2_2026-03-01.csv</code>: Round 2 進捗管理（U0/U1/U3）</li>
@@ -195,6 +196,8 @@ note: "for iterative deep research"
 <li><code>automation/rq_regulation_cycle_handoff_manifest_round56_2026-03-01.csv</code>: Round 56 の問い別次サイクル引継ぎマニフェスト（10問い）</li>
 <li><code>automation/rq_regulation_evidence_completeness_round57_2026-03-01.csv</code>: Round 57 の問い別証跡完全性チェック（10問い）</li>
 <li><code>automation/rq_regulation_publish_gate_round57_2026-03-01.csv</code>: Round 57 の問い別公開反映ゲート（10問い）</li>
+<li><code>automation/rq_regulation_publish_apply_queue_round58_2026-03-01.csv</code>: Round 58 の問い別公開適用キュー（10問い）</li>
+<li><code>automation/rq_regulation_pending_review_resolution_round58_2026-03-01.csv</code>: Round 58 の問い別pending解消確認表（10問い）</li>
 </ul>
 </section>
 
@@ -258,9 +261,10 @@ note: "for iterative deep research"
 <li>Round 55: 10問いの実行ログ雛形とkeep_watch繰越台帳を固定済み。</li>
 <li>Round 56: 10問いのraise判定トレース台帳と次サイクル引継ぎマニフェストを固定済み。</li>
 <li>Round 57: 10問いの証跡完全性チェックと公開反映ゲートを固定済み。</li>
-<li>統合反映: research_harvest_50.md 本体へ Round 1-57 結果を統合済み。</li>
+<li>Round 58: 10問いの公開適用キューとpending解消確認表を固定済み。</li>
+<li>統合反映: research_harvest_50.md 本体へ Round 1-58 結果を統合済み。</li>
 <li>整合監査: 全60問いカバレッジ監査と引用関連性点検を生成済み。</li>
-<li>次回 continue の優先対象: 2026-03-08 UTC に Round 55 execution_log と Round 56 decision_trace を更新し、Round 57 の completeness_state を確定して publish_gate を判定し、publish_ready 問いのみ本文反映へ進める。</li>
+<li>次回 continue の優先対象: 2026-03-08 UTC に Round 57 publish_gate を更新し、publish_ready 問いは Round 58 publish_apply_queue で本文反映へ進め、pending_review 問いは resolution 確認表で不足項目のみ解消する。</li>
 </ul>
 </section>
 
