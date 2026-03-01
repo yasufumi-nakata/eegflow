@@ -1,0 +1,11 @@
+uid,rq_index,rq_text,must_capture_artifacts_ja,artifact_source_priority_ja,quality_gate_ja,text_apply_gate_ja,log_storage_hint_ja,external_dependency_handoff_ja,generated_at_utc
+U12,1,分岐後主体の識別子を何に基づいて付与するか。,ページタイトル・改訂日・該当見出し・最終URL・確認時刻UTC,公式制度文書を最優先し補助情報は参考扱い,公式改訂履歴と見出し一致を必須,trigger成立時のみRound27更新文テンプレ適用,automation配下のround30ログに追記,ブラウザ確認不能時はResearch operatorへ再実行依頼,2026-03-01T15:19:40Z
+U12,2,責任・権利・同意の継承ルールをどの時点で分岐させるか。,ページタイトル・改訂日・該当見出し・最終URL・確認時刻UTC,公式制度文書を最優先し補助情報は参考扱い,分岐時点と継承時点の条項一致を必須,trigger成立時のみRound27更新文テンプレ適用,automation配下のround30ログに追記,ブラウザ確認不能時はResearch operatorへ再実行依頼,2026-03-01T15:19:40Z
+U12,3,心理的連続性基準と法的個体基準の不一致をどう扱うか。,ページタイトル・改訂日・該当見出し・最終URL・確認時刻UTC,公式制度文書を最優先し補助情報は参考扱い,衝突解決ルール語の一致確認を必須,trigger成立時のみRound27更新文テンプレ適用,automation配下のround30ログに追記,ブラウザ確認不能時はResearch operatorへ再実行依頼,2026-03-01T15:19:40Z
+U12,4,技術評価（性能）と人格評価（帰属）をどう接続するか。,ページタイトル・改訂日・該当見出し・最終URL・確認時刻UTC,公式制度文書を最優先し補助情報は参考扱い,KPI接続要件の見出し一致を必須,trigger成立時のみRound27更新文テンプレ適用,automation配下のround30ログに追記,ブラウザ確認不能時はResearch operatorへ再実行依頼,2026-03-01T15:19:40Z
+U12,5,分岐主体間で記憶編集・再同期が起きた場合、法的主体IDを再編する基準は何か。,ページタイトル・改訂日・該当見出し・最終URL・確認時刻UTC,公式制度文書を最優先し補助情報は参考扱い,主体ID再編と監査義務の見出し一致を必須,trigger成立時のみRound27更新文テンプレ適用,automation配下のround30ログに追記,ブラウザ確認不能時はResearch operatorへ再実行依頼,2026-03-01T15:19:40Z
+U12,6,同意撤回が発生したとき、複数分岐主体への権限剥奪を技術的にどう実装・監査するか。,ページタイトル・改訂日・該当見出し・最終URL・確認時刻UTC,公式制度文書を最優先し補助情報は参考扱い,同意撤回と権限剥奪要件の見出し一致を必須,trigger成立時のみRound27更新文テンプレ適用,automation配下のround30ログに追記,ブラウザ確認不能時はResearch operatorへ再実行依頼,2026-03-01T15:19:40Z
+U15,1,神経データの機微性をどの法概念で扱うか（個人情報・生体情報・人格情報）。,ページタイトル・改訂日・該当見出し・最終URL・確認時刻UTC,EU/NIST/OECDの公式文書を優先,神経データ法的区分の定義一致を必須,trigger成立時のみRound27更新文テンプレ適用,automation配下のround30ログに追記,CLI差分検出後にResearch operatorへ確認依頼,2026-03-01T15:19:40Z
+U15,2,neurorightsを技術監査項目へどう写像するか。,ページタイトル・改訂日・該当見出し・最終URL・確認時刻UTC,EU/NIST/OECDの公式文書を優先,neurorights写像語の一致確認を必須,trigger成立時のみRound27更新文テンプレ適用,automation配下のround30ログに追記,CLI差分検出後にResearch operatorへ確認依頼,2026-03-01T15:19:40Z
+U15,3,法域差（EU/US/JP等）を跨ぐ最小共通運用をどう定義するか。,ページタイトル・改訂日・該当見出し・最終URL・確認時刻UTC,EU/NIST/OECDの公式文書を優先,越境移転と相互運用要件の一致を必須,trigger成立時のみRound27更新文テンプレ適用,automation配下のround30ログに追記,CLI差分検出後にResearch operatorへ確認依頼,2026-03-01T15:19:40Z
+U15,4,技術進展に応じた停止条件・更新条件をどうガバナンス化するか。,ページタイトル・改訂日・該当見出し・最終URL・確認時刻UTC,EU/NIST/OECDの公式文書を優先,停止条件更新条件再評価周期の一致を必須,trigger成立時のみRound27更新文テンプレ適用,automation配下のround30ログに追記,CLI差分検出後にResearch operatorへ確認依頼,2026-03-01T15:19:40Z
