@@ -156,7 +156,7 @@ note: "Compiled from 50 worker tasks (curated for relevance)"
 <section class="section" id="deepening-integration-20260301">
 <h2 class="section-title">深掘り統合反映（2026-03-01）</h2>
 <p>
-Round 1〜22 で実施した深掘り結果を本体運用へ統合しました。ここでは「どのUがどこまで深掘り済みか」を一覧化し、詳細は各Round文書へリンクします。
+Round 1〜23 で実施した深掘り結果を本体運用へ統合しました。ここでは「どのUがどこまで深掘り済みか」を一覧化し、詳細は各Round文書へリンクします。
 </p>
 <table class="data-table">
 <thead><tr><th>U</th><th>RQ総数</th><th>深掘り完了</th><th>主要反映ラウンド</th></tr></thead><tbody>
@@ -168,11 +168,11 @@ Round 1〜22 で実施した深掘り結果を本体運用へ統合しました�
 <tr><td>U8</td><td>6</td><td>6</td><td>Round 4, 8, 12, 13, 16, 17, 18</td></tr>
 <tr><td>U10</td><td>4</td><td>4</td><td>Round 5, 9, 12, 13, 14, 16, 17, 18</td></tr>
 <tr><td>U11</td><td>4</td><td>4</td><td>Round 5, 9, 11, 13, 16, 17, 18</td></tr>
-<tr><td>U12</td><td>6</td><td>6</td><td>Round 5, 9, 11, 13, 15, 16, 17, 18, 19, 20, 21, 22</td></tr>
+<tr><td>U12</td><td>6</td><td>6</td><td>Round 5, 9, 11, 13, 15, 16, 17, 18, 19, 20, 21, 22, 23</td></tr>
 <tr><td>U13</td><td>6</td><td>6</td><td>Round 6, 8, 12, 13, 16, 17, 18</td></tr>
 <tr><td>U14</td><td>6</td><td>6</td><td>Round 6, 8, 12, 13, 14, 16, 17, 18</td></tr>
-<tr><td>U15</td><td>4</td><td>4</td><td>Round 6, 8, 12, 13, 15, 16, 17, 18, 20, 21, 22</td></tr>
-<tr><td><strong>合計</strong></td><td><strong>60</strong></td><td><strong>60</strong></td><td><strong>Round 1-22</strong></td></tr>
+<tr><td>U15</td><td>4</td><td>4</td><td>Round 6, 8, 12, 13, 15, 16, 17, 18, 20, 21, 22, 23</td></tr>
+<tr><td><strong>合計</strong></td><td><strong>60</strong></td><td><strong>60</strong></td><td><strong>Round 1-23</strong></td></tr>
 </tbody></table>
 
 <h3>詳細ドキュメント</h3>
@@ -199,6 +199,7 @@ Round 1〜22 で実施した深掘り結果を本体運用へ統合しました�
 <li><a href="research_deepening_round20_2026-03-01.html">Round 20: Regulation 法域ラベルと監査優先キュー</a></li>
 <li><a href="research_deepening_round21_2026-03-01.html">Round 21: Highキュー法制度リンク差分監査</a></li>
 <li><a href="research_deepening_round22_2026-03-01.html">Round 22: 本文更新テンプレ固定と改訂履歴リンク補完</a></li>
+<li><a href="research_deepening_round23_2026-03-01.html">Round 23: U12/U15 本文への正規化差分実反映</a></li>
 </ul>
 
 <h3>整合性監査（証跡）</h3>
@@ -329,6 +330,12 @@ Round 21 の highキュー法制度リンク差分監査（U12/U15, 10問い）�
 Round 22 の本文更新テンプレ固定と改訂履歴リンク補完は
 <a href="automation/rq_regulation_content_update_template_round22_2026-03-01.csv" target="_blank">rq_regulation_content_update_template_round22_2026-03-01.csv</a>（RQ本文更新テンプレ）と
 <a href="automation/rq_regulation_revision_history_links_round22_2026-03-01.csv" target="_blank">rq_regulation_revision_history_links_round22_2026-03-01.csv</a>（制度文書の改訂履歴リンク）
+に記録しています。
+</p>
+<p class="small">
+Round 23 の U12/U15 本文への正規化差分実反映は
+<a href="automation/rq_regulation_link_normalization_applied_round23_2026-03-01.csv" target="_blank">rq_regulation_link_normalization_applied_round23_2026-03-01.csv</a>（適用ログ）と
+<a href="automation/rq_regulation_audit_trail_insertion_round23_2026-03-01.csv" target="_blank">rq_regulation_audit_trail_insertion_round23_2026-03-01.csv</a>（監査導線追加ログ）
 に記録しています。
 </p>
 </section>
@@ -715,18 +722,25 @@ Round 22 の本文更新テンプレ固定と改訂履歴リンク補完は
 <li><strong>[Minds and Machines]</strong> <a href="https://doi.org/10.1007/s11023-014-9352-8" target="_blank">Uploading and Branching Identity</a> (2014)</li>
 <li><strong>[Oxford]</strong> <a href="https://doi.org/10.1093/acprof:oso/9780198754855.003.0013" target="_blank">Enhancement, Mind-Uploading, and Personal Identity</a> (2016)</li>
 <li><strong>[Cambridge]</strong> <a href="https://doi.org/10.1017/9781009486309.002" target="_blank">The Right to Personal Identity</a> (2026)</li>
-<li><strong>[Patterns]</strong> <a href="https://doi.org/10.1016/j.patter.2023.100861" target="_blank">No legal personhood for AI</a> (2023)</li>
+<li><strong>[Patterns]</strong> <a href="https://linkinghub.elsevier.com/retrieve/pii/S2666389923002453" target="_blank">No legal personhood for AI (DOI: 10.1016/j.patter.2023.100861)</a> (2023)</li>
 <li><strong>[EU Law]</strong> <a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng" target="_blank">EU AI Act (Regulation (EU) 2024/1689)</a> (2024)</li>
 <li><strong>[Council of Europe]</strong> <a href="https://book.coe.int/en/texts-of-council-of-europe-treaties/12225-council-of-europe-framework-convention-on-artificial-intelligence-and-human-rights-democracy-and-the-rule-of-law-cets-no-225.html" target="_blank">Framework Convention on AI (CETS No.225)</a> (2024)</li>
 <li><strong>[Bioethics]</strong> <a href="https://doi.org/10.1111/bioe.70045" target="_blank">Digitizing Dignity: Digital Twins and Human Dignity</a> (2025)</li>
 <li><strong>[AI and Society]</strong> <a href="https://doi.org/10.1007/s00146-025-02796-8" target="_blank">What makes a digital human twin more than a simulation?</a> (2025)</li>
 <li><strong>[ISO]</strong> <a href="https://www.iso.org/standard/42001" target="_blank">ISO/IEC 42001 AI management systems</a> (2023)</li>
-<li><strong>[OECD]</strong> <a href="https://oecd.ai/en/ai-principles" target="_blank">OECD AI Principles</a> (運用中)</li>
+<li><strong>[OECD]</strong> <a href="https://oecd.ai/en/ai-principles/" target="_blank">OECD AI Principles</a> (運用中)</li>
 <li><strong>[NIST]</strong> <a href="https://doi.org/10.6028/NIST.AI.600-1" target="_blank">NIST AI RMF: Generative AI Profile</a> (2024)</li>
 <li><strong>[Science and Innovation]</strong> <a href="https://doi.org/10.52340/scai.2025.02.13" target="_blank">Digital Identity and Legal Personhood</a> (2025)</li>
 <li><strong>[Legal Research and Analysis]</strong> <a href="https://doi.org/10.69971/lra.3.1.2025.42" target="_blank">Legal Personhood and Identity of Human Digital Twins</a> (2025)</li>
 <li><strong>[Palgrave]</strong> <a href="https://doi.org/10.1007/978-1-137-01616-4_15" target="_blank">Defining Identity IV: Personhood</a> (2014)</li>
 </ol>
+<h3>監査導線（Round 23 追加）</h3>
+<ul>
+<li>EU AI Act 手続き履歴: <a href="https://eur-lex.europa.eu/legal-content/EN/HIS/?uri=CELEX:32024R1689" target="_blank">EUR-Lex Procedure timeline</a></li>
+<li>EU 手続番号ページ: <a href="https://eur-lex.europa.eu/procedure/EN/2021_106" target="_blank">Procedure 2021_106</a></li>
+<li>CoE 条約詳細（CETS 225）: <a href="https://www.coe.int/en/web/conventions/full-list?module=treaty-detail&treatynum=225" target="_blank">Treaty Office detail</a></li>
+<li>CoE 最近の更新: <a href="https://www.coe.int/en/web/conventions/recent-changes" target="_blank">Treaty Office recent changes</a></li>
+</ul>
 </section>
 
 <section class="section" id="u13">
@@ -851,7 +865,7 @@ Round 22 の本文更新テンプレ固定と改訂履歴リンク補完は
 <li><strong>[Lancet Neurology]</strong> <a href="https://doi.org/10.1016/S1474-4422(25)00124-3" target="_blank">Neurorights in neurology</a> (2025)</li>
 <li><strong>[Journal of Human Rights Practice]</strong> <a href="https://doi.org/10.1093/jhuman/huae042" target="_blank">Establishing Neurorights: New Rights versus Derived Rights</a> (2024)</li>
 <li><strong>[NIST]</strong> <a href="https://doi.org/10.6028/NIST.AI.600-1" target="_blank">NIST AI RMF: Generative AI Profile</a> (2024)</li>
-<li><strong>[OECD]</strong> <a href="https://oecd.ai/en/ai-principles" target="_blank">OECD AI Principles</a> (運用中)</li>
+<li><strong>[OECD]</strong> <a href="https://oecd.ai/en/ai-principles/" target="_blank">OECD AI Principles</a> (運用中)</li>
 <li><strong>[Council of Europe]</strong> <a href="https://book.coe.int/en/texts-of-council-of-europe-treaties/12225-council-of-europe-framework-convention-on-artificial-intelligence-and-human-rights-democracy-and-the-rule-of-law-cets-no-225.html" target="_blank">Framework Convention on AI (CETS No.225)</a> (2024)</li>
 <li><strong>[ISO]</strong> <a href="https://www.iso.org/standard/42001" target="_blank">ISO/IEC 42001 AI management systems</a> (2023)</li>
 <li><strong>[AISC]</strong> <a href="https://doi.org/10.1007/978-3-030-72254-8_19" target="_blank">Privacy and Security in Brain-Computer Interfaces</a> (2021)</li>
@@ -864,6 +878,13 @@ Round 22 の本文更新テンプレ固定と改訂履歴リンク補完は
 <li><strong>[arXiv]</strong> <a href="https://arxiv.org/abs/2407.14390v1" target="_blank">Honest Computing: demonstrable data lineage and provenance</a> (2024)</li>
 <li><strong>[OpenAlex]</strong> <a href="https://api.openalex.org/W4379053109" target="_blank">Equal access to mental augmentation</a> (2023)</li>
 </ol>
+<h3>監査導線（Round 23 追加）</h3>
+<ul>
+<li>EU AI Act 手続き履歴: <a href="https://eur-lex.europa.eu/legal-content/EN/HIS/?uri=CELEX:32024R1689" target="_blank">EUR-Lex Procedure timeline</a></li>
+<li>NIST AI RMF 開発履歴: <a href="https://www.nist.gov/itl/ai-risk-management-framework/ai-rmf-development" target="_blank">NIST AI RMF Development</a></li>
+<li>OECD 法的本文: <a href="https://legalinstruments.oecd.org/en/instruments/OECD-LEGAL-0449" target="_blank">OECD-LEGAL-0449</a></li>
+<li>OECD 2024 改訂公表: <a href="https://www.oecd.org/en/about/news/press-releases/2024/05/oecd-updates-ai-principles-to-stay-abreast-of-rapid-technological-developments.html" target="_blank">OECD press release (2024 update)</a></li>
+</ul>
 </section>
 
 </article>
