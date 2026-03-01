@@ -156,23 +156,23 @@ note: "Compiled from 50 worker tasks (curated for relevance)"
 <section class="section" id="deepening-integration-20260301">
 <h2 class="section-title">深掘り統合反映（2026-03-01）</h2>
 <p>
-Round 1〜17 で実施した深掘り結果を本体運用へ統合しました。ここでは「どのUがどこまで深掘り済みか」を一覧化し、詳細は各Round文書へリンクします。
+Round 1〜18 で実施した深掘り結果を本体運用へ統合しました。ここでは「どのUがどこまで深掘り済みか」を一覧化し、詳細は各Round文書へリンクします。
 </p>
 <table class="data-table">
 <thead><tr><th>U</th><th>RQ総数</th><th>深掘り完了</th><th>主要反映ラウンド</th></tr></thead><tbody>
-<tr><td>U0</td><td>4</td><td>4</td><td>Round 2, 9, 12, 13, 16, 17</td></tr>
-<tr><td>U1</td><td>4</td><td>4</td><td>Round 2, 9, 12, 13, 16, 17</td></tr>
-<tr><td>U3</td><td>6</td><td>6</td><td>Round 2, 9, 11, 13, 16, 17</td></tr>
-<tr><td>U4</td><td>4</td><td>4</td><td>Round 3, 9, 12, 13, 16, 17</td></tr>
-<tr><td>U7</td><td>6</td><td>6</td><td>Round 3, 9, 11, 13, 14, 16, 17</td></tr>
-<tr><td>U8</td><td>6</td><td>6</td><td>Round 4, 8, 12, 13, 16, 17</td></tr>
-<tr><td>U10</td><td>4</td><td>4</td><td>Round 5, 9, 12, 13, 14, 16, 17</td></tr>
-<tr><td>U11</td><td>4</td><td>4</td><td>Round 5, 9, 11, 13, 16, 17</td></tr>
-<tr><td>U12</td><td>6</td><td>6</td><td>Round 5, 9, 11, 13, 15, 16, 17</td></tr>
-<tr><td>U13</td><td>6</td><td>6</td><td>Round 6, 8, 12, 13, 16, 17</td></tr>
-<tr><td>U14</td><td>6</td><td>6</td><td>Round 6, 8, 12, 13, 14, 16, 17</td></tr>
-<tr><td>U15</td><td>4</td><td>4</td><td>Round 6, 8, 12, 13, 15, 16, 17</td></tr>
-<tr><td><strong>合計</strong></td><td><strong>60</strong></td><td><strong>60</strong></td><td><strong>Round 1-17</strong></td></tr>
+<tr><td>U0</td><td>4</td><td>4</td><td>Round 2, 9, 12, 13, 16, 17, 18</td></tr>
+<tr><td>U1</td><td>4</td><td>4</td><td>Round 2, 9, 12, 13, 16, 17, 18</td></tr>
+<tr><td>U3</td><td>6</td><td>6</td><td>Round 2, 9, 11, 13, 16, 17, 18</td></tr>
+<tr><td>U4</td><td>4</td><td>4</td><td>Round 3, 9, 12, 13, 16, 17, 18</td></tr>
+<tr><td>U7</td><td>6</td><td>6</td><td>Round 3, 9, 11, 13, 14, 16, 17, 18</td></tr>
+<tr><td>U8</td><td>6</td><td>6</td><td>Round 4, 8, 12, 13, 16, 17, 18</td></tr>
+<tr><td>U10</td><td>4</td><td>4</td><td>Round 5, 9, 12, 13, 14, 16, 17, 18</td></tr>
+<tr><td>U11</td><td>4</td><td>4</td><td>Round 5, 9, 11, 13, 16, 17, 18</td></tr>
+<tr><td>U12</td><td>6</td><td>6</td><td>Round 5, 9, 11, 13, 15, 16, 17, 18</td></tr>
+<tr><td>U13</td><td>6</td><td>6</td><td>Round 6, 8, 12, 13, 16, 17, 18</td></tr>
+<tr><td>U14</td><td>6</td><td>6</td><td>Round 6, 8, 12, 13, 14, 16, 17, 18</td></tr>
+<tr><td>U15</td><td>4</td><td>4</td><td>Round 6, 8, 12, 13, 15, 16, 17, 18</td></tr>
+<tr><td><strong>合計</strong></td><td><strong>60</strong></td><td><strong>60</strong></td><td><strong>Round 1-18</strong></td></tr>
 </tbody></table>
 
 <h3>詳細ドキュメント</h3>
@@ -194,6 +194,7 @@ Round 1〜17 で実施した深掘り結果を本体運用へ統合しました�
 <li><a href="research_deepening_round15_2026-03-01.html">Round 15: 法制度リンク差分監査（Round 13 比較）</a></li>
 <li><a href="research_deepening_round16_2026-03-01.html">Round 16: 補助文献の実験/規制/運用タグ再分類</a></li>
 <li><a href="research_deepening_round17_2026-03-01.html">Round 17: 参照二層化と3ステップ読了順</a></li>
+<li><a href="research_deepening_round18_2026-03-01.html">Round 18: 読了時間目安と更新監査フラグ</a></li>
 </ul>
 
 <h3>整合性監査（証跡）</h3>
@@ -284,6 +285,12 @@ Round 17 のRQ別3ステップ読了順（60問い）は
 <a href="automation/rq_minimal_reading_path_round17_2026-03-01.csv" target="_blank">rq_minimal_reading_path_round17_2026-03-01.csv</a>
 に記録しています（集計:
 <a href="automation/rq_reading_path_summary_round17_2026-03-01.csv" target="_blank">rq_reading_path_summary_round17_2026-03-01.csv</a>）。
+</p>
+<p class="small">
+Round 18 の時間目安付き読了順（60問い）は
+<a href="automation/rq_reading_path_timed_round18_2026-03-01.csv" target="_blank">rq_reading_path_timed_round18_2026-03-01.csv</a>
+に記録しています（集計:
+<a href="automation/rq_reading_path_timed_summary_round18_2026-03-01.csv" target="_blank">rq_reading_path_timed_summary_round18_2026-03-01.csv</a>）。
 </p>
 </section>
 
