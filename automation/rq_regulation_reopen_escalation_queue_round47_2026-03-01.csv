@@ -1,0 +1,11 @@
+uid,rq_index,rq_text,escalation_priority,escalation_condition_ja,current_escalation_status,reopen_recommendation,queue_owner,next_action_ja,generated_at_utc
+U12,1,分岐後主体の識別子を何に基づいて付与するか。,high,drift_score>=40 または trigger一致,keep_watch,no_reopen,U12_monitor_owner,次窓で定義語改訂行を先行確認,2026-03-01T19:31:15Z
+U12,2,責任・権利・同意の継承ルールをどの時点で分岐させるか。,low,drift_score>=40 または trigger一致,keep_watch,no_reopen,U12_monitor_owner,時点語版更新有無を定期確認,2026-03-01T19:31:15Z
+U12,3,心理的連続性基準と法的個体基準の不一致をどう扱うか。,high,drift_score>=40 または trigger一致,keep_watch,no_reopen,U12_monitor_owner,条項抽出条件語を先行確認,2026-03-01T19:31:15Z
+U12,4,技術評価（性能）と人格評価（帰属）をどう接続するか。,medium,drift_score>=40 または trigger一致,keep_watch,no_reopen,U12_monitor_owner,監査語追加有無を定期確認,2026-03-01T19:31:15Z
+U12,5,分岐主体間で記憶編集・再同期が起きた場合、法的主体IDを再編する基準は何か。,medium,drift_score>=40 または trigger一致,keep_watch,no_reopen,U12_monitor_owner,同義語追加有無を定期確認,2026-03-01T19:31:15Z
+U12,6,同意撤回が発生したとき、複数分岐主体への権限剥奪を技術的にどう実装・監査するか。,medium,drift_score>=40 または trigger一致,keep_watch,no_reopen,U12_monitor_owner,表記世代更新有無を定期確認,2026-03-01T19:31:15Z
+U15,1,神経データの機微性をどの法概念で扱うか（個人情報・生体情報・人格情報）。,high,drift_score>=40 または trigger一致,keep_watch,no_reopen,U15_monitor_owner,法文定義改訂を先行確認,2026-03-01T19:31:15Z
+U15,2,neurorightsを技術監査項目へどう写像するか。,medium,drift_score>=40 または trigger一致,keep_watch,no_reopen,U15_monitor_owner,写像語粒度更新を定期確認,2026-03-01T19:31:15Z
+U15,3,法域差（EU/US/JP等）を跨ぐ最小共通運用をどう定義するか。,high,drift_score>=40 または trigger一致,keep_watch,no_reopen,U15_monitor_owner,共通三要件変化を先行確認,2026-03-01T19:31:15Z
+U15,4,技術進展に応じた停止条件・更新条件をどうガバナンス化するか。,medium,drift_score>=40 または trigger一致,keep_watch,no_reopen,U15_monitor_owner,周期語公式追記を定期確認,2026-03-01T19:31:15Z
