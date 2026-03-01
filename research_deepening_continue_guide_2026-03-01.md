@@ -27,9 +27,11 @@ note: "for iterative deep research"
 <li><code>research_harvest_50.md</code>: 元の問い定義（U0-U15）</li>
 <li><code>research_deepening_2026-03-01.md</code>: 平易な追補説明</li>
 <li><code>research_deepening_round2_2026-03-01.md</code>: U0/U1/U3 の深掘り追補（Round 2）</li>
+<li><code>research_deepening_round3_2026-03-01.md</code>: U4/U7 の深掘り追補（Round 3）</li>
 <li><code>automation/rq_deepening_backlog_2026-03-01.csv</code>: 全60問いの実行バックログ</li>
 <li><code>automation/rq_deepening_backlog_2026-03-01_enriched.csv</code>: 上記 + 一次情報リンク + 根拠確度</li>
 <li><code>automation/rq_deepening_progress_round2_2026-03-01.csv</code>: Round 2 進捗管理（U0/U1/U3）</li>
+<li><code>automation/rq_deepening_progress_round3_2026-03-01.csv</code>: Round 3 進捗管理（U4/U7）</li>
 </ul>
 </section>
 
@@ -38,7 +40,8 @@ note: "for iterative deep research"
 <ul>
 <li>Round 1: U0-U15 を平易に再整理済み。</li>
 <li>Round 2: U0/U1/U3 の全14問いを深掘りし、追加一次情報を紐づけ済み。</li>
-<li>次回 continue の優先対象: U4 → U7 → U8（実験設計と評価契約に直結するため）。</li>
+<li>Round 3: U4/U7 の全10問いを深掘りし、追加一次情報を紐づけ済み。</li>
+<li>次回 continue の優先対象: U8 → U10 → U11（運用安全と検証基準に直結するため）。</li>
 </ul>
 </section>
 
