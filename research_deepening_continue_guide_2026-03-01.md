@@ -75,6 +75,7 @@ note: "for iterative deep research"
 <li><code>research_deepening_round48_2026-03-01.md</code>: 閾値再評価ログと再開判定監査の固定（Round 48）</li>
 <li><code>research_deepening_round49_2026-03-01.md</code>: 監視窓実行ログとraise判定ゲートの固定（Round 49）</li>
 <li><code>research_deepening_round50_2026-03-01.md</code>: 再開準備度スコアと監視ハンドオフチェックポイントの固定（Round 50）</li>
+<li><code>research_deepening_round51_2026-03-01.md</code>: 再開候補スクリーニングと監視継続コミットメントの固定（Round 51）</li>
 <li><code>automation/rq_deepening_backlog_2026-03-01.csv</code>: 全60問いの実行バックログ</li>
 <li><code>automation/rq_deepening_backlog_2026-03-01_enriched.csv</code>: 上記 + 一次情報リンク + 根拠確度</li>
 <li><code>automation/rq_deepening_progress_round2_2026-03-01.csv</code>: Round 2 進捗管理（U0/U1/U3）</li>
@@ -174,6 +175,8 @@ note: "for iterative deep research"
 <li><code>automation/rq_regulation_raise_gate_criteria_round49_2026-03-01.csv</code>: Round 49 の問い別raise判定ゲート（10問い）</li>
 <li><code>automation/rq_regulation_reopen_readiness_score_round50_2026-03-01.csv</code>: Round 50 の問い別再開準備度スコア（10問い）</li>
 <li><code>automation/rq_regulation_watch_handoff_checkpoint_round50_2026-03-01.csv</code>: Round 50 の問い別監視ハンドオフチェックポイント（10問い）</li>
+<li><code>automation/rq_regulation_reopen_candidate_screening_round51_2026-03-01.csv</code>: Round 51 の問い別再開候補スクリーニング（10問い）</li>
+<li><code>automation/rq_regulation_monitor_continuity_commitment_round51_2026-03-01.csv</code>: Round 51 の問い別監視継続コミットメント（10問い）</li>
 </ul>
 </section>
 
@@ -230,9 +233,10 @@ note: "for iterative deep research"
 <li>Round 48: 10問いの閾値再評価ログと再開判定監査を固定済み。</li>
 <li>Round 49: 10問いの監視窓実行ログとraise判定ゲートを固定済み。</li>
 <li>Round 50: 10問いの再開準備度スコアと監視ハンドオフチェックポイントを固定済み。</li>
-<li>統合反映: research_harvest_50.md 本体へ Round 1-50 結果を統合済み。</li>
+<li>Round 51: 10問いの再開候補スクリーニングと監視継続コミットメントを固定済み。</li>
+<li>統合反映: research_harvest_50.md 本体へ Round 1-51 結果を統合済み。</li>
 <li>整合監査: 全60問いカバレッジ監査と引用関連性点検を生成済み。</li>
-<li>次回 continue の優先対象: 2026-03-08 UTC に Round 33 実行順を適用し、Round 50 の readiness_score 上位4問いを先行確認し、readiness_score>=70 かつ trigger一致の問いのみ raise 候補へ更新して reopen 判定へ進める。</li>
+<li>次回 continue の優先対象: 2026-03-08 UTC に Round 33 実行順を適用し、Round 51 の screening_result が candidate の問いを先行確認し、trigger一致時のみ raise 候補へ更新して reopen 判定へ進める。</li>
 </ul>
 </section>
 
