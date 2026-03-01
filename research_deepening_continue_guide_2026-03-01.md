@@ -73,6 +73,7 @@ note: "for iterative deep research"
 <li><code>research_deepening_round46_2026-03-01.md</code>: reopen優先監視ログと再開判定登録の固定（Round 46）</li>
 <li><code>research_deepening_round47_2026-03-01.md</code>: trigger変動ドリフト行列と再開エスカレーションキューの固定（Round 47）</li>
 <li><code>research_deepening_round48_2026-03-01.md</code>: 閾値再評価ログと再開判定監査の固定（Round 48）</li>
+<li><code>research_deepening_round49_2026-03-01.md</code>: 監視窓実行ログとraise判定ゲートの固定（Round 49）</li>
 <li><code>automation/rq_deepening_backlog_2026-03-01.csv</code>: 全60問いの実行バックログ</li>
 <li><code>automation/rq_deepening_backlog_2026-03-01_enriched.csv</code>: 上記 + 一次情報リンク + 根拠確度</li>
 <li><code>automation/rq_deepening_progress_round2_2026-03-01.csv</code>: Round 2 進捗管理（U0/U1/U3）</li>
@@ -168,6 +169,8 @@ note: "for iterative deep research"
 <li><code>automation/rq_regulation_reopen_escalation_queue_round47_2026-03-01.csv</code>: Round 47 の問い別再開エスカレーションキュー（10問い）</li>
 <li><code>automation/rq_regulation_threshold_recheck_round48_2026-03-01.csv</code>: Round 48 の問い別閾値再評価ログ（10問い）</li>
 <li><code>automation/rq_regulation_reopen_decision_audit_round48_2026-03-01.csv</code>: Round 48 の問い別再開判定監査（10問い）</li>
+<li><code>automation/rq_regulation_watch_window_execution_round49_2026-03-01.csv</code>: Round 49 の問い別監視窓実行ログ（10問い）</li>
+<li><code>automation/rq_regulation_raise_gate_criteria_round49_2026-03-01.csv</code>: Round 49 の問い別raise判定ゲート（10問い）</li>
 </ul>
 </section>
 
@@ -222,9 +225,10 @@ note: "for iterative deep research"
 <li>Round 46: 10問いのreopen優先監視ログと再開判定登録を固定済み。</li>
 <li>Round 47: 10問いのtrigger変動ドリフト行列と再開エスカレーションキューを固定済み。</li>
 <li>Round 48: 10問いの閾値再評価ログと再開判定監査を固定済み。</li>
-<li>統合反映: research_harvest_50.md 本体へ Round 1-48 結果を統合済み。</li>
+<li>Round 49: 10問いの監視窓実行ログとraise判定ゲートを固定済み。</li>
+<li>統合反映: research_harvest_50.md 本体へ Round 1-49 結果を統合済み。</li>
 <li>整合監査: 全60問いカバレッジ監査と引用関連性点検を生成済み。</li>
-<li>次回 continue の優先対象: 2026-03-08 UTC に Round 33 実行順を適用し、Round 48 の delta_score 増加問いを先行確認し、threshold 超過時のみ escalation_status を raise に更新して reopen 判定へ進める。</li>
+<li>次回 continue の優先対象: 2026-03-08 UTC に Round 33 実行順を適用し、Round 49 の監視窓ログで high 4問いを先行確認し、drift_score>=threshold かつ trigger一致の問いのみ raise へ更新して reopen 判定へ進める。</li>
 </ul>
 </section>
 
