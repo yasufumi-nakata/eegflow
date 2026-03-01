@@ -68,6 +68,7 @@ note: "for iterative deep research"
 <li><code>research_deepening_round41_2026-03-01.md</code>: ハンドオフ完了証跡と未解決キュー管理の固定（Round 41）</li>
 <li><code>research_deepening_round42_2026-03-01.md</code>: 未解決キュー解消経路と追加証跡依頼ボードの固定（Round 42）</li>
 <li><code>research_deepening_round43_2026-03-01.md</code>: 受入条件ゲート判定ログと状態遷移台帳の固定（Round 43）</li>
+<li><code>research_deepening_round44_2026-03-01.md</code>: highレーン2回目判定とクローズ候補登録の固定（Round 44）</li>
 <li><code>automation/rq_deepening_backlog_2026-03-01.csv</code>: 全60問いの実行バックログ</li>
 <li><code>automation/rq_deepening_backlog_2026-03-01_enriched.csv</code>: 上記 + 一次情報リンク + 根拠確度</li>
 <li><code>automation/rq_deepening_progress_round2_2026-03-01.csv</code>: Round 2 進捗管理（U0/U1/U3）</li>
@@ -153,6 +154,8 @@ note: "for iterative deep research"
 <li><code>automation/rq_regulation_evidence_request_board_round42_2026-03-01.csv</code>: Round 42 の問い別追加証跡依頼ボード（10問い）</li>
 <li><code>automation/rq_regulation_acceptance_gate_check_round43_2026-03-01.csv</code>: Round 43 の問い別受入条件ゲート判定（10問い）</li>
 <li><code>automation/rq_regulation_state_transition_ledger_round43_2026-03-01.csv</code>: Round 43 の問い別状態遷移台帳（10問い）</li>
+<li><code>automation/rq_regulation_high_lane_second_pass_round44_2026-03-01.csv</code>: Round 44 の問い別2回目判定ログ（10問い）</li>
+<li><code>automation/rq_regulation_close_candidate_register_round44_2026-03-01.csv</code>: Round 44 の問い別クローズ候補登録（10問い）</li>
 </ul>
 </section>
 
@@ -202,9 +205,10 @@ note: "for iterative deep research"
 <li>Round 41: 10問いのハンドオフ完了証跡と未解決キュー管理を固定済み。</li>
 <li>Round 42: 10問いの未解決キュー解消経路と追加証跡依頼ボードを固定済み。</li>
 <li>Round 43: 10問いの受入条件ゲート判定ログと状態遷移台帳を固定済み。</li>
-<li>統合反映: research_harvest_50.md 本体へ Round 1-43 結果を統合済み。</li>
+<li>Round 44: 10問いのhighレーン2回目判定ログとクローズ候補登録を固定済み。</li>
+<li>統合反映: research_harvest_50.md 本体へ Round 1-44 結果を統合済み。</li>
 <li>整合監査: 全60問いカバレッジ監査と引用関連性点検を生成済み。</li>
-<li>次回 continue の優先対象: 2026-03-08 UTC に Round 33 実行順を適用し、Round 43 で conditional_pass の high 2問いを先行処理して連続成功2/2を確認し、成立時は ready_to_close へ更新して最終報告テンプレートへ反映する。</li>
+<li>次回 continue の優先対象: 2026-03-08 UTC に Round 33 実行順を適用し、Round 44 で ready_to_close の8問いを最終報告テンプレートへ転記し、U12-RQ3/U15-RQ3 を closed_final へ更新する。</li>
 </ul>
 </section>
 
