@@ -86,6 +86,7 @@ note: "for iterative deep research"
 <li><code>research_deepening_round59_2026-03-01.md</code>: 公開コミット台帳と保留繰越バックログ固定（Round 59）</li>
 <li><code>research_deepening_round60_2026-03-01.md</code>: 公開結果マトリクスと未解消エスカレーション登録固定（Round 60）</li>
 <li><code>research_deepening_round61_2026-03-01.md</code>: 公開実行チェックとエスカレーション解消計画固定（Round 61）</li>
+<li><code>research_deepening_round62_2026-03-01.md</code>: クローズ証明と再開ガード固定（Round 62）</li>
 <li><code>automation/rq_deepening_backlog_2026-03-01.csv</code>: 全60問いの実行バックログ</li>
 <li><code>automation/rq_deepening_backlog_2026-03-01_enriched.csv</code>: 上記 + 一次情報リンク + 根拠確度</li>
 <li><code>automation/rq_deepening_progress_round2_2026-03-01.csv</code>: Round 2 進捗管理（U0/U1/U3）</li>
@@ -207,6 +208,8 @@ note: "for iterative deep research"
 <li><code>automation/rq_regulation_unresolved_escalation_register_round60_2026-03-01.csv</code>: Round 60 の問い別未解消エスカレーション登録（10問い）</li>
 <li><code>automation/rq_regulation_outcome_execution_check_round61_2026-03-01.csv</code>: Round 61 の問い別公開実行チェック表（10問い）</li>
 <li><code>automation/rq_regulation_escalation_closure_plan_round61_2026-03-01.csv</code>: Round 61 の問い別エスカレーション解消計画（10問い）</li>
+<li><code>automation/rq_regulation_closure_certification_round62_2026-03-01.csv</code>: Round 62 の問い別クローズ証明チェック（10問い）</li>
+<li><code>automation/rq_regulation_reopen_guard_round62_2026-03-01.csv</code>: Round 62 の問い別再開ガード条件（10問い）</li>
 </ul>
 </section>
 
@@ -274,9 +277,10 @@ note: "for iterative deep research"
 <li>Round 59: 10問いの公開コミット台帳と保留繰越バックログを固定済み。</li>
 <li>Round 60: 10問いの公開結果マトリクスと未解消エスカレーション登録を固定済み。</li>
 <li>Round 61: 10問いの公開実行チェックとエスカレーション解消計画を固定済み。</li>
-<li>統合反映: research_harvest_50.md 本体へ Round 1-61 結果を統合済み。</li>
+<li>Round 62: 10問いのクローズ証明チェックと再開ガード条件を固定済み。</li>
+<li>統合反映: research_harvest_50.md 本体へ Round 1-62 結果を統合済み。</li>
 <li>整合監査: 全60問いカバレッジ監査と引用関連性点検を生成済み。</li>
-<li>次回 continue の優先対象: 2026-03-08 UTC に Round 61 outcome_execution_check の3確認を更新し、要エスカレーション問いは closure_plan の3工程を実行して closure_ready 判定後に unresolved_register を更新する。</li>
+<li>次回 continue の優先対象: 2026-03-08 UTC に Round 62 closure_certification の3確認を更新し、差分再発や判定衝突がある問いは reopen_guard 条件で候補化して unresolved_register へ再接続する。</li>
 </ul>
 </section>
 
