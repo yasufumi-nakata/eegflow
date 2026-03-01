@@ -90,6 +90,7 @@ note: "for iterative deep research"
 <li><code>research_deepening_round63_2026-03-01.md</code>: クローズ維持スケジュールと再開候補トリアージ固定（Round 63）</li>
 <li><code>research_deepening_round64_2026-03-01.md</code>: クローズ一貫性監査と再開兆候監視固定（Round 64）</li>
 <li><code>research_deepening_round65_2026-03-01.md</code>: クローズドリフト対応と再開ハンドオフ固定（Round 65）</li>
+<li><code>research_deepening_round66_2026-03-01.md</code>: 再開再検証パケットと再クローズ判定ゲート固定（Round 66）</li>
 <li><code>automation/rq_deepening_backlog_2026-03-01.csv</code>: 全60問いの実行バックログ</li>
 <li><code>automation/rq_deepening_backlog_2026-03-01_enriched.csv</code>: 上記 + 一次情報リンク + 根拠確度</li>
 <li><code>automation/rq_deepening_progress_round2_2026-03-01.csv</code>: Round 2 進捗管理（U0/U1/U3）</li>
@@ -219,6 +220,8 @@ note: "for iterative deep research"
 <li><code>automation/rq_regulation_reopen_watch_signal_round64_2026-03-01.csv</code>: Round 64 の問い別再開兆候監視（10問い）</li>
 <li><code>automation/rq_regulation_closure_drift_response_round65_2026-03-01.csv</code>: Round 65 の問い別クローズドリフト対応行列（10問い）</li>
 <li><code>automation/rq_regulation_reopen_escalation_handoff_round65_2026-03-01.csv</code>: Round 65 の問い別再開エスカレーション引継ぎ（10問い）</li>
+<li><code>automation/rq_regulation_reopen_revalidation_packet_round66_2026-03-01.csv</code>: Round 66 の問い別再開再検証パケット（10問い）</li>
+<li><code>automation/rq_regulation_reclose_decision_gate_round66_2026-03-01.csv</code>: Round 66 の問い別再クローズ判定ゲート（10問い）</li>
 </ul>
 </section>
 
@@ -290,9 +293,10 @@ note: "for iterative deep research"
 <li>Round 63: 10問いのクローズ維持スケジュールと再開候補トリアージを固定済み。</li>
 <li>Round 64: 10問いのクローズ一貫性監査と再開兆候監視を固定済み。</li>
 <li>Round 65: 10問いのクローズドリフト対応行列と再開エスカレーション引継ぎを固定済み。</li>
-<li>統合反映: research_harvest_50.md 本体へ Round 1-65 結果を統合済み。</li>
+<li>Round 66: 10問いの再開再検証パケットと再クローズ判定ゲートを固定済み。</li>
+<li>統合反映: research_harvest_50.md 本体へ Round 1-66 結果を統合済み。</li>
 <li>整合監査: 全60問いカバレッジ監査と引用関連性点検を生成済み。</li>
-<li>次回 continue の優先対象: 2026-03-08 UTC に Round 65 closure_drift_response の3ステップを更新し、reopen候補問いは handoff の3証跡をそろえて unresolved_register と closure_plan へ再接続する。</li>
+<li>次回 continue の優先対象: 2026-03-08 UTC に Round 66 revalidation_packet の3証跡を更新し、reclose_gate の3条件が揃った問いを reclose_ready へ更新して closure_certification と maintenance_schedule へ再接続する。</li>
 </ul>
 </section>
 
