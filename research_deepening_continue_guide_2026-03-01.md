@@ -38,6 +38,9 @@ note: "for iterative deep research"
 <li><code>automation/rq_deepening_progress_round4_2026-03-01.csv</code>: Round 4 進捗管理（U8）</li>
 <li><code>automation/rq_deepening_progress_round5_2026-03-01.csv</code>: Round 5 進捗管理（U10/U11/U12）</li>
 <li><code>automation/rq_deepening_progress_round6_2026-03-01.csv</code>: Round 6 進捗管理（U13/U14/U15）</li>
+<li><code>automation/rq_deepening_consistency_audit_2026-03-01.md</code>: 全60問いの整合性監査（coverage missing=0）</li>
+<li><code>automation/rq_deepening_coverage_summary_2026-03-01.csv</code>: U別カバレッジ集計</li>
+<li><code>automation/rq_reference_relevance_audit_2026-03-01.md</code>: 引用関連性の機械点検（要目視確認）</li>
 </ul>
 </section>
 
@@ -50,7 +53,9 @@ note: "for iterative deep research"
 <li>Round 4: U8 の全6問いを深掘りし、追加一次情報を紐づけ済み。</li>
 <li>Round 5: U10/U11/U12 の全14問いを深掘りし、追加一次情報を紐づけ済み。</li>
 <li>Round 6: U13/U14/U15 の全16問いを深掘りし、追加一次情報を紐づけ済み。</li>
-<li>次回 continue の優先対象: 全Uの統合反映（research_harvest_50.md 本体への段階反映）と整合性監査。</li>
+<li>統合反映: research_harvest_50.md 本体へ Round 1-6 結果を統合済み。</li>
+<li>整合監査: 全60問いカバレッジ監査と引用関連性点検を生成済み。</li>
+<li>次回 continue の優先対象: 引用ノイズ候補（関連性監査で抽出）の手動審査と置換。</li>
 </ul>
 </section>
 

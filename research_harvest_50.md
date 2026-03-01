@@ -5,7 +5,7 @@ description: "50分解クエスチョンで収集した先行研究を、解決�
 article_type: "Evidence Bank"
 subtitle: "U0-U15 の分解、現状評価、先行研究（大量引用）"
 author: Mind Uploading Research Project
-last_updated: "2026-02-24"
+last_updated: "2026-03-01"
 note: "Compiled from 50 worker tasks (curated for relevance)"
 ---
 <!-- IMPORTANT: Do not delete or overwrite this information. It serves as the project's permanent knowledge base. -->
@@ -151,6 +151,53 @@ note: "Compiled from 50 worker tasks (curated for relevance)"
 <tr><td>U14</td><td><a href="https://doi.org/10.1098/rsos.242057" target="_blank">10.1098/rsos.242057</a></td><td>再現性向上介入のスコーピングレビュー</td></tr>
 <tr><td>U15</td><td><a href="https://doi.org/10.1007/s11673-025-10440-9" target="_blank">10.1007/s11673-025-10440-9</a></td><td>神経技術の責任ある倫理ガバナンス戦略</td></tr>
 </tbody></table>
+</section>
+
+<section class="section" id="deepening-integration-20260301">
+<h2 class="section-title">深掘り統合反映（2026-03-01）</h2>
+<p>
+Round 1〜6 で実施した深掘り結果を本体運用へ統合しました。ここでは「どのUがどこまで深掘り済みか」を一覧化し、詳細は各Round文書へリンクします。
+</p>
+<table class="data-table">
+<thead><tr><th>U</th><th>RQ総数</th><th>深掘り完了</th><th>主要反映ラウンド</th></tr></thead><tbody>
+<tr><td>U0</td><td>4</td><td>4</td><td>Round 2</td></tr>
+<tr><td>U1</td><td>4</td><td>4</td><td>Round 2</td></tr>
+<tr><td>U3</td><td>6</td><td>6</td><td>Round 2</td></tr>
+<tr><td>U4</td><td>4</td><td>4</td><td>Round 3</td></tr>
+<tr><td>U7</td><td>6</td><td>6</td><td>Round 3</td></tr>
+<tr><td>U8</td><td>6</td><td>6</td><td>Round 4</td></tr>
+<tr><td>U10</td><td>4</td><td>4</td><td>Round 5</td></tr>
+<tr><td>U11</td><td>4</td><td>4</td><td>Round 5</td></tr>
+<tr><td>U12</td><td>6</td><td>6</td><td>Round 5</td></tr>
+<tr><td>U13</td><td>6</td><td>6</td><td>Round 6</td></tr>
+<tr><td>U14</td><td>6</td><td>6</td><td>Round 6</td></tr>
+<tr><td>U15</td><td>4</td><td>4</td><td>Round 6</td></tr>
+<tr><td><strong>合計</strong></td><td><strong>60</strong></td><td><strong>60</strong></td><td><strong>Round 1-6</strong></td></tr>
+</tbody></table>
+
+<h3>詳細ドキュメント</h3>
+<ul>
+<li><a href="research_deepening_2026-03-01.html">Round 1: 全Uの平易化追補</a></li>
+<li><a href="research_deepening_round2_2026-03-01.html">Round 2: U0/U1/U3</a></li>
+<li><a href="research_deepening_round3_2026-03-01.html">Round 3: U4/U7</a></li>
+<li><a href="research_deepening_round4_2026-03-01.html">Round 4: U8</a></li>
+<li><a href="research_deepening_round5_2026-03-01.html">Round 5: U10/U11/U12</a></li>
+<li><a href="research_deepening_round6_2026-03-01.html">Round 6: U13/U14/U15</a></li>
+</ul>
+
+<h3>整合性監査（証跡）</h3>
+<p class="small">
+全60問いのカバレッジ監査は
+<a href="automation/rq_deepening_consistency_audit_2026-03-01.md" target="_blank">rq_deepening_consistency_audit_2026-03-01.md</a>
+に記録しています（missing=0）。
+</p>
+<p class="small">
+U別カバレッジ集計は
+<a href="automation/rq_deepening_coverage_summary_2026-03-01.csv" target="_blank">rq_deepening_coverage_summary_2026-03-01.csv</a>、
+引用関連性の機械点検（要目視確認）は
+<a href="automation/rq_reference_relevance_audit_2026-03-01.md" target="_blank">rq_reference_relevance_audit_2026-03-01.md</a>
+に記録しています。
+</p>
 </section>
 
 <section class="section" id="u0">
