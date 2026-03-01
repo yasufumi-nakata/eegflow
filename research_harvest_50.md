@@ -156,7 +156,7 @@ note: "Compiled from 50 worker tasks (curated for relevance)"
 <section class="section" id="deepening-integration-20260301">
 <h2 class="section-title">深掘り統合反映（2026-03-01）</h2>
 <p>
-Round 1〜37 で実施した深掘り結果を本体運用へ統合しました。ここでは「どのUがどこまで深掘り済みか」を一覧化し、詳細は各Round文書へリンクします。
+Round 1〜38 で実施した深掘り結果を本体運用へ統合しました。ここでは「どのUがどこまで深掘り済みか」を一覧化し、詳細は各Round文書へリンクします。
 </p>
 <table class="data-table">
 <thead><tr><th>U</th><th>RQ総数</th><th>深掘り完了</th><th>主要反映ラウンド</th></tr></thead><tbody>
@@ -168,11 +168,11 @@ Round 1〜37 で実施した深掘り結果を本体運用へ統合しました�
 <tr><td>U8</td><td>6</td><td>6</td><td>Round 4, 8, 12, 13, 16, 17, 18</td></tr>
 <tr><td>U10</td><td>4</td><td>4</td><td>Round 5, 9, 12, 13, 14, 16, 17, 18</td></tr>
 <tr><td>U11</td><td>4</td><td>4</td><td>Round 5, 9, 11, 13, 16, 17, 18</td></tr>
-<tr><td>U12</td><td>6</td><td>6</td><td>Round 5, 9, 11, 13, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37</td></tr>
+<tr><td>U12</td><td>6</td><td>6</td><td>Round 5, 9, 11, 13, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38</td></tr>
 <tr><td>U13</td><td>6</td><td>6</td><td>Round 6, 8, 12, 13, 16, 17, 18</td></tr>
 <tr><td>U14</td><td>6</td><td>6</td><td>Round 6, 8, 12, 13, 14, 16, 17, 18</td></tr>
-<tr><td>U15</td><td>4</td><td>4</td><td>Round 6, 8, 12, 13, 15, 16, 17, 18, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37</td></tr>
-<tr><td><strong>合計</strong></td><td><strong>60</strong></td><td><strong>60</strong></td><td><strong>Round 1-37</strong></td></tr>
+<tr><td>U15</td><td>4</td><td>4</td><td>Round 6, 8, 12, 13, 15, 16, 17, 18, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38</td></tr>
+<tr><td><strong>合計</strong></td><td><strong>60</strong></td><td><strong>60</strong></td><td><strong>Round 1-38</strong></td></tr>
 </tbody></table>
 
 <h3>詳細ドキュメント</h3>
@@ -214,6 +214,7 @@ Round 1〜37 で実施した深掘り結果を本体運用へ統合しました�
 <li><a href="research_deepening_round35_2026-03-01.html">Round 35: 判定理由一貫性チェック表と最終報告テンプレートの固定</a></li>
 <li><a href="research_deepening_round36_2026-03-01.html">Round 36: 複数ソース照合マップとエスカレーション規則の固定</a></li>
 <li><a href="research_deepening_round37_2026-03-01.html">Round 37: 判定衝突解消行列と外部依存ハンドオフSLAの固定</a></li>
+<li><a href="research_deepening_round38_2026-03-01.html">Round 38: 残余リスク登録表と検証証跡インデックスの固定</a></li>
 </ul>
 
 <h3>整合性監査（証跡）</h3>
@@ -435,6 +436,12 @@ Round 36 の複数ソース照合マップとエスカレーション規則の�
 Round 37 の判定衝突解消行列と外部依存ハンドオフSLAの固定は
 <a href="automation/rq_regulation_conflict_resolution_matrix_round37_2026-03-01.csv" target="_blank">rq_regulation_conflict_resolution_matrix_round37_2026-03-01.csv</a>（問い別判定衝突解消行列）と
 <a href="automation/rq_regulation_external_handoff_sla_round37_2026-03-01.csv" target="_blank">rq_regulation_external_handoff_sla_round37_2026-03-01.csv</a>（問い別外部依存ハンドオフSLA）
+に記録しています。
+</p>
+<p class="small">
+Round 38 の残余リスク登録表と検証証跡インデックスの固定は
+<a href="automation/rq_regulation_residual_risk_register_round38_2026-03-01.csv" target="_blank">rq_regulation_residual_risk_register_round38_2026-03-01.csv</a>（問い別残余リスク登録表）と
+<a href="automation/rq_regulation_verification_artifact_index_round38_2026-03-01.csv" target="_blank">rq_regulation_verification_artifact_index_round38_2026-03-01.csv</a>（問い別検証証跡インデックス）
 に記録しています。
 </p>
 </section>

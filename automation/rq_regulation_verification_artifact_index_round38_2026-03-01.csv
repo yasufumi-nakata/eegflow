@@ -1,0 +1,11 @@
+uid,rq_index,rq_text,required_artifact_set_ja,artifact_priority_order_ja,minimum_count,storage_location_hint_ja,verification_owner,artifact_gap_action_ja,generated_at_utc
+U12,1,分岐後主体の識別子を何に基づいて付与するか。,確認URL 改訂日 見出し 抽出ログ,公式文書 改訂履歴 補助解説,4,automation下round38_artifacts,U12_monitor_owner,不足時は再取得して一貫性表を再実行,2026-03-01T17:18:45Z
+U12,2,責任・権利・同意の継承ルールをどの時点で分岐させるか。,時点語対照表 確認URL 見出し 判定メモ,公式文書 対照表 改訂履歴,4,automation下round38_artifacts,U12_monitor_owner,不足時は時点語対照を更新して再判定,2026-03-01T17:18:45Z
+U12,3,心理的連続性基準と法的個体基準の不一致をどう扱うか。,条項抽出ログ 公式URL 改訂日 保留理由,公式文書 抽出ログ 解説ガイド,4,automation下round38_artifacts,U12_monitor_owner,不足時は抽出再試行後にE3判断,2026-03-01T17:18:45Z
+U12,4,技術評価（性能）と人格評価（帰属）をどう接続するか。,接続語一覧 監査語一覧 確認URL 判定語,制度文書 運用ガイド 監査語表,4,automation下round38_artifacts,U12_monitor_owner,不足時は不足語補完を優先,2026-03-01T17:18:45Z
+U12,5,分岐主体間で記憶編集・再同期が起きた場合、法的主体IDを再編する基準は何か。,同義語表 正規化ログ 確認URL 判定差分,制度文書 同義語表 正規化ログ,4,automation下round38_artifacts,U12_monitor_owner,不足時は同義語表を更新して再判定,2026-03-01T17:18:45Z
+U12,6,同意撤回が発生したとき、複数分岐主体への権限剥奪を技術的にどう実装・監査するか。,新旧表記対照 証跡項目一覧 確認URL 判定語,制度文書 表記対照 証跡一覧,4,automation下round38_artifacts,U12_monitor_owner,不足時は証跡項目補完を先行,2026-03-01T17:18:45Z
+U15,1,神経データの機微性をどの法概念で扱うか（個人情報・生体情報・人格情報）。,法文定義行 確認URL 改訂日 差分注記,法文 ニュース 補助注記,4,automation下round38_artifacts,U15_monitor_owner,不足時は法文定義行の再取得を優先,2026-03-01T17:18:45Z
+U15,2,neurorightsを技術監査項目へどう写像するか。,写像語一覧 監査項目一覧 更新日比較 判定メモ,公式規制 監査フレーム 粒度対応表,4,automation下round38_artifacts,U15_monitor_owner,不足時は粒度対応表を再作成,2026-03-01T17:18:45Z
+U15,3,法域差（EU/US/JP等）を跨ぐ最小共通運用をどう定義するか。,法域別要件表 共通三要件表 確認URL 保留理由,公式規制 国際指針 要件抽出表,4,automation下round38_artifacts,U15_monitor_owner,不足時は三要件抽出を再実行,2026-03-01T17:18:45Z
+U15,4,技術進展に応じた停止条件・更新条件をどうガバナンス化するか。,停止条件行 周期語抽出ログ 確認URL 判定メモ,公式規制 運用基準 周期語ログ,4,automation下round38_artifacts,U15_monitor_owner,不足時は周期語抽出を再実行,2026-03-01T17:18:45Z
