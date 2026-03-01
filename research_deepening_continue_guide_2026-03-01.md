@@ -49,6 +49,7 @@ note: "for iterative deep research"
 <li><code>research_deepening_round22_2026-03-01.md</code>: 本文更新テンプレ固定と改訂履歴リンク補完（Round 22）</li>
 <li><code>research_deepening_round23_2026-03-01.md</code>: U12/U15 本文への正規化差分実反映（Round 23）</li>
 <li><code>research_deepening_round24_2026-03-01.md</code>: 正規化後基準の差分監査（実体更新分離, Round 24）</li>
+<li><code>research_deepening_round25_2026-03-01.md</code>: 問い別監査メモと次回監視スケジュール（Round 25）</li>
 <li><code>automation/rq_deepening_backlog_2026-03-01.csv</code>: 全60問いの実行バックログ</li>
 <li><code>automation/rq_deepening_backlog_2026-03-01_enriched.csv</code>: 上記 + 一次情報リンク + 根拠確度</li>
 <li><code>automation/rq_deepening_progress_round2_2026-03-01.csv</code>: Round 2 進捗管理（U0/U1/U3）</li>
@@ -95,6 +96,8 @@ note: "for iterative deep research"
 <li><code>automation/rq_regulation_audit_trail_insertion_round23_2026-03-01.csv</code>: Round 23 の監査導線追加ログ（8リンク）</li>
 <li><code>automation/rq_regulation_link_diff_round24_2026-03-01.csv</code>: Round 24 のURL単位差分監査（5URL, 実体更新分離付き）</li>
 <li><code>automation/rq_regulation_priority_queue_status_round24_2026-03-01.csv</code>: Round 24 のRQ単位判定（10問い, アクセス経路変動列付き）</li>
+<li><code>automation/rq_regulation_rq_specific_audit_memo_round25_2026-03-01.csv</code>: Round 25 のRQ別監査メモ（10問い）</li>
+<li><code>automation/rq_regulation_monitor_schedule_round25_2026-03-01.csv</code>: Round 25 の次回監視予定日付きスケジュール（10問い）</li>
 </ul>
 </section>
 
@@ -125,9 +128,10 @@ note: "for iterative deep research"
 <li>Round 22: 差分判定を本文更新テンプレへ固定し、制度文書の改訂履歴リンク（EU/CoE/NIST/OECD）を補完済み。</li>
 <li>Round 23: U12/U15 本文へ正規化差分を実反映し、制度文書の監査導線リンクを追記済み。</li>
 <li>Round 24: highキューを再監視し、実体更新（0件）とアクセス経路変動（1件）を分離判定済み。</li>
-<li>統合反映: research_harvest_50.md 本体へ Round 1-24 結果を統合済み。</li>
+<li>Round 25: 10問いそれぞれに監査焦点メモを付与し、次回監視予定日（+7日）を固定済み。</li>
+<li>統合反映: research_harvest_50.md 本体へ Round 1-25 結果を統合済み。</li>
 <li>整合監査: 全60問いカバレッジ監査と引用関連性点検を生成済み。</li>
-<li>次回 continue の優先対象: 監査導線リンクへRQ別1行メモを追加し、監視CSVへ次回監視予定日（+7日）を付与。</li>
+<li>次回 continue の優先対象: U12（6問い）の access_path_change をブラウザで再確認し、本文更新要否を問い別に確定。</li>
 </ul>
 </section>
 
