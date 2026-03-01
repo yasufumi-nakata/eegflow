@@ -51,6 +51,7 @@ note: "for iterative deep research"
 <li><code>research_deepening_round24_2026-03-01.md</code>: 正規化後基準の差分監査（実体更新分離, Round 24）</li>
 <li><code>research_deepening_round25_2026-03-01.md</code>: 問い別監査メモと次回監視スケジュール（Round 25）</li>
 <li><code>research_deepening_round26_2026-03-01.md</code>: access_path_change の再確認と問い別判定（Round 26）</li>
+<li><code>research_deepening_round27_2026-03-01.md</code>: 問い別本文更新テンプレと監査キーワード辞書（Round 27）</li>
 <li><code>automation/rq_deepening_backlog_2026-03-01.csv</code>: 全60問いの実行バックログ</li>
 <li><code>automation/rq_deepening_backlog_2026-03-01_enriched.csv</code>: 上記 + 一次情報リンク + 根拠確度</li>
 <li><code>automation/rq_deepening_progress_round2_2026-03-01.csv</code>: Round 2 進捗管理（U0/U1/U3）</li>
@@ -102,6 +103,8 @@ note: "for iterative deep research"
 <li><code>automation/rq_regulation_access_recheck_round26_2026-03-01.csv</code>: Round 26 のアクセス経路再確認ログ（5URL）</li>
 <li><code>automation/rq_regulation_question_decision_round26_2026-03-01.csv</code>: Round 26 の問い別更新可否判定（10問い）</li>
 <li><code>automation/rq_regulation_monitor_schedule_round26_2026-03-01.csv</code>: Round 26 の更新後監視スケジュール（10問い）</li>
+<li><code>automation/rq_regulation_update_text_template_round27_2026-03-01.csv</code>: Round 27 の問い別本文更新テンプレ（10問い）</li>
+<li><code>automation/rq_regulation_source_checkpoint_phrase_bank_round27_2026-03-01.csv</code>: Round 27 の監査キーワード辞書（10問い）</li>
 </ul>
 </section>
 
@@ -134,9 +137,10 @@ note: "for iterative deep research"
 <li>Round 24: highキューを再監視し、実体更新（0件）とアクセス経路変動（1件）を分離判定済み。</li>
 <li>Round 25: 10問いそれぞれに監査焦点メモを付与し、次回監視予定日（+7日）を固定済み。</li>
 <li>Round 26: access_path_change を再確認し、10問いすべてで本文据え置き（実体更新なし）を確定済み。</li>
-<li>統合反映: research_harvest_50.md 本体へ Round 1-26 結果を統合済み。</li>
+<li>Round 27: 10問いそれぞれの本文更新文テンプレと監査キーワード辞書を固定済み。</li>
+<li>統合反映: research_harvest_50.md 本体へ Round 1-27 結果を統合済み。</li>
 <li>整合監査: 全60問いカバレッジ監査と引用関連性点検を生成済み。</li>
-<li>次回 continue の優先対象: Round 26 スケジュールに沿って次回監視（2026-03-08 UTC）を実行し、差分が出た問いのみ本文更新テンプレを適用。</li>
+<li>次回 continue の優先対象: Round 26 スケジュールに沿って次回監視（2026-03-08 UTC）を実行し、差分が出た問いへ Round 27 テンプレを適用。</li>
 </ul>
 </section>
 
