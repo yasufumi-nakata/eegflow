@@ -72,6 +72,7 @@ note: "for iterative deep research"
 <li><code>research_deepening_round45_2026-03-01.md</code>: 最終報告転記ログとクローズ確定登録の固定（Round 45）</li>
 <li><code>research_deepening_round46_2026-03-01.md</code>: reopen優先監視ログと再開判定登録の固定（Round 46）</li>
 <li><code>research_deepening_round47_2026-03-01.md</code>: trigger変動ドリフト行列と再開エスカレーションキューの固定（Round 47）</li>
+<li><code>research_deepening_round48_2026-03-01.md</code>: 閾値再評価ログと再開判定監査の固定（Round 48）</li>
 <li><code>automation/rq_deepening_backlog_2026-03-01.csv</code>: 全60問いの実行バックログ</li>
 <li><code>automation/rq_deepening_backlog_2026-03-01_enriched.csv</code>: 上記 + 一次情報リンク + 根拠確度</li>
 <li><code>automation/rq_deepening_progress_round2_2026-03-01.csv</code>: Round 2 進捗管理（U0/U1/U3）</li>
@@ -165,6 +166,8 @@ note: "for iterative deep research"
 <li><code>automation/rq_regulation_reopen_decision_register_round46_2026-03-01.csv</code>: Round 46 の問い別再開判定登録（10問い）</li>
 <li><code>automation/rq_regulation_trigger_drift_matrix_round47_2026-03-01.csv</code>: Round 47 の問い別trigger変動ドリフト行列（10問い）</li>
 <li><code>automation/rq_regulation_reopen_escalation_queue_round47_2026-03-01.csv</code>: Round 47 の問い別再開エスカレーションキュー（10問い）</li>
+<li><code>automation/rq_regulation_threshold_recheck_round48_2026-03-01.csv</code>: Round 48 の問い別閾値再評価ログ（10問い）</li>
+<li><code>automation/rq_regulation_reopen_decision_audit_round48_2026-03-01.csv</code>: Round 48 の問い別再開判定監査（10問い）</li>
 </ul>
 </section>
 
@@ -218,9 +221,10 @@ note: "for iterative deep research"
 <li>Round 45: 10問いの最終報告転記ログとクローズ確定登録を固定済み。</li>
 <li>Round 46: 10問いのreopen優先監視ログと再開判定登録を固定済み。</li>
 <li>Round 47: 10問いのtrigger変動ドリフト行列と再開エスカレーションキューを固定済み。</li>
-<li>統合反映: research_harvest_50.md 本体へ Round 1-47 結果を統合済み。</li>
+<li>Round 48: 10問いの閾値再評価ログと再開判定監査を固定済み。</li>
+<li>統合反映: research_harvest_50.md 本体へ Round 1-48 結果を統合済み。</li>
 <li>整合監査: 全60問いカバレッジ監査と引用関連性点検を生成済み。</li>
-<li>次回 continue の優先対象: 2026-03-08 UTC に Round 33 実行順を適用し、Round 47 の drift_score と threshold を再評価して超過問いのみ escalation_status を raise に更新し、reopen 判定へ進める。</li>
+<li>次回 continue の優先対象: 2026-03-08 UTC に Round 33 実行順を適用し、Round 48 の delta_score 増加問いを先行確認し、threshold 超過時のみ escalation_status を raise に更新して reopen 判定へ進める。</li>
 </ul>
 </section>
 
