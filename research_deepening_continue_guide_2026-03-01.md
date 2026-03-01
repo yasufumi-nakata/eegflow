@@ -53,6 +53,7 @@ note: "for iterative deep research"
 <li><code>research_deepening_round26_2026-03-01.md</code>: access_path_change の再確認と問い別判定（Round 26）</li>
 <li><code>research_deepening_round27_2026-03-01.md</code>: 問い別本文更新テンプレと監査キーワード辞書（Round 27）</li>
 <li><code>research_deepening_round28_2026-03-01.md</code>: 外部依存タスク分離と適用準備度の固定（Round 28）</li>
+<li><code>research_deepening_round29_2026-03-01.md</code>: 再監視Runbookと差分トリガー行列の固定（Round 29）</li>
 <li><code>automation/rq_deepening_backlog_2026-03-01.csv</code>: 全60問いの実行バックログ</li>
 <li><code>automation/rq_deepening_backlog_2026-03-01_enriched.csv</code>: 上記 + 一次情報リンク + 根拠確度</li>
 <li><code>automation/rq_deepening_progress_round2_2026-03-01.csv</code>: Round 2 進捗管理（U0/U1/U3）</li>
@@ -108,6 +109,8 @@ note: "for iterative deep research"
 <li><code>automation/rq_regulation_source_checkpoint_phrase_bank_round27_2026-03-01.csv</code>: Round 27 の監査キーワード辞書（10問い）</li>
 <li><code>automation/rq_regulation_external_dependency_tasks_round28_2026-03-01.csv</code>: Round 28 の外部依存タスク分離（10問い）</li>
 <li><code>automation/rq_regulation_apply_readiness_round28_2026-03-01.csv</code>: Round 28 の本文適用準備度（10問い）</li>
+<li><code>automation/rq_regulation_monitor_execution_runbook_round29_2026-03-01.csv</code>: Round 29 の問い別再監視Runbook（10問い）</li>
+<li><code>automation/rq_regulation_diff_trigger_matrix_round29_2026-03-01.csv</code>: Round 29 の問い別差分トリガー行列（10問い）</li>
 </ul>
 </section>
 
@@ -142,9 +145,10 @@ note: "for iterative deep research"
 <li>Round 26: access_path_change を再確認し、10問いすべてで本文据え置き（実体更新なし）を確定済み。</li>
 <li>Round 27: 10問いそれぞれの本文更新文テンプレと監査キーワード辞書を固定済み。</li>
 <li>Round 28: 10問いの外部依存タスクを分離し、本文適用準備度（no_change適用）を固定済み。</li>
-<li>統合反映: research_harvest_50.md 本体へ Round 1-28 結果を統合済み。</li>
+<li>Round 29: 10問いの再監視Runbookと差分トリガー行列を固定済み。</li>
+<li>統合反映: research_harvest_50.md 本体へ Round 1-29 結果を統合済み。</li>
 <li>整合監査: 全60問いカバレッジ監査と引用関連性点検を生成済み。</li>
-<li>次回 continue の優先対象: 2026-03-08 UTC に再監視を実行し、差分が出た問いのみ Round 27 テンプレへ切り替えて本文反映する（外部依存タスクは Round 28 分離表に従う）。</li>
+<li>次回 continue の優先対象: 2026-03-08 UTC に Round 29 Runbook 順で再監視を実行し、Round 29 トリガー行列で差分判定になった問いのみ Round 27 テンプレへ切り替えて本文反映する。</li>
 </ul>
 </section>
 
