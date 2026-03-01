@@ -39,6 +39,7 @@ note: "for iterative deep research"
 <li><code>research_deepening_round12_2026-03-01.md</code>: U0/U1/U4/U8/U10/U13/U14/U15 の問い別エビデンス追補（Round 12）</li>
 <li><code>research_deepening_round13_2026-03-01.md</code>: 補助文献品質点検と法制度リンク監査（Round 13）</li>
 <li><code>research_deepening_round14_2026-03-01.md</code>: 補助文献 preprint 置換（Round 14）</li>
+<li><code>research_deepening_round15_2026-03-01.md</code>: 法制度リンク差分監査（Round 15）</li>
 <li><code>automation/rq_deepening_backlog_2026-03-01.csv</code>: 全60問いの実行バックログ</li>
 <li><code>automation/rq_deepening_backlog_2026-03-01_enriched.csv</code>: 上記 + 一次情報リンク + 根拠確度</li>
 <li><code>automation/rq_deepening_progress_round2_2026-03-01.csv</code>: Round 2 進捗管理（U0/U1/U3）</li>
@@ -59,6 +60,7 @@ note: "for iterative deep research"
 <li><code>automation/rq_legal_link_freshness_round13_2026-03-01.csv</code>: Round 13 の法制度リンク更新日監査（5件）</li>
 <li><code>automation/rq_supplementary_replacement_round14_2026-03-01.csv</code>: Round 14 の補助文献置換ログ（16件）</li>
 <li><code>automation/rq_supplementary_quality_audit_round14_2026-03-01.csv</code>: Round 14 の置換後品質点検（60問い）</li>
+<li><code>automation/rq_legal_link_freshness_round15_2026-03-01.csv</code>: Round 15 の法制度リンク差分監査（5件）</li>
 </ul>
 </section>
 
@@ -79,9 +81,10 @@ note: "for iterative deep research"
 <li>Round 12: U0/U1/U4/U8/U10/U13/U14/U15 の38問いで、問い別の必須文献2本を再割当済み。</li>
 <li>Round 13: 全60問いの補助文献を品質点検し、法制度リンク5件の更新日監査ログを作成済み。</li>
 <li>Round 14: grade B（preprint系）16件を査読/仕様系リンクへ実置換し、置換後は grade A=60件を確認済み。</li>
-<li>統合反映: research_harvest_50.md 本体へ Round 1-14 結果を統合済み。</li>
+<li>Round 15: 法制度リンク5件の差分監査を実施し、Round 13比で差分なし（status/url/Last-Modified）を確認済み。</li>
+<li>統合反映: research_harvest_50.md 本体へ Round 1-15 結果を統合済み。</li>
 <li>整合監査: 全60問いカバレッジ監査と引用関連性点検を生成済み。</li>
-<li>次回 continue の優先対象: 法制度リンクの差分監査を定期化し、更新があればU12/U15へ即時反映。</li>
+<li>次回 continue の優先対象: 補助文献に「実験/規制/運用」タグを付与し、RQ別の読み分けを明示。</li>
 </ul>
 </section>
 
