@@ -30,12 +30,14 @@ note: "for iterative deep research"
 <li><code>research_deepening_round3_2026-03-01.md</code>: U4/U7 の深掘り追補（Round 3）</li>
 <li><code>research_deepening_round4_2026-03-01.md</code>: U8 の深掘り追補（Round 4）</li>
 <li><code>research_deepening_round5_2026-03-01.md</code>: U10/U11/U12 の深掘り追補（Round 5）</li>
+<li><code>research_deepening_round6_2026-03-01.md</code>: U13/U14/U15 の深掘り追補（Round 6）</li>
 <li><code>automation/rq_deepening_backlog_2026-03-01.csv</code>: 全60問いの実行バックログ</li>
 <li><code>automation/rq_deepening_backlog_2026-03-01_enriched.csv</code>: 上記 + 一次情報リンク + 根拠確度</li>
 <li><code>automation/rq_deepening_progress_round2_2026-03-01.csv</code>: Round 2 進捗管理（U0/U1/U3）</li>
 <li><code>automation/rq_deepening_progress_round3_2026-03-01.csv</code>: Round 3 進捗管理（U4/U7）</li>
 <li><code>automation/rq_deepening_progress_round4_2026-03-01.csv</code>: Round 4 進捗管理（U8）</li>
 <li><code>automation/rq_deepening_progress_round5_2026-03-01.csv</code>: Round 5 進捗管理（U10/U11/U12）</li>
+<li><code>automation/rq_deepening_progress_round6_2026-03-01.csv</code>: Round 6 進捗管理（U13/U14/U15）</li>
 </ul>
 </section>
 
@@ -47,7 +49,8 @@ note: "for iterative deep research"
 <li>Round 3: U4/U7 の全10問いを深掘りし、追加一次情報を紐づけ済み。</li>
 <li>Round 4: U8 の全6問いを深掘りし、追加一次情報を紐づけ済み。</li>
 <li>Round 5: U10/U11/U12 の全14問いを深掘りし、追加一次情報を紐づけ済み。</li>
-<li>次回 continue の優先対象: U13 → U14 → U15（模倣分離・再現性・制度統合の最終整理）。</li>
+<li>Round 6: U13/U14/U15 の全16問いを深掘りし、追加一次情報を紐づけ済み。</li>
+<li>次回 continue の優先対象: 全Uの統合反映（research_harvest_50.md 本体への段階反映）と整合性監査。</li>
 </ul>
 </section>
 
