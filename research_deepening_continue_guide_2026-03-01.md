@@ -117,6 +117,7 @@ note: "for iterative deep research"
 <li><code>research_deepening_round90_2026-03-01.md</code>: フォローアップ再評価結果台帳とフォローアップ監視再同期再接続ゲート固定（Round 90）</li>
 <li><code>research_deepening_round91_2026-03-01.md</code>: フォローアップ再評価フォローアップ台帳とフォローアップ監視再同期フォローアップゲート固定（Round 91）</li>
 <li><code>research_deepening_round92_2026-03-01.md</code>: フォローアップ再評価フォローアップ結果台帳とフォローアップ監視再同期フォローアップ再接続ゲート固定（Round 92）</li>
+<li><code>research_deepening_round93_2026-03-01.md</code>: フォローアップ再評価フォローアップ再接続結果台帳とフォローアップ監視再同期フォローアップ維持ゲート固定（Round 93）</li>
 <li><code>automation/rq_deepening_backlog_2026-03-01.csv</code>: 全60問いの実行バックログ</li>
 <li><code>automation/rq_deepening_backlog_2026-03-01_enriched.csv</code>: 上記 + 一次情報リンク + 根拠確度</li>
 <li><code>automation/rq_deepening_progress_round2_2026-03-01.csv</code>: Round 2 進捗管理（U0/U1/U3）</li>
@@ -300,6 +301,8 @@ note: "for iterative deep research"
 <li><code>automation/rq_regulation_reentry_followup_watch_resync_followup_gate_round91_2026-03-01.csv</code>: Round 91 の問い別フォローアップ監視再同期フォローアップゲート（10問い）</li>
 <li><code>automation/rq_regulation_reentry_followup_reevaluation_followup_outcome_ledger_round92_2026-03-01.csv</code>: Round 92 の問い別フォローアップ再評価フォローアップ結果台帳（10問い）</li>
 <li><code>automation/rq_regulation_reentry_followup_watch_resync_followup_reconnect_gate_round92_2026-03-01.csv</code>: Round 92 の問い別フォローアップ監視再同期フォローアップ再接続ゲート（10問い）</li>
+<li><code>automation/rq_regulation_reentry_followup_reevaluation_followup_reconnect_outcome_ledger_round93_2026-03-01.csv</code>: Round 93 の問い別フォローアップ再評価フォローアップ再接続結果台帳（10問い）</li>
+<li><code>automation/rq_regulation_reentry_followup_watch_resync_followup_stability_gate_round93_2026-03-01.csv</code>: Round 93 の問い別フォローアップ監視再同期フォローアップ維持ゲート（10問い）</li>
 </ul>
 </section>
 
@@ -398,9 +401,10 @@ note: "for iterative deep research"
 <li>Round 90: 10問いのフォローアップ再評価結果台帳とフォローアップ監視再同期再接続ゲートを固定済み。</li>
 <li>Round 91: 10問いのフォローアップ再評価フォローアップ台帳とフォローアップ監視再同期フォローアップゲートを固定済み。</li>
 <li>Round 92: 10問いのフォローアップ再評価フォローアップ結果台帳とフォローアップ監視再同期フォローアップ再接続ゲートを固定済み。</li>
-<li>統合反映: research_harvest_50.md 本体へ Round 1-92 結果を統合済み。</li>
+<li>Round 93: 10問いのフォローアップ再評価フォローアップ再接続結果台帳とフォローアップ監視再同期フォローアップ維持ゲートを固定済み。</li>
+<li>統合反映: research_harvest_50.md 本体へ Round 1-93 結果を統合済み。</li>
 <li>整合監査: 全60問いカバレッジ監査と引用関連性点検を生成済み。</li>
-<li>次回 continue の優先対象: 2026-03-08 UTC に Round 92 reentry_followup_reevaluation_followup_outcome_ledger の3記録と reentry_followup_watch_resync_followup_reconnect_gate の3項目を更新し、再発あり問いは reentry_update_propagation_ledger と reentry_watch_resync_gate へ再接続する。</li>
+<li>次回 continue の優先対象: 2026-03-08 UTC に Round 93 reentry_followup_reevaluation_followup_reconnect_outcome_ledger の3記録と reentry_followup_watch_resync_followup_stability_gate の3項目を更新し、再発あり問いは reentry_update_propagation_ledger と reentry_watch_resync_gate へ再接続する。</li>
 </ul>
 </section>
 
