@@ -70,6 +70,7 @@ note: "for iterative deep research"
 <li><code>research_deepening_round43_2026-03-01.md</code>: 受入条件ゲート判定ログと状態遷移台帳の固定（Round 43）</li>
 <li><code>research_deepening_round44_2026-03-01.md</code>: highレーン2回目判定とクローズ候補登録の固定（Round 44）</li>
 <li><code>research_deepening_round45_2026-03-01.md</code>: 最終報告転記ログとクローズ確定登録の固定（Round 45）</li>
+<li><code>research_deepening_round46_2026-03-01.md</code>: reopen優先監視ログと再開判定登録の固定（Round 46）</li>
 <li><code>automation/rq_deepening_backlog_2026-03-01.csv</code>: 全60問いの実行バックログ</li>
 <li><code>automation/rq_deepening_backlog_2026-03-01_enriched.csv</code>: 上記 + 一次情報リンク + 根拠確度</li>
 <li><code>automation/rq_deepening_progress_round2_2026-03-01.csv</code>: Round 2 進捗管理（U0/U1/U3）</li>
@@ -159,6 +160,8 @@ note: "for iterative deep research"
 <li><code>automation/rq_regulation_close_candidate_register_round44_2026-03-01.csv</code>: Round 44 の問い別クローズ候補登録（10問い）</li>
 <li><code>automation/rq_regulation_final_report_reflection_log_round45_2026-03-01.csv</code>: Round 45 の問い別最終報告転記ログ（10問い）</li>
 <li><code>automation/rq_regulation_closure_confirmation_register_round45_2026-03-01.csv</code>: Round 45 の問い別クローズ確定登録（10問い）</li>
+<li><code>automation/rq_regulation_reopen_priority_monitor_round46_2026-03-01.csv</code>: Round 46 の問い別reopen優先監視ログ（10問い）</li>
+<li><code>automation/rq_regulation_reopen_decision_register_round46_2026-03-01.csv</code>: Round 46 の問い別再開判定登録（10問い）</li>
 </ul>
 </section>
 
@@ -210,9 +213,10 @@ note: "for iterative deep research"
 <li>Round 43: 10問いの受入条件ゲート判定ログと状態遷移台帳を固定済み。</li>
 <li>Round 44: 10問いのhighレーン2回目判定ログとクローズ候補登録を固定済み。</li>
 <li>Round 45: 10問いの最終報告転記ログとクローズ確定登録を固定済み。</li>
-<li>統合反映: research_harvest_50.md 本体へ Round 1-45 結果を統合済み。</li>
+<li>Round 46: 10問いのreopen優先監視ログと再開判定登録を固定済み。</li>
+<li>統合反映: research_harvest_50.md 本体へ Round 1-46 結果を統合済み。</li>
 <li>整合監査: 全60問いカバレッジ監査と引用関連性点検を生成済み。</li>
-<li>次回 continue の優先対象: 2026-03-08 UTC に Round 33 実行順を適用し、Round 45 で reopen_watch_required が yes の問いを優先監視し、trigger 一致時のみ reopen して差分判定を再実行する。</li>
+<li>次回 continue の優先対象: 2026-03-08 UTC に Round 33 実行順を適用し、Round 46 で reopen_watch_required が yes の4問いを先行監視し、trigger 一致時のみ reopen して差分判定を再実行し、不一致は closed_final 維持で監査サマリーへ追記する。</li>
 </ul>
 </section>
 

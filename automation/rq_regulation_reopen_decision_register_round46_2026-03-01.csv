@@ -1,0 +1,11 @@
+uid,rq_index,rq_text,current_state,reopen_decision,reopen_reason_ja,required_new_evidence_ja,owner,next_action_ja,generated_at_utc
+U12,1,分岐後主体の識別子を何に基づいて付与するか。,closed_final,stay_closed,trigger非一致のため再開不要,定義語改訂差分ログ,U12_monitor_owner,次窓でhigh優先監視を継続,2026-03-01T19:19:40Z
+U12,2,責任・権利・同意の継承ルールをどの時点で分岐させるか。,closed_final,stay_closed,trigger非一致のため再開不要,時点語新版差分ログ,U12_monitor_owner,定期監視のみ継続,2026-03-01T19:19:40Z
+U12,3,心理的連続性基準と法的個体基準の不一致をどう扱うか。,closed_final,stay_closed,trigger非一致のため再開不要,条項抽出差分ログ,U12_monitor_owner,次窓でhigh優先監視を継続,2026-03-01T19:19:40Z
+U12,4,技術評価（性能）と人格評価（帰属）をどう接続するか。,closed_final,stay_closed,trigger非一致のため再開不要,監査語追加差分ログ,U12_monitor_owner,定期監視のみ継続,2026-03-01T19:19:40Z
+U12,5,分岐主体間で記憶編集・再同期が起きた場合、法的主体IDを再編する基準は何か。,closed_final,stay_closed,trigger非一致のため再開不要,同義語追加差分ログ,U12_monitor_owner,定期監視のみ継続,2026-03-01T19:19:40Z
+U12,6,同意撤回が発生したとき、複数分岐主体への権限剥奪を技術的にどう実装・監査するか。,closed_final,stay_closed,trigger非一致のため再開不要,表記世代差分ログ,U12_monitor_owner,定期監視のみ継続,2026-03-01T19:19:40Z
+U15,1,神経データの機微性をどの法概念で扱うか（個人情報・生体情報・人格情報）。,closed_final,stay_closed,trigger非一致のため再開不要,法文定義差分ログ,U15_monitor_owner,次窓でhigh優先監視を継続,2026-03-01T19:19:40Z
+U15,2,neurorightsを技術監査項目へどう写像するか。,closed_final,stay_closed,trigger非一致のため再開不要,写像語粒度差分ログ,U15_monitor_owner,定期監視のみ継続,2026-03-01T19:19:40Z
+U15,3,法域差（EU/US/JP等）を跨ぐ最小共通運用をどう定義するか。,closed_final,stay_closed,trigger非一致のため再開不要,共通三要件差分ログ,U15_monitor_owner,次窓でhigh優先監視を継続,2026-03-01T19:19:40Z
+U15,4,技術進展に応じた停止条件・更新条件をどうガバナンス化するか。,closed_final,stay_closed,trigger非一致のため再開不要,周期語追記差分ログ,U15_monitor_owner,定期監視のみ継続,2026-03-01T19:19:40Z

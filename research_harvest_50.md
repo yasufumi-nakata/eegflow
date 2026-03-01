@@ -156,7 +156,7 @@ note: "Compiled from 50 worker tasks (curated for relevance)"
 <section class="section" id="deepening-integration-20260301">
 <h2 class="section-title">深掘り統合反映（2026-03-01）</h2>
 <p>
-Round 1〜45 で実施した深掘り結果を本体運用へ統合しました。ここでは「どのUがどこまで深掘り済みか」を一覧化し、詳細は各Round文書へリンクします。
+Round 1〜46 で実施した深掘り結果を本体運用へ統合しました。ここでは「どのUがどこまで深掘り済みか」を一覧化し、詳細は各Round文書へリンクします。
 </p>
 <table class="data-table">
 <thead><tr><th>U</th><th>RQ総数</th><th>深掘り完了</th><th>主要反映ラウンド</th></tr></thead><tbody>
@@ -168,11 +168,11 @@ Round 1〜45 で実施した深掘り結果を本体運用へ統合しました�
 <tr><td>U8</td><td>6</td><td>6</td><td>Round 4, 8, 12, 13, 16, 17, 18</td></tr>
 <tr><td>U10</td><td>4</td><td>4</td><td>Round 5, 9, 12, 13, 14, 16, 17, 18</td></tr>
 <tr><td>U11</td><td>4</td><td>4</td><td>Round 5, 9, 11, 13, 16, 17, 18</td></tr>
-<tr><td>U12</td><td>6</td><td>6</td><td>Round 5, 9, 11, 13, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45</td></tr>
+<tr><td>U12</td><td>6</td><td>6</td><td>Round 5, 9, 11, 13, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46</td></tr>
 <tr><td>U13</td><td>6</td><td>6</td><td>Round 6, 8, 12, 13, 16, 17, 18</td></tr>
 <tr><td>U14</td><td>6</td><td>6</td><td>Round 6, 8, 12, 13, 14, 16, 17, 18</td></tr>
-<tr><td>U15</td><td>4</td><td>4</td><td>Round 6, 8, 12, 13, 15, 16, 17, 18, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45</td></tr>
-<tr><td><strong>合計</strong></td><td><strong>60</strong></td><td><strong>60</strong></td><td><strong>Round 1-45</strong></td></tr>
+<tr><td>U15</td><td>4</td><td>4</td><td>Round 6, 8, 12, 13, 15, 16, 17, 18, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46</td></tr>
+<tr><td><strong>合計</strong></td><td><strong>60</strong></td><td><strong>60</strong></td><td><strong>Round 1-46</strong></td></tr>
 </tbody></table>
 
 <h3>詳細ドキュメント</h3>
@@ -222,6 +222,7 @@ Round 1〜45 で実施した深掘り結果を本体運用へ統合しました�
 <li><a href="research_deepening_round43_2026-03-01.html">Round 43: 受入条件ゲート判定ログと状態遷移台帳の固定</a></li>
 <li><a href="research_deepening_round44_2026-03-01.html">Round 44: highレーン2回目判定とクローズ候補登録の固定</a></li>
 <li><a href="research_deepening_round45_2026-03-01.html">Round 45: 最終報告転記ログとクローズ確定登録の固定</a></li>
+<li><a href="research_deepening_round46_2026-03-01.html">Round 46: reopen優先監視ログと再開判定登録の固定</a></li>
 </ul>
 
 <h3>整合性監査（証跡）</h3>
@@ -491,6 +492,12 @@ Round 44 のhighレーン2回目判定とクローズ候補登録の固定は
 Round 45 の最終報告転記ログとクローズ確定登録の固定は
 <a href="automation/rq_regulation_final_report_reflection_log_round45_2026-03-01.csv" target="_blank">rq_regulation_final_report_reflection_log_round45_2026-03-01.csv</a>（問い別最終報告転記ログ）と
 <a href="automation/rq_regulation_closure_confirmation_register_round45_2026-03-01.csv" target="_blank">rq_regulation_closure_confirmation_register_round45_2026-03-01.csv</a>（問い別クローズ確定登録）
+に記録しています。
+</p>
+<p class="small">
+Round 46 のreopen優先監視ログと再開判定登録の固定は
+<a href="automation/rq_regulation_reopen_priority_monitor_round46_2026-03-01.csv" target="_blank">rq_regulation_reopen_priority_monitor_round46_2026-03-01.csv</a>（問い別reopen優先監視ログ）と
+<a href="automation/rq_regulation_reopen_decision_register_round46_2026-03-01.csv" target="_blank">rq_regulation_reopen_decision_register_round46_2026-03-01.csv</a>（問い別再開判定登録）
 に記録しています。
 </p>
 </section>
