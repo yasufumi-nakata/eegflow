@@ -1,0 +1,11 @@
+uid,rq_index,rq_text,external_dependency_task,owner,prerequisite,done_criteria,blocked_repo_action,source_round26_decision,generated_at_utc
+U12,1,分岐後主体の識別子を何に基づいて付与するか。,ブラウザ実確認（継続観察）,Research operator,次回監視時に当該URLへブラウザアクセス可能であること,2xx維持かつ本文差分なしを確認し、ログへ時刻を追記,なし（今回は据え置きで実施可能）,rq_regulation_question_decision_round26_2026-03-01.csv,2026-03-01T14:43:35Z
+U12,2,責任・権利・同意の継承ルールをどの時点で分岐させるか。,ブラウザ実確認（継続観察）,Research operator,次回監視時に当該URLへブラウザアクセス可能であること,2xx維持かつ本文差分なしを確認し、ログへ時刻を追記,なし（今回は据え置きで実施可能）,rq_regulation_question_decision_round26_2026-03-01.csv,2026-03-01T14:43:35Z
+U12,3,心理的連続性基準と法的個体基準の不一致をどう扱うか。,ブラウザ実確認（継続観察）,Research operator,次回監視時に当該URLへブラウザアクセス可能であること,2xx維持かつ本文差分なしを確認し、ログへ時刻を追記,なし（今回は据え置きで実施可能）,rq_regulation_question_decision_round26_2026-03-01.csv,2026-03-01T14:43:35Z
+U12,4,技術評価（性能）と人格評価（帰属）をどう接続するか。,ブラウザ実確認（継続観察）,Research operator,次回監視時に当該URLへブラウザアクセス可能であること,2xx維持かつ本文差分なしを確認し、ログへ時刻を追記,なし（今回は据え置きで実施可能）,rq_regulation_question_decision_round26_2026-03-01.csv,2026-03-01T14:43:35Z
+U12,5,分岐主体間で記憶編集・再同期が起きた場合、法的主体IDを再編する基準は何か。,ブラウザ実確認（継続観察）,Research operator,次回監視時に当該URLへブラウザアクセス可能であること,2xx維持かつ本文差分なしを確認し、ログへ時刻を追記,なし（今回は据え置きで実施可能）,rq_regulation_question_decision_round26_2026-03-01.csv,2026-03-01T14:43:35Z
+U12,6,同意撤回が発生したとき、複数分岐主体への権限剥奪を技術的にどう実装・監査するか。,ブラウザ実確認（継続観察）,Research operator,次回監視時に当該URLへブラウザアクセス可能であること,2xx維持かつ本文差分なしを確認し、ログへ時刻を追記,なし（今回は据え置きで実施可能）,rq_regulation_question_decision_round26_2026-03-01.csv,2026-03-01T14:43:35Z
+U15,1,神経データの機微性をどの法概念で扱うか（個人情報・生体情報・人格情報）。,必要時のみブラウザ確認,Research operator,CLI差分検出時のみ実施,差分箇所の条項見出しと改訂日を記録,なし,rq_regulation_question_decision_round26_2026-03-01.csv,2026-03-01T14:43:35Z
+U15,2,neurorightsを技術監査項目へどう写像するか。,必要時のみブラウザ確認,Research operator,CLI差分検出時のみ実施,差分箇所の条項見出しと改訂日を記録,なし,rq_regulation_question_decision_round26_2026-03-01.csv,2026-03-01T14:43:35Z
+U15,3,法域差（EU/US/JP等）を跨ぐ最小共通運用をどう定義するか。,必要時のみブラウザ確認,Research operator,CLI差分検出時のみ実施,差分箇所の条項見出しと改訂日を記録,なし,rq_regulation_question_decision_round26_2026-03-01.csv,2026-03-01T14:43:35Z
+U15,4,技術進展に応じた停止条件・更新条件をどうガバナンス化するか。,必要時のみブラウザ確認,Research operator,CLI差分検出時のみ実施,差分箇所の条項見出しと改訂日を記録,なし,rq_regulation_question_decision_round26_2026-03-01.csv,2026-03-01T14:43:35Z
