@@ -1,0 +1,11 @@
+uid,rq_index,rq_text,previous_state,current_state,transition_reason_ja,required_evidence_delta_ja,residual_risk_level,next_decision_gate_ja,generated_at_utc
+U12,1,分岐後主体の識別子を何に基づいて付与するか。,ready_to_close,closed_final,ゲート判定passを確認,最終報告転記ログ,low,最終報告テンプレ反映完了,2026-03-01T18:38:40Z
+U12,2,責任・権利・同意の継承ルールをどの時点で分岐させるか。,ready_to_close,ready_to_close,時点語新版待ちのため据え置き,時点語新版の受入記録,medium,時点語新版の判定一致確認,2026-03-01T18:38:40Z
+U12,3,心理的連続性基準と法的個体基準の不一致をどう扱うか。,hold_with_evidence,hold_with_evidence,連続成功1/2まで進展,抽出成功2回目ログと保留解除メモ,high,連続成功2/2の成立確認,2026-03-01T18:38:40Z
+U12,4,技術評価（性能）と人格評価（帰属）をどう接続するか。,ready_to_close,ready_to_close,監査語追加監視が残件,監査語追加時の差分ログ,medium,監査語差分が判定語へ非影響か確認,2026-03-01T18:38:40Z
+U12,5,分岐主体間で記憶編集・再同期が起きた場合、法的主体IDを再編する基準は何か。,ready_to_close,ready_to_close,同義語次版監視が残件,同義語次版の差分ログ,medium,正規化後判定の維持確認,2026-03-01T18:38:40Z
+U12,6,同意撤回が発生したとき、複数分岐主体への権限剥奪を技術的にどう実装・監査するか。,ready_to_close,ready_to_close,表記更新再監視が残件,新旧表記差分の追加証跡,medium,証跡項目の欠落なし再確認,2026-03-01T18:38:40Z
+U15,1,神経データの機微性をどの法概念で扱うか（個人情報・生体情報・人格情報）。,ready_to_close,closed_final,ゲート判定passを確認,最終報告転記ログ,low,最終報告テンプレ反映完了,2026-03-01T18:38:40Z
+U15,2,neurorightsを技術監査項目へどう写像するか。,ready_to_close,ready_to_close,監査項目抜け点検が残件,粒度対応の追加整合ログ,medium,粒度対応と監査項目の完全一致確認,2026-03-01T18:38:40Z
+U15,3,法域差（EU/US/JP等）を跨ぐ最小共通運用をどう定義するか。,hold_with_evidence,hold_with_evidence,連続成功1/2まで進展,抽出成功2回目ログと整合メモ,high,連続成功2/2の成立確認,2026-03-01T18:38:40Z
+U15,4,技術進展に応じた停止条件・更新条件をどうガバナンス化するか。,ready_to_close,ready_to_close,周期語追記監視が残件,周期語追記時の差分ログ,medium,停止条件語との整合再確認,2026-03-01T18:38:40Z
