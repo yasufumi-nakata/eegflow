@@ -35,6 +35,7 @@ note: "for iterative deep research"
 <li><code>research_deepening_round8_2026-03-01.md</code>: U8/U13/U14/U15 の参照置換を本体反映（Round 8）</li>
 <li><code>research_deepening_round9_2026-03-01.md</code>: U0/U1/U3/U4/U7/U10/U11/U12 の参照置換を本体反映（Round 9）</li>
 <li><code>research_deepening_round10_2026-03-01.md</code>: 全60問いの最小コア文献セット（Round 10）</li>
+<li><code>research_deepening_round11_2026-03-01.md</code>: U3/U7/U11/U12 の問い別エビデンス追補（Round 11）</li>
 <li><code>automation/rq_deepening_backlog_2026-03-01.csv</code>: 全60問いの実行バックログ</li>
 <li><code>automation/rq_deepening_backlog_2026-03-01_enriched.csv</code>: 上記 + 一次情報リンク + 根拠確度</li>
 <li><code>automation/rq_deepening_progress_round2_2026-03-01.csv</code>: Round 2 進捗管理（U0/U1/U3）</li>
@@ -49,6 +50,7 @@ note: "for iterative deep research"
 <li><code>automation/rq_reference_replacement_applied_round8_2026-03-01.csv</code>: Round 8 の置換適用ログ</li>
 <li><code>automation/rq_reference_replacement_applied_round9_2026-03-01.csv</code>: Round 9 の置換適用ログ</li>
 <li><code>automation/rq_core_reference_minset_round10_2026-03-01.csv</code>: Round 10 のRQ別最小コア文献セット</li>
+<li><code>automation/rq_question_specific_enrichment_round11_2026-03-01.csv</code>: Round 11 の問い別エビデンス追補（22問い）</li>
 </ul>
 </section>
 
@@ -65,9 +67,10 @@ note: "for iterative deep research"
 <li>Round 8: U8/U13/U14/U15 の主要先行研究リストを再精査版へ実置換（104件→60件）済み。</li>
 <li>Round 9: U0/U1/U3/U4/U7/U10/U11/U12 の主要先行研究リストを再精査版へ実置換（198件→113件）済み。</li>
 <li>Round 10: 全60問いへ「必須2本＋補助1本」の最小コア文献セットを割当済み。</li>
-<li>統合反映: research_harvest_50.md 本体へ Round 1-10 結果を統合済み。</li>
+<li>Round 11: U3/U7/U11/U12 の22問いで、問い別の必須文献2本を再割当済み。</li>
+<li>統合反映: research_harvest_50.md 本体へ Round 1-11 結果を統合済み。</li>
 <li>整合監査: 全60問いカバレッジ監査と引用関連性点検を生成済み。</li>
-<li>次回 continue の優先対象: RQごとの差分が大きいユニット（U3/U7/U11/U12）で、問い別に追加1-2本を補完。</li>
+<li>次回 continue の優先対象: 未適用ユニット（U0/U1/U4/U8/U10/U13/U14/U15）へ問い別エビデンス追補を展開。</li>
 </ul>
 </section>
 
