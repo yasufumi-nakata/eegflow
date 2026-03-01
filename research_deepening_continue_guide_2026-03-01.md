@@ -46,6 +46,7 @@ note: "for iterative deep research"
 <li><code>research_deepening_round19_2026-03-01.md</code>: U12 規制トラック整合（Round 19）</li>
 <li><code>research_deepening_round20_2026-03-01.md</code>: Regulation 法域ラベルと監査優先キュー（Round 20）</li>
 <li><code>research_deepening_round21_2026-03-01.md</code>: Highキュー法制度リンク差分監査（Round 21）</li>
+<li><code>research_deepening_round22_2026-03-01.md</code>: 本文更新テンプレ固定と改訂履歴リンク補完（Round 22）</li>
 <li><code>automation/rq_deepening_backlog_2026-03-01.csv</code>: 全60問いの実行バックログ</li>
 <li><code>automation/rq_deepening_backlog_2026-03-01_enriched.csv</code>: 上記 + 一次情報リンク + 根拠確度</li>
 <li><code>automation/rq_deepening_progress_round2_2026-03-01.csv</code>: Round 2 進捗管理（U0/U1/U3）</li>
@@ -86,6 +87,8 @@ note: "for iterative deep research"
 <li><code>automation/rq_regulation_update_priority_queue_round20_2026-03-01.csv</code>: Round 20 の更新監査優先キュー（U12/U15, 10問い）</li>
 <li><code>automation/rq_regulation_link_diff_round21_2026-03-01.csv</code>: Round 21 のURL単位差分監査（5URL, 差分2件）</li>
 <li><code>automation/rq_regulation_priority_queue_status_round21_2026-03-01.csv</code>: Round 21 のRQ単位判定（10問い, 差分判定10件）</li>
+<li><code>automation/rq_regulation_content_update_template_round22_2026-03-01.csv</code>: Round 22 のRQ本文更新テンプレ（10問い）</li>
+<li><code>automation/rq_regulation_revision_history_links_round22_2026-03-01.csv</code>: Round 22 の制度文書改訂履歴リンク補完（10件）</li>
 </ul>
 </section>
 
@@ -113,9 +116,10 @@ note: "for iterative deep research"
 <li>Round 19: U12 の補助文献6件を制度文書へ再配列し、タグ/二層化/読了順/時間目安を再計算済み。</li>
 <li>Round 20: U12/U15 の regulation-track に法域ラベルを付与し、更新監査優先キューを作成済み。</li>
 <li>Round 21: high キュー10問いの法制度リンク差分監査を再実行し、URL差分2件（DOI正規化/OECD正規化）を確認済み。</li>
-<li>統合反映: research_harvest_50.md 本体へ Round 1-21 結果を統合済み。</li>
+<li>Round 22: 差分判定を本文更新テンプレへ固定し、制度文書の改訂履歴リンク（EU/CoE/NIST/OECD）を補完済み。</li>
+<li>統合反映: research_harvest_50.md 本体へ Round 1-22 結果を統合済み。</li>
 <li>整合監査: 全60問いカバレッジ監査と引用関連性点検を生成済み。</li>
-<li>次回 continue の優先対象: 差分あり判定行の本文更新テンプレを固定し、制度文書の改訂履歴ページ直リンクを補完。</li>
+<li>次回 continue の優先対象: Round 22 テンプレを使って U12/U15 本文リンクの正規化差分を実反映し、監査導線を本文末尾へ追記。</li>
 </ul>
 </section>
 

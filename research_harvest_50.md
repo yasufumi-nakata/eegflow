@@ -156,7 +156,7 @@ note: "Compiled from 50 worker tasks (curated for relevance)"
 <section class="section" id="deepening-integration-20260301">
 <h2 class="section-title">深掘り統合反映（2026-03-01）</h2>
 <p>
-Round 1〜21 で実施した深掘り結果を本体運用へ統合しました。ここでは「どのUがどこまで深掘り済みか」を一覧化し、詳細は各Round文書へリンクします。
+Round 1〜22 で実施した深掘り結果を本体運用へ統合しました。ここでは「どのUがどこまで深掘り済みか」を一覧化し、詳細は各Round文書へリンクします。
 </p>
 <table class="data-table">
 <thead><tr><th>U</th><th>RQ総数</th><th>深掘り完了</th><th>主要反映ラウンド</th></tr></thead><tbody>
@@ -168,11 +168,11 @@ Round 1〜21 で実施した深掘り結果を本体運用へ統合しました�
 <tr><td>U8</td><td>6</td><td>6</td><td>Round 4, 8, 12, 13, 16, 17, 18</td></tr>
 <tr><td>U10</td><td>4</td><td>4</td><td>Round 5, 9, 12, 13, 14, 16, 17, 18</td></tr>
 <tr><td>U11</td><td>4</td><td>4</td><td>Round 5, 9, 11, 13, 16, 17, 18</td></tr>
-<tr><td>U12</td><td>6</td><td>6</td><td>Round 5, 9, 11, 13, 15, 16, 17, 18, 19, 20, 21</td></tr>
+<tr><td>U12</td><td>6</td><td>6</td><td>Round 5, 9, 11, 13, 15, 16, 17, 18, 19, 20, 21, 22</td></tr>
 <tr><td>U13</td><td>6</td><td>6</td><td>Round 6, 8, 12, 13, 16, 17, 18</td></tr>
 <tr><td>U14</td><td>6</td><td>6</td><td>Round 6, 8, 12, 13, 14, 16, 17, 18</td></tr>
-<tr><td>U15</td><td>4</td><td>4</td><td>Round 6, 8, 12, 13, 15, 16, 17, 18, 20, 21</td></tr>
-<tr><td><strong>合計</strong></td><td><strong>60</strong></td><td><strong>60</strong></td><td><strong>Round 1-21</strong></td></tr>
+<tr><td>U15</td><td>4</td><td>4</td><td>Round 6, 8, 12, 13, 15, 16, 17, 18, 20, 21, 22</td></tr>
+<tr><td><strong>合計</strong></td><td><strong>60</strong></td><td><strong>60</strong></td><td><strong>Round 1-22</strong></td></tr>
 </tbody></table>
 
 <h3>詳細ドキュメント</h3>
@@ -198,6 +198,7 @@ Round 1〜21 で実施した深掘り結果を本体運用へ統合しました�
 <li><a href="research_deepening_round19_2026-03-01.html">Round 19: U12 規制トラック整合</a></li>
 <li><a href="research_deepening_round20_2026-03-01.html">Round 20: Regulation 法域ラベルと監査優先キュー</a></li>
 <li><a href="research_deepening_round21_2026-03-01.html">Round 21: Highキュー法制度リンク差分監査</a></li>
+<li><a href="research_deepening_round22_2026-03-01.html">Round 22: 本文更新テンプレ固定と改訂履歴リンク補完</a></li>
 </ul>
 
 <h3>整合性監査（証跡）</h3>
@@ -323,6 +324,12 @@ Round 21 の highキュー法制度リンク差分監査（U12/U15, 10問い）�
 <a href="automation/rq_regulation_link_diff_round21_2026-03-01.csv" target="_blank">rq_regulation_link_diff_round21_2026-03-01.csv</a>（URL単位）と
 <a href="automation/rq_regulation_priority_queue_status_round21_2026-03-01.csv" target="_blank">rq_regulation_priority_queue_status_round21_2026-03-01.csv</a>（RQ単位）
 に記録しています（URL差分2件、共有URL伝播でRQ判定10件）。
+</p>
+<p class="small">
+Round 22 の本文更新テンプレ固定と改訂履歴リンク補完は
+<a href="automation/rq_regulation_content_update_template_round22_2026-03-01.csv" target="_blank">rq_regulation_content_update_template_round22_2026-03-01.csv</a>（RQ本文更新テンプレ）と
+<a href="automation/rq_regulation_revision_history_links_round22_2026-03-01.csv" target="_blank">rq_regulation_revision_history_links_round22_2026-03-01.csv</a>（制度文書の改訂履歴リンク）
+に記録しています。
 </p>
 </section>
 

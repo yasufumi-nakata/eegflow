@@ -1,0 +1,41 @@
+uid,rq_index,rq_text,diff_detected_round21,matched_changed_urls_round21,matched_changed_final_urls_round21,change_reason_round21,update_decision_round22,section_target,update_template_ja,evidence_files,generated_at_utc
+U12,1,分岐後主体の識別子を何に基づいて付与するか。,yes,https://doi.org/10.1016/j.patter.2023.100861,https://linkinghub.elsevier.com/retrieve/pii/S2666389923002453,DOI解決先が出版社正規URLへ確定（初回監査時は未記録）,本文リンクの正規化反映（URL置換または併記）,U12 RQ1,"監視日 2026-03-01T14:18:24Z の差分として 1 件を反映。
+1) 本文リンクを正規URLへ更新。
+2) 実体変更がURL正規化のみかを注記。
+3) 次回監視日を 1 週間後に設定。",rq_regulation_link_diff_round21_2026-03-01.csv | rq_regulation_priority_queue_status_round21_2026-03-01.csv,2026-03-01T14:25:17Z
+U12,2,責任・権利・同意の継承ルールをどの時点で分岐させるか。,yes,https://doi.org/10.1016/j.patter.2023.100861,https://linkinghub.elsevier.com/retrieve/pii/S2666389923002453,DOI解決先が出版社正規URLへ確定（初回監査時は未記録）,本文リンクの正規化反映（URL置換または併記）,U12 RQ2,"監視日 2026-03-01T14:18:24Z の差分として 1 件を反映。
+1) 本文リンクを正規URLへ更新。
+2) 実体変更がURL正規化のみかを注記。
+3) 次回監視日を 1 週間後に設定。",rq_regulation_link_diff_round21_2026-03-01.csv | rq_regulation_priority_queue_status_round21_2026-03-01.csv,2026-03-01T14:25:17Z
+U12,3,心理的連続性基準と法的個体基準の不一致をどう扱うか。,yes,https://doi.org/10.1016/j.patter.2023.100861,https://linkinghub.elsevier.com/retrieve/pii/S2666389923002453,DOI解決先が出版社正規URLへ確定（初回監査時は未記録）,本文リンクの正規化反映（URL置換または併記）,U12 RQ3,"監視日 2026-03-01T14:18:24Z の差分として 1 件を反映。
+1) 本文リンクを正規URLへ更新。
+2) 実体変更がURL正規化のみかを注記。
+3) 次回監視日を 1 週間後に設定。",rq_regulation_link_diff_round21_2026-03-01.csv | rq_regulation_priority_queue_status_round21_2026-03-01.csv,2026-03-01T14:25:17Z
+U12,4,技術評価（性能）と人格評価（帰属）をどう接続するか。,yes,https://doi.org/10.1016/j.patter.2023.100861,https://linkinghub.elsevier.com/retrieve/pii/S2666389923002453,DOI解決先が出版社正規URLへ確定（初回監査時は未記録）,本文リンクの正規化反映（URL置換または併記）,U12 RQ4,"監視日 2026-03-01T14:18:24Z の差分として 1 件を反映。
+1) 本文リンクを正規URLへ更新。
+2) 実体変更がURL正規化のみかを注記。
+3) 次回監視日を 1 週間後に設定。",rq_regulation_link_diff_round21_2026-03-01.csv | rq_regulation_priority_queue_status_round21_2026-03-01.csv,2026-03-01T14:25:17Z
+U12,5,分岐主体間で記憶編集・再同期が起きた場合、法的主体IDを再編する基準は何か。,yes,https://doi.org/10.1016/j.patter.2023.100861,https://linkinghub.elsevier.com/retrieve/pii/S2666389923002453,DOI解決先が出版社正規URLへ確定（初回監査時は未記録）,本文リンクの正規化反映（URL置換または併記）,U12 RQ5,"監視日 2026-03-01T14:18:24Z の差分として 1 件を反映。
+1) 本文リンクを正規URLへ更新。
+2) 実体変更がURL正規化のみかを注記。
+3) 次回監視日を 1 週間後に設定。",rq_regulation_link_diff_round21_2026-03-01.csv | rq_regulation_priority_queue_status_round21_2026-03-01.csv,2026-03-01T14:25:17Z
+U12,6,同意撤回が発生したとき、複数分岐主体への権限剥奪を技術的にどう実装・監査するか。,yes,https://doi.org/10.1016/j.patter.2023.100861,https://linkinghub.elsevier.com/retrieve/pii/S2666389923002453,DOI解決先が出版社正規URLへ確定（初回監査時は未記録）,本文リンクの正規化反映（URL置換または併記）,U12 RQ6,"監視日 2026-03-01T14:18:24Z の差分として 1 件を反映。
+1) 本文リンクを正規URLへ更新。
+2) 実体変更がURL正規化のみかを注記。
+3) 次回監視日を 1 週間後に設定。",rq_regulation_link_diff_round21_2026-03-01.csv | rq_regulation_priority_queue_status_round21_2026-03-01.csv,2026-03-01T14:25:17Z
+U15,1,神経データの機微性をどの法概念で扱うか（個人情報・生体情報・人格情報）。,yes,https://oecd.ai/ai-principles/,https://oecd.ai/en/ai-principles/,OECD AI Principles URLが /en/ 付き正規URLへ統一,本文リンクの正規化反映（URL置換または併記）,U15 RQ1,"監視日 2026-03-01T14:18:24Z の差分として 1 件を反映。
+1) 本文リンクを正規URLへ更新。
+2) 実体変更がURL正規化のみかを注記。
+3) 次回監視日を 1 週間後に設定。",rq_regulation_link_diff_round21_2026-03-01.csv | rq_regulation_priority_queue_status_round21_2026-03-01.csv,2026-03-01T14:25:17Z
+U15,2,neurorightsを技術監査項目へどう写像するか。,yes,https://oecd.ai/ai-principles/,https://oecd.ai/en/ai-principles/,OECD AI Principles URLが /en/ 付き正規URLへ統一,本文リンクの正規化反映（URL置換または併記）,U15 RQ2,"監視日 2026-03-01T14:18:24Z の差分として 1 件を反映。
+1) 本文リンクを正規URLへ更新。
+2) 実体変更がURL正規化のみかを注記。
+3) 次回監視日を 1 週間後に設定。",rq_regulation_link_diff_round21_2026-03-01.csv | rq_regulation_priority_queue_status_round21_2026-03-01.csv,2026-03-01T14:25:17Z
+U15,3,法域差（EU/US/JP等）を跨ぐ最小共通運用をどう定義するか。,yes,https://oecd.ai/ai-principles/,https://oecd.ai/en/ai-principles/,OECD AI Principles URLが /en/ 付き正規URLへ統一,本文リンクの正規化反映（URL置換または併記）,U15 RQ3,"監視日 2026-03-01T14:18:24Z の差分として 1 件を反映。
+1) 本文リンクを正規URLへ更新。
+2) 実体変更がURL正規化のみかを注記。
+3) 次回監視日を 1 週間後に設定。",rq_regulation_link_diff_round21_2026-03-01.csv | rq_regulation_priority_queue_status_round21_2026-03-01.csv,2026-03-01T14:25:17Z
+U15,4,技術進展に応じた停止条件・更新条件をどうガバナンス化するか。,yes,https://oecd.ai/ai-principles/,https://oecd.ai/en/ai-principles/,OECD AI Principles URLが /en/ 付き正規URLへ統一,本文リンクの正規化反映（URL置換または併記）,U15 RQ4,"監視日 2026-03-01T14:18:24Z の差分として 1 件を反映。
+1) 本文リンクを正規URLへ更新。
+2) 実体変更がURL正規化のみかを注記。
+3) 次回監視日を 1 週間後に設定。",rq_regulation_link_diff_round21_2026-03-01.csv | rq_regulation_priority_queue_status_round21_2026-03-01.csv,2026-03-01T14:25:17Z
