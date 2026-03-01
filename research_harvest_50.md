@@ -156,7 +156,7 @@ note: "Compiled from 50 worker tasks (curated for relevance)"
 <section class="section" id="deepening-integration-20260301">
 <h2 class="section-title">深掘り統合反映（2026-03-01）</h2>
 <p>
-Round 1〜6 で実施した深掘り結果を本体運用へ統合しました。ここでは「どのUがどこまで深掘り済みか」を一覧化し、詳細は各Round文書へリンクします。
+Round 1〜7 で実施した深掘り結果を本体運用へ統合しました。ここでは「どのUがどこまで深掘り済みか」を一覧化し、詳細は各Round文書へリンクします。
 </p>
 <table class="data-table">
 <thead><tr><th>U</th><th>RQ総数</th><th>深掘り完了</th><th>主要反映ラウンド</th></tr></thead><tbody>
@@ -172,7 +172,7 @@ Round 1〜6 で実施した深掘り結果を本体運用へ統合しました�
 <tr><td>U13</td><td>6</td><td>6</td><td>Round 6</td></tr>
 <tr><td>U14</td><td>6</td><td>6</td><td>Round 6</td></tr>
 <tr><td>U15</td><td>4</td><td>4</td><td>Round 6</td></tr>
-<tr><td><strong>合計</strong></td><td><strong>60</strong></td><td><strong>60</strong></td><td><strong>Round 1-6</strong></td></tr>
+<tr><td><strong>合計</strong></td><td><strong>60</strong></td><td><strong>60</strong></td><td><strong>Round 1-7</strong></td></tr>
 </tbody></table>
 
 <h3>詳細ドキュメント</h3>
@@ -183,6 +183,7 @@ Round 1〜6 で実施した深掘り結果を本体運用へ統合しました�
 <li><a href="research_deepening_round4_2026-03-01.html">Round 4: U8</a></li>
 <li><a href="research_deepening_round5_2026-03-01.html">Round 5: U10/U11/U12</a></li>
 <li><a href="research_deepening_round6_2026-03-01.html">Round 6: U13/U14/U15</a></li>
+<li><a href="research_deepening_round7_2026-03-01.html">Round 7: U8/U13/U14/U15 参照精査</a></li>
 </ul>
 
 <h3>整合性監査（証跡）</h3>
@@ -196,6 +197,11 @@ U別カバレッジ集計は
 <a href="automation/rq_deepening_coverage_summary_2026-03-01.csv" target="_blank">rq_deepening_coverage_summary_2026-03-01.csv</a>、
 引用関連性の機械点検（要目視確認）は
 <a href="automation/rq_reference_relevance_audit_2026-03-01.md" target="_blank">rq_reference_relevance_audit_2026-03-01.md</a>
+に記録しています。
+</p>
+<p class="small">
+U8/U13/U14/U15 の手動トリアージ（維持・要置換・要確認）は
+<a href="automation/rq_reference_manual_triage_round7_2026-03-01.csv" target="_blank">rq_reference_manual_triage_round7_2026-03-01.csv</a>
 に記録しています。
 </p>
 </section>
