@@ -41,6 +41,7 @@ note: "for iterative deep research"
 <li><code>research_deepening_round14_2026-03-01.md</code>: 補助文献 preprint 置換（Round 14）</li>
 <li><code>research_deepening_round15_2026-03-01.md</code>: 法制度リンク差分監査（Round 15）</li>
 <li><code>research_deepening_round16_2026-03-01.md</code>: 補助文献の実験/規制/運用タグ再分類（Round 16）</li>
+<li><code>research_deepening_round17_2026-03-01.md</code>: 参照二層化と3ステップ読了順（Round 17）</li>
 <li><code>automation/rq_deepening_backlog_2026-03-01.csv</code>: 全60問いの実行バックログ</li>
 <li><code>automation/rq_deepening_backlog_2026-03-01_enriched.csv</code>: 上記 + 一次情報リンク + 根拠確度</li>
 <li><code>automation/rq_deepening_progress_round2_2026-03-01.csv</code>: Round 2 進捗管理（U0/U1/U3）</li>
@@ -64,6 +65,9 @@ note: "for iterative deep research"
 <li><code>automation/rq_legal_link_freshness_round15_2026-03-01.csv</code>: Round 15 の法制度リンク差分監査（5件）</li>
 <li><code>automation/rq_supplementary_thematic_tags_round16_2026-03-01.csv</code>: Round 16 の補助文献タグ再分類（60問い）</li>
 <li><code>automation/rq_supplementary_thematic_tag_summary_round16_2026-03-01.csv</code>: Round 16 のタグ集計</li>
+<li><code>automation/rq_reference_layering_round17_2026-03-01.csv</code>: Round 17 の参照二層化（60問い）</li>
+<li><code>automation/rq_minimal_reading_path_round17_2026-03-01.csv</code>: Round 17 のRQ別3ステップ読了順（60問い）</li>
+<li><code>automation/rq_reading_path_summary_round17_2026-03-01.csv</code>: Round 17 の読了順集計</li>
 </ul>
 </section>
 
@@ -86,9 +90,10 @@ note: "for iterative deep research"
 <li>Round 14: grade B（preprint系）16件を査読/仕様系リンクへ実置換し、置換後は grade A=60件を確認済み。</li>
 <li>Round 15: 法制度リンク5件の差分監査を実施し、Round 13比で差分なし（status/url/Last-Modified）を確認済み。</li>
 <li>Round 16: 全60問いの補助文献へ「実験/規制/運用」タグを付与し、読み分け基準を固定済み。</li>
-<li>統合反映: research_harvest_50.md 本体へ Round 1-16 結果を統合済み。</li>
+<li>Round 17: 全60問いで参照を必須/補助の二層に固定し、RQ別3ステップ読了順を生成済み。</li>
+<li>統合反映: research_harvest_50.md 本体へ Round 1-17 結果を統合済み。</li>
 <li>整合監査: 全60問いカバレッジ監査と引用関連性点検を生成済み。</li>
-<li>次回 continue の優先対象: タグ別に必須/補助の二層を追加し、RQ別の最短読了順（3ステップ）を固定。</li>
+<li>次回 continue の優先対象: 3ステップ読了順へ所要時間目安（分）を追加し、U12/U15に更新監査フラグを付与。</li>
 </ul>
 </section>
 
