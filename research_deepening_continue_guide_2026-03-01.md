@@ -37,6 +37,7 @@ note: "for iterative deep research"
 <li><code>research_deepening_round10_2026-03-01.md</code>: 全60問いの最小コア文献セット（Round 10）</li>
 <li><code>research_deepening_round11_2026-03-01.md</code>: U3/U7/U11/U12 の問い別エビデンス追補（Round 11）</li>
 <li><code>research_deepening_round12_2026-03-01.md</code>: U0/U1/U4/U8/U10/U13/U14/U15 の問い別エビデンス追補（Round 12）</li>
+<li><code>research_deepening_round13_2026-03-01.md</code>: 補助文献品質点検と法制度リンク監査（Round 13）</li>
 <li><code>automation/rq_deepening_backlog_2026-03-01.csv</code>: 全60問いの実行バックログ</li>
 <li><code>automation/rq_deepening_backlog_2026-03-01_enriched.csv</code>: 上記 + 一次情報リンク + 根拠確度</li>
 <li><code>automation/rq_deepening_progress_round2_2026-03-01.csv</code>: Round 2 進捗管理（U0/U1/U3）</li>
@@ -53,6 +54,8 @@ note: "for iterative deep research"
 <li><code>automation/rq_core_reference_minset_round10_2026-03-01.csv</code>: Round 10 のRQ別最小コア文献セット</li>
 <li><code>automation/rq_question_specific_enrichment_round11_2026-03-01.csv</code>: Round 11 の問い別エビデンス追補（22問い）</li>
 <li><code>automation/rq_question_specific_enrichment_round12_2026-03-01.csv</code>: Round 12 の問い別エビデンス追補（38問い）</li>
+<li><code>automation/rq_supplementary_quality_audit_round13_2026-03-01.csv</code>: Round 13 の補助文献品質点検（60問い）</li>
+<li><code>automation/rq_legal_link_freshness_round13_2026-03-01.csv</code>: Round 13 の法制度リンク更新日監査（5件）</li>
 </ul>
 </section>
 
@@ -71,9 +74,10 @@ note: "for iterative deep research"
 <li>Round 10: 全60問いへ「必須2本＋補助1本」の最小コア文献セットを割当済み。</li>
 <li>Round 11: U3/U7/U11/U12 の22問いで、問い別の必須文献2本を再割当済み。</li>
 <li>Round 12: U0/U1/U4/U8/U10/U13/U14/U15 の38問いで、問い別の必須文献2本を再割当済み。</li>
-<li>統合反映: research_harvest_50.md 本体へ Round 1-12 結果を統合済み。</li>
+<li>Round 13: 全60問いの補助文献を品質点検し、法制度リンク5件の更新日監査ログを作成済み。</li>
+<li>統合反映: research_harvest_50.md 本体へ Round 1-13 結果を統合済み。</li>
 <li>整合監査: 全60問いカバレッジ監査と引用関連性点検を生成済み。</li>
-<li>次回 continue の優先対象: 全60問いの補助文献（supplementary_1）の品質点検と、法制度系リンクの更新日監査。</li>
+<li>次回 continue の優先対象: 補助文献の grade B（preprint系）16件を、査読版または公式版へ順次置換。</li>
 </ul>
 </section>
 
