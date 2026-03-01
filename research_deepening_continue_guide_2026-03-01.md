@@ -60,6 +60,7 @@ note: "for iterative deep research"
 <li><code>research_deepening_round33_2026-03-01.md</code>: 再監視バッチ計画と再検証受入基準の固定（Round 33）</li>
 <li><code>research_deepening_round34_2026-03-01.md</code>: 平易要約テンプレートと差分レジャー仕様の固定（Round 34）</li>
 <li><code>research_deepening_round35_2026-03-01.md</code>: 判定理由一貫性チェック表と最終報告テンプレートの固定（Round 35）</li>
+<li><code>research_deepening_round36_2026-03-01.md</code>: 複数ソース照合マップとエスカレーション規則の固定（Round 36）</li>
 <li><code>automation/rq_deepening_backlog_2026-03-01.csv</code>: 全60問いの実行バックログ</li>
 <li><code>automation/rq_deepening_backlog_2026-03-01_enriched.csv</code>: 上記 + 一次情報リンク + 根拠確度</li>
 <li><code>automation/rq_deepening_progress_round2_2026-03-01.csv</code>: Round 2 進捗管理（U0/U1/U3）</li>
@@ -129,6 +130,8 @@ note: "for iterative deep research"
 <li><code>automation/rq_regulation_text_diff_ledger_spec_round34_2026-03-01.csv</code>: Round 34 の問い別差分レジャー仕様（10問い）</li>
 <li><code>automation/rq_regulation_reason_consistency_check_round35_2026-03-01.csv</code>: Round 35 の問い別判定理由一貫性チェック表（10問い）</li>
 <li><code>automation/rq_regulation_final_report_template_round35_2026-03-01.csv</code>: Round 35 の問い別最終報告テンプレート（10問い）</li>
+<li><code>automation/rq_regulation_cross_source_evidence_map_round36_2026-03-01.csv</code>: Round 36 の問い別複数ソース照合マップ（10問い）</li>
+<li><code>automation/rq_regulation_escalation_trigger_rules_round36_2026-03-01.csv</code>: Round 36 の問い別エスカレーション規則（10問い）</li>
 </ul>
 </section>
 
@@ -170,9 +173,10 @@ note: "for iterative deep research"
 <li>Round 33: 10問いの再監視バッチ計画と再検証受入基準を固定済み。</li>
 <li>Round 34: 10問いの平易要約テンプレートと差分レジャー仕様を固定済み。</li>
 <li>Round 35: 10問いの判定理由一貫性チェック表と最終報告テンプレートを固定済み。</li>
-<li>統合反映: research_harvest_50.md 本体へ Round 1-35 結果を統合済み。</li>
+<li>Round 36: 10問いの複数ソース照合マップとエスカレーション規則を固定済み。</li>
+<li>統合反映: research_harvest_50.md 本体へ Round 1-36 結果を統合済み。</li>
 <li>整合監査: 全60問いカバレッジ監査と引用関連性点検を生成済み。</li>
-<li>次回 continue の優先対象: 2026-03-08 UTC に Round 33 の実行順1から10を適用し、Round 35 一貫性チェックで不整合を先に除去し、問題が無い問いを最終報告テンプレートで記録して本文反映する。</li>
+<li>次回 continue の優先対象: 2026-03-08 UTC に Round 33 の実行順1から10を適用し、Round 36 の照合マップで一次二次ソース一致を確認し、不一致はEレベル規則で処理し、一致した問いのみ最終報告テンプレートで記録して本文反映する。</li>
 </ul>
 </section>
 

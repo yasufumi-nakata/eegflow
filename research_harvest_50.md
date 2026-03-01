@@ -156,7 +156,7 @@ note: "Compiled from 50 worker tasks (curated for relevance)"
 <section class="section" id="deepening-integration-20260301">
 <h2 class="section-title">深掘り統合反映（2026-03-01）</h2>
 <p>
-Round 1〜35 で実施した深掘り結果を本体運用へ統合しました。ここでは「どのUがどこまで深掘り済みか」を一覧化し、詳細は各Round文書へリンクします。
+Round 1〜36 で実施した深掘り結果を本体運用へ統合しました。ここでは「どのUがどこまで深掘り済みか」を一覧化し、詳細は各Round文書へリンクします。
 </p>
 <table class="data-table">
 <thead><tr><th>U</th><th>RQ総数</th><th>深掘り完了</th><th>主要反映ラウンド</th></tr></thead><tbody>
@@ -168,11 +168,11 @@ Round 1〜35 で実施した深掘り結果を本体運用へ統合しました�
 <tr><td>U8</td><td>6</td><td>6</td><td>Round 4, 8, 12, 13, 16, 17, 18</td></tr>
 <tr><td>U10</td><td>4</td><td>4</td><td>Round 5, 9, 12, 13, 14, 16, 17, 18</td></tr>
 <tr><td>U11</td><td>4</td><td>4</td><td>Round 5, 9, 11, 13, 16, 17, 18</td></tr>
-<tr><td>U12</td><td>6</td><td>6</td><td>Round 5, 9, 11, 13, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35</td></tr>
+<tr><td>U12</td><td>6</td><td>6</td><td>Round 5, 9, 11, 13, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36</td></tr>
 <tr><td>U13</td><td>6</td><td>6</td><td>Round 6, 8, 12, 13, 16, 17, 18</td></tr>
 <tr><td>U14</td><td>6</td><td>6</td><td>Round 6, 8, 12, 13, 14, 16, 17, 18</td></tr>
-<tr><td>U15</td><td>4</td><td>4</td><td>Round 6, 8, 12, 13, 15, 16, 17, 18, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35</td></tr>
-<tr><td><strong>合計</strong></td><td><strong>60</strong></td><td><strong>60</strong></td><td><strong>Round 1-35</strong></td></tr>
+<tr><td>U15</td><td>4</td><td>4</td><td>Round 6, 8, 12, 13, 15, 16, 17, 18, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36</td></tr>
+<tr><td><strong>合計</strong></td><td><strong>60</strong></td><td><strong>60</strong></td><td><strong>Round 1-36</strong></td></tr>
 </tbody></table>
 
 <h3>詳細ドキュメント</h3>
@@ -212,6 +212,7 @@ Round 1〜35 で実施した深掘り結果を本体運用へ統合しました�
 <li><a href="research_deepening_round33_2026-03-01.html">Round 33: 再監視バッチ計画と再検証受入基準の固定</a></li>
 <li><a href="research_deepening_round34_2026-03-01.html">Round 34: 平易要約テンプレートと差分レジャー仕様の固定</a></li>
 <li><a href="research_deepening_round35_2026-03-01.html">Round 35: 判定理由一貫性チェック表と最終報告テンプレートの固定</a></li>
+<li><a href="research_deepening_round36_2026-03-01.html">Round 36: 複数ソース照合マップとエスカレーション規則の固定</a></li>
 </ul>
 
 <h3>整合性監査（証跡）</h3>
@@ -421,6 +422,12 @@ Round 34 の平易要約テンプレートと差分レジャー仕様の固定�
 Round 35 の判定理由一貫性チェック表と最終報告テンプレートの固定は
 <a href="automation/rq_regulation_reason_consistency_check_round35_2026-03-01.csv" target="_blank">rq_regulation_reason_consistency_check_round35_2026-03-01.csv</a>（問い別判定理由一貫性チェック表）と
 <a href="automation/rq_regulation_final_report_template_round35_2026-03-01.csv" target="_blank">rq_regulation_final_report_template_round35_2026-03-01.csv</a>（問い別最終報告テンプレート）
+に記録しています。
+</p>
+<p class="small">
+Round 36 の複数ソース照合マップとエスカレーション規則の固定は
+<a href="automation/rq_regulation_cross_source_evidence_map_round36_2026-03-01.csv" target="_blank">rq_regulation_cross_source_evidence_map_round36_2026-03-01.csv</a>（問い別複数ソース照合マップ）と
+<a href="automation/rq_regulation_escalation_trigger_rules_round36_2026-03-01.csv" target="_blank">rq_regulation_escalation_trigger_rules_round36_2026-03-01.csv</a>（問い別エスカレーション規則）
 に記録しています。
 </p>
 </section>
