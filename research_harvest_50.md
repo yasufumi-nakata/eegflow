@@ -156,7 +156,7 @@ note: "Compiled from 50 worker tasks (curated for relevance)"
 <section class="section" id="deepening-integration-20260301">
 <h2 class="section-title">深掘り統合反映（2026-03-01）</h2>
 <p>
-Round 1〜76 で実施した深掘り結果を本体運用へ統合しました。ここでは「どのUがどこまで深掘り済みか」を一覧化し、詳細は各Round文書へリンクします。
+Round 1〜77 で実施した深掘り結果を本体運用へ統合しました。ここでは「どのUがどこまで深掘り済みか」を一覧化し、詳細は各Round文書へリンクします。
 </p>
 <table class="data-table">
 <thead><tr><th>U</th><th>RQ総数</th><th>深掘り完了</th><th>主要反映ラウンド</th></tr></thead><tbody>
@@ -168,11 +168,11 @@ Round 1〜76 で実施した深掘り結果を本体運用へ統合しました�
 <tr><td>U8</td><td>6</td><td>6</td><td>Round 4, 8, 12, 13, 16, 17, 18</td></tr>
 <tr><td>U10</td><td>4</td><td>4</td><td>Round 5, 9, 12, 13, 14, 16, 17, 18</td></tr>
 <tr><td>U11</td><td>4</td><td>4</td><td>Round 5, 9, 11, 13, 16, 17, 18</td></tr>
-<tr><td>U12</td><td>6</td><td>6</td><td>Round 5, 9, 11, 13, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76</td></tr>
+<tr><td>U12</td><td>6</td><td>6</td><td>Round 5, 9, 11, 13, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77</td></tr>
 <tr><td>U13</td><td>6</td><td>6</td><td>Round 6, 8, 12, 13, 16, 17, 18</td></tr>
 <tr><td>U14</td><td>6</td><td>6</td><td>Round 6, 8, 12, 13, 14, 16, 17, 18</td></tr>
-<tr><td>U15</td><td>4</td><td>4</td><td>Round 6, 8, 12, 13, 15, 16, 17, 18, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76</td></tr>
-<tr><td><strong>合計</strong></td><td><strong>60</strong></td><td><strong>60</strong></td><td><strong>Round 1-76</strong></td></tr>
+<tr><td>U15</td><td>4</td><td>4</td><td>Round 6, 8, 12, 13, 15, 16, 17, 18, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77</td></tr>
+<tr><td><strong>合計</strong></td><td><strong>60</strong></td><td><strong>60</strong></td><td><strong>Round 1-77</strong></td></tr>
 </tbody></table>
 
 <h3>詳細ドキュメント</h3>
@@ -253,6 +253,7 @@ Round 1〜76 で実施した深掘り結果を本体運用へ統合しました�
 <li><a href="research_deepening_round74_2026-03-01.html">Round 74: 再接続実行チェックと再入候補再同期ゲート固定</a></li>
 <li><a href="research_deepening_round75_2026-03-01.html">Round 75: 再同期実行台帳と再同期監視ゲート固定</a></li>
 <li><a href="research_deepening_round76_2026-03-01.html">Round 76: 再同期更新台帳と再入監視再起動ゲート固定</a></li>
+<li><a href="research_deepening_round77_2026-03-01.html">Round 77: 監視再起動台帳と再接続再開ゲート固定</a></li>
 </ul>
 
 <h3>整合性監査（証跡）</h3>
@@ -708,6 +709,12 @@ Round 75 の再同期実行台帳と再同期監視ゲート固定は
 Round 76 の再同期更新台帳と再入監視再起動ゲート固定は
 <a href="automation/rq_regulation_reentry_resync_update_ledger_round76_2026-03-01.csv" target="_blank">rq_regulation_reentry_resync_update_ledger_round76_2026-03-01.csv</a>（問い別再同期更新台帳）と
 <a href="automation/rq_regulation_reentry_watch_restart_gate_round76_2026-03-01.csv" target="_blank">rq_regulation_reentry_watch_restart_gate_round76_2026-03-01.csv</a>（問い別再入監視再起動ゲート）
+に記録しています。
+</p>
+<p class="small">
+Round 77 の監視再起動台帳と再接続再開ゲート固定は
+<a href="automation/rq_regulation_reentry_watch_restart_ledger_round77_2026-03-01.csv" target="_blank">rq_regulation_reentry_watch_restart_ledger_round77_2026-03-01.csv</a>（問い別監視再起動台帳）と
+<a href="automation/rq_regulation_reentry_reconnect_resume_gate_round77_2026-03-01.csv" target="_blank">rq_regulation_reentry_reconnect_resume_gate_round77_2026-03-01.csv</a>（問い別再接続再開ゲート）
 に記録しています。
 </p>
 </section>

@@ -1,0 +1,11 @@
+uid,rq_index,rq_text,resume_condition_ja,resume_item_1_ja,resume_item_2_ja,resume_item_3_ja,resume_rule_ja,resume_state,generated_at_utc
+U12,1,分岐後主体の識別子を何に基づいて付与するか。,restart_ledger_logged 後,再接続要否を判定,再開優先度を更新,監視継続条件を確認,3項目充足でreconnect_resume_ready,resume_gate_fixed,2026-03-02T00:58:00Z
+U12,2,責任・権利・同意の継承ルールをどの時点で分岐させるか。,restart_ledger_logged 後,再接続要否を判定,再開優先度を更新,監視継続条件を確認,3項目充足でreconnect_resume_ready,resume_gate_fixed,2026-03-02T00:58:00Z
+U12,3,心理的連続性基準と法的個体基準の不一致をどう扱うか。,restart_ledger_logged 後,再接続要否を判定,再開優先度を更新,監視継続条件を確認,3項目充足でreconnect_resume_ready,resume_gate_fixed,2026-03-02T00:58:00Z
+U12,4,技術評価（性能）と人格評価（帰属）をどう接続するか。,restart_ledger_logged 後,再接続要否を判定,再開優先度を更新,監視継続条件を確認,3項目充足でreconnect_resume_ready,resume_gate_fixed,2026-03-02T00:58:00Z
+U12,5,分岐主体間で記憶編集・再同期が起きた場合、法的主体IDを再編する基準は何か。,restart_ledger_logged 後,再接続要否を判定,再開優先度を更新,監視継続条件を確認,3項目充足でreconnect_resume_ready,resume_gate_fixed,2026-03-02T00:58:00Z
+U12,6,同意撤回が発生したとき、複数分岐主体への権限剥奪を技術的にどう実装・監査するか。,restart_ledger_logged 後,再接続要否を判定,再開優先度を更新,監視継続条件を確認,3項目充足でreconnect_resume_ready,resume_gate_fixed,2026-03-02T00:58:00Z
+U15,1,神経データの機微性をどの法概念で扱うか（個人情報・生体情報・人格情報）。,restart_ledger_logged 後,再接続要否を判定,再開優先度を更新,監視継続条件を確認,3項目充足でreconnect_resume_ready,resume_gate_fixed,2026-03-02T00:58:00Z
+U15,2,neurorightsを技術監査項目へどう写像するか。,restart_ledger_logged 後,再接続要否を判定,再開優先度を更新,監視継続条件を確認,3項目充足でreconnect_resume_ready,resume_gate_fixed,2026-03-02T00:58:00Z
+U15,3,法域差（EU/US/JP等）を跨ぐ最小共通運用をどう定義するか。,restart_ledger_logged 後,再接続要否を判定,再開優先度を更新,監視継続条件を確認,3項目充足でreconnect_resume_ready,resume_gate_fixed,2026-03-02T00:58:00Z
+U15,4,技術進展に応じた停止条件・更新条件をどうガバナンス化するか。,restart_ledger_logged 後,再接続要否を判定,再開優先度を更新,監視継続条件を確認,3項目充足でreconnect_resume_ready,resume_gate_fixed,2026-03-02T00:58:00Z
