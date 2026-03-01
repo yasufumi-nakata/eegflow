@@ -1,0 +1,11 @@
+uid,rq_index,rq_text,audit_focus_ja,consistency_check_1_ja,consistency_check_2_ja,consistency_check_3_ja,audit_rule_ja,audit_state,generated_at_utc
+U12,1,分岐後主体の識別子を何に基づいて付与するか。,closure維持の整合確認,前回判定理由を再確認,証跡リンク整合を確認,次回窓設定を確認,3確認一致でconsistent,audit_template_fixed,2026-03-01T23:28:00Z
+U12,2,責任・権利・同意の継承ルールをどの時点で分岐させるか。,closure維持の整合確認,前回判定理由を再確認,証跡リンク整合を確認,次回窓設定を確認,3確認一致でconsistent,audit_template_fixed,2026-03-01T23:28:00Z
+U12,3,心理的連続性基準と法的個体基準の不一致をどう扱うか。,closure維持の整合確認,前回判定理由を再確認,証跡リンク整合を確認,次回窓設定を確認,3確認一致でconsistent,audit_template_fixed,2026-03-01T23:28:00Z
+U12,4,技術評価（性能）と人格評価（帰属）をどう接続するか。,closure維持の整合確認,前回判定理由を再確認,証跡リンク整合を確認,次回窓設定を確認,3確認一致でconsistent,audit_template_fixed,2026-03-01T23:28:00Z
+U12,5,分岐主体間で記憶編集・再同期が起きた場合、法的主体IDを再編する基準は何か。,closure維持の整合確認,前回判定理由を再確認,証跡リンク整合を確認,次回窓設定を確認,3確認一致でconsistent,audit_template_fixed,2026-03-01T23:28:00Z
+U12,6,同意撤回が発生したとき、複数分岐主体への権限剥奪を技術的にどう実装・監査するか。,closure維持の整合確認,前回判定理由を再確認,証跡リンク整合を確認,次回窓設定を確認,3確認一致でconsistent,audit_template_fixed,2026-03-01T23:28:00Z
+U15,1,神経データの機微性をどの法概念で扱うか（個人情報・生体情報・人格情報）。,closure維持の整合確認,前回判定理由を再確認,証跡リンク整合を確認,次回窓設定を確認,3確認一致でconsistent,audit_template_fixed,2026-03-01T23:28:00Z
+U15,2,neurorightsを技術監査項目へどう写像するか。,closure維持の整合確認,前回判定理由を再確認,証跡リンク整合を確認,次回窓設定を確認,3確認一致でconsistent,audit_template_fixed,2026-03-01T23:28:00Z
+U15,3,法域差（EU/US/JP等）を跨ぐ最小共通運用をどう定義するか。,closure維持の整合確認,前回判定理由を再確認,証跡リンク整合を確認,次回窓設定を確認,3確認一致でconsistent,audit_template_fixed,2026-03-01T23:28:00Z
+U15,4,技術進展に応じた停止条件・更新条件をどうガバナンス化するか。,closure維持の整合確認,前回判定理由を再確認,証跡リンク整合を確認,次回窓設定を確認,3確認一致でconsistent,audit_template_fixed,2026-03-01T23:28:00Z
