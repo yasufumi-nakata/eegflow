@@ -1,0 +1,11 @@
+uid,rq_index,rq_text,resync_condition_ja,resync_item_1_ja,resync_item_2_ja,resync_item_3_ja,resync_rule_ja,resync_state,generated_at_utc
+U12,1,分岐後主体の識別子を何に基づいて付与するか。,relink_execution_checked 到達時,reentry_candidate_triage を再同期,reentry_execution_packet を再同期,優先度を再計算,3同期完了でreentry_resync_ready,resync_gate_fixed,2026-03-02T00:40:00Z
+U12,2,責任・権利・同意の継承ルールをどの時点で分岐させるか。,relink_execution_checked 到達時,reentry_candidate_triage を再同期,reentry_execution_packet を再同期,優先度を再計算,3同期完了でreentry_resync_ready,resync_gate_fixed,2026-03-02T00:40:00Z
+U12,3,心理的連続性基準と法的個体基準の不一致をどう扱うか。,relink_execution_checked 到達時,reentry_candidate_triage を再同期,reentry_execution_packet を再同期,優先度を再計算,3同期完了でreentry_resync_ready,resync_gate_fixed,2026-03-02T00:40:00Z
+U12,4,技術評価（性能）と人格評価（帰属）をどう接続するか。,relink_execution_checked 到達時,reentry_candidate_triage を再同期,reentry_execution_packet を再同期,優先度を再計算,3同期完了でreentry_resync_ready,resync_gate_fixed,2026-03-02T00:40:00Z
+U12,5,分岐主体間で記憶編集・再同期が起きた場合、法的主体IDを再編する基準は何か。,relink_execution_checked 到達時,reentry_candidate_triage を再同期,reentry_execution_packet を再同期,優先度を再計算,3同期完了でreentry_resync_ready,resync_gate_fixed,2026-03-02T00:40:00Z
+U12,6,同意撤回が発生したとき、複数分岐主体への権限剥奪を技術的にどう実装・監査するか。,relink_execution_checked 到達時,reentry_candidate_triage を再同期,reentry_execution_packet を再同期,優先度を再計算,3同期完了でreentry_resync_ready,resync_gate_fixed,2026-03-02T00:40:00Z
+U15,1,神経データの機微性をどの法概念で扱うか（個人情報・生体情報・人格情報）。,relink_execution_checked 到達時,reentry_candidate_triage を再同期,reentry_execution_packet を再同期,優先度を再計算,3同期完了でreentry_resync_ready,resync_gate_fixed,2026-03-02T00:40:00Z
+U15,2,neurorightsを技術監査項目へどう写像するか。,relink_execution_checked 到達時,reentry_candidate_triage を再同期,reentry_execution_packet を再同期,優先度を再計算,3同期完了でreentry_resync_ready,resync_gate_fixed,2026-03-02T00:40:00Z
+U15,3,法域差（EU/US/JP等）を跨ぐ最小共通運用をどう定義するか。,relink_execution_checked 到達時,reentry_candidate_triage を再同期,reentry_execution_packet を再同期,優先度を再計算,3同期完了でreentry_resync_ready,resync_gate_fixed,2026-03-02T00:40:00Z
+U15,4,技術進展に応じた停止条件・更新条件をどうガバナンス化するか。,relink_execution_checked 到達時,reentry_candidate_triage を再同期,reentry_execution_packet を再同期,優先度を再計算,3同期完了でreentry_resync_ready,resync_gate_fixed,2026-03-02T00:40:00Z
